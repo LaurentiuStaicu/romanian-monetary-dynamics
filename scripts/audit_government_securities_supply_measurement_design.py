@@ -202,7 +202,7 @@ def audit_supply_measurement_design(
     if source_review.get("single_scalar_search_superseded_for_primary_recovery_path") is not True:
         errors.append("source-boundary scalar search not marked superseded")
     if source_review["next_task"]["id"] != (
-        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
+        "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery"
     ):
         errors.append("source-boundary next task not advanced")
 
@@ -276,7 +276,8 @@ def audit_supply_measurement_design(
     if bridge.get("supply_measurement_design_review") != REVIEW_PATH:
         errors.append("issuance-pressure bridge lacks measurement design")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_"
+        "8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
     ):
         errors.append("issuance-pressure bridge measurement status changed")
 
