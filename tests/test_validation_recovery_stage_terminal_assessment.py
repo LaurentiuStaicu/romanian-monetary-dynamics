@@ -100,16 +100,10 @@ class ValidationRecoveryStageTerminalAssessmentTests(unittest.TestCase):
             stage["next_operational_state"],
             self.t["next_operational_state"]["id"],
         )
-        self.assertTrue(stage["selective_reopen_active"])
-        self.assertEqual(
-            stage["selective_reopen_mechanism"],
-            "fiscal_primary_balance_reaction",
-        )
+        self.assertFalse(stage["selective_reopen_active"])
+        self.assertIsNone(stage["selective_reopen_mechanism"])
         self.assertIsNone(stage["active_autonomous_empirical_task"])
-        self.assertEqual(
-            stage["active_manual_empirical_gate"],
-            "FISCAL_PRIMARY_BALANCE_CAPB_RAW_SOURCE_PRESERVATION",
-        )
+        self.assertIsNone(stage["active_manual_empirical_gate"])
         self.assertFalse(stage["model_complete"])
         self.assertFalse(stage["release_ready"])
 

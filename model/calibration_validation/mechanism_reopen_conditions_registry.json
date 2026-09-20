@@ -3,7 +3,7 @@
   "frozen_on": "2026-09-19",
   "purpose": "Canonical reopen-condition registry for behavioural-mechanism research. It operationalises the closed scientific baseline by stating what new evidence or external event is required before each frozen/deferred mechanism may advance, and what does not constitute a reopen trigger. Reopening authorises only the next declared evidence/identification gate; it never automatically authorises estimation, holdout inspection, causal claims, System Dynamics activation or behavioural closure.",
   "source_readiness_registry": "model/calibration_validation/mechanism_source_readiness.json",
-  "current_baseline_action": "MANUAL_DISPATCH_CAPB_RAW_SOURCE_PRESERVATION",
+  "current_baseline_action": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
   "current_active_calibration_cycle_open": false,
   "current_validated_reference_behavioural_mechanisms": 0,
   "mechanisms": {
@@ -175,7 +175,7 @@
     },
     "fiscal_primary_balance_reaction": {
       "classification": "DEFERRED",
-      "source_readiness": "STRUCTURAL_PRIMARY_REALTIME_WINDOW_ADJUDICATED_RAW_SOURCE_PRESERVATION_PENDING",
+      "source_readiness": "STRUCTURAL_PRIMARY_REALTIME_WINDOW_ADJUDICATED_RAW_SOURCE_RETAINED_BASELINE_HOLD",
       "governing_evidence": [
         "model/calibration_validation/fiscal_primary_balance_source_boundary_review.json",
         "model/calibration_validation/fiscal_reaction_annual_structural_selection_result.json",
@@ -186,7 +186,8 @@
         "model/calibration_validation/fiscal_reaction_capb_pre2022_source_probe_contract.json",
         "model/calibration_validation/fiscal_capb_pre2022_source_probe_assessment_2026_09_20.json",
         "model/calibration_validation/fiscal_capb_measurement_semantic_refinement_2026_09_20.json",
-        "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json"
+        "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json",
+        "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json"
       ],
       "frozen_boundary": "The preregistered annual lagged-state fiscal-reaction form failed structural selection before the untouched 2018-2024 final evaluation window opened.",
       "reopen_when": "A separately preregistered cycle is justified by genuinely new measurement or identification evidence, such as a cyclically adjusted primary-balance vintage, longer real-time historical vintages or an independently justified regime/identification design.",
@@ -196,13 +197,17 @@
         "opening the untouched final evaluation to choose a replacement form",
         "using later revised information as if available in real time"
       ],
-      "reopen_effect": "REVIEWED_RAW_SOURCE_PRESERVATION_ONLY",
+      "reopen_effect": "SOURCE_CYCLE_COMPLETE_NO_ESTIMATION",
       "reopened_on": "2026-09-19",
       "reopen_trigger_satisfied": true,
       "reopen_authorized_scope": "CAPB_REALTIME_VINTAGE_SOURCE_MATERIALISATION_AND_TIMING_ADJUDICATION_ONLY",
       "materialisation_execution_readiness": "model/registries/fiscal_capb_materialisation_execution_readiness_2026_09_19.json",
       "target_family": "UBLGBPS_STRUCTURAL_PRIMARY_BALANCE",
-      "related_non_substitutable_family": "UBLGBP_CYCLICALLY_ADJUSTED_PRIMARY_BALANCE"
+      "related_non_substitutable_family": "UBLGBP_CYCLICALLY_ADJUSTED_PRIMARY_BALANCE",
+      "reopen_closed_on": "2026-09-20",
+      "reopen_execution_state": "RAW_SOURCE_PRESERVATION_COMPLETE_RETURNED_TO_BASELINE_HOLD",
+      "raw_source_preservation_branch": "source-vintage/fiscal-capb-raw-2026-09-20",
+      "raw_source_preservation_commit": "efb1f3ae5b025176645d45276b684efe65aa4174"
     },
     "monetary_policy_reaction_function": {
       "classification": "DEFERRED",
@@ -256,8 +261,8 @@
     "reopen_does_not_activate_behavioural_closure": true,
     "accounting_constraints_remain_binding_across_all_reopened_mechanisms": true
   },
-  "selective_reopen_active": true,
-  "selective_reopen_mechanism": "fiscal_primary_balance_reaction",
-  "selective_reopen_scope": "CAPB_REALTIME_VINTAGE_SOURCE_MATERIALISATION_AND_TIMING_ADJUDICATION_ONLY",
-  "selective_reopen_execution_state": "SOURCE_BOUNDARY_ADJUDICATED_RAW_SOURCE_PRESERVATION_PENDING"
+  "selective_reopen_active": false,
+  "selective_reopen_mechanism": null,
+  "selective_reopen_scope": null,
+  "selective_reopen_execution_state": "RAW_SOURCE_PRESERVATION_COMPLETE_RETURNED_TO_BASELINE_HOLD"
 }

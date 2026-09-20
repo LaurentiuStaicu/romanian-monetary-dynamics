@@ -278,18 +278,17 @@
     {
       "id": "fiscal_primary_balance_reaction",
       "classification": "DEFERRED",
-      "source_readiness": "STRUCTURAL_PRIMARY_REALTIME_WINDOW_ADJUDICATED_RAW_SOURCE_PRESERVATION_PENDING",
-      "next_admissible_action": "Manually dispatch the preregistered raw-source preservation workflow to promote the exact reviewed AMECO artifacts into a repository-retained source vintage without provider refetch. Keep UBLGBPS as the exact structural-primary target; do not substitute the longer UBLGBP cyclically adjusted primary-balance family.",
+      "source_readiness": "STRUCTURAL_PRIMARY_REALTIME_WINDOW_ADJUDICATED_RAW_SOURCE_RETAINED_BASELINE_HOLD",
+      "next_admissible_action": "Keep the mechanism DEFERRED and the calibration cycle closed. The exact reviewed UBLGBPS source vintages are now retained without later provider refetch. Any future structural-primary reaction design requires a separately preregistered measurement/identification cycle that respects the 13-observation Spring real-time chain, leaves the prior 2018-2024 final evaluation unopened, and does not substitute UBLGBP for UBLGBPS merely to lengthen the sample.",
       "blockers": [
         "Exact UBLGBPS is absent from all six valid Spring/Autumn 2011-2013 archives and first appears in Spring 2014.",
         "The canonical Spring first-historical structural-primary chain spans 2013-2025, only 13 annual observations; the prior 29-target-year calibration/selection/final-evaluation design cannot be reproduced on this real-time target.",
         "Autumn 2018 contains two distinct official UBLGBPS rows and remains unresolved; it is excluded from the Spring-only first-historical chain rather than resolved post hoc.",
-        "The related UBLGBP cyclically adjusted primary-balance family exists earlier, but it is not the same target and may not be substituted merely to obtain a longer sample.",
-        "Exact raw AMECO archive bytes for both reviewed artifacts remain temporary Actions evidence until the preregistered preservation workflow commits them to a dedicated source-vintage branch."
+        "The related UBLGBP cyclically adjusted primary-balance family exists earlier, but it is not the same target and may not be substituted merely to obtain a longer sample."
       ],
       "source_boundary_review": "model/calibration_validation/fiscal_primary_balance_source_boundary_review.json",
       "estimation_or_refit_allowed": false,
-      "priority_group": "SELECTIVE_REOPEN_RAW_SOURCE_PRESERVATION",
+      "priority_group": "FREEZE_SOURCE_COMPLETE_UNTIL_SEPARATELY_PREREGISTERED_DESIGN_OR_NEW_EVIDENCE",
       "materialisation_contract": "model/calibration_validation/fiscal_primary_balance_materialisation_contract.json",
       "materialiser_workflow": ".github/workflows/fiscal-primary-balance-materialisation.yml",
       "retained_source_vintage": "data/source_vintages/fiscal-primary-balance-quarterly-vintage-2026-09-19",
@@ -302,7 +301,7 @@
       "annual_structural_selection_contract": "model/calibration_validation/fiscal_reaction_annual_structural_selection_contract.json",
       "annual_selection_result": "model/calibration_validation/fiscal_reaction_annual_structural_selection_result.json",
       "annual_selection_execution_gate": "model/calibration_validation/fiscal_reaction_annual_selection_execution_gate.json",
-      "selective_reopen_active": true,
+      "selective_reopen_active": false,
       "capb_reopen_assessment": "model/registries/fiscal_capb_reopen_assessment_2026_09_19.json",
       "capb_realtime_vintage_contract": "model/calibration_validation/fiscal_reaction_capb_realtime_vintage_contract.json",
       "capb_realtime_vintage_materialiser": "scripts/materialise_fiscal_reaction_capb_realtime_vintages.py",
@@ -315,14 +314,18 @@
       "capb_pre2022_source_probe_script": "scripts/audit_fiscal_capb_pre2022_source_probe.py",
       "capb_pre2022_source_probe_workflow": ".github/workflows/fiscal-reaction-capb-pre2022-source-probe.yml",
       "capb_pre2022_source_probe_state": "EXECUTED_REVIEWED_COMPLETE",
-      "capb_repository_raw_bytes_retained": false,
+      "capb_repository_raw_bytes_retained": true,
       "capb_pre2022_source_probe_assessment": "model/calibration_validation/fiscal_capb_pre2022_source_probe_assessment_2026_09_20.json",
       "capb_measurement_semantic_refinement": "model/calibration_validation/fiscal_capb_measurement_semantic_refinement_2026_09_20.json",
       "capb_structural_primary_first_historical_spring": "data/processed/fiscal_capb_structural_primary_first_historical_spring.csv",
       "capb_raw_source_preservation_contract": "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json",
       "capb_raw_source_preservation_script": "scripts/promote_fiscal_capb_raw_source_vintage.py",
       "capb_raw_source_preservation_workflow": ".github/workflows/fiscal-capb-raw-source-preservation.yml",
-      "capb_raw_source_preservation_state": "READY_MANUAL_WORKFLOW_DISPATCH_REQUIRED_NOT_EXECUTED"
+      "capb_raw_source_preservation_state": "EXECUTED_REVIEWED_REPOSITORY_RETAINED",
+      "capb_raw_source_preservation_assessment": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json",
+      "capb_retained_raw_source_branch": "source-vintage/fiscal-capb-raw-2026-09-20",
+      "capb_retained_raw_source_commit": "efb1f3ae5b025176645d45276b684efe65aa4174",
+      "capb_retained_raw_source_manifest": "data/source_vintages/fiscal-reaction-structural-primary-realtime-raw-vintage-2026-09-20/snapshot_manifest.json"
     },
     {
       "id": "monetary_policy_reaction_function",
@@ -368,13 +371,13 @@
   ],
   "priority_rule": "Priority is determined by the shortest scientifically admissible path to new independent evidence, not by a desire to activate a feedback loop. Waiting mechanisms remain frozen; source-incomplete mechanisms are not fit with proxies.",
   "current_next_step": {
-    "mechanism_id": "fiscal_primary_balance_reaction",
-    "action": "MANUAL_DISPATCH_CAPB_RAW_SOURCE_PRESERVATION",
-    "reason": "The UBLGBPS real-time source boundary is now empirically adjudicated: exact structural-primary vintages begin in Spring 2014 and yield a 13-observation Spring first-historical chain through 2025. The remaining admissible task is preservation of already-reviewed raw bytes without provider refetch.",
+    "mechanism_id": "SCIENTIFIC_BASELINE",
+    "action": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+    "reason": "The fiscal structural-primary source-only selective reopen has completed its admissible provenance work. Exact reviewed raw AMECO vintages are repository-retained, while the mechanism remains DEFERRED and no estimation, model selection, target-family substitution or holdout opening is authorized. No other registered mechanism currently has an admissible empirical task without a declared new evidence/event trigger.",
     "calibration_cycle_open": false,
-    "execution_mode": "MANUAL_ONLY_REVIEWED_ARTIFACT_PRESERVATION",
+    "execution_mode": "NO_ACTIVE_EMPIRICAL_TASK",
     "reopen_conditions_registry": "model/calibration_validation/mechanism_reopen_conditions_registry.json",
-    "authorized_scope": "CAPB_REVIEWED_RAW_SOURCE_PRESERVATION_ONLY"
+    "authorized_scope": "NONE_UNTIL_DECLARED_REOPEN_TRIGGER_OR_SEPARATE_PREREGISTRATION"
   },
   "coverage_rule": {
     "scope": "ALL_NON_REJECTED_MECHANISMS",

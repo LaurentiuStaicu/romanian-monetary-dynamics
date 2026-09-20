@@ -31,6 +31,9 @@ def sha(data: bytes) -> str:
 class FiscalCapbRawSourcePreservationTests(unittest.TestCase):
     def setUp(self) -> None:
         self.c = json.loads(CONTRACT.read_text(encoding="utf-8"))
+        self.a = json.loads(
+            (ROOT / "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json").read_text(encoding="utf-8")
+        )
 
     def test_contract_uses_reviewed_artifacts_only_and_no_refetch(self) -> None:
         self.assertTrue(
@@ -111,6 +114,27 @@ class FiscalCapbRawSourcePreservationTests(unittest.TestCase):
                 self.skipTest("temporary directory unexpectedly inside repository root")
             with self.assertRaises(RuntimeError):
                 module.resolve_repository_output(outside)
+
+    def test_completed_preservation_is_repository_retained_without_refetch(self) -> None:
+        self.assertEqual(
+            self.a["status"],
+            "RAW_SOURCE_PRESERVATION_COMPLETE_NO_REFETCH_REPRODUCIBILITY_ESTABLISHED",
+        )
+        retained = self.a["retained_source_vintage"]
+        self.assertEqual(retained["release_count"], 31)
+        self.assertTrue(retained["raw_repository_retained"])
+        self.assertFalse(retained["later_live_refetch_required_for_reproduction"])
+        self.assertEqual(
+            retained["commit_sha"],
+            "efb1f3ae5b025176645d45276b684efe65aa4174",
+        )
+        self.assertTrue(
+            self.a["closure"]["selective_reopen_source_cycle_complete"]
+        )
+        self.assertEqual(
+            self.a["closure"]["next_operational_state"],
+            "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+        )
 
 
 if __name__ == "__main__":

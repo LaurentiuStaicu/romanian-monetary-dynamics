@@ -67,12 +67,9 @@ class ReopenTriggerMonitoring20260919Tests(unittest.TestCase):
             ["fiscal_primary_balance_reaction"],
         )
         self.assertEqual(stage["next_operational_state"], "EVIDENCE_TRIGGERED_BASELINE_HOLD")
-        self.assertTrue(stage["selective_reopen_active"])
+        self.assertFalse(stage["selective_reopen_active"])
         self.assertIsNone(stage["active_autonomous_empirical_task"])
-        self.assertEqual(
-            stage["active_manual_empirical_gate"],
-            "FISCAL_PRIMARY_BALANCE_CAPB_RAW_SOURCE_PRESERVATION",
-        )
+        self.assertIsNone(stage["active_manual_empirical_gate"])
 
 
 if __name__ == "__main__":

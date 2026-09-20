@@ -391,7 +391,7 @@
       "functional_form": "No admitted fiscal-reaction behavioural form. The preregistered annual lagged-state primary-balance candidate was tested on 2010-2017 and failed before holdout.",
       "implementation": null,
       "parameters": [],
-      "estimation_plan": "The prior annual lagged-state form remains frozen at FAIL_BEFORE_HOLDOUT and its 2018-2024 final evaluation remains unopened. The exact real-time UBLGBPS structural-primary source boundary has now been adjudicated: the target is absent in valid 2011-2013 archives, first appears in Spring 2014, and yields a 13-observation Spring first-historical chain for 2013-2025. UBLGBP is a related but distinct cyclically adjusted primary-balance family and is not an automatic substitute. Before any future design question, preserve the exact reviewed raw archive bytes under the source-vintage contract. No estimation or model selection is authorized.",
+      "estimation_plan": "The prior annual lagged-state form remains frozen at FAIL_BEFORE_HOLDOUT and its 2018-2024 final evaluation remains unopened. The real-time UBLGBPS structural-primary source boundary is adjudicated and the exact reviewed AMECO archives are now retained in a repository source-vintage branch without later provider refetch. The canonical Spring first-historical chain remains 13 observations for 2013-2025; UBLGBP is a distinct cyclically adjusted primary-balance family and is not an automatic substitute. No behavioural form is admitted. Any future design requires a separately preregistered measurement/identification cycle; no estimation or model selection is currently authorized.",
       "observables": [
         "primary_balance",
         "debt_to_gdp",
@@ -426,7 +426,12 @@
       "selective_reopen_pre2022_probe_contract": "model/calibration_validation/fiscal_reaction_capb_pre2022_source_probe_contract.json",
       "selective_reopen_pre2022_probe_assessment": "model/calibration_validation/fiscal_capb_pre2022_source_probe_assessment_2026_09_20.json",
       "selective_reopen_measurement_semantic_refinement": "model/calibration_validation/fiscal_capb_measurement_semantic_refinement_2026_09_20.json",
-      "selective_reopen_raw_source_preservation_contract": "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json"
+      "selective_reopen_raw_source_preservation_contract": "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json",
+      "selective_reopen_active": false,
+      "selective_reopen_execution_state": "RAW_SOURCE_PRESERVATION_COMPLETE_RETURNED_TO_BASELINE_HOLD",
+      "selective_reopen_raw_source_preservation_assessment": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json",
+      "retained_structural_primary_raw_source_branch": "source-vintage/fiscal-capb-raw-2026-09-20",
+      "retained_structural_primary_raw_source_commit": "efb1f3ae5b025176645d45276b684efe65aa4174"
     },
     {
       "id": "monetary_policy_reaction_function",

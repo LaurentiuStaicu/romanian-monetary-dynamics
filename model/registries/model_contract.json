@@ -93,18 +93,21 @@
     "latest_reopen_trigger_monitoring_superseded_for": [
       "fiscal_primary_balance_reaction"
     ],
-    "selective_reopen_active": true,
-    "selective_reopen_mechanism": "fiscal_primary_balance_reaction",
-    "selective_reopen_scope": "CAPB_REALTIME_VINTAGE_SOURCE_MATERIALISATION_AND_TIMING_ADJUDICATION_ONLY",
-    "active_manual_empirical_gate": "FISCAL_PRIMARY_BALANCE_CAPB_RAW_SOURCE_PRESERVATION",
-    "selective_reopen_execution_state": "SOURCE_BOUNDARY_ADJUDICATED_RAW_SOURCE_PRESERVATION_PENDING",
+    "selective_reopen_active": false,
+    "selective_reopen_mechanism": null,
+    "selective_reopen_scope": null,
+    "active_manual_empirical_gate": null,
+    "selective_reopen_execution_state": "RAW_SOURCE_PRESERVATION_COMPLETE_RETURNED_TO_BASELINE_HOLD",
     "fiscal_capb_materialisation_execution_readiness": "model/registries/fiscal_capb_materialisation_execution_readiness_2026_09_19.json",
     "fiscal_capb_timing_adjudication": "model/calibration_validation/fiscal_capb_timing_adjudication_2026_09_20.json",
     "fiscal_capb_pre2022_source_probe_contract": "model/calibration_validation/fiscal_reaction_capb_pre2022_source_probe_contract.json",
-    "fiscal_capb_repository_raw_bytes_retained": false,
+    "fiscal_capb_repository_raw_bytes_retained": true,
     "fiscal_capb_pre2022_source_probe_assessment": "model/calibration_validation/fiscal_capb_pre2022_source_probe_assessment_2026_09_20.json",
     "fiscal_capb_measurement_semantic_refinement": "model/calibration_validation/fiscal_capb_measurement_semantic_refinement_2026_09_20.json",
-    "fiscal_capb_raw_source_preservation_contract": "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json"
+    "fiscal_capb_raw_source_preservation_contract": "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json",
+    "fiscal_capb_raw_source_preservation_assessment": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json",
+    "fiscal_capb_retained_raw_source_branch": "source-vintage/fiscal-capb-raw-2026-09-20",
+    "fiscal_capb_retained_raw_source_commit": "efb1f3ae5b025176645d45276b684efe65aa4174"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",

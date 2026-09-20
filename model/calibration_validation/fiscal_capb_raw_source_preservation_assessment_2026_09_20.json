@@ -1,0 +1,69 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "mechanism_id": "fiscal_primary_balance_reaction",
+  "phase": "Fiscal Structural-Primary Real-Time Raw Source Preservation Review",
+  "status": "RAW_SOURCE_PRESERVATION_COMPLETE_NO_REFETCH_REPRODUCIBILITY_ESTABLISHED",
+  "workflow": {
+    "run_id": 35483550266,
+    "successful_attempt": 2,
+    "conclusion": "success",
+    "first_attempt_conclusion": "failure",
+    "first_attempt_failure_class": "EXECUTION_PATH_BUG_RELATIVE_OUTPUT_VS_ABSOLUTE_REPOSITORY_ROOT",
+    "fix_pull_request": 59,
+    "fix_merge_commit_sha": "15e0927e17f5502a8867696ef352867259d03b15",
+    "note": "The first attempt failed after both reviewed artifacts downloaded and verified successfully. The failure was confined to local output-path normalization before repository promotion; no source-value or scientific-boundary change was involved."
+  },
+  "retained_source_vintage": {
+    "branch": "source-vintage/fiscal-capb-raw-2026-09-20",
+    "commit_sha": "efb1f3ae5b025176645d45276b684efe65aa4174",
+    "snapshot_manifest_path": "data/source_vintages/fiscal-reaction-structural-primary-realtime-raw-vintage-2026-09-20/snapshot_manifest.json",
+    "snapshot_manifest_git_blob_sha": "4fa2f672efe7d3381a5abd4eff15e5e37b0801fa",
+    "release_count": 31,
+    "first_release_date": "2011-05-05",
+    "last_release_date": "2026-06-03",
+    "raw_repository_retained": true,
+    "later_live_refetch_required_for_reproduction": false
+  },
+  "source_artifact_identity": {
+    "pre2022": {
+      "run_id": 35482485118,
+      "artifact_id": 10596385949,
+      "artifact_zip_sha256": "adce7b86d485b3435c005d98765ef5752229ce9946e506a47c4fe2b13c707b3b",
+      "release_count": 22
+    },
+    "from2022": {
+      "run_id": 35481663720,
+      "artifact_id": 10595244882,
+      "artifact_zip_sha256": "b6a73296e17b490fef6d785a6eee711d6ebf3ba086ab63b63abb973bdf12037b",
+      "release_count": 9
+    }
+  },
+  "verification": {
+    "target_code": "ROM.1.0.319.0.UBLGBPS",
+    "target_interpretation": "structural primary balance",
+    "no_live_ameco_refetch": true,
+    "per_release_repository_hash_matches_reviewed_archive_hash": true,
+    "exact_reviewed_artifact_identity_preserved": true,
+    "total_release_count_reconciles_to_source_artifacts": true
+  },
+  "scientific_effect": {
+    "mechanism_classification": "DEFERRED",
+    "active_calibration_cycle_open": false,
+    "estimation_authorized": false,
+    "model_selection_authorized": false,
+    "target_family_switch_authorized": false,
+    "prior_final_evaluation_opening_authorized": false,
+    "causal_claim_authorized": false,
+    "system_dynamics_activation": false,
+    "behavioural_closure_change": false
+  },
+  "closure": {
+    "selective_reopen_source_cycle_complete": true,
+    "active_manual_empirical_gate": null,
+    "next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+    "future_structural_primary_design_requires_separate_preregistration": true,
+    "old_2018_2024_final_evaluation_remains_unopened": true,
+    "automatic_switch_to_ublgbp_remains_prohibited": true
+  }
+}
