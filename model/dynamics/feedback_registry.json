@@ -79,7 +79,12 @@
         "portfolio_reallocation_delay",
         "debt_service_maturity_delay"
       ],
-      "topology_status": "CLOSED_CANDIDATE_LOOP"
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "empirical_boundary_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
+      "empirical_boundary_status": "OPEN_CHAIN_PENDING_EXPLICIT_BRIDGES",
+      "bnr_domestic_primary_market_narrowing_as_closed_loop_authorized": false,
+      "quantitative_activation_authorized": false,
+      "empirical_boundary_interpretation": "The qualitative path remains a closed candidate topology, but the retained BNR domestic-primary-market issuance observable cannot replace the generic issuance node as a one-to-one closed-loop mapping. Financing-channel allocation, supply-pressure operationalisation, exact yield boundary and debt-stock interest-cost propagation remain unresolved."
     },
     {
       "id": "bank_credit_balance_sheet_loop",
