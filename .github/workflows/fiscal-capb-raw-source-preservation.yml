@@ -1,0 +1,70 @@
+name: Preserve Fiscal Structural-Primary Raw Source Vintage
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  preserve-reviewed-raw-bytes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out canonical main
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify frozen preservation contract and offline logic
+        run: python -m unittest tests.test_fiscal_capb_raw_source_preservation -v
+
+      - name: Download reviewed pre-2022 artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: fiscal-capb-pre2022-source-probe-750ce01e379631bcb36b3b87675be16e775407bd
+          path: ${{ runner.temp }}/capb_pre2022
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 35482485118
+
+      - name: Download reviewed 2022-2026 artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: fiscal-reaction-capb-realtime-vintages-f859f4e525bb0db13b3140c7d45e1fa17442ca4d
+          path: ${{ runner.temp }}/capb_2022_2026
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 35481663720
+
+      - name: Fail closed if destination branch already exists
+        run: |
+          if git ls-remote --exit-code --heads origin source-vintage/fiscal-capb-raw-2026-09-20; then
+            echo "Destination source-vintage branch already exists; refusing overwrite."
+            exit 1
+          fi
+
+      - name: Create source-vintage branch
+        run: git checkout -b source-vintage/fiscal-capb-raw-2026-09-20
+
+      - name: Promote exact reviewed raw archives without refetch
+        run: |
+          python scripts/promote_fiscal_capb_raw_source_vintage.py \
+            --pre2022 "${{ runner.temp }}/capb_pre2022" \
+            --from2022 "${{ runner.temp }}/capb_2022_2026" \
+            --output "data/source_vintages/fiscal-reaction-structural-primary-realtime-raw-vintage-2026-09-20"
+
+      - name: Commit retained raw source vintage
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/source_vintages/fiscal-reaction-structural-primary-realtime-raw-vintage-2026-09-20
+          git diff --cached --quiet && { echo "No retained source-vintage changes."; exit 1; }
+          git commit -m "data: retain fiscal structural-primary raw source vintage"
+          git push origin source-vintage/fiscal-capb-raw-2026-09-20

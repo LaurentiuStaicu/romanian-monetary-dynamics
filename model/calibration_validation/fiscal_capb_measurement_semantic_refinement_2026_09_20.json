@@ -1,0 +1,35 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "mechanism_id": "fiscal_primary_balance_reaction",
+  "status": "MEASUREMENT_SEMANTICS_CLARIFIED_STRUCTURAL_PRIMARY_NOT_GENERIC_CAPB",
+  "historical_assessment_retained": "model/registries/fiscal_capb_reopen_assessment_2026_09_19.json",
+  "clarification": {
+    "previous_shorthand": "cyclically adjusted / structural primary balance",
+    "corrected_exact_target": "structural primary balance",
+    "exact_target_code": "UBLGBPS",
+    "distinct_related_code": "UBLGBP",
+    "ublgbp_meaning": "primary balance adjusted for the cyclical component",
+    "ublgbps_meaning": "structural primary balance",
+    "structural_relation": "Structural primary balance corresponds to cyclically adjusted primary balance excluding one-off and other temporary measures.",
+    "source_basis": [
+      "European Commission AMECO variable semantics",
+      "European Commission fiscal-document definition of structural (primary) balance as cyclically adjusted (primary) balance excluding one-off and temporary measures",
+      "European Commission Discussion Paper 181 Annex 2 listing UBLGBP as primary balance, cyclically adjusted"
+    ]
+  },
+  "governance": {
+    "rename_historical_capb_paths": false,
+    "reason": "Historical filenames are retained for provenance, but current and future prose must not conflate UBLGBPS with generic cyclically adjusted primary balance.",
+    "current_reopen_target_remains": "UBLGBPS",
+    "automatic_switch_to_ublgbp": false,
+    "switch_requires_separate_preregistration": true,
+    "longer_sample_is_not_sufficient_reason_to_switch": true
+  },
+  "modeling_implication": {
+    "prior_output_gap_control_cannot_be_carried_over_automatically": true,
+    "reason": "A structural-primary target already removes the estimated cyclical component and one-off measures. Any future inclusion of output-gap terms requires a new theoretical and identification rationale rather than inheritance from the failed nominal-primary-balance form.",
+    "estimation_authorized": false,
+    "model_selection_authorized": false
+  }
+}

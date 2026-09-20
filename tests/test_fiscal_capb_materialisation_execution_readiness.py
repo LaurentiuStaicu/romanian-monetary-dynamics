@@ -21,7 +21,7 @@ class FiscalCapbMaterialisationExecutionReadinessTests(unittest.TestCase):
     def test_original_live_gate_executed_successfully_and_was_reviewed(self) -> None:
         self.assertEqual(
             self.a["status"],
-            "WORKFLOW_EXECUTED_SUCCESS_ARTIFACT_REVIEWED_TIMING_ADJUDICATED_RAW_REPOSITORY_RETENTION_PENDING",
+            "PRE2022_PROBE_EXECUTED_REVIEWED_RAW_SOURCE_PRESERVATION_PENDING",
         )
         state = self.a["execution_state"]
         self.assertTrue(state["live_provider_work_manual_only"])
@@ -35,13 +35,18 @@ class FiscalCapbMaterialisationExecutionReadinessTests(unittest.TestCase):
         self.assertFalse(state["repository_raw_bytes_retained"])
         self.assertFalse(state["retained_source_vintage_created"])
 
-    def test_next_probe_is_preregistered_but_not_executed(self) -> None:
+    def test_pre2022_probe_is_executed_and_raw_preservation_is_next(self) -> None:
         state = self.a["execution_state"]
         self.assertTrue(state["pre2022_source_probe_preregistered"])
-        self.assertFalse(state["pre2022_source_probe_executed"])
+        self.assertTrue(state["pre2022_source_probe_executed"])
+        self.assertEqual(state["pre2022_source_probe_run_id"], 35482485118)
+        self.assertEqual(state["pre2022_source_probe_conclusion"], "success")
+        self.assertEqual(state["pre2022_source_probe_artifact_id"], 10596385949)
+        self.assertTrue(state["raw_source_preservation_preregistered"])
+        self.assertFalse(state["raw_source_preservation_executed"])
         self.assertEqual(
-            state["pre2022_source_probe_contract"],
-            "model/calibration_validation/fiscal_reaction_capb_pre2022_source_probe_contract.json",
+            state["raw_source_preservation_contract"],
+            "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json",
         )
 
     def test_scientific_effect_remains_closed(self) -> None:
@@ -61,11 +66,11 @@ class FiscalCapbMaterialisationExecutionReadinessTests(unittest.TestCase):
         self.assertIsNone(stage["active_autonomous_empirical_task"])
         self.assertEqual(
             stage["active_manual_empirical_gate"],
-            "FISCAL_PRIMARY_BALANCE_CAPB_PRE2022_SOURCE_STRUCTURE_PROBE",
+            "FISCAL_PRIMARY_BALANCE_CAPB_RAW_SOURCE_PRESERVATION",
         )
         self.assertEqual(
             stage["selective_reopen_execution_state"],
-            "TIMING_ADJUDICATED_PRE2022_SOURCE_PROBE_AND_RAW_RETENTION_PENDING",
+            "SOURCE_BOUNDARY_ADJUDICATED_RAW_SOURCE_PRESERVATION_PENDING",
         )
         self.assertFalse(stage["fiscal_capb_repository_raw_bytes_retained"])
 

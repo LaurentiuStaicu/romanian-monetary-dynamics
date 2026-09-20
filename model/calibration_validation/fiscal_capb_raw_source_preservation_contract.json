@@ -1,0 +1,60 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-20",
+  "mechanism_id": "fiscal_primary_balance_reaction",
+  "phase": "Fiscal Structural-Primary Real-Time Raw Source Preservation",
+  "purpose": "Promote the already-reviewed immutable GitHub Actions evidence for official AMECO UBLGBPS releases into repository-retained raw source bytes without live provider refetch, value transformation, model fitting or target-family substitution.",
+  "target_series": {
+    "code": "ROM.1.0.319.0.UBLGBPS",
+    "interpretation": "structural primary balance",
+    "variable": "UBLGBPS"
+  },
+  "source_artifacts": {
+    "pre2022": {
+      "run_id": 35482485118,
+      "artifact_id": 10596385949,
+      "artifact_name": "fiscal-capb-pre2022-source-probe-750ce01e379631bcb36b3b87675be16e775407bd",
+      "artifact_zip_sha256": "adce7b86d485b3435c005d98765ef5752229ce9946e506a47c4fe2b13c707b3b",
+      "required_release_count": 22,
+      "required_status_counts": {
+        "OBSERVED_TARGET_NOT_FOUND_IN_VALID_ARCHIVE": 6,
+        "TARGET_PRESENT": 15,
+        "AMBIGUOUS_DISTINCT_TARGET_ROWS": 1
+      }
+    },
+    "from2022": {
+      "run_id": 35481663720,
+      "artifact_id": 10595244882,
+      "artifact_name": "fiscal-reaction-capb-realtime-vintages-f859f4e525bb0db13b3140c7d45e1fa17442ca4d",
+      "artifact_zip_sha256": "b6a73296e17b490fef6d785a6eee711d6ebf3ba086ab63b63abb973bdf12037b",
+      "required_release_count": 9,
+      "required_inventory_sha256": "55e494ca4010ed75c602392da0fcedee02cecf1aa27aa901833b6ed8d7775588"
+    }
+  },
+  "output": {
+    "path": "data/source_vintages/fiscal-reaction-structural-primary-realtime-raw-vintage-2026-09-20",
+    "branch": "source-vintage/fiscal-capb-raw-2026-09-20",
+    "retain_raw_archives": true,
+    "retain_source_audits": true,
+    "generate_snapshot_manifest": true
+  },
+  "verification_rules": {
+    "no_live_ameco_refetch": true,
+    "download_exact_cross_run_artifacts_only": true,
+    "verify_pre2022_audit_release_count_and_status_counts": true,
+    "verify_post2022_inventory_release_count_and_hash_identity": true,
+    "verify_every_raw_archive_sha256_against_downloaded_review_evidence": true,
+    "verify_target_code_consistency": true,
+    "fail_if_output_exists": true,
+    "fail_if_destination_branch_already_exists": true
+  },
+  "scientific_effect": {
+    "estimation_authorized": false,
+    "model_selection_authorized": false,
+    "target_family_switch_authorized": false,
+    "prior_final_evaluation_opening_authorized": false,
+    "causal_claim_authorized": false,
+    "system_dynamics_activation": false,
+    "behavioural_closure_change": false
+  }
+}
