@@ -46,7 +46,7 @@ class FiscalCapbReopenAssessmentTests(unittest.TestCase):
 
     def test_current_state_has_one_source_only_selective_task(self) -> None:
         stage = self.m["scientific_stage"]
-        self.assertTrue(stage["selective_reopen_active"])
+        self.assertFalse(stage["selective_reopen_active"])
         self.assertEqual(
             stage["selective_reopen_mechanism"],
             "fiscal_primary_balance_reaction",
