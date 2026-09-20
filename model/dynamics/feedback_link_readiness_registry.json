@@ -39,12 +39,14 @@
       "to": "government_debt_stock",
       "sign": "+",
       "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
-      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "readiness_status": "GROSS_FLOW_STOCK_BOUNDARY_MISMATCH_NOT_INTEGRATED",
       "related_mechanisms": [],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+      "reason": "Official CSEC methodology makes the missing stock-flow structure explicit: a gross F3 issuance flow requires redemptions, revaluations and other changes in volume to update a market-valued F3 stock. The current target node is instead Maastricht debt (AF2+AF3+AF4, nominal/face value, consolidated). No exact bridge is admitted, so the qualitative positive direction remains but the link cannot be integrated quantitatively.",
+      "stock_flow_boundary_review": "model/dynamics/government_f3_stock_flow_boundary_review.json",
+      "csec_materialisation_contract": "model/dynamics/government_f3_csec_materialisation_contract.json"
     },
     {
       "link_key": "government_refinancing_interest_loop|government_debt_stock|government_interest_cost",
