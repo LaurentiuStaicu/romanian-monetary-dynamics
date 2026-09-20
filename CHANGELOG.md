@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- added an executable behavioural dimensional-consistency gate that separates symbolic unit validity from unfrozen empirical measurement scales and blocks activation without inventing transforms;
 - added executable behavioural-implementation governance so retained exploratory equations cannot be mistaken for currently admitted mechanism implementations;
 - completed scientific-baseline consolidation and integration with executable cross-registry consistency checks;
 - retained exact source vintages and strengthened offline provenance verification so accepted historical evidence does not depend on future provider availability;
