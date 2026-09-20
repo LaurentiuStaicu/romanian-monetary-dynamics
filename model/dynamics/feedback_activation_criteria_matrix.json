@@ -1,0 +1,676 @@
+{
+  "matrix_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "purpose": "Executable per-feedback evaluation of every requirement in the canonical System Dynamics feedback activation gate. Only PASS satisfies a requirement; PARTIAL, BLOCKED and NOT_ASSESSABLE are activation blockers.",
+  "source_gate": "model/dynamics/system_dynamics_conformity_gate.json",
+  "status_vocabulary": [
+    "PASS",
+    "PARTIAL",
+    "BLOCKED",
+    "NOT_ASSESSABLE"
+  ],
+  "passing_status": "PASS",
+  "hard_rules": {
+    "all_required_criteria_must_be_PASS_before_quantitative_activation": true,
+    "partial_is_not_pass": true,
+    "not_assessable_is_not_pass": true,
+    "component_or_target_specific_success_is_not_integrated_loop_success": true,
+    "qualitative_topology_is_not_behavioural_activation": true,
+    "no_convenience_completion_of_missing_equations_parameters_delays_or_boundaries": true
+  },
+  "criteria_order": [
+    "requires_equation",
+    "requires_units",
+    "requires_evidence_status",
+    "requires_parameter_source_or_estimation_plan",
+    "requires_identifiability_assessment",
+    "requires_endogenous_exogenous_classification",
+    "requires_polarity_and_loop_path",
+    "requires_delay_specification_when_delay_claimed",
+    "requires_nonlinearity_documentation_when_present",
+    "requires_extreme_condition_test",
+    "requires_sensitivity_plan",
+    "requires_validation_gate",
+    "requires_reference_mode_link",
+    "requires_accounting_conservation_preservation"
+  ],
+  "feedbacks": [
+    {
+      "loop_id": "government_refinancing_interest_loop",
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "mapped_mechanisms": [
+        {
+          "id": "government_refinancing_effective_rate",
+          "classification": "DEFERRED",
+          "implementation": "refinancing_effective_rate"
+        },
+        {
+          "id": "fiscal_primary_balance_reaction",
+          "classification": "DEFERRED",
+          "implementation": null
+        }
+      ],
+      "criteria": {
+        "requires_equation": {
+          "status": "BLOCKED",
+          "reason": "0/4 path links have exact integrated equations; topology or related mechanisms are insufficient.",
+          "evidence": [
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_units": {
+          "status": "BLOCKED",
+          "reason": "Unit contracts exist for some target-specific/component implementations, but exact integrated path equations are incomplete, so loop-level dimensional readiness cannot pass.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_unit_contract.json",
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_evidence_status": {
+          "status": "PARTIAL",
+          "reason": "Mapped mechanisms have explicit evidence/classification, but evidence is not sufficient at every exact path link and no related classification alone authorizes feedback activation.",
+          "evidence": [
+            "model/empirical_dynamics/mechanism_registry.json"
+          ]
+        },
+        "requires_parameter_source_or_estimation_plan": {
+          "status": "PARTIAL",
+          "reason": "Mapped mechanisms have estimation/source plans, but plans are mechanism-level and cannot substitute for parameters of missing exact link equations.",
+          "evidence": [
+            "model/empirical_dynamics/mechanism_registry.json"
+          ]
+        },
+        "requires_identifiability_assessment": {
+          "status": "BLOCKED",
+          "reason": "No complete set of exact integrated link equations has passed link-specific identifiability and validation; candidate/deferred mechanism assessments are not loop-level identification.",
+          "evidence": [
+            "model/calibration_validation/validation_recovery_disposition.json",
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_endogenous_exogenous_classification": {
+          "status": "BLOCKED",
+          "reason": "4 loop nodes remain UNRESOLVED; explicit classification coverage is not the same as resolved endogenous closure.",
+          "evidence": [
+            "model/dynamics/feedback_variable_boundary_registry.json"
+          ]
+        },
+        "requires_polarity_and_loop_path": {
+          "status": "PASS",
+          "reason": "The declared path is contiguous, closed, and its polarity is checked against signed-link polarity by the SD conformity audit.",
+          "evidence": [
+            "model/dynamics/feedback_registry.json",
+            "scripts/audit_system_dynamics_conformity.py"
+          ]
+        },
+        "requires_delay_specification_when_delay_claimed": {
+          "status": "BLOCKED",
+          "reason": "0/1 declared delay candidates are scalar-tau activation-ready.",
+          "evidence": [
+            "model/dynamics/delay_evidence_registry.json"
+          ]
+        },
+        "requires_nonlinearity_documentation_when_present": {
+          "status": "NOT_ASSESSABLE",
+          "reason": "Nonlinearity cannot be assessed for missing exact integrated link equations; component equations do not define the loop-level functional structure.",
+          "evidence": [
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_extreme_condition_test": {
+          "status": "PARTIAL",
+          "reason": "1/2 mapped mechanisms have executable form-level stress contracts where implementations exist, but integrated loop extreme-condition testing has not run.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_robustness_contract.json"
+          ]
+        },
+        "requires_sensitivity_plan": {
+          "status": "PARTIAL",
+          "reason": "1/2 mapped mechanisms have structural sensitivity plans where executable forms exist; empirical/integrated sensitivity remains blocked.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_robustness_contract.json"
+          ]
+        },
+        "requires_validation_gate": {
+          "status": "BLOCKED",
+          "reason": "No reference behavioural mechanism is validated; candidate/deferred results cannot satisfy a loop activation validation gate.",
+          "evidence": [
+            "model/calibration_validation/validation_recovery_disposition.json"
+          ]
+        },
+        "requires_reference_mode_link": {
+          "status": "PARTIAL",
+          "reason": "1/4 loop nodes have exact reference-mode mappings; no loop-specific integrated reference-mode contract covers the full path.",
+          "evidence": [
+            "model/dynamics/feedback_variable_boundary_registry.json",
+            "model/dynamics/reference_modes.json"
+          ]
+        },
+        "requires_accounting_conservation_preservation": {
+          "status": "PARTIAL",
+          "reason": "Accounting conservation is a hard constraint and core invariants pass, but canonical multi-instrument readiness and/or integrated-link preservation are not yet demonstrated for this feedback structure.",
+          "evidence": [
+            "model/accounting/accounting_readiness_gate.json",
+            "model/registries/model_contract.json"
+          ]
+        }
+      },
+      "passed_criteria_count": 1,
+      "partial_criteria_count": 6,
+      "blocked_criteria_count": 6,
+      "not_assessable_criteria_count": 1,
+      "all_requirements_pass": false,
+      "activation_status": "BLOCKED",
+      "quantitative_activation_authorized": false
+    },
+    {
+      "loop_id": "government_issuance_yield_loop",
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "mapped_mechanisms": [
+        {
+          "id": "sovereign_yield_spread_response",
+          "classification": "CANDIDATE",
+          "implementation": null
+        }
+      ],
+      "criteria": {
+        "requires_equation": {
+          "status": "BLOCKED",
+          "reason": "0/5 path links have exact integrated equations; topology or related mechanisms are insufficient.",
+          "evidence": [
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_units": {
+          "status": "BLOCKED",
+          "reason": "Unit contracts exist for some target-specific/component implementations, but exact integrated path equations are incomplete, so loop-level dimensional readiness cannot pass.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_unit_contract.json",
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_evidence_status": {
+          "status": "PARTIAL",
+          "reason": "Mapped mechanisms have explicit evidence/classification, but evidence is not sufficient at every exact path link and no related classification alone authorizes feedback activation.",
+          "evidence": [
+            "model/empirical_dynamics/mechanism_registry.json"
+          ]
+        },
+        "requires_parameter_source_or_estimation_plan": {
+          "status": "PARTIAL",
+          "reason": "Mapped mechanisms have estimation/source plans, but plans are mechanism-level and cannot substitute for parameters of missing exact link equations.",
+          "evidence": [
+            "model/empirical_dynamics/mechanism_registry.json"
+          ]
+        },
+        "requires_identifiability_assessment": {
+          "status": "BLOCKED",
+          "reason": "No complete set of exact integrated link equations has passed link-specific identifiability and validation; candidate/deferred mechanism assessments are not loop-level identification.",
+          "evidence": [
+            "model/calibration_validation/validation_recovery_disposition.json",
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_endogenous_exogenous_classification": {
+          "status": "BLOCKED",
+          "reason": "5 loop nodes remain UNRESOLVED; explicit classification coverage is not the same as resolved endogenous closure.",
+          "evidence": [
+            "model/dynamics/feedback_variable_boundary_registry.json"
+          ]
+        },
+        "requires_polarity_and_loop_path": {
+          "status": "PASS",
+          "reason": "The declared path is contiguous, closed, and its polarity is checked against signed-link polarity by the SD conformity audit.",
+          "evidence": [
+            "model/dynamics/feedback_registry.json",
+            "scripts/audit_system_dynamics_conformity.py"
+          ]
+        },
+        "requires_delay_specification_when_delay_claimed": {
+          "status": "BLOCKED",
+          "reason": "0/2 declared delay candidates are scalar-tau activation-ready.",
+          "evidence": [
+            "model/dynamics/delay_evidence_registry.json"
+          ]
+        },
+        "requires_nonlinearity_documentation_when_present": {
+          "status": "NOT_ASSESSABLE",
+          "reason": "Nonlinearity cannot be assessed for missing exact integrated link equations; component equations do not define the loop-level functional structure.",
+          "evidence": [
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_extreme_condition_test": {
+          "status": "BLOCKED",
+          "reason": "No mapped mechanism for this structure has an executable robustness contract; integrated testing has not run.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_robustness_contract.json"
+          ]
+        },
+        "requires_sensitivity_plan": {
+          "status": "BLOCKED",
+          "reason": "No mapped executable form supplies a sensitivity plan for this structure.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_robustness_contract.json"
+          ]
+        },
+        "requires_validation_gate": {
+          "status": "BLOCKED",
+          "reason": "No reference behavioural mechanism is validated; candidate/deferred results cannot satisfy a loop activation validation gate.",
+          "evidence": [
+            "model/calibration_validation/validation_recovery_disposition.json"
+          ]
+        },
+        "requires_reference_mode_link": {
+          "status": "BLOCKED",
+          "reason": "No loop node has an exact reference-mode mapping sufficient for integrated feedback validation.",
+          "evidence": [
+            "model/dynamics/feedback_variable_boundary_registry.json",
+            "model/dynamics/reference_modes.json"
+          ]
+        },
+        "requires_accounting_conservation_preservation": {
+          "status": "PARTIAL",
+          "reason": "Accounting conservation is a hard constraint and core invariants pass, but canonical multi-instrument readiness and/or integrated-link preservation are not yet demonstrated for this feedback structure.",
+          "evidence": [
+            "model/accounting/accounting_readiness_gate.json",
+            "model/registries/model_contract.json"
+          ]
+        }
+      },
+      "passed_criteria_count": 1,
+      "partial_criteria_count": 3,
+      "blocked_criteria_count": 9,
+      "not_assessable_criteria_count": 1,
+      "all_requirements_pass": false,
+      "activation_status": "BLOCKED",
+      "quantitative_activation_authorized": false
+    },
+    {
+      "loop_id": "bank_credit_balance_sheet_loop",
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "mapped_mechanisms": [
+        {
+          "id": "aggregate_bank_credit_response",
+          "classification": "CANDIDATE",
+          "implementation": "aggregate_credit_growth"
+        },
+        {
+          "id": "credit_risk_npl_response",
+          "classification": "DEFERRED",
+          "implementation": "npl_ratio_change"
+        }
+      ],
+      "criteria": {
+        "requires_equation": {
+          "status": "BLOCKED",
+          "reason": "0/4 path links have exact integrated equations; topology or related mechanisms are insufficient.",
+          "evidence": [
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_units": {
+          "status": "BLOCKED",
+          "reason": "Unit contracts exist for some target-specific/component implementations, but exact integrated path equations are incomplete, so loop-level dimensional readiness cannot pass.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_unit_contract.json",
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_evidence_status": {
+          "status": "PARTIAL",
+          "reason": "Mapped mechanisms have explicit evidence/classification, but evidence is not sufficient at every exact path link and no related classification alone authorizes feedback activation.",
+          "evidence": [
+            "model/empirical_dynamics/mechanism_registry.json"
+          ]
+        },
+        "requires_parameter_source_or_estimation_plan": {
+          "status": "PARTIAL",
+          "reason": "Mapped mechanisms have estimation/source plans, but plans are mechanism-level and cannot substitute for parameters of missing exact link equations.",
+          "evidence": [
+            "model/empirical_dynamics/mechanism_registry.json"
+          ]
+        },
+        "requires_identifiability_assessment": {
+          "status": "BLOCKED",
+          "reason": "No complete set of exact integrated link equations has passed link-specific identifiability and validation; candidate/deferred mechanism assessments are not loop-level identification.",
+          "evidence": [
+            "model/calibration_validation/validation_recovery_disposition.json",
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_endogenous_exogenous_classification": {
+          "status": "BLOCKED",
+          "reason": "4 loop nodes remain UNRESOLVED; explicit classification coverage is not the same as resolved endogenous closure.",
+          "evidence": [
+            "model/dynamics/feedback_variable_boundary_registry.json"
+          ]
+        },
+        "requires_polarity_and_loop_path": {
+          "status": "PASS",
+          "reason": "The declared path is contiguous, closed, and its polarity is checked against signed-link polarity by the SD conformity audit.",
+          "evidence": [
+            "model/dynamics/feedback_registry.json",
+            "scripts/audit_system_dynamics_conformity.py"
+          ]
+        },
+        "requires_delay_specification_when_delay_claimed": {
+          "status": "BLOCKED",
+          "reason": "0/2 declared delay candidates are scalar-tau activation-ready.",
+          "evidence": [
+            "model/dynamics/delay_evidence_registry.json"
+          ]
+        },
+        "requires_nonlinearity_documentation_when_present": {
+          "status": "NOT_ASSESSABLE",
+          "reason": "Nonlinearity cannot be assessed for missing exact integrated link equations; component equations do not define the loop-level functional structure.",
+          "evidence": [
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_extreme_condition_test": {
+          "status": "PARTIAL",
+          "reason": "2/2 mapped mechanisms have executable form-level stress contracts where implementations exist, but integrated loop extreme-condition testing has not run.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_robustness_contract.json"
+          ]
+        },
+        "requires_sensitivity_plan": {
+          "status": "PARTIAL",
+          "reason": "2/2 mapped mechanisms have structural sensitivity plans where executable forms exist; empirical/integrated sensitivity remains blocked.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_robustness_contract.json"
+          ]
+        },
+        "requires_validation_gate": {
+          "status": "BLOCKED",
+          "reason": "No reference behavioural mechanism is validated; candidate/deferred results cannot satisfy a loop activation validation gate.",
+          "evidence": [
+            "model/calibration_validation/validation_recovery_disposition.json"
+          ]
+        },
+        "requires_reference_mode_link": {
+          "status": "PARTIAL",
+          "reason": "1/4 loop nodes have exact reference-mode mappings; no loop-specific integrated reference-mode contract covers the full path.",
+          "evidence": [
+            "model/dynamics/feedback_variable_boundary_registry.json",
+            "model/dynamics/reference_modes.json"
+          ]
+        },
+        "requires_accounting_conservation_preservation": {
+          "status": "PARTIAL",
+          "reason": "Accounting conservation is a hard constraint and core invariants pass, but canonical multi-instrument readiness and/or integrated-link preservation are not yet demonstrated for this feedback structure.",
+          "evidence": [
+            "model/accounting/accounting_readiness_gate.json",
+            "model/registries/model_contract.json"
+          ]
+        }
+      },
+      "passed_criteria_count": 1,
+      "partial_criteria_count": 6,
+      "blocked_criteria_count": 6,
+      "not_assessable_criteria_count": 1,
+      "all_requirements_pass": false,
+      "activation_status": "BLOCKED",
+      "quantitative_activation_authorized": false
+    },
+    {
+      "loop_id": "monetary_credit_transmission_loop",
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "mapped_mechanisms": [
+        {
+          "id": "monetary_policy_lending_rate_pass_through",
+          "classification": "CANDIDATE",
+          "implementation": "household_housing_delta_policy_rate"
+        },
+        {
+          "id": "monetary_policy_reaction_function",
+          "classification": "DEFERRED",
+          "implementation": null
+        }
+      ],
+      "criteria": {
+        "requires_equation": {
+          "status": "BLOCKED",
+          "reason": "0/5 path links have exact integrated equations; topology or related mechanisms are insufficient.",
+          "evidence": [
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_units": {
+          "status": "BLOCKED",
+          "reason": "Unit contracts exist for some target-specific/component implementations, but exact integrated path equations are incomplete, so loop-level dimensional readiness cannot pass.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_unit_contract.json",
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_evidence_status": {
+          "status": "PARTIAL",
+          "reason": "Mapped mechanisms have explicit evidence/classification, but evidence is not sufficient at every exact path link and no related classification alone authorizes feedback activation.",
+          "evidence": [
+            "model/empirical_dynamics/mechanism_registry.json"
+          ]
+        },
+        "requires_parameter_source_or_estimation_plan": {
+          "status": "PARTIAL",
+          "reason": "Mapped mechanisms have estimation/source plans, but plans are mechanism-level and cannot substitute for parameters of missing exact link equations.",
+          "evidence": [
+            "model/empirical_dynamics/mechanism_registry.json"
+          ]
+        },
+        "requires_identifiability_assessment": {
+          "status": "BLOCKED",
+          "reason": "No complete set of exact integrated link equations has passed link-specific identifiability and validation; candidate/deferred mechanism assessments are not loop-level identification.",
+          "evidence": [
+            "model/calibration_validation/validation_recovery_disposition.json",
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_endogenous_exogenous_classification": {
+          "status": "BLOCKED",
+          "reason": "4 loop nodes remain UNRESOLVED; explicit classification coverage is not the same as resolved endogenous closure.",
+          "evidence": [
+            "model/dynamics/feedback_variable_boundary_registry.json"
+          ]
+        },
+        "requires_polarity_and_loop_path": {
+          "status": "PASS",
+          "reason": "The declared path is contiguous, closed, and its polarity is checked against signed-link polarity by the SD conformity audit.",
+          "evidence": [
+            "model/dynamics/feedback_registry.json",
+            "scripts/audit_system_dynamics_conformity.py"
+          ]
+        },
+        "requires_delay_specification_when_delay_claimed": {
+          "status": "BLOCKED",
+          "reason": "0/1 declared delay candidates are scalar-tau activation-ready.",
+          "evidence": [
+            "model/dynamics/delay_evidence_registry.json"
+          ]
+        },
+        "requires_nonlinearity_documentation_when_present": {
+          "status": "NOT_ASSESSABLE",
+          "reason": "Nonlinearity cannot be assessed for missing exact integrated link equations; component equations do not define the loop-level functional structure.",
+          "evidence": [
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_extreme_condition_test": {
+          "status": "PARTIAL",
+          "reason": "1/2 mapped mechanisms have executable form-level stress contracts where implementations exist, but integrated loop extreme-condition testing has not run.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_robustness_contract.json"
+          ]
+        },
+        "requires_sensitivity_plan": {
+          "status": "PARTIAL",
+          "reason": "1/2 mapped mechanisms have structural sensitivity plans where executable forms exist; empirical/integrated sensitivity remains blocked.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_robustness_contract.json"
+          ]
+        },
+        "requires_validation_gate": {
+          "status": "BLOCKED",
+          "reason": "No reference behavioural mechanism is validated; candidate/deferred results cannot satisfy a loop activation validation gate.",
+          "evidence": [
+            "model/calibration_validation/validation_recovery_disposition.json"
+          ]
+        },
+        "requires_reference_mode_link": {
+          "status": "PARTIAL",
+          "reason": "2/5 loop nodes have exact reference-mode mappings; no loop-specific integrated reference-mode contract covers the full path.",
+          "evidence": [
+            "model/dynamics/feedback_variable_boundary_registry.json",
+            "model/dynamics/reference_modes.json"
+          ]
+        },
+        "requires_accounting_conservation_preservation": {
+          "status": "PARTIAL",
+          "reason": "Accounting conservation is a hard constraint and core invariants pass, but canonical multi-instrument readiness and/or integrated-link preservation are not yet demonstrated for this feedback structure.",
+          "evidence": [
+            "model/accounting/accounting_readiness_gate.json",
+            "model/registries/model_contract.json"
+          ]
+        }
+      },
+      "passed_criteria_count": 1,
+      "partial_criteria_count": 6,
+      "blocked_criteria_count": 6,
+      "not_assessable_criteria_count": 1,
+      "all_requirements_pass": false,
+      "activation_status": "BLOCKED",
+      "quantitative_activation_authorized": false
+    },
+    {
+      "loop_id": "external_fx_refinancing_loop",
+      "topology_status": "OPEN_CHAIN",
+      "mapped_mechanisms": [
+        {
+          "id": "external_fx_refinancing_feedback",
+          "classification": "DEFERRED",
+          "implementation": null
+        }
+      ],
+      "criteria": {
+        "requires_equation": {
+          "status": "BLOCKED",
+          "reason": "0/4 path links have exact integrated equations; topology or related mechanisms are insufficient.",
+          "evidence": [
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_units": {
+          "status": "BLOCKED",
+          "reason": "Unit contracts exist for some target-specific/component implementations, but exact integrated path equations are incomplete, so loop-level dimensional readiness cannot pass.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_unit_contract.json",
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_evidence_status": {
+          "status": "PARTIAL",
+          "reason": "Mapped mechanisms have explicit evidence/classification, but evidence is not sufficient at every exact path link and no related classification alone authorizes feedback activation.",
+          "evidence": [
+            "model/empirical_dynamics/mechanism_registry.json"
+          ]
+        },
+        "requires_parameter_source_or_estimation_plan": {
+          "status": "PARTIAL",
+          "reason": "Mapped mechanisms have estimation/source plans, but plans are mechanism-level and cannot substitute for parameters of missing exact link equations.",
+          "evidence": [
+            "model/empirical_dynamics/mechanism_registry.json"
+          ]
+        },
+        "requires_identifiability_assessment": {
+          "status": "BLOCKED",
+          "reason": "No complete set of exact integrated link equations has passed link-specific identifiability and validation; candidate/deferred mechanism assessments are not loop-level identification.",
+          "evidence": [
+            "model/calibration_validation/validation_recovery_disposition.json",
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_endogenous_exogenous_classification": {
+          "status": "BLOCKED",
+          "reason": "5 loop nodes remain UNRESOLVED; explicit classification coverage is not the same as resolved endogenous closure.",
+          "evidence": [
+            "model/dynamics/feedback_variable_boundary_registry.json"
+          ]
+        },
+        "requires_polarity_and_loop_path": {
+          "status": "BLOCKED",
+          "reason": "The structure is an OPEN_CHAIN; no loop polarity/closure may be inferred.",
+          "evidence": [
+            "model/dynamics/feedback_registry.json",
+            "scripts/audit_system_dynamics_conformity.py"
+          ]
+        },
+        "requires_delay_specification_when_delay_claimed": {
+          "status": "BLOCKED",
+          "reason": "0/2 declared delay candidates are scalar-tau activation-ready.",
+          "evidence": [
+            "model/dynamics/delay_evidence_registry.json"
+          ]
+        },
+        "requires_nonlinearity_documentation_when_present": {
+          "status": "NOT_ASSESSABLE",
+          "reason": "Nonlinearity cannot be assessed for missing exact integrated link equations; component equations do not define the loop-level functional structure.",
+          "evidence": [
+            "model/dynamics/feedback_link_readiness_registry.json"
+          ]
+        },
+        "requires_extreme_condition_test": {
+          "status": "BLOCKED",
+          "reason": "No mapped mechanism for this structure has an executable robustness contract; integrated testing has not run.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_robustness_contract.json"
+          ]
+        },
+        "requires_sensitivity_plan": {
+          "status": "BLOCKED",
+          "reason": "No mapped executable form supplies a sensitivity plan for this structure.",
+          "evidence": [
+            "model/empirical_dynamics/behavioural_robustness_contract.json"
+          ]
+        },
+        "requires_validation_gate": {
+          "status": "BLOCKED",
+          "reason": "No reference behavioural mechanism is validated; candidate/deferred results cannot satisfy a loop activation validation gate.",
+          "evidence": [
+            "model/calibration_validation/validation_recovery_disposition.json"
+          ]
+        },
+        "requires_reference_mode_link": {
+          "status": "BLOCKED",
+          "reason": "No loop node has an exact reference-mode mapping sufficient for integrated feedback validation.",
+          "evidence": [
+            "model/dynamics/feedback_variable_boundary_registry.json",
+            "model/dynamics/reference_modes.json"
+          ]
+        },
+        "requires_accounting_conservation_preservation": {
+          "status": "PARTIAL",
+          "reason": "Accounting conservation is a hard constraint and core invariants pass, but canonical multi-instrument readiness and/or integrated-link preservation are not yet demonstrated for this feedback structure.",
+          "evidence": [
+            "model/accounting/accounting_readiness_gate.json",
+            "model/registries/model_contract.json"
+          ]
+        }
+      },
+      "passed_criteria_count": 0,
+      "partial_criteria_count": 3,
+      "blocked_criteria_count": 10,
+      "not_assessable_criteria_count": 1,
+      "all_requirements_pass": false,
+      "activation_status": "BLOCKED",
+      "quantitative_activation_authorized": false
+    }
+  ],
+  "current_summary": {
+    "registered_feedback_structures": 5,
+    "activation_ready_structures": 0,
+    "quantitatively_authorized_structures": 0,
+    "current_status": "ALL_FEEDBACK_STRUCTURES_BLOCKED",
+    "behavioural_closure_active": false
+  }
+}
