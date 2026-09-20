@@ -1,0 +1,111 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "stage": "Evidence-Triggered Baseline Hold — Post-Fiscal-Closure Trigger Monitoring",
+  "status": "NO_DECLARED_REOPEN_TRIGGER_SATISFIED_POST_FISCAL_CLOSURE_BASELINE_HOLD_CONTINUES",
+  "purpose": "Record the first trigger-monitoring snapshot after completion of the fiscal structural-primary provenance-only selective reopen. The pass searches only for evidence that matches existing declared reopen conditions and may not create a new model specification, infer missing values, inspect reserved outcomes, or reopen calibration because the queue is empty.",
+  "governing_registries": {
+    "accounting": "model/accounting/reopen_conditions_registry.json",
+    "behavioural": "model/calibration_validation/mechanism_reopen_conditions_registry.json",
+    "reference_mode_terminal": "model/dynamics/reference_mode_recovery_terminal_assessment.json",
+    "prospective_monetary_status": "model/calibration_validation/prospective_monetary_confirmation_status.json",
+    "fiscal_source_closure": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json"
+  },
+  "monitoring_scope": {
+    "principle": "Only genuinely new official evidence or an external event that satisfies a declared trigger can reopen a frozen boundary. Non-confirmation is not proof of permanent absence.",
+    "screened_classes": [
+      "prospective BNR non-zero policy-rate event",
+      "exact BNR BLS 2025-Q2 workbook or exact machine-readable equivalent",
+      "AMECO structural-primary vintage extension",
+      "government same-boundary repricing ledger",
+      "Eurostat/ECB/BNR accounting or sectoral-financial-position topology expansion"
+    ],
+    "repeated_unchanged_source_probe_is_progress": false
+  },
+  "findings": {
+    "prospective_monetary_policy_event": {
+      "status": "NO_REOPEN_NO_NEW_BNR_POLICY_MEETING_SINCE_LAST_CHECK",
+      "evidence": [
+        {
+          "source": "BNR official monetary-policy calendar page",
+          "checked_on": "2026-09-20",
+          "url": "https://www.bnr.ro/2506-calendarul-sedintelor-consiliului-de-administratie-pe-probleme-de-politica-monetara",
+          "fact": "The official BNR monetary-policy calendar surface remains the canonical event source. The existing frozen status records the next scheduled meeting after 2026-08-10 as 2026-10-08."
+        }
+      ],
+      "trigger_test": "Stage 1 opens only after an actually observed non-zero BNR policy-rate event in the reserved prospective window.",
+      "conclusion": "No new BNR policy meeting occurred between the 2026-09-19 check and this 2026-09-20 pass. The identification gate remains closed and reserved MIR response values remain uninspected."
+    },
+    "aggregate_bank_credit_bls_2025_q2": {
+      "status": "NO_REOPEN_EXACT_2025_Q2_WORKBOOK_STILL_NOT_CONFIRMED",
+      "evidence": [
+        {
+          "source": "BNR official Bank Lending Survey publication surface",
+          "checked_on": "2026-09-20",
+          "url": "https://www.bnr.ro/12055-sondaj-privind-creditarea-companiilor-nefinanciare-si-a-populatiei",
+          "fact": "The official BNR BLS publication family remains available, but the targeted current-public search did not identify a reproducible exact 2025-Q2 workbook endpoint or exact machine-readable catalogue target."
+        }
+      ],
+      "boundary_rule": "Do not guess BNR filenames, timestamps or internal endpoints and do not replace exact workbook cells with rounded report text.",
+      "conclusion": "The declared source trigger remains unsatisfied. This is non-confirmation, not proof that the provider-side source does not exist."
+    },
+    "fiscal_structural_primary_vintage_extension": {
+      "status": "NO_REOPEN_NO_NEW_AMECO_FULL_RELEASE",
+      "evidence": [
+        {
+          "source": "European Commission AMECO database",
+          "checked_on": "2026-09-20",
+          "url": "https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database_en",
+          "fact": "AMECO reports its last update as 2026-06-03 for the Spring 2026 Economic Forecast and states that AMECO is updated with each full Spring/Autumn forecast release."
+        }
+      ],
+      "conclusion": "No new full AMECO release exists after the already retained Spring 2026 vintage. The 13-observation Spring first-historical UBLGBPS chain is therefore not lengthened by new evidence in this pass."
+    },
+    "government_refinancing_effective_rate": {
+      "status": "NO_REOPEN_MATCHED_REPRICING_LEDGER_NOT_IDENTIFIED",
+      "evidence": [
+        {
+          "source": "Romania Ministry of Finance Government Debt Management Strategy 2024-2026",
+          "url": "https://www.mfinante.gov.ro/static/10/Mfp/buletin/executii/Strategiedeadministrareadatorieipubliceguvernamentale2024_2026.pdf",
+          "fact": "The published strategy provides marginal portfolio risk indicators such as debt due within one year, currency shares, average time to maturity and average time to refixing."
+        }
+      ],
+      "boundary_rule": "The frozen mechanism requires same-boundary opening principal, realised repriced/refinanced principal and matched old/new effective rates across material debt blocks.",
+      "conclusion": "The official risk indicators remain insufficient for point identification and do not create the required repricing ledger."
+    },
+    "accounting_and_sectoral_financial_positions": {
+      "status": "NO_REOPEN_CURRENT_EUROSTAT_QFA_COUNTERPART_SCOPE_STILL_INCOMPLETE_FOR_RMD_BOUNDARY",
+      "evidence": [
+        {
+          "source": "Eurostat Financial flows and stocks (nasq_10_f) reference metadata",
+          "checked_on": "2026-09-20",
+          "url": "https://ec.europa.eu/eurostat/cache/metadata/en/nasq_10_f_esms.htm",
+          "fact": "Current metadata states that mandatory who-to-whom quarterly tables cover deposits, short-term and long-term loans, with a second dataset for securities. It does not establish a complete mandatory F2-F8 counterpart matrix on the RMD boundary."
+        }
+      ],
+      "conclusion": "No changed public Eurostat topology satisfying the full quarterly non-consolidated S121 plus F2-F8 stock-and-transaction boundary was identified. No incomplete accounting instrument or sectoral-financial-position reference mode is reopened.",
+      "caveat": "This is a current-public-evidence monitoring result, not proof that no provider-side or future official source can exist."
+    }
+  },
+  "decision": {
+    "any_declared_reopen_trigger_satisfied": false,
+    "accounting_instrument_reopened": false,
+    "reference_mode_reopened": false,
+    "behavioural_mechanism_reopened": false,
+    "active_calibration_cycle_open": false,
+    "holdout_or_reserved_response_opening_authorized": false,
+    "estimation_or_refit_authorized": false,
+    "model_selection_authorized": false,
+    "target_family_switch_authorized": false,
+    "system_dynamics_feedback_activation_authorized": false,
+    "behavioural_closure_activation_authorized": false,
+    "current_scientific_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD"
+  },
+  "next_monitoring_conditions": [
+    "A non-zero BNR policy-rate decision followed by the contract-required official MIR response release.",
+    "An exact official BNR 2025-Q2 BLS workbook or exact machine-readable equivalent.",
+    "A new full AMECO vintage that materially changes the admissible real-time structural-primary history or a separately justified new fiscal identification design.",
+    "A same-boundary government repricing ledger.",
+    "A changed official accounting/reference-mode dataset that satisfies the frozen sector, instrument, frequency, counterpart and transaction requirements."
+  ]
+}
