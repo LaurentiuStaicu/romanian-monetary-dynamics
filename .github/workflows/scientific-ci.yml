@@ -183,6 +183,9 @@ jobs:
       - name: Audit government securities supply-load denominator boundary
         run: python scripts/audit_government_securities_supply_load_denominator_boundary.py
 
+      - name: Audit government securities supply measurement design
+        run: python scripts/audit_government_securities_supply_measurement_design.py
+
       - name: Audit ECB supply-load denominator candidate probe assessment
         run: python scripts/audit_ecb_supply_load_denominator_probe_assessment.py
 
