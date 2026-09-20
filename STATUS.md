@@ -57,6 +57,14 @@ The European Commission AMECO page still reports 2026-06-03 as the latest full r
 
 No accounting instrument, reference mode or behavioural mechanism is reopened. Calibration/refit, model selection, holdout or reserved-response inspection, target-family substitution, System Dynamics feedback activation and behavioural closure remain unauthorized. The canonical operational state remains **EVIDENCE_TRIGGERED_BASELINE_HOLD**.
 
+### Trigger-aware monitoring horizon
+
+To prevent repeated unchanged-source searches from being mistaken for scientific progress, RMD now registers `model/registries/trigger_aware_monitoring_horizon_2026_09_20.json`. The horizon distinguishes dated event checks from release-conditioned and genuinely new-evidence-only triggers.
+
+The next dated check is **2026-10-08** and is limited to the BNR monetary-policy decision. If the policy rate is unchanged, no MIR response value may be inspected and the model remains on baseline hold. If the decision produces a non-zero policy-rate event, only the driver-side Stage 1 diagnostic opens; the October-reference MIR response remains closed until the official ECB release on **2026-12-02**.
+
+Fiscal AMECO monitoring is release-conditioned rather than polled: the next legitimate check occurs only after the Commission publishes the Autumn 2026 full forecast / corresponding AMECO release. The exact BNR BLS 2025-Q2 source, the government repricing ledger and the accounting/reference-mode counterpart boundaries are new-evidence-only triggers. Routine quarterly data releases without changed topology do not reopen frozen source paths.
+
 
 ## Canonical modeling paradigm
 

@@ -1,5 +1,5 @@
 {
-  "manifest_version": "0.9",
+  "manifest_version": "1.0",
   "baseline_id": "scientific-integrity-2026-09-19",
   "purpose": "Single canonical cross-registry snapshot of RMD scientific maturity. Values in this manifest must agree with the authoritative accounting, dynamics, reference-mode, empirical-mechanism and validation registries; the manifest is not an independent source of scientific truth.",
   "authority": {
@@ -22,7 +22,8 @@
     "validation_recovery_stage_terminal_assessment": "model/registries/validation_recovery_stage_terminal_assessment.json",
     "sectoral_financial_positions_bnr_quarterly_s13_source_screening": "model/dynamics/sectoral_financial_positions_bnr_quarterly_s13_source_screening.json",
     "fiscal_capb_raw_source_preservation_assessment": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json",
-    "latest_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json"
+    "latest_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
+    "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json"
   },
   "canonical_state": {
     "accounting": {
@@ -139,7 +140,12 @@
       "fiscal_capb_retained_raw_source_commit": "efb1f3ae5b025176645d45276b684efe65aa4174",
       "latest_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
       "latest_reopen_trigger_monitoring_status": "NO_DECLARED_REOPEN_TRIGGER_SATISFIED_POST_FISCAL_CLOSURE_BASELINE_HOLD_CONTINUES",
-      "previous_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_19.json"
+      "previous_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_19.json",
+      "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json",
+      "next_dated_trigger_check": {
+        "date": "2026-10-08",
+        "id": "prospective_monetary_policy_event"
+      }
     }
   },
   "hard_invariants": [
