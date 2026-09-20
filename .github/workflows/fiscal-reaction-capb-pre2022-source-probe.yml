@@ -1,0 +1,38 @@
+name: Fiscal Reaction CAPB Pre-2022 Source Structure Probe
+
+# Live AMECO archive acquisition is manual-only. Provider/network failures are
+# indeterminate and must never be converted into target absence.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe-capb-pre2022-sources:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify frozen pre-2022 CAPB probe contract
+        run: python -m unittest tests.test_fiscal_reaction_capb_pre2022_source_probe -v
+
+      - name: Run live pre-2022 CAPB source-structure probe
+        env:
+          FISCAL_CAPB_PRE2022_PROBE_OUT: fiscal_capb_pre2022_probe_artifacts
+        run: python scripts/audit_fiscal_capb_pre2022_source_probe.py
+
+      - name: Upload pre-2022 CAPB source evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fiscal-capb-pre2022-source-probe-${{ github.sha }}
+          path: fiscal_capb_pre2022_probe_artifacts/
+          if-no-files-found: error
+          retention-days: 90
