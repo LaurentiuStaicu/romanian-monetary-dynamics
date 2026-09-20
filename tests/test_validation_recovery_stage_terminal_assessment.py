@@ -108,7 +108,7 @@ class ValidationRecoveryStageTerminalAssessmentTests(unittest.TestCase):
         self.assertIsNone(stage["active_autonomous_empirical_task"])
         self.assertEqual(
             stage["active_manual_empirical_gate"],
-            "FISCAL_PRIMARY_BALANCE_CAPB_REALTIME_VINTAGE_MATERIALISATION",
+            "FISCAL_PRIMARY_BALANCE_CAPB_PRE2022_SOURCE_STRUCTURE_PROBE",
         )
         self.assertFalse(stage["model_complete"])
         self.assertFalse(stage["release_ready"])
