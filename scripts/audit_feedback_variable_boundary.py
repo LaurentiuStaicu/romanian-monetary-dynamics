@@ -59,7 +59,7 @@ def audit_feedback_variable_boundary(
 
     by_ref = {
         str(item["id"]): item
-        for item in references.get("reference_modes", [])
+        for item in references.get("modes", [])
     }
     by_mechanism = {
         str(item["id"]): item
