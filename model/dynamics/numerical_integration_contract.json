@@ -1,0 +1,82 @@
+{
+  "contract_version": "0.1",
+  "purpose": "Make numerical-integration readiness executable for the current Dynamic Core primitives without implying that the inactive integrated behavioural model has passed numerical-robustness validation.",
+  "canonical_time_unit": "year",
+  "baseline_method": "explicit_euler",
+  "default_dt_years": 0.25,
+  "structural_primitives": {
+    "constant_rate_financial_stock": {
+      "equation": "stock[t+dt] = stock[t] + rate_per_year * dt",
+      "expected_property": "PARTITION_INVARIANT_FOR_CONSTANT_RATE",
+      "test_partitions_years": [
+        1,
+        0.5,
+        0.25,
+        0.125
+      ],
+      "status": "PASS_STRUCTURAL_PRIMITIVE"
+    },
+    "first_order_delay": {
+      "equation": "d(delay_state)/dt = (input - delay_state) / tau",
+      "reference_case": {
+        "initial": 0,
+        "input_value": 1,
+        "tau_years": 1,
+        "horizon_years": 1,
+        "analytic_solution_at_horizon": 0.6321205588285577,
+        "tested_dt_years": [
+          0.25,
+          0.125,
+          0.0625,
+          0.03125
+        ],
+        "expected_euler_results": [
+          0.68359375,
+          0.6563910841941833,
+          0.6439258695482072,
+          0.6379447107436834
+        ],
+        "expected_absolute_errors": [
+          0.051473191171442334,
+          0.024270525365625684,
+          0.01180531071964952,
+          0.005824151915125753
+        ],
+        "convergence_rule": "Absolute error must decrease strictly under each time-step halving.",
+        "status": "PASS_REFERENCE_CONVERGENCE"
+      },
+      "explicit_euler_time_step_rule": {
+        "max_dt_fraction_of_tau": "strictly_less_than_1_over_3",
+        "default_dt_years": 0.25,
+        "implied_tau_requirement_at_default_dt": "tau_years > 0.75",
+        "interpretation": "The default quarterly step is not universally adequate. Any active first-order delay with tau <= 0.75 years must use a smaller dt or cannot use the reference Euler simulation under the frozen rule."
+      },
+      "current_parameterization": {
+        "registered_delay_candidates": 7,
+        "validated_scalar_tau_count": 0,
+        "active_delay_count": 0,
+        "status": "NO_ACTIVE_DELAY_NUMERICAL_PARAMETERIZATION",
+        "source": "model/dynamics/delay_evidence_registry.json"
+      }
+    }
+  },
+  "hard_rules": {
+    "integration_error_test_required": true,
+    "default_dt_is_not_universally_valid_for_delays": true,
+    "active_delay_requires_positive_validated_tau": true,
+    "active_delay_requires_dt_over_tau_strictly_below_one_third": true,
+    "active_delay_requires_time_step_halving_test": true,
+    "observation_frequency_must_not_be_used_as_tau": true,
+    "numerical_primitive_pass_does_not_validate_behavioural_closure": true,
+    "integrated_numerical_robustness_must_not_be_claimed_while_closure_inactive": true
+  },
+  "current_summary": {
+    "stock_rate_partition_invariance": "PASS",
+    "first_order_delay_reference_convergence": "PASS",
+    "default_dt_delay_adequacy": "CONDITIONAL_ON_TAU_GREATER_THAN_0_75_YEARS",
+    "active_delay_numerical_readiness": "NOT_APPLICABLE_NO_ACTIVE_VALIDATED_DELAYS",
+    "integrated_model_numerical_robustness": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
+    "behavioural_closure_active": false,
+    "model_activation_authorized": false
+  }
+}
