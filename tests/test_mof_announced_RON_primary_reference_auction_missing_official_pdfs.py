@@ -73,6 +73,18 @@ class MOFMissingOfficialPDFProbeTests(unittest.TestCase):
         checks = identity_checks(text, doc)
         self.assertTrue(all(checks.values()))
 
+    def test_dotted_monitorul_oficial_number_is_accepted(self) -> None:
+        doc = self.docs["mof_order_1928_december_2025"]
+        text = """
+        Ministerul Finanţelor
+        ORDIN Nr. 1.928 din 2 decembrie 2025
+        privind prospectele de emisiune a obligaţiunilor de stat de tip benchmark
+        aferente lunii decembrie 2025
+        Publicat în: Monitorul Oficial Nr. 1.114 din 3 decembrie 2025
+        """
+        checks = identity_checks(text, doc)
+        self.assertTrue(all(checks.values()))
+
     def test_wrong_month_fails_identity(self) -> None:
         doc = self.docs["mof_order_1452_september_2025"]
         text = """
