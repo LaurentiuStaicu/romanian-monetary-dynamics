@@ -4,6 +4,13 @@
   "reference_mode_id": "announced_RON_primary_supply_level",
   "contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
   "retained_source_vintage": "data/source_vintages/mof-announced-ron-primary-supply-pilot-2026-09-20/source_vintage_manifest.json",
+  "raw_probe_diagnostic": {
+    "manifest_all_sources_retained": true,
+    "manifest_all_anchor_checks_pass": false,
+    "interpretation": "LEGACY_NAIVE_ANCHOR_FALSE_NEGATIVE_SUPERSEDED_BY_EXACT_ARTICLE1_AND_EVENT_ROW_RECONCILIATION",
+    "source_retention_is_blocked_by_legacy_anchor_diagnostic": false,
+    "reason": "The acquisition probe used coarse string anchors including unformatted combined totals not printed verbatim in Article 1. The exact parser independently recovers Article 1 base/SSON values and all Annex 1/2 rows, and hard-fails unless every document reconciles arithmetically."
+  },
   "source_identity": {
     "mof_order_159_february_2025": {
       "raw_sha256": "10a8a0ff4771147fb65d032ca3929b8f189976ca86515a936eff5c30321f1094",
