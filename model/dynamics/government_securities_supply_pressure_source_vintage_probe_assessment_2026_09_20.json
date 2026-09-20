@@ -1,0 +1,123 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "probe_id": "mof_primary_market_pressure_source_vintage_probe",
+  "contract": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_contract.json",
+  "source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
+  "retained_vintage": {
+    "root": "data/source_vintages/mof-supply-pressure-probe-vintage-2026-09-20",
+    "manifest": "data/source_vintages/mof-supply-pressure-probe-vintage-2026-09-20/source_vintage_probe_manifest.json",
+    "repository_retained": true,
+    "native_text_extraction_method": "pdftotext -layout",
+    "ocr_used": false,
+    "visual_chart_digitisation_used": false,
+    "manual_graph_value_approximation_used": false
+  },
+  "source_identity": {
+    "mof_flash_report_january_2025": {
+      "raw_bytes": 878437,
+      "raw_sha256": "7cee6e3f9187a3d9dde2d48c8455bc574ccf16192dc0ea91ee884973ab6c9729",
+      "native_text_sha256": "1ffc432a1da88d241b4420dfdeca25807c4bab4bf848de0d4bb78bc70a6cd486"
+    },
+    "mof_public_debt_report_january_2025": {
+      "raw_bytes": 1198525,
+      "raw_sha256": "c65b964cdcd2e5e91068079ce09ef42964caf22c00d7a839fd65d979ff765e6e",
+      "native_text_sha256": "545a2b2730d12f1b2bcd59b5f4dd2af6a5c3f01a9af2e29e37330f7a1589d338"
+    },
+    "mof_public_debt_report_february_2025": {
+      "raw_bytes": 1221714,
+      "raw_sha256": "f3873bbaa6584a2018dd509f4083ad012e9060619bc28d918b612d519fabeeed",
+      "native_text_sha256": "2776fa10222fd34a9b1aace14f668529e503a35c5c4642f5d939e37d95f77de4"
+    }
+  },
+  "extractability_results": {
+    "flash_auction_table_native_text": {
+      "status": "PASS_EXACT_TABLE_TEXT_AVAILABLE",
+      "january_2025": {
+        "coverage_status": "COMPLETED_MONTH_IN_REVIEWED_FLASH_TABLE",
+        "total_announced_RON_million": 5770.0,
+        "total_borrowed_RON_million": 7556.97,
+        "exact_tokens_present": true,
+        "safe_as_exact_descriptive_values": true
+      },
+      "february_2025": {
+        "coverage_status": "FORWARD_SCHEDULE_PLUS_PARTIAL_BORROWED_RESULTS_AS_OF_FLASH_REPORT",
+        "total_announced_RON_million": 8040.0,
+        "borrowed_total_shown_RON_million": 4207.01,
+        "exact_tokens_present": true,
+        "safe_as_final_full_month_borrowed_total": false,
+        "reason": "The table contains later-February scheduled auction rows whose Size Borrowed cells are blank at the Flash Report vintage; the reported borrowed total is therefore not a final February monthly accepted amount."
+      }
+    },
+    "monthly_report_bid_to_cover_chart": {
+      "status": "SEMANTIC_LABELS_EXTRACTABLE_NUMERIC_SERIES_NOT_EXACTLY_MAPPABLE",
+      "published_definition_extractable": true,
+      "announced_label_extractable": true,
+      "submitted_label_extractable": true,
+      "accepted_label_extractable": true,
+      "bid_to_cover_label_extractable": true,
+      "individual_chart_numeric_labels_present_in_native_text": true,
+      "month_to_series_numeric_mapping_reproducible_from_native_text_only": false,
+      "submitted_bids_series_materialisation_authorized": false,
+      "bid_to_cover_series_materialisation_authorized": false
+    },
+    "january_stock_denominator_candidates": {
+      "status": "EXACT_VALUES_AVAILABLE_BOUNDARY_RECONCILIATION_REQUIRED",
+      "monthly_report_all_domestic_market_securities_available_at_nominal_value_LEI_million": 395936.0,
+      "monthly_report_RON_denom_domestic_market_securities_available_at_nominal_value_LEI_million": 381933.8,
+      "monthly_report_EUR_denom_domestic_market_securities_available_at_nominal_value_EUR_million": 2813.5,
+      "flash_current_outstanding_total_domestic_market_text": "RON 435.4 bln",
+      "flash_current_outstanding_RON_denom_text": "RON 427.7 bln",
+      "flash_current_outstanding_EUR_denom_text": "EUR 7.71 bln (RON 38.6 bln)",
+      "flash_components_arithmetically_reconcile_to_flash_total": false,
+      "denominator_selected": false,
+      "reason": "The monthly holdings tables are internally exact but their market/instrument coverage must be reconciled with the auctionable wholesale boundary. The Flash current-outstanding headline and displayed currency components do not arithmetically reconcile in the retained native text, so they cannot be used as a denominator without an additional source-boundary check."
+    }
+  },
+  "candidate_readiness": {
+    "domestic_RON_primary_market_supply_load": {
+      "status": "BLOCKED_DENOMINATOR_BOUNDARY_NOT_FROZEN",
+      "numerator_announced_amount_exactly_extractable": true,
+      "denominator_exact_values_exist": true,
+      "denominator_scope_frozen": false,
+      "ratio_materialisation_authorized": false
+    },
+    "domestic_RON_primary_market_auction_absorption": {
+      "status": "BLOCKED_SUBMITTED_BIDS_SERIES_NOT_EXACTLY_EXTRACTABLE",
+      "announced_amount_exactly_extractable": true,
+      "submitted_bids_exact_monthly_series_extractable": false,
+      "ratio_materialisation_authorized": false
+    },
+    "domestic_RON_primary_market_bid_to_cover": {
+      "status": "BLOCKED_EXACT_MONTH_SERIES_MAPPING_FROM_CHART",
+      "definition_exactly_extractable": true,
+      "published_chart_numeric_series_exactly_materialisable": false,
+      "series_materialisation_authorized": false
+    },
+    "domestic_government_securities_secondary_market_liquidity": {
+      "status": "NOT_ASSESSED_FOR_NUMERIC_MATERIALISATION_IN_THIS_PROBE",
+      "role_remains": "MARKET_CAPACITY_CONTEXT_OR_CONTROL"
+    }
+  },
+  "scientific_effect": {
+    "raw_source_retention_blocker_closed_for_probe_sources": true,
+    "native_text_extractability_probe_completed": true,
+    "exact_january_announced_and_borrowed_values_supported": true,
+    "full_month_multimonth_supply_pressure_series_created": false,
+    "government_securities_supply_pressure_node_resolved": false,
+    "scalar_pressure_index_selected": false,
+    "exact_reference_mode_promoted": false,
+    "equation_selected": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "domestic_RON_supply_load_denominator_boundary_reconciliation",
+    "authorization": "SOURCE_BOUNDARY_RECONCILIATION_ONLY",
+    "task": "Determine the exact instrument/market coverage of the monthly holdings totals versus the interbank auction universe and reconcile or reject the inconsistent Flash current-outstanding headline before any announced_amount / lagged_stock ratio is computed.",
+    "may_compute_pressure_ratio_now": false,
+    "may_activate_feedback": false
+  }
+}
