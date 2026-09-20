@@ -47,7 +47,8 @@
     "government_securities_supply_load_ecb_denominator_probe_contract": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_contract.json",
     "government_securities_supply_load_ecb_denominator_probe_assessment": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_assessment_2026_09_20.json",
     "government_securities_supply_load_ecb_denominator_probe_manifest": "data/source_vintages/ecb-supply-load-denominator-candidates-2026-09-20/ecb_denominator_probe_manifest.json",
-    "government_securities_supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json"
+    "government_securities_supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
+    "mof_announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json"
   },
   "canonical_state": {
     "accounting": {

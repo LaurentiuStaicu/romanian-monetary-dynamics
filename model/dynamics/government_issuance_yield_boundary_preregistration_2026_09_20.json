@@ -63,10 +63,11 @@
       "to": "government_securities_supply_pressure",
       "requirement": "Define and validate a supply-pressure observable or transform. Raw gross issuance volume alone must not be relabelled supply pressure; market depth, investor absorption, maturity/currency composition or another preregistered denominator/structure may be required.",
       "source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
-      "status": "STRUCTURED_VECTOR_ADOPTED_ANNOUNCED_SUPPLY_REFERENCE_MODE_NOT_MATERIALISED",
+      "status": "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED",
       "source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json",
       "denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json",
-      "supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json"
+      "supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
+      "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json"
     },
     {
       "id": "primary_yield_to_sovereign_yield",

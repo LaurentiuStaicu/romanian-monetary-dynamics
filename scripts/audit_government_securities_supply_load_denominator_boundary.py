@@ -169,7 +169,7 @@ def audit_supply_load_denominator_boundary(
     if link["supply_load_denominator_boundary_review"] != REVIEW_PATH:
         errors.append("issuance-pressure link lacks denominator review")
     if link["source_boundary_status"] != (
-        "STRUCTURED_MEASUREMENT_VECTOR_ADOPTED_FIRST_EX_ANTE_REFERENCE_MODE_NOT_MATERIALISED"
+        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
     ):
         errors.append("issuance-pressure link denominator status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -184,7 +184,7 @@ def audit_supply_load_denominator_boundary(
     if bridge["denominator_boundary_review"] != REVIEW_PATH:
         errors.append("issuance-pressure bridge lacks denominator review")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_ADOPTED_ANNOUNCED_SUPPLY_REFERENCE_MODE_NOT_MATERIALISED"
+        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
     ):
         errors.append("issuance-pressure bridge status changed")
 
@@ -200,7 +200,7 @@ def audit_supply_load_denominator_boundary(
     if dynamic.get("government_securities_supply_stock_normalisation_required") is not False:
         errors.append("model contract may not require stock normalization for first reference mode")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_supply_reference_mode_contract"
+        "mof_announced_RON_primary_supply_source_vintage_pilot"
     ):
         errors.append("model contract next task changed")
 

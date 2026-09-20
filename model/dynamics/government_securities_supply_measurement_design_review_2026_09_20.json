@@ -63,7 +63,7 @@
       "preferred_observable": "sum_of_announced_RON_target_amounts",
       "unit": "million_RON_per_event_or_period",
       "causal_role": "DIRECT_EX_ANTE_SUPPLY_INPUT_CANDIDATE",
-      "current_source_status": "EXACT_TABLE_VALUES_AVAILABLE_FOR_RETAINED_PROBE_VINTAGE_NOT_YET_FULL_REFERENCE_MODE",
+      "current_source_status": "SOURCE_CONTRACT_FROZEN_RAW_PILOT_NOT_YET_MATERIALISED",
       "normalisation_required": false,
       "stock_denominator_required": false,
       "activation_ready": false,
@@ -71,7 +71,8 @@
         "accepted or borrowed amount may not replace announced amount as ex-ante supply",
         "retail issuance may not be mixed into the interbank-auction series without an explicit boundary change",
         "completed-period and forward-scheduled rows must be distinguished"
-      ]
+      ],
+      "reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json"
     },
     {
       "measure_id": "announced_RON_supply_surprise",
@@ -210,13 +211,14 @@
     "public_version_change_authorized": false
   },
   "next_task": {
-    "id": "mof_announced_RON_primary_supply_reference_mode_contract",
-    "authorization": "SOURCE_CONTRACT_AND_EXACT_REFERENCE_MODE_MATERIALISATION_ONLY",
-    "task": "Freeze the event-level Ministry source contract for announced RON interbank-auction target amounts, including prospectus publication timestamps, auction dates, ISIN/instrument identity, indicative target amounts and completed-period handling. Then materialise a reproducible reference-mode pilot without estimating a yield effect.",
+    "id": "mof_announced_RON_primary_supply_source_vintage_pilot",
+    "authorization": "RAW_SOURCE_RETENTION_EXACT_EVENT_EXTRACTION_AND_REFERENCE_MODE_PILOT_ONLY",
+    "task": "Retain January-March 2025 Ministry monthly issuance orders, extract Annex 1/2 event rows exactly, reconcile rows to Article 1 and retained Flash announced totals, and create a completed-period event/month pilot through 2025-03-31.",
     "may_materialise_announced_supply_reference_mode": true,
     "may_materialise_supply_surprise": false,
     "may_materialise_duration_supply": false,
     "may_estimate_supply_to_yield_effect": false,
     "may_activate_feedback": false
-  }
+  },
+  "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json"
 }

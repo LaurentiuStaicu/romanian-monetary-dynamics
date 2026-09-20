@@ -165,10 +165,10 @@ def audit_supply_measurement_design(
             errors.append(f"measurement design may not promote {key}")
 
     next_task = review["next_task"]
-    if next_task["id"] != "mof_announced_RON_primary_supply_reference_mode_contract":
+    if next_task["id"] != "mof_announced_RON_primary_supply_source_vintage_pilot":
         errors.append("measurement-design next task changed")
     if next_task["authorization"] != (
-        "SOURCE_CONTRACT_AND_EXACT_REFERENCE_MODE_MATERIALISATION_ONLY"
+        "RAW_SOURCE_RETENTION_EXACT_EVENT_EXTRACTION_AND_REFERENCE_MODE_PILOT_ONLY"
     ):
         errors.append("measurement-design next-task authorization changed")
     if next_task["may_materialise_announced_supply_reference_mode"] is not True:
@@ -191,7 +191,7 @@ def audit_supply_measurement_design(
     if source_review.get("single_scalar_search_superseded_for_primary_recovery_path") is not True:
         errors.append("source-boundary scalar search not marked superseded")
     if source_review["next_task"]["id"] != (
-        "mof_announced_RON_primary_supply_reference_mode_contract"
+        "mof_announced_RON_primary_supply_source_vintage_pilot"
     ):
         errors.append("source-boundary next task not advanced")
 
@@ -235,7 +235,7 @@ def audit_supply_measurement_design(
     if link.get("supply_measurement_design_review") != REVIEW_PATH:
         errors.append("issuance-pressure link lacks measurement design")
     if link["source_boundary_status"] != (
-        "STRUCTURED_MEASUREMENT_VECTOR_ADOPTED_FIRST_EX_ANTE_REFERENCE_MODE_NOT_MATERIALISED"
+        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
     ):
         errors.append("issuance-pressure measurement status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -265,7 +265,7 @@ def audit_supply_measurement_design(
     if bridge.get("supply_measurement_design_review") != REVIEW_PATH:
         errors.append("issuance-pressure bridge lacks measurement design")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_ADOPTED_ANNOUNCED_SUPPLY_REFERENCE_MODE_NOT_MATERIALISED"
+        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
     ):
         errors.append("issuance-pressure bridge measurement status changed")
 
@@ -283,7 +283,7 @@ def audit_supply_measurement_design(
     if dynamic.get("government_securities_supply_stock_normalisation_required") is not False:
         errors.append("model contract may not require stock normalisation")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_supply_reference_mode_contract"
+        "mof_announced_RON_primary_supply_source_vintage_pilot"
     ):
         errors.append("model contract next task changed")
 
@@ -339,7 +339,7 @@ def main() -> None:
                 "umbrella_node_resolved": False,
                 "first_reference_mode_priority": "announced_RON_primary_supply_level",
                 "feedback_activation_authorized": False,
-                "next_task": "mof_announced_RON_primary_supply_reference_mode_contract",
+                "next_task": "mof_announced_RON_primary_supply_source_vintage_pilot",
             },
             indent=2,
         )

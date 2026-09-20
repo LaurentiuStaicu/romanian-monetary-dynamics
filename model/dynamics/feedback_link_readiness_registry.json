@@ -91,10 +91,11 @@
       "reason": "The retained BNR issuance series measures accepted/allotted domestic-primary issuance, while Ministry reports separately expose announced supply, submitted bids, accepted amounts, bid-to-cover, outstanding stock and liquidity. The source boundary is now reviewed as multidimensional, but exact source values and a validated pressure transform are not materialised; no exact integrated equation is ready.",
       "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
       "supply_pressure_source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
-      "source_boundary_status": "STRUCTURED_MEASUREMENT_VECTOR_ADOPTED_FIRST_EX_ANTE_REFERENCE_MODE_NOT_MATERIALISED",
+      "source_boundary_status": "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED",
       "supply_pressure_source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json",
       "supply_load_denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json",
-      "supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json"
+      "supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
+      "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json"
     },
     {
       "link_key": "government_issuance_yield_loop|government_securities_supply_pressure|sovereign_yield",

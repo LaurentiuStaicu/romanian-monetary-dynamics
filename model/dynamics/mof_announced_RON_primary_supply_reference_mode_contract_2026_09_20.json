@@ -1,0 +1,185 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-20",
+  "reference_mode_id": "announced_RON_primary_supply_level",
+  "purpose": "Freeze the exact Ministry of Finance event-level source and aggregation contract for announced RON domestic interbank primary-market government-securities supply. This contract materialises announced target supply only and does not estimate any yield effect.",
+  "governing_measurement_design": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
+  "concept": {
+    "name": "announced RON primary-market supply level",
+    "timing": "EX_ANTE_AT_OFFICIAL_ISSUANCE_ANNOUNCEMENT",
+    "unit": "million_RON_nominal",
+    "economic_meaning": "Nominal amount of RON government securities officially scheduled/offered through Ministry domestic primary-market auctions and benchmark SSON sessions.",
+    "stock_normalisation_required": false,
+    "accepted_or_borrowed_amount_is_not_part_of_measure": true,
+    "retail_or_external_issuance_is_not_part_of_measure": true
+  },
+  "official_source_family": {
+    "institution": "Romanian Ministry of Finance",
+    "publication_family": "Monthly orders approving issuance prospectuses for discount Treasury bills and benchmark government bonds",
+    "legal_market_boundary": "Government debt-management operations on the domestic government-securities market administered by the National Bank of Romania under the Ministry/BNR primary-market framework.",
+    "monthly_order_structure": {
+      "article_1": "Freezes the order-level nominal total for Annexes 1 and 2 plus the separately stated maximum SSON allocation.",
+      "annex_1": "Discount Treasury-bill competitive auctions.",
+      "annex_2": "Benchmark-bond reference auctions and supplementary non-competitive offer sessions (SSON)."
+    }
+  },
+  "pilot_source_documents": [
+    {
+      "source_id": "mof_order_6826_january_2025",
+      "order_number": "6826",
+      "order_issue_date": "2024-12-30",
+      "coverage_label": "January 2025",
+      "url": "https://www.mfinante.gov.ro/static/10/Mfp/trezorerie/OMF6826_ianuarie2025.pdf",
+      "article_1_base_nominal_RON_million": 5200.0,
+      "article_1_SSON_max_RON_million": 570.0,
+      "article_1_document_total_RON_million": 5770.0,
+      "retained_flash_crosscheck_RON_million": 5770.0,
+      "flash_crosscheck_status": "EXACT_MATCH"
+    },
+    {
+      "source_id": "mof_order_159_february_2025",
+      "order_number": "159",
+      "order_issue_date": "2025-01-31",
+      "coverage_label": "February 2025",
+      "url": "https://www.mfinante.gov.ro/static/10/Mfp/trezorerie/OMF159_februarie2025.pdf",
+      "article_1_base_nominal_RON_million": 7200.0,
+      "article_1_SSON_max_RON_million": 840.0,
+      "article_1_document_total_RON_million": 8040.0,
+      "retained_flash_crosscheck_RON_million": 8040.0,
+      "flash_crosscheck_status": "EXACT_MATCH_FOR_ANNOUNCED_SCHEDULE"
+    },
+    {
+      "source_id": "mof_order_352_march_2025",
+      "order_number": "352",
+      "order_issue_date": "2025-02-28",
+      "coverage_label": "March 2025",
+      "url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF352martie2025_28022025.pdf",
+      "article_1_base_nominal_RON_million": 7400.0,
+      "article_1_SSON_max_RON_million": 840.0,
+      "article_1_document_total_RON_million": 8240.0,
+      "retained_flash_crosscheck_RON_million": null,
+      "flash_crosscheck_status": "NOT_REQUIRED_FOR_CONTRACT_FREEZE_SOURCE_ORDER_IS_PRIMARY"
+    }
+  ],
+  "event_schema": {
+    "required_lineage_fields": [
+      "source_id",
+      "source_url",
+      "source_order_number",
+      "source_order_issue_date",
+      "source_annex",
+      "source_row_number"
+    ],
+    "required_event_fields": [
+      "event_type",
+      "event_date",
+      "instrument_type",
+      "instrument_identity",
+      "currency",
+      "announced_nominal_RON_million"
+    ],
+    "optional_instrument_fields": [
+      "isin",
+      "issue_date",
+      "maturity_date",
+      "original_maturity_days_or_years",
+      "residual_maturity_years",
+      "coupon_pct",
+      "accrued_interest_RON_per_security"
+    ],
+    "allowed_event_types": [
+      "T_BILL_COMPETITIVE_REFERENCE_AUCTION",
+      "BENCHMARK_BOND_COMPETITIVE_REFERENCE_AUCTION",
+      "BENCHMARK_BOND_SSON"
+    ],
+    "instrument_identity_rule": "Use ISIN when printed in the source. If a source row lacks ISIN, retain an exact source-row instrument identity composed from source_id, annex, auction date, issue date and maturity date; never invent an ISIN."
+  },
+  "component_rules": {
+    "T_BILL_COMPETITIVE_REFERENCE_AUCTION": {
+      "source": "Annex 1",
+      "amount_field": "Valoare emisiune lei / exact equivalent printed target field",
+      "event_date_field": "Data licitatiei",
+      "included": true
+    },
+    "BENCHMARK_BOND_COMPETITIVE_REFERENCE_AUCTION": {
+      "source": "Annex 2",
+      "amount_field": "Valoare nominala licitatie de referinta Lei",
+      "event_date_field": "Data Licitatiei",
+      "included": true
+    },
+    "BENCHMARK_BOND_SSON": {
+      "source": "Annex 2",
+      "amount_field": "Valoare nominala SSON Lei",
+      "event_date_field": "Data SSON",
+      "included": true,
+      "interpretation": "Announced supplementary non-competitive allocation capacity. It is ex-ante announced primary supply, not realised borrowing."
+    }
+  },
+  "aggregation_rules": {
+    "event_level_is_canonical": true,
+    "monthly_aggregation_allowed": true,
+    "monthly_bucket_rule": "Aggregate each row by its own event_date. Competitive auction targets use Data licitatiei; SSON targets use Data SSON. Do not bucket all rows by source-order month.",
+    "monthly_formula": "sum(announced_nominal_RON_million for included event rows whose event_date is in month)",
+    "document_reconciliation_formula": "sum(all Annex 1 competitive targets + all Annex 2 competitive targets) == Article 1 base nominal total; sum(all Annex 2 SSON targets) == Article 1 SSON maximum; combined row sum == Article 1 document total.",
+    "document_reconciliation_required": true,
+    "retained_flash_crosscheck_role": "Independent exact cross-check where the retained Flash vintage contains the same announced schedule; it is not the primary source."
+  },
+  "publication_time_rules": {
+    "economic_information_date": "source_order_issue_date",
+    "reason": "The signed Ministry order date is the exact authoritative date available in the source document. HTTP Last-Modified is transport metadata and is not treated as the economic announcement time.",
+    "exact_intraday_timestamp_required_for_this_reference_mode": false,
+    "exact_intraday_timestamp_required_before_supply_surprise_measure": true,
+    "transport_metadata_to_retain": [
+      "HTTP Last-Modified",
+      "ETag if available",
+      "retrieval UTC timestamp",
+      "SHA-256"
+    ]
+  },
+  "completed_period_rules": {
+    "reference_mode_values_must_use_event_dates_not_future_schedule_status": true,
+    "forward_announced_rows_may_be_retained": true,
+    "forward_announced_rows_may_be_labelled_realised_completed_period_supply": false,
+    "historical_reference_mode_snapshot_must_freeze_a_cutoff_date": true,
+    "pilot_cutoff_date": "2025-03-31"
+  },
+  "explicit_exclusions": [
+    "TEZAUR retail issuance",
+    "FIDELIS retail issuance",
+    "Eurobonds and other external-market issuance",
+    "loans and RRF/RRNP drawings",
+    "cash-management instruments unless a future separate contract explicitly includes them",
+    "exchange operations unless a future separate contract explicitly includes them",
+    "accepted/borrowed auction outcomes",
+    "submitted bids",
+    "secondary-market transactions"
+  ],
+  "materialisation_gate": {
+    "raw_pdf_retention_required": true,
+    "native_text_extraction_required": true,
+    "ocr_authorized": false,
+    "visual_chart_digitisation_authorized": false,
+    "manual_value_approximation_authorized": false,
+    "all_source_rows_must_reconcile_to_article_1_totals": true,
+    "january_flash_total_must_equal_5770_RON_million": true,
+    "february_flash_announced_schedule_total_must_equal_8040_RON_million": true,
+    "reference_mode_promotion_authorized_by_contract_alone": false
+  },
+  "scientific_guards": {
+    "supply_surprise_materialisation_authorized": false,
+    "duration_supply_materialisation_authorized": false,
+    "yield_effect_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "government_securities_supply_pressure_node_resolved": false,
+    "public_version_change_authorized": false
+  },
+  "next_task": {
+    "id": "mof_announced_RON_primary_supply_source_vintage_pilot",
+    "authorization": "RAW_SOURCE_RETENTION_EXACT_EVENT_EXTRACTION_AND_REFERENCE_MODE_PILOT_ONLY",
+    "scope": "Retain the January-March 2025 Ministry orders, extract Annex 1 and Annex 2 event rows exactly, reconcile component sums to Article 1 totals and retained Flash announced totals where available, then produce an event-level and monthly pilot reference-mode artifact through 2025-03-31.",
+    "may_promote_reference_mode_only_if_all_reconciliation_gates_pass": true,
+    "may_estimate_supply_to_yield_effect": false,
+    "may_activate_feedback": false
+  }
+}

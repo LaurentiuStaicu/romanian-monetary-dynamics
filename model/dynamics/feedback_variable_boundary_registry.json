@@ -201,7 +201,9 @@
         "secondary_market_liquidity_context",
         "market_capacity_stock_proxy"
       ],
-      "single_scalar_selected": false
+      "single_scalar_selected": false,
+      "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
+      "announced_RON_primary_supply_reference_mode_status": "SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
     },
     {
       "id": "inflationary_pressure",
