@@ -159,6 +159,9 @@ jobs:
       - name: Audit feedback endogenous/exogenous boundary
         run: python scripts/audit_feedback_variable_boundary.py
 
+      - name: Audit feedback link activation readiness
+        run: python scripts/audit_feedback_link_readiness.py
+
       - name: Audit behavioural form robustness
         run: python scripts/audit_behavioural_robustness.py
 
