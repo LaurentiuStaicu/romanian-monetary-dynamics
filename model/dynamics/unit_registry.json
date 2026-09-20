@@ -177,5 +177,7 @@
       "status": "CONSISTENT"
     }
   ],
-  "rule": "A behavioural equation may not be activated unless every additive term has the same dimensional signature and every parameter has an explicit unit or dimensionless status."
+  "rule": "A behavioural equation may not be activated unless every additive term has the same dimensional signature or declared unit class, every parameter has an explicit unit class, and any empirical representation scale required by the equation has been frozen. Passing the unit gate does not authorize calibration or System Dynamics activation.",
+  "behavioural_unit_contract": "model/empirical_dynamics/behavioural_unit_contract.json",
+  "behavioural_unit_audit": "scripts/audit_behavioural_dimensional_consistency.py"
 }
