@@ -1,0 +1,170 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "path_id": "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery",
+  "candidate_id": "announced_RON_primary_reference_auction_supply_level",
+  "status": "BLOCKED_PROVIDER_TRANSPORT_AND_NO_ALTERNATIVE_OFFICIAL_RAW_COPY_DISCOVERED",
+  "purpose": "Close repeated source-recovery retries without treating legally existing official acts as nonexistent data and without substituting web-search snippets, third-party reproductions, inferred rows or later auction outcomes for retained raw sources.",
+  "current_materialisation": {
+    "partial_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json",
+    "source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
+    "exact_final_months": [
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-06",
+      "2025-10"
+    ],
+    "exact_final_month_count": 6,
+    "required_missing_source_count": 8,
+    "canonical_reference_mode_promoted": false
+  },
+  "missing_sources": [
+    {
+      "source_id": "mof_order_752_may_2025_amendment",
+      "order": "752/2025",
+      "month": "2025-05",
+      "role": "AMENDMENT",
+      "official_identity_status": "VERIFIED_IN_PORTAL_LEGISLATIV_SEARCH_AND_CONSOLIDATED_OMF_728",
+      "raw_repository_source_status": "UNAVAILABLE",
+      "stable_official_pdf_discovered": false
+    },
+    {
+      "source_id": "mof_order_1088_july_2025",
+      "order": "1088/2025",
+      "month": "2025-07",
+      "role": "BASE",
+      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
+      "official_legal_url": "https://legislatie.just.ro/public/DetaliiDocument/299572",
+      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
+      "stable_official_pdf_discovered": false
+    },
+    {
+      "source_id": "mof_order_1221_august_2025",
+      "order": "1221/2025",
+      "month": "2025-08",
+      "role": "BASE",
+      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
+      "official_legal_url": "https://legislatie.just.ro/Public/FormaPrintabila/00000G1PDDT6BYBUL5X0XOPOZQICRDM9",
+      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
+      "stable_official_pdf_discovered": false
+    },
+    {
+      "source_id": "mof_order_1452_september_2025",
+      "order": "1452/2025",
+      "month": "2025-09",
+      "role": "BASE",
+      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
+      "official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocument/301803",
+      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
+      "stable_official_pdf_discovered": false
+    },
+    {
+      "source_id": "mof_order_1795_november_2025",
+      "order": "1795/2025",
+      "month": "2025-11",
+      "role": "BASE",
+      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
+      "official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/303894",
+      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
+      "stable_official_pdf_discovered": false
+    },
+    {
+      "source_id": "mof_order_1831_november_2025_amendment",
+      "order": "1831/2025",
+      "month": "2025-11",
+      "role": "AMENDMENT",
+      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
+      "official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocument/304106",
+      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
+      "stable_official_pdf_discovered": false
+    },
+    {
+      "source_id": "mof_order_1928_december_2025",
+      "order": "1928/2025",
+      "month": "2025-12",
+      "role": "BASE",
+      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
+      "official_legal_url": "https://legislatie.just.ro/Public/FormaPrintabila/00000G1RB4W7CFF2RO825LZVAE9ZO2TI",
+      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
+      "stable_official_pdf_discovered": false
+    },
+    {
+      "source_id": "mof_order_1998_december_2025_amendment",
+      "order": "1998/2025",
+      "month": "2025-12",
+      "role": "AMENDMENT",
+      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
+      "official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/305670",
+      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
+      "stable_official_pdf_discovered": false
+    }
+  ],
+  "transport_evidence": {
+    "provider": "Portal Legislativ — legislatie.just.ro",
+    "runner": "GitHub Actions ubuntu-latest",
+    "attempts": [
+      "urllib request with browser-like headers: remote connection closed before usable response",
+      "curl with redirects/retries/browser headers over HTTP/2: protocol error",
+      "curl forced HTTP/1.1: curl error 52 empty reply from server",
+      "direct frozen DetaliiDocument/FormaPrintabila URLs: same empty-reply transport failure"
+    ],
+    "alternative_official_copy_search": {
+      "domains_screened": [
+        "mfinante.gov.ro",
+        "static.anaf.ro"
+      ],
+      "stable_exact_raw_copy_found_for_missing_sources": false,
+      "search_date": "2026-09-20"
+    }
+  },
+  "interpretation": {
+    "documents_do_not_exist": false,
+    "public_legal_identity_is_unavailable": false,
+    "repository_raw_retention_is_currently_unavailable": true,
+    "missing_values_may_be_imputed": false,
+    "web_search_snippets_may_be_repository_raw_sources": false,
+    "third_party_reproductions_may_be_repository_raw_sources": false,
+    "later_auction_outcomes_may_reconstruct_ex_ante_announcements": false
+  },
+  "reopen_conditions": [
+    {
+      "id": "stable_official_pdf_or_file_transport",
+      "trigger": "A stable exact MF/ANAF/other official-host raw file becomes discoverable for at least one missing order.",
+      "effect": "Retain and hash only the newly available official source, then materialise only its authorized event/version contribution."
+    },
+    {
+      "id": "portal_transport_becomes_reproducible",
+      "trigger": "Portal Legislativ direct act transport becomes reproducibly accessible to the repository source-vintage workflow.",
+      "effect": "Re-run exact identity checks and raw retention for the frozen direct official URLs."
+    },
+    {
+      "id": "verifiable_official_raw_file_supplied",
+      "trigger": "An exact official raw document is supplied with verifiable act identity and official provenance.",
+      "effect": "Hash, retain and audit the source before any event materialisation."
+    }
+  ],
+  "scientific_effect": {
+    "full_year_source_recovery_complete": false,
+    "canonical_reference_mode_promoted": false,
+    "government_securities_supply_pressure_node_resolved": false,
+    "supply_pressure_scalar_selected": false,
+    "yield_effect_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "path_disposition": {
+    "active_polling": false,
+    "state": "EVIDENCE_TRIGGERED_HOLD",
+    "reason": "Repeated identical transport retries add no information. Recovery should reopen only on a new official transport/source trigger."
+  },
+  "next_independent_issuance_yield_task": {
+    "id": "primary_yield_to_sovereign_yield_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_construct_generic_sovereign_yield": false,
+    "may_estimate_yield_effect": false,
+    "may_activate_feedback": false
+  }
+}
