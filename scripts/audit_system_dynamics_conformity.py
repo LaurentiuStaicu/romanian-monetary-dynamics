@@ -461,6 +461,7 @@ def main() -> None:
     )
     empirical_contract = load("model/empirical_dynamics/contract.json")
     empirical_registry = load("model/empirical_dynamics/mechanism_registry.json")
+    behavioural_robustness = load("model/empirical_dynamics/behavioural_robustness_contract.json")
     validation_holdout = load(
         "model/calibration_validation/validation_recovery_holdout.json"
     )
@@ -504,6 +505,42 @@ def main() -> None:
         ]
         is True,
         "Behavioural closure must not override incomplete Accounting Spine readiness",
+    )
+
+    robustness_path = "model/empirical_dynamics/behavioural_robustness_contract.json"
+    check(
+        gate["feedback_activation_gate"]["behavioural_robustness_contract"]
+        == robustness_path,
+        "SD gate does not point to the canonical behavioural robustness contract",
+    )
+    current_implementations = {
+        str(item["implementation"])
+        for item in empirical_registry["mechanisms"]
+        if item.get("implementation") is not None
+    }
+    robustness_implementations = {
+        str(item["implementation"])
+        for item in behavioural_robustness["forms"]
+    }
+    check(
+        current_implementations == robustness_implementations,
+        "Behavioural robustness contract does not cover exactly current implementations",
+    )
+    check(
+        behavioural_robustness["current_summary"]["activation_authorized"] is False,
+        "Behavioural robustness contract may not authorize feedback activation",
+    )
+    check(
+        behavioural_robustness["current_summary"][
+            "integrated_extreme_condition_status"
+        ] == "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
+        "Integrated extreme-condition testing must remain unclaimed",
+    )
+    check(
+        behavioural_robustness["current_summary"][
+            "empirical_sensitivity_execution_status"
+        ] == "BLOCKED",
+        "Empirical sensitivity execution must remain blocked",
     )
 
     empirical_governance = empirical_activation_governance(

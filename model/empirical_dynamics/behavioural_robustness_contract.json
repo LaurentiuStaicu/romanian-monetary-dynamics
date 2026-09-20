@@ -1,0 +1,150 @@
+{
+  "contract_version": "0.1",
+  "purpose": "Verify algebraic robustness of every currently mapped behavioural implementation under structural extreme cases and define sensitivity-analysis prerequisites without inventing empirical parameter ranges or treating form-level tests as model validation.",
+  "scope": "Every non-null implementation in model/empirical_dynamics/mechanism_registry.json.",
+  "principles": [
+    "Form-level stress tests verify implementation properties implied by the equation; they do not validate the equation against the Romanian economy.",
+    "Extreme-condition validity for the integrated model remains untested while behavioural closure is inactive.",
+    "Sensitivity analysis requires scientifically admissible parameter distributions or ranges and frozen measurement transforms; convenience ranges are prohibited.",
+    "A structural bound already implied by an equation, such as a convex weight in [0,1], may be tested without claiming an empirical parameter range.",
+    "Passing this contract never authorizes calibration, behavioural closure, feedback activation or policy simulation."
+  ],
+  "allowed_form_level_statuses": [
+    "EXECUTABLE_FORM_STRESS_TESTED",
+    "BLOCKED_NO_CURRENT_IMPLEMENTATION"
+  ],
+  "allowed_integrated_statuses": [
+    "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE"
+  ],
+  "forms": [
+    {
+      "mechanism_id": "government_refinancing_effective_rate",
+      "implementation": "refinancing_effective_rate",
+      "classification": "DEFERRED",
+      "form_level_extreme_condition_test_status": "EXECUTABLE_FORM_STRESS_TESTED",
+      "structural_extreme_conditions": [
+        "refinancing_share=0 returns the previous effective rate exactly",
+        "refinancing_share=1 returns the marginal market yield exactly",
+        "for refinancing_share in [0,1], the result remains a convex combination of the two input rates",
+        "refinancing_share outside [0,1] is rejected",
+        "non-finite numerical inputs are rejected"
+      ],
+      "structural_sensitivity_checks": [
+        "the exact local sensitivity to refinancing_share equals marginal_market_yield - previous_effective_rate",
+        "when the marginal yield equals the previous effective rate, changing refinancing_share has no effect"
+      ],
+      "sensitivity_plan": {
+        "status": "PLAN_DEFINED_EMPIRICAL_EXECUTION_BLOCKED",
+        "structurally_admissible_axes": [
+          "refinancing_share across its equation-implied [0,1] domain",
+          "sign and magnitude of the marginal-minus-effective rate gap"
+        ],
+        "empirical_parameter_ranges_frozen": false,
+        "blocker": "m[t] remains unidentified on a matched public repricing ledger, so no empirical uncertainty distribution or calibrated sensitivity run is authorized."
+      },
+      "integrated_extreme_condition_status": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
+      "model_activation_authorized": false
+    },
+    {
+      "mechanism_id": "household_consumption_response",
+      "implementation": "household_consumption_growth",
+      "classification": "CANDIDATE",
+      "form_level_extreme_condition_test_status": "EXECUTABLE_FORM_STRESS_TESTED",
+      "structural_extreme_conditions": [
+        "with all sensitivities zero, output equals the intercept",
+        "with positive income sensitivity, increasing disposable-income growth increases predicted consumption growth",
+        "with positive rate sensitivity, increasing the real borrowing rate reduces predicted consumption growth",
+        "with positive debt-service sensitivity, increasing the debt-service ratio reduces predicted consumption growth",
+        "non-finite inputs or parameters are rejected"
+      ],
+      "structural_sensitivity_checks": [
+        "local sensitivity to disposable-income growth equals income_sensitivity",
+        "local sensitivity to the real borrowing rate equals -rate_sensitivity",
+        "local sensitivity to debt-service ratio equals -debt_service_sensitivity"
+      ],
+      "sensitivity_plan": {
+        "status": "PLAN_DEFINED_EMPIRICAL_EXECUTION_BLOCKED",
+        "structurally_admissible_axes": [
+          "income sensitivity",
+          "borrowing-rate sensitivity",
+          "debt-service sensitivity"
+        ],
+        "empirical_parameter_ranges_frozen": false,
+        "blocker": "The aggregate debt-service measure, measurement scale and population bridge are not frozen, so parameter ranges or distributions may not be invented."
+      },
+      "integrated_extreme_condition_status": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
+      "model_activation_authorized": false
+    },
+    {
+      "mechanism_id": "aggregate_bank_credit_response",
+      "implementation": "aggregate_credit_growth",
+      "classification": "CANDIDATE",
+      "form_level_extreme_condition_test_status": "EXECUTABLE_FORM_STRESS_TESTED",
+      "structural_extreme_conditions": [
+        "with all sensitivities zero, output equals the intercept",
+        "with positive activity sensitivity, increasing activity growth increases predicted credit growth",
+        "with positive rate sensitivity, increasing the real lending rate reduces predicted credit growth",
+        "with positive NPL sensitivity, increasing the NPL ratio reduces predicted credit growth",
+        "with positive capital sensitivity, increasing the capital buffer increases predicted credit growth",
+        "non-finite inputs or parameters are rejected"
+      ],
+      "structural_sensitivity_checks": [
+        "local sensitivity to activity growth equals activity_sensitivity",
+        "local sensitivity to real lending rate equals -rate_sensitivity",
+        "local sensitivity to NPL ratio equals -npl_sensitivity",
+        "local sensitivity to capital buffer equals capital_sensitivity"
+      ],
+      "sensitivity_plan": {
+        "status": "PLAN_DEFINED_EMPIRICAL_EXECUTION_BLOCKED",
+        "structurally_admissible_axes": [
+          "activity sensitivity",
+          "lending-rate sensitivity",
+          "NPL sensitivity",
+          "capital-buffer sensitivity"
+        ],
+        "empirical_parameter_ranges_frozen": false,
+        "blocker": "The aggregate demand/supply identification problem, remaining BLS gap, prudential population mismatch and measurement scales remain unresolved."
+      },
+      "integrated_extreme_condition_status": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
+      "model_activation_authorized": false
+    },
+    {
+      "mechanism_id": "credit_risk_npl_response",
+      "implementation": "npl_ratio_change",
+      "classification": "DEFERRED",
+      "form_level_extreme_condition_test_status": "EXECUTABLE_FORM_STRESS_TESTED",
+      "structural_extreme_conditions": [
+        "persistence=0 removes the lagged NPL contribution",
+        "persistence=1 includes the full lagged NPL contribution",
+        "persistence outside [0,1] is rejected",
+        "with positive output sensitivity, increasing output growth reduces the predicted NPL change",
+        "with positive debt-service sensitivity, increasing debt-service burden increases the predicted NPL change",
+        "non-finite inputs or parameters are rejected"
+      ],
+      "structural_sensitivity_checks": [
+        "local sensitivity to output growth equals -output_sensitivity",
+        "local sensitivity to debt-service burden equals debt_service_sensitivity",
+        "local sensitivity to the previous NPL ratio equals persistence"
+      ],
+      "sensitivity_plan": {
+        "status": "PLAN_DEFINED_EMPIRICAL_EXECUTION_BLOCKED",
+        "structurally_admissible_axes": [
+          "output sensitivity",
+          "debt-service sensitivity",
+          "persistence over its equation-implied [0,1] domain"
+        ],
+        "empirical_parameter_ranges_frozen": false,
+        "blocker": "The matched debt-service burden, target population and NPL change/level measurement convention are not frozen for estimation."
+      },
+      "integrated_extreme_condition_status": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
+      "model_activation_authorized": false
+    }
+  ],
+  "current_summary": {
+    "current_implementations_covered": 4,
+    "form_level_structural_stress_status": "PASS_CURRENT_IMPLEMENTATIONS",
+    "empirical_sensitivity_execution_status": "BLOCKED",
+    "integrated_extreme_condition_status": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
+    "activation_authorized": false
+  }
+}

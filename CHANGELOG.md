@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- added form-level behavioural extreme-condition and structural-sensitivity tests while explicitly keeping integrated extreme-condition validation and empirical sensitivity execution blocked;
 - added an executable feedback-variable boundary gate covering every qualitative loop/chain node and preventing topology or observed-target availability from silently implying endogeneity;
 - added an executable behavioural dimensional-consistency gate that separates symbolic unit validity from unfrozen empirical measurement scales and blocks activation without inventing transforms;
 - added executable behavioural-implementation governance so retained exploratory equations cannot be mistaken for currently admitted mechanism implementations;
