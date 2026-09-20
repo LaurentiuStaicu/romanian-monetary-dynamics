@@ -1,0 +1,72 @@
+name: Scientific / data / model issue
+description: Report or discuss a reproducible scientific, data, accounting, provenance, or model-structure concern.
+title: "[Scientific]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        RMD separates accounting constraints, observed evidence, candidate dynamics, and activation gates. Please identify the affected boundary and separate observed facts from interpretation.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Accounting / sector / instrument boundary
+        - Data source / provenance
+        - Reference mode / measurement
+        - Empirical mechanism / identification
+        - System Dynamics structure / feedback
+        - Validation / activation gate
+        - Scientific documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: statement
+    attributes:
+      label: Issue or proposed correction
+      description: State the problem or proposal as precisely as possible.
+    validations:
+      required: true
+  - type: textarea
+    id: facts
+    attributes:
+      label: Observed facts
+      description: What is directly observed in the repository or source?
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources / evidence
+      description: Provide official or reproducible sources, including release/vintage where relevant.
+      placeholder: "Source, series/table, release date/vintage, link or repository artifact"
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Boundary and units
+      description: Identify sector, instrument, frequency, units, timing, and endogenous/exogenous boundary when relevant.
+    validations:
+      required: false
+  - type: textarea
+    id: interpretation
+    attributes:
+      label: Interpretation
+      description: Explain the inference separately from the observed facts.
+    validations:
+      required: false
+  - type: checkboxes
+    id: integrity
+    attributes:
+      label: Scientific integrity checks
+      options:
+        - label: I am not treating missing/TBD values as zero.
+          required: true
+        - label: I am not inventing bilateral allocations from aggregate evidence.
+          required: true
+        - label: I am not treating provider/access failure as negative scientific evidence.
+          required: true
+        - label: I am not claiming that a candidate behavioural relation is quantitatively active merely because it exists in the repository.
+          required: true

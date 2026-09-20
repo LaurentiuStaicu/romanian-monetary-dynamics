@@ -1,0 +1,67 @@
+name: Bug / reproducibility problem
+description: Report a reproducible software, build, test, documentation, or repository-behaviour problem.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please provide enough information to reproduce the problem. For scientific/data concerns, use the dedicated Scientific / data / model issue form.
+  - type: input
+    id: version
+    attributes:
+      label: RMD version or commit
+      description: Public version, tag, branch, or commit SHA.
+      placeholder: "v0.1.0 or commit SHA"
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: "Python 3.12.x"
+    validations:
+      required: false
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system or relevant runtime context.
+      placeholder: "Ubuntu 24.04 / GitHub Actions / etc."
+    validations:
+      required: false
+  - type: textarea
+    id: command
+    attributes:
+      label: Command or action
+      description: Exact command or steps that reproduce the problem.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Relevant output or traceback
+      render: text
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues for the same problem.
+          required: true
+        - label: This report does not contain sensitive security-vulnerability details.
+          required: true

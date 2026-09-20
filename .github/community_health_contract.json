@@ -1,0 +1,96 @@
+{
+  "contract_version": "1.0",
+  "frozen_on": "2026-09-20",
+  "purpose": "Define RMD community-health and contribution surfaces in a form that can later be generalized across the LaurentiuStaicu suite without weakening RMD scientific governance.",
+  "evidence_basis": [
+    {
+      "source": "GitHub repository best practices",
+      "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/best-practices-for-repositories",
+      "rule": "Public repositories benefit from README, license, citation, contribution guidance, code of conduct and security/community practices."
+    },
+    {
+      "source": "GitHub default community health files",
+      "url": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file",
+      "rule": "Shared defaults can later be centralized in a public account-level .github repository; repository-local files override defaults where project-specific behaviour is needed."
+    },
+    {
+      "source": "GitHub contribution guidelines",
+      "url": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
+      "rule": "CONTRIBUTING should make contribution expectations explicit and is surfaced automatically by GitHub."
+    },
+    {
+      "source": "GitHub issue forms",
+      "url": "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms",
+      "rule": "Issue forms may collect structured information for bugs and scientific/data issues."
+    },
+    {
+      "source": "GitHub private vulnerability reporting",
+      "url": "https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/report-privately",
+      "rule": "Security reporting should use a private channel when enabled; do not encourage public disclosure of vulnerability details."
+    }
+  ],
+  "suite_strategy": {
+    "preferred_future_state": "PUBLIC_ACCOUNT_LEVEL_DOT_GITHUB_REPOSITORY_WITH_SHARED_DEFAULTS_PLUS_PROJECT_SPECIFIC_OVERRIDES",
+    "account_level_dot_github_repository_currently_observed": false,
+    "current_connector_can_create_new_repository": false,
+    "interim_strategy": "Use RMD as the reference implementation. Keep project-specific scientific issue form local. Later centralize genuinely shared files once an account-level .github repository exists.",
+    "shared_candidate_files": [
+      "CONTRIBUTING shell",
+      "SUPPORT shell",
+      "generic bug/reporting form shell",
+      "pull request checklist shell"
+    ],
+    "project_specific_files": [
+      "scientific evidence/data/model issue form",
+      "scientific contribution rules",
+      "repository-specific CI and provenance checklist"
+    ]
+  },
+  "implemented_now": [
+    ".github/CONTRIBUTING.md",
+    ".github/SUPPORT.md",
+    ".github/ISSUE_TEMPLATE/bug.yml",
+    ".github/ISSUE_TEMPLATE/scientific_issue.yml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/PULL_REQUEST_TEMPLATE.md"
+  ],
+  "deferred": {
+    "code_of_conduct": {
+      "status": "PENDING_GOVERNANCE_DECISION",
+      "reason": "A code of conduct should only be adopted together with an enforceable reporting/escalation process and an explicit maintainer commitment to enforcement."
+    },
+    "security_policy": {
+      "status": "PENDING_PRIVATE_REPORTING_ROUTE",
+      "reason": "Do not direct vulnerability details into public issues. Add SECURITY.md after private vulnerability reporting is enabled or another private security contact is chosen."
+    },
+    "account_level_defaults": {
+      "status": "PENDING_DOT_GITHUB_REPOSITORY",
+      "reason": "GitHub supports centralized defaults through a public account-level .github repository, but that repository does not currently exist and cannot be created through the active integration."
+    }
+  },
+  "rmd_scientific_contribution_invariants": [
+    "Do not convert missing/TBD values to zero.",
+    "Do not invent bilateral allocations to close an accounting matrix.",
+    "Do not treat provider/access failure as negative scientific evidence.",
+    "Do not activate behavioural mechanisms or System Dynamics feedbacks from documentation, code presence or intuition alone.",
+    "Do not inspect reserved holdout/prospective outcomes outside their governing contract.",
+    "Any change to canonical scientific state must update governing registries/tests together.",
+    "Any public version bump must follow the atomic release-versioning contract."
+  ],
+  "contribution_categories": [
+    "documentation or presentation",
+    "software/reproducibility bug",
+    "data/provenance issue",
+    "accounting or dimensional issue",
+    "reference-mode/evidence issue",
+    "behavioural mechanism or System Dynamics proposal"
+  ],
+  "quality_gate": {
+    "contribution_files_must_be_recognized_by_github": true,
+    "issue_forms_must_parse_as_valid_yaml": true,
+    "pull_request_template_must_require_scientific_effect_classification": true,
+    "public_readme_should_link_to_contributing_and_support_after_merge": true,
+    "version_bump_required": false,
+    "scientific_state_change_authorized": false
+  }
+}
