@@ -250,87 +250,7 @@ def discover_document(document: dict, out_dir: Path) -> dict:
     for directory in (search_dir, act_dir, text_dir, pdf_dir):
         directory.mkdir(parents=True, exist_ok=True)
 
-    s_url = search_url(document)
-    status, search_payload, search_meta = fetch(s_url, "text/html")
-    if status != 200:
-        raise RuntimeError(f"{sid}: search HTTP status {status}")
-    search_path = search_dir / f"{sid}.html"
-    search_path.write_bytes(search_payload)
-
-    candidates = candidate_links(search_payload)
-    matches: list[dict] = []
-    attempted: list[dict] = []
-    for url in candidates:
-        try:
-            act_status, act_payload, act_meta = fetch(url, "text/html")
-        except (HTTPError, URLError) as exc:
-            attempted.append({"url": url, "error": str(exc)})
-            continue
-        text = extract_text(act_payload)
-        checks = act_identity_checks(text, document)
-        attempted.append(
-            {
-                "url": url,
-                "http_status": act_status,
-                "identity_checks": checks,
-            }
-        )
-        if act_status == 200 and all(checks.values()):
-            matches.append(
-                {
-                    "url": url,
-                    "payload": act_payload,
-                    "metadata": act_meta,
-                    "text": text,
-                    "identity_checks": checks,
-                }
-            )
-
-    if len(matches) != 1:
-        raise RuntimeError(
-            f"{sid}: expected exactly one official act match; "
-            f"observed {len(matches)} from {len(candidates)} candidates"
-        )
-
-    selected = matches[0]
-    act_path = act_dir / f"{sid}.html"
-    act_path.write_bytes(selected["payload"])
-    text_path = text_dir / f"{sid}.txt"
-    text_path.write_text(selected["text"], encoding="utf-8")
-
-    pdf_result = {
-        "configured": document.get("known_official_pdf_url") is not None,
-        "retained": False,
-        "url": document.get("known_official_pdf_url"),
-    }
-    pdf_url = document.get("known_official_pdf_url")
-    if pdf_url:
-        try:
-            p_status, p_payload, p_meta = fetch(pdf_url, "application/pdf")
-            if p_status == 200 and p_payload.startswith(b"%PDF-"):
-                pdf_path = pdf_dir / f"{sid}.pdf"
-                pdf_path.write_bytes(p_payload)
-                pdf_result.update(
-                    {
-                        "retained": True,
-                        "http_status": p_status,
-                        "path": f"official_pdf_crosschecks/{pdf_path.name}",
-                        "bytes": len(p_payload),
-                        "sha256": sha256_bytes(p_payload),
-                        "response_metadata": p_meta,
-                    }
-                )
-            else:
-                pdf_result.update(
-                    {
-                        "http_status": p_status,
-                        "error": "response is not an exact PDF payload",
-                    }
-                )
-        except (HTTPError, URLError) as exc:
-            pdf_result["error"] = str(exc)
-
-    return {
+    result = {
         "source_id": sid,
         "month": document["month"],
         "version_role": document["version_role"],
@@ -339,31 +259,129 @@ def discover_document(document: dict, out_dir: Path) -> dict:
         "publication_number": document["publication_number"],
         "publication_date": document["publication_date"],
         "supersedes": document["supersedes"],
-        "search_url": s_url,
-        "search_page_path": f"search_pages/{search_path.name}",
-        "search_page_bytes": len(search_payload),
-        "search_page_sha256": sha256_bytes(search_payload),
-        "search_response_metadata": search_meta,
-        "candidate_detail_links_found": len(candidates),
-        "attempted_candidates": attempted,
-        "selected_act_url": selected["url"],
-        "selected_act_path": f"acts/{act_path.name}",
-        "selected_act_bytes": len(selected["payload"]),
-        "selected_act_sha256": sha256_bytes(selected["payload"]),
-        "selected_act_response_metadata": selected["metadata"],
-        "normalized_text_path": f"normalized_text/{text_path.name}",
-        "normalized_text_bytes": text_path.stat().st_size,
-        "normalized_text_sha256": sha256_file(text_path),
-        "identity_checks": selected["identity_checks"],
-        "all_identity_checks_pass": True,
-        "official_pdf_crosscheck": pdf_result,
+        "legal_registry_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
+        "official_pdf_status": "NOT_CONFIGURED",
+        "raw_source_retained": False,
+        "event_materialisation_authorized": False,
     }
+
+    # First try the exact official MF/ANAF PDF when the contract already freezes one.
+    pdf_url = document.get("known_official_pdf_url")
+    if pdf_url:
+        result["official_pdf_url"] = pdf_url
+        try:
+            p_status, p_payload, p_meta = fetch(pdf_url, "application/pdf")
+            if p_status == 200 and p_payload.startswith(b"%PDF-"):
+                pdf_path = pdf_dir / f"{sid}.pdf"
+                pdf_path.write_bytes(p_payload)
+                result.update(
+                    {
+                        "official_pdf_status": "RETAINED_EXACT_OFFICIAL_PDF",
+                        "official_pdf_path": f"official_pdf_crosschecks/{pdf_path.name}",
+                        "official_pdf_bytes": len(p_payload),
+                        "official_pdf_sha256": sha256_bytes(p_payload),
+                        "official_pdf_response_metadata": p_meta,
+                        "raw_source_retained": True,
+                        "event_materialisation_authorized": True,
+                    }
+                )
+            else:
+                result["official_pdf_status"] = (
+                    f"UNAVAILABLE_OR_NON_PDF_HTTP_{p_status}"
+                )
+        except Exception as exc:
+            result["official_pdf_status"] = "UNAVAILABLE_FROM_GITHUB_RUNNER"
+            result["official_pdf_error"] = str(exc)
+
+    # Independently try Portal Legislativ. Failure is transport evidence, not a
+    # reason to guess document IDs or substitute third-party text.
+    s_url = search_url(document)
+    result["search_url"] = s_url
+    try:
+        status, search_payload, search_meta = fetch(s_url, "text/html")
+        if status == 200:
+            search_path = search_dir / f"{sid}.html"
+            search_path.write_bytes(search_payload)
+            candidates = candidate_links(search_payload)
+            matches: list[dict] = []
+            attempted: list[dict] = []
+            for url in candidates:
+                try:
+                    act_status, act_payload, act_meta = fetch(url, "text/html")
+                except Exception as exc:
+                    attempted.append({"url": url, "error": str(exc)})
+                    continue
+                text = extract_text(act_payload)
+                checks = act_identity_checks(text, document)
+                attempted.append(
+                    {
+                        "url": url,
+                        "http_status": act_status,
+                        "identity_checks": checks,
+                    }
+                )
+                if act_status == 200 and all(checks.values()):
+                    matches.append(
+                        {
+                            "url": url,
+                            "payload": act_payload,
+                            "metadata": act_meta,
+                            "text": text,
+                            "identity_checks": checks,
+                        }
+                    )
+            result["candidate_detail_links_found"] = len(candidates)
+            result["attempted_candidates"] = attempted
+            if len(matches) == 1:
+                selected = matches[0]
+                act_path = act_dir / f"{sid}.html"
+                act_path.write_bytes(selected["payload"])
+                text_path = text_dir / f"{sid}.txt"
+                text_path.write_text(selected["text"], encoding="utf-8")
+                result.update(
+                    {
+                        "legal_registry_status": "RETAINED_EXACT_OFFICIAL_ACT",
+                        "selected_act_url": selected["url"],
+                        "selected_act_path": f"acts/{act_path.name}",
+                        "selected_act_bytes": len(selected["payload"]),
+                        "selected_act_sha256": sha256_bytes(selected["payload"]),
+                        "selected_act_response_metadata": selected["metadata"],
+                        "normalized_text_path": f"normalized_text/{text_path.name}",
+                        "normalized_text_bytes": text_path.stat().st_size,
+                        "normalized_text_sha256": sha256_file(text_path),
+                        "identity_checks": selected["identity_checks"],
+                        "all_identity_checks_pass": True,
+                        "raw_source_retained": True,
+                        "event_materialisation_authorized": True,
+                    }
+                )
+            elif len(matches) == 0:
+                result["legal_registry_status"] = "NO_EXACT_MATCH_FROM_SEARCH_ENDPOINT"
+            else:
+                result["legal_registry_status"] = "AMBIGUOUS_MULTIPLE_EXACT_MATCHES"
+        else:
+            result["legal_registry_status"] = f"UNAVAILABLE_HTTP_{status}"
+    except Exception as exc:
+        result["legal_registry_error"] = str(exc)
+
+    if not result["raw_source_retained"]:
+        result["event_materialisation_authorized"] = False
+
+    return result
 
 
 def run_probe(out_dir: Path) -> dict:
     contract = load_contract()
     out_dir.mkdir(parents=True, exist_ok=True)
     results = [discover_document(doc, out_dir) for doc in contract["documents"]]
+
+    retained = [item for item in results if item["raw_source_retained"]]
+    unavailable = [item for item in results if not item["raw_source_retained"]]
+    status = (
+        "PASS_ALL_OFFICIAL_SOURCES_RETAINED"
+        if not unavailable
+        else "PARTIAL_OFFICIAL_SOURCE_RETENTION_EXPLICIT_UNAVAILABLE_REMAINDER"
+    )
 
     manifest = {
         "snapshot_id": "mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20",
@@ -375,14 +393,15 @@ def run_probe(out_dir: Path) -> dict:
         "document_count": len(results),
         "base_order_count": sum(item["version_role"] == "BASE" for item in results),
         "amendment_order_count": sum(item["version_role"] == "AMENDMENT" for item in results),
-        "all_identity_checks_pass": all(
-            item["all_identity_checks_pass"] for item in results
-        ),
+        "raw_sources_retained_count": len(retained),
+        "raw_sources_unavailable_count": len(unavailable),
+        "retained_source_ids": [item["source_id"] for item in retained],
+        "unavailable_source_ids": [item["source_id"] for item in unavailable],
         "event_rows_materialised": False,
         "canonical_reference_mode_promoted": False,
         "yield_effect_estimation_authorized": False,
         "feedback_activation_authorized": False,
-        "status": "PASS_OFFICIAL_LEGAL_SOURCE_VINTAGE_RETAINED",
+        "status": status,
     }
     manifest_path = out_dir / "source_vintage_manifest.json"
     manifest_path.write_text(
@@ -392,13 +411,11 @@ def run_probe(out_dir: Path) -> dict:
     print(
         json.dumps(
             {
-                "status": manifest["status"],
+                "status": status,
                 "documents": manifest["document_count"],
-                "base_orders": manifest["base_order_count"],
-                "amendments": manifest["amendment_order_count"],
-                "pdf_crosschecks_retained": sum(
-                    item["official_pdf_crosscheck"]["retained"] for item in results
-                ),
+                "raw_sources_retained": manifest["raw_sources_retained_count"],
+                "raw_sources_unavailable": manifest["raw_sources_unavailable_count"],
+                "retained_source_ids": manifest["retained_source_ids"],
                 "event_rows_materialised": False,
                 "canonical_reference_mode_promoted": False,
                 "feedback_activation_authorized": False,
