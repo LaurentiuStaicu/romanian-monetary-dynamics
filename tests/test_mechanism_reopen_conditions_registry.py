@@ -60,10 +60,7 @@ class MechanismReopenConditionsRegistryTests(unittest.TestCase):
             "EVIDENCE_TRIGGERED_BASELINE_HOLD",
         )
         self.assertFalse(self.r["selective_reopen_active"])
-        self.assertEqual(
-            self.r["selective_reopen_mechanism"],
-            "fiscal_primary_balance_reaction",
-        )
+        self.assertIsNone(self.r["selective_reopen_mechanism"])
         self.assertFalse(self.r["current_active_calibration_cycle_open"])
         self.assertEqual(self.r["current_validated_reference_behavioural_mechanisms"], 0)
         self.assertEqual(
@@ -71,10 +68,6 @@ class MechanismReopenConditionsRegistryTests(unittest.TestCase):
             self.r["current_baseline_action"],
         )
         self.assertFalse(self.s["current_next_step"]["calibration_cycle_open"])
-        self.assertEqual(
-            entry["reopen_execution_state"],
-            "RAW_SOURCE_PRESERVATION_COMPLETE_RETURNED_TO_BASELINE_HOLD",
-        )
         path = "model/calibration_validation/mechanism_reopen_conditions_registry.json"
         self.assertEqual(self.s["mechanism_reopen_conditions_registry"], path)
         self.assertEqual(self.s["current_next_step"]["reopen_conditions_registry"], path)
@@ -116,6 +109,10 @@ class MechanismReopenConditionsRegistryTests(unittest.TestCase):
             entry["governing_evidence"],
         )
         self.assertFalse(self.s["current_next_step"]["calibration_cycle_open"])
+        self.assertEqual(
+            entry["reopen_execution_state"],
+            "RAW_SOURCE_PRESERVATION_COMPLETE_RETURNED_TO_BASELINE_HOLD",
+        )
 
     def test_failed_pre_holdout_cycles_cannot_be_reopened_by_post_outcome_respecification(self):
         for mechanism_id in (
