@@ -72,7 +72,6 @@ def fetch_candidate(candidate: dict, contract: dict, out_dir: Path) -> dict:
             "startPeriod": contract["period_window"]["start"],
             "endPeriod": contract["period_window"]["end"],
             "format": acquisition["format"],
-            "detail": "dataonly",
         }
     )
     url = (
