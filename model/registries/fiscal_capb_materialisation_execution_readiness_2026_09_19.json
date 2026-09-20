@@ -2,7 +2,7 @@
   "assessment_version": "0.1",
   "assessed_on": "2026-09-20",
   "mechanism_id": "fiscal_primary_balance_reaction",
-  "status": "PRE2022_PROBE_EXECUTED_REVIEWED_RAW_SOURCE_PRESERVATION_PENDING",
+  "status": "RAW_SOURCE_PRESERVATION_COMPLETE_SOURCE_CYCLE_CLOSED",
   "prerequisite_reopen_assessment": "model/registries/fiscal_capb_reopen_assessment_2026_09_19.json",
   "contract": "model/calibration_validation/fiscal_reaction_capb_realtime_vintage_contract.json",
   "workflow": ".github/workflows/fiscal-reaction-capb-realtime-vintage-materialisation.yml",
@@ -25,8 +25,8 @@
     "artifact_zip_sha256": "b6a73296e17b490fef6d785a6eee711d6ebf3ba086ab63b63abb973bdf12037b",
     "artifact_expires_at": "2026-12-19T01:32:45Z",
     "release_count": 9,
-    "retained_source_vintage_created": false,
-    "repository_raw_bytes_retained": false,
+    "retained_source_vintage_created": true,
+    "repository_raw_bytes_retained": true,
     "retained_artifact_reviewed": true,
     "timing_adjudication_completed": true,
     "timing_adjudication": "model/calibration_validation/fiscal_capb_timing_adjudication_2026_09_20.json",
@@ -43,7 +43,20 @@
     "raw_source_preservation_preregistered": true,
     "raw_source_preservation_contract": "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json",
     "raw_source_preservation_workflow": ".github/workflows/fiscal-capb-raw-source-preservation.yml",
-    "raw_source_preservation_executed": false
+    "raw_source_preservation_executed": true,
+    "raw_source_preservation_run_id": 35483550266,
+    "raw_source_preservation_successful_attempt": 2,
+    "raw_source_preservation_conclusion": "success",
+    "raw_source_preservation_fix_pr": 59,
+    "raw_source_preservation_fix_merge_commit": "15e0927e17f5502a8867696ef352867259d03b15",
+    "raw_source_preservation_branch": "source-vintage/fiscal-capb-raw-2026-09-20",
+    "raw_source_preservation_commit": "efb1f3ae5b025176645d45276b684efe65aa4174",
+    "raw_source_preservation_manifest": "data/source_vintages/fiscal-reaction-structural-primary-realtime-raw-vintage-2026-09-20/snapshot_manifest.json",
+    "raw_source_preservation_release_count": 31,
+    "raw_source_preservation_first_release_date": "2011-05-05",
+    "raw_source_preservation_last_release_date": "2026-06-03",
+    "later_live_refetch_required_for_reproduction": false,
+    "raw_source_preservation_assessment": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json"
   },
   "scientific_effects": {
     "mechanism_classification": "DEFERRED",
@@ -53,5 +66,5 @@
     "system_dynamics_feedback_activation": false,
     "behavioural_closure_activation": false
   },
-  "next_gate": "Manually dispatch the reviewed-artifact raw-source preservation workflow. It must download the exact two reviewed Actions artifacts, verify all retained hashes, and create a dedicated source-vintage branch without AMECO refetch. No model selection or target-family switch is authorized."
+  "next_gate": "No active fiscal source gate remains. The source-only selective reopen is complete and RMD returns to EVIDENCE_TRIGGERED_BASELINE_HOLD. Any future structural-primary behavioural design requires separate preregistration and does not authorize estimation, target-family substitution or inspection of the prior 2018-2024 final evaluation."
 }
