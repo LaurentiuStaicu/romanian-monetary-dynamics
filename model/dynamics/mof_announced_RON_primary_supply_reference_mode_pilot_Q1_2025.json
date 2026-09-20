@@ -1,0 +1,145 @@
+{
+  "pilot_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "reference_mode_id": "announced_RON_primary_supply_level",
+  "status": "PASS_EXACT_Q1_EVENT_LEVEL_PILOT_CANONICAL_PROMOTION_DEFERRED",
+  "contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
+  "source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-supply-pilot-2026-09-20/source_vintage_manifest.json",
+  "source_identities": {
+    "mof_order_6826_january_2025": {
+      "raw_bytes": 114623,
+      "raw_sha256": "15163db1ce6ee0b39437cb8677622e17759d9106b69584b919de12b29331521c",
+      "native_text_bytes": 20425,
+      "native_text_sha256": "e544771304650d44c06fd9eaa42a57ab872866b9a4efde2209a73118974b3323",
+      "http_last_modified": "Tue, 31 Dec 2024 10:08:04 GMT",
+      "etag": "\"6773c284-1bfbf\""
+    },
+    "mof_order_159_february_2025": {
+      "raw_bytes": 256463,
+      "raw_sha256": "10a8a0ff4771147fb65d032ca3929b8f189976ca86515a936eff5c30321f1094",
+      "native_text_bytes": 20636,
+      "native_text_sha256": "14919b668a10619950d27f47ca6454b4938a128d81477f48e3bc1e34e8a1d559",
+      "http_last_modified": "Fri, 31 Jan 2025 09:52:03 GMT",
+      "etag": "\"679c9d43-3e9cf\""
+    },
+    "mof_order_352_march_2025": {
+      "raw_bytes": 256352,
+      "raw_sha256": "a7c978b241fa26e46b28a7ef08fb8bcd629814b49786da165d6b9a609ad9b4b6",
+      "native_text_bytes": 20654,
+      "native_text_sha256": "2383c81703e6a9a1a22467d5715190bf5c5326e4e9661256bb992cb95bd7e391",
+      "http_last_modified": "Fri, 28 Feb 2025 10:59:26 GMT",
+      "etag": "\"67c1970e-3e960\""
+    }
+  },
+  "event_level_series": "data/processed/mof_announced_RON_primary_supply_Q1_2025_events.csv",
+  "monthly_series": "data/processed/mof_announced_RON_primary_supply_Q1_2025_monthly.csv",
+  "pilot_cutoff_date": "2025-03-31",
+  "document_reconciliation": [
+    {
+      "source_id": "mof_order_6826_january_2025",
+      "parsed_t_bill_rows": 2,
+      "parsed_bond_rows": 9,
+      "parsed_event_count": 20,
+      "article_1_base_nominal_RON_million_from_native_text": 5200.0,
+      "article_1_SSON_max_RON_million_from_native_text": 570.0,
+      "parsed_base_nominal_RON_million": 5200.0,
+      "parsed_SSON_RON_million": 570.0,
+      "parsed_document_total_RON_million": 5770.0,
+      "base_reconciles": true,
+      "SSON_reconciles": true,
+      "document_total_reconciles": true
+    },
+    {
+      "source_id": "mof_order_159_february_2025",
+      "parsed_t_bill_rows": 2,
+      "parsed_bond_rows": 10,
+      "parsed_event_count": 22,
+      "article_1_base_nominal_RON_million_from_native_text": 7200.0,
+      "article_1_SSON_max_RON_million_from_native_text": 840.0,
+      "parsed_base_nominal_RON_million": 7200.0,
+      "parsed_SSON_RON_million": 840.0,
+      "parsed_document_total_RON_million": 8040.0,
+      "base_reconciles": true,
+      "SSON_reconciles": true,
+      "document_total_reconciles": true
+    },
+    {
+      "source_id": "mof_order_352_march_2025",
+      "parsed_t_bill_rows": 2,
+      "parsed_bond_rows": 10,
+      "parsed_event_count": 22,
+      "article_1_base_nominal_RON_million_from_native_text": 7400.0,
+      "article_1_SSON_max_RON_million_from_native_text": 840.0,
+      "parsed_base_nominal_RON_million": 7400.0,
+      "parsed_SSON_RON_million": 840.0,
+      "parsed_document_total_RON_million": 8240.0,
+      "base_reconciles": true,
+      "SSON_reconciles": true,
+      "document_total_reconciles": true
+    }
+  ],
+  "coverage": {
+    "source_orders": 3,
+    "event_rows_total_including_forward_schedule": 64,
+    "completed_event_rows_through_cutoff": 63,
+    "forward_events_after_cutoff": 1,
+    "completed_months": [
+      "2025-01",
+      "2025-02",
+      "2025-03"
+    ]
+  },
+  "completed_monthly_reference_mode": {
+    "2025-01": 5770.0,
+    "2025-02": 8040.0,
+    "2025-03": 8165.0
+  },
+  "forward_schedule_not_in_completed_reference_mode": [
+    {
+      "event_date": "2025-04-01",
+      "event_type": "BENCHMARK_BOND_SSON",
+      "isin": "RO45DLJ4EE76",
+      "announced_nominal_RON_million": 75.0,
+      "source_id": "mof_order_352_march_2025"
+    }
+  ],
+  "crosschecks": {
+    "january_flash_announced_total_RON_million": 5770.0,
+    "january_crosscheck": "PASS_EXACT",
+    "february_flash_announced_schedule_total_RON_million": 8040.0,
+    "february_crosscheck": "PASS_EXACT",
+    "march_document_total_RON_million": 8240.0,
+    "march_completed_period_RON_million": 8165.0,
+    "march_difference_due_to_2025_04_01_SSON_RON_million": 75.0
+  },
+  "semantics": {
+    "ex_ante_announced_supply_only": true,
+    "accepted_or_borrowed_amount_included": false,
+    "submitted_bids_included": false,
+    "retail_issuance_included": false,
+    "external_issuance_included": false,
+    "stock_normalisation_used": false,
+    "supply_surprise_constructed": false,
+    "duration_supply_constructed": false
+  },
+  "scientific_disposition": {
+    "exact_event_level_pilot_materialised": true,
+    "exact_completed_monthly_pilot_materialised": true,
+    "canonical_reference_modes_registry_promoted": false,
+    "reason_canonical_promotion_deferred": "The Q1 pilot validates event-level semantics and reconciliation, but canonical reference-mode promotion is deferred until the same contract is extended across the completed 2025 source horizon.",
+    "government_securities_supply_pressure_node_resolved": false,
+    "single_supply_pressure_scalar_selected": false,
+    "yield_effect_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "mof_announced_RON_primary_supply_full_2025_extension",
+    "authorization": "SOURCE_VINTAGE_EXTENSION_AND_EXACT_EVENT_MATERIALISATION_ONLY",
+    "task": "Extend the same frozen event schema and reconciliation rules to April-December 2025 Ministry monthly issuance orders, retaining exact raw PDFs/native text and preserving event-date bucketing.",
+    "may_promote_canonical_reference_mode_after_full_2025_reconciliation": true,
+    "may_estimate_supply_to_yield_effect": false,
+    "may_activate_feedback": false
+  }
+}
