@@ -1,0 +1,121 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "bridge_id": "primary_yield_to_sovereign_yield",
+  "from": "instrument_specific_domestic_primary_market_yield",
+  "to": "sovereign_yield",
+  "purpose": "Determine whether retained BNR primary-market issue rates and the retained ECB Romania long-term convergence yield can be mapped into one generic sovereign_yield node without collapsing market, maturity, currency and information-timing distinctions.",
+  "decision": "STRUCTURED_YIELD_MEASUREMENT_LAYER_KEEP_GENERIC_SOVEREIGN_YIELD_UNRESOLVED",
+  "evidence": {
+    "bnr_primary_market": {
+      "artifact": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
+      "source": "National Bank of Romania Monthly Bulletin, table 12.2",
+      "boundary": "Domestic primary-market new/roll-over government-security issue rates/yields, preserving instrument and currency.",
+      "timing": "POST_AUCTION_ISSUE_OUTCOME",
+      "aggregation_status": "NO_GENERIC_CROSS_INSTRUMENT_OR_CROSS_CURRENCY_AGGREGATE"
+    },
+    "ecb_long_term_yield": {
+      "source_boundary_review": "model/calibration_validation/sovereign_yield_source_boundary_review.json",
+      "source_vintage": "data/source_vintages/sovereign-yield-quarterly-vintage-2026-09-19",
+      "series_key": "IRS.M.RO.L.L40.CI.0000.RON.N.Z",
+      "boundary": "Harmonised Romania long-term interest rate for convergence purposes, RON, approximately 10-year maturity, monthly average, based on representative sufficiently liquid long-term government bonds or comparable securities.",
+      "timing": "SECONDARY_OR_REPRESENTATIVE_LONG_TERM_MARKET_CONDITION",
+      "role": "LONG_TERM_RON_BENCHMARK_OBSERVABLE_NOT_GENERIC_ALL_MATURITY_ISSUE_RATE"
+    },
+    "historical_structural_selection": {
+      "result": "model/calibration_validation/sovereign_yield_structural_selection_result.json",
+      "verdict": "FAIL_BEFORE_HOLDOUT",
+      "interpretation": "The failed fiscal-augmented predictive form does not invalidate the observed ECB long-term yield series. It does prevent that historical candidate equation from being used as an integrated behavioural mechanism."
+    }
+  },
+  "measurement_layer": [
+    {
+      "measure_id": "domestic_primary_issue_rate_vector",
+      "market": "PRIMARY",
+      "currency_scope": "NATIVE_RON_AND_EUR_PRESERVED",
+      "maturity_scope": "INSTRUMENT_SPECIFIC_AS_PUBLISHED",
+      "observable": "BNR table 12.2 instrument/currency-specific average yield or average interest rate",
+      "timing_role": "AUCTION_OUTCOME",
+      "use": "Describe new-issue pricing by instrument/currency and support future maturity-matched auction analysis.",
+      "generic_sovereign_yield_equivalent": false,
+      "activation_ready": false
+    },
+    {
+      "measure_id": "RON_long_term_liquid_benchmark_yield",
+      "market": "LONG_TERM_GOVERNMENT_BOND_MARKET_BENCHMARK",
+      "currency_scope": "RON",
+      "maturity_scope": "APPROXIMATELY_10_YEAR_RESIDUAL_MATURITY",
+      "observable": "ECB IRS.M.RO.L.L40.CI.0000.RON.N.Z",
+      "frequency": "MONTHLY_AVERAGE",
+      "timing_role": "BROAD_MARKET_CONDITION",
+      "use": "Observed long-term RON sovereign benchmark condition; suitable as a benchmark/reference observable where a 10-year long-term rate is explicitly required.",
+      "generic_sovereign_yield_equivalent": false,
+      "activation_ready": false
+    },
+    {
+      "measure_id": "maturity_matched_secondary_yield_or_curve",
+      "market": "SECONDARY",
+      "currency_scope": "RON",
+      "maturity_scope": "MATCHED_TO_AUCTION_INSTRUMENT_OR_PREREGISTERED_TENOR_BUCKET",
+      "observable": null,
+      "frequency": null,
+      "timing_role": "PRE_AND_POST_AUCTION_MARKET_CONDITION",
+      "use": "Required before any event-level or maturity-specific supply-to-yield response is interpreted as a market-price effect rather than a cross-maturity composition artifact.",
+      "source_status": "BLOCKED_EXACT_SOURCE_AND_EVENT_TIME_BOUNDARY_NOT_FROZEN",
+      "generic_sovereign_yield_equivalent": false,
+      "activation_ready": false
+    }
+  ],
+  "semantic_distinctions": {
+    "primary_issue_rate_is_secondary_market_yield": false,
+    "primary_issue_rate_is_outstanding_debt_effective_rate": false,
+    "ecb_10y_benchmark_is_all_maturity_primary_issue_rate": false,
+    "ecb_10y_benchmark_is_pure_credit_spread": false,
+    "cross_currency_RON_EUR_yield_average_authorized": false,
+    "cross_maturity_average_authorized": false,
+    "post_hoc_scalar_sovereign_yield_authorized": false
+  },
+  "bridge_design": {
+    "generic_bridge_status": "UNRESOLVED",
+    "one_to_one_primary_to_generic_sovereign_mapping_authorized": false,
+    "preferred_future_empirical_design": "Maturity- and currency-matched analysis: announced supply/composition -> auction issue-rate outcome and/or pre/post secondary-market yield change for the corresponding tenor, with market-wide controls frozen ex ante.",
+    "minimum_requirements_before_any_supply_to_yield_equation": [
+      "Freeze the target market: primary auction rate versus secondary-market yield change.",
+      "Freeze RON-only or another exact currency boundary before evaluation.",
+      "Freeze maturity matching or tenor buckets before evaluation.",
+      "Freeze event timing: announcement, auction, settlement and pre/post secondary-market windows as applicable.",
+      "Retain an exact maturity-matched secondary-yield source if secondary-market response is tested.",
+      "Keep auction issue rates as post-auction outcomes rather than exogenous yield forcings.",
+      "Preregister controls and untouched evaluation window before any predictive or causal-looking fit.",
+      "Do not reuse the failed fiscal-augmented sovereign-yield structural-selection form as a supply-response equation."
+    ],
+    "causal_identification_claim_allowed": false,
+    "equation_selected": false
+  },
+  "generic_node": {
+    "id": "sovereign_yield",
+    "recommended_runtime_role": "QUALITATIVE_UMBRELLA_NODE_STRUCTURED_YIELD_MEASUREMENT_LAYER_INACTIVE",
+    "boundary_class": "UNRESOLVED",
+    "single_scalar_selected": false,
+    "exact_reference_mode_promoted": false,
+    "feedback_activation_authorized": false
+  },
+  "scientific_effect": {
+    "primary_yield_to_sovereign_yield_bridge_resolved": false,
+    "generic_sovereign_yield_node_resolved": false,
+    "single_sovereign_yield_scalar_selected": false,
+    "historical_sovereign_yield_failed_form_reopened": false,
+    "reference_mode_promoted": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_independent_bridge_task": {
+    "id": "yield_to_interest_cost_boundary_review",
+    "authorization": "STRUCTURAL_STOCK_FLOW_PROPAGATION_REVIEW_ONLY",
+    "may_select_interest_cost_equation": false,
+    "may_estimate_pass_through": false,
+    "may_activate_feedback": false
+  }
+}
