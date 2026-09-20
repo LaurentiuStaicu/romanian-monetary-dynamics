@@ -169,7 +169,7 @@ def audit_supply_load_denominator_boundary(
     if link["supply_load_denominator_boundary_review"] != REVIEW_PATH:
         errors.append("issuance-pressure link lacks denominator review")
     if link["source_boundary_status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
+        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
     ):
         errors.append("issuance-pressure link denominator status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -184,7 +184,7 @@ def audit_supply_load_denominator_boundary(
     if bridge["denominator_boundary_review"] != REVIEW_PATH:
         errors.append("issuance-pressure bridge lacks denominator review")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
+        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
     ):
         errors.append("issuance-pressure bridge status changed")
 
