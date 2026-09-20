@@ -83,6 +83,46 @@ class RMDConceptDiagramContractTests(unittest.TestCase):
             ):
                 self.assertNotIn(forbidden, text)
 
+    @staticmethod
+    def _relative_luminance(hex_colour: str) -> float:
+        raw = hex_colour.lstrip("#")
+        rgb = [int(raw[i : i + 2], 16) / 255 for i in (0, 2, 4)]
+
+        def linearize(value: float) -> float:
+            if value <= 0.04045:
+                return value / 12.92
+            return ((value + 0.055) / 1.055) ** 2.4
+
+        r, g, b = [linearize(value) for value in rgb]
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+    @classmethod
+    def _contrast_ratio(cls, a: str, b: str) -> float:
+        l1 = cls._relative_luminance(a)
+        l2 = cls._relative_luminance(b)
+        high, low = max(l1, l2), min(l1, l2)
+        return (high + 0.05) / (low + 0.05)
+
+    def test_suite_palette_meets_declared_wcag_contrast_targets(self) -> None:
+        readme_contract = load(ROOT / ".github" / "readme_design_contract.json")
+        gate = readme_contract["accessibility_quality_gate"]
+        self.assertGreaterEqual(
+            self._contrast_ratio("#707070", "#ffffff"),
+            gate["normal_text_minimum_contrast_ratio"],
+        )
+        self.assertGreaterEqual(
+            self._contrast_ratio("#a0a0a0", "#333333"),
+            gate["normal_text_minimum_contrast_ratio"],
+        )
+        self.assertGreaterEqual(
+            self._contrast_ratio("#333333", "#ffffff"),
+            gate["meaningful_graphics_minimum_contrast_ratio"],
+        )
+        self.assertGreaterEqual(
+            self._contrast_ratio("#a0a0a0", "#333333"),
+            gate["meaningful_graphics_minimum_contrast_ratio"],
+        )
+
     def test_svg_uses_standard_font_and_legible_sizes(self) -> None:
         minimum = self.c["accessibility"]["minimum_effective_body_font_px"]
         for path in (LIGHT, DARK):
