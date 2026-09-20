@@ -188,7 +188,15 @@ def audit_government_debt_issuance_source_boundary(
         "model/dynamics/government_debt_issuance_materialisation_contract.json"
     ):
         errors.append("sovereign-yield boundary is not linked to issuance contract")
-    if "separate source and structural contract" not in fiscal_boundary["no_issuance_proxy"]:
+    no_issuance_proxy = fiscal_boundary["no_issuance_proxy"]
+    if not all(
+        phrase in no_issuance_proxy
+        for phrase in (
+            "may not be inserted",
+            "supply pressure",
+            "source/stock-flow mapping",
+        )
+    ):
         errors.append("sovereign-yield no-issuance-proxy rule was weakened")
 
     decision = review["scientific_decision"]
