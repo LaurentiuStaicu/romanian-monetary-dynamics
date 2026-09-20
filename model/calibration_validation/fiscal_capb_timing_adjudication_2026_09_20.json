@@ -1,0 +1,94 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "mechanism_id": "fiscal_primary_balance_reaction",
+  "phase": "Fiscal Reaction Selective Reopen — CAPB Real-Time Information-Set Timing Adjudication",
+  "status": "TIMING_ADJUDICATED_REALTIME_VINTAGE_PANEL_MEASUREMENT_READY_DESIGN_NOT_PREREGISTERED",
+  "source_materialisation": {
+    "workflow_run_id": 35481663720,
+    "workflow_conclusion": "success",
+    "artifact_id": 10595244882,
+    "artifact_name": "fiscal-reaction-capb-realtime-vintages-f859f4e525bb0db13b3140c7d45e1fa17442ca4d",
+    "artifact_zip_sha256": "b6a73296e17b490fef6d785a6eee711d6ebf3ba086ab63b63abb973bdf12037b",
+    "artifact_expires_at": "2026-12-19T01:32:45Z",
+    "release_count": 9,
+    "inventory_sha256": "55e494ca4010ed75c602392da0fcedee02cecf1aa27aa901833b6ed8d7775588",
+    "repository_text_evidence_path": "data/source_vintages/fiscal-reaction-capb-realtime-artifact-review-2026-09-20",
+    "repository_raw_bytes_retained": false,
+    "exact_source_vintage_reproducibility_claim_allowed": false,
+    "reproducibility_classification": "HASH_AND_SELECTED_ROW_REVIEW_WITH_TEMPORARY_ACTIONS_RAW_BYTES",
+    "reason": "Exact raw ZIP bytes are present in the reviewed GitHub Actions artifact and hash-identified, but the canonical source-vintage contract requires repository-retained raw bytes for a no-refetch exact reproducibility claim."
+  },
+  "timing_rule": {
+    "official_ameco_metadata_rule": "Spring forecasts cover two forecast years and Autumn forecasts three forecast years, including the current year; AMECO text files do not directly flag forecast versus historical observations.",
+    "spring_generic_forecast_years": "release_year and release_year+1",
+    "autumn_generic_forecast_years": "release_year through release_year+2",
+    "historical_candidate_rule": "year <= release_year-1",
+    "historical_label_used": "HISTORICAL_ESTIMATE_UNDER_GENERIC_AMECO_HORIZON",
+    "caveat": "AMECO notes that for some series the most recent completed year can still be forecast. UBLGBPS is therefore treated as a release-time historical estimate rather than a final actual observation; no later vintage may be backfilled into an earlier information set."
+  },
+  "retained_window": {
+    "first_release": "Spring 2022",
+    "last_release": "Spring 2026",
+    "releases": 9,
+    "first_first_historical_year": 2021,
+    "last_first_historical_year": 2025,
+    "first_historical_observations": 5
+  },
+  "public_archive_extension_ceiling": {
+    "archive_first_spring_autumn_year": 2011,
+    "potential_first_historical_year_if_series_present": 2010,
+    "last_historical_year_currently_available": 2025,
+    "maximum_distinct_first_historical_years_if_all_2011_2021_releases_contain_target": 16,
+    "pre_2022_target_presence_verified": false,
+    "note": "Official archive endpoints are identified, but UBLGBPS presence in each 2011-2021 payload is not yet source-probed."
+  },
+  "revision_diagnostics": {
+    "first_historical_to_spring_2026_years": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "mean_absolute_revision_pp": 0.116516,
+    "max_absolute_revision_pp": 0.31809,
+    "spring_to_autumn_last_completed_year_pairs": 4,
+    "spring_to_autumn_mean_absolute_revision_pp": 0.188495,
+    "spring_to_autumn_max_absolute_revision_pp": 0.2461,
+    "interpretation": "Revision magnitudes are material enough that latest-vintage backfill would contaminate a real-time fiscal reaction design."
+  },
+  "sample_size_adjudication": {
+    "prior_cycle_minimum_training_observations_per_origin": 14,
+    "prior_cycle_structural_selection_origins": 8,
+    "prior_cycle_final_evaluation_observations": 7,
+    "prior_cycle_total_target_years_across_initial_calibration_selection_and_final_evaluation": 29,
+    "current_first_historical_observations": 5,
+    "maximum_public_archive_first_historical_observations_if_pre_2022_target_presence_passes": 16,
+    "prior_cycle_design_reusable": false,
+    "reason": "Even the maximum public Spring/Autumn archive window cannot reproduce the prior 29-target-year calibration/selection/final-evaluation discipline. A weaker evaluation design must not be introduced merely to rescue the mechanism."
+  },
+  "scientific_decision": {
+    "timing_adjudication_passed": true,
+    "measurement_family_ready_for_source_extension": true,
+    "source_extension_probe_authorized": true,
+    "new_structural_selection_contract_authorized": false,
+    "estimation_authorized": false,
+    "model_selection_authorized": false,
+    "prior_2018_2024_final_evaluation_opening_authorized": false,
+    "causal_claim_authorized": false,
+    "system_dynamics_activation": false,
+    "behavioural_closure_change": false
+  },
+  "next_gate": "Preregister and execute a source-structure-only probe of the official Spring/Autumn 2011-2021 AMECO archives for exact Romania UBLGBPS presence, while separately solving permanent repository retention of the already reviewed 2022-2026 raw bytes. Do not preregister a new reaction-function selection design unless the resulting sample can support an independently justified validation structure rather than a weakened rescue design.",
+  "hard_rules": {
+    "no_latest_vintage_backfill": true,
+    "no_forecast_use_as_actual": true,
+    "no_post_result_form_search": true,
+    "no_parameter_estimation": true,
+    "no_old_holdout_reuse": true,
+    "no_weaker_validation_design_merely_to_fit_short_sample": true,
+    "no_system_dynamics_activation": true,
+    "no_behavioural_closure_change": true
+  }
+}
