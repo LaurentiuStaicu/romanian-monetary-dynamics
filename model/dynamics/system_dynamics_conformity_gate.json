@@ -123,7 +123,10 @@
     "current_scalar_tau_activation_ready": 0,
     "current_active_delay_candidates": 0,
     "current_delay_parameter_status": "ALL_SCALAR_TAU_PARAMETERS_BLOCKED",
-    "delay_rule": "Evidence that a mechanism unfolds over months, quarters or a maturity distribution is not sufficient to identify a scalar first-order tau. A delay can become activation-ready only under an exact mechanism-boundary and validation contract."
+    "delay_rule": "Evidence that a mechanism unfolds over months, quarters or a maturity distribution is not sufficient to identify a scalar first-order tau. A delay can become activation-ready only under an exact mechanism-boundary and validation contract.",
+    "behavioural_parameter_contract": "model/empirical_dynamics/behavioural_parameter_contract.json",
+    "current_parameter_sign_semantics": "FROZEN_FOR_CURRENT_EXECUTABLE_FORMS",
+    "parameter_sign_rule": "When a frozen behavioural equation carries the causal +/- operator explicitly, the corresponding beta/sensitivity is a non-negative magnitude. A negative estimate is evidence against that frozen form, not permission to double-reverse its sign."
   },
   "candidate_feedbacks": [
     "government_refinancing_interest_loop",

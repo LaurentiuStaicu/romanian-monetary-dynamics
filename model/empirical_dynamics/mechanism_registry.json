@@ -573,5 +573,6 @@
       }
     ]
   },
-  "behavioural_unit_contract": "model/empirical_dynamics/behavioural_unit_contract.json"
+  "behavioural_unit_contract": "model/empirical_dynamics/behavioural_unit_contract.json",
+  "behavioural_parameter_contract": "model/empirical_dynamics/behavioural_parameter_contract.json"
 }
