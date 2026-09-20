@@ -71,7 +71,11 @@
     "government_debt_issuance_boundary_status": "UNRESOLVED_SEMANTIC_OVERLOAD_BNR_DOMESTIC_PRIMARY_VS_MOF_ALL_MARKET_BORROWING",
     "government_debt_issuance_bnr_pilot": "model/dynamics/government_debt_issuance_bnr_pilot_2025.json",
     "government_debt_issuance_bnr_pilot_status": "REVIEWED_FULL_2025_REVISION_CHECK_PASS_RAW_RETENTION_GATE_OPEN",
-    "government_debt_issuance_bnr_revision_assessment": "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json"
+    "government_debt_issuance_bnr_revision_assessment": "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json",
+    "government_f3_stock_flow_boundary_review": "model/dynamics/government_f3_stock_flow_boundary_review.json",
+    "government_f3_csec_materialisation_contract": "model/dynamics/government_f3_csec_materialisation_contract.json",
+    "government_f3_csec_status": "SOURCE_FAMILY_DISCOVERED_EXACT_COMMON_SIX_COMPONENT_BOUNDARY_NOT_MATERIALISED",
+    "government_issuance_to_stock_exact_link_status": "BLOCKED_GROSS_FLOW_REQUIRES_REDEMPTIONS_AND_F3_MAASTRICHT_BOUNDARY_BRIDGE"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
