@@ -1,5 +1,5 @@
 {
-  "manifest_version": "0.7",
+  "manifest_version": "0.8",
   "baseline_id": "scientific-integrity-2026-09-19",
   "purpose": "Single canonical cross-registry snapshot of RMD scientific maturity. Values in this manifest must agree with the authoritative accounting, dynamics, reference-mode, empirical-mechanism and validation registries; the manifest is not an independent source of scientific truth.",
   "authority": {
@@ -20,7 +20,8 @@
     "reference_mode_recovery_terminal_assessment": "model/dynamics/reference_mode_recovery_terminal_assessment.json",
     "sectoral_financial_positions_bnr_cnf_source_screening": "model/dynamics/sectoral_financial_positions_bnr_cnf_source_screening.json",
     "validation_recovery_stage_terminal_assessment": "model/registries/validation_recovery_stage_terminal_assessment.json",
-    "sectoral_financial_positions_bnr_quarterly_s13_source_screening": "model/dynamics/sectoral_financial_positions_bnr_quarterly_s13_source_screening.json"
+    "sectoral_financial_positions_bnr_quarterly_s13_source_screening": "model/dynamics/sectoral_financial_positions_bnr_quarterly_s13_source_screening.json",
+    "fiscal_capb_raw_source_preservation_assessment": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json"
   },
   "canonical_state": {
     "accounting": {
@@ -106,15 +107,15 @@
         "FREEZE_TESTED_FORM_UNTIL_NEW_EVIDENCE": 3,
         "DEFER_UNTIL_NEW_OBSERVED_POPULATION_BRIDGE_SOURCE": 1,
         "DEFER_UNTIL_MATCHED_AGGREGATE_OR_MORTGAGE_PORTFOLIO_SOURCE": 1,
-        "SELECTIVE_REOPEN_RAW_SOURCE_PRESERVATION": 1,
+        "FREEZE_SOURCE_COMPLETE_UNTIL_SEPARATELY_PREREGISTERED_DESIGN_OR_NEW_EVIDENCE": 1,
         "DEFER_UNTIL_FORMATION_TIME_EXPECTATIONS_AND_REAL_TIME_GAP_VINTAGES": 1,
         "DEFER_UNTIL_JOINT_EXPOSURE_SOURCE": 1
       },
-      "current_empirical_queue_state": "SELECTIVE_REOPEN_FISCAL_CAPB_RAW_SOURCE_PRESERVATION_READY",
+      "current_empirical_queue_state": "ALL_REGISTERED_MECHANISMS_FROZEN_WAITING_OR_EXPLICITLY_BLOCKED",
       "calibration_cycle_open": false,
       "reopen_registry_entry_count": 11,
       "all_reopen_conditions_registered": true,
-      "reopen_governance_state": "DECLARED_TRIGGER_SATISFIED_RAW_PRESERVATION_GATE_NO_ESTIMATION"
+      "reopen_governance_state": "DECLARED_TRIGGER_REQUIRED_NO_AUTOMATIC_ESTIMATION"
     },
     "scientific_stage": {
       "name": "Validation Recovery / Empirical Basis Expansion",
@@ -123,14 +124,18 @@
       "active_autonomous_empirical_task": null,
       "model_complete": false,
       "release_ready": false,
-      "selective_reopen_active": true,
-      "selective_reopen_mechanism": "fiscal_primary_balance_reaction",
-      "selective_reopen_scope": "CAPB_REALTIME_VINTAGE_SOURCE_MATERIALISATION_AND_TIMING_ADJUDICATION_ONLY",
-      "active_manual_empirical_gate": "FISCAL_PRIMARY_BALANCE_CAPB_RAW_SOURCE_PRESERVATION",
-      "selective_reopen_execution_state": "SOURCE_BOUNDARY_ADJUDICATED_RAW_SOURCE_PRESERVATION_PENDING",
+      "selective_reopen_active": false,
+      "selective_reopen_mechanism": null,
+      "selective_reopen_scope": null,
+      "active_manual_empirical_gate": null,
+      "selective_reopen_execution_state": "RAW_SOURCE_PRESERVATION_COMPLETE_RETURNED_TO_BASELINE_HOLD",
       "fiscal_capb_timing_adjudication": "model/calibration_validation/fiscal_capb_timing_adjudication_2026_09_20.json",
       "fiscal_capb_pre2022_source_probe_assessment": "model/calibration_validation/fiscal_capb_pre2022_source_probe_assessment_2026_09_20.json",
-      "fiscal_capb_measurement_semantic_refinement": "model/calibration_validation/fiscal_capb_measurement_semantic_refinement_2026_09_20.json"
+      "fiscal_capb_measurement_semantic_refinement": "model/calibration_validation/fiscal_capb_measurement_semantic_refinement_2026_09_20.json",
+      "fiscal_capb_repository_raw_bytes_retained": true,
+      "fiscal_capb_raw_source_preservation_assessment": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json",
+      "fiscal_capb_retained_raw_source_branch": "source-vintage/fiscal-capb-raw-2026-09-20",
+      "fiscal_capb_retained_raw_source_commit": "efb1f3ae5b025176645d45276b684efe65aa4174"
     }
   },
   "hard_invariants": [
