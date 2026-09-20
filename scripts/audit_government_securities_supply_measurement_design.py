@@ -165,7 +165,7 @@ def audit_supply_measurement_design(
             errors.append(f"measurement design may not promote {key}")
 
     next_task = review["next_task"]
-    if next_task["id"] != "mof_announced_RON_primary_supply_source_vintage_pilot":
+    if next_task["id"] != "mof_announced_RON_primary_supply_full_2025_extension":
         errors.append("measurement-design next task changed")
     if next_task["authorization"] != (
         "RAW_SOURCE_RETENTION_EXACT_EVENT_EXTRACTION_AND_REFERENCE_MODE_PILOT_ONLY"
@@ -191,7 +191,7 @@ def audit_supply_measurement_design(
     if source_review.get("single_scalar_search_superseded_for_primary_recovery_path") is not True:
         errors.append("source-boundary scalar search not marked superseded")
     if source_review["next_task"]["id"] != (
-        "mof_announced_RON_primary_supply_source_vintage_pilot"
+        "mof_announced_RON_primary_supply_full_2025_extension"
     ):
         errors.append("source-boundary next task not advanced")
 
@@ -283,7 +283,7 @@ def audit_supply_measurement_design(
     if dynamic.get("government_securities_supply_stock_normalisation_required") is not False:
         errors.append("model contract may not require stock normalisation")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_supply_source_vintage_pilot"
+        "mof_announced_RON_primary_supply_full_2025_extension"
     ):
         errors.append("model contract next task changed")
 
@@ -339,7 +339,7 @@ def main() -> None:
                 "umbrella_node_resolved": False,
                 "first_reference_mode_priority": "announced_RON_primary_supply_level",
                 "feedback_activation_authorized": False,
-                "next_task": "mof_announced_RON_primary_supply_source_vintage_pilot",
+                "next_task": "mof_announced_RON_primary_supply_full_2025_extension",
             },
             indent=2,
         )
