@@ -172,7 +172,12 @@
       "system-level sensitivity",
       "extreme-condition behaviour",
       "numerical robustness"
-    ]
+    ],
+    "numerical_integration_contract": "model/dynamics/numerical_integration_contract.json",
+    "current_structural_integration_convergence": "PASS",
+    "current_integrated_numerical_robustness": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
+    "default_dt_delay_adequacy": "CONDITIONAL_ON_TAU_GREATER_THAN_0_75_YEARS",
+    "numerical_integration_rule": "Structural Euler primitives pass partition/convergence tests, but this is not integrated-model numerical validation. Every future active delay must have a validated tau, satisfy dt/tau < 1/3, and pass time-step halving; the quarterly default dt is adequate only for tau > 0.75 years under the reference rule."
   },
   "maturity_dimensions": {
     "Accounting / Stock-Flow Core": "PARTIAL_PASS",
