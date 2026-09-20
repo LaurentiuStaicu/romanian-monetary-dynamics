@@ -1,0 +1,159 @@
+{
+  "contract_version": "0.1",
+  "purpose": "Remove sign ambiguity from currently executable behavioural equations. When an equation already carries the causal sign outside a beta parameter, that beta is a non-negative magnitude; a negative fitted value is evidence against the frozen form rather than a silent sign reversal.",
+  "scope": "Every parameter of every non-null behavioural implementation in model/empirical_dynamics/mechanism_registry.json.",
+  "semantics_vocabulary": [
+    "UNRESTRICTED_SIGNED_INTERCEPT",
+    "NONNEGATIVE_MAGNITUDE",
+    "UNIT_INTERVAL_SHARE",
+    "UNIT_INTERVAL_PERSISTENCE"
+  ],
+  "hard_rules": {
+    "equation_operator_owns_causal_sign_when_parameter_is_nonnegative_magnitude": true,
+    "negative_magnitude_parameter_is_invalid_input": true,
+    "negative_estimate_for_magnitude_parameter_requires_candidate_failure_or_new_preregistered_form": true,
+    "no_absolute_value_repair_of_negative_estimates": true,
+    "no_post_fit_sign_flip": true,
+    "intercepts_may_be_signed": true,
+    "shares_and_persistence_must_respect_structural_bounds": true,
+    "parameter_semantics_do_not_authorize_estimation_or_activation": true
+  },
+  "equations": [
+    {
+      "mechanism_id": "government_refinancing_effective_rate",
+      "implementation": "refinancing_effective_rate",
+      "parameters": [
+        {
+          "registry_id": "m[t]",
+          "runtime_name": "refinancing_share",
+          "semantic": "UNIT_INTERVAL_SHARE",
+          "bounds": [
+            0,
+            1
+          ],
+          "equation_operator": "convex_weight",
+          "sign_interpretation": "Share of opening debt stock repriced/refinanced in the declared observation period."
+        }
+      ]
+    },
+    {
+      "mechanism_id": "household_consumption_response",
+      "implementation": "household_consumption_growth",
+      "parameters": [
+        {
+          "registry_id": "alpha",
+          "runtime_name": "intercept",
+          "semantic": "UNRESTRICTED_SIGNED_INTERCEPT",
+          "equation_operator": "+"
+        },
+        {
+          "registry_id": "beta_y",
+          "runtime_name": "income_sensitivity",
+          "semantic": "NONNEGATIVE_MAGNITUDE",
+          "lower_bound": 0,
+          "equation_operator": "+",
+          "sign_interpretation": "A positive magnitude means higher disposable-income growth raises predicted consumption growth under this candidate form."
+        },
+        {
+          "registry_id": "beta_r",
+          "runtime_name": "rate_sensitivity",
+          "semantic": "NONNEGATIVE_MAGNITUDE",
+          "lower_bound": 0,
+          "equation_operator": "-",
+          "sign_interpretation": "The minus sign is structural; a negative beta_r would double-reverse the intended relation and is not an admissible parameter value for this frozen form."
+        },
+        {
+          "registry_id": "beta_ds",
+          "runtime_name": "debt_service_sensitivity",
+          "semantic": "NONNEGATIVE_MAGNITUDE",
+          "lower_bound": 0,
+          "equation_operator": "-",
+          "sign_interpretation": "The minus sign is structural; higher debt-service burden weakens predicted consumption only when beta_ds is treated as a non-negative magnitude."
+        }
+      ]
+    },
+    {
+      "mechanism_id": "aggregate_bank_credit_response",
+      "implementation": "aggregate_credit_growth",
+      "parameters": [
+        {
+          "registry_id": "alpha",
+          "runtime_name": "intercept",
+          "semantic": "UNRESTRICTED_SIGNED_INTERCEPT",
+          "equation_operator": "+"
+        },
+        {
+          "registry_id": "beta_y",
+          "runtime_name": "activity_sensitivity",
+          "semantic": "NONNEGATIVE_MAGNITUDE",
+          "lower_bound": 0,
+          "equation_operator": "+"
+        },
+        {
+          "registry_id": "beta_r",
+          "runtime_name": "rate_sensitivity",
+          "semantic": "NONNEGATIVE_MAGNITUDE",
+          "lower_bound": 0,
+          "equation_operator": "-"
+        },
+        {
+          "registry_id": "beta_npl",
+          "runtime_name": "npl_sensitivity",
+          "semantic": "NONNEGATIVE_MAGNITUDE",
+          "lower_bound": 0,
+          "equation_operator": "-"
+        },
+        {
+          "registry_id": "beta_cap",
+          "runtime_name": "capital_sensitivity",
+          "semantic": "NONNEGATIVE_MAGNITUDE",
+          "lower_bound": 0,
+          "equation_operator": "+"
+        }
+      ]
+    },
+    {
+      "mechanism_id": "credit_risk_npl_response",
+      "implementation": "npl_ratio_change",
+      "parameters": [
+        {
+          "registry_id": "alpha",
+          "runtime_name": "intercept",
+          "semantic": "UNRESTRICTED_SIGNED_INTERCEPT",
+          "equation_operator": "+"
+        },
+        {
+          "registry_id": "beta_y",
+          "runtime_name": "output_sensitivity",
+          "semantic": "NONNEGATIVE_MAGNITUDE",
+          "lower_bound": 0,
+          "equation_operator": "-"
+        },
+        {
+          "registry_id": "beta_ds",
+          "runtime_name": "debt_service_sensitivity",
+          "semantic": "NONNEGATIVE_MAGNITUDE",
+          "lower_bound": 0,
+          "equation_operator": "+"
+        },
+        {
+          "registry_id": "rho",
+          "runtime_name": "persistence",
+          "semantic": "UNIT_INTERVAL_PERSISTENCE",
+          "bounds": [
+            0,
+            1
+          ],
+          "equation_operator": "+"
+        }
+      ]
+    }
+  ],
+  "current_summary": {
+    "current_implementations_covered": 4,
+    "parameter_semantics_frozen": true,
+    "runtime_negative_magnitude_rejection_required": true,
+    "estimation_authorized": false,
+    "model_activation_authorized": false
+  }
+}
