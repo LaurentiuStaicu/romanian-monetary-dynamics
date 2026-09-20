@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- preregistered the government issuance–yield empirical boundary: retained the qualitative closed candidate topology while explicitly rejecting one-to-one substitution of BNR domestic-primary-market issuance into the generic closed loop; four separate bridges remain required for financing-channel allocation, supply-pressure operationalisation, primary-yield mapping and debt-stock interest-cost propagation;
 - retained the exact official BNR December 2025 Monthly Bulletin PDF used by the full-year domestic-primary-market government-securities issuance pilot, with fixed-URL acquisition, repository-retained raw bytes, byte count and SHA-256 provenance; this closes only the raw-source-retention blocker and leaves the generic issuance node unresolved;
 - completed a later-vintage BNR revision check for the domestic-primary-market issuance pilot: all 28 Jan-Jul native-currency amount cells are unchanged at published precision, and the reviewed pilot now covers all twelve months of 2025; the retained raw source closes provenance retention while structural narrowing of the issuance-yield path remains a separate gate;
 - retained the original reviewed Jan-Jul 2025 BNR domestic-primary-market government-securities pilot lineage with native RON/EUR columns and complete Q1-Q2 aggregation, subsequently extended and revision-checked to full-year 2025 without collapsing the BNR boundary into total government borrowing;
