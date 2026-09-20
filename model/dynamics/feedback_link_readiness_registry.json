@@ -111,21 +111,27 @@
       "to": "sovereign_yield",
       "sign": "+_candidate",
       "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
-      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "readiness_status": "TARGET_BOUNDARY_AVAILABLE_LINK_FORM_UNRESOLVED",
       "related_mechanisms": [
         "sovereign_yield_spread_response"
       ],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "A related sovereign-yield candidate exists, but neither the supply-pressure observable nor an exact mapping from instrument/currency-specific primary-market conditions to the generic sovereign_yield node is contracted.",
+      "reason": "The preferred observed target boundary is now explicit: ECB Romania long-term RON convergence yield near 10-year residual maturity. BNR primary-market issue rates remain diagnostic and are not a required intermediate bridge. The link is still not equation-ready because the supply-pressure observable is not fully resolved and no exact dynamic form has passed estimation/validation.",
       "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
       "partial_observed_evidence": [
         {
           "source": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
           "effect": "Instrument- and currency-specific BNR primary-market issue rates are observed for 2025, but no exact supply-pressure observable or generic sovereign_yield mapping is frozen."
         }
-      ]
+      ],
+      "primary_yield_to_sovereign_yield_boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+      "preferred_target_source": {
+        "dataset": "ECB IRS",
+        "series_key": "IRS.M.RO.L.L40.CI.0000.RON.N.Z"
+      },
+      "primary_market_rate_bridge_status": "REVIEWED_NO_ONE_TO_ONE_BRIDGE_DIAGNOSTIC_ONLY"
     },
     {
       "link_key": "government_issuance_yield_loop|sovereign_yield|government_interest_cost",
