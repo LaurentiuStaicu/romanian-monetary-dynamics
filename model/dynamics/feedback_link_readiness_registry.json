@@ -362,5 +362,170 @@
     "feedback_structures_with_all_links_exact_ready": 0,
     "current_status": "BLOCKED_ALL_REGISTERED_STRUCTURES",
     "activation_authorized": false
-  }
+  },
+  "loop_activation_readiness": [
+    {
+      "loop_id": "government_refinancing_interest_loop",
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "path_link_count": 4,
+      "exact_integrated_link_forms_ready": 0,
+      "unresolved_boundary_nodes": [
+        "government_financing_need",
+        "government_debt_issuance",
+        "government_debt_stock",
+        "government_interest_cost"
+      ],
+      "delay_candidates": [
+        "debt_service_maturity_delay"
+      ],
+      "mapped_mechanisms": [
+        {
+          "id": "government_refinancing_effective_rate",
+          "classification": "DEFERRED"
+        },
+        {
+          "id": "fiscal_primary_balance_reaction",
+          "classification": "DEFERRED"
+        }
+      ],
+      "activation_status": "BLOCKED",
+      "blockers": [
+        "EXACT_LINK_EQUATION_COVERAGE_INCOMPLETE",
+        "UNRESOLVED_FEEDBACK_BOUNDARY_NODES",
+        "DELAY_SPECIFICATION_NOT_ACTIVATION_READY",
+        "NO_ACTIVATED_EMPIRICAL_MECHANISM"
+      ],
+      "quantitative_activation_authorized": false
+    },
+    {
+      "loop_id": "government_issuance_yield_loop",
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "path_link_count": 5,
+      "exact_integrated_link_forms_ready": 0,
+      "unresolved_boundary_nodes": [
+        "government_debt_issuance",
+        "government_securities_supply_pressure",
+        "sovereign_yield",
+        "government_interest_cost",
+        "government_financing_need"
+      ],
+      "delay_candidates": [
+        "portfolio_reallocation_delay",
+        "debt_service_maturity_delay"
+      ],
+      "mapped_mechanisms": [
+        {
+          "id": "sovereign_yield_spread_response",
+          "classification": "CANDIDATE"
+        }
+      ],
+      "activation_status": "BLOCKED",
+      "blockers": [
+        "EXACT_LINK_EQUATION_COVERAGE_INCOMPLETE",
+        "UNRESOLVED_FEEDBACK_BOUNDARY_NODES",
+        "DELAY_SPECIFICATION_NOT_ACTIVATION_READY",
+        "NO_ACTIVATED_EMPIRICAL_MECHANISM"
+      ],
+      "quantitative_activation_authorized": false
+    },
+    {
+      "loop_id": "bank_credit_balance_sheet_loop",
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "path_link_count": 4,
+      "exact_integrated_link_forms_ready": 0,
+      "unresolved_boundary_nodes": [
+        "credit_flow",
+        "loan_stock",
+        "debt_service_and_credit_risk",
+        "credit_supply_capacity"
+      ],
+      "delay_candidates": [
+        "credit_risk_recognition_delay",
+        "credit_supply_adjustment_delay"
+      ],
+      "mapped_mechanisms": [
+        {
+          "id": "aggregate_bank_credit_response",
+          "classification": "CANDIDATE"
+        },
+        {
+          "id": "credit_risk_npl_response",
+          "classification": "DEFERRED"
+        }
+      ],
+      "activation_status": "BLOCKED",
+      "blockers": [
+        "EXACT_LINK_EQUATION_COVERAGE_INCOMPLETE",
+        "UNRESOLVED_FEEDBACK_BOUNDARY_NODES",
+        "DELAY_SPECIFICATION_NOT_ACTIVATION_READY",
+        "NO_ACTIVATED_EMPIRICAL_MECHANISM"
+      ],
+      "quantitative_activation_authorized": false
+    },
+    {
+      "loop_id": "monetary_credit_transmission_loop",
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "path_link_count": 5,
+      "exact_integrated_link_forms_ready": 0,
+      "unresolved_boundary_nodes": [
+        "market_and_lending_rates",
+        "credit_flow",
+        "private_demand_and_investment",
+        "inflationary_pressure"
+      ],
+      "delay_candidates": [
+        "monetary_transmission_delay"
+      ],
+      "mapped_mechanisms": [
+        {
+          "id": "monetary_policy_lending_rate_pass_through",
+          "classification": "CANDIDATE"
+        },
+        {
+          "id": "monetary_policy_reaction_function",
+          "classification": "DEFERRED"
+        }
+      ],
+      "activation_status": "BLOCKED",
+      "blockers": [
+        "EXACT_LINK_EQUATION_COVERAGE_INCOMPLETE",
+        "UNRESOLVED_FEEDBACK_BOUNDARY_NODES",
+        "DELAY_SPECIFICATION_NOT_ACTIVATION_READY",
+        "NO_ACTIVATED_EMPIRICAL_MECHANISM"
+      ],
+      "quantitative_activation_authorized": false
+    },
+    {
+      "loop_id": "external_fx_refinancing_loop",
+      "topology_status": "OPEN_CHAIN",
+      "path_link_count": 4,
+      "exact_integrated_link_forms_ready": 0,
+      "unresolved_boundary_nodes": [
+        "exchange_rate_depreciation",
+        "fx_debt_service_burden",
+        "refinancing_need",
+        "risk_premium",
+        "exchange_rate_pressure"
+      ],
+      "delay_candidates": [
+        "refinancing_maturity_delay",
+        "fx_pass_through_delay"
+      ],
+      "mapped_mechanisms": [
+        {
+          "id": "external_fx_refinancing_feedback",
+          "classification": "DEFERRED"
+        }
+      ],
+      "activation_status": "BLOCKED",
+      "blockers": [
+        "EXACT_LINK_EQUATION_COVERAGE_INCOMPLETE",
+        "UNRESOLVED_FEEDBACK_BOUNDARY_NODES",
+        "DELAY_SPECIFICATION_NOT_ACTIVATION_READY",
+        "NO_ACTIVATED_EMPIRICAL_MECHANISM",
+        "OPEN_CHAIN_NOT_CLOSED"
+      ],
+      "quantitative_activation_authorized": false
+    }
+  ]
 }
