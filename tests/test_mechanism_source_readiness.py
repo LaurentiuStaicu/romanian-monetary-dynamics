@@ -54,25 +54,16 @@ class MechanismSourceReadinessTests(unittest.TestCase):
 
     def test_next_step_is_declared_selective_fiscal_source_reopen(self) -> None:
         step = self.readiness["current_next_step"]
-        self.assertEqual(
-            step["mechanism_id"],
-            "fiscal_primary_balance_reaction",
-        )
-        self.assertEqual(
-            step["action"],
-            "MANUAL_DISPATCH_CAPB_RAW_SOURCE_PRESERVATION",
-        )
+        self.assertEqual(step["mechanism_id"], "SCIENTIFIC_BASELINE")
+        self.assertEqual(step["action"], "EVIDENCE_TRIGGERED_BASELINE_HOLD")
         self.assertFalse(step["calibration_cycle_open"])
         self.assertEqual(
             step["authorized_scope"],
-            "CAPB_REVIEWED_RAW_SOURCE_PRESERVATION_ONLY",
+            "NONE_UNTIL_DECLARED_REOPEN_TRIGGER_OR_SEPARATE_PREREGISTRATION",
         )
-        self.assertEqual(
-            step["execution_mode"],
-            "MANUAL_ONLY_REVIEWED_ARTIFACT_PRESERVATION",
-        )
-        self.assertIn("13-observation", step["reason"])
-        self.assertIn("reviewed raw bytes", step["reason"])
+        self.assertEqual(step["execution_mode"], "NO_ACTIVE_EMPIRICAL_TASK")
+        self.assertIn("source-only selective reopen", step["reason"])
+        self.assertIn("no estimation", step["reason"])
 
         mechanisms = {
             item["id"]: item for item in self.readiness["mechanisms"]
@@ -283,13 +274,13 @@ class MechanismSourceReadinessTests(unittest.TestCase):
         fiscal = mechanisms["fiscal_primary_balance_reaction"]
         self.assertEqual(
             fiscal["source_readiness"],
-            "STRUCTURAL_PRIMARY_REALTIME_WINDOW_ADJUDICATED_RAW_SOURCE_PRESERVATION_PENDING",
+            "STRUCTURAL_PRIMARY_REALTIME_WINDOW_ADJUDICATED_RAW_SOURCE_RETAINED_BASELINE_HOLD",
         )
         self.assertEqual(
             fiscal["priority_group"],
-            "SELECTIVE_REOPEN_RAW_SOURCE_PRESERVATION",
+            "FREEZE_SOURCE_COMPLETE_UNTIL_SEPARATELY_PREREGISTERED_DESIGN_OR_NEW_EVIDENCE",
         )
-        self.assertTrue(fiscal["selective_reopen_active"])
+        self.assertFalse(fiscal["selective_reopen_active"])
         self.assertEqual(
             fiscal["capb_realtime_vintage_contract"],
             "model/calibration_validation/fiscal_reaction_capb_realtime_vintage_contract.json",
@@ -298,7 +289,7 @@ class MechanismSourceReadinessTests(unittest.TestCase):
             fiscal["capb_realtime_vintage_workflow"],
             ".github/workflows/fiscal-reaction-capb-realtime-vintage-materialisation.yml",
         )
-        self.assertFalse(fiscal["estimation_or_refit_allowed"])
+        self.assertFalse(fiscal["estimation_or_refit_allowed"])\n        self.assertTrue(fiscal["capb_repository_raw_bytes_retained"])\n        self.assertEqual(\n            fiscal["capb_raw_source_preservation_state"],\n            "EXECUTED_REVIEWED_REPOSITORY_RETAINED",\n        )
 
         fx = mechanisms["exchange_rate_pass_through_to_inflation"]
         self.assertEqual(
