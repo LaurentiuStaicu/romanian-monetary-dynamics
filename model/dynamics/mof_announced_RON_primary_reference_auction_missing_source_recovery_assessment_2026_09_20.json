@@ -1,148 +1,108 @@
 {
-  "assessment_version": "0.1",
+  "assessment_version": "0.2",
   "assessed_on": "2026-09-20",
   "path_id": "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery",
   "candidate_id": "announced_RON_primary_reference_auction_supply_level",
-  "status": "BLOCKED_PROVIDER_TRANSPORT_AND_NO_ALTERNATIVE_OFFICIAL_RAW_COPY_DISCOVERED",
-  "purpose": "Close repeated source-recovery retries without treating legally existing official acts as nonexistent data and without substituting web-search snippets, third-party reproductions, inferred rows or later auction outcomes for retained raw sources.",
+  "status": "PARTIAL_RECOVERY_5_OFFICIAL_SOURCES_RECOVERED_3_REQUIRED_SOURCES_REMAIN_EVIDENCE_TRIGGERED_HOLD",
+  "purpose": "Record the successful recovery of five official raw source documents, preserve the resulting 9/12 retained source vintage and 10/12 exact final monthly materialisation, and put only the three still-missing official acts on evidence-triggered hold without imputing August, reconstructing November's missing base event row, or promoting December's superseded base schedule.",
   "current_materialisation": {
     "partial_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json",
     "source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
+    "retained_required_source_count": 9,
+    "required_missing_source_count": 3,
     "exact_final_months": [
       "2025-01",
       "2025-02",
       "2025-03",
       "2025-04",
+      "2025-05",
       "2025-06",
+      "2025-07",
+      "2025-09",
+      "2025-10",
+      "2025-11"
+    ],
+    "exact_final_month_count": 10,
+    "event_level_complete_final_months": [
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-09",
       "2025-10"
     ],
-    "exact_final_month_count": 6,
-    "required_missing_source_count": 8,
+    "event_level_complete_final_month_count": 9,
+    "monthly_only_exact_final_months": [
+      "2025-11"
+    ],
     "canonical_reference_mode_promoted": false
   },
   "missing_sources": [
-    {
-      "source_id": "mof_order_752_may_2025_amendment",
-      "order": "752/2025",
-      "month": "2025-05",
-      "role": "AMENDMENT",
-      "official_identity_status": "VERIFIED_IN_PORTAL_LEGISLATIV_SEARCH_AND_CONSOLIDATED_OMF_728",
-      "raw_repository_source_status": "UNAVAILABLE",
-      "stable_official_pdf_discovered": false
-    },
-    {
-      "source_id": "mof_order_1088_july_2025",
-      "order": "1088/2025",
-      "month": "2025-07",
-      "role": "BASE",
-      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
-      "official_legal_url": "https://legislatie.just.ro/public/DetaliiDocument/299572",
-      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
-      "stable_official_pdf_discovered": false
-    },
     {
       "source_id": "mof_order_1221_august_2025",
       "order": "1221/2025",
       "month": "2025-08",
       "role": "BASE",
-      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
-      "official_legal_url": "https://legislatie.just.ro/Public/FormaPrintabila/00000G1PDDT6BYBUL5X0XOPOZQICRDM9",
-      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
-      "stable_official_pdf_discovered": false
-    },
-    {
-      "source_id": "mof_order_1452_september_2025",
-      "order": "1452/2025",
-      "month": "2025-09",
-      "role": "BASE",
-      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
-      "official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocument/301803",
-      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
-      "stable_official_pdf_discovered": false
+      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_IDENTITY_KNOWN",
+      "raw_repository_source_status": "UNAVAILABLE",
+      "stable_official_pdf_discovered": false,
+      "effect": "August final monthly value remains unavailable."
     },
     {
       "source_id": "mof_order_1795_november_2025",
       "order": "1795/2025",
       "month": "2025-11",
       "role": "BASE",
-      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
-      "official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/303894",
-      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
-      "stable_official_pdf_discovered": false
-    },
-    {
-      "source_id": "mof_order_1831_november_2025_amendment",
-      "order": "1831/2025",
-      "month": "2025-11",
-      "role": "AMENDMENT",
-      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
-      "official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocument/304106",
-      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
-      "stable_official_pdf_discovered": false
-    },
-    {
-      "source_id": "mof_order_1928_december_2025",
-      "order": "1928/2025",
-      "month": "2025-12",
-      "role": "BASE",
-      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
-      "official_legal_url": "https://legislatie.just.ro/Public/FormaPrintabila/00000G1RB4W7CFF2RO825LZVAE9ZO2TI",
-      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
-      "stable_official_pdf_discovered": false
+      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_IDENTITY_KNOWN",
+      "raw_repository_source_status": "UNAVAILABLE",
+      "stable_official_pdf_discovered": false,
+      "effect": "November final monthly total is exact from OMF 1831, but missing Annex 1 event row(s) are not inferred."
     },
     {
       "source_id": "mof_order_1998_december_2025_amendment",
       "order": "1998/2025",
       "month": "2025-12",
       "role": "AMENDMENT",
-      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_URL_FROZEN",
-      "official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/305670",
-      "raw_repository_source_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
-      "stable_official_pdf_discovered": false
+      "official_identity_status": "DIRECT_OFFICIAL_PORTAL_IDENTITY_KNOWN",
+      "raw_repository_source_status": "UNAVAILABLE",
+      "stable_official_pdf_discovered": false,
+      "effect": "December final monthly value remains unavailable; OMF 1928 base value is not promoted."
     }
   ],
   "transport_evidence": {
-    "provider": "Portal Legislativ — legislatie.just.ro",
-    "runner": "GitHub Actions ubuntu-latest",
-    "attempts": [
-      "urllib request with browser-like headers: remote connection closed before usable response",
-      "curl with redirects/retries/browser headers over HTTP/2: protocol error",
-      "curl forced HTTP/1.1: curl error 52 empty reply from server",
-      "direct frozen DetaliiDocument/FormaPrintabila URLs: same empty-reply transport failure"
-    ],
-    "alternative_official_copy_search": {
-      "domains_screened": [
-        "mfinante.gov.ro",
-        "static.anaf.ro"
-      ],
-      "stable_exact_raw_copy_found_for_missing_sources": false,
-      "search_date": "2026-09-20"
-    }
+    "provider_context": "MF/ANAF official PDFs plus Portal Legislativ legal identities",
+    "successful_recovery": "Five previously missing exact official PDFs were discovered, identity-checked, hashed and retained.",
+    "remaining_recovery": "Three required acts still lack reproducibly retained official raw copies after distinct MF/ANAF filename and Portal transport probes.",
+    "web_index_text_is_not_treated_as_repository_raw_source": true
   },
   "interpretation": {
     "documents_do_not_exist": false,
     "public_legal_identity_is_unavailable": false,
-    "repository_raw_retention_is_currently_unavailable": true,
+    "remaining_repository_raw_retention_is_currently_unavailable": true,
     "missing_values_may_be_imputed": false,
     "web_search_snippets_may_be_repository_raw_sources": false,
     "third_party_reproductions_may_be_repository_raw_sources": false,
-    "later_auction_outcomes_may_reconstruct_ex_ante_announcements": false
+    "later_auction_outcomes_may_reconstruct_ex_ante_announcements": false,
+    "exact_monthly_total_may_substitute_for_missing_event_rows": false
   },
   "reopen_conditions": [
     {
       "id": "stable_official_pdf_or_file_transport",
-      "trigger": "A stable exact MF/ANAF/other official-host raw file becomes discoverable for at least one missing order.",
-      "effect": "Retain and hash only the newly available official source, then materialise only its authorized event/version contribution."
+      "trigger": "A stable exact official raw file becomes available for OMF 1221, OMF 1795 or OMF 1998.",
+      "effect": "Retain/hash only the newly available official source and rematerialise only the affected month/version."
     },
     {
       "id": "portal_transport_becomes_reproducible",
-      "trigger": "Portal Legislativ direct act transport becomes reproducibly accessible to the repository source-vintage workflow.",
-      "effect": "Re-run exact identity checks and raw retention for the frozen direct official URLs."
+      "trigger": "Portal Legislativ direct act transport becomes reproducibly accessible to the source-vintage workflow for a remaining act.",
+      "effect": "Retain exact act bytes, rerun identity checks, then rematerialise the affected boundary."
     },
     {
       "id": "verifiable_official_raw_file_supplied",
-      "trigger": "An exact official raw document is supplied with verifiable act identity and official provenance.",
-      "effect": "Hash, retain and audit the source before any event materialisation."
+      "trigger": "An exact official raw document for a remaining act is supplied with verifiable provenance.",
+      "effect": "Hash, retain and audit it before any materialisation."
     }
   ],
   "scientific_effect": {
@@ -158,7 +118,8 @@
   "path_disposition": {
     "active_polling": false,
     "state": "EVIDENCE_TRIGGERED_HOLD",
-    "reason": "Repeated identical transport retries add no information. Recovery should reopen only on a new official transport/source trigger."
+    "remaining_required_source_count": 3,
+    "reason": "Five sources were recovered. Repeated probes for the remaining three add no information unless a new official transport/source path appears."
   },
   "next_independent_issuance_yield_task": {
     "id": "primary_yield_to_sovereign_yield_boundary_review",
@@ -166,5 +127,27 @@
     "may_construct_generic_sovereign_yield": false,
     "may_estimate_yield_effect": false,
     "may_activate_feedback": false
-  }
+  },
+  "recovered_sources": [
+    {
+      "source_id": "mof_order_752_may_2025_amendment",
+      "effect": "May final event-level schedule recovered; final competitive total 4,000m RON."
+    },
+    {
+      "source_id": "mof_order_1088_july_2025",
+      "effect": "July event-level schedule recovered; final competitive total 5,800m RON."
+    },
+    {
+      "source_id": "mof_order_1452_september_2025",
+      "effect": "September event-level schedule recovered; final competitive total 6,200m RON."
+    },
+    {
+      "source_id": "mof_order_1831_november_2025_amendment",
+      "effect": "November final monthly total 5,800m RON recovered; event-level remains incomplete because base OMF 1795 Annex 1 is missing."
+    },
+    {
+      "source_id": "mof_order_1928_december_2025",
+      "effect": "December base schedule 4,500m RON retained as information-time history only; final December remains unavailable because OMF 1998 is missing."
+    }
+  ]
 }
