@@ -3,7 +3,7 @@
   "frozen_on": "2026-09-19",
   "purpose": "Canonical reopen-condition registry for behavioural-mechanism research. It operationalises the closed scientific baseline by stating what new evidence or external event is required before each frozen/deferred mechanism may advance, and what does not constitute a reopen trigger. Reopening authorises only the next declared evidence/identification gate; it never automatically authorises estimation, holdout inspection, causal claims, System Dynamics activation or behavioural closure.",
   "source_readiness_registry": "model/calibration_validation/mechanism_source_readiness.json",
-  "current_baseline_action": "MANUAL_DISPATCH_CAPB_REALTIME_VINTAGE_MATERIALISATION",
+  "current_baseline_action": "MANUAL_DISPATCH_CAPB_PRE2022_SOURCE_STRUCTURE_PROBE",
   "current_active_calibration_cycle_open": false,
   "current_validated_reference_behavioural_mechanisms": 0,
   "mechanisms": {
@@ -175,13 +175,15 @@
     },
     "fiscal_primary_balance_reaction": {
       "classification": "DEFERRED",
-      "source_readiness": "REOPENED_CAPB_SOURCE_GATE_READY_MANUAL_MATERIALISATION_PENDING",
+      "source_readiness": "CAPB_9_RELEASE_TIMING_ADJUDICATED_PRE2022_SOURCE_PROBE_AND_RAW_RETENTION_PENDING",
       "governing_evidence": [
         "model/calibration_validation/fiscal_primary_balance_source_boundary_review.json",
         "model/calibration_validation/fiscal_reaction_annual_structural_selection_result.json",
         "model/calibration_validation/fiscal_reaction_annual_selection_execution_gate.json",
         "model/registries/fiscal_capb_reopen_assessment_2026_09_19.json",
-        "model/calibration_validation/fiscal_reaction_capb_realtime_vintage_contract.json"
+        "model/calibration_validation/fiscal_reaction_capb_realtime_vintage_contract.json",
+        "model/calibration_validation/fiscal_capb_timing_adjudication_2026_09_20.json",
+        "model/calibration_validation/fiscal_reaction_capb_pre2022_source_probe_contract.json"
       ],
       "frozen_boundary": "The preregistered annual lagged-state fiscal-reaction form failed structural selection before the untouched 2018-2024 final evaluation window opened.",
       "reopen_when": "A separately preregistered cycle is justified by genuinely new measurement or identification evidence, such as a cyclically adjusted primary-balance vintage, longer real-time historical vintages or an independently justified regime/identification design.",
@@ -191,7 +193,7 @@
         "opening the untouched final evaluation to choose a replacement form",
         "using later revised information as if available in real time"
       ],
-      "reopen_effect": "MANUAL_CAPB_REALTIME_VINTAGE_SOURCE_MATERIALISATION_THEN_TIMING_ADJUDICATION_ONLY",
+      "reopen_effect": "PRE2022_CAPB_SOURCE_STRUCTURE_PROBE_AND_RAW_BYTE_PRESERVATION_ONLY",
       "reopened_on": "2026-09-19",
       "reopen_trigger_satisfied": true,
       "reopen_authorized_scope": "CAPB_REALTIME_VINTAGE_SOURCE_MATERIALISATION_AND_TIMING_ADJUDICATION_ONLY",
@@ -252,5 +254,5 @@
   "selective_reopen_active": true,
   "selective_reopen_mechanism": "fiscal_primary_balance_reaction",
   "selective_reopen_scope": "CAPB_REALTIME_VINTAGE_SOURCE_MATERIALISATION_AND_TIMING_ADJUDICATION_ONLY",
-  "selective_reopen_execution_state": "READY_MANUAL_WORKFLOW_DISPATCH_REQUIRED_NOT_EXECUTED"
+  "selective_reopen_execution_state": "TIMING_ADJUDICATED_PRE2022_SOURCE_PROBE_AND_RAW_RETENTION_PENDING"
 }
