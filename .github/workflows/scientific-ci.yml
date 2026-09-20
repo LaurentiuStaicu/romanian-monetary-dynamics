@@ -174,6 +174,9 @@ jobs:
       - name: Audit BNR instrument-specific primary-market rate pilot
         run: python scripts/audit_bnr_primary_market_yield_pilot.py
 
+      - name: Audit government securities supply-pressure source boundary
+        run: python scripts/audit_government_securities_supply_pressure_source_boundary.py
+
       - name: Recompute dimensional consistency independently
         run: python scripts/audit_dimensional_consistency.py
 
