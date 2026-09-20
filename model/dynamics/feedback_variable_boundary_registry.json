@@ -1,0 +1,236 @@
+{
+  "registry_version": "0.1",
+  "purpose": "Make the current endogenous/exogenous boundary explicit and machine-checkable for every variable appearing in the qualitative feedback registry, without converting candidate topology into active endogenous structure.",
+  "allowed_current_boundary_classes": [
+    "ENDOGENOUS",
+    "EXOGENOUS",
+    "OBSERVED_FORCING",
+    "POLICY_INPUT",
+    "UNRESOLVED"
+  ],
+  "current_state": {
+    "behavioural_closure_active": false,
+    "quantitatively_active_feedback_loops": 0,
+    "boundary_coverage": "COMPLETE_FOR_REGISTERED_FEEDBACK_NODES",
+    "endogenous_closure_readiness": "BLOCKED",
+    "interpretation": "Coverage completeness means every registered feedback node has an explicit current classification. It does not mean the behavioural boundary is scientifically resolved."
+  },
+  "hard_rules": {
+    "qualitative_loop_membership_does_not_imply_current_endogeneity": true,
+    "observed_target_does_not_imply_observed_forcing": true,
+    "observed_forcing_requires_exact_reference_mode_and_explicit_exogenous_observed_input_status": true,
+    "no_current_endogenous_feedback_node_while_behavioural_closure_inactive": true,
+    "unresolved_does_not_mean_data_absent": true,
+    "related_reference_mode_is_not_an_exact_semantic_mapping": true,
+    "future_candidate_role_does_not_authorize_activation": true,
+    "open_chain_must_not_gain_an_inferred_closing_link": true
+  },
+  "variables": [
+    {
+      "id": "credit_flow",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "OBSERVED_TARGET_AVAILABLE_INACTIVE_FEEDBACK_NODE",
+      "exact_reference_mode_id": "credit_flow",
+      "classification_basis": "An exact observed credit_flow reference target exists, but observed-target status does not establish whether the integrated feedback node will ultimately be endogenous, exogenous or imposed during a specific partial-model experiment.",
+      "related_reference_modes": [
+        "credit_flow"
+      ],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "credit_supply_capacity",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "related_reference_modes": [],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "debt_service_and_credit_risk",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "related_reference_modes": [],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "exchange_rate_depreciation",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "related_reference_modes": [],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "exchange_rate_pressure",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_OPEN_CHAIN_TERMINUS",
+      "exact_reference_mode_id": null,
+      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "related_reference_modes": [],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "fx_debt_service_burden",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "related_reference_modes": [],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "government_debt_issuance",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "related_reference_modes": [],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "government_debt_stock",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "OBSERVED_TARGET_AVAILABLE_INACTIVE_FEEDBACK_NODE",
+      "exact_reference_mode_id": "government_debt_stock",
+      "classification_basis": "An observed Maastricht-debt reference target exists, but the feedback node's integrated endogenous stock boundary is not frozen and must not be conflated with market-valued holder-by-issuer Accounting Spine positions.",
+      "related_reference_modes": [
+        "government_debt_stock"
+      ],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "government_financing_need",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "related_reference_modes": [],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "government_interest_cost",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "Observed government_interest_burden and government_effective_interest_rate targets exist, but neither is definitionally identical to the generic government_interest_cost node. No semantic bridge is inferred.",
+      "related_reference_modes": [
+        "government_interest_burden",
+        "government_effective_interest_rate"
+      ],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "government_securities_supply_pressure",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "related_reference_modes": [],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "inflationary_pressure",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "related_reference_modes": [],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "loan_stock",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "The feedback node is a generic loan-stock concept. The observed credit_stock reference mode is related but its exact mapping to this loop node has not been frozen.",
+      "related_reference_modes": [
+        "credit_stock"
+      ],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "market_and_lending_rates",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "The node aggregates market and lending rates. Household and NFC lending-rate targets exist, but no single canonical aggregate mapping or endogenous/exogenous role is frozen for this feedback node.",
+      "related_reference_modes": [
+        "household_lending_rate",
+        "nfc_lending_rate"
+      ],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "policy_rate",
+      "current_boundary_class": "OBSERVED_FORCING",
+      "current_runtime_role": "VALIDATION_DRIVER_ONLY",
+      "exact_reference_mode_id": "policy_rate",
+      "classification_basis": "The canonical reference-mode registry explicitly classifies policy_rate as EXOGENOUS_OBSERVED_INPUT. The monetary-policy reaction function is DEFERRED, so policy_rate is not currently generated endogenously.",
+      "related_reference_modes": [
+        "policy_rate"
+      ],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "private_demand_and_investment",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "related_reference_modes": [],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "refinancing_need",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_OPEN_CHAIN_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "The generic external-chain refinancing_need node is not definitionally identical to the observed government_refinancing_need series. No sector or instrument allocation is inferred.",
+      "related_reference_modes": [
+        "government_refinancing_need"
+      ],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "risk_premium",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "related_reference_modes": [],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    },
+    {
+      "id": "sovereign_yield",
+      "current_boundary_class": "UNRESOLVED",
+      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "exact_reference_mode_id": null,
+      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "related_reference_modes": [],
+      "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
+      "current_feedback_activation_authorized": false
+    }
+  ]
+}

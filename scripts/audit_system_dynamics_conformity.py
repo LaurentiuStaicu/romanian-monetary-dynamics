@@ -452,6 +452,7 @@ def main() -> None:
     model = load("model/registries/model_contract.json")
     core = load("model/dynamics/core_contract.json")
     feedback = load("model/dynamics/feedback_registry.json")
+    feedback_boundary = load("model/dynamics/feedback_variable_boundary_registry.json")
     units = load("model/dynamics/unit_registry.json")
     references = load("model/dynamics/reference_modes.json")
     gate = load("model/dynamics/system_dynamics_conformity_gate.json")
@@ -552,6 +553,40 @@ def main() -> None:
 
     structures = feedback["loops"]
     check(structures, "Feedback registry must contain the candidate feedback architecture")
+
+    boundary_registry_path = "model/dynamics/feedback_variable_boundary_registry.json"
+    check(
+        gate["system_boundary"]["behavioural_boundary_registry"]
+        == boundary_registry_path,
+        "SD gate does not point to the canonical feedback-variable boundary registry",
+    )
+    path_nodes = {
+        str(node)
+        for structure in structures
+        for link in structure["path"]
+        for node in (link["from"], link["to"])
+    }
+    boundary_ids = {
+        str(item["id"]) for item in feedback_boundary["variables"]
+    }
+    check(
+        boundary_ids == path_nodes,
+        "Feedback-variable boundary registry does not cover exactly the feedback topology",
+    )
+    check(
+        feedback_boundary["current_state"]["boundary_coverage"]
+        == gate["system_boundary"]["behavioural_boundary_coverage_status"],
+        "SD gate behavioural-boundary coverage status is stale",
+    )
+    check(
+        feedback_boundary["current_state"]["endogenous_closure_readiness"]
+        == "BLOCKED",
+        "Current endogenous closure must remain blocked",
+    )
+    check(
+        gate["system_boundary"]["endogenous_closure_readiness"] == "BLOCKED",
+        "SD gate must not claim endogenous closure readiness",
+    )
 
     delay_registry = {item["id"]: item for item in feedback["delay_candidates"]}
     closed_loop_ids: list[str] = []
