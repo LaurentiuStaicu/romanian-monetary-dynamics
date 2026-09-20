@@ -1,0 +1,122 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "candidate_id": "domestic_RON_primary_market_supply_load",
+  "purpose": "Determine whether an official stock series can serve as the lagged denominator for announced RON auction supply without silently widening the market, sector, currency or valuation boundary.",
+  "decision": "NO_EXACT_ONE_TO_ONE_AUCTION_UNIVERSE_DENOMINATOR_SELECTED",
+  "numerator_boundary": {
+    "concept": "announced RON amount in Ministry domestic primary-market auctions",
+    "source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json",
+    "january_2025_exact_announced_RON_million": 5770.0,
+    "status": "EXACT_NATIVE_TABLE_VALUE_AVAILABLE",
+    "role": "EX_ANTE_AUCTION_SUPPLY"
+  },
+  "denominator_candidates": [
+    {
+      "candidate_id": "mof_RON_domestic_market_holdings_nominal",
+      "institution": "Romanian Ministry of Finance",
+      "source": "Monthly public debt report — holdings of government securities denominated in LEI issued on domestic market",
+      "frequency": "monthly",
+      "sector_boundary": "Ministry government-securities reporting boundary",
+      "instrument_boundary": "government securities issued on domestic market",
+      "currency_boundary": "RON-denominated",
+      "valuation": "available at nominal value",
+      "january_2025_exact_value_RON_million": 381933.8,
+      "strengths": [
+        "same official Ministry reporting family as the auction data",
+        "monthly",
+        "RON-denominated",
+        "nominal-value stock is dimensionally compatible with announced nominal auction amounts"
+      ],
+      "blockers": [
+        "the public report does not define the holdings table as exactly the interbank-auction universe",
+        "retail and other domestic-market security coverage relative to the auction universe is not explicitly reconciled in the reviewed source",
+        "the broader all-currency holdings total and the Flash current-outstanding presentation use different boundaries/figures"
+      ],
+      "exact_auction_universe_equivalence_established": false,
+      "selected": false
+    },
+    {
+      "candidate_id": "ecb_csec_central_government_domestic_currency_debt_securities_stock",
+      "institution": "ECB / ESCB",
+      "dataset": "CSEC — Securities issues statistics",
+      "frequency": "monthly",
+      "sector_boundary": "central government excluding social security (S1311)",
+      "instrument_boundary": "debt securities (F3)",
+      "currency_boundary": "domestic-currency series/breakdowns available",
+      "valuation": "market value",
+      "strengths": [
+        "explicit statistical sector and instrument boundary",
+        "monthly stock series",
+        "currency and maturity breakdowns available"
+      ],
+      "blockers": [
+        "market-value stock is not directly commensurate with nominal announced auction amounts",
+        "covers central-government debt securities across issuance channels rather than the exact Ministry interbank-auction universe",
+        "would require a preregistered valuation/boundary bridge before use as a supply-load denominator"
+      ],
+      "exact_auction_universe_equivalence_established": false,
+      "selected": false
+    },
+    {
+      "candidate_id": "ecb_gfs_general_government_debt_securities_face_value_stock",
+      "institution": "ECB / Eurostat",
+      "dataset": "GFS — Government finance statistics",
+      "frequency": "monthly",
+      "sector_boundary": "general government (S13)",
+      "instrument_boundary": "debt securities (F3)",
+      "currency_boundary": "currency-denomination breakdowns available",
+      "valuation": "face value",
+      "strengths": [
+        "face-value stock is valuation-compatible with nominal announced supply",
+        "monthly government debt-securities stock framework",
+        "maturity and currency breakdowns are available in the GFS family"
+      ],
+      "blockers": [
+        "S13 general-government boundary is broader than Ministry central-government auction issuance",
+        "not definitionally restricted to the domestic interbank primary-market universe",
+        "requires exact series-key selection and source-vintage retention before numerical comparison"
+      ],
+      "exact_auction_universe_equivalence_established": false,
+      "selected": false
+    }
+  ],
+  "flash_report_consistency_check": {
+    "source": "Public Debt of Romania — Flash Report, January 2025",
+    "retained_native_text": "data/source_vintages/mof-supply-pressure-probe-vintage-2026-09-20/native_text/mof_flash_report_january_2025.txt",
+    "headline_total_text": "RON 435.4 bln",
+    "RON_component_text": "RON 427.7 bln",
+    "EUR_component_text": "EUR 7.71 bln (RON 38.6 bln)",
+    "components_reconcile_to_headline": false,
+    "eligible_as_denominator": false,
+    "effect": "The Flash headline is not used to override the internally coherent monthly-report holdings tables."
+  },
+  "dimensional_rule": {
+    "numerator_unit": "million_RON_nominal_announced_amount",
+    "required_denominator_unit": "million_RON_stock_on_preregistered_compatible_boundary",
+    "ratio_unit": "dimensionless",
+    "valuation_mismatch_requires_explicit_bridge": true,
+    "sector_or_market_scope_mismatch_requires_explicit_bridge": true
+  },
+  "decision_effect": {
+    "supply_load_ratio_materialisation_authorized": false,
+    "mof_holdings_denominator_selected": false,
+    "ecb_csec_denominator_selected": false,
+    "ecb_gfs_denominator_selected": false,
+    "government_securities_supply_pressure_node_resolved": false,
+    "scalar_pressure_index_selected": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_task": {
+    "id": "supply_load_denominator_candidate_materialisation_comparison",
+    "authorization": "DESCRIPTIVE_SOURCE_MATERIALISATION_AND_BOUNDARY_COMPARISON_ONLY",
+    "scope": "Retain exact ECB denominator candidate series only if exact series keys are frozen, then compare their boundary/valuation semantics with the retained Ministry nominal holdings series. Do not select a denominator from numerical fit or correlation.",
+    "selection_criterion": "semantic_boundary_and_valuation_compatibility_before_numerical_behavior",
+    "may_compute_candidate_ratios_for_diagnostic_comparison_after_source_retention": true,
+    "may_promote_any_ratio_to_supply_pressure": false,
+    "may_activate_feedback": false
+  }
+}
