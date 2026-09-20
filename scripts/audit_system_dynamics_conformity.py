@@ -464,6 +464,7 @@ def main() -> None:
     empirical_contract = load("model/empirical_dynamics/contract.json")
     empirical_registry = load("model/empirical_dynamics/mechanism_registry.json")
     behavioural_robustness = load("model/empirical_dynamics/behavioural_robustness_contract.json")
+    behavioural_parameters = load("model/empirical_dynamics/behavioural_parameter_contract.json")
     validation_holdout = load(
         "model/calibration_validation/validation_recovery_holdout.json"
     )
@@ -507,6 +508,38 @@ def main() -> None:
         ]
         is True,
         "Behavioural closure must not override incomplete Accounting Spine readiness",
+    )
+
+    parameter_contract_path = "model/empirical_dynamics/behavioural_parameter_contract.json"
+    check(
+        empirical_registry["behavioural_parameter_contract"]
+        == parameter_contract_path,
+        "Empirical registry does not point to canonical behavioural parameter contract",
+    )
+    check(
+        behavioural_robustness["behavioural_parameter_contract"]
+        == parameter_contract_path,
+        "Behavioural robustness contract is not tied to parameter semantics",
+    )
+    check(
+        gate["feedback_activation_gate"]["behavioural_parameter_contract"]
+        == parameter_contract_path,
+        "SD gate does not point to canonical behavioural parameter contract",
+    )
+    check(
+        behavioural_parameters["current_summary"]["parameter_semantics_frozen"]
+        is True,
+        "Behavioural parameter semantics must remain frozen",
+    )
+    check(
+        behavioural_parameters["current_summary"]["estimation_authorized"]
+        is False,
+        "Behavioural parameter contract may not authorize estimation",
+    )
+    check(
+        behavioural_parameters["current_summary"]["model_activation_authorized"]
+        is False,
+        "Behavioural parameter contract may not authorize model activation",
     )
 
     robustness_path = "model/empirical_dynamics/behavioural_robustness_contract.json"
