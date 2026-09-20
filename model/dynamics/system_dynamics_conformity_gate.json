@@ -117,7 +117,13 @@
     "current_exact_integrated_link_forms_ready": 0,
     "current_feedback_structures_activation_ready": 0,
     "current_link_level_activation_readiness": "BLOCKED_ALL_REGISTERED_STRUCTURES",
-    "link_level_rule": "Loop-level mechanism association and qualitative path closure are insufficient. Every exact causal link must have a canonical integrated equation/identity with units, boundary semantics and activation evidence before the loop can become quantitative."
+    "link_level_rule": "Loop-level mechanism association and qualitative path closure are insufficient. Every exact causal link must have a canonical integrated equation/identity with units, boundary semantics and activation evidence before the loop can become quantitative.",
+    "delay_evidence_registry": "model/dynamics/delay_evidence_registry.json",
+    "current_registered_delay_candidates": 7,
+    "current_scalar_tau_activation_ready": 0,
+    "current_active_delay_candidates": 0,
+    "current_delay_parameter_status": "ALL_SCALAR_TAU_PARAMETERS_BLOCKED",
+    "delay_rule": "Evidence that a mechanism unfolds over months, quarters or a maturity distribution is not sufficient to identify a scalar first-order tau. A delay can become activation-ready only under an exact mechanism-boundary and validation contract."
   },
   "candidate_feedbacks": [
     "government_refinancing_interest_loop",

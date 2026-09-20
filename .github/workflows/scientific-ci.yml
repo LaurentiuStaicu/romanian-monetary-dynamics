@@ -162,6 +162,9 @@ jobs:
       - name: Audit feedback link activation readiness
         run: python scripts/audit_feedback_link_readiness.py
 
+      - name: Audit candidate delay evidence
+        run: python scripts/audit_delay_evidence.py
+
       - name: Audit behavioural form robustness
         run: python scripts/audit_behavioural_robustness.py
 

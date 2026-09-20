@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- added an evidence gate for all seven candidate delays; timing distributions, survey cadence, lag windows, average maturity and average re-fixing are explicitly prevented from being reused as scalar `tau` values without exact validation;
 - added exact link-level feedback readiness and a per-loop activation matrix; all 22 registered path links and all five feedback structures remain quantitatively blocked rather than treating related mechanisms or qualitative topology as integrated equations;
 - added form-level behavioural extreme-condition and structural-sensitivity tests while explicitly keeping integrated extreme-condition validation and empirical sensitivity execution blocked;
 - added an executable feedback-variable boundary gate covering every qualitative loop/chain node and preventing topology or observed-target availability from silently implying endogeneity;

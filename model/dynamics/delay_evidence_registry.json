@@ -1,0 +1,170 @@
+{
+  "registry_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "purpose": "Separate evidence that a mechanism unfolds over time from evidence sufficient to identify a scalar first-order System Dynamics delay parameter tau. No observation frequency, lag window, average maturity, average time to re-fixing or survey horizon may be converted mechanically into tau.",
+  "status_vocabulary": [
+    "DISTRIBUTED_TIMING_EVIDENCE_SCALAR_TAU_NOT_IDENTIFIED",
+    "DISCRETE_OBSERVATION_TIMING_SCALAR_TAU_NOT_IDENTIFIED",
+    "GENERAL_TIMING_EVIDENCE_SCALAR_TAU_NOT_IDENTIFIED",
+    "NO_MATCHED_DELAY_PARAMETER_EVIDENCE",
+    "SCALAR_TAU_IDENTIFIED_AND_VALIDATED"
+  ],
+  "hard_rules": {
+    "observation_frequency_is_not_tau": true,
+    "lag_window_is_not_first_order_tau": true,
+    "average_maturity_is_not_causal_delay_tau": true,
+    "average_time_to_refixing_is_not_causal_delay_tau": true,
+    "next_period_survey_expectation_is_not_tau": true,
+    "general_or_cross_country_timing_evidence_is_not_exact_rmd_tau": true,
+    "scalar_tau_requires_exact_mechanism_boundary_and_validation_contract": true,
+    "scalar_tau_must_have_explicit_time_unit": true,
+    "scalar_tau_must_not_be_activated_from_convenience_defaults": true,
+    "failed_or_deferred_behavioural_form_cannot_supply_activation_tau": true
+  },
+  "evidence_sources": {
+    "mof_debt_strategy_2024_2026": {
+      "authority": "Romania Ministry of Finance",
+      "source_type": "OFFICIAL_GOVERNMENT_DEBT_STRATEGY",
+      "url": "https://www.mfinante.gov.ro/static/10/Mfp/buletin/executii/Strategiedeadministrareadatorieipubliceguvernamentale2024_2026en.pdf",
+      "relevant_evidence": [
+        "share of debt due within one year",
+        "average time to maturity",
+        "share of debt changing interest rate within one year",
+        "average time to re-fixing"
+      ],
+      "interpretation": "Official portfolio-distribution and risk indicators support heterogeneous refinancing/repricing timing but do not identify a first-order causal delay constant for an RMD feedback equation."
+    },
+    "ecb_wp2611": {
+      "authority": "European Central Bank",
+      "source_type": "OFFICIAL_WORKING_PAPER",
+      "url": "https://www.ecb.europa.eu/pub/pdf/scpwps/ecb.wp2611~4bef71949e.en.pdf",
+      "relevant_evidence": [
+        "Romania is included among financially euroised CESEE economies",
+        "retail-rate adjustment is dynamic rather than instantaneous",
+        "the paper reports substantial correction of long-run lending-rate disequilibria within the next month in the studied CESEE sample"
+      ],
+      "interpretation": "This is timing evidence for euro retail-rate pass-through, not an exact domestic-policy-to-RON-household-lending-rate tau for the RMD monetary loop."
+    },
+    "bnr_bls_may_2024": {
+      "authority": "National Bank of Romania",
+      "source_type": "OFFICIAL_BANK_LENDING_SURVEY",
+      "url": "https://muzeu.bnr.ro/uploads/2024-5-banklendingsurvey-may2024_documentpdf_545_1733753844.pdf",
+      "relevant_evidence": [
+        "credit standards and loan demand are observed quarterly",
+        "banks report current-quarter developments and expectations for the next quarter",
+        "NPL share and risk perceptions are reported as factors affecting credit standards"
+      ],
+      "interpretation": "Quarterly survey timing supports discrete observation and expectation horizons. It does not identify a structural continuous-time credit-supply or credit-risk-recognition tau."
+    },
+    "rmd_fx_lag_contract": {
+      "authority": "RMD retained preregistration",
+      "source_type": "INTERNAL_FROZEN_CONTRACT",
+      "path": "model/calibration_validation/fx_inflation_transform_lag_window_contract.json",
+      "relevant_evidence": [
+        "FX lag blocks are frozen at 0, 1-3, 4-6 and 7-12 months",
+        "the design is a distributed predictive lag structure",
+        "the preregistered candidate later failed structural selection before holdout"
+      ],
+      "interpretation": "Distributed predictive lag blocks preserve timing information but are not a first-order System Dynamics delay constant and cannot be recycled into feedback activation after the failed evidence cycle."
+    }
+  },
+  "delays": [
+    {
+      "id": "debt_service_maturity_delay",
+      "current_tau": "TBD",
+      "unit": "year",
+      "active": false,
+      "evidence_status": "DISTRIBUTED_TIMING_EVIDENCE_SCALAR_TAU_NOT_IDENTIFIED",
+      "evidence_sources": [
+        "mof_debt_strategy_2024_2026"
+      ],
+      "reason": "Government debt maturity and re-fixing are portfolio distributions. Average maturity, average re-fixing time and one-year shares cannot be substituted for the causal timing of interest-cost propagation in the RMD loop.",
+      "next_admissible_step": "Define an exact debt-service/repricing state transition using matched opening principal, maturity/reset schedule and old/new rates; only then assess whether a scalar delay approximation is scientifically warranted.",
+      "scalar_tau_activation_ready": false
+    },
+    {
+      "id": "portfolio_reallocation_delay",
+      "current_tau": "TBD",
+      "unit": "year",
+      "active": false,
+      "evidence_status": "NO_MATCHED_DELAY_PARAMETER_EVIDENCE",
+      "evidence_sources": [],
+      "reason": "No retained Romania-specific source or validated RMD mechanism currently identifies the timing from additional government securities supply to portfolio reallocation and sovereign-yield response.",
+      "next_admissible_step": "Require an exact issuance/supply-pressure observable and a preregistered yield-response design before selecting any delay representation.",
+      "scalar_tau_activation_ready": false
+    },
+    {
+      "id": "credit_risk_recognition_delay",
+      "current_tau": "TBD",
+      "unit": "year",
+      "active": false,
+      "evidence_status": "DISCRETE_OBSERVATION_TIMING_SCALAR_TAU_NOT_IDENTIFIED",
+      "evidence_sources": [
+        "bnr_bls_may_2024"
+      ],
+      "reason": "The BNR survey provides quarterly perceptions of credit risk and NPL-related influences on standards, but survey cadence and quarter-to-quarter reporting do not identify the lag from borrower deterioration to recognised NPL/credit-risk state.",
+      "next_admissible_step": "Freeze a definitionally matched risk-state transition and recognition observable before estimating or sourcing any structural delay.",
+      "scalar_tau_activation_ready": false
+    },
+    {
+      "id": "credit_supply_adjustment_delay",
+      "current_tau": "TBD",
+      "unit": "year",
+      "active": false,
+      "evidence_status": "DISCRETE_OBSERVATION_TIMING_SCALAR_TAU_NOT_IDENTIFIED",
+      "evidence_sources": [
+        "bnr_bls_may_2024"
+      ],
+      "reason": "Actual current-quarter credit standards and next-quarter expectations establish a discrete survey horizon, not a continuous first-order adjustment constant for credit supply capacity.",
+      "next_admissible_step": "Resolve the credit-demand/supply boundary and exact credit-supply state before any lag or adjustment-speed estimation.",
+      "scalar_tau_activation_ready": false
+    },
+    {
+      "id": "monetary_transmission_delay",
+      "current_tau": "TBD",
+      "unit": "year",
+      "active": false,
+      "evidence_status": "GENERAL_TIMING_EVIDENCE_SCALAR_TAU_NOT_IDENTIFIED",
+      "evidence_sources": [
+        "ecb_wp2611"
+      ],
+      "reason": "The ECB evidence shows dynamic retail-rate pass-through and includes Romania in a CESEE sample, but it does not identify the exact domestic BNR-policy-to-RON-household-housing lending-rate delay required by the current RMD target.",
+      "next_admissible_step": "Use only the frozen prospective household pass-through contract after identifying policy events; do not translate cross-country/euro-loan adjustment speeds into RMD tau.",
+      "scalar_tau_activation_ready": false
+    },
+    {
+      "id": "refinancing_maturity_delay",
+      "current_tau": "TBD",
+      "unit": "year",
+      "active": false,
+      "evidence_status": "DISTRIBUTED_TIMING_EVIDENCE_SCALAR_TAU_NOT_IDENTIFIED",
+      "evidence_sources": [
+        "mof_debt_strategy_2024_2026"
+      ],
+      "reason": "Official maturity and re-fixing metrics support a distributed refinancing schedule. They do not identify a scalar delay for the external FX refinancing chain or any sector-specific refinancing need.",
+      "next_admissible_step": "Require currency-specific debt stocks and matched maturity/refinancing schedules on the same population boundary before choosing a delay representation.",
+      "scalar_tau_activation_ready": false
+    },
+    {
+      "id": "fx_pass_through_delay",
+      "current_tau": "TBD",
+      "unit": "year",
+      "active": false,
+      "evidence_status": "DISTRIBUTED_TIMING_EVIDENCE_SCALAR_TAU_NOT_IDENTIFIED",
+      "evidence_sources": [
+        "rmd_fx_lag_contract"
+      ],
+      "reason": "RMD already froze distributed FX lag blocks out to 12 months for a predictive inflation candidate. Those lag blocks are not a first-order delay constant, and that candidate failed before holdout.",
+      "next_admissible_step": "A future delay representation requires a separately preregistered and validated mechanism; the failed lag structure cannot be converted post hoc into System Dynamics tau.",
+      "scalar_tau_activation_ready": false
+    }
+  ],
+  "current_summary": {
+    "registered_delay_candidates": 7,
+    "scalar_tau_identified_and_validated": 0,
+    "scalar_tau_activation_ready": 0,
+    "active_delay_candidates": 0,
+    "current_status": "ALL_SCALAR_TAU_PARAMETERS_BLOCKED",
+    "activation_authorized": false
+  }
+}

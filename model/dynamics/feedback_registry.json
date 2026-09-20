@@ -262,5 +262,7 @@
   "empirical_registry_semantics": {
     "activated_label_is_not_system_dynamics_activation": true,
     "rule": "A mechanism labelled ACTIVATED in the empirical-dynamics registry is only admitted to calibration/validation. It does not activate a feedback loop or behavioural closure in the reference simulation."
-  }
+  },
+  "delay_evidence_registry": "model/dynamics/delay_evidence_registry.json",
+  "delay_semantics_rule": "Delay candidates remain inactive and tau=TBD unless the delay-evidence gate identifies and validates an exact scalar delay parameter on the same mechanism boundary. Observation frequency, lag windows, average maturity and average time to re-fixing are not tau."
 }
