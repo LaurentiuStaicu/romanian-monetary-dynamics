@@ -47,15 +47,9 @@ class FiscalCapbReopenAssessmentTests(unittest.TestCase):
     def test_current_state_has_one_source_only_selective_task(self) -> None:
         stage = self.m["scientific_stage"]
         self.assertFalse(stage["selective_reopen_active"])
-        self.assertEqual(
-            stage["selective_reopen_mechanism"],
-            "fiscal_primary_balance_reaction",
-        )
+        self.assertIsNone(stage["selective_reopen_mechanism"])
         self.assertIsNone(stage["active_autonomous_empirical_task"])
-        self.assertEqual(
-            stage["active_manual_empirical_gate"],
-            "FISCAL_PRIMARY_BALANCE_CAPB_RAW_SOURCE_PRESERVATION",
-        )
+        self.assertIsNone(stage["active_manual_empirical_gate"])
         self.assertEqual(
             stage["status"],
             "STAGE_COMPLETE_EVIDENCE_TRIGGERED_BASELINE_HOLD",
