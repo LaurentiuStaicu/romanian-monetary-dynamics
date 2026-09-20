@@ -26,18 +26,22 @@
         "do not convert a new-and-roll-over issue series into net incurrence"
       ],
       "pilot_snapshot": "model/dynamics/government_debt_issuance_bnr_pilot_2025.json",
-      "pilot_status": "REVIEWED_JAN_JUL_2025_RAW_SOURCE_NOT_RETAINED_NO_PROMOTION",
+      "pilot_status": "REVIEWED_FULL_2025_RAW_SOURCE_NOT_RETAINED_NO_PROMOTION",
       "pilot_complete_quarters": [
         "2025-Q1",
-        "2025-Q2"
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4"
       ],
-      "pilot_partial_quarters": {
-        "2025-Q3": [
-          "2025-07"
-        ]
-      },
       "raw_source_retention_status": "NOT_RETAINED_BLOCKS_PROMOTION",
-      "revision_check_status": "NOT_COMPLETED_BLOCKS_PROMOTION"
+      "revision_check_status": "PASS_NO_CHANGES_JAN_JUL_2025_FULL_YEAR_EXTENSION_COMPLETE",
+      "pilot_full_year_native_currency_coverage": true,
+      "revision_assessment": "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json",
+      "revision_check_source": "BNR Monthly Bulletin — December 2025, statistical data available as of 2026-02-24",
+      "remaining_promotion_gates": [
+        "retain exact official raw source bytes or a reproducible retained acquisition path",
+        "preregister any structural narrowing of the generic government_debt_issuance node before feedback use"
+      ]
     },
     "mof_actual_borrowing": {
       "target_id": "government_total_realized_borrowing_or_securities_funding",
