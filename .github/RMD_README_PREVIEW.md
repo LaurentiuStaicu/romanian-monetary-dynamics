@@ -47,7 +47,15 @@ RMD is intended for macro-financial research, stock-flow-consistent and System D
 
 The full sector-by-instrument accounting system is deliberately not reproduced as a large diagram on this page. The canonical sector and instrument registries are in [model/registries/sectors.json](../model/registries/sectors.json) and [model/registries/instruments.json](../model/registries/instruments.json).
 
-> **Planned visual element:** one compact suite-style system-boundary diagram will replace this note after visual approval. It will explain sectors and the accounting/evidence/dynamics layers without pretending to show the complete 6×6×7 accounting structure.
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="readme-assets/rmd-concept-overview-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="readme-assets/rmd-concept-overview-light.svg">
+    <img src="readme-assets/rmd-concept-overview-light.svg" width="1120" alt="Conceptual structure of RMD: six institutional sectors are represented through an F2–F8 Accounting Spine, checked against observed evidence and reference modes, followed by quantitatively inactive candidate dynamics and explicit activation gates. Current state: Evidence-Triggered Baseline Hold with behavioural closure inactive.">
+  </picture>
+</p>
+
+The figure is intentionally **not** a causal-loop diagram and **not** the complete 6×6×7 accounting matrix. It is a first-page orientation view. Exact bilateral coverage, feedback paths and activation status remain governed by the canonical registries.
 
 ### How RMD is structured
 
