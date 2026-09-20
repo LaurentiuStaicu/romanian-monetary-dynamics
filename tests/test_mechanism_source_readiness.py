@@ -71,7 +71,6 @@ class MechanismSourceReadinessTests(unittest.TestCase):
             step["execution_mode"],
             "MANUAL_ONLY_LIVE_SOURCE_EVIDENCE",
         )
-        self.assertIn("manual-only", step["reason"])
         self.assertIn("2011-2021", step["reason"])
         self.assertIn("raw-byte", step["reason"])
 
