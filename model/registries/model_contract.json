@@ -80,7 +80,7 @@
     "government_issuance_yield_empirical_boundary_status": "OPEN_CHAIN_PENDING_EXPLICIT_BRIDGES",
     "government_issuance_yield_conceptual_topology_status": "CLOSED_CANDIDATE_LOOP",
     "government_issuance_yield_feedback_activation_authorized": false,
-    "next_government_issuance_yield_empirical_task": "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage",
+    "next_government_issuance_yield_empirical_task": "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery",
     "government_issuance_bnr_primary_market_yield_pilot": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
     "government_issuance_bnr_primary_market_yield_pilot_status": "PASS_DESCRIPTIVE_INSTRUMENT_SPECIFIC_NO_GENERIC_YIELD_AGGREGATION",
     "government_securities_supply_pressure_source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
@@ -105,7 +105,21 @@
     "mof_announced_RON_primary_supply_monthly_series": "data/processed/mof_announced_RON_primary_supply_Q1_2025_monthly.csv",
     "mof_announced_RON_primary_supply_full_2025_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json",
     "mof_announced_RON_primary_reference_auction_supply_candidate_id": "announced_RON_primary_reference_auction_supply_level",
-    "mof_announced_RON_primary_reference_auction_supply_status": "DEFINITION_FROZEN_FULL_2025_SOURCE_VINTAGE_PENDING"
+    "mof_announced_RON_primary_reference_auction_supply_status": "PARTIAL_EXACT_EVENT_MATERIALISATION_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED",
+    "mof_announced_RON_primary_reference_auction_supply_source_vintage_contract": "model/dynamics/mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract.json",
+    "mof_announced_RON_primary_reference_auction_supply_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
+    "mof_announced_RON_primary_reference_auction_supply_partial_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json",
+    "mof_announced_RON_primary_reference_auction_supply_event_series": "data/processed/mof_announced_RON_primary_reference_auction_partial_2025_events.csv",
+    "mof_announced_RON_primary_reference_auction_supply_monthly_series": "data/processed/mof_announced_RON_primary_reference_auction_partial_2025_monthly.csv",
+    "mof_announced_RON_primary_reference_auction_supply_exact_final_months": [
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-06",
+      "2025-10"
+    ],
+    "mof_announced_RON_primary_reference_auction_supply_missing_required_source_count": 8
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
