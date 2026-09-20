@@ -1,0 +1,46 @@
+{
+  "contract_version": "0.1",
+  "purpose": "Describe the quarterly holder composition and net-incurrence decomposition of general-government F3 liabilities using the retained who-to-whom F3 replay, without equating net incurrence with gross issuance, refinancing need, or securities supply pressure.",
+  "source_replay": "model/dynamics/f3_empirical_replay_2025.json",
+  "issuer": "G",
+  "instrument": "F3",
+  "periods": [
+    "2025-Q1",
+    "2025-Q2",
+    "2025-Q3",
+    "2025-Q4"
+  ],
+  "holders": [
+    "H",
+    "C",
+    "F",
+    "G",
+    "X",
+    "BNR"
+  ],
+  "semantics": {
+    "stock": "Market-valued/ESA financial-account F3 liability stock by holder; not Maastricht gross debt at nominal/face value.",
+    "transaction": "Financial-account net incurrence of government F3 liabilities matched to holder net acquisition. Net means issuance less redemptions/repurchases on the instrument boundary; it is not gross issuance.",
+    "combined_nontransaction_change": "Revaluations plus other changes in volume combined, inherited from the F3 replay; no causal decomposition.",
+    "holder_share": "Holder F3 stock divided by total government F3 liability stock for the quarter.",
+    "concentration_hhi": "Sum of squared holder shares; descriptive only, with no concentration threshold or policy interpretation."
+  },
+  "feedback_mapping": {
+    "government_debt_issuance": "PARTIAL_OBSERVED_EVIDENCE_NOT_EXACT_NODE",
+    "government_debt_stock": "PARTIAL_INSTRUMENT_SUBSET_NOT_EXACT_NODE",
+    "government_securities_supply_pressure": "DESCRIPTIVE_HOLDER_ABSORPTION_EVIDENCE_NOT_OPERATIONALIZATION",
+    "government_financing_need": "NO_DIRECT_MAPPING"
+  },
+  "hard_rules": {
+    "net_incurrence_must_not_be_called_gross_issuance": true,
+    "net_incurrence_must_not_be_called_refinancing_need": true,
+    "holder_share_or_concentration_must_not_be_called_supply_pressure": true,
+    "market_valued_F3_must_not_be_substituted_for_Maastricht_debt": true,
+    "no_causal_inference": true,
+    "no_feedback_activation": true,
+    "no_reference_mode_promotion": true,
+    "no_behavioural_closure": true
+  },
+  "scientific_status": "OBSERVED_GOVERNMENT_F3_HOLDER_COMPOSITION_DIAGNOSTIC",
+  "feedback_activation_authorized": false
+}
