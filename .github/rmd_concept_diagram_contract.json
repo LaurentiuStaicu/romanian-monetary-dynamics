@@ -157,7 +157,7 @@
     "colour_is_not_sole_status_channel": true,
     "status_is_always_written_as_text": true,
     "dark_and_light_variants_required": true,
-    "minimum_effective_body_font_px": 18
+    "minimum_effective_body_font_px": 16
   },
   "public_readme_boundary": {
     "diagram_publication_authorized": false,
