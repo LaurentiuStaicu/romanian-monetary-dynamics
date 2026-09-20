@@ -1,9 +1,9 @@
 {
   "snapshot_id": "mof-announced-ron-primary-supply-pilot-vintage-2026-09-20",
-  "fetched_at_utc": "2026-09-20T17:06:47+00:00",
+  "fetched_at_utc": "2026-09-20T17:08:41+00:00",
   "contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
   "fetcher_script": "scripts/probe_mof_announced_RON_primary_supply_source_vintage.py",
-  "fetcher_script_sha256": "523168df6ac0201dcbd620bf3b687c51c47c3d1535157371d60c546cdf3c9a9e",
+  "fetcher_script_sha256": "02f1bc52c86809a34990ecbd7938bd61d9f8fdd0d5cfd7707c45df68b321437c",
   "native_text_extractor": "pdftotext -layout",
   "sources": [
     {
@@ -29,11 +29,11 @@
         "ANEXA 1": true,
         "ANEXA 2": true,
         "PROSPECT DE EMISIUNE": true,
-        "Data Licitaţiei": false,
+        "licitaţiei": true,
         "Valoare nominală": true,
         "SSON": true
       },
-      "all_required_anchors_found": false,
+      "all_required_anchors_found": true,
       "article_1_base_nominal_RON_million": 5200.0,
       "article_1_SSON_max_RON_million": 570.0,
       "article_1_document_total_RON_million": 5770.0
@@ -61,11 +61,11 @@
         "ANEXA 1": true,
         "ANEXA 2": true,
         "PROSPECT DE EMISIUNE": true,
-        "Data Licitaţiei": false,
+        "licitaţiei": true,
         "Valoare nominală": true,
         "SSON": true
       },
-      "all_required_anchors_found": false,
+      "all_required_anchors_found": true,
       "article_1_base_nominal_RON_million": 7200.0,
       "article_1_SSON_max_RON_million": 840.0,
       "article_1_document_total_RON_million": 8040.0
@@ -93,20 +93,20 @@
         "ANEXA 1": true,
         "ANEXA 2": true,
         "PROSPECT DE EMISIUNE": true,
-        "Data Licitaţiei": false,
+        "licitaţiei": true,
         "Valoare nominală": true,
         "SSON": true
       },
-      "all_required_anchors_found": false,
+      "all_required_anchors_found": true,
       "article_1_base_nominal_RON_million": 7400.0,
       "article_1_SSON_max_RON_million": 840.0,
       "article_1_document_total_RON_million": 8240.0
     }
   ],
-  "all_required_anchor_checks_pass": false,
+  "all_required_anchor_checks_pass": true,
   "event_rows_materialised": false,
   "reference_mode_promoted": false,
   "yield_effect_estimation_authorized": false,
   "feedback_activation_authorized": false,
-  "status": "RAW_SOURCES_RETAINABLE_NATIVE_TEXT_ANCHORS_PARTIAL"
+  "status": "RAW_SOURCES_RETAINABLE_NATIVE_TEXT_ANCHORS_PASS"
 }
