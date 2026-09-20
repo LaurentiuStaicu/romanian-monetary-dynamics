@@ -106,8 +106,18 @@ def audit_supply_pressure_source_boundary(
     gate = review["materialisation_gate"]
     if gate["source_values_materialised_now"] is not False:
         errors.append("source-boundary review may not claim source values materialised")
-    if gate["raw_ministry_pdf_retained_now"] is not False:
-        errors.append("source-boundary review may not claim raw Ministry PDF retained")
+    if gate["raw_ministry_pdf_retained_now"] is not True:
+        errors.append("review must retain completed Ministry raw-source probe")
+    if gate.get("raw_source_probe_status") != (
+        "PASS_THREE_OFFICIAL_PDFS_RETAINED_NATIVE_TEXT_EXTRACTABLE"
+    ):
+        errors.append("Ministry raw-source probe status changed")
+    if gate.get("exact_auction_table_values_extractable") is not True:
+        errors.append("exact auction-table extractability must remain recorded")
+    if gate.get("submitted_bids_monthly_series_exactly_extractable") is not False:
+        errors.append("submitted-bids series may not be claimed exactly extractable")
+    if gate.get("supply_load_denominator_boundary_frozen") is not False:
+        errors.append("supply-load denominator may not be claimed frozen")
     for key in (
         "visual_chart_digitisation_authorized",
         "ocr_authorized",
@@ -131,10 +141,12 @@ def audit_supply_pressure_source_boundary(
             errors.append(f"supply-pressure source review may not promote {key}")
 
     task = review["next_task"]
-    if task["id"] != "mof_primary_market_pressure_source_vintage_probe":
+    if task["id"] != "domestic_RON_supply_load_denominator_boundary_reconciliation":
         errors.append("next supply-pressure task changed")
-    if task["authorization"] != "RAW_SOURCE_AND_EXACT_EXTRACTABILITY_PROBE_ONLY":
+    if task["authorization"] != "SOURCE_BOUNDARY_RECONCILIATION_ONLY":
         errors.append("next task authorization changed")
+    if task["may_compute_pressure_ratio_now"] is not False:
+        errors.append("next task may not compute pressure ratio")
     if task["may_create_approximate_chart_values"] is not False:
         errors.append("next task may not create approximate chart values")
     if task["may_activate_feedback"] is not False:
@@ -172,7 +184,7 @@ def audit_supply_pressure_source_boundary(
     ):
         errors.append("issuance-to-pressure canonical readiness changed")
     if link.get("source_boundary_status") != (
-        "SOURCE_BOUNDARY_REVIEWED_EXACT_SERIES_NOT_MATERIALISED"
+        "RAW_RETAINED_EXACT_AUCTION_TABLE_EXTRACTABLE_DENOMINATOR_AND_SUBMITTED_BIDS_BLOCKED"
     ):
         errors.append("issuance-to-pressure source-boundary status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -201,7 +213,9 @@ def audit_supply_pressure_source_boundary(
     )
     if bridge["source_boundary_review"] != REVIEW_PATH:
         errors.append("structural preregistration lacks supply-pressure review")
-    if bridge["status"] != "SOURCE_BOUNDARY_REVIEWED_MATERIALISATION_NOT_STARTED":
+    if bridge["status"] != (
+        "RAW_SOURCE_PASS_ANNOUNCED_EXACT_DENOMINATOR_AND_SUBMITTED_BIDS_BLOCKED"
+    ):
         errors.append("issuance-to-pressure bridge status changed")
 
     dynamic = model_contract["dynamic_core"]
@@ -214,7 +228,7 @@ def audit_supply_pressure_source_boundary(
     if dynamic["government_securities_supply_pressure_scalar_selected"] is not False:
         errors.append("model contract selected a scalar pressure index")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_primary_market_pressure_source_vintage_probe"
+        "domestic_RON_supply_load_denominator_boundary_reconciliation"
     ):
         errors.append("model contract next issuance-yield task changed")
 
@@ -250,7 +264,11 @@ def main() -> None:
                 "source_values_materialised": False,
                 "scalar_pressure_index_selected": False,
                 "feedback_activation_authorized": False,
-                "next_task": "mof_primary_market_pressure_source_vintage_probe",
+                "raw_source_probe": "PASS",
+                "exact_auction_table_extractability": True,
+                "submitted_bids_series_extractable": False,
+                "denominator_boundary_frozen": False,
+                "next_task": "domestic_RON_supply_load_denominator_boundary_reconciliation",
             },
             indent=2,
         )
