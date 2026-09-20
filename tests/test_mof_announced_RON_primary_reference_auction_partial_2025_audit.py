@@ -48,11 +48,21 @@ class MOFAnnouncedRONPrimaryReferenceAuctionPartial2025AuditTests(unittest.TestC
 
     def test_may_base_order_may_not_be_final_value(self) -> None:
         mutated = copy.deepcopy(self.assessment)
-        mutated["may_base_order_history"]["final_monthly_value_authorized"] = True
+        mutated["may_version_history"]["base_is_final"] = True
         errors = self.audit(assessment=mutated)
-        self.assertTrue(
-            any("May base-order amount may not be promoted" in e for e in errors)
-        )
+        self.assertTrue(any("May base order may not be final" in e for e in errors))
+
+    def test_november_missing_event_row_may_not_be_inferred(self) -> None:
+        mutated = copy.deepcopy(self.assessment)
+        mutated["november_direct_monthly_total"]["missing_annex1_event_inferred"] = True
+        errors = self.audit(assessment=mutated)
+        self.assertTrue(any("November missing event rows may not be inferred" in e for e in errors))
+
+    def test_december_base_may_not_be_promoted_to_final(self) -> None:
+        mutated = copy.deepcopy(self.assessment)
+        mutated["december_base_order_history"]["final_monthly_value_authorized"] = True
+        errors = self.audit(assessment=mutated)
+        self.assertTrue(any("December base value may not be promoted" in e for e in errors))
 
     def test_missing_months_may_not_be_zero_imputed(self) -> None:
         mutated = copy.deepcopy(self.assessment)
