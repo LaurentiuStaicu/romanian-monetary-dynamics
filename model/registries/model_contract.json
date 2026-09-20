@@ -85,14 +85,12 @@
     "next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
     "model_complete": false,
     "release_ready": false,
-    "latest_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_19.json",
-    "latest_reopen_trigger_monitoring_status": "NO_DECLARED_REOPEN_TRIGGER_SATISFIED_BASELINE_HOLD_CONTINUES",
+    "latest_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
+    "latest_reopen_trigger_monitoring_status": "NO_DECLARED_REOPEN_TRIGGER_SATISFIED_POST_FISCAL_CLOSURE_BASELINE_HOLD_CONTINUES",
     "active_autonomous_empirical_task": null,
     "latest_reopen_trigger_assessment": "model/registries/fiscal_capb_reopen_assessment_2026_09_19.json",
     "latest_reopen_trigger_assessment_status": "FISCAL_PRIMARY_BALANCE_REOPEN_TRIGGER_SATISFIED_PREREGISTRATION_ONLY",
-    "latest_reopen_trigger_monitoring_superseded_for": [
-      "fiscal_primary_balance_reaction"
-    ],
+    "latest_reopen_trigger_monitoring_superseded_for": [],
     "selective_reopen_active": false,
     "selective_reopen_mechanism": null,
     "selective_reopen_scope": null,
@@ -107,7 +105,8 @@
     "fiscal_capb_raw_source_preservation_contract": "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json",
     "fiscal_capb_raw_source_preservation_assessment": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json",
     "fiscal_capb_retained_raw_source_branch": "source-vintage/fiscal-capb-raw-2026-09-20",
-    "fiscal_capb_retained_raw_source_commit": "efb1f3ae5b025176645d45276b684efe65aa4174"
+    "fiscal_capb_retained_raw_source_commit": "efb1f3ae5b025176645d45276b684efe65aa4174",
+    "previous_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_19.json"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",
