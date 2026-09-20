@@ -68,10 +68,7 @@ class FiscalCapbMaterialisationExecutionReadinessTests(unittest.TestCase):
         stage = self.m["scientific_stage"]
         self.assertFalse(stage["selective_reopen_active"])
         self.assertIsNone(stage["active_autonomous_empirical_task"])
-        self.assertEqual(
-            stage["active_manual_empirical_gate"],
-            "FISCAL_PRIMARY_BALANCE_CAPB_RAW_SOURCE_PRESERVATION",
-        )
+        self.assertIsNone(stage["active_manual_empirical_gate"])
         self.assertEqual(
             stage["selective_reopen_execution_state"],
             "RAW_SOURCE_PRESERVATION_COMPLETE_RETURNED_TO_BASELINE_HOLD",
