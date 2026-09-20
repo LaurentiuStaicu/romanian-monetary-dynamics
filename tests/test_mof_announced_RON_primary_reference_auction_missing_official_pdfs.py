@@ -7,6 +7,7 @@ from scripts.probe_mof_announced_RON_primary_reference_auction_missing_official_
     candidate_urls,
     identity_checks,
     load_contract,
+    required_identity_checks,
 )
 
 
@@ -72,6 +73,35 @@ class MOFMissingOfficialPDFProbeTests(unittest.TestCase):
         """
         checks = identity_checks(text, doc)
         self.assertTrue(all(checks.values()))
+
+    def test_ministry_pdf_profile_does_not_require_monitor_header(self) -> None:
+        doc = self.docs["mof_order_1088_july_2025"]
+        required = required_identity_checks(
+            "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF1088iulie2025.pdf",
+            doc,
+        )
+        self.assertEqual(
+            required,
+            ["order_number", "ministry", "title_anchor", "month_anchor"],
+        )
+
+    def test_ministry_amendment_profile_requires_superseded_order(self) -> None:
+        doc = self.docs["mof_order_752_may_2025_amendment"]
+        required = required_identity_checks(
+            "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF752mai2025.pdf",
+            doc,
+        )
+        self.assertIn("superseded_order_number", required)
+        self.assertNotIn("publication_number", required)
+
+    def test_anaf_legal_publication_profile_requires_date_and_publication(self) -> None:
+        doc = self.docs["mof_order_1928_december_2025"]
+        required = required_identity_checks(
+            "https://static.anaf.ro/static/10/Anaf/legislatie/OMF_1928_2025.pdf",
+            doc,
+        )
+        self.assertIn("order_date", required)
+        self.assertIn("publication_number", required)
 
     def test_dotted_monitorul_oficial_number_is_accepted(self) -> None:
         doc = self.docs["mof_order_1928_december_2025"]
