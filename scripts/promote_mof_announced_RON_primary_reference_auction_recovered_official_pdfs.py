@@ -19,7 +19,6 @@ from scripts.probe_mof_announced_RON_primary_reference_auction_missing_official_
     required_identity_checks,
 )
 
-ROOT = Path(__file__).resolve().parents[1]
 CONTRACT_PATH = (
     ROOT
     / "model/dynamics/"
