@@ -27,6 +27,15 @@ def load_contract() -> dict:
     return json.loads(CONTRACT.read_text(encoding="utf-8"))
 
 
+def resolve_repository_output(path: Path) -> Path:
+    candidate = path.resolve() if path.is_absolute() else (ROOT / path).resolve()
+    try:
+        candidate.relative_to(ROOT)
+    except ValueError as exc:
+        raise RuntimeError("output must be inside repository root") from exc
+    return candidate
+
+
 def pre2022_records(source: Path, contract: dict) -> list[dict[str, object]]:
     audit_path = source / "fiscal_capb_pre2022_source_probe_audit.json"
     audit = json.loads(audit_path.read_text(encoding="utf-8"))
@@ -101,6 +110,7 @@ def post2022_records(source: Path, contract: dict) -> list[dict[str, object]]:
 
 def promote(pre2022: Path, post2022: Path, output: Path) -> dict:
     contract = load_contract()
+    output = resolve_repository_output(output)
     if output.exists():
         raise RuntimeError(f"destination already exists: {output}")
 
