@@ -203,7 +203,8 @@
       ],
       "single_scalar_selected": false,
       "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
-      "announced_RON_primary_supply_reference_mode_status": "SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
+      "announced_RON_primary_supply_reference_mode_status": "Q1_PILOT_MATERIALISED_FULL_REFERENCE_MODE_NOT_PROMOTED",
+      "announced_RON_primary_supply_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_pilot_assessment_2026_09_20.json"
     },
     {
       "id": "inflationary_pressure",
