@@ -1,0 +1,2253 @@
+{
+  "replay_version": "0.1",
+  "instrument": "F3",
+  "contract": "model/dynamics/f3_empirical_replay_contract.json",
+  "source_vintage": "data/source_vintages/accounting-f3-2025-vintage-2026-09-18",
+  "value_precision_decimals": 2,
+  "quarterly_values": {
+    "2025-Q1": [
+      {
+        "holder": "H",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "H",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 215.04,
+        "transaction_million_RON": -6.33
+      },
+      {
+        "holder": "H",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 134.11,
+        "transaction_million_RON": 0.77
+      },
+      {
+        "holder": "H",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 32751.52,
+        "transaction_million_RON": 6237.49
+      },
+      {
+        "holder": "H",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 1599,
+        "transaction_million_RON": 129.84
+      },
+      {
+        "holder": "H",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "C",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "C",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 98.45,
+        "transaction_million_RON": -13.6
+      },
+      {
+        "holder": "C",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 1055.65,
+        "transaction_million_RON": -3.87
+      },
+      {
+        "holder": "C",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 15637.79,
+        "transaction_million_RON": 1911.67
+      },
+      {
+        "holder": "C",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 398.36,
+        "transaction_million_RON": 144.52
+      },
+      {
+        "holder": "C",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "F",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "F",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 808.42,
+        "transaction_million_RON": 35.28
+      },
+      {
+        "holder": "F",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 8216.86,
+        "transaction_million_RON": 31.04
+      },
+      {
+        "holder": "F",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 353836.98,
+        "transaction_million_RON": 11192.33
+      },
+      {
+        "holder": "F",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 31585.52,
+        "transaction_million_RON": -1309.31
+      },
+      {
+        "holder": "F",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 9645.73,
+        "transaction_million_RON": 941.25
+      },
+      {
+        "holder": "G",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 3177.16,
+        "transaction_million_RON": 5.36
+      },
+      {
+        "holder": "G",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "X",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "X",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 4180.22,
+        "transaction_million_RON": 153.35
+      },
+      {
+        "holder": "X",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 28420.49,
+        "transaction_million_RON": 736.16
+      },
+      {
+        "holder": "X",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 375726.93,
+        "transaction_million_RON": 16115.89
+      },
+      {
+        "holder": "X",
+        "issuer": "X",
+        "status": "NOT_APPLICABLE",
+        "stock_million_RON": null,
+        "transaction_million_RON": null
+      },
+      {
+        "holder": "X",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 2702.39,
+        "transaction_million_RON": -447.15
+      },
+      {
+        "holder": "BNR",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 189837.9,
+        "transaction_million_RON": -5578.34
+      },
+      {
+        "holder": "BNR",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      }
+    ],
+    "2025-Q2": [
+      {
+        "holder": "H",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "H",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 207.07,
+        "transaction_million_RON": -11.95
+      },
+      {
+        "holder": "H",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 137.38,
+        "transaction_million_RON": 1.62
+      },
+      {
+        "holder": "H",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 35901.18,
+        "transaction_million_RON": 1963.15
+      },
+      {
+        "holder": "H",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 1541.01,
+        "transaction_million_RON": -56.62
+      },
+      {
+        "holder": "H",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "C",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "C",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 95.48,
+        "transaction_million_RON": -1
+      },
+      {
+        "holder": "C",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 1087.08,
+        "transaction_million_RON": 10.36
+      },
+      {
+        "holder": "C",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 14559.7,
+        "transaction_million_RON": -1328.82
+      },
+      {
+        "holder": "C",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 497.89,
+        "transaction_million_RON": 107.9
+      },
+      {
+        "holder": "C",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "F",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "F",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 808.93,
+        "transaction_million_RON": 1.1
+      },
+      {
+        "holder": "F",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 8260.14,
+        "transaction_million_RON": 13.12
+      },
+      {
+        "holder": "F",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 379572.27,
+        "transaction_million_RON": 25639.59
+      },
+      {
+        "holder": "F",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 26618.9,
+        "transaction_million_RON": -4427.46
+      },
+      {
+        "holder": "F",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 10275.21,
+        "transaction_million_RON": 629.48
+      },
+      {
+        "holder": "G",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 3073.5,
+        "transaction_million_RON": -103.66
+      },
+      {
+        "holder": "G",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "X",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "X",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 4291.61,
+        "transaction_million_RON": -1.2
+      },
+      {
+        "holder": "X",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 28528.88,
+        "transaction_million_RON": -25.4
+      },
+      {
+        "holder": "X",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 394035.79,
+        "transaction_million_RON": 13407.24
+      },
+      {
+        "holder": "X",
+        "issuer": "X",
+        "status": "NOT_APPLICABLE",
+        "stock_million_RON": null,
+        "transaction_million_RON": null
+      },
+      {
+        "holder": "X",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 2733.93,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 168560.6,
+        "transaction_million_RON": -20444.38
+      },
+      {
+        "holder": "BNR",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      }
+    ],
+    "2025-Q3": [
+      {
+        "holder": "H",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "H",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 204.51,
+        "transaction_million_RON": -1.79
+      },
+      {
+        "holder": "H",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 141.12,
+        "transaction_million_RON": -3.8
+      },
+      {
+        "holder": "H",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 36167.05,
+        "transaction_million_RON": 560.88
+      },
+      {
+        "holder": "H",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 1536.24,
+        "transaction_million_RON": 0.88
+      },
+      {
+        "holder": "H",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "C",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "C",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 88.12,
+        "transaction_million_RON": -6.51
+      },
+      {
+        "holder": "C",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 1143.63,
+        "transaction_million_RON": 49.39
+      },
+      {
+        "holder": "C",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 16079.59,
+        "transaction_million_RON": 1543.77
+      },
+      {
+        "holder": "C",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 506.64,
+        "transaction_million_RON": 3.34
+      },
+      {
+        "holder": "C",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "F",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "F",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 1017.19,
+        "transaction_million_RON": 204.63
+      },
+      {
+        "holder": "F",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 9202.52,
+        "transaction_million_RON": 912.79
+      },
+      {
+        "holder": "F",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 386617.48,
+        "transaction_million_RON": 5931.34
+      },
+      {
+        "holder": "F",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 27832.66,
+        "transaction_million_RON": 698.8
+      },
+      {
+        "holder": "F",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 10533.57,
+        "transaction_million_RON": 258.36
+      },
+      {
+        "holder": "G",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 3107.81,
+        "transaction_million_RON": 34.32
+      },
+      {
+        "holder": "G",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "X",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "X",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 6746.27,
+        "transaction_million_RON": 2378.62
+      },
+      {
+        "holder": "X",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 29297.53,
+        "transaction_million_RON": 678.24
+      },
+      {
+        "holder": "X",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 431082.16,
+        "transaction_million_RON": 30150.47
+      },
+      {
+        "holder": "X",
+        "issuer": "X",
+        "status": "NOT_APPLICABLE",
+        "stock_million_RON": null,
+        "transaction_million_RON": null
+      },
+      {
+        "holder": "X",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 2490.4,
+        "transaction_million_RON": -256.53
+      },
+      {
+        "holder": "BNR",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 223765.4,
+        "transaction_million_RON": 54749.6
+      },
+      {
+        "holder": "BNR",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      }
+    ],
+    "2025-Q4": [
+      {
+        "holder": "H",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "H",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 199.92,
+        "transaction_million_RON": -5.79
+      },
+      {
+        "holder": "H",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 152.31,
+        "transaction_million_RON": 8.71
+      },
+      {
+        "holder": "H",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 36382.75,
+        "transaction_million_RON": -859.25
+      },
+      {
+        "holder": "H",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 1699.25,
+        "transaction_million_RON": 156.6
+      },
+      {
+        "holder": "H",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "C",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "C",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 90.95,
+        "transaction_million_RON": 1.48
+      },
+      {
+        "holder": "C",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 1156.39,
+        "transaction_million_RON": -0.13
+      },
+      {
+        "holder": "C",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 16661.8,
+        "transaction_million_RON": 13.33
+      },
+      {
+        "holder": "C",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 486.62,
+        "transaction_million_RON": -31.27
+      },
+      {
+        "holder": "C",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "F",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "F",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 1361.14,
+        "transaction_million_RON": 333.3
+      },
+      {
+        "holder": "F",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 10619.24,
+        "transaction_million_RON": 1416.59
+      },
+      {
+        "holder": "F",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 403504.78,
+        "transaction_million_RON": 10281.62
+      },
+      {
+        "holder": "F",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 34800.45,
+        "transaction_million_RON": 7166.4
+      },
+      {
+        "holder": "F",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "G",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 10606.39,
+        "transaction_million_RON": 72.81
+      },
+      {
+        "holder": "G",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 3293.71,
+        "transaction_million_RON": 185.89
+      },
+      {
+        "holder": "G",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "X",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "X",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 12092.06,
+        "transaction_million_RON": 5252.93
+      },
+      {
+        "holder": "X",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 32919.21,
+        "transaction_million_RON": 3644.55
+      },
+      {
+        "holder": "X",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 448235.66,
+        "transaction_million_RON": 7479.57
+      },
+      {
+        "holder": "X",
+        "issuer": "X",
+        "status": "NOT_APPLICABLE",
+        "stock_million_RON": null,
+        "transaction_million_RON": null
+      },
+      {
+        "holder": "X",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "H",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "C",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "F",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      },
+      {
+        "holder": "BNR",
+        "issuer": "G",
+        "status": "AVAILABLE",
+        "stock_million_RON": 1549.9,
+        "transaction_million_RON": -900
+      },
+      {
+        "holder": "BNR",
+        "issuer": "X",
+        "status": "AVAILABLE",
+        "stock_million_RON": 223764.11,
+        "transaction_million_RON": -1325.23
+      },
+      {
+        "holder": "BNR",
+        "issuer": "BNR",
+        "status": "AVAILABLE",
+        "stock_million_RON": 0,
+        "transaction_million_RON": 0
+      }
+    ]
+  },
+  "transitions": [
+    {
+      "period": "2025-Q2",
+      "opening_period": "2025-Q1",
+      "cells": [
+        {
+          "holder": "H",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 215.04,
+          "transaction_million_RON": -11.95,
+          "combined_nontransaction_change_million_RON": 3.98,
+          "closing_stock_million_RON": 207.07,
+          "replay_closing_stock_million_RON": 207.07,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 134.11,
+          "transaction_million_RON": 1.62,
+          "combined_nontransaction_change_million_RON": 1.65,
+          "closing_stock_million_RON": 137.38,
+          "replay_closing_stock_million_RON": 137.38,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 32751.52,
+          "transaction_million_RON": 1963.15,
+          "combined_nontransaction_change_million_RON": 1186.51,
+          "closing_stock_million_RON": 35901.18,
+          "replay_closing_stock_million_RON": 35901.18,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 1599,
+          "transaction_million_RON": -56.62,
+          "combined_nontransaction_change_million_RON": -1.37,
+          "closing_stock_million_RON": 1541.01,
+          "replay_closing_stock_million_RON": 1541.01,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 98.45,
+          "transaction_million_RON": -1,
+          "combined_nontransaction_change_million_RON": -1.97,
+          "closing_stock_million_RON": 95.48,
+          "replay_closing_stock_million_RON": 95.48,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 1055.65,
+          "transaction_million_RON": 10.36,
+          "combined_nontransaction_change_million_RON": 21.07,
+          "closing_stock_million_RON": 1087.08,
+          "replay_closing_stock_million_RON": 1087.08,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 15637.79,
+          "transaction_million_RON": -1328.82,
+          "combined_nontransaction_change_million_RON": 250.73,
+          "closing_stock_million_RON": 14559.7,
+          "replay_closing_stock_million_RON": 14559.7,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 398.36,
+          "transaction_million_RON": 107.9,
+          "combined_nontransaction_change_million_RON": -8.37,
+          "closing_stock_million_RON": 497.89,
+          "replay_closing_stock_million_RON": 497.89,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 808.42,
+          "transaction_million_RON": 1.1,
+          "combined_nontransaction_change_million_RON": -0.59,
+          "closing_stock_million_RON": 808.93,
+          "replay_closing_stock_million_RON": 808.93,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 8216.86,
+          "transaction_million_RON": 13.12,
+          "combined_nontransaction_change_million_RON": 30.16,
+          "closing_stock_million_RON": 8260.14,
+          "replay_closing_stock_million_RON": 8260.14,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 353836.98,
+          "transaction_million_RON": 25639.59,
+          "combined_nontransaction_change_million_RON": 95.7,
+          "closing_stock_million_RON": 379572.27,
+          "replay_closing_stock_million_RON": 379572.27,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 31585.52,
+          "transaction_million_RON": -4427.46,
+          "combined_nontransaction_change_million_RON": -539.16,
+          "closing_stock_million_RON": 26618.9,
+          "replay_closing_stock_million_RON": 26618.9,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 9645.73,
+          "transaction_million_RON": 629.48,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 10275.21,
+          "replay_closing_stock_million_RON": 10275.21,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 3177.16,
+          "transaction_million_RON": -103.66,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 3073.5,
+          "replay_closing_stock_million_RON": 3073.5,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 4180.22,
+          "transaction_million_RON": -1.2,
+          "combined_nontransaction_change_million_RON": 112.59,
+          "closing_stock_million_RON": 4291.61,
+          "replay_closing_stock_million_RON": 4291.61,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 28420.49,
+          "transaction_million_RON": -25.4,
+          "combined_nontransaction_change_million_RON": 133.79,
+          "closing_stock_million_RON": 28528.88,
+          "replay_closing_stock_million_RON": 28528.88,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 375726.93,
+          "transaction_million_RON": 13407.24,
+          "combined_nontransaction_change_million_RON": 4901.62,
+          "closing_stock_million_RON": 394035.79,
+          "replay_closing_stock_million_RON": 394035.79,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "X",
+          "status": "NOT_APPLICABLE",
+          "opening_stock_million_RON": null,
+          "transaction_million_RON": null,
+          "combined_nontransaction_change_million_RON": null,
+          "closing_stock_million_RON": null,
+          "replay_closing_stock_million_RON": null,
+          "identity_residual_million_RON": null
+        },
+        {
+          "holder": "X",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 2702.39,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 31.54,
+          "closing_stock_million_RON": 2733.93,
+          "replay_closing_stock_million_RON": 2733.93,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 189837.9,
+          "transaction_million_RON": -20444.38,
+          "combined_nontransaction_change_million_RON": -832.92,
+          "closing_stock_million_RON": 168560.6,
+          "replay_closing_stock_million_RON": 168560.6,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        }
+      ]
+    },
+    {
+      "period": "2025-Q3",
+      "opening_period": "2025-Q2",
+      "cells": [
+        {
+          "holder": "H",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 207.07,
+          "transaction_million_RON": -1.79,
+          "combined_nontransaction_change_million_RON": -0.77,
+          "closing_stock_million_RON": 204.51,
+          "replay_closing_stock_million_RON": 204.51,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 137.38,
+          "transaction_million_RON": -3.8,
+          "combined_nontransaction_change_million_RON": 7.54,
+          "closing_stock_million_RON": 141.12,
+          "replay_closing_stock_million_RON": 141.12,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 35901.18,
+          "transaction_million_RON": 560.88,
+          "combined_nontransaction_change_million_RON": -295.01,
+          "closing_stock_million_RON": 36167.05,
+          "replay_closing_stock_million_RON": 36167.05,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 1541.01,
+          "transaction_million_RON": 0.88,
+          "combined_nontransaction_change_million_RON": -5.65,
+          "closing_stock_million_RON": 1536.24,
+          "replay_closing_stock_million_RON": 1536.24,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 95.48,
+          "transaction_million_RON": -6.51,
+          "combined_nontransaction_change_million_RON": -0.85,
+          "closing_stock_million_RON": 88.12,
+          "replay_closing_stock_million_RON": 88.12,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 1087.08,
+          "transaction_million_RON": 49.39,
+          "combined_nontransaction_change_million_RON": 7.16,
+          "closing_stock_million_RON": 1143.63,
+          "replay_closing_stock_million_RON": 1143.63,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 14559.7,
+          "transaction_million_RON": 1543.77,
+          "combined_nontransaction_change_million_RON": -23.88,
+          "closing_stock_million_RON": 16079.59,
+          "replay_closing_stock_million_RON": 16079.59,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 497.89,
+          "transaction_million_RON": 3.34,
+          "combined_nontransaction_change_million_RON": 5.41,
+          "closing_stock_million_RON": 506.64,
+          "replay_closing_stock_million_RON": 506.64,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 808.93,
+          "transaction_million_RON": 204.63,
+          "combined_nontransaction_change_million_RON": 3.63,
+          "closing_stock_million_RON": 1017.19,
+          "replay_closing_stock_million_RON": 1017.19,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 8260.14,
+          "transaction_million_RON": 912.79,
+          "combined_nontransaction_change_million_RON": 29.59,
+          "closing_stock_million_RON": 9202.52,
+          "replay_closing_stock_million_RON": 9202.52,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 379572.27,
+          "transaction_million_RON": 5931.34,
+          "combined_nontransaction_change_million_RON": 1113.87,
+          "closing_stock_million_RON": 386617.48,
+          "replay_closing_stock_million_RON": 386617.48,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 26618.9,
+          "transaction_million_RON": 698.8,
+          "combined_nontransaction_change_million_RON": 514.96,
+          "closing_stock_million_RON": 27832.66,
+          "replay_closing_stock_million_RON": 27832.66,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 10275.21,
+          "transaction_million_RON": 258.36,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 10533.57,
+          "replay_closing_stock_million_RON": 10533.57,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 3073.5,
+          "transaction_million_RON": 34.32,
+          "combined_nontransaction_change_million_RON": -0.01,
+          "closing_stock_million_RON": 3107.81,
+          "replay_closing_stock_million_RON": 3107.81,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 4291.61,
+          "transaction_million_RON": 2378.62,
+          "combined_nontransaction_change_million_RON": 76.04,
+          "closing_stock_million_RON": 6746.27,
+          "replay_closing_stock_million_RON": 6746.27,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 28528.88,
+          "transaction_million_RON": 678.24,
+          "combined_nontransaction_change_million_RON": 90.41,
+          "closing_stock_million_RON": 29297.53,
+          "replay_closing_stock_million_RON": 29297.53,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 394035.79,
+          "transaction_million_RON": 30150.47,
+          "combined_nontransaction_change_million_RON": 6895.9,
+          "closing_stock_million_RON": 431082.16,
+          "replay_closing_stock_million_RON": 431082.16,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "X",
+          "status": "NOT_APPLICABLE",
+          "opening_stock_million_RON": null,
+          "transaction_million_RON": null,
+          "combined_nontransaction_change_million_RON": null,
+          "closing_stock_million_RON": null,
+          "replay_closing_stock_million_RON": null,
+          "identity_residual_million_RON": null
+        },
+        {
+          "holder": "X",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 2733.93,
+          "transaction_million_RON": -256.53,
+          "combined_nontransaction_change_million_RON": 13,
+          "closing_stock_million_RON": 2490.4,
+          "replay_closing_stock_million_RON": 2490.4,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 168560.6,
+          "transaction_million_RON": 54749.6,
+          "combined_nontransaction_change_million_RON": 455.2,
+          "closing_stock_million_RON": 223765.4,
+          "replay_closing_stock_million_RON": 223765.4,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        }
+      ]
+    },
+    {
+      "period": "2025-Q4",
+      "opening_period": "2025-Q3",
+      "cells": [
+        {
+          "holder": "H",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 204.51,
+          "transaction_million_RON": -5.79,
+          "combined_nontransaction_change_million_RON": 1.2,
+          "closing_stock_million_RON": 199.92,
+          "replay_closing_stock_million_RON": 199.92,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 141.12,
+          "transaction_million_RON": 8.71,
+          "combined_nontransaction_change_million_RON": 2.48,
+          "closing_stock_million_RON": 152.31,
+          "replay_closing_stock_million_RON": 152.31,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 36167.05,
+          "transaction_million_RON": -859.25,
+          "combined_nontransaction_change_million_RON": 1074.95,
+          "closing_stock_million_RON": 36382.75,
+          "replay_closing_stock_million_RON": 36382.75,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 1536.24,
+          "transaction_million_RON": 156.6,
+          "combined_nontransaction_change_million_RON": 6.41,
+          "closing_stock_million_RON": 1699.25,
+          "replay_closing_stock_million_RON": 1699.25,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "H",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 88.12,
+          "transaction_million_RON": 1.48,
+          "combined_nontransaction_change_million_RON": 1.35,
+          "closing_stock_million_RON": 90.95,
+          "replay_closing_stock_million_RON": 90.95,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 1143.63,
+          "transaction_million_RON": -0.13,
+          "combined_nontransaction_change_million_RON": 12.89,
+          "closing_stock_million_RON": 1156.39,
+          "replay_closing_stock_million_RON": 1156.39,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 16079.59,
+          "transaction_million_RON": 13.33,
+          "combined_nontransaction_change_million_RON": 568.88,
+          "closing_stock_million_RON": 16661.8,
+          "replay_closing_stock_million_RON": 16661.8,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 506.64,
+          "transaction_million_RON": -31.27,
+          "combined_nontransaction_change_million_RON": 11.25,
+          "closing_stock_million_RON": 486.62,
+          "replay_closing_stock_million_RON": 486.62,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "C",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 1017.19,
+          "transaction_million_RON": 333.3,
+          "combined_nontransaction_change_million_RON": 10.65,
+          "closing_stock_million_RON": 1361.14,
+          "replay_closing_stock_million_RON": 1361.14,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 9202.52,
+          "transaction_million_RON": 1416.59,
+          "combined_nontransaction_change_million_RON": 0.13,
+          "closing_stock_million_RON": 10619.24,
+          "replay_closing_stock_million_RON": 10619.24,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 386617.48,
+          "transaction_million_RON": 10281.62,
+          "combined_nontransaction_change_million_RON": 6605.68,
+          "closing_stock_million_RON": 403504.78,
+          "replay_closing_stock_million_RON": 403504.78,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 27832.66,
+          "transaction_million_RON": 7166.4,
+          "combined_nontransaction_change_million_RON": -198.61,
+          "closing_stock_million_RON": 34800.45,
+          "replay_closing_stock_million_RON": 34800.45,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "F",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 10533.57,
+          "transaction_million_RON": 72.81,
+          "combined_nontransaction_change_million_RON": 0.01,
+          "closing_stock_million_RON": 10606.39,
+          "replay_closing_stock_million_RON": 10606.39,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 3107.81,
+          "transaction_million_RON": 185.89,
+          "combined_nontransaction_change_million_RON": 0.01,
+          "closing_stock_million_RON": 3293.71,
+          "replay_closing_stock_million_RON": 3293.71,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "G",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 6746.27,
+          "transaction_million_RON": 5252.93,
+          "combined_nontransaction_change_million_RON": 92.86,
+          "closing_stock_million_RON": 12092.06,
+          "replay_closing_stock_million_RON": 12092.06,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 29297.53,
+          "transaction_million_RON": 3644.55,
+          "combined_nontransaction_change_million_RON": -22.87,
+          "closing_stock_million_RON": 32919.21,
+          "replay_closing_stock_million_RON": 32919.21,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 431082.16,
+          "transaction_million_RON": 7479.57,
+          "combined_nontransaction_change_million_RON": 9673.93,
+          "closing_stock_million_RON": 448235.66,
+          "replay_closing_stock_million_RON": 448235.66,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "X",
+          "issuer": "X",
+          "status": "NOT_APPLICABLE",
+          "opening_stock_million_RON": null,
+          "transaction_million_RON": null,
+          "combined_nontransaction_change_million_RON": null,
+          "closing_stock_million_RON": null,
+          "replay_closing_stock_million_RON": null,
+          "identity_residual_million_RON": null
+        },
+        {
+          "holder": "X",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "H",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "C",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "F",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "G",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 2490.4,
+          "transaction_million_RON": -900,
+          "combined_nontransaction_change_million_RON": -40.5,
+          "closing_stock_million_RON": 1549.9,
+          "replay_closing_stock_million_RON": 1549.9,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "X",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 223765.4,
+          "transaction_million_RON": -1325.23,
+          "combined_nontransaction_change_million_RON": 1323.94,
+          "closing_stock_million_RON": 223764.11,
+          "replay_closing_stock_million_RON": 223764.11,
+          "identity_residual_million_RON": 0
+        },
+        {
+          "holder": "BNR",
+          "issuer": "BNR",
+          "status": "REPLAYED",
+          "opening_stock_million_RON": 0,
+          "transaction_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 0,
+          "closing_stock_million_RON": 0,
+          "replay_closing_stock_million_RON": 0,
+          "identity_residual_million_RON": 0
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "retained_quarters": 4,
+    "replayed_transitions": 3,
+    "in_boundary_cells_per_transition": 35,
+    "numeric_replayed_cell_transitions": 105,
+    "max_abs_identity_residual_million_RON": 0,
+    "max_abs_q4_stock_vs_canonical_benchmark_residual_million_RON": 0,
+    "max_abs_annual_transaction_sum_vs_canonical_benchmark_residual_million_RON": 0,
+    "system_net_financial_worth_residual_million_RON_by_quarter": {
+      "2025-Q1": 0,
+      "2025-Q2": 0,
+      "2025-Q3": 0,
+      "2025-Q4": 0
+    },
+    "q1_transition_replayed": false,
+    "q1_nonreplay_reason": "2024-Q4 opening stock is not in the retained F3 source vintage.",
+    "full_RMD_empirical_state_claim_allowed": false,
+    "behavioural_closure_active": false,
+    "feedback_activation_authorized": false
+  }
+}

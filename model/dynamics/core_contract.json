@@ -1,5 +1,5 @@
 {
-  "contract_version": "0.2",
+  "contract_version": "0.3",
   "purpose": "Executable structural dynamic core constrained by the accounting spine; behavioural closure remains inactive until mechanisms pass explicit empirical and identifiability gates.",
   "time": {
     "canonical_unit": "year",
@@ -111,6 +111,13 @@
       "scientific_status": "ACCOUNTING_IDENTITY"
     },
     {
+      "id": "empirical_financial_stock_replay",
+      "equation": "closing = opening + transactions + combined_nontransaction_change",
+      "units": "million_RON = million_RON + million_RON + million_RON",
+      "scientific_status": "ACCOUNTING_REPLAY_IDENTITY",
+      "interpretation": "combined_nontransaction_change is the bookkeeping sum of revaluations and other changes in volume implied by observed opening/closing positions and transactions; it is not a behavioural equation or a causal decomposition"
+    },
+    {
       "id": "first_order_delay",
       "equation": "d(delay_state)/dt = (input - delay_state) / tau",
       "units": "input_unit_per_year = input_unit / year",
@@ -133,7 +140,9 @@
     "source_series_identified_without_value_allowed": false,
     "not_applicable_cells_map_to_numeric_zero": true,
     "observed_or_derived_finite_values_required": true,
-    "rule": "Incomplete benchmark matrices with TBD cells cannot initialize a numeric dynamic state. Missing data must never become simulation zero implicitly."
+    "rule": "Incomplete benchmark matrices with TBD cells cannot initialize a numeric dynamic state. Missing data must never become simulation zero implicitly.",
+    "instrument_specific_replay_contract": "model/dynamics/f3_empirical_replay_contract.json",
+    "instrument_specific_replay_rule": "A complete canonical instrument may be replayed empirically under an explicit instrument-specific contract without implying multi-instrument or full-RMD initialization."
   },
   "behavioural_closure": {
     "active": false,
@@ -163,6 +172,8 @@
     "incomplete_empirical_initialization_rejected",
     "delay_time_step_ratio_gate",
     "coarse_euler_delay_step_rejected",
-    "delay_invalid_tau_rejected"
+    "delay_invalid_tau_rejected",
+    "f3_empirical_replay_identity",
+    "f3_empirical_replay_reproducibility"
   ]
 }

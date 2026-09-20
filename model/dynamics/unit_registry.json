@@ -1,5 +1,5 @@
 {
-  "registry_version": "0.1",
+  "registry_version": "0.2",
   "base_dimensions": {
     "currency": "million_RON",
     "time": "year",
@@ -32,6 +32,14 @@
     },
     {
       "id": "other_change_period_amount",
+      "unit": "million_RON",
+      "signature": {
+        "currency": 1,
+        "time": 0
+      }
+    },
+    {
+      "id": "combined_nontransaction_period_amount",
       "unit": "million_RON",
       "signature": {
         "currency": 1,
@@ -131,6 +139,28 @@
           "currency": 1,
           "time": 0
         },
+        {
+          "currency": 1,
+          "time": 0
+        },
+        {
+          "currency": 1,
+          "time": 0
+        },
+        {
+          "currency": 1,
+          "time": 0
+        }
+      ],
+      "status": "CONSISTENT"
+    },
+    {
+      "id": "empirical_replay_stock_identity",
+      "lhs": {
+        "currency": 1,
+        "time": 0
+      },
+      "rhs_terms": [
         {
           "currency": 1,
           "time": 0
