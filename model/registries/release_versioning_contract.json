@@ -1,0 +1,91 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-20",
+  "purpose": "Executable repository-governance contract for RMD version changes and public scientific-core releases. A version bump must be atomic across package metadata, citation metadata, user-facing metadata, changelog and GitHub release/tag state. Scientific model maturity is tracked separately from artifact version.",
+  "versioning_basis": {
+    "scheme": "Semantic Versioning 2.0.0 compatible",
+    "development_series": "0.x.y",
+    "current_public_release": {
+      "version": "0.1.0",
+      "tag": "v0.1.0",
+      "release_name": "v0.1.0 — Scientific core baseline",
+      "release_date": "2026-09-18",
+      "release_target_commit": "5fbdede0c9c3f96d791aa788c277eefb23925648",
+      "immutable_historical_identity": true
+    },
+    "current_repository_version": "0.1.0",
+    "unreleased_changes_present": true,
+    "version_bump_required_now": false,
+    "rationale": "Main contains substantial post-v0.1.0 scientific-governance and provenance work, but this pass does not itself authorize or publish a new public release. The existing v0.1.0 identity must not be rewritten. The next public scientific-core release should receive a new version before publication.",
+    "next_public_release_candidate": "0.2.0",
+    "next_candidate_rationale": "RMD is still in initial-development 0.x.y. The accumulated post-v0.1.0 work is a substantive scientific-core/reproducibility milestone rather than a narrow correction to the already-published release."
+  },
+  "atomic_repository_surfaces": [
+    {
+      "path": "pyproject.toml",
+      "field": "project.version",
+      "rule": "Must equal the release version."
+    },
+    {
+      "path": "src/romania_macro_financial_dynamics/__init__.py",
+      "field": "__version__",
+      "rule": "Must equal the release version."
+    },
+    {
+      "path": "README.md",
+      "field": "version badge",
+      "rule": "Must equal the release version."
+    },
+    {
+      "path": "CITATION.cff",
+      "field": "version",
+      "rule": "Must equal the release version."
+    },
+    {
+      "path": "CITATION.cff",
+      "field": "date-released",
+      "rule": "Must equal the actual public release date when a release is published."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "field": "release heading and release date",
+      "rule": "The Unreleased material included in the release must move under the new version/date heading."
+    },
+    {
+      "path": "model/registries/release_versioning_contract.json",
+      "field": "current_public_release/current_repository_version/next_public_release_candidate",
+      "rule": "Must be advanced atomically with the release preparation and finalized after publication."
+    }
+  ],
+  "external_release_surfaces": [
+    {
+      "surface": "Git tag",
+      "rule": "Create v<version> at the exact reviewed release commit; never move a published release tag to rewrite history."
+    },
+    {
+      "surface": "GitHub Release",
+      "rule": "Publish from the same v<version> tag and include release notes that state the current scientific maturity and non-claims."
+    }
+  ],
+  "pre_publish_gates": [
+    "All repository version surfaces agree.",
+    "CITATION.cff release date and CHANGELOG release date agree with the intended publication date.",
+    "Scientific CI and all required accounting/materialization audits are green on the exact release commit.",
+    "Release notes preserve current scientific boundaries and do not imply validated behavioural closure, causal identification or model completion unless those states are actually authorized.",
+    "No previously published version/tag is mutated to contain new code or scientific artifacts."
+  ],
+  "post_publish_verification": [
+    "Git tag points to the exact reviewed release commit.",
+    "GitHub Release uses the same tag and version.",
+    "Repository version, package version, README badge, CITATION.cff and CHANGELOG remain synchronized.",
+    "The release page and CITATION metadata describe the same public artifact."
+  ],
+  "scientific_boundary": {
+    "artifact_version_is_not_model_validation_status": true,
+    "a_version_bump_does_not_authorize_calibration": true,
+    "a_version_bump_does_not_authorize_estimation_or_refit": true,
+    "a_version_bump_does_not_authorize_holdout_opening": true,
+    "a_version_bump_does_not_activate_system_dynamics_feedback": true,
+    "a_version_bump_does_not_activate_behavioural_closure": true
+  }
+}
