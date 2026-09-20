@@ -189,6 +189,9 @@ jobs:
       - name: Audit announced RON primary-supply reference-mode contract
         run: python scripts/audit_mof_announced_RON_primary_supply_reference_mode_contract.py
 
+      - name: Audit exact Q1 announced RON primary-supply pilot
+        run: python scripts/audit_mof_announced_RON_primary_supply_Q1_pilot.py
+
       - name: Audit ECB supply-load denominator candidate probe assessment
         run: python scripts/audit_ecb_supply_load_denominator_probe_assessment.py
 
