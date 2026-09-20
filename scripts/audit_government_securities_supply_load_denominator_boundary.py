@@ -200,7 +200,7 @@ def audit_supply_load_denominator_boundary(
     if dynamic.get("government_securities_supply_stock_normalisation_required") is not False:
         errors.append("model contract may not require stock normalization for first reference mode")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_supply_source_vintage_pilot"
+        "mof_announced_RON_primary_supply_full_2025_extension"
     ):
         errors.append("model contract next task changed")
 
