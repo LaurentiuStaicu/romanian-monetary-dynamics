@@ -156,7 +156,7 @@
     "reference_mode_promoted": false,
     "feedback_activation_authorized": false,
     "estimation_or_refit_authorized": false,
-    "next_step": "Assess exact securities-supply-pressure observable candidates and measurement denominators. The retained BNR issuance volumes and instrument-specific primary-market rates remain descriptive evidence only; do not infer a causal issuance-to-yield effect or construct a generic scalar sovereign yield.",
+    "next_step": "Retain an exact Ministry monthly public-debt-report source vintage and test exact extraction of announced/submitted/accepted RON auction amounts and the matching outstanding-stock denominator. Do not digitise chart geometry, use OCR approximations, or promote any candidate to the generic supply-pressure node.",
     "bnr_pilot_snapshot": "model/dynamics/government_debt_issuance_bnr_pilot_2025.json",
     "bnr_pilot_status": "REVIEWED_FULL_2025_SOURCE_PILOT_NOT_CANONICAL_REFERENCE_SERIES",
     "bnr_pilot_coverage": "2025-01..2025-12",
@@ -181,6 +181,7 @@
     "issuance_yield_structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
     "issuance_yield_structural_decision": "DO_NOT_NARROW_GENERIC_CLOSED_LOOP_TO_BNR_DOMESTIC_PRIMARY_AS_ONE_TO_ONE",
     "bnr_primary_market_rate_pilot": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
-    "bnr_primary_market_rate_pilot_status": "PASS_DESCRIPTIVE_INSTRUMENT_SPECIFIC_NO_GENERIC_YIELD_AGGREGATION"
+    "bnr_primary_market_rate_pilot_status": "PASS_DESCRIPTIVE_INSTRUMENT_SPECIFIC_NO_GENERIC_YIELD_AGGREGATION",
+    "government_securities_supply_pressure_source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json"
   }
 }
