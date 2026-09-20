@@ -1,16 +1,16 @@
 {
-  "snapshot_version": "0.1",
+  "snapshot_version": "0.2",
   "reviewed_on": "2026-09-20",
-  "status": "REVIEWED_SOURCE_PILOT_NOT_CANONICAL_REFERENCE_SERIES",
+  "status": "REVIEWED_FULL_2025_SOURCE_PILOT_NOT_CANONICAL_REFERENCE_SERIES",
   "target_candidate_id": "domestic_primary_market_government_securities_gross_issuance",
   "source": {
     "institution": "National Bank of Romania",
-    "publication": "Monthly Bulletin — June 2025",
+    "publication": "Monthly Bulletin — December 2025",
     "table": "12.2 Government securities (new and roll-over issues)",
     "pdf_page": 65,
-    "url": "https://muzeu.bnr.ro/uploads/2025-08-07monthlybulletin06_documentpdf_545_1756370111.pdf",
-    "statistical_data_available_as_of": "2025-08-26",
-    "source_note": "Some data are provisional and may be updated in subsequent issues.",
+    "url": "https://www.bnr.ro/uploads/2026-06-02monthlybulletinno.122025_documentpdf_545_1772190284.pdf",
+    "statistical_data_available_as_of": "2026-02-24",
+    "source_note": "Some data are still provisional and will be updated as appropriate in subsequent issues.",
     "symbols": {
       "–": "nil",
       "...": "missing data",
@@ -25,8 +25,11 @@
     "exact_raw_source_retention_required_before_promotion": true,
     "native_currency_columns_preserved": true,
     "EUR_to_RON_conversion_performed": false,
-    "source_revision_check_performed": false,
-    "promotion_blocked_by_raw_retention_and_revision_gate": true
+    "source_revision_check_performed": true,
+    "promotion_blocked_by_raw_retention_and_revision_gate": false,
+    "source_revision_check_result": "PASS_NO_CHANGES_JAN_JUL_2025_AT_PUBLISHED_PRECISION",
+    "source_revision_check_assessment": "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json",
+    "promotion_blocked_by_raw_retention_gate": true
   },
   "monthly_observations": [
     {
@@ -91,6 +94,51 @@
       "interest_bearing_government_bonds_million_EUR": 0,
       "total_RON_domestic_primary_market_securities_million_RON": 11080.9,
       "total_EUR_domestic_primary_market_securities_million_EUR": 0
+    },
+    {
+      "period": "2025-08",
+      "discount_treasury_certificates_million_RON": 400,
+      "treasury_certificates_million_EUR": 0,
+      "interest_bearing_government_bonds_million_RON": 6595.4,
+      "interest_bearing_government_bonds_million_EUR": 231,
+      "total_RON_domestic_primary_market_securities_million_RON": 6995.4,
+      "total_EUR_domestic_primary_market_securities_million_EUR": 231
+    },
+    {
+      "period": "2025-09",
+      "discount_treasury_certificates_million_RON": 1441.9,
+      "treasury_certificates_million_EUR": 0,
+      "interest_bearing_government_bonds_million_RON": 6742.3,
+      "interest_bearing_government_bonds_million_EUR": 0,
+      "total_RON_domestic_primary_market_securities_million_RON": 8184.2,
+      "total_EUR_domestic_primary_market_securities_million_EUR": 0
+    },
+    {
+      "period": "2025-10",
+      "discount_treasury_certificates_million_RON": 663,
+      "treasury_certificates_million_EUR": 0,
+      "interest_bearing_government_bonds_million_RON": 8409.5,
+      "interest_bearing_government_bonds_million_EUR": 0,
+      "total_RON_domestic_primary_market_securities_million_RON": 9072.5,
+      "total_EUR_domestic_primary_market_securities_million_EUR": 0
+    },
+    {
+      "period": "2025-11",
+      "discount_treasury_certificates_million_RON": 500,
+      "treasury_certificates_million_EUR": 0,
+      "interest_bearing_government_bonds_million_RON": 6708.5,
+      "interest_bearing_government_bonds_million_EUR": 0,
+      "total_RON_domestic_primary_market_securities_million_RON": 7208.5,
+      "total_EUR_domestic_primary_market_securities_million_EUR": 0
+    },
+    {
+      "period": "2025-12",
+      "discount_treasury_certificates_million_RON": 0,
+      "treasury_certificates_million_EUR": 0,
+      "interest_bearing_government_bonds_million_RON": 6011.9,
+      "interest_bearing_government_bonds_million_EUR": 0,
+      "total_RON_domestic_primary_market_securities_million_RON": 6011.9,
+      "total_EUR_domestic_primary_market_securities_million_EUR": 0
     }
   ],
   "derived_checks": {
@@ -105,15 +153,18 @@
       "EUR_total_million": 1625.1
     },
     "2025-Q3": {
-      "complete_three_months": false,
-      "observed_months": [
-        "2025-07"
-      ],
-      "RON_partial_total_million": 11080.9,
-      "EUR_partial_total_million": 0
+      "complete_three_months": true,
+      "RON_total_million": 26260.5,
+      "EUR_total_million": 231
     },
-    "jan_to_jul_RON_total_million": 61433.3,
-    "jan_to_jul_EUR_total_million": 1625.1
+    "2025-Q4": {
+      "complete_three_months": true,
+      "RON_total_million": 22292.9,
+      "EUR_total_million": 0
+    },
+    "full_year_RON_total_million": 98905.8,
+    "full_year_EUR_total_million": 1856.1,
+    "all_four_quarters_complete": true
   },
   "semantics": {
     "observed_concept": "domestic primary-market government securities — new and roll-over issues",
@@ -130,6 +181,26 @@
     "generic_government_debt_issuance_node_resolved": false,
     "estimation_authorized": false,
     "feedback_activation_authorized": false,
-    "next_gate": "Retain exact raw BNR source bytes or a reproducible source-vintage acquisition path; verify revisions in subsequent bulletins; extend contiguous monthly history; then preregister whether the government_issuance_yield_loop is explicitly narrowed to the domestic-primary-market boundary."
+    "next_gate": "Retain exact raw BNR source bytes or a reproducible source-vintage acquisition path and then preregister whether the government_issuance_yield_loop is explicitly narrowed to the domestic-primary-market boundary. Revision checking and full-2025 monthly coverage are now complete; Ministry all-market borrowing remains a separate source path.",
+    "revision_check_completed": true,
+    "full_2025_monthly_coverage": true,
+    "raw_source_retention_completed": false
+  },
+  "source_lineage": {
+    "initial_pilot_source": {
+      "publication": "Monthly Bulletin — June 2025",
+      "url": "https://muzeu.bnr.ro/uploads/2025-08-07monthlybulletin06_documentpdf_545_1756370111.pdf",
+      "statistical_data_available_as_of": "2025-08-26",
+      "reviewed_coverage": "2025-01..2025-07"
+    },
+    "full_year_extension_and_revision_source": {
+      "publication": "Monthly Bulletin — December 2025",
+      "url": "https://www.bnr.ro/uploads/2026-06-02monthlybulletinno.122025_documentpdf_545_1772190284.pdf",
+      "statistical_data_available_as_of": "2026-02-24",
+      "reviewed_coverage": "2025-01..2025-12",
+      "table": "12.2 Government securities (new and roll-over issues)",
+      "pdf_page": 65
+    },
+    "revision_assessment": "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json"
   }
 }

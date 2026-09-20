@@ -32,7 +32,8 @@
     "government_f3_holder_diagnostic_contract": "model/dynamics/government_f3_holder_diagnostic_contract.json",
     "government_debt_issuance_source_boundary_review": "model/dynamics/government_debt_issuance_source_boundary_review.json",
     "government_debt_issuance_materialisation_contract": "model/dynamics/government_debt_issuance_materialisation_contract.json",
-    "government_debt_issuance_bnr_pilot": "model/dynamics/government_debt_issuance_bnr_pilot_2025.json"
+    "government_debt_issuance_bnr_pilot": "model/dynamics/government_debt_issuance_bnr_pilot_2025.json",
+    "government_debt_issuance_bnr_revision_assessment": "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json"
   },
   "canonical_state": {
     "accounting": {

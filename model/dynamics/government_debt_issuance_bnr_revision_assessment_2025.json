@@ -1,0 +1,78 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "target_candidate_id": "domestic_primary_market_government_securities_gross_issuance",
+  "initial_pilot": {
+    "source": "Monthly Bulletin — June 2025",
+    "source_url": "https://muzeu.bnr.ro/uploads/2025-08-07monthlybulletin06_documentpdf_545_1756370111.pdf",
+    "statistical_data_available_as_of": "2025-08-26",
+    "reviewed_coverage": "2025-01..2025-07",
+    "snapshot": "model/dynamics/government_debt_issuance_bnr_pilot_2025.json"
+  },
+  "later_revision_source": {
+    "institution": "National Bank of Romania",
+    "publication": "Monthly Bulletin — December 2025",
+    "source_url": "https://www.bnr.ro/uploads/2026-06-02monthlybulletinno.122025_documentpdf_545_1772190284.pdf",
+    "statistical_data_available_as_of": "2026-02-24",
+    "table": "12.2 Government securities (new and roll-over issues)",
+    "pdf_page": 65,
+    "later_source_note": "Some data are still provisional and will be updated as appropriate in subsequent issues.",
+    "full_2025_coverage_present": true
+  },
+  "comparison_scope": {
+    "periods": [
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07"
+    ],
+    "native_amount_fields": [
+      "discount_treasury_certificates_million_RON",
+      "treasury_certificates_million_EUR",
+      "interest_bearing_government_bonds_million_RON",
+      "interest_bearing_government_bonds_million_EUR"
+    ],
+    "compared_native_amount_cells": 28,
+    "comparison_rule": "Exact equality at published one-decimal precision; the BNR symbol '–' is retained semantically as nil and represented numerically as 0.0 only for arithmetic within the reviewed table boundary."
+  },
+  "result": {
+    "exact_matches": 28,
+    "changed_cells": 0,
+    "revised_periods": [],
+    "jan_jul_revision_status": "PASS_NO_CHANGES_AT_PUBLISHED_PRECISION",
+    "revision_check_completed": true,
+    "source_still_provisional": true
+  },
+  "full_year_extension": {
+    "source": "later_revision_source",
+    "periods": [
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12"
+    ],
+    "all_four_quarters_complete": true,
+    "native_currency_separation_preserved": true,
+    "EUR_to_RON_conversion_performed": false
+  },
+  "scientific_effect": {
+    "revision_check_blocker_closed": true,
+    "raw_source_retention_blocker_closed": false,
+    "canonical_reference_mode_promoted": false,
+    "generic_government_debt_issuance_node_resolved": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "interpretation": "A later official BNR bulletin reproduces all originally reviewed Jan-Jul 2025 native-currency amount cells exactly and provides complete 2025 monthly coverage. This closes the revision-check blocker only. It does not substitute for retained raw source bytes or resolve the generic feedback-node boundary."
+  }
+}

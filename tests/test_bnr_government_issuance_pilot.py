@@ -19,6 +19,9 @@ class BNRGovernmentIssuancePilotTests(unittest.TestCase):
         self.snapshot = load(
             "model/dynamics/government_debt_issuance_bnr_pilot_2025.json"
         )
+        self.revision = load(
+            "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json"
+        )
         self.review = load(
             "model/dynamics/government_debt_issuance_source_boundary_review.json"
         )
@@ -30,37 +33,54 @@ class BNRGovernmentIssuancePilotTests(unittest.TestCase):
         )
         self.reference_modes = load("model/dynamics/reference_modes.json")
 
-    def audit(self, snapshot=None):
+    def audit(self, snapshot=None, revision=None):
         return audit_bnr_issuance_pilot(
             snapshot or self.snapshot,
+            revision or self.revision,
             self.review,
             self.contract,
             self.boundary,
             self.reference_modes,
         )
 
-    def test_current_pilot_passes(self) -> None:
+    def test_current_full_year_pilot_passes(self) -> None:
         self.assertEqual(self.audit(), [])
 
-    def test_q1_and_q2_are_complete_but_q3_is_not(self) -> None:
+    def test_all_four_2025_quarters_are_complete(self) -> None:
         checks = self.snapshot["derived_checks"]
-        self.assertTrue(checks["2025-Q1"]["complete_three_months"])
-        self.assertTrue(checks["2025-Q2"]["complete_three_months"])
-        self.assertFalse(checks["2025-Q3"]["complete_three_months"])
-        self.assertEqual(checks["2025-Q3"]["observed_months"], ["2025-07"])
+        for quarter in ("2025-Q1", "2025-Q2", "2025-Q3", "2025-Q4"):
+            self.assertTrue(checks[quarter]["complete_three_months"])
+        self.assertTrue(checks["all_four_quarters_complete"])
+        self.assertEqual(checks["full_year_RON_total_million"], 98905.8)
+        self.assertEqual(checks["full_year_EUR_total_million"], 1856.1)
+
+    def test_revision_check_exactly_preserves_original_jan_jul_cells(self) -> None:
+        result = self.revision["result"]
+        self.assertTrue(result["revision_check_completed"])
+        self.assertEqual(result["exact_matches"], 28)
+        self.assertEqual(result["changed_cells"], 0)
+        self.assertEqual(result["revised_periods"], [])
+        self.assertEqual(
+            result["jan_jul_revision_status"],
+            "PASS_NO_CHANGES_AT_PUBLISHED_PRECISION",
+        )
 
     def test_native_currency_separation_is_preserved(self) -> None:
         may = next(
             row for row in self.snapshot["monthly_observations"]
             if row["period"] == "2025-05"
         )
-        self.assertEqual(
-            may["total_RON_domestic_primary_market_securities_million_RON"],
-            3934.6,
+        august = next(
+            row for row in self.snapshot["monthly_observations"]
+            if row["period"] == "2025-08"
         )
         self.assertEqual(
             may["total_EUR_domestic_primary_market_securities_million_EUR"],
             1625.1,
+        )
+        self.assertEqual(
+            august["total_EUR_domestic_primary_market_securities_million_EUR"],
+            231.0,
         )
         self.assertFalse(
             self.snapshot["extraction"]["EUR_to_RON_conversion_performed"]
@@ -75,12 +95,16 @@ class BNRGovernmentIssuancePilotTests(unittest.TestCase):
         self.assertFalse(semantics["refinancing_need_equivalent"])
         self.assertFalse(semantics["supply_pressure_equivalent"])
 
-    def test_promotion_is_blocked_without_raw_retention_and_revision_check(self) -> None:
+    def test_revision_check_closes_only_revision_blocker(self) -> None:
         extraction = self.snapshot["extraction"]
-        self.assertFalse(extraction["raw_pdf_retained_in_repository"])
-        self.assertFalse(extraction["source_revision_check_performed"])
-        self.assertTrue(
+        self.assertTrue(extraction["source_revision_check_performed"])
+        self.assertFalse(
             extraction["promotion_blocked_by_raw_retention_and_revision_gate"]
+        )
+        self.assertTrue(extraction["promotion_blocked_by_raw_retention_gate"])
+        self.assertFalse(extraction["raw_pdf_retained_in_repository"])
+        self.assertFalse(
+            self.revision["scientific_effect"]["raw_source_retention_blocker_closed"]
         )
         self.assertFalse(
             self.snapshot["scientific_disposition"][
@@ -88,20 +112,26 @@ class BNRGovernmentIssuancePilotTests(unittest.TestCase):
             ]
         )
 
-    def test_manual_q3_completion_is_detected(self) -> None:
-        mutated = copy.deepcopy(self.snapshot)
-        mutated["derived_checks"]["2025-Q3"]["complete_three_months"] = True
-        errors = self.audit(mutated)
-        self.assertTrue(any("may not treat Q3 as complete" in e for e in errors))
+    def test_manual_revision_claim_change_is_detected(self) -> None:
+        mutated = copy.deepcopy(self.revision)
+        mutated["result"]["changed_cells"] = 1
+        errors = self.audit(revision=mutated)
+        self.assertTrue(
+            any("Jan-Jul revision comparison changed" in error for error in errors)
+        )
 
     def test_manual_generic_node_promotion_is_detected(self) -> None:
         mutated = copy.deepcopy(self.snapshot)
         mutated["scientific_disposition"][
             "generic_government_debt_issuance_node_resolved"
         ] = True
-        errors = self.audit(mutated)
+        errors = self.audit(snapshot=mutated)
         self.assertTrue(
-            any("may not promote generic_government_debt_issuance_node_resolved" in e for e in errors)
+            any(
+                "may not promote generic_government_debt_issuance_node_resolved"
+                in error
+                for error in errors
+            )
         )
 
 
