@@ -40,11 +40,11 @@
       "parsed_t_bill_rows": 2,
       "parsed_bond_rows": 9,
       "parsed_event_count": 20,
-      "article_1_base_nominal_RON_million_from_native_text": 5200.0,
-      "article_1_SSON_max_RON_million_from_native_text": 570.0,
-      "parsed_base_nominal_RON_million": 5200.0,
-      "parsed_SSON_RON_million": 570.0,
-      "parsed_document_total_RON_million": 5770.0,
+      "article_1_base_nominal_RON_million_from_native_text": 5200,
+      "article_1_SSON_max_RON_million_from_native_text": 570,
+      "parsed_base_nominal_RON_million": 5200,
+      "parsed_SSON_RON_million": 570,
+      "parsed_document_total_RON_million": 5770,
       "base_reconciles": true,
       "SSON_reconciles": true,
       "document_total_reconciles": true
@@ -54,11 +54,11 @@
       "parsed_t_bill_rows": 2,
       "parsed_bond_rows": 10,
       "parsed_event_count": 22,
-      "article_1_base_nominal_RON_million_from_native_text": 7200.0,
-      "article_1_SSON_max_RON_million_from_native_text": 840.0,
-      "parsed_base_nominal_RON_million": 7200.0,
-      "parsed_SSON_RON_million": 840.0,
-      "parsed_document_total_RON_million": 8040.0,
+      "article_1_base_nominal_RON_million_from_native_text": 7200,
+      "article_1_SSON_max_RON_million_from_native_text": 840,
+      "parsed_base_nominal_RON_million": 7200,
+      "parsed_SSON_RON_million": 840,
+      "parsed_document_total_RON_million": 8040,
       "base_reconciles": true,
       "SSON_reconciles": true,
       "document_total_reconciles": true
@@ -68,11 +68,11 @@
       "parsed_t_bill_rows": 2,
       "parsed_bond_rows": 10,
       "parsed_event_count": 22,
-      "article_1_base_nominal_RON_million_from_native_text": 7400.0,
-      "article_1_SSON_max_RON_million_from_native_text": 840.0,
-      "parsed_base_nominal_RON_million": 7400.0,
-      "parsed_SSON_RON_million": 840.0,
-      "parsed_document_total_RON_million": 8240.0,
+      "article_1_base_nominal_RON_million_from_native_text": 7400,
+      "article_1_SSON_max_RON_million_from_native_text": 840,
+      "parsed_base_nominal_RON_million": 7400,
+      "parsed_SSON_RON_million": 840,
+      "parsed_document_total_RON_million": 8240,
       "base_reconciles": true,
       "SSON_reconciles": true,
       "document_total_reconciles": true
@@ -90,27 +90,27 @@
     ]
   },
   "completed_monthly_reference_mode": {
-    "2025-01": 5770.0,
-    "2025-02": 8040.0,
-    "2025-03": 8165.0
+    "2025-01": 5770,
+    "2025-02": 8040,
+    "2025-03": 8165
   },
   "forward_schedule_not_in_completed_reference_mode": [
     {
       "event_date": "2025-04-01",
       "event_type": "BENCHMARK_BOND_SSON",
       "isin": "RO45DLJ4EE76",
-      "announced_nominal_RON_million": 75.0,
+      "announced_nominal_RON_million": 75,
       "source_id": "mof_order_352_march_2025"
     }
   ],
   "crosschecks": {
-    "january_flash_announced_total_RON_million": 5770.0,
+    "january_flash_announced_total_RON_million": 5770,
     "january_crosscheck": "PASS_EXACT",
-    "february_flash_announced_schedule_total_RON_million": 8040.0,
+    "february_flash_announced_schedule_total_RON_million": 8040,
     "february_crosscheck": "PASS_EXACT",
-    "march_document_total_RON_million": 8240.0,
-    "march_completed_period_RON_million": 8165.0,
-    "march_difference_due_to_2025_04_01_SSON_RON_million": 75.0
+    "march_document_total_RON_million": 8240,
+    "march_completed_period_RON_million": 8165,
+    "march_difference_due_to_2025_04_01_SSON_RON_million": 75
   },
   "semantics": {
     "ex_ante_announced_supply_only": true,
@@ -126,20 +126,24 @@
     "exact_event_level_pilot_materialised": true,
     "exact_completed_monthly_pilot_materialised": true,
     "canonical_reference_modes_registry_promoted": false,
-    "reason_canonical_promotion_deferred": "The Q1 pilot validates event-level semantics and reconciliation, but canonical reference-mode promotion is deferred until the same contract is extended across the completed 2025 source horizon.",
+    "reason_canonical_promotion_deferred": "The exact Q1 pilot remains valid on its frozen combined competitive-plus-fixed-SSON definition, but this definition is not stable across full-year 2025 because later SSON capacity becomes adjudication-dependent. Canonical promotion therefore requires a separate amendment-aware competitive-only full-year series.",
     "government_securities_supply_pressure_node_resolved": false,
     "single_supply_pressure_scalar_selected": false,
     "yield_effect_estimation_authorized": false,
     "feedback_activation_authorized": false,
     "behavioural_closure_authorized": false,
-    "public_version_change_authorized": false
+    "public_version_change_authorized": false,
+    "legacy_Q1_definition_retained": true,
+    "legacy_Q1_definition_is_full_year_stable": false,
+    "full_year_comparable_candidate_id": "announced_RON_primary_reference_auction_supply_level"
   },
   "next_gate": {
-    "id": "mof_announced_RON_primary_supply_full_2025_extension",
-    "authorization": "SOURCE_VINTAGE_EXTENSION_AND_EXACT_EVENT_MATERIALISATION_ONLY",
-    "task": "Extend the same frozen event schema and reconciliation rules to April-December 2025 Ministry monthly issuance orders, retaining exact raw PDFs/native text and preserving event-date bucketing.",
-    "may_promote_canonical_reference_mode_after_full_2025_reconciliation": true,
+    "id": "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage",
+    "authorization": "OFFICIAL_SOURCE_RETENTION_AMENDMENT_AWARE_EVENT_MATERIALISATION_ONLY",
+    "task": "Retain and version April-December base/amendment orders and derive a competitive-only full-year series without rewriting the Q1 legacy pilot.",
+    "may_promote_canonical_reference_mode_after_full_year_reconciliation": true,
     "may_estimate_supply_to_yield_effect": false,
     "may_activate_feedback": false
-  }
+  },
+  "full_2025_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json"
 }

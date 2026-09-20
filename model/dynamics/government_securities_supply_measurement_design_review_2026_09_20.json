@@ -57,13 +57,34 @@
   ],
   "measurement_vector": [
     {
+      "measure_id": "announced_RON_primary_reference_auction_supply_level",
+      "timing": "EX_ANTE_AT_AUCTION_ANNOUNCEMENT",
+      "concept": "Nominal RON target amount explicitly announced ex ante for competitive Treasury-bill auctions and benchmark-bond reference auctions, excluding SSON capacity.",
+      "preferred_observable": "sum_of_competitive_announced_RON_reference_targets",
+      "unit": "million_RON_per_event_or_period",
+      "causal_role": "DIRECT_EX_ANTE_SUPPLY_INPUT_CANDIDATE",
+      "current_source_status": "DEFINITION_FROZEN_FULL_2025_SOURCE_VINTAGE_PENDING",
+      "normalisation_required": false,
+      "stock_denominator_required": false,
+      "activation_ready": false,
+      "full_2025_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json",
+      "legacy_q1_comparable_subset_source": "data/processed/mof_announced_RON_primary_supply_Q1_2025_events.csv",
+      "guards": [
+        "SSON is excluded from the canonical full-year candidate because its information-time definition is not stable across 2025.",
+        "accepted or borrowed amount may not replace announced competitive target as ex-ante supply",
+        "retail and external issuance remain outside this market boundary",
+        "base-order announcements and later amendments must retain separate information dates and lineage",
+        "forward-scheduled events may not be relabelled completed-period realised supply"
+      ]
+    },
+    {
       "measure_id": "announced_RON_primary_supply_level",
       "timing": "EX_ANTE_AT_AUCTION_ANNOUNCEMENT",
       "concept": "Nominal RON amount offered to the domestic primary market.",
       "preferred_observable": "sum_of_announced_RON_target_amounts",
       "unit": "million_RON_per_event_or_period",
       "causal_role": "DIRECT_EX_ANTE_SUPPLY_INPUT_CANDIDATE",
-      "current_source_status": "EXACT_Q1_EVENT_LEVEL_PILOT_MATERIALISED_FULL_2025_EXTENSION_PENDING",
+      "current_source_status": "EXACT_Q1_LEGACY_PILOT_RETAINED_FULL_YEAR_DEFINITION_CHANGED",
       "normalisation_required": false,
       "stock_denominator_required": false,
       "activation_ready": false,
@@ -73,7 +94,10 @@
         "completed-period and forward-scheduled rows must be distinguished"
       ],
       "reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
-      "reference_mode_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json"
+      "reference_mode_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json",
+      "full_2025_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json",
+      "legacy_status": "LEGACY_Q1_COMBINED_COMPETITIVE_PLUS_FIXED_SSON_PILOT_NOT_FULL_YEAR_STABLE",
+      "primary_recovery_path": false
     },
     {
       "measure_id": "announced_RON_supply_surprise",
@@ -171,7 +195,7 @@
     "umbrella_node_status": "QUALITATIVE_UNRESOLVED_MEASUREMENT_LAYER",
     "replace_single_scalar_search": true,
     "ex_ante_supply_inputs": [
-      "announced_RON_primary_supply_level",
+      "announced_RON_primary_reference_auction_supply_level",
       "announced_RON_supply_surprise",
       "announced_RON_duration_supply"
     ],
@@ -188,8 +212,8 @@
     "arbitrary_weighted_index_authorized": false
   },
   "reference_mode_strategy": {
-    "first_materialisation_priority": "announced_RON_primary_supply_level",
-    "reason": "It is the cleanest ex-ante measure, requires no disputed stock denominator, and exact Ministry target amounts are available in auction/prospectus source families.",
+    "first_materialisation_priority": "announced_RON_primary_reference_auction_supply_level",
+    "reason": "The full-year comparable ex-ante measure is the competitive reference-auction target only. SSON is excluded because its 2025 information-time definition changes from fixed nominal capacity to an adjudication-dependent percentage.",
     "minimum_frequency": "event_level_with_monthly_aggregation_allowed",
     "completed_period_only_for_reference_mode": true,
     "forward_schedule_rows_may_be_retained_as_expectation_information_but_not_as_realised_completed_month_supply": true,
@@ -199,7 +223,9 @@
       "monthly public debt report only where exact native table mapping is reproducible"
     ],
     "q1_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json",
-    "canonical_promotion_status": "DEFERRED_UNTIL_COMPLETED_2025_EXTENSION"
+    "canonical_promotion_status": "DEFERRED_FULL_2025_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING",
+    "full_2025_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json",
+    "q1_legacy_combined_pilot": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json"
   },
   "scientific_effect": {
     "government_securities_supply_pressure_node_resolved": false,
@@ -214,9 +240,9 @@
     "public_version_change_authorized": false
   },
   "next_task": {
-    "id": "mof_announced_RON_primary_supply_full_2025_extension",
-    "authorization": "SOURCE_VINTAGE_EXTENSION_AND_EXACT_EVENT_MATERIALISATION_ONLY",
-    "task": "Extend the frozen event-level prospectus contract to April-December 2025 and preserve event-date bucketing before any canonical reference-mode promotion.",
+    "id": "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage",
+    "authorization": "OFFICIAL_SOURCE_RETENTION_AMENDMENT_AWARE_EVENT_MATERIALISATION_ONLY",
+    "task": "Retain exact official April-December base orders and identified amendment orders; preserve information-date version history; materialise competitive reference-auction targets only; retain SSON separately as a non-canonical auxiliary.",
     "may_materialise_announced_supply_reference_mode": true,
     "may_materialise_supply_surprise": false,
     "may_materialise_duration_supply": false,

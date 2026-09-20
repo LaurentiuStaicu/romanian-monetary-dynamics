@@ -84,7 +84,7 @@ class MOFAnnouncedRONPrimarySupplyQ1PilotTests(unittest.TestCase):
         self.assertFalse(disposition["feedback_activation_authorized"])
         self.assertEqual(
             self.pilot["next_gate"]["id"],
-            "mof_announced_RON_primary_supply_full_2025_extension",
+            "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage",
         )
 
     def test_manual_canonical_promotion_is_detected(self) -> None:

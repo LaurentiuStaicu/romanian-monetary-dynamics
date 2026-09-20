@@ -130,8 +130,8 @@
     "stock_normalised_supply_load_required": false
   },
   "next_task": {
-    "id": "mof_announced_RON_primary_supply_full_2025_extension",
-    "authorization": "SOURCE_VINTAGE_EXTENSION_AND_EXACT_EVENT_MATERIALISATION_ONLY",
+    "id": "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage",
+    "authorization": "OFFICIAL_SOURCE_RETENTION_AMENDMENT_AWARE_EVENT_MATERIALISATION_ONLY",
     "may_compute_pressure_ratio_now": false,
     "may_create_approximate_chart_values": false,
     "may_activate_feedback": false
@@ -145,5 +145,8 @@
   "single_scalar_search_superseded_for_primary_recovery_path": true,
   "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
   "announced_RON_primary_supply_reference_mode_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json",
-  "announced_RON_primary_supply_reference_mode_pilot_status": "PASS_EXACT_Q1_EVENT_LEVEL_CANONICAL_PROMOTION_DEFERRED"
+  "announced_RON_primary_supply_reference_mode_pilot_status": "PASS_EXACT_Q1_EVENT_LEVEL_CANONICAL_PROMOTION_DEFERRED",
+  "mof_announced_RON_primary_supply_full_2025_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json",
+  "full_year_primary_supply_candidate_id": "announced_RON_primary_reference_auction_supply_level",
+  "legacy_Q1_combined_supply_pilot_status": "RETAINED_VALID_Q1_NOT_DEFINITIONALLY_STABLE_FOR_FULL_2025"
 }

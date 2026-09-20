@@ -50,7 +50,8 @@
     "government_securities_supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
     "mof_announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
     "mof_announced_RON_primary_supply_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-supply-pilot-2026-09-20/source_vintage_manifest.json",
-    "mof_announced_RON_primary_supply_reference_mode_pilot": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json"
+    "mof_announced_RON_primary_supply_reference_mode_pilot": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json",
+    "mof_announced_RON_primary_supply_full_2025_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json"
   },
   "canonical_state": {
     "accounting": {

@@ -193,7 +193,7 @@
       "supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
       "measurement_architecture_status": "STRUCTURED_MEASUREMENT_VECTOR_KEEP_UMBRELLA_NODE_UNRESOLVED",
       "measurement_vector_ids": [
-        "announced_RON_primary_supply_level",
+        "announced_RON_primary_reference_auction_supply_level",
         "announced_RON_supply_surprise",
         "announced_RON_duration_supply",
         "primary_auction_absorption",
@@ -203,8 +203,11 @@
       ],
       "single_scalar_selected": false,
       "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
-      "announced_RON_primary_supply_reference_mode_status": "EXACT_Q1_PILOT_MATERIALISED_NOT_CANONICAL",
-      "announced_RON_primary_supply_reference_mode_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json"
+      "announced_RON_primary_supply_reference_mode_status": "LEGACY_Q1_COMBINED_PILOT_RETAINED_NOT_FULL_YEAR_STABLE",
+      "announced_RON_primary_supply_reference_mode_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json",
+      "mof_announced_RON_primary_supply_full_2025_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json",
+      "full_year_announced_RON_primary_reference_auction_supply_status": "DEFINITION_FROZEN_SOURCE_VINTAGE_PENDING",
+      "full_year_announced_RON_primary_reference_auction_supply_candidate_id": "announced_RON_primary_reference_auction_supply_level"
     },
     {
       "id": "inflationary_pressure",

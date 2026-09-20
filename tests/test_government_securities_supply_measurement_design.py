@@ -58,7 +58,7 @@ class GovernmentSecuritiesSupplyMeasurementDesignTests(unittest.TestCase):
         self.assertEqual(
             set(topology["ex_ante_supply_inputs"]),
             {
-                "announced_RON_primary_supply_level",
+                "announced_RON_primary_reference_auction_supply_level",
                 "announced_RON_supply_surprise",
                 "announced_RON_duration_supply",
             },
@@ -74,7 +74,7 @@ class GovernmentSecuritiesSupplyMeasurementDesignTests(unittest.TestCase):
     def test_announced_supply_requires_no_stock_denominator(self) -> None:
         item = next(
             x for x in self.review["measurement_vector"]
-            if x["measure_id"] == "announced_RON_primary_supply_level"
+            if x["measure_id"] == "announced_RON_primary_reference_auction_supply_level"
         )
         self.assertFalse(item["normalisation_required"])
         self.assertFalse(item["stock_denominator_required"])
