@@ -1,0 +1,216 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-20",
+  "mechanism_id": "fiscal_primary_balance_reaction",
+  "phase": "Fiscal Reaction Selective Reopen — Pre-2022 AMECO UBLGBPS Source-Structure Probe",
+  "purpose": "Determine, without model fitting or value transformation, whether exact Romania UBLGBPS rows are present in each official Spring/Autumn AMECO archive from 2011 through 2021. This extends source-boundary knowledge only and cannot by itself authorize a new fiscal reaction design.",
+  "prerequisite_timing_adjudication": "model/calibration_validation/fiscal_capb_timing_adjudication_2026_09_20.json",
+  "official_archive_page": "https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database/ameco-archive_en",
+  "target_series": {
+    "code": "ROM.1.0.319.0.UBLGBPS",
+    "variable": "UBLGBPS",
+    "country": "Romania",
+    "concept": "Structural balance of general government excluding interest; adjustment based on potential GDP; excessive deficit procedure"
+  },
+  "releases": [
+    {
+      "id": "spring_2011",
+      "label": "Spring 2011",
+      "release_date": "2011-05-05",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/e8b9a0ee-8f28-4c86-999d-c8dd1a166e60_en?filename=ameco_spring2011.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "autumn_2011",
+      "label": "Autumn 2011",
+      "release_date": "2011-11-10",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/af1d61bb-6a83-4bc2-ad9a-b00b4f551b8e_en?filename=ameco_autumn2011.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "spring_2012",
+      "label": "Spring 2012",
+      "release_date": "2012-05-08",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/6b88702e-dbea-41da-af92-3beda9cc5e43_en?filename=ameco_spring2012.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "autumn_2012",
+      "label": "Autumn 2012",
+      "release_date": "2012-11-08",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/6a98c5a3-5b99-4fd2-ac1b-d7255293a38a_en?filename=ameco_autumn2012.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "spring_2013",
+      "label": "Spring 2013",
+      "release_date": "2013-05-08",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/af0377ee-ab3e-4fdf-b147-b81183728402_en?filename=ameco_spring2013.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "autumn_2013",
+      "label": "Autumn 2013",
+      "release_date": "2013-11-07",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/3b4daf03-9de1-41e6-b260-89a10de26f0a_en?filename=ameco_autumn2013.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "spring_2014",
+      "label": "Spring 2014",
+      "release_date": "2014-05-08",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/e5dfa67a-695a-4535-9615-e594cf88fd85_en?filename=ameco_spring2014.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "autumn_2014",
+      "label": "Autumn 2014",
+      "release_date": "2014-11-06",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/e18a0d7f-bb2f-41fa-92ad-34b6d55dd80a_en?filename=ameco_autumn2014.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "spring_2015",
+      "label": "Spring 2015",
+      "release_date": "2015-05-07",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/af291ff7-1b5d-4343-805f-061c8362ae60_en?filename=ameco_spring2015.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "autumn_2015",
+      "label": "Autumn 2015",
+      "release_date": "2015-11-05",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/8ff15496-dc11-45e8-8711-820eae40f27e_en?filename=ameco_autumn2015.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "spring_2016",
+      "label": "Spring 2016",
+      "release_date": "2016-05-03",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/ac6e8f81-3ae8-4cdf-9776-e1fd34449cb3_en?filename=ameco_spring2016.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "autumn_2016",
+      "label": "Autumn 2016",
+      "release_date": "2016-11-09",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/2bad1334-5866-404f-9f60-ffe2f8ee951c_en?filename=ameco_autumn20161.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "spring_2017",
+      "label": "Spring 2017",
+      "release_date": "2017-05-11",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/ada26fc5-3ce0-412c-af3c-6937376ae6af_en?filename=ameco_spring20171.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "autumn_2017",
+      "label": "Autumn 2017",
+      "release_date": "2017-11-09",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/b7b692aa-44e3-4a75-9501-7379dfaafa50_en?filename=ameco_autumn20171.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "spring_2018",
+      "label": "Spring 2018",
+      "release_date": "2018-05-03",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/66a10fb5-0c73-4fcf-831a-e58d25ca79bf_en?filename=ameco_spring20181.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "autumn_2018",
+      "label": "Autumn 2018",
+      "release_date": "2018-11-08",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/5cfc8121-138b-4c42-9411-90df559b21db_en?filename=ameco_autumn20181.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "spring_2019",
+      "label": "Spring 2019",
+      "release_date": "2019-05-07",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/2dbfb168-f2f9-43b8-bfb7-c6efa0e4da88_en?filename=ameco_spring2019.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "autumn_2019",
+      "label": "Autumn 2019",
+      "release_date": "2019-11-07",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/d7f7871e-fa02-46f2-b9b8-4fed822bd72d_en?filename=ameco_autumn2019.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "spring_2020",
+      "label": "Spring 2020",
+      "release_date": "2020-05-06",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/e6e8f547-0d9b-40f6-b9d8-98d11b502696_en?filename=ameco_spring2020.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "autumn_2020",
+      "label": "Autumn 2020",
+      "release_date": "2020-11-05",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/e058b7c7-a9c6-4340-abe1-a6669c469592_en?filename=ameco_autumn2020.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "spring_2021",
+      "label": "Spring 2021",
+      "release_date": "2021-05-12",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/17372dca-211c-42b6-9a1d-89559b985d23_en?filename=ameco_spring2021.zip",
+      "release_type": "official_archive"
+    },
+    {
+      "id": "autumn_2021",
+      "label": "Autumn 2021",
+      "release_date": "2021-11-11",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/a522fc1a-c386-4c3e-80dd-50de123fb773_en?filename=ameco_autumn2021.zip",
+      "release_type": "official_archive"
+    }
+  ],
+  "probe_rules": {
+    "recursively_scan_zip_members": true,
+    "maximum_nested_zip_depth": 3,
+    "exact_first_field_match_required": true,
+    "byte_identical_duplicate_matches_are_not_ambiguous": true,
+    "distinct_duplicate_matches_are_ambiguous": true,
+    "provider_or_network_failure_is_indeterminate": true,
+    "valid_archive_without_exact_target_is_observed_negative": true,
+    "retain_archive_bytes_for_workflow_artifact": true,
+    "retain_exact_matching_row_bytes_when_present": true,
+    "no_numeric_value_transformation": true,
+    "no_forecast_historical_classification_in_this_probe": true
+  },
+  "release_statuses": [
+    "TARGET_PRESENT",
+    "OBSERVED_TARGET_NOT_FOUND_IN_VALID_ARCHIVE",
+    "AMBIGUOUS_DISTINCT_TARGET_ROWS",
+    "INDETERMINATE_PROVIDER_OR_ARCHIVE_FAILURE"
+  ],
+  "scientific_decision_rules": {
+    "all_or_partial_presence_may_inform_future_sample_boundary": true,
+    "target_absence_in_valid_archive_is_release_specific_not_global_source_absence": true,
+    "provider_failure_cannot_count_as_target_absence": true,
+    "new_structural_selection_contract_authorized_by_probe": false,
+    "estimation_authorized": false,
+    "model_selection_authorized": false,
+    "prior_final_evaluation_opening_authorized": false
+  },
+  "sample_size_guard": {
+    "maximum_first_historical_years_if_all_spring_autumn_archives_support_target": 16,
+    "prior_cycle_total_target_years": 29,
+    "no_weaker_validation_design_merely_to_fit_short_sample": true
+  },
+  "hard_rules": {
+    "no_parameter_estimation": true,
+    "no_model_selection": true,
+    "no_value_transform": true,
+    "no_latest_vintage_backfill": true,
+    "no_old_holdout_reuse": true,
+    "no_provider_failure_as_negative_evidence": true,
+    "no_system_dynamics_activation": true,
+    "no_behavioural_closure_change": true,
+    "live_provider_work_manual_only": true
+  },
+  "next_gate": "Review the release-by-release presence artifact and its raw-byte hashes. Then decide whether the observed real-time source window is scientifically large enough to justify any separately preregistered design. Independently, preserve raw source bytes permanently before claiming exact source-vintage reproducibility."
+}

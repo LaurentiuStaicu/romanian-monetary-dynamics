@@ -1,8 +1,8 @@
 {
   "assessment_version": "0.1",
-  "assessed_on": "2026-09-19",
+  "assessed_on": "2026-09-20",
   "mechanism_id": "fiscal_primary_balance_reaction",
-  "status": "READY_FOR_MANUAL_LIVE_SOURCE_MATERIALISATION_NOT_YET_EXECUTED",
+  "status": "WORKFLOW_EXECUTED_SUCCESS_ARTIFACT_REVIEWED_TIMING_ADJUDICATED_RAW_REPOSITORY_RETENTION_PENDING",
   "prerequisite_reopen_assessment": "model/registries/fiscal_capb_reopen_assessment_2026_09_19.json",
   "contract": "model/calibration_validation/fiscal_reaction_capb_realtime_vintage_contract.json",
   "workflow": ".github/workflows/fiscal-reaction-capb-realtime-vintage-materialisation.yml",
@@ -16,11 +16,23 @@
   "execution_state": {
     "live_provider_work_manual_only": true,
     "workflow_dispatch_required": true,
-    "execution_performed": false,
-    "workflow_run_id": null,
+    "execution_performed": true,
+    "workflow_run_id": 35481663720,
+    "workflow_run_head_sha": "f859f4e525bb0db13b3140c7d45e1fa17442ca4d",
+    "workflow_conclusion": "success",
+    "artifact_id": 10595244882,
+    "artifact_name": "fiscal-reaction-capb-realtime-vintages-f859f4e525bb0db13b3140c7d45e1fa17442ca4d",
+    "artifact_zip_sha256": "b6a73296e17b490fef6d785a6eee711d6ebf3ba086ab63b63abb973bdf12037b",
+    "artifact_expires_at": "2026-12-19T01:32:45Z",
+    "release_count": 9,
     "retained_source_vintage_created": false,
-    "retained_artifact_reviewed": false,
-    "timing_adjudication_authorized_after_materialisation_only": true
+    "repository_raw_bytes_retained": false,
+    "retained_artifact_reviewed": true,
+    "timing_adjudication_completed": true,
+    "timing_adjudication": "model/calibration_validation/fiscal_capb_timing_adjudication_2026_09_20.json",
+    "pre2022_source_probe_preregistered": true,
+    "pre2022_source_probe_contract": "model/calibration_validation/fiscal_reaction_capb_pre2022_source_probe_contract.json",
+    "pre2022_source_probe_executed": false
   },
   "scientific_effects": {
     "mechanism_classification": "DEFERRED",
@@ -30,5 +42,5 @@
     "system_dynamics_feedback_activation": false,
     "behavioural_closure_activation": false
   },
-  "next_gate": "Manually dispatch the frozen CAPB real-time vintage materialisation workflow. Only after its artifact is retained and reviewed may the separate information-set/timing adjudication begin."
+  "next_gate": "Manually dispatch the frozen 2011-2021 AMECO UBLGBPS source-structure probe and review its release-level presence evidence. In parallel, preserve exact 2022-2026 raw archive bytes permanently before claiming exact source-vintage reproducibility. No model selection is authorized."
 }

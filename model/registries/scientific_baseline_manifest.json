@@ -106,15 +106,15 @@
         "FREEZE_TESTED_FORM_UNTIL_NEW_EVIDENCE": 3,
         "DEFER_UNTIL_NEW_OBSERVED_POPULATION_BRIDGE_SOURCE": 1,
         "DEFER_UNTIL_MATCHED_AGGREGATE_OR_MORTGAGE_PORTFOLIO_SOURCE": 1,
-        "SELECTIVE_REOPEN_MANUAL_SOURCE_MATERIALISATION": 1,
+        "SELECTIVE_REOPEN_PRE2022_SOURCE_PROBE_AND_RAW_PRESERVATION": 1,
         "DEFER_UNTIL_FORMATION_TIME_EXPECTATIONS_AND_REAL_TIME_GAP_VINTAGES": 1,
         "DEFER_UNTIL_JOINT_EXPOSURE_SOURCE": 1
       },
-      "current_empirical_queue_state": "SELECTIVE_REOPEN_FISCAL_CAPB_MANUAL_SOURCE_GATE_READY",
+      "current_empirical_queue_state": "SELECTIVE_REOPEN_FISCAL_CAPB_PRE2022_SOURCE_PROBE_READY",
       "calibration_cycle_open": false,
       "reopen_registry_entry_count": 11,
       "all_reopen_conditions_registered": true,
-      "reopen_governance_state": "DECLARED_TRIGGER_SATISFIED_MANUAL_SOURCE_GATE_NO_ESTIMATION"
+      "reopen_governance_state": "DECLARED_TRIGGER_SATISFIED_SOURCE_EXTENSION_GATE_NO_ESTIMATION"
     },
     "scientific_stage": {
       "name": "Validation Recovery / Empirical Basis Expansion",
@@ -126,8 +126,9 @@
       "selective_reopen_active": true,
       "selective_reopen_mechanism": "fiscal_primary_balance_reaction",
       "selective_reopen_scope": "CAPB_REALTIME_VINTAGE_SOURCE_MATERIALISATION_AND_TIMING_ADJUDICATION_ONLY",
-      "active_manual_empirical_gate": "FISCAL_PRIMARY_BALANCE_CAPB_REALTIME_VINTAGE_MATERIALISATION",
-      "selective_reopen_execution_state": "READY_MANUAL_WORKFLOW_DISPATCH_REQUIRED_NOT_EXECUTED"
+      "active_manual_empirical_gate": "FISCAL_PRIMARY_BALANCE_CAPB_PRE2022_SOURCE_STRUCTURE_PROBE",
+      "selective_reopen_execution_state": "TIMING_ADJUDICATED_PRE2022_SOURCE_PROBE_AND_RAW_RETENTION_PENDING",
+      "fiscal_capb_timing_adjudication": "model/calibration_validation/fiscal_capb_timing_adjudication_2026_09_20.json"
     }
   },
   "hard_invariants": [

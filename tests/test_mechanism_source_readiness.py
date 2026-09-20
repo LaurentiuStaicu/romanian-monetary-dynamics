@@ -60,19 +60,19 @@ class MechanismSourceReadinessTests(unittest.TestCase):
         )
         self.assertEqual(
             step["action"],
-            "MANUAL_DISPATCH_CAPB_REALTIME_VINTAGE_MATERIALISATION",
+            "MANUAL_DISPATCH_CAPB_PRE2022_SOURCE_STRUCTURE_PROBE",
         )
         self.assertFalse(step["calibration_cycle_open"])
         self.assertEqual(
             step["authorized_scope"],
-            "CAPB_REALTIME_VINTAGE_SOURCE_MATERIALISATION_ONLY",
+            "CAPB_PRE2022_SOURCE_STRUCTURE_PROBE_ONLY",
         )
         self.assertEqual(
             step["execution_mode"],
             "MANUAL_ONLY_LIVE_SOURCE_EVIDENCE",
         )
-        self.assertIn("manual-only", step["reason"])
-        self.assertIn("no retained CAPB vintage", step["reason"])
+        self.assertIn("2011-2021", step["reason"])
+        self.assertIn("raw-byte", step["reason"])
 
         mechanisms = {
             item["id"]: item for item in self.readiness["mechanisms"]
@@ -283,11 +283,11 @@ class MechanismSourceReadinessTests(unittest.TestCase):
         fiscal = mechanisms["fiscal_primary_balance_reaction"]
         self.assertEqual(
             fiscal["source_readiness"],
-            "REOPENED_CAPB_SOURCE_GATE_READY_MANUAL_MATERIALISATION_PENDING",
+            "CAPB_9_RELEASE_TIMING_ADJUDICATED_PRE2022_SOURCE_PROBE_AND_RAW_RETENTION_PENDING",
         )
         self.assertEqual(
             fiscal["priority_group"],
-            "SELECTIVE_REOPEN_MANUAL_SOURCE_MATERIALISATION",
+            "SELECTIVE_REOPEN_PRE2022_SOURCE_PROBE_AND_RAW_PRESERVATION",
         )
         self.assertTrue(fiscal["selective_reopen_active"])
         self.assertEqual(
