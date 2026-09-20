@@ -1,0 +1,128 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "node_id": "government_securities_supply_pressure",
+  "purpose": "Freeze the observable boundary for the qualitative government-securities supply-pressure node without relabelling raw issuance volume, auction demand, or secondary-market liquidity as a single causal pressure variable.",
+  "decision": "MULTIDIMENSIONAL_CANDIDATE_BOUNDARY_NO_SCALAR_PROMOTION",
+  "current_node_status": {
+    "boundary_class": "UNRESOLVED",
+    "runtime_role": "INACTIVE_CANDIDATE_NODE",
+    "exact_reference_mode_id": null,
+    "feedback_activation_authorized": false
+  },
+  "official_source_family": {
+    "institution": "Romanian Ministry of Finance — General Directorate of Treasury and Public Debt",
+    "publication_family": "Monthly public debt reports",
+    "example_reviewed_source": {
+      "title": "Public debt report — February 2025",
+      "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport022025.pdf",
+      "section": "III. Primary and secondary market of government securities",
+      "primary_market_fields_shown": [
+        "announced amounts",
+        "amount of tenders submitted",
+        "accepted amounts",
+        "bid-to-cover ratio"
+      ],
+      "published_bid_to_cover_definition": "amount of bids submitted / accepted amounts"
+    },
+    "related_market_capacity_fields": [
+      "outstanding government securities issued on domestic market",
+      "holdings of government securities issued on domestic market",
+      "secondary-market monthly traded volume",
+      "secondary-market liquidity ratio"
+    ],
+    "published_liquidity_ratio_definition": "total volume of monthly secondary-market transactions / total volume of government securities"
+  },
+  "auction_rule_evidence": {
+    "source": "Ministry of Finance Order 1068/2021 English publication governing government-securities auction terms",
+    "url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF1068_25082021_en.pdf",
+    "relevant_rule": "The Ministry may increase, decrease or cancel the amount borrowed depending on financing needs and/or the yield resulting after an auction; auction results are made public.",
+    "structural_implication": "accepted_amount_is_an_auction_outcome_and_may_not_be_treated_as_pure_ex_ante_supply"
+  },
+  "candidate_observable_vector": [
+    {
+      "candidate_id": "domestic_RON_primary_market_supply_load",
+      "role": "EX_ANTE_SUPPLY_LOAD_CANDIDATE",
+      "provisional_formula": "monthly_announced_RON_amount / lagged_month_end_outstanding_domestic_RON_government_securities",
+      "unit": "dimensionless_ratio",
+      "direction_for_pressure_hypothesis": "higher_ratio_candidate_higher_supply_load",
+      "why_preferred_over_accepted_amount": "The announced amount precedes auction allocation, while accepted amount may respond to bids, financing needs and the yield outcome.",
+      "activation_ready": false
+    },
+    {
+      "candidate_id": "domestic_RON_primary_market_auction_absorption",
+      "role": "DEMAND_ABSORPTION_CANDIDATE",
+      "provisional_formula": "monthly_submitted_RON_bids / monthly_announced_RON_amount",
+      "unit": "dimensionless_ratio",
+      "direction_for_pressure_hypothesis": "lower_ratio_candidate_tighter_absorption",
+      "interpretation_guard": "This is an auction demand-coverage measure, not supply pressure itself.",
+      "activation_ready": false
+    },
+    {
+      "candidate_id": "domestic_RON_primary_market_bid_to_cover",
+      "role": "PUBLISHED_AUCTION_DEMAND_DIAGNOSTIC",
+      "provisional_formula": "monthly_submitted_RON_bids / monthly_accepted_RON_amount",
+      "unit": "dimensionless_ratio",
+      "direction_for_pressure_hypothesis": "lower_ratio_candidate_tighter_auction_absorption",
+      "interpretation_guard": "Published bid-to-cover uses accepted amount in the denominator. Because accepted amount is partly an auction outcome, this metric cannot be promoted as a pure ex-ante supply-pressure measure.",
+      "activation_ready": false
+    },
+    {
+      "candidate_id": "domestic_government_securities_secondary_market_liquidity",
+      "role": "MARKET_CAPACITY_CONTEXT_OR_CONTROL",
+      "provisional_formula": "monthly_secondary_market_transaction_volume / total_government_securities_volume",
+      "unit": "dimensionless_ratio",
+      "direction_for_pressure_hypothesis": "not_preregistered_as_monotonic_pressure_effect",
+      "interpretation_guard": "Liquidity is market context/capacity evidence and is not synonymous with primary-market supply pressure.",
+      "activation_ready": false
+    }
+  ],
+  "maturity_and_currency_boundary": {
+    "primary_candidate_currency": "RON",
+    "reason": "The Ministry bid-to-cover chart is explicitly for government securities issued on the internal market denominated in RON; mixing RON and EUR auction pressure without a preregistered conversion/market-depth rule is prohibited.",
+    "maturity_composition_available": true,
+    "maturity_composition_role": "candidate stratification/control; not collapsed into one duration-weighted pressure index at this stage",
+    "cross_currency_aggregation_authorized": false,
+    "cross_maturity_aggregation_authorized": false
+  },
+  "prohibited_shortcuts": [
+    "Use raw BNR gross issuance volume as government_securities_supply_pressure.",
+    "Use accepted auction amount as a pure ex-ante supply measure.",
+    "Use inverse published bid-to-cover as the supply-pressure node without separately retaining announced, submitted and accepted amounts.",
+    "Treat secondary-market liquidity as primary-market supply pressure.",
+    "Combine RON and EUR issuance or yields into one scalar without a preregistered boundary.",
+    "Infer a causal supply-to-yield coefficient from contemporaneous 2025 descriptive observations."
+  ],
+  "materialisation_gate": {
+    "source_values_materialised_now": false,
+    "raw_ministry_pdf_retained_now": false,
+    "reason": "The official source boundary and definitions are identifiable, but the reviewed Ministry PDF is currently exposed principally as graphical PDF output and exact raw-source retention/extraction has not yet passed repository provenance checks.",
+    "required_before_any_candidate_series_is_created": [
+      "Retain the exact Ministry monthly public-debt-report PDF vintage with SHA-256 and source URL.",
+      "Verify whether announced, submitted and accepted monthly RON amounts can be extracted exactly from the retained source rather than visually approximated from chart geometry.",
+      "Retain the exact denominator source/vintage for outstanding domestic RON government securities.",
+      "Preserve published bid-to-cover values as a diagnostic and independently recompute submitted/accepted where exact amounts permit.",
+      "Preserve secondary-market liquidity as a separate context series if materialised.",
+      "Freeze lag convention before computing announced_amount / outstanding_stock."
+    ],
+    "visual_chart_digitisation_authorized": false,
+    "ocr_authorized": false,
+    "manual_approximation_authorized": false
+  },
+  "scientific_effect": {
+    "government_securities_supply_pressure_node_resolved": false,
+    "scalar_pressure_index_selected": false,
+    "exact_reference_mode_promoted": false,
+    "equation_selected": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_task": {
+    "id": "mof_primary_market_pressure_source_vintage_probe",
+    "authorization": "RAW_SOURCE_AND_EXACT_EXTRACTABILITY_PROBE_ONLY",
+    "may_create_approximate_chart_values": false,
+    "may_activate_feedback": false
+  }
+}
