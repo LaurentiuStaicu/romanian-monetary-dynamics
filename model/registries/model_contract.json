@@ -80,7 +80,7 @@
     "government_issuance_yield_empirical_boundary_status": "OPEN_CHAIN_PENDING_EXPLICIT_BRIDGES",
     "government_issuance_yield_conceptual_topology_status": "CLOSED_CANDIDATE_LOOP",
     "government_issuance_yield_feedback_activation_authorized": false,
-    "next_government_issuance_yield_empirical_task": "mof_announced_RON_primary_supply_source_vintage_pilot",
+    "next_government_issuance_yield_empirical_task": "mof_announced_RON_primary_supply_full_2025_extension_contract",
     "government_issuance_bnr_primary_market_yield_pilot": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
     "government_issuance_bnr_primary_market_yield_pilot_status": "PASS_DESCRIPTIVE_INSTRUMENT_SPECIFIC_NO_GENERIC_YIELD_AGGREGATION",
     "government_securities_supply_pressure_source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
@@ -99,7 +99,11 @@
     "government_securities_supply_first_reference_mode_priority": "announced_RON_primary_supply_level",
     "government_securities_supply_stock_normalisation_required": false,
     "mof_announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
-    "mof_announced_RON_primary_supply_reference_mode_status": "SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
+    "mof_announced_RON_primary_supply_reference_mode_status": "Q1_EXACT_PILOT_MATERIALISED_FULL_REFERENCE_MODE_NOT_PROMOTED",
+    "mof_announced_RON_primary_supply_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_pilot_assessment_2026_09_20.json",
+    "mof_announced_RON_primary_supply_pilot_events": "data/processed/government_securities_announced_RON_primary_supply_2025Q1_events.csv",
+    "mof_announced_RON_primary_supply_pilot_monthly": "data/processed/government_securities_announced_RON_primary_supply_2025Q1_monthly.csv",
+    "mof_announced_RON_primary_supply_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-supply-pilot-2026-09-20/source_vintage_manifest.json"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
