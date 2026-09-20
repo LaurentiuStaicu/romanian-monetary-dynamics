@@ -115,18 +115,21 @@
     "estimation_authorized": false,
     "feedback_activation_authorized": false,
     "behavioural_closure_authorized": false,
-    "public_version_change_authorized": false
+    "public_version_change_authorized": false,
+    "stock_normalised_supply_load_required": false
   },
   "next_task": {
-    "id": "government_securities_supply_measurement_design_review",
-    "authorization": "STRUCTURAL_MEASUREMENT_DESIGN_ONLY",
-    "scope": "Reassess the supply-pressure measurement architecture as a vector separating announced supply level/load, announcement surprise, maturity-duration composition, auction absorption and liquidity context. Ministry nominal holdings may remain a named market-capacity proxy candidate, not an assumed exact auction-universe denominator.",
-    "selection_criterion": "structural_measurement_validity_before_scalar_construction",
+    "id": "mof_announced_RON_primary_supply_reference_mode_contract",
+    "authorization": "SOURCE_CONTRACT_AND_EXACT_REFERENCE_MODE_MATERIALISATION_ONLY",
+    "scope": "Proceed with the exact announced-RON primary-supply reference mode without selecting a stock denominator. Retain denominator candidates only for named sensitivity/capacity diagnostics.",
+    "selection_criterion": "announced_supply_reference_mode_does_not_require_stock_denominator",
     "may_compute_candidate_ratios_for_diagnostic_comparison_after_source_retention": false,
     "may_promote_any_ratio_to_supply_pressure": false,
     "may_activate_feedback": false
   },
   "ecb_denominator_probe_contract": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_contract.json",
   "ecb_denominator_probe_assessment": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_assessment_2026_09_20.json",
-  "ecb_denominator_probe_status": "TWO_VALID_SERIES_ONE_PREREGISTERED_DOMESTIC_GFS_KEY_NOT_FOUND_NO_SELECTION"
+  "ecb_denominator_probe_status": "TWO_VALID_SERIES_ONE_PREREGISTERED_DOMESTIC_GFS_KEY_NOT_FOUND_NO_SELECTION",
+  "supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
+  "denominator_search_status": "FROZEN_NOT_REQUIRED_FOR_FIRST_EX_ANTE_REFERENCE_MODE"
 }
