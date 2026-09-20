@@ -1,0 +1,68 @@
+name: Ministry Supply Pressure Source Vintage Probe
+
+on:
+  push:
+    branches:
+      - source-vintage/mof-supply-pressure-probe-2026-09-20
+    paths:
+      - .github/workflows/mof-supply-pressure-source-vintage-probe.yml
+      - model/dynamics/government_securities_supply_pressure_source_vintage_probe_contract.json
+      - scripts/probe_mof_supply_pressure_source_vintage.py
+      - tests/test_mof_supply_pressure_source_vintage_probe.py
+
+permissions:
+  contents: write
+
+jobs:
+  acquire-and-probe:
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out probe branch
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install native PDF text extractor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+          pdftotext -v
+
+      - name: Verify frozen probe contract and offline guards
+        run: python -m unittest tests.test_mof_supply_pressure_source_vintage_probe -v
+
+      - name: Acquire exact Ministry PDFs and extract native text
+        run: |
+          python scripts/probe_mof_supply_pressure_source_vintage.py \
+            --output mof_supply_pressure_probe_artifacts
+
+      - name: Retain exact probe vintage on source-vintage branch
+        run: |
+          DEST="data/source_vintages/mof-supply-pressure-probe-vintage-2026-09-20"
+          if [ -e "$DEST" ]; then
+            echo "Destination already exists; refusing overwrite."
+            exit 1
+          fi
+          mkdir -p "$DEST"
+          cp -a mof_supply_pressure_probe_artifacts/. "$DEST/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DEST"
+          git diff --cached --quiet && { echo "No retained source-vintage changes."; exit 1; }
+          git commit -m "data: retain Ministry supply-pressure probe source vintage"
+          git push origin HEAD:source-vintage/mof-supply-pressure-probe-2026-09-20
+
+      - name: Upload raw PDFs, native text and probe manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: mof-supply-pressure-probe-${{ github.sha }}
+          path: mof_supply_pressure_probe_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
