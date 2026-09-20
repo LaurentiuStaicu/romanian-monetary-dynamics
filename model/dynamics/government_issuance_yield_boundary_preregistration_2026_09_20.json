@@ -63,7 +63,8 @@
       "to": "government_securities_supply_pressure",
       "requirement": "Define and validate a supply-pressure observable or transform. Raw gross issuance volume alone must not be relabelled supply pressure; market depth, investor absorption, maturity/currency composition or another preregistered denominator/structure may be required.",
       "source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
-      "status": "SOURCE_BOUNDARY_REVIEWED_MATERIALISATION_NOT_STARTED"
+      "status": "RAW_SOURCE_PASS_ANNOUNCED_EXACT_DENOMINATOR_AND_SUBMITTED_BIDS_BLOCKED",
+      "source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json"
     },
     {
       "id": "primary_yield_to_sovereign_yield",
@@ -97,5 +98,5 @@
     "artifact": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
     "completed_on": "2026-09-20"
   },
-  "next_gate_after_materialisation": "Supply-pressure source boundary is reviewed as multidimensional. Next retain an exact Ministry monthly public-debt-report vintage and probe exact extractability of announced/submitted/accepted RON auction amounts plus the matching lagged outstanding-stock denominator. No chart digitisation, OCR approximation or scalar pressure promotion is authorized."
+  "next_gate_after_materialisation": "Reconcile the exact RON auction-universe stock denominator before any supply-load ratio is computed. Submitted-bids and bid-to-cover monthly series remain blocked because the monthly report exposes them graphically without reproducible native-text month/series mapping."
 }

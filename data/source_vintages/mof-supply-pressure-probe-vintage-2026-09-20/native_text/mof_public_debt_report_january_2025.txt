@@ -1,0 +1,934 @@
+                                                                 Departamentul Middle Oiffice
+
+
+
+
+MONTHLY REPORT
+January 31-st, 2025
+
+                                                                                                                                                                               page                  Credit rating
+A.   PUBLIC DEBT ACCORDING TO NATIONAL LEGISLATION……………………………………………….................................                                                                           1          Moody's       S&P             Fitch
+                                                                                                                                                                                            Baa3         BBB-            BBB-
+I.     Financing needs and sources……………………………………………………...................................................................                                                       1
+      1. Borrowing requirement in 2025………………………………………………………………………………..................................                                                                          1
+      2. Actual borrowings in 2025………………………………………………………………………………………..............................                                                                               1
+II.    Public debt stock……………………………………………………………………...................................................................                                                           1
+     1. Public debt stock evolution………………………………………………………………………………….....................................                                                                         1
+     2. Government public debt evolution………………………………………………………………………………................................                                                                          2
+     3. Government securities evolution………………………………………………………………………………..................................                                                                         2
+     4. Holdings of government securities………………………………………………………………………………...............................                                                                          3
+III. Primary and secondary market of government securities…………………………………..................................................                                                       3
+     1. Primary market of government securities…………………………………………………………...............................................                                                            3
+     2. Secondary market of government securities………………………………............................................................................                                       4
+IV. Cost of the government public debt…………………………………………………................................................................                                                       5
+V. Implementation of the Debt Management Strategy on medium term………………………………....................................                                                                5
+     1.Currency risk………………………………………………………………………………………………..........................................                                                                              5
+     2. Refinancing risk…………………………………………………………………………………….................................................                                                                       6
+     3. Interest rate risk…………………………………………………………………………………….................................................                                                                     6
+
+B. PUBLIC DEBT ACCORDING TO EUROPEAN METHODOLOGY……...................................................................................                                           7
+
+
+
+
+Public debt according to national legislation (the GEO no 64/2007) includes:
+                public government debt representing indebtedness incurred directly or guaranteed by the Romanian Government through MoF , including
+                the amounts advanced temporary from the State Treasury accounts and debt contracted by the line ministries.
+                local public debt representing indebtedness incurred directly or guaranteed by the local administration unit.
+
+
+Government debt according to EU methodology means total gross debt at nominal value outstanding at the end of the year and consolidated at general government subsectors
+
+This report includes monthly preliminary data. The Government debt indicator according to the European Union methodology, expressed as a percentage of GDP, is calculated taking into account the GDPs
+achieved in the last 4 quarters according to data provided by the NIS and final data on public debt are published by Eurostat, according to quarterly press releases related to public debt for Member States of
+the European Union;
+
+
+
+A. PUBLIC DEBT ACCORDING TO NATIONAL LEGISLATION
+
+
+
+I . Borrowing requirement
+
+
+- Borrowing requirement 2024                                                                                                2024 **)                                 2025 ***)
+                                                                                                                   LEI mil.        % of GDP                 LEI mil.         % of GDP
+                 Financing needs, o/w:                                                                              248.372,0            14,1%               231.951,6             12,1%
+                 1. Deficit of general consolidated budget                                                          152.717,4             8,6%               134.647,0              7,0%
+                 2. Principal repayments, o/w:                                                                       95.654,6             5,4%                 97.304,6             5,1%
+                 - refinancing of government securities issued on domestic                                           73.511,5                                  83.927,3
+                  - refinancing of eurobonds                                                                         17.623,7                                   9.902,3
+                 - principal repayments on external loans:                                                             2.764,4                                  1.695,1
+                 - principal repayments on local loans                                                                 1.755,0                                  1.779,9
+                 3. Prefinanțarea necesităților de finanțare pentru anul 2024                                               0,0           0,0%                       0,0            0,0%
+
+
+                 GDP: for 2024 according NIS no.53/ march 7, 2025 , GDP for 2025 according to NCSP
+                 autumn forecast December 2024                                                                      1.766.067,6                                  1.912.600,0
+
+
+                 **) financing needs were updated according to the data published by the MoF on the execution of the consolidated general budget deficit on 31 December 2024
+                 ***) financing needs does not include repayments of liquidity management instruments (short-term borowings maturing in the year of issuances)
+
+
+
+
+- Actual borrowing as of the 31-st of January (LEI mil. )
+
+
+
+Total reimbursable financing                                                 10.161,1 mil. LEI
+     o/w:
+               By Instrument                                                              by Currency                           by Market
+a)MoF          T-Bills (LEI and EUR)                                           1.307,7           LEI                    9.359,3 Domestic                            9.359,3
+               Retail bonds in LEI and EUR                                     2.125,2
+               T-Bonds denominated in LEI**)                                   5.926,4          EUR                          9,7 External                              43,4
+                 T-Bonds denominated in EUR*                                        0,0
+                 Eurobonds*                                                         0,0         USD                          0,0
+
+                Drawings from RRNP loan component                                  0,0           JPY                       33,7
+                Loans*                                                            43,4
+                total                                                          9.402,7                                  9.402,7                                    9.402,7
+b) Local governments                                                             158,4
+c) Treasury certificates issued for cash management
+purpose, due in the year of issuances and not repaid                             600,0
+        Degree of coverage of financing needs =
+                                                                          4,4%
+           financing(a+b)/ financing needs:
+
+
+
+*Average exchange rates 5,01 LEI/EUR and 4.70 LEI/USD according to the CNSP autumn forecast December 2024
+**) includes exchange operations
+
+
+
+
+                                                                                                                                                                                                                     1
+II. Public debt stock and changes in stock
+
+
+
+1. Public debt evolution
+
+
+                                                                                                                                      Change
+                                                               December 2024                     January 2025
+                                                                                                                           January 2025 / December 2024
+                                                           LEI mil.          % of total         LEI mil.    % of total       LEI mil.       % of total
+Outstanding of public debt                                  1.131.142,0                     1.117.447,3
+                 o/w
+a) by type of sector                                        1.131.142,0           100,0%    1.117.447,3           100,0%       -13.694,7            -1,2%
+Government public debt                                      1.105.726,8            97,8%    1.091.523,6            97,7%       -14.203,2            -1,3%
+Local public debt                                              25.415,2             2,2%       25.923,7             2,3%            508,5            2,0%
+b) by type of debt                                          1.131.142,0           100,0%    1.117.447,3           100,0%       -13.694,7            -1,2%
+Direct public debt                                          1.071.897,6            94,8%    1.059.830,9            94,8%       -12.066,7            -1,1%
+Guaranteed public debt                                         59.244,4             5,2%       57.616,4             5,2%         -1.628,1           -2,7%
+c) by the residence of creditor                             1.131.142,0           100,0%    1.117.447,3           100,0%       -13.694,7            -1,2%
+External                                                      481.874,6            42,6%      480.533,8            43,0%         -1.340,9           -0,3%
+Domestic                                                      649.267,4            57,4%      636.913,5            57,0%       -12.353,9            -1,9%
+Total public debt                                           1.131.142,0                     1.117.447,3                        -13.694,7            -1,2%
+
+Outstanding of Public debt /GDP                            64,0%                             58,4%                            -5,6%
+GDP: for 2024 according NIS no.53/ march 7, 2025 ,
+GDP for 2025 according to NCSP autumn forecast
+December 2024                                               1.766.067,6                     1.912.600,0
+
+
+
+
+2. Government public debt evolution
+
+
+                                                                                                                                      Change
+                                                               December 2024                     January 2025
+                                                                                                                           January 2025 / December 2024
+                                                           LEI mil.          % of total     LEI mil.        % of total       LEI mil.           %
+Total government public debt , o/w                                1.105.726,8                      1.091.523,5                 -14.203,2            -1,3%
+1. By market of issuance
+External , o/w:                                               456.673,7        41,3%         457.267,2        41,9%                593,5             0,1%
+By instruments
+                 Eurobonds                                    371.947,3        33,6%          372.501,2       34,1%                553,9             0,1%
+                 loans                                         84.726,4         7,7%           84.766,0        7,8%                 39,6             0,0%
+By currency
+                 LEI                                                0,0                             0,0                              0,0             0,0%
+                 USD                                           98.773,2         8,9%           99.168,0        9,1%                394,8             0,4%
+                 EUR                                          355.756,2        32,2%          355.883,6       32,6%                127,3             0,0%
+                 others                                         2.144,3         0,2%            2.215,6        0,2%                 71,3             3,3%
+By creditor
+                 multilateral                                  81.841,6         7,4%           81.878,8        7,5%                 37,2             0,0%
+                 bilateral                                        272,1         0,0%              273,1        0,0%                  0,9             0,3%
+                 private banks and others                     374.560,0        33,9%          375.115,3       34,4%                555,3             0,1%
+By interest rate
+                 fixed                                        437.175,3        39,5%          437.780,4       40,1%                605,0             0,1%
+                 floating                                      19.498,4         1,8%           19.486,8        1,8%                -11,6            -0,1%
+
+Domestic, o/w:                                                649.053,1        58,7%         634.256,4        58,1%            -14.796,7            -2,3%
+By instruments
+                   T-bills                                     20.370,0         1,8%           19.103,6        1,8%              -1.266,4           -6,2%
+                   Cash management instruments                 17.800,0         1,6%           14.100,0        1,3%              -3.700,0          -20,8%
+                   Bonds                                      372.349,0        33,7%          375.917,5       34,4%               3.568,5            1,0%
+                   Retail bonds issued under the Program
+                   TEZAUR                                      49.394,7         4,5%           50.897,2       4,7%               1.502,5             3,0%
+                   loans                                       68.958,8         6,2%           67.330,7       6,2%              -1.628,1            -2,4%
+                   others                                     120.180,6        10,9%          106.907,4       9,8%             -13.273,2           -11,0%
+By currency
+                   LEI                                        607.635,5        55,0%          592.843,4       54,3%            -14.792,1            -2,4%
+                   USD                                             74,2         0,0%               74,5        0,0%                  0,4             0,4%
+                   EUR                                         41.343,4         3,7%           41.338,5        3,8%                 -4,9             0,0%
+                   others
+By creditor
+                   multilateral                                     0,0         0,0%                0,0        0,0%                  0,0             0,0%
+                   bilateral                                        0,0         0,0%                0,0        0,0%                  0,0             0,0%
+                   private banks and others                   649.053,1        58,7%          634.256,4       58,1%            -14.796,7            -2,3%
+By interest rate
+                   fixed                                      421.743,7        38,1%          426.814,7       39,1%              5.070,9             1,2%
+                   floating                                   227.309,4        20,6%          207.441,7       19,0%            -19.867,7            -8,7%
+
+2. By residence of the creditor
+External                                                     477.107,7         43,1%         475.765,4        43,6%             -1.342,2            -0,3%
+Domestic                                                     628.619,1         56,9%         615.758,1        56,4%            -12.861,0            -2,0%
+Government public debt /GDP                                62,6%              100,0%         57,1%           100,0%                -5,5%
+               GDP (mln LEI)                                                  1.766.067,6                    1.912.600,0
+
+
+
+
+                                                                                                                                                            2
+    3. Government securities market developments
+
+
+
+                                                                                                                                                                                                        Outstanding eurobonds issued on external market by initial maturity
+      mil. LEI             Outstanding government securities issued on domestic market by initial maturity denominated in EUR
+                                                                                                                                                                                          bil.
+                                                                                                                                                                                   12,0
+     120.000,0
+                                            31 December 2024                                                       31 January 2025                                                                                                                              31 December 2024           31 January 2025
+
+
+                                                                                                                                                                                   10,0
+     100.000,0
+
+
+
+                                                                                                                                                                                    8,0
+      80.000,0
+
+
+
+      60.000,0                                                                                                                                                                      6,0
+
+
+
+
+      40.000,0                                                                                                                                                                      4,0
+
+
+
+
+      20.000,0                                                                                                                                                                      2,0
+
+
+
+           0,0                                                                                                                                                                      0,0
+                  6luni        1 an            2 ani           3 ani          4 ani            5 ani        6 ani          7 ani          8 ani         10 ani         15 ani              7Y (EUR) 9Y (EUR)       10Y        12Y        15Y     20Y     30Y     5Y(USD)           10Y      12Y          30Y
+                                                                                                                                                                                                                  (EUR)      (EUR)      (EUR)   (EUR)   (EUR)                     (USD)    (USD)        (USD)
+
+
+
+
+                                                                     Domestic benchmark bonds denominated in LEI                                                                                              Remaining maturities for domestic and external government securities
+                                                                                   cumulative total
+     RO1425DBN029                                                                                                                                                                     mil. LEI
+    ROTM7EDD92S2                                                                                                                                                                                                                                                internal market       external market
+                                                                                                                                                                                     140.000,0
+    ROZBOC49U096
+     ROO7A2H5YIN8
+     RO52CQA3C829
+                                                                                                                                                                                     120.000,0
+     RO3B41D8EX14
+    ROJ0LNOCKHR8
+     RO1J9H39WKT4
+                                                                                                                                                                                     100.000,0
+     RO7P95F9FNY6
+   ROGSHSTVFMX2
+   RON7NMKOKQG2
+                                                                                                                                                                                       80.000,0
+    RO7EKTXSRHD6
+    RODD24CXRK47
+     RO4KELYFLVK4
+                                                                                                                                                                                       60.000,0
+    ROVRZSEM43E4
+    ROP9QVD42HO2
+   ROHRVN7NLNO2
+                                                                                                                                                                                       40.000,0
+     ROWLVEJ2A207
+     RO1631DBN055
+     RO1227DBN011
+                                                                                                                                                                                       20.000,0
+     RO1JS63DR5A5
+     ROXL7LT7QZ66
+    RO0DU3PR9NF9                                                                                                                                                                                 0,0
+    ROAW5KY5CD78                                                                                                                                                                                       short term < 1     [1-3) years     [3-5) years   [5-7) years        [7-10) years        > 10 years
+                                                                                                                                                                                                            year
+                      0              2000               4000              6000             8000             10000             12000             14000               16000
+                                                                                                                                                                                                       The weighted average value of the remaining maturity relating to the outstanding
+                          government securities issued before 2025    Bond exchanges in 2025    government securities issued between January 2025 – December 2025
+                                                                                                                                                                                                       government securities issued on domestic market at the end of January 2025 is 4.2 years
+                                                                                                                                                                                                       and 9.4 years for Eurobonds issued on external markets.
+
+
+
+
+    4. Holdings of government securities
+
+
+                                                                                                             Holdings of government securities issued on domestic market
+                                                                                                                                                               Available at nominal value
+                                                                                                                 Category                                                                                  (%) total
+                                                                                                                                                                       (LEI mil.)
+                                                                                         1. Banking system                                  173.362,0                                                       43,8%
+                                                                                         2. Central Depository                                 37,9                                                          0,0%
+                                                                                         3. Clients holdings:                               222.536,2                                                       56,2%
+                                                                                         non residents *)                                    82.425,0                                                      20,8%
+                                                                                         residents, o/w:                                    140.111,2                                                      35,4%
+                                                                                                          private pension funds              97.045,6                                                      24,5%
+                                                                                                          Total                             395.936,0                                                      100,0%
+                                                                                         *) includes government securities held by Clearstream and Euroclear
+
+
+                    Holdings of government securities denominated in LEI                                                                                                                  Holdings of government securities denominated in EUR
+                                  issued on domestic market                                                                                                                                               issued on domestic market
+                                                                                                                                                                                                                    Available at nominal value
+     Category                           Available at nominal value (LEI mil.)                                                     (%) total                                                  Category                                          (%) total
+                                                                                                                                                                                                                            (EUR mil.)
+1. Banking system                             162.001,9                                                                                                                         1. Banking system                             2.282,7           81,1%
+                                                                                                                                    42,4%
+2. Central Depository                             37,9                                                                                                                          2. Clients holdings:                           530,9            18,9%
+3. Clients holdings:                          219.894,1                                                                             57,6%                                       non residents*)                                327,8            11,7%
+non residents *)                               80.793,7                                                                             21,2%                                       residents, o/w:                                203,1             7,2%
+residents, o/w:                               139.100,5                                                                             36,4%                                                     private pension funds             5,5              0,2%
+private pension
+                                               97.018,2                                                                             25,4%                                                      Total                          2.813,5              100,00%
+funds
+        Total                                 381.933,8                                                                             100,0%                                      *) includes government securities held by Clearstream and Euroclear
+*) includes government securities held by Clearstream and Euroclear
+
+
+
+
+                                                                                                                                                                                                                                                                                              3
+III. Primary and secondary market of government securities
+
+
+1. Primary market of government securities
+
+
+
+
+                                                          mil. LEI
+
+                                                                                                      Government securities issued on domestic market
+                                                                                                              January 2024 - January 2025
+                                                          18.000
+                                                                                                                                                                 LEI    EUR
+
+
+                                                          16.000
+
+
+                                                          14.000
+
+
+                                                          12.000
+
+
+                                                          10.000
+
+
+                                                              8.000
+
+
+                                                              6.000
+
+
+                                                              4.000
+
+
+                                                              2.000
+
+
+                                                                  0
+mil. LEI
+
+
+
+
+                       Report bid-to-cover for Government securities issued on the internal market
+                                                  denominated in LEI *                                                                                     Government securities issued in January 2025
+           25.000,0                                                                                                                         2,0
+                                                                                                                                                                        by initial maturity
+
+                                                                                                                                            1,8                                                           < 6 luni       1 an
+                                                                                                          1,7
+                                                                                               1,6                                                                                   11%
+           20.000,0                                                                                              1,6                   1,6 1,6
+                            1,6
+                                                                                                                                                                 21%
+                      1,5                                                                                                                                                                                 2 ani          3 ani
+                                                 1,5
+                                                                                                                          1,4               1,4
+                                      1,4                                      1,4
+                                                        1,3                             1,3
+                                                                   1,3
+           15.000,0                                                                                                                         1,2
+                                                                                                                                                                                                          4 ani          5 ani
+
+                                                                                                                                                                                                  24%
+                                                                                                                                            1,0
+                                                                                                                                                          8%
+           10.000,0                                                                                                                         0,8                                                           6 ani          7 ani
+
+
+
+                                                                                                                                            0,6             6%
+
+                                                                                                                                                                                                          8 ani          10 ani
+            5.000,0                                                                                                                         0,4
+                                                                                                                                                                  11%
+                                                                                                                                                                                     19%
+                                                                                                                                            0,2
+                                                                                                                                                                                                          15 ani
+
+                0,0                                                                                                                         0,0
+
+
+
+                             Announced amounts            Amount of tenders submitted         Accepted amounts         bid-to-cover ratio
+
+
+
+
+*calculated as amount of bids submitted/accepted amounts
+
+
+
+
+                                                   mil. of EUR                                                                                      EUR
+                                                                                          Eurobonds issued on external market                       USD
+                                                       4500
+                                                                                             January 2024 - January 2025                            JPY
+
+                                                       4000
+
+                                                       3500
+
+                                                       3000
+
+                                                       2500
+
+                                                       2000
+
+                                                       1500
+
+                                                       1000
+
+                                                        500
+
+                                                          0
+
+
+
+
+                                                                                                                                                                                                                     4
+ 2. Secondary market of government securities
+
+
+
+
+                   BID Fixing quotation vs. yields by remaining maturity                                                            as of                                                               Eurobonds Yields - EUR and USD
+                                                 the 31-st of January 2025                                                                          8
+  8,0%
+                                                                                                                                                7,5
+                                                                                                                       7,61%
+                                                                                    7,40%                                           7,64%           7
+                                                                                                      7,56%            7,66%
+                                                        7,25%
+                                                                        7,46%       7,49%
+                                                                                                                                                6,5
+                                                          7,30%
+                                      7,29%
+               6,85%
+  7,0%                                                                                                                                              6
+         6,69%         7,04%
+                                                                                                                                                5,5
+
+
+           6,43%                                                                                                                                    5
+
+                                                                                                                                                4,5
+  6,0%
+
+                                                                                                                                                    4
+
+                                                                                                                                                3,5
+
+
+                                             BID/FIX cotatia                          randamente pe piata secundara
+
+  5,0%
+      6 luni        1 an              2 ani                3 ani         4 ani       5 ani             7 ani           10 ani       15 ani                 ROMANI 3 3/8 02/08/38                           ROMANI 4 02/14/51                    ROMANI 2 04/14/33
+
+
+                                                                                                                                                           ROMANI 2 7/8 04/13/42                           ROMANI 3 5/8 03/27/32                ROMANI 2 1/8 03/07/28
+
+
+
+
+         Liquidity ratio*) of the government securities issued on domestic market traded
+
+
+
+
+                                                                                                                                                                                   mil. of currency
+                               between January 2024 and January 2025                                                                                                                                      The most traded government securities issued on domestic
+                               traded volumes
+                                                                                                                                                                                                                          market in January 2025
+25,0%                                                                                                                           100.000,00
+                               liquidity degree
+                                                                                                                       23,0%
+                                                                                                                                                                 16000
+                                                                                                                                90.000,00
+                                                                                                                                                                 14000
+20,0%                                                                                      19,2%                                80.000,00
+                                                                                                               16,9%                                             12000
+                                                                                                                                70.000,00
+ 3. Turnover of securities in the secondary market                                                   15,4%
+                                                                                                                                                                 10000
+15,0%
+                                                                           14,5%                                                60.000,00
+               14,5%                 13,8%                                         13,3%
+           14,2%                                     13,7%             14,6%
+                                                                                                                                                                   8000
+                                                                                                                                50.000,00
+                                                               12,5%
+                       11,4%                                                                                                                                       6000
+10,0%                                                                                                                           40.000,00
+
+                                                                                                                                                                   4000
+                                                                                                                                30.000,00
+
+                                                                                                                                                                   2000
+5,0%                                                                                                                            20.000,00
+
+                                                                                                                                                                           0
+                                                                                                                                10.000,00
+
+0,0%                                                                                                                            -
+
+
+
+
+ *) liquidity ratio is calculated as ratio between the total volume of monthly transactions and the
+ total volume of the government securities.
+
+
+
+
+                                                                                                                                                                                                      Average cost of government public debt*)
+                                                                                                                                             6,5%
+                                                                                                                                                                        internal debt                     external debt            total debt
+                                                                                                                                             6,0%
+ IV. Cost of the government public debt
+                                                                                                                                             5,5%                                                                                                                              5,4%
+                                                                                                                                                    5,1%
+                                                                                                                                             5,0%
+                                                                                                                                                        4,5%
+                                                                                                                                             4,5%                                                                                                                              4,5%
+ Interest payments on government public debt*)                                                                                               4,0%       3,8%
+                                                                                                                                             3,5%                                                                                                                              3,6%
+         LEI mil.                                 2025
+                                                                                                                                             3,0%
+ domestic debt                                  2.013,0
+ external debt                                     68,7                                                                                      2,5%
+ total                                          2.081,7                                                                                      2,0%
+ *) includes payments on direct and guaranteed government debt for                                                                             Dec 2024                                                                                                                 January 2025
+ January 2025
+
+                                                                                                                                             *) does not include interest for temporary financing. The average cost was calculated as the ratio between the
+                                                                                                                                             projection of the interest payments for 2025 and the government public debt balance existing at the end of
+                                                                                                                                             2024.
+
+
+
+
+                                                                                                                                                                                                                                                                               5
+  V. Implementation of DMS on medium term
+
+
+
+  The revised Government Debt Management Strategy for the period 2024-2026 was approved by the Government in August 2024, proposing indicative targets for managing the financial risks associated with
+  the government debt portfolio.
+
+
+
+
+                                                                                                   1. Currency risk
+
+
+
+
+ 60,0%
+                                                  Domestic currency debt in total debt                                                                        Foreign currency exposure in foreign currency debt
+                                                         January 31-st, 2025                                                                                                 January 31-st, 2025
+                                                                                                                            90,0%
+ 50,0%             48,6%
+                                                                                                                                                                                   79,7%
+                                                                                                                            80,0%
+
+                                                                         40,9%
+                                                                                                                            70,0%
+ 40,0%
+
+                                                                                                                            60,0%
+
+ 30,0%                                                                                                                      50,0%
+
+                                                                                                                            40,0%
+ 20,0%
+                                                                                                                            30,0%
+
+                                                      10,2%                                                                                            19,9%
+ 10,0%                                                                                                                      20,0%
+
+                                                                                                                            10,0%
+                                                                                                  0,2%
+   0,0%                                                                                                                                                                                                          0,4%
+                    LEI                               USD                 EUR                     JPY                          0,0%
+                                                                                                                                                        USD                        EURO                           JPY
+
+
+
+
+                    Performance of domestic currency debt in total debt                                                                        Performance of EUR denominated debt in foreign currency debt
+
+65,0%
+                                                                                                                      100,0%
+60,0%
+
+                                                                                                                      95,0%
+55,0%
+
+50,0%                                                                                                                 90,0%
+
+45,0%
+                                                                                                                      85,0%
+40,0%
+
+                                                                                                                      80,0%
+35,0%
+
+30,0%                                                                                                                 75,0%
+                    share of domestic currency debt
+25,0%               target for share LX debt (min 45% )
+                    target for share LX debt ( 55%)                                                                   70,0%                share of EUR in foreign currency debt
+
+                                                                                                                                           target for share of EUR (min 80%)
+20,0%
+                                                                                                                                           target for share of EUR ( 90%)
+                                                                                                                      65,0%
+
+
+
+
+                                                                                                    2. Refinancing risk
+
+
+
+
+        bln. LEI                                                                                                                             Redemption profile*) of external financial package and government
+                                                                                                                                 bln LEI
+
+
+
+
+                       Redemption profile of government public debt*) by market of issuance
+                                           as of the January 31-st, 2025                                                                                                  securities
+140,0                                                                                                                   120,0                                  as of the January 31-st, 2025
+                                                                                  piața internă   piața externă                                                                                        IBRD loans (DPLs) denominated in EUR
+
+
+120,0                                                                                                                   100,0
+                                                                                                                                                                                                       UE loans denominated in EUR
+
+
+
+100,0
+                                                                                                                                                                                                       Eurobonds denominated in USD
+                                                                                                                          80,0
+
+ 80,0                                                                                                                                                                                                  Eurobonds denominated in EUR
+
+                                                                                                                          60,0
+
+ 60,0                                                                                                                                                                                                   securities on domestic market denominated
+                                                                                                                                                                                                       in EUR
+
+                                                                                                                          40,0
+                                                                                                                                                                                                        securities on domestic market denominated
+ 40,0                                                                                                                                                                                                  in LEI
+
+
+
+                                                                                                                          20,0
+ 20,0
+
+
+  0,0                                                                                                                      0,0
+
+
+
+                                                                                 *) based on contracted debt at the end of January 2025
+
+
+
+
+                                                                                                                                                                                                                             6
+                                                                                                                              25%
+                                        Average time to maturity (ATM) for total debt                                                                            Debt maturing in 1 year (% of total)
+                                                          (years)
+9
+
+                                                                                                                              20%
+
+8
+
+
+                                                                                                                              15%
+7
+
+
+
+6
+                                                                                                                              10%
+
+
+5               ATM (years)
+
+
+                indicative range for ATM (min 7,0 years)                                                                      5%    debt maturing in 1 year
+4
+                                                                                                                                    indicative range for debt maturing in 1 year (10%)
+                indicative range for ATM (8 years)
+                                                                                                                                    indicative range for debt maturing in 1 year (max 20%)
+
+3                                                                                                                             0%
+
+
+
+
+                                                                                                                         30%
+                                 Average time to maturity (ATM) for local currency debt                                                            Local currency debt maturing in 1 year (% of total)
+                                                        (years)
+      7
+                                                                                                                         25%
+
+      6
+
+                                                                                                                         20%
+                                                                              5,1
+      5
+                                                                       4,5                4,6              4,5
+                    4,1                   4,2                    4,2
+      4   4,0                                                                                                            15%
+
+
+
+      3
+                                                                                                                         10%
+
+      2
+                  ATM for local currency debt (years)                                                                     5%                      local currency debt maturing in 1 year
+
+      1           indicative range for ATM (min 4,5 years)                                                                                        indicative range for local currency debt maturing in 1 year (15%)
+
+                  indicative range for ATM (5,5 years)                                                                                            indicative range for local currency debt maturing in 1 year (max 25%)
+                                                                                                                          0%
+      0
+
+
+
+
+                                                                                                3. Interest rate risk
+
+
+
+
+                                      Average time to re-fixing (ATR) years                                                                                Debt refixing in 1 year (% of total)
+9,0                                                                                                                     25%
+
+
+8,0
+                                                                                                                        20%
+
+7,0
+                                                                                                                        15%
+6,0
+
+                                                                                                                        10%
+                 ATR for total debt (years)
+5,0
+                 indicative range for ATR (min 7,0 years)
+                                                                                                                                         debt refixing in 1 year (% of total)
+                 indicative range for ATR (8 years)
+4,0                                                                                                                     5%               indicative range for debt refixing in 1 year (% of total) (10%)
+
+                                                                                                                                         indicative range for debt refixing in 1 year (% of total) (max 20%)
+
+3,0
+                                                                                                                        0%
+
+
+
+
+                                                                                                                         30%
+    7,0                 Average time to re-fixing (ATR) for local currency debt (years)                                                 Local currency debt re-fixing in 1 year (% of total)
+                                                                                                                         25%
+    6,0
+
+    5,0                                                                                                                  20%
+
+
+    4,0                                                                                                                  15%
+
+    3,0
+                                                                                                                         10%
+
+    2,0               ATR for local currency debt (years)
+                                                                                                                                                local currency debt refixing in 1 year (% of total)
+                                                                                                                          5%                    indicative range for local currency debt re-fixing in 1 year (% of total) (15%)
+                      indicative range for ATR (min 4,5 years)
+    1,0               indicative range for ATR (5,5 years)                                                                                      indicative range for local currency debt re-fixing in 1 year (% of total) (max 25%)
+
+                                                                                                                          0%
+    0,0
+
+
+
+
+                                                                                                                                                                                                                                      7
+           B. PUBLIC DEBT ACCORDING TO EU METHODOLOGY
+
+
+
+                                                                                                       December, 2024**)                   January, 2025**)                                       change
+                                                                                                     LEI mil.     % din total          LEI mil.        % din total                  mil.LEI                  % din total
+                                  General government debt *)                                           964.345,7                         964.382,0 **)                                              36,3         0,0%
+                                                                           %GDP                           54,6%                              54,6%                                                  0,0%
+                                  A o/w:
+                                  Central government debt                                              940.038,3           97,2%          939.975,5                        97,5%                    -62,8         0,0%
+                                  Local government debt                                                 24.307,4            2,8%           24.406,5                          2,5%                   99,1          0,4%
+                                  B o/w:
+                                  General domestic government debt                                     485.949,7           49,2%          487.367,9                        50,5%                  1.418,2         0,3%
+                                  General external government debt                                     478.396,0           50,8%          477.014,1                        49,5%                 -1.381,9        -0,3%
+                                  *) according to EU methodology, the debt to GDP ratio was calculated taking into consideration the sum of GDP for the four last quarters.
+
+                                  **) Public debt according to EU methodology includes the amounts borrowed under the loan component of the National Recovery and Resilience Plan (NRRP)
+
+
+
+
+                                                              Government debt by instruments
+                                                                                                                                                                                         Government debt by currencies                         31 Dec 24   31 Jan 25
+                       900
+                                                                                                                                                          500,0
+                                31 Dec 24    31 Jan 25
+                       800
+                                                                                                                                                          450,0
+
+                       700                                                                                                                                400,0
+
+                       600                                                                                                                                350,0
+
+
+
+
+                                                                                                                                              bln. RON
+                                                                                                                                                          300,0
+           bln. RON
+
+
+
+
+                       500
+
+                                                                                                                                                          250,0
+                       400
+                                                                                                                                                          200,0
+                       300
+                                                                                                                                                          150,0
+
+                       200
+                                                                                                                                                          100,0
+
+                       100                                                                                                                                 50,0
+
+                            0                                                                                                                               0,0
+                                     cash and deposits                Government securities                        loans                                                    LEI                      EURO                  USD                        others
+
+
+
+
+                                                                         Government debt by initial maturity
+                                                                                                                                                            % GDP                 International comparison Maastricht debt QIII 2024
+                                 31 Dec 24     31 Jan 25
+                                                                                                                                    180,0%
+                1000
+                                                                                                                                                           158,2%
+                                                                                                                                    160,0%
+                      900
+                                                                                                                                                                  136,3%
+                                                                                                                                    140,0%
+                      800                                                                                                                                             113,8%
+
+                      700                                                                                                           120,0%                                 105,6%
+                                                                                                                                                                                104,3%
+                                                                                                                                                                                         97,5%
+bln. RON
+
+
+
+
+                      600                                                                                                           100,0%
+                                                                                                                                                                                         83,2% 81,5%
+                                                                                                                                                         81,6%
+                      500                                                                                                                                                                            76,0%
+                                                                                                                                      80,0%
+                                                                                                                                                                                                        69,7%66,9%
+                      400                                                                                                                                                                                        62,4%     59,7%
+                                                                                                                                      60,0%                                                                           60,3%            53,1%
+                                                                                                                                                                                                                               53,5%                    42,2%
+                      300                                                                                                                                                                                                                 47,7%45,3%
+                                                                                                                                                                                                                                                    43,6%
+                                                                                                                                      40,0%
+                      200
+                                                                                                                                      20,0%
+                      100
+
+                       0                                                                                                               0,0%
+                                                 short term                                   medium and long term
+
+
+
+
+                                                                                                                                                                 At the end of Q3 2024 government debt represented 53.1% of GDP, well below the level
+                                                                                                                                                                 registered in the EU-27 (81.6% of GDP), and the Euro Zone (88.2% of GDP) (according to
+                                                                                                                                                                 Eurostat news release of 22 January 2025).
+
+
+
+
+                                                                                                                                                                                                                                                       8
+

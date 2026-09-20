@@ -1,0 +1,83 @@
+name: Ministry Supply Pressure Source Vintage Probe
+
+on:
+  push:
+    branches:
+      - source-vintage/mof-supply-pressure-probe-2026-09-20
+    paths:
+      - .github/workflows/mof-supply-pressure-source-vintage-probe.yml
+      - model/dynamics/government_securities_supply_pressure_source_vintage_probe_contract.json
+      - scripts/probe_mof_supply_pressure_source_vintage.py
+      - tests/test_mof_supply_pressure_source_vintage_probe.py
+
+concurrency:
+  group: mof-supply-pressure-source-vintage-probe
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  acquire-and-probe:
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out probe branch
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install native PDF text extractor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+          pdftotext -v
+
+      - name: Verify frozen probe contract and offline guards
+        run: python -m unittest tests.test_mof_supply_pressure_source_vintage_probe -v
+
+      - name: Acquire exact Ministry PDFs and extract native text
+        run: |
+          python scripts/probe_mof_supply_pressure_source_vintage.py \
+            --output mof_supply_pressure_probe_artifacts
+
+      - name: Retain or reverify exact probe vintage on source-vintage branch
+        run: |
+          BRANCH="source-vintage/mof-supply-pressure-probe-2026-09-20"
+          DEST="data/source_vintages/mof-supply-pressure-probe-vintage-2026-09-20"
+
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+
+          if [ -e "$DEST" ]; then
+            for name in               mof_flash_report_january_2025               mof_public_debt_report_january_2025               mof_public_debt_report_february_2025
+            do
+              cmp                 "mof_supply_pressure_probe_artifacts/raw/${name}.pdf"                 "$DEST/raw/${name}.pdf"
+              cmp                 "mof_supply_pressure_probe_artifacts/native_text/${name}.txt"                 "$DEST/native_text/${name}.txt"
+            done
+            echo "Retained Ministry probe vintage is byte-identical to fresh acquisition/native extraction."
+            exit 0
+          fi
+
+          mkdir -p "$DEST"
+          cp -a mof_supply_pressure_probe_artifacts/. "$DEST/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DEST"
+          git diff --cached --quiet && { echo "No retained source-vintage changes."; exit 1; }
+          git commit -m "data: retain Ministry supply-pressure probe source vintage"
+          git push origin HEAD:"$BRANCH"
+
+      - name: Upload raw PDFs, native text and probe manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: mof-supply-pressure-probe-${{ github.sha }}
+          path: mof_supply_pressure_probe_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0

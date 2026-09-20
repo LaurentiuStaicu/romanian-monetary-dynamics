@@ -95,7 +95,7 @@
   ],
   "materialisation_gate": {
     "source_values_materialised_now": false,
-    "raw_ministry_pdf_retained_now": false,
+    "raw_ministry_pdf_retained_now": true,
     "reason": "The official source boundary and definitions are identifiable, but the reviewed Ministry PDF is currently exposed principally as graphical PDF output and exact raw-source retention/extraction has not yet passed repository provenance checks.",
     "required_before_any_candidate_series_is_created": [
       "Retain the exact Ministry monthly public-debt-report PDF vintage with SHA-256 and source URL.",
@@ -107,7 +107,11 @@
     ],
     "visual_chart_digitisation_authorized": false,
     "ocr_authorized": false,
-    "manual_approximation_authorized": false
+    "manual_approximation_authorized": false,
+    "raw_source_probe_status": "PASS_THREE_OFFICIAL_PDFS_RETAINED_NATIVE_TEXT_EXTRACTABLE",
+    "exact_auction_table_values_extractable": true,
+    "submitted_bids_monthly_series_exactly_extractable": false,
+    "supply_load_denominator_boundary_frozen": false
   },
   "scientific_effect": {
     "government_securities_supply_pressure_node_resolved": false,
@@ -120,9 +124,12 @@
     "public_version_change_authorized": false
   },
   "next_task": {
-    "id": "mof_primary_market_pressure_source_vintage_probe",
-    "authorization": "RAW_SOURCE_AND_EXACT_EXTRACTABILITY_PROBE_ONLY",
+    "id": "domestic_RON_supply_load_denominator_boundary_reconciliation",
+    "authorization": "SOURCE_BOUNDARY_RECONCILIATION_ONLY",
+    "may_compute_pressure_ratio_now": false,
     "may_create_approximate_chart_values": false,
     "may_activate_feedback": false
-  }
+  },
+  "source_vintage_probe_contract": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_contract.json",
+  "source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json"
 }

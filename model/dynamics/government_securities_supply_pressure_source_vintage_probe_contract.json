@@ -1,0 +1,93 @@
+{
+  "contract_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "probe_id": "mof_primary_market_pressure_source_vintage_probe",
+  "purpose": "Retain exact official Ministry of Finance source vintages needed to assess the observable boundary of government_securities_supply_pressure and test native PDF text extractability without OCR, chart digitisation or manual approximation.",
+  "source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
+  "sources": [
+    {
+      "source_id": "mof_flash_report_january_2025",
+      "institution": "Romanian Ministry of Finance",
+      "publication": "Public Debt of Romania — Flash Report, January 2025",
+      "url": "https://www.mfinante.gov.ro/static/10/Mfp/buget/sitebuget/FlashReportonRomanianPublicDebtJanuary2025.pdf",
+      "raw_filename": "mof_flash_report_january_2025.pdf",
+      "role": "Exact auction-level announced/borrowed amounts, tenor and yield plus current outstanding domestic-securities context.",
+      "required_text_anchors": [
+        "Domestic auctions - January 2025",
+        "Domestic auctions - February 2025",
+        "Size Announced",
+        "Size Borrowed",
+        "Total RON"
+      ],
+      "diagnostic_exact_tokens": [
+        "5,770.00",
+        "7,556.97",
+        "8,040.00",
+        "4,207.01"
+      ]
+    },
+    {
+      "source_id": "mof_public_debt_report_january_2025",
+      "institution": "Romanian Ministry of Finance — General Directorate of Treasury and Public Debt",
+      "publication": "Public debt report — January 2025",
+      "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport012025.pdf",
+      "raw_filename": "mof_public_debt_report_january_2025.pdf",
+      "role": "Lagged end-January domestic government-securities stock/holdings boundary and January primary/secondary-market context.",
+      "required_text_anchors": [
+        "Holdings of government securities",
+        "denominated in LEI",
+        "Total",
+        "31 January 2025"
+      ]
+    },
+    {
+      "source_id": "mof_public_debt_report_february_2025",
+      "institution": "Romanian Ministry of Finance — General Directorate of Treasury and Public Debt",
+      "publication": "Public debt report — February 2025",
+      "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport022025.pdf",
+      "raw_filename": "mof_public_debt_report_february_2025.pdf",
+      "role": "Published bid-to-cover definition, submitted/accepted/announced chart boundary, February holdings and secondary-market context.",
+      "required_text_anchors": [
+        "Report bid-to-cover",
+        "Announced amounts",
+        "Amount of tenders submitted",
+        "Accepted amounts",
+        "bid-to-cover ratio",
+        "Holdings of government securities"
+      ],
+      "diagnostic_exact_tokens": [
+        "381.693,0",
+        "2.689,8"
+      ]
+    }
+  ],
+  "acquisition": {
+    "method": "HTTPS_EXACT_FIXED_URLS",
+    "accept": "application/pdf",
+    "minimum_bytes_per_pdf": 50000,
+    "required_magic_prefix": "%PDF-",
+    "hash_algorithm": "SHA-256",
+    "native_text_extractor": "pdftotext -layout",
+    "retain_raw_pdfs": true,
+    "retain_native_text": true,
+    "retain_anchor_excerpts": true
+  },
+  "extractability_rules": {
+    "native_pdf_text_only": true,
+    "ocr_authorized": false,
+    "visual_chart_digitisation_authorized": false,
+    "manual_graph_value_approximation_authorized": false,
+    "exact_numeric_materialisation_authorized_only_if_native_text_or_exact_table_cells_are_reproducible": true,
+    "absence_of_exact_values_must_remain_a_blocker": true
+  },
+  "scientific_guards": {
+    "raw_source_probe_only": true,
+    "government_securities_supply_pressure_node_resolved": false,
+    "scalar_pressure_index_selected": false,
+    "reference_mode_promotion_authorized": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  }
+}

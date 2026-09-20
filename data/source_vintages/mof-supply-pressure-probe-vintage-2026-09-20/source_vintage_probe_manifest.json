@@ -1,0 +1,128 @@
+{
+  "snapshot_id": "mof-supply-pressure-probe-vintage-2026-09-20",
+  "fetched_at_utc": "2026-09-20T15:56:27+00:00",
+  "status": "RAW_SOURCES_RETAINABLE_NATIVE_TEXT_ANCHORS_PASS",
+  "contract": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_contract.json",
+  "fetcher_script": "scripts/probe_mof_supply_pressure_source_vintage.py",
+  "fetcher_script_sha256": "f933ab3fda0c24ba0a63628adecbcf4b4a8e689a06ff1713bfb90c6d2cb17c08",
+  "native_text_extractor": "pdftotext -layout",
+  "sources": [
+    {
+      "source_id": "mof_flash_report_january_2025",
+      "institution": "Romanian Ministry of Finance",
+      "publication": "Public Debt of Romania — Flash Report, January 2025",
+      "role": "Exact auction-level announced/borrowed amounts, tenor and yield plus current outstanding domestic-securities context.",
+      "url": "https://www.mfinante.gov.ro/static/10/Mfp/buget/sitebuget/FlashReportonRomanianPublicDebtJanuary2025.pdf",
+      "raw_path": "raw/mof_flash_report_january_2025.pdf",
+      "raw_bytes": 878437,
+      "raw_sha256": "7cee6e3f9187a3d9dde2d48c8455bc574ccf16192dc0ea91ee884973ab6c9729",
+      "response_metadata": {
+        "content_type": "application/pdf",
+        "last_modified": "Tue, 11 Feb 2025 11:38:05 GMT",
+        "etag": "\"67ab369d-d6765\""
+      },
+      "native_text_path": "native_text/mof_flash_report_january_2025.txt",
+      "native_text_bytes": 35466,
+      "native_text_sha256": "1ffc432a1da88d241b4420dfdeca25807c4bab4bf848de0d4bb78bc70a6cd486",
+      "anchor_excerpt_path": "anchor_excerpts/mof_flash_report_january_2025_anchors.txt",
+      "required_anchor_checks": {
+        "Domestic auctions - January 2025": true,
+        "Domestic auctions - February 2025": true,
+        "Size Announced": true,
+        "Size Borrowed": true,
+        "Total RON": true
+      },
+      "all_required_anchors_found": true,
+      "diagnostic_exact_token_checks": {
+        "5,770.00": true,
+        "7,556.97": true,
+        "8,040.00": true,
+        "4,207.01": true
+      },
+      "all_diagnostic_exact_tokens_found": true
+    },
+    {
+      "source_id": "mof_public_debt_report_january_2025",
+      "institution": "Romanian Ministry of Finance — General Directorate of Treasury and Public Debt",
+      "publication": "Public debt report — January 2025",
+      "role": "Lagged end-January domestic government-securities stock/holdings boundary and January primary/secondary-market context.",
+      "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport012025.pdf",
+      "raw_path": "raw/mof_public_debt_report_january_2025.pdf",
+      "raw_bytes": 1198525,
+      "raw_sha256": "c65b964cdcd2e5e91068079ce09ef42964caf22c00d7a839fd65d979ff765e6e",
+      "response_metadata": {
+        "content_type": "application/pdf",
+        "last_modified": "Tue, 08 Apr 2025 06:46:30 GMT",
+        "etag": "\"67f4c646-1249bd\""
+      },
+      "native_text_path": "native_text/mof_public_debt_report_january_2025.txt",
+      "native_text_bytes": 77627,
+      "native_text_sha256": "545a2b2730d12f1b2bcd59b5f4dd2af6a5c3f01a9af2e29e37330f7a1589d338",
+      "anchor_excerpt_path": "anchor_excerpts/mof_public_debt_report_january_2025_anchors.txt",
+      "required_anchor_checks": {
+        "Holdings of government securities": true,
+        "denominated in LEI": true,
+        "Total": true,
+        "31 January 2025": true
+      },
+      "all_required_anchors_found": true,
+      "diagnostic_exact_token_checks": {},
+      "all_diagnostic_exact_tokens_found": null
+    },
+    {
+      "source_id": "mof_public_debt_report_february_2025",
+      "institution": "Romanian Ministry of Finance — General Directorate of Treasury and Public Debt",
+      "publication": "Public debt report — February 2025",
+      "role": "Published bid-to-cover definition, submitted/accepted/announced chart boundary, February holdings and secondary-market context.",
+      "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport022025.pdf",
+      "raw_path": "raw/mof_public_debt_report_february_2025.pdf",
+      "raw_bytes": 1221714,
+      "raw_sha256": "f3873bbaa6584a2018dd509f4083ad012e9060619bc28d918b612d519fabeeed",
+      "response_metadata": {
+        "content_type": "application/pdf",
+        "last_modified": "Fri, 09 May 2025 08:33:35 GMT",
+        "etag": "\"681dbddf-12a452\""
+      },
+      "native_text_path": "native_text/mof_public_debt_report_february_2025.txt",
+      "native_text_bytes": 75669,
+      "native_text_sha256": "2776fa10222fd34a9b1aace14f668529e503a35c5c4642f5d939e37d95f77de4",
+      "anchor_excerpt_path": "anchor_excerpts/mof_public_debt_report_february_2025_anchors.txt",
+      "required_anchor_checks": {
+        "Report bid-to-cover": true,
+        "Announced amounts": true,
+        "Amount of tenders submitted": true,
+        "Accepted amounts": true,
+        "bid-to-cover ratio": true,
+        "Holdings of government securities": true
+      },
+      "all_required_anchors_found": true,
+      "diagnostic_exact_token_checks": {
+        "381.693,0": true,
+        "2.689,8": true
+      },
+      "all_diagnostic_exact_tokens_found": true
+    }
+  ],
+  "all_required_anchor_checks_pass": true,
+  "scientific_guards": {
+    "raw_source_probe_only": true,
+    "government_securities_supply_pressure_node_resolved": false,
+    "scalar_pressure_index_selected": false,
+    "reference_mode_promotion_authorized": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "extractability_rules": {
+    "native_pdf_text_only": true,
+    "ocr_authorized": false,
+    "visual_chart_digitisation_authorized": false,
+    "manual_graph_value_approximation_authorized": false,
+    "exact_numeric_materialisation_authorized_only_if_native_text_or_exact_table_cells_are_reproducible": true,
+    "absence_of_exact_values_must_remain_a_blocker": true
+  },
+  "numeric_series_materialised": false,
+  "scalar_pressure_index_selected": false,
+  "feedback_activation_authorized": false
+}
