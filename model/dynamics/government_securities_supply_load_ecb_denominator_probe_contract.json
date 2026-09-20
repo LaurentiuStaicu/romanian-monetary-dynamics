@@ -1,0 +1,95 @@
+{
+  "contract_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "probe_id": "supply_load_denominator_candidate_materialisation_comparison",
+  "purpose": "Test and retain preregistered ECB denominator-candidate series for the proposed domestic RON primary-market supply-load diagnostic without selecting a denominator from numerical behaviour.",
+  "denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json",
+  "period_window": {
+    "start": "2024-12",
+    "end": "2025-02",
+    "purpose": "Boundary/source validation around the retained January-February Ministry auction evidence only; not a fit or correlation window."
+  },
+  "candidates": [
+    {
+      "candidate_id": "ecb_csec_central_government_domestic_currency_debt_securities_stock",
+      "dataset": "CSEC",
+      "series_key": "M.N.RO.W0.S1311.S1.N.L.LE.F3.T._Z.XDC.XDC.M.V.N._T",
+      "full_series_id": "CSEC.M.N.RO.W0.S1311.S1.N.L.LE.F3.T._Z.XDC.XDC.M.V.N._T",
+      "expected_semantics": {
+        "reference_area": "Romania",
+        "reference_sector": "central government excluding social security",
+        "instrument": "debt securities",
+        "stocks_transactions_other_flows": "closing balance sheet/positions/stocks",
+        "maturity": "all original maturities",
+        "currency_denominator": "domestic currency",
+        "valuation": "market value",
+        "frequency": "monthly"
+      },
+      "eligible_for_selection_now": false
+    },
+    {
+      "candidate_id": "ecb_gfs_general_government_domestic_currency_debt_securities_face_value_stock",
+      "dataset": "GFS",
+      "series_key": "M.N.RO.W0.S13.S1.N.L.LE.F3.T._Z.XDC.XDC.F.V.N._T",
+      "full_series_id": "GFS.M.N.RO.W0.S13.S1.N.L.LE.F3.T._Z.XDC.XDC.F.V.N._T",
+      "expected_semantics": {
+        "reference_area": "Romania",
+        "reference_sector": "general government",
+        "instrument": "debt securities",
+        "stocks_transactions_other_flows": "closing balance sheet/positions/stocks",
+        "maturity": "all original maturities",
+        "currency_denominator": "domestic currency",
+        "valuation": "face value",
+        "frequency": "monthly"
+      },
+      "eligible_for_selection_now": false
+    },
+    {
+      "candidate_id": "ecb_gfs_general_government_all_currency_debt_securities_face_value_context",
+      "dataset": "GFS",
+      "series_key": "M.N.RO.W0.S13.S1.N.L.LE.F3.T._Z.EUR._T.F.V.N._T",
+      "full_series_id": "GFS.M.N.RO.W0.S13.S1.N.L.LE.F3.T._Z.EUR._T.F.V.N._T",
+      "expected_semantics": {
+        "reference_area": "Romania",
+        "reference_sector": "general government",
+        "instrument": "debt securities",
+        "stocks_transactions_other_flows": "closing balance sheet/positions/stocks",
+        "maturity": "all original maturities",
+        "currency_denominator": "all currencies",
+        "valuation": "face value",
+        "frequency": "monthly",
+        "unit": "million EUR"
+      },
+      "role": "context_or_source-family-validation_only",
+      "eligible_for_selection_now": false
+    }
+  ],
+  "acquisition": {
+    "base_url": "https://data-api.ecb.europa.eu/service/data",
+    "format": "csvdata",
+    "accept": "text/csv",
+    "retain_raw_csv": true,
+    "retain_response_metadata": true,
+    "retain_sha256": true,
+    "fail_on_transport_error": false,
+    "record_invalid_or_empty_candidate_explicitly": true
+  },
+  "selection_guards": {
+    "denominator_selected_in_this_probe": false,
+    "no_selection_from_fit_or_correlation": true,
+    "no_selection_from_closeness_to_ministry_value": true,
+    "semantic_boundary_before_numeric_behaviour": true,
+    "valuation_compatibility_before_numeric_behaviour": true,
+    "candidate_ratio_materialisation_authorized_only_after_valid_source_retention": true,
+    "candidate_ratio_promotion_to_supply_pressure_authorized": false
+  },
+  "scientific_guards": {
+    "government_securities_supply_pressure_node_resolved": false,
+    "scalar_pressure_index_selected": false,
+    "equation_selected": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  }
+}
