@@ -130,6 +130,7 @@ def _curl_fetch(url: str, accept: str) -> tuple[int, bytes, dict]:
         result = subprocess.run(
             [
                 "curl",
+                "--http1.1",
                 "--fail-with-body",
                 "--location",
                 "--retry", "3",
