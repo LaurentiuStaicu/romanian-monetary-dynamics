@@ -219,6 +219,35 @@ class RMDReadmeDesignContractTests(unittest.TestCase):
         for anchor in anchors:
             self.assertIn(anchor, headings)
 
+    def test_social_preview_brief_remains_review_gated(self) -> None:
+        social = self.contract["social_preview_requirements"]
+        self.assertEqual(social["status"], "BRIEF_ONLY_NO_IMAGE_PUBLISHED")
+        self.assertEqual(
+            social["github_guidance"]["recommended_dimensions_px"],
+            [1280, 640],
+        )
+        self.assertEqual(
+            social["github_guidance"]["minimum_dimensions_px"],
+            [640, 320],
+        )
+        self.assertLessEqual(
+            social["github_guidance"]["maximum_file_size_mb"],
+            1,
+        )
+        self.assertTrue(
+            social["visual_review_gate"]["generation_allowed_as_preview"]
+        )
+        self.assertFalse(
+            social["visual_review_gate"]["github_social_preview_upload_authorized"]
+        )
+        self.assertTrue(
+            social["visual_review_gate"]["approval_required_before_upload"]
+        )
+        self.assertIn(
+            "complete endogenous System Dynamics model",
+            " ".join(social["content"]["prohibited"]),
+        )
+
     def test_public_readme_has_explicit_support_and_maintainer_route(self) -> None:
         self.assertIn(
             "https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/issues",

@@ -33,6 +33,11 @@
       "source": "MESSAGEix / mature scientific modelling documentation",
       "url": "https://docs.messageix.org/en/main/",
       "rule": "Separate overview/getting-started from mathematical specification, tutorials, reproducibility and developer documentation."
+    },
+    {
+      "source": "GitHub social media preview guidance",
+      "url": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/customizing-your-repositorys-social-media-preview",
+      "rule": "Use a social-preview image under 1 MB; at least 640x320 pixels, with 1280x640 recommended for best display. Prefer a solid background when cross-platform transparency behavior is uncertain."
     }
   ],
   "suite_consistency": {
@@ -285,5 +290,61 @@
     "colour_must_not_be_sole_status_channel": true,
     "descriptive_alt_text_required": true,
     "source": "WCAG 2.2 contrast guidance"
+  },
+  "social_preview_requirements": {
+    "status": "BRIEF_ONLY_NO_IMAGE_PUBLISHED",
+    "github_guidance": {
+      "recommended_dimensions_px": [
+        1280,
+        640
+      ],
+      "minimum_dimensions_px": [
+        640,
+        320
+      ],
+      "maximum_file_size_mb": 1,
+      "preferred_format": "PNG",
+      "background_guidance": "Use a solid background for predictable rendering across platforms; transparency may be supported but is not required.",
+      "source": "GitHub Docs — Customizing your repository's social media preview"
+    },
+    "suite_visual_identity": {
+      "palette": [
+        "#333333",
+        "#707070",
+        "#a0a0a0",
+        "#ffffff",
+        "#000000"
+      ],
+      "style": "minimal scientific identity; flat, high-contrast, no gradients, no decorative effects",
+      "typography": "large project name with one short technical-purpose line; standard sans-serif",
+      "alignment": "centered or optically balanced; generous negative space",
+      "project_icon": "May use the existing RMD project icon as a secondary identity anchor if it remains legible at social-card scale.",
+      "personal_profile_mascot": "Do not use the maintainer's personal owl/profile identity as the project social-preview identity."
+    },
+    "content": {
+      "required_title": "Romanian Monetary Dynamics (RMD)",
+      "allowed_subtitle": "Accounting-constrained empirical stock-flow-consistent model of Romania's monetary and macro-financial system",
+      "optional_descriptor": "Scientific model core",
+      "prohibited": [
+        "public release/version number embedded in the image, to avoid stale social metadata",
+        "workflow or CI badges",
+        "large tables or accounting matrices",
+        "causal-loop arrows or feedback polarities that imply validated activation",
+        "claims that RMD is a complete endogenous System Dynamics model",
+        "policy-forecasting or validated-prediction claims",
+        "decorative financial-market imagery unrelated to the model boundary"
+      ]
+    },
+    "visual_review_gate": {
+      "generation_allowed_as_preview": true,
+      "github_social_preview_upload_authorized": false,
+      "approval_required_before_upload": true,
+      "review_questions": [
+        "Does the card remain readable at small link-preview size?",
+        "Does it clearly identify RMD without looking like a finance/trading product?",
+        "Does it match the AtM/EWD/CBD grayscale suite identity without forcing scientific-paradigm uniformity?",
+        "Does it avoid implying behavioural closure or validated forecasting?"
+      ]
+    }
   }
 }
