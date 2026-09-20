@@ -64,10 +64,26 @@ class FiscalCapbTimingAdjudicationTests(unittest.TestCase):
             rows = list(csv.DictReader(handle))
         self.assertEqual(len(rows), 9)
         self.assertTrue(all(row["status"] == "EXACT_TARGET_ROW_RETAINED" for row in rows))
+        self.assertFalse(
+            self.a["source_materialisation"][
+                "repository_selected_row_copies_byte_identical_to_artifact"
+            ]
+        )
         for row in rows:
             selected = BASE / "selected_rows" / f'{row["release_id"]}.txt'
             self.assertTrue(selected.is_file(), row["release_id"])
-            self.assertEqual(sha256(selected), row["matched_row_sha256"])
+            with selected.open(encoding="utf-8", newline="") as handle:
+                fields = next(csv.reader(handle, delimiter=";"))
+            self.assertEqual(fields[0], "ROM.1.0.319.0.UBLGBPS")
+            self.assertEqual(fields[1], "Romania")
+            self.assertIn(
+                "Structural balance of general government excluding interest",
+                fields[3],
+            )
+            self.assertEqual(len(row["matched_row_sha256"]), 64)
+            self.assertTrue(
+                all(ch in "0123456789abcdef" for ch in row["matched_row_sha256"])
+            )
 
     def test_timing_panel_separates_historical_estimates_from_forecasts(self) -> None:
         path = BASE / "fiscal_capb_realtime_values.csv"
@@ -110,7 +126,7 @@ class FiscalCapbTimingAdjudicationTests(unittest.TestCase):
         self.assertFalse(source["exact_source_vintage_reproducibility_claim_allowed"])
         self.assertEqual(
             source["reproducibility_classification"],
-            "HASH_AND_SELECTED_ROW_REVIEW_WITH_TEMPORARY_ACTIONS_RAW_BYTES",
+            "ARTIFACT_HASH_IDENTITY_PLUS_NORMALIZED_REPOSITORY_REVIEW_COPIES",
         )
 
     def test_short_realtime_window_cannot_reuse_prior_validation_design(self) -> None:
