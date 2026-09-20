@@ -9,9 +9,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / ".github" / "rmd_concept_diagram_contract.json"
+PUBLIC = ROOT / "README.md"
 PREVIEW = ROOT / ".github" / "RMD_README_PREVIEW.md"
-LIGHT = ROOT / ".github" / "readme-assets" / "rmd-concept-overview-light.svg"
-DARK = ROOT / ".github" / "readme-assets" / "rmd-concept-overview-dark.svg"
+LIGHT = ROOT / "assets" / "readme" / "rmd-concept-overview-light.svg"
+DARK = ROOT / "assets" / "readme" / "rmd-concept-overview-dark.svg"
+PREVIEW_LIGHT = (
+    ROOT / ".github" / "readme-assets" / "rmd-concept-overview-light.svg"
+)
+PREVIEW_DARK = (
+    ROOT / ".github" / "readme-assets" / "rmd-concept-overview-dark.svg"
+)
 
 
 def load(path: Path) -> dict:
@@ -25,20 +32,31 @@ def svg_text(path: Path) -> str:
 class RMDConceptDiagramContractTests(unittest.TestCase):
     def setUp(self) -> None:
         self.c = load(CONTRACT)
+        self.public = PUBLIC.read_text(encoding="utf-8")
         self.preview = PREVIEW.read_text(encoding="utf-8")
         self.baseline = load(
             ROOT / "model" / "registries" / "scientific_baseline_manifest.json"
         )
         self.model = load(ROOT / "model" / "registries" / "model_contract.json")
 
-    def test_assets_are_preview_only_and_have_light_dark_variants(self) -> None:
+    def test_public_assets_are_promoted_but_merge_is_still_review_gated(self) -> None:
         self.assertEqual(self.c["contract_version"], "1.0")
-        self.assertEqual(self.c["status"], "PREVIEW_ONLY_NOT_PUBLIC_README_ASSET")
-        self.assertFalse(
-            self.c["public_readme_boundary"]["diagram_publication_authorized"]
+        self.assertEqual(
+            self.c["status"],
+            "PUBLIC_ASSET_PROMOTION_PROPOSED_NOT_MERGED",
         )
+        boundary = self.c["public_readme_boundary"]
+        self.assertTrue(boundary["public_implementation_proposed"])
+        self.assertFalse(boundary["diagram_publication_authorized"])
+        self.assertFalse(boundary["public_readme_replacement_authorized"])
         self.assertTrue(LIGHT.is_file())
         self.assertTrue(DARK.is_file())
+        self.assertTrue(PREVIEW_LIGHT.is_file())
+        self.assertTrue(PREVIEW_DARK.is_file())
+
+    def test_promoted_assets_match_reviewed_preview_bytes(self) -> None:
+        self.assertEqual(LIGHT.read_bytes(), PREVIEW_LIGHT.read_bytes())
+        self.assertEqual(DARK.read_bytes(), PREVIEW_DARK.read_bytes())
 
     def test_svg_has_accessible_title_and_description(self) -> None:
         for path in (LIGHT, DARK):
@@ -57,7 +75,12 @@ class RMDConceptDiagramContractTests(unittest.TestCase):
             text = svg_text(path)
             colours = set(re.findall(r"#[0-9a-fA-F]{6}", text))
             self.assertTrue(colours.issubset(allowed), (path, colours - allowed))
-            for forbidden in ("linearGradient", "radialGradient", "filter=", "drop-shadow"):
+            for forbidden in (
+                "linearGradient",
+                "radialGradient",
+                "filter=",
+                "drop-shadow",
+            ):
                 self.assertNotIn(forbidden, text)
 
     def test_svg_uses_standard_font_and_legible_sizes(self) -> None:
@@ -119,18 +142,18 @@ class RMDConceptDiagramContractTests(unittest.TestCase):
             self.assertNotIn("balancing", text)
             self.assertNotIn("causal link", text)
 
-    def test_preview_uses_responsive_picture_and_descriptive_alt_text(self) -> None:
-        self.assertIn("<picture>", self.preview)
-        self.assertIn('prefers-color-scheme: dark', self.preview)
-        self.assertIn('prefers-color-scheme: light', self.preview)
-        self.assertIn("rmd-concept-overview-dark.svg", self.preview)
-        self.assertIn("rmd-concept-overview-light.svg", self.preview)
-        self.assertIn("six institutional sectors", self.preview)
-        self.assertIn("not** a causal-loop diagram", self.preview)
+    def test_public_readme_uses_responsive_picture_and_descriptive_alt_text(self) -> None:
+        self.assertIn("<picture>", self.public)
+        self.assertIn("prefers-color-scheme: dark", self.public)
+        self.assertIn("prefers-color-scheme: light", self.public)
+        self.assertIn("assets/readme/rmd-concept-overview-dark.svg", self.public)
+        self.assertIn("assets/readme/rmd-concept-overview-light.svg", self.public)
+        self.assertIn("six institutional sectors", self.public)
+        self.assertIn("not** a causal-loop diagram", self.public)
 
-    def test_public_readme_still_does_not_reference_preview_diagram(self) -> None:
-        public = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertNotIn("rmd-concept-overview", public)
+    def test_preview_is_retained_for_design_traceability(self) -> None:
+        self.assertIn("readme-assets/rmd-concept-overview-dark.svg", self.preview)
+        self.assertIn("readme-assets/rmd-concept-overview-light.svg", self.preview)
 
 
 if __name__ == "__main__":
