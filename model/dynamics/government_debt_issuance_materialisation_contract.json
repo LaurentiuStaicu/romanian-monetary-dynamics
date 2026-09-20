@@ -1,0 +1,80 @@
+{
+  "contract_version": "0.1",
+  "variable_id": "government_debt_issuance",
+  "purpose": "Freeze admissible source-materialisation paths before extracting any government issuance series. The BNR domestic-primary-market series and Ministry all-market borrowing series must remain separate because they answer different questions.",
+  "paths": {
+    "bnr_domestic_primary_market": {
+      "target_id": "domestic_primary_market_government_securities_gross_issuance",
+      "institution": "National Bank of Romania",
+      "source_family": "Monthly Bulletin table 12.2 Government securities (new and roll-over issues)",
+      "preferred_frequency": "monthly",
+      "required_fields": [
+        "period",
+        "discount_treasury_certificates_nominal_million_RON",
+        "interest_bearing_government_bonds_allotted_million_RON",
+        "EUR-denominated treasury-certificate nominal amount when present",
+        "EUR-denominated government-bond nominal amount when present"
+      ],
+      "retained_currency_rule": "Retain native published currency columns separately. Do not convert EUR issue volumes to RON unless a separately frozen exchange-rate convention is preregistered.",
+      "aggregation_rule": "A RON domestic-primary-market total may sum only RON-denominated treasury certificates and RON-denominated allotted government bonds. EUR amounts remain separate.",
+      "historical_coverage_gate": "Require a contiguous retained monthly source vintage with explicit table semantics before promotion to an observed reference series.",
+      "prohibited_shortcuts": [
+        "do not add retail securities unless the BNR table explicitly includes them on the same boundary",
+        "do not add Eurobonds or loans",
+        "do not infer refinancing need from gross primary-market issuance",
+        "do not call the resulting series securities supply pressure",
+        "do not convert a new-and-roll-over issue series into net incurrence"
+      ]
+    },
+    "mof_actual_borrowing": {
+      "target_id": "government_total_realized_borrowing_or_securities_funding",
+      "institution": "Romania Ministry of Finance",
+      "source_family": "Monthly public-debt report — Actual borrowings by instrument/currency/market",
+      "preferred_frequency": "monthly_report_cumulative_ytd",
+      "required_fields": [
+        "report_cutoff_date",
+        "MoF T-Bills",
+        "retail bonds",
+        "RON Treasury bonds",
+        "EUR Treasury bonds",
+        "Eurobonds",
+        "RRF/PNRR loan drawings",
+        "loans",
+        "domestic market total",
+        "external market total",
+        "local-government borrowing",
+        "cash-management instruments"
+      ],
+      "materialisation_rule": "Retain the cumulative year-to-date values exactly as published before considering monthly increments.",
+      "monthly_increment_gate": [
+        "current and previous reports must use the same instrument definitions",
+        "currency-conversion conventions must be identical or native-currency values must be available",
+        "revision status must be checked",
+        "exchange operations included in Treasury-bond lines must be identified",
+        "month-to-month differencing may be executed only after all above gates pass"
+      ],
+      "securities_subset_rule": "A securities-only series may include only explicitly identified securities instruments. Loans and RRF/PNRR drawings remain separate.",
+      "prohibited_shortcuts": [
+        "do not difference cumulative RON values across reports with changed FX conversion conventions",
+        "do not treat total reimbursable financing as securities issuance",
+        "do not mix local-government borrowing into MoF central-government borrowing",
+        "do not merge cash-management certificates silently into longer-term issuance",
+        "do not infer the BNR domestic-primary-market series by subtraction"
+      ]
+    }
+  },
+  "cross_source_rule": {
+    "sources_are_expected_to_differ": true,
+    "equality_is_not_a_validation_requirement": true,
+    "reason": "BNR and Ministry reports use different market/instrument/reporting boundaries; discrepancies must be explained by boundary mapping before any reconciliation test.",
+    "possible_future_use": "Use BNR for a narrowly defined domestic primary-market issuance observable and Ministry reports for broader realized financing/borrowing composition."
+  },
+  "activation_boundary": {
+    "exact_feedback_node_mapping_established": false,
+    "generic_government_debt_issuance_node_resolved": false,
+    "reference_mode_promotion_authorized": false,
+    "estimation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "feedback_activation_authorized": false
+  }
+}
