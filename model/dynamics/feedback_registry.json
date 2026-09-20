@@ -99,7 +99,11 @@
       "full_year_announced_supply_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
       "full_year_announced_supply_partial_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json",
       "announced_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
-      "announced_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_3_REQUIRED_SOURCES_REMAINING"
+      "announced_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_3_REQUIRED_SOURCES_REMAINING",
+      "primary_yield_to_sovereign_yield_boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+      "sovereign_yield_empirical_boundary_status": "UMBRELLA_UNRESOLVED_EXACT_RON_10Y_LONG_TERM_CANDIDATE_PRIMARY_RATE_VECTOR_NOT_AGGREGATED",
+      "primary_market_rate_to_generic_sovereign_yield_aggregation_authorized": false,
+      "RON_10Y_candidate_id": "RON_10Y_long_term_sovereign_yield"
     },
     {
       "id": "bank_credit_balance_sheet_loop",
