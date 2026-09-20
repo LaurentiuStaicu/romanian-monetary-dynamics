@@ -21,6 +21,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Repository governance
 
+- added PR-only workflow concurrency so superseded Scientific CI runs on the same pull-request branch are canceled while main/manual runs retain unique execution groups;
 - added RMD community-health governance with contribution/support guidance, structured bug and scientific issue forms, and a pull-request scientific-integrity checklist; security policy and code-of-conduct adoption remain explicitly deferred pending private-reporting/enforcement decisions;
 - defined a professional scientific-model README design contract and a canonical-state-checked RMD landing-page preview, without replacing the public README before review;
 - added a light/dark, accessibility-checked RMD conceptual-structure diagram preview that shows the institutional boundary and accounting/evidence/dynamics/activation layers without implying validated causal links or complete bilateral coverage;
