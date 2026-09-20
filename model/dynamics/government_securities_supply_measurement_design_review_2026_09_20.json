@@ -263,7 +263,17 @@
     "may_materialise_supply_surprise": false,
     "may_materialise_duration_supply": false,
     "may_estimate_supply_to_yield_effect": false,
-    "may_activate_feedback": false
+    "may_activate_feedback": false,
+    "recovery_state": "EVIDENCE_TRIGGERED_HOLD",
+    "active_polling": false
   },
-  "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json"
+  "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
+  "announced_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
+  "next_independent_issuance_yield_task": {
+    "id": "primary_yield_to_sovereign_yield_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_construct_generic_sovereign_yield": false,
+    "may_estimate_yield_effect": false,
+    "may_activate_feedback": false
+  }
 }
