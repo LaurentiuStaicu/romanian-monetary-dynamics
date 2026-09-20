@@ -82,7 +82,12 @@
       "id": "primary_yield_to_sovereign_yield",
       "from": "instrument_specific_domestic_primary_market_yield",
       "to": "sovereign_yield",
-      "requirement": "Freeze the exact instrument, currency and maturity boundary or an ex-ante aggregation rule. Do not average heterogeneous issue yields post hoc to manufacture a generic scalar yield."
+      "requirement": "Freeze the exact instrument, currency and maturity boundary or an ex-ante aggregation rule. Do not average heterogeneous issue yields post hoc to manufacture a generic scalar yield.",
+      "boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+      "status": "BOUNDARY_REVIEWED_NO_ONE_TO_ONE_MAPPING_NO_GENERIC_AGGREGATION",
+      "exact_long_term_candidate_id": "RON_10Y_long_term_sovereign_yield",
+      "exact_long_term_candidate_series_key": "IRS.M.RO.L.L40.CI.0000.RON.N.Z",
+      "closed_empirical_bridge_claim_allowed": false
     },
     {
       "id": "yield_to_interest_cost",
@@ -112,10 +117,10 @@
   },
   "next_gate_after_materialisation": "Reconcile the exact RON auction-universe stock denominator before any supply-load ratio is computed. Submitted-bids and bid-to-cover monthly series remain blocked because the monthly report exposes them graphically without reproducible native-text month/series mapping.",
   "next_independent_bridge_task": {
-    "id": "primary_yield_to_sovereign_yield_boundary_review",
+    "id": "yield_to_interest_cost_boundary_review",
     "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
-    "may_construct_generic_sovereign_yield": false,
-    "may_estimate_yield_effect": false,
+    "may_select_interest_cost_equation": false,
+    "may_estimate_yield_to_cost_effect": false,
     "may_activate_feedback": false
   }
 }
