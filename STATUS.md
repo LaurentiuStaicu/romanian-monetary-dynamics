@@ -47,6 +47,16 @@ The provenance-only gate is now **complete**. Workflow run `35483550266` succeed
 
 This completes and closes the source-only selective reopen. The fiscal mechanism remains **DEFERRED**: no behavioural form is admitted, the 13-observation Spring 2013–2025 structural-primary chain does not reproduce the prior 29-target-year validation design, UBLGBP remains a distinct non-substitutable family, and the untouched 2018–2024 final evaluation remains unopened. Parameter estimation, model selection, target-family substitution, causal claims, System Dynamics feedback activation and behavioural closure remain unauthorized. With no other admissible empirical task open, RMD returns to **EVIDENCE_TRIGGERED_BASELINE_HOLD**.
 
+### Post-fiscal-closure reopen-trigger monitoring — 2026-09-20
+
+The first monitoring pass after closure of the fiscal provenance-only selective reopen found **no declared reopen trigger satisfied**. The canonical result is retained in `model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json`.
+
+The prospective monetary gate remains closed: the driver check is advanced through 2026-09-20, no new BNR policy meeting has occurred since the unchanged 2026-08-10 decision, and the reserved MIR response values remain uninspected. The exact BNR BLS 2025-Q2 workbook or an exact machine-readable equivalent was not confirmed on the current official public surface; this remains non-discovery rather than proof of source absence.
+
+The European Commission AMECO page still reports 2026-06-03 as the latest full release, so no new official vintage extends the retained structural-primary real-time history. Current Eurostat quarterly-financial-accounts metadata continues to define mandatory counterpart tables for deposits/loans and securities rather than a complete F2-F8 who-to-whom matrix, so no changed Eurostat topology satisfying the frozen RMD sector/instrument boundary was identified. Ministry debt-management material continues to expose marginal currency, maturity, refinancing and refixing risk indicators rather than the matched same-boundary repricing ledger required for point identification.
+
+No accounting instrument, reference mode or behavioural mechanism is reopened. Calibration/refit, model selection, holdout or reserved-response inspection, target-family substitution, System Dynamics feedback activation and behavioural closure remain unauthorized. The canonical operational state remains **EVIDENCE_TRIGGERED_BASELINE_HOLD**.
+
 
 ## Canonical modeling paradigm
 

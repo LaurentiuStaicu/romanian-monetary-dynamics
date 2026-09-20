@@ -55,16 +55,20 @@ class ReopenTriggerMonitoring20260919Tests(unittest.TestCase):
     def test_monitoring_snapshot_is_retained_after_later_selective_reopen(self) -> None:
         stage = self.m["scientific_stage"]
         self.assertEqual(
-            stage["latest_reopen_trigger_monitoring"],
+            stage["previous_reopen_trigger_monitoring"],
             "model/registries/reopen_trigger_monitoring_2026_09_19.json",
         )
         self.assertEqual(
+            stage["latest_reopen_trigger_monitoring"],
+            "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
+        )
+        self.assertEqual(
             stage["latest_reopen_trigger_monitoring_status"],
-            "NO_DECLARED_REOPEN_TRIGGER_SATISFIED_BASELINE_HOLD_CONTINUES",
+            "NO_DECLARED_REOPEN_TRIGGER_SATISFIED_POST_FISCAL_CLOSURE_BASELINE_HOLD_CONTINUES",
         )
         self.assertEqual(
             stage["latest_reopen_trigger_monitoring_superseded_for"],
-            ["fiscal_primary_balance_reaction"],
+            [],
         )
         self.assertEqual(stage["next_operational_state"], "EVIDENCE_TRIGGERED_BASELINE_HOLD")
         self.assertFalse(stage["selective_reopen_active"])
