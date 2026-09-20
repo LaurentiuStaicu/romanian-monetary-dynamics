@@ -106,7 +106,13 @@
       "equation_pointer": null,
       "current_activation_authorized": false,
       "reason": "A related sovereign-yield candidate exists, but neither the supply-pressure observable nor an exact mapping from instrument/currency-specific primary-market conditions to the generic sovereign_yield node is contracted.",
-      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
+      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
+      "partial_observed_evidence": [
+        {
+          "source": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
+          "effect": "Instrument- and currency-specific BNR primary-market issue rates are observed for 2025, but no exact supply-pressure observable or generic sovereign_yield mapping is frozen."
+        }
+      ]
     },
     {
       "link_key": "government_issuance_yield_loop|sovereign_yield|government_interest_cost",
