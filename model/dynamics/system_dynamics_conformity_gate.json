@@ -112,7 +112,12 @@
     "current_form_level_extreme_condition_status": "PASS_CURRENT_IMPLEMENTATIONS_ONLY",
     "current_integrated_extreme_condition_status": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
     "current_empirical_sensitivity_execution_status": "BLOCKED",
-    "robustness_rule": "Form-level algebraic stress tests are necessary implementation checks but are not empirical validation. Integrated extreme-condition testing and empirical sensitivity analysis remain blocked until behavioural closure, measurement transforms and scientifically admissible parameter ranges are frozen."
+    "robustness_rule": "Form-level algebraic stress tests are necessary implementation checks but are not empirical validation. Integrated extreme-condition testing and empirical sensitivity analysis remain blocked until behavioural closure, measurement transforms and scientifically admissible parameter ranges are frozen.",
+    "feedback_link_readiness_registry": "model/dynamics/feedback_link_readiness_registry.json",
+    "current_exact_integrated_link_forms_ready": 0,
+    "current_feedback_structures_activation_ready": 0,
+    "current_link_level_activation_readiness": "BLOCKED_ALL_REGISTERED_STRUCTURES",
+    "link_level_rule": "Loop-level mechanism association and qualitative path closure are insufficient. Every exact causal link must have a canonical integrated equation/identity with units, boundary semantics and activation evidence before the loop can become quantitative."
   },
   "candidate_feedbacks": [
     "government_refinancing_interest_loop",
@@ -134,6 +139,7 @@
       "dimensional consistency",
       "boundary consistency",
       "endogenous/exogenous boundary classification",
+      "link-level equation readiness",
       "integration time-step convergence",
       "extreme conditions",
       "missing-data rejection"
