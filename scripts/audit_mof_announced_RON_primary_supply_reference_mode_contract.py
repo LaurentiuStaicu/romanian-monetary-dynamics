@@ -201,9 +201,11 @@ def audit_announced_supply_reference_mode_contract(
     if measure.get("reference_mode_contract") != CONTRACT_PATH:
         errors.append("announced-supply measure lacks source contract")
     if measure["current_source_status"] != (
-        "EXACT_Q1_EVENT_LEVEL_PILOT_MATERIALISED_FULL_2025_EXTENSION_PENDING"
+        "EXACT_Q1_LEGACY_PILOT_RETAINED_FULL_YEAR_DEFINITION_CHANGED"
     ):
-        errors.append("announced-supply measure source status changed")
+        errors.append("announced-supply legacy measure source status changed")
+    if measure.get("primary_recovery_path") is not False:
+        errors.append("legacy announced-supply measure may not remain primary recovery path")
     if measurement_design["scientific_effect"]["exact_reference_mode_promoted"] is not False:
         errors.append("source contract may not promote exact reference mode")
 
@@ -217,7 +219,7 @@ def audit_announced_supply_reference_mode_contract(
     if node.get("announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("boundary registry lacks announced-supply contract")
     if node["announced_RON_primary_supply_reference_mode_status"] != (
-        "EXACT_Q1_PILOT_MATERIALISED_NOT_CANONICAL"
+        "LEGACY_Q1_COMBINED_PILOT_RETAINED_NOT_FULL_YEAR_STABLE"
     ):
         errors.append("boundary registry announced-supply status changed")
     if node["current_boundary_class"] != "UNRESOLVED":
@@ -234,7 +236,7 @@ def audit_announced_supply_reference_mode_contract(
     if link.get("announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("issuance-pressure link lacks announced-supply contract")
     if link["source_boundary_status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
     ):
         errors.append("issuance-pressure link source-contract status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -258,7 +260,7 @@ def audit_announced_supply_reference_mode_contract(
     if bridge.get("announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("issuance-pressure bridge lacks announced-supply contract")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
     ):
         errors.append("issuance-pressure bridge source-contract status changed")
 
@@ -266,11 +268,11 @@ def audit_announced_supply_reference_mode_contract(
     if dynamic.get("mof_announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("model contract lacks announced-supply source contract")
     if dynamic["mof_announced_RON_primary_supply_reference_mode_status"] != (
-        "PASS_EXACT_Q1_EVENT_LEVEL_PILOT_CANONICAL_PROMOTION_DEFERRED"
+        "PASS_EXACT_Q1_LEGACY_COMBINED_PILOT_FULL_YEAR_DEFINITION_NOT_STABLE"
     ):
         errors.append("model contract announced-supply status changed")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_supply_full_2025_extension"
+        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
     ):
         errors.append("model contract next task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
@@ -324,7 +326,7 @@ def main() -> None:
                 "stock_normalisation_required": False,
                 "reference_mode_promoted": False,
                 "feedback_activation_authorized": False,
-                "next_task": "mof_announced_RON_primary_supply_full_2025_extension",
+                "next_task": "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage",
             },
             indent=2,
         )
