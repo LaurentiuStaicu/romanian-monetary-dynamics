@@ -118,14 +118,16 @@
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "A related sovereign-yield candidate exists, but neither the supply-pressure observable nor an exact mapping from instrument/currency-specific primary-market conditions to the generic sovereign_yield node is contracted.",
+      "reason": "Supply-pressure measurement is structured and partial; yield evidence is also structurally heterogeneous. BNR primary issue rates are auction outcomes by instrument/currency, while ECB LTIR is a harmonised long-term RON benchmark near 10-year maturity. No one-to-one mapping to a generic sovereign_yield scalar is contracted.",
       "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
       "partial_observed_evidence": [
         {
           "source": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
           "effect": "Instrument- and currency-specific BNR primary-market issue rates are observed for 2025, but no exact supply-pressure observable or generic sovereign_yield mapping is frozen."
         }
-      ]
+      ],
+      "primary_yield_to_sovereign_yield_boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+      "yield_measurement_boundary_status": "STRUCTURED_PRIMARY_AND_LONG_TERM_BENCHMARK_LAYER_GENERIC_MAPPING_UNRESOLVED"
     },
     {
       "link_key": "government_issuance_yield_loop|sovereign_yield|government_interest_cost",
