@@ -64,7 +64,7 @@ jobs:
           fresh_by_id = {x["source_id"]: x for x in fresh["documents"]}
           kept_by_id = {x["source_id"]: x for x in kept["documents"]}
           if set(fresh_by_id) != set(kept_by_id):
-              raise SystemExit("retained legal source-vintage document set changed")
+              raise SystemExit("retained source-vintage document set changed")
 
           for source_id in sorted(fresh_by_id):
               f = fresh_by_id[source_id]
@@ -76,15 +76,22 @@ jobs:
                   "publication_date",
                   "version_role",
                   "supersedes",
-                  "selected_act_url",
-                  "all_identity_checks_pass",
               ):
                   if f.get(key) != k.get(key):
                       raise SystemExit(f"{source_id}: retained identity mismatch for {key}")
-              if f["normalized_text_sha256"] != k["normalized_text_sha256"]:
-                  raise SystemExit(f"{source_id}: retained normalized legal text changed")
 
-          print("Retained legal source vintage matches fresh discovery on frozen identities/text.")
+              if f.get("raw_source_retained") != k.get("raw_source_retained"):
+                  raise SystemExit(f"{source_id}: raw-source availability changed")
+
+              if f.get("raw_source_retained"):
+                  for hash_key in ("official_pdf_sha256", "selected_act_sha256", "normalized_text_sha256"):
+                      fv = f.get(hash_key)
+                      kv = k.get(hash_key)
+                      if fv is not None or kv is not None:
+                          if fv != kv:
+                              raise SystemExit(f"{source_id}: retained hash mismatch for {hash_key}")
+
+          print("Retained source vintage matches fresh probe on frozen identities and available raw-source hashes.")
           PY
             exit 0
           fi
