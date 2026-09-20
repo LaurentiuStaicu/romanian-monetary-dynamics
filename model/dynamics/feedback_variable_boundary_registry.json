@@ -93,7 +93,7 @@
       "current_boundary_class": "UNRESOLVED",
       "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
       "exact_reference_mode_id": null,
-      "classification_basis": "Official source screening identifies at least two distinct observed source families: BNR monthly domestic primary-market new/roll-over government-securities issues and Ministry monthly all-market actual borrowing by instrument. These are not definitionally interchangeable, and neither may be silently promoted to the generic node used by both government feedback structures. The node remains unresolved pending an explicit split or frozen common boundary.",
+      "classification_basis": "Official source screening and retained raw evidence identify at least two distinct financing boundaries. The BNR monthly domestic primary-market new/roll-over securities series is an exact observed boundary for that market only; Ministry financing evidence confirms gross financing need is allocated across domestic interbank, retail and external/official-sector channels. The BNR series therefore cannot silently replace the generic node used by both government feedback structures. The generic node remains unresolved.",
       "related_reference_modes": [],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
       "current_feedback_activation_authorized": false,
@@ -111,7 +111,10 @@
       "candidate_observed_boundaries": [
         "domestic_primary_market_government_securities_gross_issuance",
         "government_total_realized_borrowing_or_securities_funding"
-      ]
+      ],
+      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
+      "bnr_domestic_primary_market_boundary_can_replace_generic_node_in_both_government_loops": false,
+      "empirical_boundary_status": "UNRESOLVED_GENERIC_NODE_BNR_PARTIAL_BOUNDARY_ONLY"
     },
     {
       "id": "government_debt_stock",

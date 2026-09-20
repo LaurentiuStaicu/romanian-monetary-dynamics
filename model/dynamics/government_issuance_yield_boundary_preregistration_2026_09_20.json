@@ -1,0 +1,95 @@
+{
+  "preregistration_version": "0.1",
+  "preregistered_on": "2026-09-20",
+  "loop_id": "government_issuance_yield_loop",
+  "purpose": "Decide whether the retained BNR domestic-primary-market government-securities issuance boundary can replace the generic government_debt_issuance node in the existing closed candidate issuance-yield loop without inventing causal bridges or collapsing distinct government financing concepts.",
+  "decision": "DO_NOT_NARROW_GENERIC_CLOSED_LOOP_TO_BNR_DOMESTIC_PRIMARY_AS_ONE_TO_ONE",
+  "conceptual_topology": {
+    "current_status": "CLOSED_CANDIDATE_LOOP",
+    "retain_qualitative_topology": true,
+    "quantitatively_active": false,
+    "interpretation": "The conceptual signed path may remain a qualitative closed candidate. Its empirically materialisable boundary is not closed merely because one exact issuance source is now retained."
+  },
+  "retained_bnr_boundary": {
+    "candidate_id": "domestic_primary_market_government_securities_gross_issuance",
+    "source": "National Bank of Romania, Monthly Bulletin — December 2025, table 12.2",
+    "source_vintage_manifest": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/source_vintage_manifest.json",
+    "pilot": "model/dynamics/government_debt_issuance_bnr_pilot_2025.json",
+    "raw_source_retention_assessment": "model/dynamics/government_debt_issuance_bnr_raw_source_retention_assessment_2025.json",
+    "scope": "Domestic primary-market government securities, new and roll-over issues, preserving instrument and currency distinctions.",
+    "valid_as_exact_observed_boundary_for": [
+      "domestic_primary_market_government_securities_gross_issuance"
+    ],
+    "not_equivalent_to": [
+      "total government gross financing need",
+      "all-market government borrowing",
+      "government refinancing need",
+      "government securities supply pressure",
+      "generic sovereign yield",
+      "government interest cost"
+    ]
+  },
+  "official_financing_boundary_evidence": {
+    "ministry_source": "Romanian Ministry of Finance — Romania Investor Presentation, March 2025; Indicative Financing Programme 2025",
+    "finding": "Government gross financing requirements are allocated across multiple domestic and external channels. Domestic financing includes interbank auctions and retail programmes; external financing includes Eurobonds/private placements and official-sector loan/disbursement channels.",
+    "structural_effect": "government_financing_need_to_bnr_domestic_primary_issuance_is_not_an_identity"
+  },
+  "bnr_yield_boundary_evidence": {
+    "finding": "BNR table 12.2 reports issue volumes together with instrument- and currency-specific primary-market yields or interest rates. It does not provide one scalar generic sovereign_yield for the feedback node.",
+    "structural_effect": "instrument_specific_primary_market_yield_observables_are_materialisable_but_scalar_sovereign_yield_mapping_is_not_frozen"
+  },
+  "empirical_boundary_status": {
+    "status": "OPEN_CHAIN_PENDING_EXPLICIT_BRIDGES",
+    "candidate_chain": [
+      "government_financing_need",
+      "domestic_primary_market_government_securities_gross_issuance",
+      "government_securities_supply_pressure",
+      "instrument_specific_domestic_primary_market_yield",
+      "government_interest_cost"
+    ],
+    "closure_not_claimed": true,
+    "generic_government_debt_issuance_node_remains_unresolved": true
+  },
+  "required_bridges_before_any_closed_empirical_loop_claim": [
+    {
+      "id": "financing_channel_allocation",
+      "from": "government_financing_need",
+      "to": "domestic_primary_market_government_securities_gross_issuance",
+      "requirement": "Preregister and validate how gross financing need is allocated across interbank domestic securities, retail, external securities, private placements, RRF/EC financing, IFI loans and other relevant channels."
+    },
+    {
+      "id": "issuance_to_supply_pressure",
+      "from": "domestic_primary_market_government_securities_gross_issuance",
+      "to": "government_securities_supply_pressure",
+      "requirement": "Define and validate a supply-pressure observable or transform. Raw gross issuance volume alone must not be relabelled supply pressure; market depth, investor absorption, maturity/currency composition or another preregistered denominator/structure may be required."
+    },
+    {
+      "id": "primary_yield_to_sovereign_yield",
+      "from": "instrument_specific_domestic_primary_market_yield",
+      "to": "sovereign_yield",
+      "requirement": "Freeze the exact instrument, currency and maturity boundary or an ex-ante aggregation rule. Do not average heterogeneous issue yields post hoc to manufacture a generic scalar yield."
+    },
+    {
+      "id": "yield_to_interest_cost",
+      "from": "sovereign_yield",
+      "to": "government_interest_cost",
+      "requirement": "Specify debt-stock propagation through maturity, refinancing and re-fixing structure; a new-issue yield is not contemporaneously equal to the interest cost on the outstanding debt stock."
+    }
+  ],
+  "scientific_effect": {
+    "bnr_boundary_promoted_to_generic_government_debt_issuance": false,
+    "generic_government_debt_issuance_node_resolved": false,
+    "conceptual_loop_topology_changed": false,
+    "reference_mode_promoted": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_empirical_task": {
+    "id": "bnr_instrument_specific_primary_market_yield_pilot_2025",
+    "authorization": "DESCRIPTIVE_MATERIALISATION_ONLY",
+    "scope": "Materialise the instrument- and currency-specific 2025 primary-market yield/rate observations already present in retained BNR table 12.2, preserving missing/not-applicable cells and without constructing a generic sovereign-yield aggregate.",
+    "may_activate_feedback": false
+  }
+}

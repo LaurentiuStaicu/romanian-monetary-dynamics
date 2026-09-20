@@ -88,7 +88,8 @@
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+      "reason": "The retained BNR series measures gross domestic primary-market securities issuance. Structural preregistration forbids relabelling raw issue volume as securities supply pressure without a validated pressure transform or market-capacity/absorption boundary.",
+      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
     },
     {
       "link_key": "government_issuance_yield_loop|government_securities_supply_pressure|sovereign_yield",
@@ -104,7 +105,8 @@
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+      "reason": "A related sovereign-yield candidate exists, but neither the supply-pressure observable nor an exact mapping from instrument/currency-specific primary-market conditions to the generic sovereign_yield node is contracted.",
+      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
     },
     {
       "link_key": "government_issuance_yield_loop|sovereign_yield|government_interest_cost",
@@ -120,7 +122,8 @@
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+      "reason": "A related refinancing/effective-rate mechanism exists, but a new-issue yield is not contemporaneously equal to interest cost on the outstanding debt stock. Maturity, refinancing and re-fixing propagation must be specified and validated.",
+      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
     },
     {
       "link_key": "government_issuance_yield_loop|government_interest_cost|government_financing_need",
@@ -134,7 +137,8 @@
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes.",
+      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
     },
     {
       "link_key": "government_issuance_yield_loop|government_financing_need|government_debt_issuance",
@@ -148,7 +152,8 @@
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+      "reason": "The qualitative architecture asserts this direction, but the retained BNR domestic-primary-market issuance boundary is only one financing channel. Ministry financing evidence spans domestic interbank, retail and external/official-sector channels, so an explicit financing-channel allocation equation is required before exact-link readiness.",
+      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
     },
     {
       "link_key": "bank_credit_balance_sheet_loop|credit_flow|loan_stock",

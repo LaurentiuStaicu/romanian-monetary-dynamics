@@ -168,6 +168,9 @@ jobs:
       - name: Audit retained BNR government issuance raw source
         run: python scripts/audit_bnr_government_issuance_raw_source_retention.py
 
+      - name: Audit government issuance-yield empirical boundary preregistration
+        run: python scripts/audit_government_issuance_yield_boundary_preregistration.py
+
       - name: Recompute dimensional consistency independently
         run: python scripts/audit_dimensional_consistency.py
 
