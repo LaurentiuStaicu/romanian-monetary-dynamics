@@ -1,0 +1,923 @@
+{
+  "diagnostic_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "instrument": "F3",
+  "scope": "Observed 2025 quarterly debt-securities behaviour derived only from the retained F3 empirical replay.",
+  "replay_source": "model/dynamics/f3_empirical_replay_2025.json",
+  "methodology": {
+    "behavior_over_time_role": "Descriptive observed behaviour for one complete canonical instrument. It may inform later problem articulation and model testing but does not constitute a causal mechanism or full sectoral-financial-positions reference mode.",
+    "stock_flow_decomposition": "For Q2-Q4, observed stock change is decomposed exactly into financial transactions plus the combined non-transaction change retained by the F3 replay.",
+    "combined_nontransaction_semantics": "Combined revaluations plus other changes in volume; not decomposed and not assigned causal meaning.",
+    "pattern_labels": {
+      "FLAT": "All three quarter-to-quarter changes are exactly zero at retained published precision.",
+      "MONOTONIC_INCREASE": "All three quarter-to-quarter changes are strictly positive.",
+      "MONOTONIC_DECREASE": "All three quarter-to-quarter changes are strictly negative.",
+      "MIXED": "Quarter-to-quarter changes do not satisfy the exact flat or monotonic rules."
+    },
+    "external_methodology_sources": [
+      "https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF",
+      "https://www.ecb.europa.eu/stats/pdf/eaa/Handbook_on_quarterly_financial_accounts.pdf",
+      "https://ocw.mit.edu/courses/15-988-system-dynamics-self-study-fall-1998-spring-1999/resources/building/"
+    ]
+  },
+  "quarterly_sector_positions": {
+    "2025-Q1": {
+      "H": {
+        "assets_million_RON": 34699.67,
+        "liabilities_million_RON": 0,
+        "net_f3_position_million_RON": 34699.67
+      },
+      "C": {
+        "assets_million_RON": 17190.25,
+        "liabilities_million_RON": 5302.13,
+        "net_f3_position_million_RON": 11888.12
+      },
+      "F": {
+        "assets_million_RON": 394447.78,
+        "liabilities_million_RON": 37827.11,
+        "net_f3_position_million_RON": 356620.67
+      },
+      "G": {
+        "assets_million_RON": 12822.89,
+        "liabilities_million_RON": 790301.34,
+        "net_f3_position_million_RON": -777478.45
+      },
+      "X": {
+        "assets_million_RON": 408327.64,
+        "liabilities_million_RON": 226597.94,
+        "net_f3_position_million_RON": 181729.7
+      },
+      "BNR": {
+        "assets_million_RON": 192540.29,
+        "liabilities_million_RON": 0,
+        "net_f3_position_million_RON": 192540.29
+      }
+    },
+    "2025-Q2": {
+      "H": {
+        "assets_million_RON": 37786.64,
+        "liabilities_million_RON": 0,
+        "net_f3_position_million_RON": 37786.64
+      },
+      "C": {
+        "assets_million_RON": 16240.15,
+        "liabilities_million_RON": 5403.09,
+        "net_f3_position_million_RON": 10837.06
+      },
+      "F": {
+        "assets_million_RON": 415260.24,
+        "liabilities_million_RON": 38013.48,
+        "net_f3_position_million_RON": 377246.76
+      },
+      "G": {
+        "assets_million_RON": 13348.71,
+        "liabilities_million_RON": 837078.08,
+        "net_f3_position_million_RON": -823729.37
+      },
+      "X": {
+        "assets_million_RON": 426856.28,
+        "liabilities_million_RON": 200291.9,
+        "net_f3_position_million_RON": 226564.38
+      },
+      "BNR": {
+        "assets_million_RON": 171294.53,
+        "liabilities_million_RON": 0,
+        "net_f3_position_million_RON": 171294.53
+      }
+    },
+    "2025-Q3": {
+      "H": {
+        "assets_million_RON": 38048.92,
+        "liabilities_million_RON": 0,
+        "net_f3_position_million_RON": 38048.92
+      },
+      "C": {
+        "assets_million_RON": 17817.98,
+        "liabilities_million_RON": 8056.09,
+        "net_f3_position_million_RON": 9761.89
+      },
+      "F": {
+        "assets_million_RON": 424669.85,
+        "liabilities_million_RON": 39784.8,
+        "net_f3_position_million_RON": 384885.05
+      },
+      "G": {
+        "assets_million_RON": 13641.38,
+        "liabilities_million_RON": 882970.25,
+        "net_f3_position_million_RON": -869328.87
+      },
+      "X": {
+        "assets_million_RON": 467125.96,
+        "liabilities_million_RON": 256748.75,
+        "net_f3_position_million_RON": 210377.21
+      },
+      "BNR": {
+        "assets_million_RON": 226255.8,
+        "liabilities_million_RON": 0,
+        "net_f3_position_million_RON": 226255.8
+      }
+    },
+    "2025-Q4": {
+      "H": {
+        "assets_million_RON": 38434.23,
+        "liabilities_million_RON": 0,
+        "net_f3_position_million_RON": 38434.23
+      },
+      "C": {
+        "assets_million_RON": 18395.76,
+        "liabilities_million_RON": 13744.07,
+        "net_f3_position_million_RON": 4651.69
+      },
+      "F": {
+        "assets_million_RON": 450285.61,
+        "liabilities_million_RON": 44847.15,
+        "net_f3_position_million_RON": 405438.46
+      },
+      "G": {
+        "assets_million_RON": 13900.1,
+        "liabilities_million_RON": 916941.28,
+        "net_f3_position_million_RON": -903041.18
+      },
+      "X": {
+        "assets_million_RON": 493246.93,
+        "liabilities_million_RON": 264044.14,
+        "net_f3_position_million_RON": 229202.79
+      },
+      "BNR": {
+        "assets_million_RON": 225314.01,
+        "liabilities_million_RON": 0,
+        "net_f3_position_million_RON": 225314.01
+      }
+    }
+  },
+  "transition_sector_decomposition": {
+    "2025-Q2": {
+      "H": {
+        "asset_transaction_million_RON": 1896.2,
+        "liability_transaction_million_RON": 0,
+        "net_transaction_million_RON": 1896.2,
+        "asset_combined_nontransaction_change_million_RON": 1190.77,
+        "liability_combined_nontransaction_change_million_RON": 0,
+        "net_combined_nontransaction_change_million_RON": 1190.77,
+        "net_position_change_million_RON": 3086.97
+      },
+      "C": {
+        "asset_transaction_million_RON": -1211.56,
+        "liability_transaction_million_RON": -13.05,
+        "net_transaction_million_RON": -1198.51,
+        "asset_combined_nontransaction_change_million_RON": 261.46,
+        "liability_combined_nontransaction_change_million_RON": 114.01,
+        "net_combined_nontransaction_change_million_RON": 147.45,
+        "net_position_change_million_RON": -1051.06
+      },
+      "F": {
+        "asset_transaction_million_RON": 21226.35,
+        "liability_transaction_million_RON": -0.3,
+        "net_transaction_million_RON": 21226.65,
+        "asset_combined_nontransaction_change_million_RON": -413.89,
+        "liability_combined_nontransaction_change_million_RON": 186.67,
+        "net_combined_nontransaction_change_million_RON": -600.56,
+        "net_position_change_million_RON": 20626.09
+      },
+      "G": {
+        "asset_transaction_million_RON": 525.82,
+        "liability_transaction_million_RON": 40310.64,
+        "net_transaction_million_RON": -39784.82,
+        "asset_combined_nontransaction_change_million_RON": 0,
+        "liability_combined_nontransaction_change_million_RON": 6466.1,
+        "net_combined_nontransaction_change_million_RON": -6466.1,
+        "net_position_change_million_RON": -46250.92
+      },
+      "X": {
+        "asset_transaction_million_RON": 13380.64,
+        "liability_transaction_million_RON": -24924.22,
+        "net_transaction_million_RON": 38304.86,
+        "asset_combined_nontransaction_change_million_RON": 5148,
+        "liability_combined_nontransaction_change_million_RON": -1381.82,
+        "net_combined_nontransaction_change_million_RON": 6529.82,
+        "net_position_change_million_RON": 44834.68
+      },
+      "BNR": {
+        "asset_transaction_million_RON": -20444.38,
+        "liability_transaction_million_RON": 0,
+        "net_transaction_million_RON": -20444.38,
+        "asset_combined_nontransaction_change_million_RON": -801.38,
+        "liability_combined_nontransaction_change_million_RON": 0,
+        "net_combined_nontransaction_change_million_RON": -801.38,
+        "net_position_change_million_RON": -21245.76
+      }
+    },
+    "2025-Q3": {
+      "H": {
+        "asset_transaction_million_RON": 556.17,
+        "liability_transaction_million_RON": 0,
+        "net_transaction_million_RON": 556.17,
+        "asset_combined_nontransaction_change_million_RON": -293.89,
+        "liability_combined_nontransaction_change_million_RON": 0,
+        "net_combined_nontransaction_change_million_RON": -293.89,
+        "net_position_change_million_RON": 262.28
+      },
+      "C": {
+        "asset_transaction_million_RON": 1589.99,
+        "liability_transaction_million_RON": 2574.95,
+        "net_transaction_million_RON": -984.96,
+        "asset_combined_nontransaction_change_million_RON": -12.16,
+        "liability_combined_nontransaction_change_million_RON": 78.05,
+        "net_combined_nontransaction_change_million_RON": -90.21,
+        "net_position_change_million_RON": -1075.17
+      },
+      "F": {
+        "asset_transaction_million_RON": 7747.56,
+        "liability_transaction_million_RON": 1636.62,
+        "net_transaction_million_RON": 6110.94,
+        "asset_combined_nontransaction_change_million_RON": 1662.05,
+        "liability_combined_nontransaction_change_million_RON": 134.7,
+        "net_combined_nontransaction_change_million_RON": 1527.35,
+        "net_position_change_million_RON": 7638.29
+      },
+      "G": {
+        "asset_transaction_million_RON": 292.68,
+        "liability_transaction_million_RON": 38188.29,
+        "net_transaction_million_RON": -37895.61,
+        "asset_combined_nontransaction_change_million_RON": -0.01,
+        "liability_combined_nontransaction_change_million_RON": 7703.88,
+        "net_combined_nontransaction_change_million_RON": -7703.89,
+        "net_position_change_million_RON": -45599.5
+      },
+      "X": {
+        "asset_transaction_million_RON": 33207.33,
+        "liability_transaction_million_RON": 55486.94,
+        "net_transaction_million_RON": -22279.61,
+        "asset_combined_nontransaction_change_million_RON": 7062.35,
+        "liability_combined_nontransaction_change_million_RON": 969.91,
+        "net_combined_nontransaction_change_million_RON": 6092.44,
+        "net_position_change_million_RON": -16187.17
+      },
+      "BNR": {
+        "asset_transaction_million_RON": 54493.07,
+        "liability_transaction_million_RON": 0,
+        "net_transaction_million_RON": 54493.07,
+        "asset_combined_nontransaction_change_million_RON": 468.2,
+        "liability_combined_nontransaction_change_million_RON": 0,
+        "net_combined_nontransaction_change_million_RON": 468.2,
+        "net_position_change_million_RON": 54961.27
+      }
+    },
+    "2025-Q4": {
+      "H": {
+        "asset_transaction_million_RON": -699.73,
+        "liability_transaction_million_RON": 0,
+        "net_transaction_million_RON": -699.73,
+        "asset_combined_nontransaction_change_million_RON": 1085.04,
+        "liability_combined_nontransaction_change_million_RON": 0,
+        "net_combined_nontransaction_change_million_RON": 1085.04,
+        "net_position_change_million_RON": 385.31
+      },
+      "C": {
+        "asset_transaction_million_RON": -16.59,
+        "liability_transaction_million_RON": 5581.92,
+        "net_transaction_million_RON": -5598.51,
+        "asset_combined_nontransaction_change_million_RON": 594.37,
+        "liability_combined_nontransaction_change_million_RON": 106.06,
+        "net_combined_nontransaction_change_million_RON": 488.31,
+        "net_position_change_million_RON": -5110.2
+      },
+      "F": {
+        "asset_transaction_million_RON": 19197.91,
+        "liability_transaction_million_RON": 5069.72,
+        "net_transaction_million_RON": 14128.19,
+        "asset_combined_nontransaction_change_million_RON": 6417.85,
+        "liability_combined_nontransaction_change_million_RON": -7.37,
+        "net_combined_nontransaction_change_million_RON": 6425.22,
+        "net_position_change_million_RON": 20553.41
+      },
+      "G": {
+        "asset_transaction_million_RON": 258.7,
+        "liability_transaction_million_RON": 16088.08,
+        "net_transaction_million_RON": -15829.38,
+        "asset_combined_nontransaction_change_million_RON": 0.02,
+        "liability_combined_nontransaction_change_million_RON": 17882.95,
+        "net_combined_nontransaction_change_million_RON": -17882.93,
+        "net_position_change_million_RON": -33712.31
+      },
+      "X": {
+        "asset_transaction_million_RON": 16377.05,
+        "liability_transaction_million_RON": 6152.39,
+        "net_transaction_million_RON": 10224.66,
+        "asset_combined_nontransaction_change_million_RON": 9743.92,
+        "liability_combined_nontransaction_change_million_RON": 1143,
+        "net_combined_nontransaction_change_million_RON": 8600.92,
+        "net_position_change_million_RON": 18825.58
+      },
+      "BNR": {
+        "asset_transaction_million_RON": -2225.23,
+        "liability_transaction_million_RON": 0,
+        "net_transaction_million_RON": -2225.23,
+        "asset_combined_nontransaction_change_million_RON": 1283.44,
+        "liability_combined_nontransaction_change_million_RON": 0,
+        "net_combined_nontransaction_change_million_RON": 1283.44,
+        "net_position_change_million_RON": -941.79
+      }
+    }
+  },
+  "sector_summary": {
+    "H": {
+      "q1_to_q4_asset_change_million_RON": 3734.56,
+      "q1_to_q4_liability_change_million_RON": 0,
+      "q1_to_q4_net_position_change_million_RON": 3734.56,
+      "cumulative_q2_q4_net_transaction_million_RON": 1752.64,
+      "cumulative_q2_q4_net_combined_nontransaction_change_million_RON": 1981.92,
+      "decomposition_residual_million_RON": 0,
+      "observed_asset_pattern": "MONOTONIC_INCREASE",
+      "observed_liability_pattern": "FLAT",
+      "observed_net_position_pattern": "MONOTONIC_INCREASE"
+    },
+    "C": {
+      "q1_to_q4_asset_change_million_RON": 1205.51,
+      "q1_to_q4_liability_change_million_RON": 8441.94,
+      "q1_to_q4_net_position_change_million_RON": -7236.43,
+      "cumulative_q2_q4_net_transaction_million_RON": -7781.98,
+      "cumulative_q2_q4_net_combined_nontransaction_change_million_RON": 545.55,
+      "decomposition_residual_million_RON": 0,
+      "observed_asset_pattern": "MIXED",
+      "observed_liability_pattern": "MONOTONIC_INCREASE",
+      "observed_net_position_pattern": "MONOTONIC_DECREASE"
+    },
+    "F": {
+      "q1_to_q4_asset_change_million_RON": 55837.83,
+      "q1_to_q4_liability_change_million_RON": 7020.04,
+      "q1_to_q4_net_position_change_million_RON": 48817.79,
+      "cumulative_q2_q4_net_transaction_million_RON": 41465.78,
+      "cumulative_q2_q4_net_combined_nontransaction_change_million_RON": 7352.01,
+      "decomposition_residual_million_RON": 0,
+      "observed_asset_pattern": "MONOTONIC_INCREASE",
+      "observed_liability_pattern": "MONOTONIC_INCREASE",
+      "observed_net_position_pattern": "MONOTONIC_INCREASE"
+    },
+    "G": {
+      "q1_to_q4_asset_change_million_RON": 1077.21,
+      "q1_to_q4_liability_change_million_RON": 126639.94,
+      "q1_to_q4_net_position_change_million_RON": -125562.73,
+      "cumulative_q2_q4_net_transaction_million_RON": -93509.81,
+      "cumulative_q2_q4_net_combined_nontransaction_change_million_RON": -32052.92,
+      "decomposition_residual_million_RON": 0,
+      "observed_asset_pattern": "MONOTONIC_INCREASE",
+      "observed_liability_pattern": "MONOTONIC_INCREASE",
+      "observed_net_position_pattern": "MONOTONIC_DECREASE"
+    },
+    "X": {
+      "q1_to_q4_asset_change_million_RON": 84919.29,
+      "q1_to_q4_liability_change_million_RON": 37446.2,
+      "q1_to_q4_net_position_change_million_RON": 47473.09,
+      "cumulative_q2_q4_net_transaction_million_RON": 26249.91,
+      "cumulative_q2_q4_net_combined_nontransaction_change_million_RON": 21223.18,
+      "decomposition_residual_million_RON": 0,
+      "observed_asset_pattern": "MONOTONIC_INCREASE",
+      "observed_liability_pattern": "MIXED",
+      "observed_net_position_pattern": "MIXED"
+    },
+    "BNR": {
+      "q1_to_q4_asset_change_million_RON": 32773.72,
+      "q1_to_q4_liability_change_million_RON": 0,
+      "q1_to_q4_net_position_change_million_RON": 32773.72,
+      "cumulative_q2_q4_net_transaction_million_RON": 31823.46,
+      "cumulative_q2_q4_net_combined_nontransaction_change_million_RON": 950.26,
+      "decomposition_residual_million_RON": 0,
+      "observed_asset_pattern": "MIXED",
+      "observed_liability_pattern": "FLAT",
+      "observed_net_position_pattern": "MIXED"
+    }
+  },
+  "external_boundary_quarterly": {
+    "2025-Q1": {
+      "resident_holdings_of_nonresident_F3_million_RON": 226597.94,
+      "nonresident_holdings_of_resident_F3_million_RON": 408327.64,
+      "net_resident_external_F3_position_million_RON": -181729.7
+    },
+    "2025-Q2": {
+      "resident_holdings_of_nonresident_F3_million_RON": 200291.9,
+      "nonresident_holdings_of_resident_F3_million_RON": 426856.28,
+      "net_resident_external_F3_position_million_RON": -226564.38
+    },
+    "2025-Q3": {
+      "resident_holdings_of_nonresident_F3_million_RON": 256748.75,
+      "nonresident_holdings_of_resident_F3_million_RON": 467125.96,
+      "net_resident_external_F3_position_million_RON": -210377.21
+    },
+    "2025-Q4": {
+      "resident_holdings_of_nonresident_F3_million_RON": 264044.14,
+      "nonresident_holdings_of_resident_F3_million_RON": 493246.93,
+      "net_resident_external_F3_position_million_RON": -229202.79
+    }
+  },
+  "external_boundary_summary": {
+    "observed_net_external_pattern": "MIXED",
+    "q1_to_q4_net_external_change_million_RON": -47473.09
+  },
+  "bilateral_q1_to_q4_summary": [
+    {
+      "cell": "H->H",
+      "holder": "H",
+      "issuer": "H",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "H->C",
+      "holder": "H",
+      "issuer": "C",
+      "q1_stock_million_RON": 215.04,
+      "q4_stock_million_RON": 199.92,
+      "q1_to_q4_stock_change_million_RON": -15.12,
+      "cumulative_q2_q4_transactions_million_RON": -19.53,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 4.41,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 19.53,
+      "absolute_combined_nontransaction_activity_million_RON": 5.95,
+      "transaction_share_of_absolute_change_activity": 0.766484
+    },
+    {
+      "cell": "H->F",
+      "holder": "H",
+      "issuer": "F",
+      "q1_stock_million_RON": 134.11,
+      "q4_stock_million_RON": 152.31,
+      "q1_to_q4_stock_change_million_RON": 18.2,
+      "cumulative_q2_q4_transactions_million_RON": 6.53,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 11.67,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 14.13,
+      "absolute_combined_nontransaction_activity_million_RON": 11.67,
+      "transaction_share_of_absolute_change_activity": 0.547674
+    },
+    {
+      "cell": "H->G",
+      "holder": "H",
+      "issuer": "G",
+      "q1_stock_million_RON": 32751.52,
+      "q4_stock_million_RON": 36382.75,
+      "q1_to_q4_stock_change_million_RON": 3631.23,
+      "cumulative_q2_q4_transactions_million_RON": 1664.78,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 1966.45,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 3383.28,
+      "absolute_combined_nontransaction_activity_million_RON": 2556.47,
+      "transaction_share_of_absolute_change_activity": 0.5696
+    },
+    {
+      "cell": "H->X",
+      "holder": "H",
+      "issuer": "X",
+      "q1_stock_million_RON": 1599,
+      "q4_stock_million_RON": 1699.25,
+      "q1_to_q4_stock_change_million_RON": 100.25,
+      "cumulative_q2_q4_transactions_million_RON": 100.86,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": -0.61,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 214.1,
+      "absolute_combined_nontransaction_activity_million_RON": 13.43,
+      "transaction_share_of_absolute_change_activity": 0.940975
+    },
+    {
+      "cell": "H->BNR",
+      "holder": "H",
+      "issuer": "BNR",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "C->H",
+      "holder": "C",
+      "issuer": "H",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "C->C",
+      "holder": "C",
+      "issuer": "C",
+      "q1_stock_million_RON": 98.45,
+      "q4_stock_million_RON": 90.95,
+      "q1_to_q4_stock_change_million_RON": -7.5,
+      "cumulative_q2_q4_transactions_million_RON": -6.03,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": -1.47,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 8.99,
+      "absolute_combined_nontransaction_activity_million_RON": 4.17,
+      "transaction_share_of_absolute_change_activity": 0.683131
+    },
+    {
+      "cell": "C->F",
+      "holder": "C",
+      "issuer": "F",
+      "q1_stock_million_RON": 1055.65,
+      "q4_stock_million_RON": 1156.39,
+      "q1_to_q4_stock_change_million_RON": 100.74,
+      "cumulative_q2_q4_transactions_million_RON": 59.62,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 41.12,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 59.88,
+      "absolute_combined_nontransaction_activity_million_RON": 41.12,
+      "transaction_share_of_absolute_change_activity": 0.592871
+    },
+    {
+      "cell": "C->G",
+      "holder": "C",
+      "issuer": "G",
+      "q1_stock_million_RON": 15637.79,
+      "q4_stock_million_RON": 16661.8,
+      "q1_to_q4_stock_change_million_RON": 1024.01,
+      "cumulative_q2_q4_transactions_million_RON": 228.28,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 795.73,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 2885.92,
+      "absolute_combined_nontransaction_activity_million_RON": 843.49,
+      "transaction_share_of_absolute_change_activity": 0.773827
+    },
+    {
+      "cell": "C->X",
+      "holder": "C",
+      "issuer": "X",
+      "q1_stock_million_RON": 398.36,
+      "q4_stock_million_RON": 486.62,
+      "q1_to_q4_stock_change_million_RON": 88.26,
+      "cumulative_q2_q4_transactions_million_RON": 79.97,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 8.29,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 142.51,
+      "absolute_combined_nontransaction_activity_million_RON": 25.03,
+      "transaction_share_of_absolute_change_activity": 0.850603
+    },
+    {
+      "cell": "C->BNR",
+      "holder": "C",
+      "issuer": "BNR",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "F->H",
+      "holder": "F",
+      "issuer": "H",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "F->C",
+      "holder": "F",
+      "issuer": "C",
+      "q1_stock_million_RON": 808.42,
+      "q4_stock_million_RON": 1361.14,
+      "q1_to_q4_stock_change_million_RON": 552.72,
+      "cumulative_q2_q4_transactions_million_RON": 539.03,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 13.69,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 539.03,
+      "absolute_combined_nontransaction_activity_million_RON": 14.87,
+      "transaction_share_of_absolute_change_activity": 0.973154
+    },
+    {
+      "cell": "F->F",
+      "holder": "F",
+      "issuer": "F",
+      "q1_stock_million_RON": 8216.86,
+      "q4_stock_million_RON": 10619.24,
+      "q1_to_q4_stock_change_million_RON": 2402.38,
+      "cumulative_q2_q4_transactions_million_RON": 2342.5,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 59.88,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 2342.5,
+      "absolute_combined_nontransaction_activity_million_RON": 59.88,
+      "transaction_share_of_absolute_change_activity": 0.975075
+    },
+    {
+      "cell": "F->G",
+      "holder": "F",
+      "issuer": "G",
+      "q1_stock_million_RON": 353836.98,
+      "q4_stock_million_RON": 403504.78,
+      "q1_to_q4_stock_change_million_RON": 49667.8,
+      "cumulative_q2_q4_transactions_million_RON": 41852.55,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 7815.25,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 41852.55,
+      "absolute_combined_nontransaction_activity_million_RON": 7815.25,
+      "transaction_share_of_absolute_change_activity": 0.84265
+    },
+    {
+      "cell": "F->X",
+      "holder": "F",
+      "issuer": "X",
+      "q1_stock_million_RON": 31585.52,
+      "q4_stock_million_RON": 34800.45,
+      "q1_to_q4_stock_change_million_RON": 3214.93,
+      "cumulative_q2_q4_transactions_million_RON": 3437.74,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": -222.81,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 12292.66,
+      "absolute_combined_nontransaction_activity_million_RON": 1252.73,
+      "transaction_share_of_absolute_change_activity": 0.907516
+    },
+    {
+      "cell": "F->BNR",
+      "holder": "F",
+      "issuer": "BNR",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "G->H",
+      "holder": "G",
+      "issuer": "H",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "G->C",
+      "holder": "G",
+      "issuer": "C",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "G->F",
+      "holder": "G",
+      "issuer": "F",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "G->G",
+      "holder": "G",
+      "issuer": "G",
+      "q1_stock_million_RON": 9645.73,
+      "q4_stock_million_RON": 10606.39,
+      "q1_to_q4_stock_change_million_RON": 960.66,
+      "cumulative_q2_q4_transactions_million_RON": 960.65,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0.01,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 960.65,
+      "absolute_combined_nontransaction_activity_million_RON": 0.01,
+      "transaction_share_of_absolute_change_activity": 0.99999
+    },
+    {
+      "cell": "G->X",
+      "holder": "G",
+      "issuer": "X",
+      "q1_stock_million_RON": 3177.16,
+      "q4_stock_million_RON": 3293.71,
+      "q1_to_q4_stock_change_million_RON": 116.55,
+      "cumulative_q2_q4_transactions_million_RON": 116.55,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 323.87,
+      "absolute_combined_nontransaction_activity_million_RON": 0.02,
+      "transaction_share_of_absolute_change_activity": 0.999938
+    },
+    {
+      "cell": "G->BNR",
+      "holder": "G",
+      "issuer": "BNR",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "X->H",
+      "holder": "X",
+      "issuer": "H",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "X->C",
+      "holder": "X",
+      "issuer": "C",
+      "q1_stock_million_RON": 4180.22,
+      "q4_stock_million_RON": 12092.06,
+      "q1_to_q4_stock_change_million_RON": 7911.84,
+      "cumulative_q2_q4_transactions_million_RON": 7630.35,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 281.49,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 7632.75,
+      "absolute_combined_nontransaction_activity_million_RON": 281.49,
+      "transaction_share_of_absolute_change_activity": 0.964432
+    },
+    {
+      "cell": "X->F",
+      "holder": "X",
+      "issuer": "F",
+      "q1_stock_million_RON": 28420.49,
+      "q4_stock_million_RON": 32919.21,
+      "q1_to_q4_stock_change_million_RON": 4498.72,
+      "cumulative_q2_q4_transactions_million_RON": 4297.39,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 201.33,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 4348.19,
+      "absolute_combined_nontransaction_activity_million_RON": 247.07,
+      "transaction_share_of_absolute_change_activity": 0.946234
+    },
+    {
+      "cell": "X->G",
+      "holder": "X",
+      "issuer": "G",
+      "q1_stock_million_RON": 375726.93,
+      "q4_stock_million_RON": 448235.66,
+      "q1_to_q4_stock_change_million_RON": 72508.73,
+      "cumulative_q2_q4_transactions_million_RON": 51037.28,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 21471.45,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 51037.28,
+      "absolute_combined_nontransaction_activity_million_RON": 21471.45,
+      "transaction_share_of_absolute_change_activity": 0.703878
+    },
+    {
+      "cell": "X->BNR",
+      "holder": "X",
+      "issuer": "BNR",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "BNR->H",
+      "holder": "BNR",
+      "issuer": "H",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "BNR->C",
+      "holder": "BNR",
+      "issuer": "C",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "BNR->F",
+      "holder": "BNR",
+      "issuer": "F",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    },
+    {
+      "cell": "BNR->G",
+      "holder": "BNR",
+      "issuer": "G",
+      "q1_stock_million_RON": 2702.39,
+      "q4_stock_million_RON": 1549.9,
+      "q1_to_q4_stock_change_million_RON": -1152.49,
+      "cumulative_q2_q4_transactions_million_RON": -1156.53,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 4.04,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 1156.53,
+      "absolute_combined_nontransaction_activity_million_RON": 85.04,
+      "transaction_share_of_absolute_change_activity": 0.931506
+    },
+    {
+      "cell": "BNR->X",
+      "holder": "BNR",
+      "issuer": "X",
+      "q1_stock_million_RON": 189837.9,
+      "q4_stock_million_RON": 223764.11,
+      "q1_to_q4_stock_change_million_RON": 33926.21,
+      "cumulative_q2_q4_transactions_million_RON": 32979.99,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 946.22,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 76519.21,
+      "absolute_combined_nontransaction_activity_million_RON": 2612.06,
+      "transaction_share_of_absolute_change_activity": 0.966991
+    },
+    {
+      "cell": "BNR->BNR",
+      "holder": "BNR",
+      "issuer": "BNR",
+      "q1_stock_million_RON": 0,
+      "q4_stock_million_RON": 0,
+      "q1_to_q4_stock_change_million_RON": 0,
+      "cumulative_q2_q4_transactions_million_RON": 0,
+      "cumulative_q2_q4_combined_nontransaction_change_million_RON": 0,
+      "decomposition_residual_million_RON": 0,
+      "absolute_transaction_activity_million_RON": 0,
+      "absolute_combined_nontransaction_activity_million_RON": 0,
+      "transaction_share_of_absolute_change_activity": null
+    }
+  ],
+  "current_summary": {
+    "quarters_observed": 4,
+    "replayed_transitions_used": 3,
+    "sectors": 6,
+    "in_boundary_bilateral_cells": 35,
+    "all_sector_decomposition_residuals_zero": true,
+    "all_bilateral_decomposition_residuals_zero": true,
+    "canonical_reference_mode_promoted": false,
+    "sectoral_financial_positions_reference_mode_status": "PARTIAL_SERIES_AVAILABLE",
+    "full_RMD_empirical_state_claim_allowed": false,
+    "causal_interpretation_authorized": false,
+    "behavioural_closure_active": false,
+    "feedback_activation_authorized": false
+  }
+}

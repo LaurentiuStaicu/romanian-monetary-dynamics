@@ -56,7 +56,10 @@
         "contract": "model/dynamics/f3_empirical_replay_contract.json",
         "artifact": "model/dynamics/f3_empirical_replay_2025.json",
         "status": "PASS_PARTIAL_INSTRUMENT_SPECIFIC_REPLAY",
-        "full_RMD_empirical_state_claim_allowed": false
+        "full_RMD_empirical_state_claim_allowed": false,
+        "behavior_over_time_diagnostics": "model/dynamics/f3_behavior_over_time_diagnostics_2025.json",
+        "behavior_over_time_diagnostics_contract": "model/dynamics/f3_behavior_over_time_diagnostics_contract.json",
+        "behavior_diagnostic_status": "PASS_OBSERVED_INSTRUMENT_SPECIFIC_NO_REFERENCE_MODE_PROMOTION"
       }
     ],
     "full_RMD_empirical_state_claim_allowed": false

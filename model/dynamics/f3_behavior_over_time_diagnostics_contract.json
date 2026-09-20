@@ -1,0 +1,70 @@
+{
+  "contract_version": "0.1",
+  "phase": "Accounting-constrained empirical dynamics / F3 observed behavior diagnostics",
+  "purpose": "Derive descriptive behavior-over-time diagnostics from the retained F3 quarterly empirical replay without promoting the incomplete multi-instrument sectoral-financial-positions reference mode or assigning causal meaning.",
+  "instrument": "F3",
+  "replay_source": "model/dynamics/f3_empirical_replay_2025.json",
+  "diagnostic_artifact": "model/dynamics/f3_behavior_over_time_diagnostics_2025.json",
+  "periods": {
+    "observed_states": [
+      "2025-Q1",
+      "2025-Q2",
+      "2025-Q3",
+      "2025-Q4"
+    ],
+    "decomposed_transitions": [
+      "2025-Q2",
+      "2025-Q3",
+      "2025-Q4"
+    ]
+  },
+  "observed_outputs": [
+    "quarterly sector F3 assets, liabilities and net F3 positions",
+    "quarterly sector transaction and combined non-transaction decomposition for Q2-Q4",
+    "quarterly external-boundary F3 positions",
+    "bilateral Q1-to-Q4 stock-change decomposition",
+    "exact descriptive pattern labels based only on retained quarterly observations"
+  ],
+  "descriptive_pattern_rules": {
+    "FLAT": "All three quarter-to-quarter changes equal zero at retained published precision.",
+    "MONOTONIC_INCREASE": "All three quarter-to-quarter changes are strictly positive.",
+    "MONOTONIC_DECREASE": "All three quarter-to-quarter changes are strictly negative.",
+    "MIXED": "The observed quarterly path satisfies none of the exact flat/monotonic rules."
+  },
+  "decomposition_rule": {
+    "equation": "stock_change_Q1_to_Q4 = cumulative_transactions_Q2_to_Q4 + cumulative_combined_nontransaction_change_Q2_to_Q4",
+    "reason": "Q1 is the retained opening state for the first replayable transition; Q1 transaction cannot be included in this decomposition because 2024-Q4 opening stock is outside the retained source vintage.",
+    "combined_nontransaction_semantics": "The exact accounting residual retained by the F3 replay: revaluations plus other changes in volume combined. No component decomposition or causal attribution is allowed."
+  },
+  "methodological_context": {
+    "system_dynamics_reference_mode_rule": "Observed behavior over time may inform later problem articulation and behavior-reproduction testing but is not itself a feedback mechanism or proof of causal structure.",
+    "accounting_rule": "Financial positions change through transactions and other flows; other flows include revaluations and other changes in volume.",
+    "external_sources": [
+      "https://ocw.mit.edu/courses/15-988-system-dynamics-self-study-fall-1998-spring-1999/resources/building/",
+      "https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF",
+      "https://www.ecb.europa.eu/stats/pdf/eaa/Handbook_on_quarterly_financial_accounts.pdf"
+    ]
+  },
+  "hard_rules": {
+    "observed_behavior_only_no_causal_inference": true,
+    "instrument_scope_is_F3_only": true,
+    "no_projection_beyond_2025_Q4": true,
+    "no_interpolation_or_smoothing": true,
+    "no_arbitrary_pattern_thresholds": true,
+    "combined_nontransaction_change_remains_undecomposed": true,
+    "transaction_share_metric_is_descriptive_not_causal": true,
+    "bilateral_and_sector_decompositions_must_close_exactly": true,
+    "sectoral_financial_positions_reference_mode_must_remain_partial": true,
+    "reference_mode_ready_count_must_remain_9_of_10": true,
+    "accounting_readiness_must_not_change": true,
+    "full_RMD_empirical_state_claim_not_allowed": true,
+    "behavioural_closure_must_remain_inactive": true,
+    "feedback_activation_not_authorized": true
+  },
+  "scientific_status": "OBSERVED_F3_INSTRUMENT_SPECIFIC_BEHAVIOR_DIAGNOSTIC",
+  "canonical_reference_mode_promotion_allowed": false,
+  "full_RMD_empirical_state_claim_allowed": false,
+  "causal_interpretation_authorized": false,
+  "behavioural_closure_active": false,
+  "feedback_activation_authorized": false
+}

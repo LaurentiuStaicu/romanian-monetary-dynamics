@@ -24,7 +24,10 @@
     "fiscal_capb_raw_source_preservation_assessment": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json",
     "latest_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
     "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json",
-    "release_versioning_contract": "model/registries/release_versioning_contract.json"
+    "release_versioning_contract": "model/registries/release_versioning_contract.json",
+    "f3_empirical_replay": "model/dynamics/f3_empirical_replay_2025.json",
+    "f3_behavior_over_time_diagnostics": "model/dynamics/f3_behavior_over_time_diagnostics_2025.json",
+    "f3_behavior_over_time_diagnostics_contract": "model/dynamics/f3_behavior_over_time_diagnostics_contract.json"
   },
   "canonical_state": {
     "accounting": {

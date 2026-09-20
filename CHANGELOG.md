@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- added deterministic F3 observed behavior-over-time diagnostics for 2025, decomposing sector and bilateral Q1-Q4 stock changes into Q2-Q4 financial transactions plus combined non-transaction changes while explicitly preserving the 9/10 partial sectoral-financial-positions reference-mode boundary;
 - added a deterministic F3-only quarterly empirical replay for 2025-Q2..Q4 using retained QSA stocks and transactions plus an explicitly non-causal combined non-transaction residual; the replay closes 105 bilateral transitions exactly at published precision without changing full-RMD accounting readiness;
 - added a machine-checked 14-criterion activation matrix for every registered feedback structure; only explicit `PASS` counts, leaving all five structures quantitatively blocked under the current evidence boundary;
 - implemented the exact frozen household-housing delta-policy monetary candidate as a target-specific executable form while preserving CANDIDATE status and keeping the generic monetary-credit feedback link quantitatively inactive;
