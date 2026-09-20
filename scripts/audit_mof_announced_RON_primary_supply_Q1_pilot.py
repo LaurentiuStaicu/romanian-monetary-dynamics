@@ -50,7 +50,7 @@ def audit_announced_supply_q1_pilot(
     errors: list[str] = []
 
     if pilot["status"] != (
-        "PASS_EXACT_Q1_LEGACY_COMBINED_PILOT_FULL_YEAR_DEFINITION_NOT_STABLE"
+        "PASS_EXACT_Q1_EVENT_LEVEL_PILOT_CANONICAL_PROMOTION_DEFERRED"
     ):
         errors.append("Q1 announced-supply pilot status changed")
     if pilot["reference_mode_id"] != "announced_RON_primary_supply_level":
@@ -299,7 +299,7 @@ def audit_announced_supply_q1_pilot(
     if dynamic.get("mof_announced_RON_primary_supply_reference_mode_pilot_assessment") != PILOT_PATH:
         errors.append("model contract lacks Q1 pilot assessment")
     if dynamic["mof_announced_RON_primary_supply_reference_mode_status"] != (
-        "PASS_EXACT_Q1_EVENT_LEVEL_PILOT_CANONICAL_PROMOTION_DEFERRED"
+        "PASS_EXACT_Q1_LEGACY_COMBINED_PILOT_FULL_YEAR_DEFINITION_NOT_STABLE"
     ):
         errors.append("model contract Q1 pilot status changed")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
