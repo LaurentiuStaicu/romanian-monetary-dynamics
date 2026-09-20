@@ -39,7 +39,10 @@
     "government_debt_issuance_bnr_source_vintage_manifest": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/source_vintage_manifest.json",
     "government_issuance_yield_boundary_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
     "government_issuance_bnr_primary_market_yield_pilot": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
-    "government_securities_supply_pressure_source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json"
+    "government_securities_supply_pressure_source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
+    "government_securities_supply_pressure_source_vintage_probe_contract": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_contract.json",
+    "government_securities_supply_pressure_source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json",
+    "government_securities_supply_pressure_source_vintage_manifest": "data/source_vintages/mof-supply-pressure-probe-vintage-2026-09-20/source_vintage_probe_manifest.json"
   },
   "canonical_state": {
     "accounting": {
