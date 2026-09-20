@@ -16,9 +16,30 @@
     "no_post_fit_sign_flip": true,
     "intercepts_may_be_signed": true,
     "shares_and_persistence_must_respect_structural_bounds": true,
-    "parameter_semantics_do_not_authorize_estimation_or_activation": true
+    "parameter_semantics_do_not_authorize_estimation_or_activation": true,
+    "frozen_parameter_domain_must_be_enforced_when_present": true
   },
   "equations": [
+    {
+      "mechanism_id": "monetary_policy_lending_rate_pass_through",
+      "implementation": "household_housing_delta_policy_rate",
+      "parameters": [
+        {
+          "registry_id": "beta_household_housing",
+          "runtime_name": "beta",
+          "semantic": "NONNEGATIVE_MAGNITUDE",
+          "lower_bound": 0,
+          "upper_bound": 2,
+          "equation_operator": "+",
+          "frozen_validation_domain": [
+            0,
+            2
+          ],
+          "domain_source": "model/calibration_validation/validation_recovery_contract.json",
+          "sign_interpretation": "Policy-rate changes are signed drivers; beta is a non-negative pass-through magnitude. Values outside [0,2] violate the preregistered validation domain."
+        }
+      ]
+    },
     {
       "mechanism_id": "government_refinancing_effective_rate",
       "implementation": "refinancing_effective_rate",
@@ -150,7 +171,7 @@
     }
   ],
   "current_summary": {
-    "current_implementations_covered": 4,
+    "current_implementations_covered": 5,
     "parameter_semantics_frozen": true,
     "runtime_negative_magnitude_rejection_required": true,
     "estimation_authorized": false,

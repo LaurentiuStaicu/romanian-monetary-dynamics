@@ -66,6 +66,38 @@ def partial_adjustment_rate(
     return previous_rate + adjustment_speed * (target - previous_rate)
 
 
+
+def household_housing_delta_policy_rate(
+    previous_lending_rate: float,
+    current_policy_rate: float,
+    previous_policy_rate: float,
+    *,
+    beta: float,
+) -> float:
+    """Frozen household-housing delta-policy candidate from validation recovery.
+
+    lend[t] = lend[t-1] + beta * (policy[t] - policy[t-1])
+
+    This is the exact target-specific candidate selected for household housing
+    new-business lending rates. It is not a generic market/lending-rate equation,
+    is not validated, and does not activate the monetary-credit feedback loop.
+    The preregistered validation domain for beta is [0, 2].
+    """
+
+    _finite(
+        previous_lending_rate,
+        current_policy_rate,
+        previous_policy_rate,
+        beta,
+    )
+    if not 0.0 <= beta <= 2.0:
+        raise InvalidBehaviouralInput(
+            "beta must lie in the frozen household-housing validation domain [0, 2]"
+        )
+    return previous_lending_rate + beta * (
+        current_policy_rate - previous_policy_rate
+    )
+
 def refinancing_effective_rate(
     previous_effective_rate: float,
     marginal_market_yield: float,

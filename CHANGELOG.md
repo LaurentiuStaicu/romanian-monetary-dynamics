@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- implemented the exact frozen household-housing delta-policy monetary candidate as a target-specific executable form while preserving CANDIDATE status and keeping the generic monetary-credit feedback link quantitatively inactive;
 - froze behavioural parameter sign semantics for current executable forms: sensitivity betas are non-negative magnitudes and equation operators own causal signs, with runtime rejection of silent negative-coefficient sign reversals;
 - added an evidence gate for all seven candidate delays; timing distributions, survey cadence, lag windows, average maturity and average re-fixing are explicitly prevented from being reused as scalar `tau` values without exact validation;
 - added exact link-level feedback readiness and a per-loop activation matrix; all 22 registered path links and all five feedback structures remain quantitatively blocked rather than treating related mechanisms or qualitative topology as integrated equations;
