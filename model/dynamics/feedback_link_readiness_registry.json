@@ -1,0 +1,366 @@
+{
+  "registry_version": "0.1",
+  "purpose": "Require exact link-level equation readiness for the qualitative feedback architecture so a topologically closed path cannot be activated merely because related mechanisms exist elsewhere in the model.",
+  "readiness_status_vocabulary": [
+    "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+    "PARTIAL_TARGET_SPECIFIC_FORM_NOT_INTEGRATED",
+    "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+    "NO_REGISTERED_EXACT_LINK_FORM",
+    "EXACT_INTEGRATED_LINK_FORM_READY"
+  ],
+  "hard_rules": {
+    "every_feedback_path_link_must_be_registered_exactly_once": true,
+    "related_mechanism_is_not_an_exact_link_equation": true,
+    "loop_level_mapping_is_not_link_level_equation_coverage": true,
+    "qualitative_sign_is_not_equation_evidence": true,
+    "exact_ready_requires_equation_pointer_units_boundary_and_activation_gate": true,
+    "open_chain_may_not_receive_an_inferred_closing_link": true,
+    "all_links_must_be_exact_ready_before_quantitative_loop_activation": true
+  },
+  "links": [
+    {
+      "link_key": "government_refinancing_interest_loop|government_financing_need|government_debt_issuance",
+      "loop_id": "government_refinancing_interest_loop",
+      "from": "government_financing_need",
+      "to": "government_debt_issuance",
+      "sign": "+",
+      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
+      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "related_mechanisms": [],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+    },
+    {
+      "link_key": "government_refinancing_interest_loop|government_debt_issuance|government_debt_stock",
+      "loop_id": "government_refinancing_interest_loop",
+      "from": "government_debt_issuance",
+      "to": "government_debt_stock",
+      "sign": "+",
+      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
+      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "related_mechanisms": [],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+    },
+    {
+      "link_key": "government_refinancing_interest_loop|government_debt_stock|government_interest_cost",
+      "loop_id": "government_refinancing_interest_loop",
+      "from": "government_debt_stock",
+      "to": "government_interest_cost",
+      "sign": "+",
+      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "related_mechanisms": [
+        "government_refinancing_effective_rate"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+    },
+    {
+      "link_key": "government_refinancing_interest_loop|government_interest_cost|government_financing_need",
+      "loop_id": "government_refinancing_interest_loop",
+      "from": "government_interest_cost",
+      "to": "government_financing_need",
+      "sign": "+",
+      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
+      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "related_mechanisms": [],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+    },
+    {
+      "link_key": "government_issuance_yield_loop|government_debt_issuance|government_securities_supply_pressure",
+      "loop_id": "government_issuance_yield_loop",
+      "from": "government_debt_issuance",
+      "to": "government_securities_supply_pressure",
+      "sign": "+",
+      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
+      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "related_mechanisms": [],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+    },
+    {
+      "link_key": "government_issuance_yield_loop|government_securities_supply_pressure|sovereign_yield",
+      "loop_id": "government_issuance_yield_loop",
+      "from": "government_securities_supply_pressure",
+      "to": "sovereign_yield",
+      "sign": "+_candidate",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "related_mechanisms": [
+        "sovereign_yield_spread_response"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+    },
+    {
+      "link_key": "government_issuance_yield_loop|sovereign_yield|government_interest_cost",
+      "loop_id": "government_issuance_yield_loop",
+      "from": "sovereign_yield",
+      "to": "government_interest_cost",
+      "sign": "+",
+      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "related_mechanisms": [
+        "government_refinancing_effective_rate"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+    },
+    {
+      "link_key": "government_issuance_yield_loop|government_interest_cost|government_financing_need",
+      "loop_id": "government_issuance_yield_loop",
+      "from": "government_interest_cost",
+      "to": "government_financing_need",
+      "sign": "+",
+      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
+      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "related_mechanisms": [],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+    },
+    {
+      "link_key": "government_issuance_yield_loop|government_financing_need|government_debt_issuance",
+      "loop_id": "government_issuance_yield_loop",
+      "from": "government_financing_need",
+      "to": "government_debt_issuance",
+      "sign": "+",
+      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
+      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "related_mechanisms": [],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+    },
+    {
+      "link_key": "bank_credit_balance_sheet_loop|credit_flow|loan_stock",
+      "loop_id": "bank_credit_balance_sheet_loop",
+      "from": "credit_flow",
+      "to": "loan_stock",
+      "sign": "+",
+      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
+      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "related_mechanisms": [],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+    },
+    {
+      "link_key": "bank_credit_balance_sheet_loop|loan_stock|debt_service_and_credit_risk",
+      "loop_id": "bank_credit_balance_sheet_loop",
+      "from": "loan_stock",
+      "to": "debt_service_and_credit_risk",
+      "sign": "+_candidate",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "related_mechanisms": [
+        "credit_risk_npl_response"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+    },
+    {
+      "link_key": "bank_credit_balance_sheet_loop|debt_service_and_credit_risk|credit_supply_capacity",
+      "loop_id": "bank_credit_balance_sheet_loop",
+      "from": "debt_service_and_credit_risk",
+      "to": "credit_supply_capacity",
+      "sign": "-_candidate",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "related_mechanisms": [
+        "aggregate_bank_credit_response"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+    },
+    {
+      "link_key": "bank_credit_balance_sheet_loop|credit_supply_capacity|credit_flow",
+      "loop_id": "bank_credit_balance_sheet_loop",
+      "from": "credit_supply_capacity",
+      "to": "credit_flow",
+      "sign": "+_candidate",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "related_mechanisms": [
+        "aggregate_bank_credit_response"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+    },
+    {
+      "link_key": "monetary_credit_transmission_loop|policy_rate|market_and_lending_rates",
+      "loop_id": "monetary_credit_transmission_loop",
+      "from": "policy_rate",
+      "to": "market_and_lending_rates",
+      "sign": "+_candidate",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "PARTIAL_TARGET_SPECIFIC_FORM_NOT_INTEGRATED",
+      "related_mechanisms": [
+        "monetary_policy_lending_rate_pass_through"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "A frozen household-housing pass-through candidate exists, but it does not define the generic market_and_lending_rates node and no NFC form is selected; the integrated causal link is therefore not ready."
+    },
+    {
+      "link_key": "monetary_credit_transmission_loop|market_and_lending_rates|credit_flow",
+      "loop_id": "monetary_credit_transmission_loop",
+      "from": "market_and_lending_rates",
+      "to": "credit_flow",
+      "sign": "-_candidate",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "related_mechanisms": [
+        "aggregate_bank_credit_response"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+    },
+    {
+      "link_key": "monetary_credit_transmission_loop|credit_flow|private_demand_and_investment",
+      "loop_id": "monetary_credit_transmission_loop",
+      "from": "credit_flow",
+      "to": "private_demand_and_investment",
+      "sign": "+_candidate",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "related_mechanisms": [
+        "household_consumption_response",
+        "corporate_investment_response"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+    },
+    {
+      "link_key": "monetary_credit_transmission_loop|private_demand_and_investment|inflationary_pressure",
+      "loop_id": "monetary_credit_transmission_loop",
+      "from": "private_demand_and_investment",
+      "to": "inflationary_pressure",
+      "sign": "+_candidate",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "NO_REGISTERED_EXACT_LINK_FORM",
+      "related_mechanisms": [],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "This candidate causal relation has no registered exact integrated link equation. Topological sign alone is insufficient for activation."
+    },
+    {
+      "link_key": "monetary_credit_transmission_loop|inflationary_pressure|policy_rate",
+      "loop_id": "monetary_credit_transmission_loop",
+      "from": "inflationary_pressure",
+      "to": "policy_rate",
+      "sign": "+_candidate",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "related_mechanisms": [
+        "monetary_policy_reaction_function"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+    },
+    {
+      "link_key": "external_fx_refinancing_loop|exchange_rate_depreciation|fx_debt_service_burden",
+      "loop_id": "external_fx_refinancing_loop",
+      "from": "exchange_rate_depreciation",
+      "to": "fx_debt_service_burden",
+      "sign": "+_candidate",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "related_mechanisms": [
+        "external_fx_refinancing_feedback"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+    },
+    {
+      "link_key": "external_fx_refinancing_loop|fx_debt_service_burden|refinancing_need",
+      "loop_id": "external_fx_refinancing_loop",
+      "from": "fx_debt_service_burden",
+      "to": "refinancing_need",
+      "sign": "+_candidate",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "related_mechanisms": [
+        "external_fx_refinancing_feedback"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+    },
+    {
+      "link_key": "external_fx_refinancing_loop|refinancing_need|risk_premium",
+      "loop_id": "external_fx_refinancing_loop",
+      "from": "refinancing_need",
+      "to": "risk_premium",
+      "sign": "+_candidate",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "related_mechanisms": [
+        "external_fx_refinancing_feedback"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+    },
+    {
+      "link_key": "external_fx_refinancing_loop|risk_premium|exchange_rate_pressure",
+      "loop_id": "external_fx_refinancing_loop",
+      "from": "risk_premium",
+      "to": "exchange_rate_pressure",
+      "sign": "+_candidate",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "related_mechanisms": [
+        "external_fx_refinancing_feedback"
+      ],
+      "exact_integrated_equation_ready": false,
+      "equation_pointer": null,
+      "current_activation_authorized": false,
+      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+    }
+  ],
+  "current_summary": {
+    "registered_feedback_links": 22,
+    "exact_integrated_link_forms_ready": 0,
+    "feedback_structures_with_all_links_exact_ready": 0,
+    "current_status": "BLOCKED_ALL_REGISTERED_STRUCTURES",
+    "activation_authorized": false
+  }
+}
