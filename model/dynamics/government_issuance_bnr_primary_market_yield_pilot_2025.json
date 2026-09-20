@@ -1,0 +1,625 @@
+{
+  "snapshot_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "status": "DESCRIPTIVE_FULL_2025_INSTRUMENT_SPECIFIC_PRIMARY_MARKET_RATES_NOT_GENERIC_SOVEREIGN_YIELD",
+  "target_candidate_id": "bnr_instrument_specific_primary_market_yield_pilot_2025",
+  "source": {
+    "institution": "National Bank of Romania",
+    "publication": "Monthly Bulletin — December 2025",
+    "table": "12.2 Government securities (new and roll-over issues)",
+    "pdf_page": 65,
+    "url": "https://www.bnr.ro/uploads/2026-06-02monthlybulletinno.122025_documentpdf_545_1772190284.pdf",
+    "statistical_data_available_as_of": "2026-02-24",
+    "source_symbols": {
+      "–": "nil",
+      "...": "missing data",
+      "x": "not applicable"
+    }
+  },
+  "retained_source": {
+    "manifest": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/source_vintage_manifest.json",
+    "raw_path": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/raw/bnr_monthly_bulletin_12_2025.pdf",
+    "raw_bytes": 2305604,
+    "raw_sha256": "171569f159b47ceedc9d8ba6d5628a39de49a8fb18d11e13a20ac55edb39c628"
+  },
+  "extraction": {
+    "method": "MANUALLY_REVIEWED_RETAINED_OFFICIAL_PDF_TABLE",
+    "ocr_used": false,
+    "amount_crosscheck_source": "model/dynamics/government_debt_issuance_bnr_pilot_2025.json",
+    "native_currency_and_instrument_columns_preserved": true,
+    "zero_amount_source_symbol_preserved": true,
+    "not_applicable_rate_symbol_preserved": true,
+    "interpolation_performed": false,
+    "imputation_performed": false,
+    "currency_conversion_performed": false,
+    "cross_instrument_rate_aggregation_performed": false
+  },
+  "column_semantics": {
+    "discount_treasury_certificates_RON": {
+      "source_amount": "allotted amount (lei mn.)",
+      "source_rate": "average yield (% p.a.)"
+    },
+    "treasury_certificates_EUR": {
+      "source_amount": "nominal value (EUR mn.)",
+      "source_rate": "average interest rate (% p.a.)"
+    },
+    "interest_bearing_government_bonds_RON": {
+      "source_amount": "nominal value (lei mn.)",
+      "source_rate": "average interest rate (% p.a.)"
+    },
+    "inflation_linked_interest_bearing_government_bonds_RON": {
+      "source_amount": "nominal value (lei mn.)",
+      "source_rate": "accepted margin under average interest-rate heading (% p.a.)"
+    },
+    "interest_bearing_government_bonds_EUR": {
+      "source_amount": "nominal value (EUR mn.)",
+      "source_rate": "average interest rate (% p.a.)"
+    }
+  },
+  "monthly_observations": [
+    {
+      "period": "2025-01",
+      "discount_treasury_certificates_RON": {
+        "amount": 1907.7,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_yield",
+        "rate_pct_pa": 6.91,
+        "source_rate_symbol": null
+      },
+      "treasury_certificates_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_RON": {
+        "amount": 3565.5,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 7.56,
+        "source_rate_symbol": null
+      },
+      "inflation_linked_interest_bearing_government_bonds_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "accepted_margin",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      }
+    },
+    {
+      "period": "2025-02",
+      "discount_treasury_certificates_RON": {
+        "amount": 1920,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_yield",
+        "rate_pct_pa": 6.57,
+        "source_rate_symbol": null
+      },
+      "treasury_certificates_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_RON": {
+        "amount": 10620.2,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 7.24,
+        "source_rate_symbol": null
+      },
+      "inflation_linked_interest_bearing_government_bonds_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "accepted_margin",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      }
+    },
+    {
+      "period": "2025-03",
+      "discount_treasury_certificates_RON": {
+        "amount": 1682.9,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_yield",
+        "rate_pct_pa": 6.53,
+        "source_rate_symbol": null
+      },
+      "treasury_certificates_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_RON": {
+        "amount": 9373.9,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 7.24,
+        "source_rate_symbol": null
+      },
+      "inflation_linked_interest_bearing_government_bonds_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "accepted_margin",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      }
+    },
+    {
+      "period": "2025-04",
+      "discount_treasury_certificates_RON": {
+        "amount": 1280.5,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_yield",
+        "rate_pct_pa": 6.53,
+        "source_rate_symbol": null
+      },
+      "treasury_certificates_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_RON": {
+        "amount": 7207.4,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 7.25,
+        "source_rate_symbol": null
+      },
+      "inflation_linked_interest_bearing_government_bonds_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "accepted_margin",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      }
+    },
+    {
+      "period": "2025-05",
+      "discount_treasury_certificates_RON": {
+        "amount": 1690.8,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_yield",
+        "rate_pct_pa": 8.11,
+        "source_rate_symbol": null
+      },
+      "treasury_certificates_EUR": {
+        "amount": 874.1,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 3.52,
+        "source_rate_symbol": null
+      },
+      "interest_bearing_government_bonds_RON": {
+        "amount": 2243.8,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 7.64,
+        "source_rate_symbol": null
+      },
+      "inflation_linked_interest_bearing_government_bonds_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "accepted_margin",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_EUR": {
+        "amount": 751,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 3.82,
+        "source_rate_symbol": null
+      }
+    },
+    {
+      "period": "2025-06",
+      "discount_treasury_certificates_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "average_yield",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "treasury_certificates_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_RON": {
+        "amount": 8859.7,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 7.47,
+        "source_rate_symbol": null
+      },
+      "inflation_linked_interest_bearing_government_bonds_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "accepted_margin",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      }
+    },
+    {
+      "period": "2025-07",
+      "discount_treasury_certificates_RON": {
+        "amount": 518.8,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_yield",
+        "rate_pct_pa": 6.85,
+        "source_rate_symbol": null
+      },
+      "treasury_certificates_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_RON": {
+        "amount": 10562.1,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 7.28,
+        "source_rate_symbol": null
+      },
+      "inflation_linked_interest_bearing_government_bonds_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "accepted_margin",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      }
+    },
+    {
+      "period": "2025-08",
+      "discount_treasury_certificates_RON": {
+        "amount": 400,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_yield",
+        "rate_pct_pa": 6.98,
+        "source_rate_symbol": null
+      },
+      "treasury_certificates_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_RON": {
+        "amount": 6595.4,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 7.35,
+        "source_rate_symbol": null
+      },
+      "inflation_linked_interest_bearing_government_bonds_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "accepted_margin",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_EUR": {
+        "amount": 231,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 2.95,
+        "source_rate_symbol": null
+      }
+    },
+    {
+      "period": "2025-09",
+      "discount_treasury_certificates_RON": {
+        "amount": 1441.9,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_yield",
+        "rate_pct_pa": 6.81,
+        "source_rate_symbol": null
+      },
+      "treasury_certificates_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_RON": {
+        "amount": 6742.3,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 7.45,
+        "source_rate_symbol": null
+      },
+      "inflation_linked_interest_bearing_government_bonds_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "accepted_margin",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      }
+    },
+    {
+      "period": "2025-10",
+      "discount_treasury_certificates_RON": {
+        "amount": 663,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_yield",
+        "rate_pct_pa": 6.72,
+        "source_rate_symbol": null
+      },
+      "treasury_certificates_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_RON": {
+        "amount": 8409.5,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 7.22,
+        "source_rate_symbol": null
+      },
+      "inflation_linked_interest_bearing_government_bonds_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "accepted_margin",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      }
+    },
+    {
+      "period": "2025-11",
+      "discount_treasury_certificates_RON": {
+        "amount": 500,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_yield",
+        "rate_pct_pa": 6.14,
+        "source_rate_symbol": null
+      },
+      "treasury_certificates_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_RON": {
+        "amount": 6708.5,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 6.87,
+        "source_rate_symbol": null
+      },
+      "inflation_linked_interest_bearing_government_bonds_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "accepted_margin",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      }
+    },
+    {
+      "period": "2025-12",
+      "discount_treasury_certificates_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "average_yield",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "treasury_certificates_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_RON": {
+        "amount": 6011.9,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": null,
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": 6.68,
+        "source_rate_symbol": null
+      },
+      "inflation_linked_interest_bearing_government_bonds_RON": {
+        "amount": 0,
+        "amount_unit": "million_RON",
+        "source_amount_symbol": "–",
+        "rate_type": "accepted_margin",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      },
+      "interest_bearing_government_bonds_EUR": {
+        "amount": 0,
+        "amount_unit": "million_EUR",
+        "source_amount_symbol": "–",
+        "rate_type": "average_interest_rate",
+        "rate_pct_pa": null,
+        "source_rate_symbol": "x"
+      }
+    }
+  ],
+  "coverage_checks": {
+    "months": [
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12"
+    ],
+    "discount_treasury_certificates_RON_rate_observations": 10,
+    "treasury_certificates_EUR_rate_observations": 1,
+    "interest_bearing_government_bonds_RON_rate_observations": 12,
+    "inflation_linked_interest_bearing_government_bonds_RON_rate_observations": 0,
+    "interest_bearing_government_bonds_EUR_rate_observations": 2,
+    "months_with_any_reported_rate": 12
+  },
+  "semantics": {
+    "exact_observed_concept": "instrument- and currency-specific domestic primary-market issue yield/interest-rate observations from BNR table 12.2",
+    "generic_sovereign_yield_equivalent": false,
+    "secondary_market_yield_equivalent": false,
+    "debt_stock_effective_interest_rate_equivalent": false,
+    "government_interest_cost_equivalent": false,
+    "securities_supply_pressure_equivalent": false,
+    "causal_issuance_to_yield_effect_identified": false
+  },
+  "structural_boundary": {
+    "preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
+    "conceptual_loop_status": "CLOSED_CANDIDATE_LOOP",
+    "empirical_boundary_status": "OPEN_CHAIN_PENDING_EXPLICIT_BRIDGES",
+    "generic_government_debt_issuance_node_resolved": false,
+    "generic_sovereign_yield_node_resolved": false
+  },
+  "scientific_disposition": {
+    "descriptive_materialisation_complete": true,
+    "canonical_reference_mode_promoted": false,
+    "generic_sovereign_yield_aggregate_constructed": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false,
+    "next_gate": "Assess the exact observed primary-market yield boundary against candidate supply-pressure observables without constructing a generic scalar yield or treating raw issuance volume as supply pressure."
+  }
+}

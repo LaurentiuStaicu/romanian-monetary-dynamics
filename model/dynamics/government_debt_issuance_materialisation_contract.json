@@ -39,10 +39,9 @@
       "revision_assessment": "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json",
       "revision_check_source": "BNR Monthly Bulletin — December 2025, statistical data available as of 2026-02-24",
       "remaining_promotion_gates": [
-        "materialise instrument- and currency-specific primary-market yield/rate observations descriptively without scalar aggregation",
-        "preregister and validate financing-channel allocation before linking government financing need to the BNR issuance boundary",
         "operationalise and validate securities supply pressure rather than relabelling raw issuance volume",
-        "freeze exact primary-yield to sovereign-yield boundary or ex-ante aggregation rule",
+        "preregister and validate financing-channel allocation before linking government financing need to the BNR issuance boundary",
+        "freeze exact primary-yield to sovereign-yield boundary or ex-ante aggregation rule if a scalar node is ever required",
         "specify maturity/refinancing/re-fixing propagation from new-issue yields to outstanding-debt interest cost"
       ],
       "raw_source_vintage_manifest": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/source_vintage_manifest.json",
@@ -51,7 +50,9 @@
       "raw_source_sha256": "171569f159b47ceedc9d8ba6d5628a39de49a8fb18d11e13a20ac55edb39c628",
       "raw_source_acquisition_contract": "model/dynamics/government_debt_issuance_bnr_raw_source_acquisition_contract.json",
       "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
-      "structural_narrowing_status": "PREREGISTERED_DO_NOT_REPLACE_GENERIC_CLOSED_LOOP_ONE_TO_ONE"
+      "structural_narrowing_status": "PREREGISTERED_DO_NOT_REPLACE_GENERIC_CLOSED_LOOP_ONE_TO_ONE",
+      "primary_market_rate_pilot": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
+      "primary_market_rate_pilot_status": "PASS_DESCRIPTIVE_INSTRUMENT_SPECIFIC_NO_GENERIC_YIELD_AGGREGATION"
     },
     "mof_actual_borrowing": {
       "target_id": "government_total_realized_borrowing_or_securities_funding",

@@ -171,6 +171,9 @@ jobs:
       - name: Audit government issuance-yield empirical boundary preregistration
         run: python scripts/audit_government_issuance_yield_boundary_preregistration.py
 
+      - name: Audit BNR instrument-specific primary-market rate pilot
+        run: python scripts/audit_bnr_primary_market_yield_pilot.py
+
       - name: Recompute dimensional consistency independently
         run: python scripts/audit_dimensional_consistency.py
 
