@@ -20,8 +20,8 @@
   "extraction": {
     "method": "MANUALLY_REVIEWED_OFFICIAL_PDF_TABLE",
     "ocr_used": false,
-    "raw_pdf_retained_in_repository": false,
-    "raw_source_sha256": null,
+    "raw_pdf_retained_in_repository": true,
+    "raw_source_sha256": "171569f159b47ceedc9d8ba6d5628a39de49a8fb18d11e13a20ac55edb39c628",
     "exact_raw_source_retention_required_before_promotion": true,
     "native_currency_columns_preserved": true,
     "EUR_to_RON_conversion_performed": false,
@@ -29,7 +29,10 @@
     "promotion_blocked_by_raw_retention_and_revision_gate": false,
     "source_revision_check_result": "PASS_NO_CHANGES_JAN_JUL_2025_AT_PUBLISHED_PRECISION",
     "source_revision_check_assessment": "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json",
-    "promotion_blocked_by_raw_retention_gate": true
+    "promotion_blocked_by_raw_retention_gate": false,
+    "raw_source_bytes": 2305604,
+    "raw_source_path": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/raw/bnr_monthly_bulletin_12_2025.pdf",
+    "source_vintage_manifest": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/source_vintage_manifest.json"
   },
   "monthly_observations": [
     {
@@ -181,10 +184,10 @@
     "generic_government_debt_issuance_node_resolved": false,
     "estimation_authorized": false,
     "feedback_activation_authorized": false,
-    "next_gate": "Retain exact raw BNR source bytes or a reproducible source-vintage acquisition path and then preregister whether the government_issuance_yield_loop is explicitly narrowed to the domestic-primary-market boundary. Revision checking and full-2025 monthly coverage are now complete; Ministry all-market borrowing remains a separate source path.",
+    "next_gate": "Preregister whether the government_issuance_yield_loop is explicitly narrowed to the BNR domestic-primary-market issuance boundary before any reference-mode promotion, estimation or feedback use. Raw-source retention, revision checking and full-2025 monthly coverage are complete; Ministry all-market borrowing remains a separate source path.",
     "revision_check_completed": true,
     "full_2025_monthly_coverage": true,
-    "raw_source_retention_completed": false
+    "raw_source_retention_completed": true
   },
   "source_lineage": {
     "initial_pilot_source": {
@@ -201,6 +204,12 @@
       "table": "12.2 Government securities (new and roll-over issues)",
       "pdf_page": 65
     },
-    "revision_assessment": "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json"
+    "revision_assessment": "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json",
+    "retained_raw_source_vintage": {
+      "manifest": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/source_vintage_manifest.json",
+      "raw_path": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/raw/bnr_monthly_bulletin_12_2025.pdf",
+      "bytes": 2305604,
+      "sha256": "171569f159b47ceedc9d8ba6d5628a39de49a8fb18d11e13a20ac55edb39c628"
+    }
   }
 }
