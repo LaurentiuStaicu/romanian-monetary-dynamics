@@ -106,7 +106,13 @@
     "fiscal_capb_raw_source_preservation_assessment": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json",
     "fiscal_capb_retained_raw_source_branch": "source-vintage/fiscal-capb-raw-2026-09-20",
     "fiscal_capb_retained_raw_source_commit": "efb1f3ae5b025176645d45276b684efe65aa4174",
-    "previous_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_19.json"
+    "previous_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_19.json",
+    "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json",
+    "next_dated_trigger_check": {
+      "date": "2026-10-08",
+      "id": "prospective_monetary_policy_event",
+      "rule": "Check only the BNR policy decision. If unchanged, do not inspect MIR response values. If non-zero, the October-reference MIR response remains closed until its official 2026-12-02 release."
+    }
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",
