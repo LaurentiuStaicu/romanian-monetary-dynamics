@@ -126,7 +126,11 @@
       "scope": "reference structural simulation and any later active first-order delay using explicit Euler",
       "rationale": "Prevent coarse-step oscillation or qualitative distortion and require a conservative step relative to the shortest active time constant.",
       "activation_requirement": "Every active delay must have a finite positive tau and pass the dt/tau gate plus time-step halving sensitivity before reference-model activation."
-    }
+    },
+    "numerical_integration_contract": "model/dynamics/numerical_integration_contract.json",
+    "current_structural_primitive_convergence": "PASS",
+    "current_integrated_model_numerical_robustness": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
+    "default_dt_delay_adequacy": "CONDITIONAL_ON_TAU_GREATER_THAN_0_75_YEARS"
   },
   "empirical_initialization_gate": {
     "unresolved_accounting_cells_allowed": false,
