@@ -186,6 +186,9 @@ jobs:
       - name: Audit government securities supply measurement design
         run: python scripts/audit_government_securities_supply_measurement_design.py
 
+      - name: Audit announced RON primary-supply reference-mode contract
+        run: python scripts/audit_mof_announced_RON_primary_supply_reference_mode_contract.py
+
       - name: Audit ECB supply-load denominator candidate probe assessment
         run: python scripts/audit_ecb_supply_load_denominator_probe_assessment.py
 
