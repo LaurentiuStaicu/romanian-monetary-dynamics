@@ -144,7 +144,7 @@ def audit_supply_pressure_source_boundary(
     if task["id"] != "mof_announced_RON_primary_supply_full_2025_extension":
         errors.append("next supply-pressure task changed")
     if task["authorization"] != (
-        "RAW_SOURCE_RETENTION_EXACT_EVENT_EXTRACTION_AND_REFERENCE_MODE_PILOT_ONLY"
+        "SOURCE_VINTAGE_EXTENSION_AND_EXACT_EVENT_MATERIALISATION_ONLY"
     ):
         errors.append("next task authorization changed")
     if task["may_compute_pressure_ratio_now"] is not False:
