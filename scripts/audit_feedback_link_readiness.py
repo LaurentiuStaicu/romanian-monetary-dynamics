@@ -126,6 +126,7 @@ def audit_feedback_link_readiness(
 
     feedback_by_id = {str(item["id"]): item for item in feedback["loops"]}
     mechanism_ids = {str(item["id"]) for item in mechanisms["mechanisms"]}
+    mechanism_by_id = {str(item["id"]): item for item in mechanisms["mechanisms"]}
     vocabulary = set(registry["readiness_status_vocabulary"])
 
     for item in rows:
@@ -155,6 +156,36 @@ def audit_feedback_link_readiness(
         unknown = set(item.get("related_mechanisms", [])) - mechanism_ids
         if unknown:
             errors.append(f"{key}: unknown related mechanisms {sorted(unknown)}")
+
+        target_specific_pointer = item.get("target_specific_implementation_pointer")
+        if target_specific_pointer is not None:
+            related = [
+                mechanism_by_id[mechanism_id]
+                for mechanism_id in item.get("related_mechanisms", [])
+                if mechanism_id in mechanism_by_id
+            ]
+            matching_implementations = [
+                mechanism
+                for mechanism in related
+                if mechanism.get("implementation") == target_specific_pointer
+            ]
+            if len(matching_implementations) != 1:
+                errors.append(
+                    f"{key}: target-specific implementation pointer does not map "
+                    "to exactly one related mechanism"
+                )
+            if status != "PARTIAL_TARGET_SPECIFIC_FORM_NOT_INTEGRATED":
+                errors.append(
+                    f"{key}: target-specific implementation requires partial-not-integrated status"
+                )
+            if item.get("exact_integrated_equation_ready") is not False:
+                errors.append(
+                    f"{key}: target-specific implementation may not imply exact integrated readiness"
+                )
+            if not str(item.get("target_specific_scope", "")).strip():
+                errors.append(
+                    f"{key}: target-specific implementation lacks explicit scope"
+                )
 
         ready = item.get("exact_integrated_equation_ready")
         pointer = item.get("equation_pointer")
