@@ -19,7 +19,7 @@
       "maps_to_dynamic_core_loop": "monetary_credit_transmission_loop",
       "central_feedback": false,
       "functional_form": "household_housing candidate: lend[t] = lend[t-1] + beta * (policy[t]-policy[t-1]); no NFC form is selected",
-      "implementation": null,
+      "implementation": "household_housing_delta_policy_rate",
       "parameters": [
         {
           "id": "beta_household_housing",
@@ -81,7 +81,17 @@
         "status": "model/calibration_validation/prospective_monetary_confirmation_status.json",
         "current_gate_status": "WAIT_FOR_NEW_POLICY_RATE_EVENT",
         "classification_may_change_from_this_pointer_alone": false
-      }
+      },
+      "implementation_scope": "HOUSEHOLD_HOUSING_TARGET_SPECIFIC_ONLY",
+      "implementation_not_generic_feedback_link": true,
+      "implementation_parameter_domain": {
+        "beta_household_housing": [
+          0,
+          2
+        ],
+        "source": "model/calibration_validation/validation_recovery_contract.json"
+      },
+      "implementation_interpretation": "Executable reproduction of the frozen household-housing delta-policy candidate only. It does not implement the generic market_and_lending_rates feedback node, does not supply an NFC form, and does not change CANDIDATE status or feedback activation."
     },
     {
       "id": "government_refinancing_effective_rate",
