@@ -1,0 +1,85 @@
+name: Ministry Announced RON Reference Auction Partial-2025 Materialisation
+
+on:
+  push:
+    branches:
+      - source-vintage/mof-announced-ron-primary-reference-auction-full-2025-2026-09-20
+    paths:
+      - .github/workflows/mof-announced-ron-primary-reference-auction-partial-2025-materialise.yml
+      - scripts/materialise_mof_announced_RON_primary_reference_auction_partial_2025.py
+      - tests/test_mof_announced_RON_primary_reference_auction_partial_2025.py
+      - data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/**
+      - data/processed/mof_announced_RON_primary_supply_Q1_2025_events.csv
+      - model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json
+
+concurrency:
+  group: mof-announced-ron-primary-reference-auction-partial-2025-materialise
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  materialise:
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source-vintage branch
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install native PDF text extractor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+          pdftotext -v
+
+      - name: Verify partial-materialisation invariants
+        run: |
+          python -m unittest \
+            tests.test_mof_announced_RON_primary_reference_auction_partial_2025 -v
+
+      - name: Materialise retained competitive-only events
+        run: |
+          python scripts/materialise_mof_announced_RON_primary_reference_auction_partial_2025.py
+
+      - name: Retain native text, processed series and assessment
+        run: |
+          BRANCH="source-vintage/mof-announced-ron-primary-reference-auction-full-2025-2026-09-20"
+          MAT="mof_announced_reference_auction_partial_2025_materialised"
+          VINTAGE="data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20"
+          EVENTS="data/processed/mof_announced_RON_primary_reference_auction_partial_2025_events.csv"
+          MONTHLY="data/processed/mof_announced_RON_primary_reference_auction_partial_2025_monthly.csv"
+          ASSESS="model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json"
+
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+
+          mkdir -p "$VINTAGE/native_text" data/processed model/dynamics
+          cp -a "$MAT/native_text/." "$VINTAGE/native_text/"
+          cp "$MAT/mof_announced_RON_primary_reference_auction_partial_2025_events.csv" "$EVENTS"
+          cp "$MAT/mof_announced_RON_primary_reference_auction_partial_2025_monthly.csv" "$MONTHLY"
+          cp "$MAT/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json" "$ASSESS"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$VINTAGE/native_text" "$EVENTS" "$MONTHLY" "$ASSESS"
+          git diff --cached --quiet && { echo "No materialisation changes."; exit 1; }
+          git commit -m "data: retain partial 2025 competitive announced-supply materialisation"
+          git push origin HEAD:"$BRANCH"
+
+      - name: Upload materialisation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mof-announced-ron-reference-auction-partial-2025-${{ github.sha }}
+          path: mof_announced_reference_auction_partial_2025_materialised/
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
