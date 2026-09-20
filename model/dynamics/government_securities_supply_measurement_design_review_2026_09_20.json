@@ -63,7 +63,7 @@
       "preferred_observable": "sum_of_announced_RON_target_amounts",
       "unit": "million_RON_per_event_or_period",
       "causal_role": "DIRECT_EX_ANTE_SUPPLY_INPUT_CANDIDATE",
-      "current_source_status": "SOURCE_CONTRACT_FROZEN_RAW_PILOT_NOT_YET_MATERIALISED",
+      "current_source_status": "EXACT_Q1_EVENT_LEVEL_PILOT_MATERIALISED_FULL_2025_EXTENSION_PENDING",
       "normalisation_required": false,
       "stock_denominator_required": false,
       "activation_ready": false,
@@ -72,7 +72,8 @@
         "retail issuance may not be mixed into the interbank-auction series without an explicit boundary change",
         "completed-period and forward-scheduled rows must be distinguished"
       ],
-      "reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json"
+      "reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
+      "reference_mode_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json"
     },
     {
       "measure_id": "announced_RON_supply_surprise",
@@ -196,7 +197,9 @@
       "Ministry issuance prospectus / auction announcement with exact indicative target amount",
       "Ministry Flash Report exact auction table as cross-check",
       "monthly public debt report only where exact native table mapping is reproducible"
-    ]
+    ],
+    "q1_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json",
+    "canonical_promotion_status": "DEFERRED_UNTIL_COMPLETED_2025_EXTENSION"
   },
   "scientific_effect": {
     "government_securities_supply_pressure_node_resolved": false,
@@ -211,9 +214,9 @@
     "public_version_change_authorized": false
   },
   "next_task": {
-    "id": "mof_announced_RON_primary_supply_source_vintage_pilot",
-    "authorization": "RAW_SOURCE_RETENTION_EXACT_EVENT_EXTRACTION_AND_REFERENCE_MODE_PILOT_ONLY",
-    "task": "Retain January-March 2025 Ministry monthly issuance orders, extract Annex 1/2 event rows exactly, reconcile rows to Article 1 and retained Flash announced totals, and create a completed-period event/month pilot through 2025-03-31.",
+    "id": "mof_announced_RON_primary_supply_full_2025_extension",
+    "authorization": "SOURCE_VINTAGE_EXTENSION_AND_EXACT_EVENT_MATERIALISATION_ONLY",
+    "task": "Extend the frozen event-level prospectus contract to April-December 2025 and preserve event-date bucketing before any canonical reference-mode promotion.",
     "may_materialise_announced_supply_reference_mode": true,
     "may_materialise_supply_surprise": false,
     "may_materialise_duration_supply": false,
