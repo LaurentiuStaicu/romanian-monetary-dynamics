@@ -6,6 +6,7 @@
     "PARTIAL_TARGET_SPECIFIC_FORM_NOT_INTEGRATED",
     "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
     "NO_REGISTERED_EXACT_LINK_FORM",
+    "GROSS_FLOW_STOCK_BOUNDARY_MISMATCH_NOT_INTEGRATED",
     "EXACT_INTEGRATED_LINK_FORM_READY"
   ],
   "hard_rules": {
@@ -15,7 +16,9 @@
     "qualitative_sign_is_not_equation_evidence": true,
     "exact_ready_requires_equation_pointer_units_boundary_and_activation_gate": true,
     "open_chain_may_not_receive_an_inferred_closing_link": true,
-    "all_links_must_be_exact_ready_before_quantitative_loop_activation": true
+    "all_links_must_be_exact_ready_before_quantitative_loop_activation": true,
+    "gross_issuance_is_not_a_stock_update_without_redemptions_and_other_flows": true,
+    "market_value_F3_stock_is_not_Maastricht_debt_stock": true
   },
   "links": [
     {
