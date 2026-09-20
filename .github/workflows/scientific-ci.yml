@@ -153,6 +153,9 @@ jobs:
       - name: Audit F3 empirical dynamic replay
         run: python scripts/audit_f3_empirical_replay.py
 
+      - name: Audit F3 observed behavior diagnostics
+        run: python scripts/audit_f3_behavior_diagnostics.py
+
       - name: Recompute dimensional consistency independently
         run: python scripts/audit_dimensional_consistency.py
 
