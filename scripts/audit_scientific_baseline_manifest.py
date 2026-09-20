@@ -486,7 +486,7 @@ def main() -> None:
         "Baseline must require reopen conditions for every mechanism",
     )
     expected_reopen_governance_state = (
-        "DECLARED_TRIGGER_SATISFIED_MANUAL_SOURCE_GATE_NO_ESTIMATION"
+        "DECLARED_TRIGGER_SATISFIED_SOURCE_EXTENSION_GATE_NO_ESTIMATION"
         if state["scientific_stage"].get("selective_reopen_active", False)
         else "DECLARED_TRIGGER_REQUIRED_NO_AUTOMATIC_ESTIMATION"
     )
@@ -553,8 +553,8 @@ def main() -> None:
         )
         check(
             readiness["current_next_step"]["action"]
-            == "MANUAL_DISPATCH_CAPB_REALTIME_VINTAGE_MATERIALISATION",
-            "Selective reopen action is outside the frozen CAPB manual source gate",
+            == "MANUAL_DISPATCH_CAPB_PRE2022_SOURCE_STRUCTURE_PROBE",
+            "Selective reopen action is outside the frozen CAPB pre-2022 source gate",
         )
         check(
             readiness["current_next_step"].get("execution_mode")
@@ -563,7 +563,7 @@ def main() -> None:
         )
         check(
             readiness_state["current_empirical_queue_state"]
-            == "SELECTIVE_REOPEN_FISCAL_CAPB_MANUAL_SOURCE_GATE_READY",
+            == "SELECTIVE_REOPEN_FISCAL_CAPB_PRE2022_SOURCE_PROBE_READY",
             "Selective reopen empirical queue-state label is stale",
         )
         fiscal_reopen = (
@@ -573,6 +573,22 @@ def main() -> None:
         check(
             fiscal_reopen.is_file(),
             "Selective fiscal reopen lacks its governing assessment",
+        )
+        capb_timing = (
+            ROOT / "model" / "calibration_validation"
+            / "fiscal_capb_timing_adjudication_2026_09_20.json"
+        )
+        check(
+            capb_timing.is_file(),
+            "Selective fiscal source-extension gate lacks timing adjudication",
+        )
+        pre2022_contract = (
+            ROOT / "model" / "calibration_validation"
+            / "fiscal_reaction_capb_pre2022_source_probe_contract.json"
+        )
+        check(
+            pre2022_contract.is_file(),
+            "Selective fiscal source-extension gate lacks pre-2022 probe contract",
         )
     else:
         check(
@@ -645,7 +661,7 @@ def main() -> None:
         )
         check(
             stage_state.get("active_manual_empirical_gate")
-            == "FISCAL_PRIMARY_BALANCE_CAPB_REALTIME_VINTAGE_MATERIALISATION",
+            == "FISCAL_PRIMARY_BALANCE_CAPB_PRE2022_SOURCE_STRUCTURE_PROBE",
             "Selective reopen manual gate is stale",
         )
         check(
