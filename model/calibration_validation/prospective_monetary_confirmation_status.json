@@ -1,7 +1,7 @@
 {
   "status_version": "0.1",
   "stage": "Prospective Monetary Confirmation",
-  "as_of_date": "2026-09-19",
+  "as_of_date": "2026-09-20",
   "mechanism_id": "monetary_policy_lending_rate_pass_through",
   "selected_target": "household_housing",
   "selected_candidate": "delta_policy_contemporaneous",
@@ -9,7 +9,7 @@
   "frozen_beta": 0.49746478873239447,
   "prospective_window": {
     "reserved_from": "2026-08",
-    "driver_checked_through": "2026-09-19",
+    "driver_checked_through": "2026-09-20",
     "response_series_values_inspected": false,
     "policy_driver_only_checked": true,
     "formal_confirmation_opened": false,
@@ -27,13 +27,18 @@
       "date": "2026-10-08",
       "source_type": "Official BNR social-calendar post",
       "source_url": "https://bsky.app/profile/bnr.ro/post/3msq2oyu2sv2b"
+    },
+    "official_calendar_page": {
+      "checked_on": "2026-09-20",
+      "source_type": "BNR official monetary-policy calendar page",
+      "source_url": "https://www.bnr.ro/2506-calendarul-sedintelor-consiliului-de-administratie-pe-probleme-de-politica-monetara"
     }
   },
   "identification_gate": {
     "nonzero_policy_rate_events_in_reserved_window": 0,
     "identifying_driver_variation_available": false,
     "status": "WAIT_FOR_NEW_POLICY_RATE_EVENT",
-    "reason": "The August 2026 policy decision kept the policy rate unchanged at 6.50%, and no later BNR monetary-policy meeting occurs before the as-of date. Without a non-zero policy-rate event, the frozen delta-policy candidate cannot be prospectively distinguished from persistence."
+    "reason": "The August 2026 policy decision kept the policy rate unchanged at 6.50%, and no later BNR monetary-policy meeting occurs before the 2026-09-20 as-of date. Without a non-zero policy-rate event, the frozen delta-policy candidate cannot be prospectively distinguished from persistence."
   },
   "hard_rules": {
     "do_not_inspect_reserved_MIR_response_values_before_identifying_event": true,
