@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -21,6 +23,21 @@ class MOFRecoveredOfficialPDFPromotionTests(unittest.TestCase):
         self.contract = json.loads(CONTRACT_PATH.read_text(encoding="utf-8"))
         self.manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
         self.docs = {item["source_id"]: item for item in self.contract["documents"]}
+
+    def test_promotion_script_runs_directly_from_repository_root(self) -> None:
+        script = (
+            ROOT
+            / "scripts/"
+            "promote_mof_announced_RON_primary_reference_auction_recovered_official_pdfs.py"
+        )
+        result = subprocess.run(
+            [sys.executable, str(script), "--help"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_transition_partition_is_exactly_4_plus_5_plus_3(self) -> None:
         self.assertEqual(len(BASELINE_RETAINED), 4)
