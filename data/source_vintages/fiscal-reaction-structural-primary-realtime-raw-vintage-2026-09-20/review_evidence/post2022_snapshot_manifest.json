@@ -1,0 +1,248 @@
+{
+  "snapshot_version": "0.1",
+  "snapshot_id": "fiscal-reaction-capb-realtime-vintages-2026-09-19",
+  "fetched_at_utc": "2026-09-20T01:32:50Z",
+  "materializer_script": "scripts/materialise_fiscal_reaction_capb_realtime_vintages.py",
+  "materializer_script_sha256": "820211d8c939faa5cb38b882808e93769834532bc9f46491030106b3f3a059b0",
+  "workflow_context": {
+    "github_sha": "f859f4e525bb0db13b3140c7d45e1fa17442ca4d",
+    "github_run_id": "35481663720",
+    "github_event_name": "workflow_dispatch"
+  },
+  "target_series": {
+    "code": "ROM.1.0.319.0.UBLGBPS",
+    "variable": "UBLGBPS",
+    "country": "Romania",
+    "concept": "Structural balance of general government excluding interest; adjustment based on potential GDP; excessive deficit procedure",
+    "role": "cyclically adjusted / structural primary-balance measurement candidate",
+    "unit_expected_contains": "Percentage of potential GDP"
+  },
+  "raw_and_selected_evidence": [
+    {
+      "release_id": "spring_2022",
+      "release_label": "Spring 2022",
+      "release_date": "2022-05-16",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/c5be576e-fbea-45f3-98a5-3cf59d16d70a_en?filename=ameco_spring2022.zip",
+      "archive_sha256": "8312db0274cd6a0cad322d7f2ac2650599ab3ef1127fabe20049e1c1465978ac",
+      "archive_bytes": 12036166,
+      "selected_member_path": "ameco0.zip::AMECO17.TXT",
+      "matching_member_count": 2,
+      "target_code": "ROM.1.0.319.0.UBLGBPS",
+      "matched_row_sha256": "7392a8b52d7126a7b26a2eb060df1215e83e93dc775a8bb3ef9fd521c750e3f7",
+      "matched_row_bytes": 987,
+      "status": "EXACT_TARGET_ROW_RETAINED",
+      "http_status": 200,
+      "content_type": "application/zip",
+      "last_modified": null,
+      "raw_path": "raw/spring_2022.zip",
+      "selected_row_path": "selected_rows/spring_2022.txt",
+      "matching_member_paths": [
+        "ameco0.zip::AMECO17.TXT",
+        "ameco17.zip::AMECO17.TXT"
+      ]
+    },
+    {
+      "release_id": "autumn_2022",
+      "release_label": "Autumn 2022",
+      "release_date": "2022-11-17",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/b16e473a-04ef-4ec8-b2f8-1e0c30a39d3c_en?filename=ameco_autumn2022.zip",
+      "archive_sha256": "a6c0ae481f959a7ed45bb3df86cbb9fc05d230d4b406d3a5afdcf0c77a9c25ef",
+      "archive_bytes": 6157715,
+      "selected_member_path": "AMECO17.TXT",
+      "matching_member_count": 1,
+      "target_code": "ROM.1.0.319.0.UBLGBPS",
+      "matched_row_sha256": "627499548194c10558b2ec6c9a71f9fae54b250e6a5031f8a52529d336e9e135",
+      "matched_row_bytes": 1002,
+      "status": "EXACT_TARGET_ROW_RETAINED",
+      "http_status": 200,
+      "content_type": "application/zip",
+      "last_modified": null,
+      "raw_path": "raw/autumn_2022.zip",
+      "selected_row_path": "selected_rows/autumn_2022.txt",
+      "matching_member_paths": [
+        "AMECO17.TXT"
+      ]
+    },
+    {
+      "release_id": "spring_2023",
+      "release_label": "Spring 2023",
+      "release_date": "2023-05-15",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/adbcba6f-8169-4d6d-80e7-7a365ff6e87d_en?filename=ameco_spring2023.zip",
+      "archive_sha256": "b459fffdc71ae4bf402b9d10d91adf549545fc96e3b88363dc568e4e235438f3",
+      "archive_bytes": 6197383,
+      "selected_member_path": "AMECO17.TXT",
+      "matching_member_count": 1,
+      "target_code": "ROM.1.0.319.0.UBLGBPS",
+      "matched_row_sha256": "3102dc6756111dfe7f8c90eb9620c6ac760ab5a4bcbdd2f86af194c65b6cbe7e",
+      "matched_row_bytes": 1002,
+      "status": "EXACT_TARGET_ROW_RETAINED",
+      "http_status": 200,
+      "content_type": "application/zip",
+      "last_modified": null,
+      "raw_path": "raw/spring_2023.zip",
+      "selected_row_path": "selected_rows/spring_2023.txt",
+      "matching_member_paths": [
+        "AMECO17.TXT"
+      ]
+    },
+    {
+      "release_id": "autumn_2023",
+      "release_label": "Autumn 2023",
+      "release_date": "2023-11-27",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/6a48b097-bd09-496b-908f-404d0e85cff8_en?filename=AMECO_2023_Autumn_Revised.zip",
+      "archive_sha256": "e2609fc9bb1cc98c8ca997fadfa811bf87913e3c4189bd9864e891014fdb7b38",
+      "archive_bytes": 7018849,
+      "selected_member_path": "AMECO17.TXT",
+      "matching_member_count": 1,
+      "target_code": "ROM.1.0.319.0.UBLGBPS",
+      "matched_row_sha256": "0f6bf56be596a9bb7422c219e215f00332585e8d5c9bea1a406b094c3464e294",
+      "matched_row_bytes": 1017,
+      "status": "EXACT_TARGET_ROW_RETAINED",
+      "http_status": 200,
+      "content_type": "application/zip",
+      "last_modified": null,
+      "raw_path": "raw/autumn_2023.zip",
+      "selected_row_path": "selected_rows/autumn_2023.txt",
+      "matching_member_paths": [
+        "AMECO17.TXT"
+      ]
+    },
+    {
+      "release_id": "spring_2024",
+      "release_label": "Spring 2024",
+      "release_date": "2024-05-15",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/ad8d7bd0-c4d9-4860-b597-bb613408d6bd_en?filename=AMECO_2024_Spring_final.zip",
+      "archive_sha256": "271392bda9e7b06fd41f88aeb053dc7af7bb7c00efddc775959cf0b0f2b9b039",
+      "archive_bytes": 6827295,
+      "selected_member_path": "AMECO17.TXT",
+      "matching_member_count": 1,
+      "target_code": "ROM.1.0.319.0.UBLGBPS",
+      "matched_row_sha256": "58cba0a17f9676aff6531aff518ab45f2be17fd46102db308eddec5d649988d3",
+      "matched_row_bytes": 1017,
+      "status": "EXACT_TARGET_ROW_RETAINED",
+      "http_status": 200,
+      "content_type": "application/zip",
+      "last_modified": null,
+      "raw_path": "raw/spring_2024.zip",
+      "selected_row_path": "selected_rows/spring_2024.txt",
+      "matching_member_paths": [
+        "AMECO17.TXT"
+      ]
+    },
+    {
+      "release_id": "autumn_2024",
+      "release_label": "Autumn 2024",
+      "release_date": "2024-11-15",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/9c2630c3-6c25-456d-b484-6b05c202e8ce_en?filename=ameco0.zip",
+      "archive_sha256": "827275adf0bc01b037d6d27a1f2ad57ce5d878f2a8e003dab3bf4643efe6e1ef",
+      "archive_bytes": 6395221,
+      "selected_member_path": "AMECO17.TXT",
+      "matching_member_count": 1,
+      "target_code": "ROM.1.0.319.0.UBLGBPS",
+      "matched_row_sha256": "7a0e9b290bcf3c576a01080a300219d571efa9668a6a0440683ab88f9d5eaa99",
+      "matched_row_bytes": 1032,
+      "status": "EXACT_TARGET_ROW_RETAINED",
+      "http_status": 200,
+      "content_type": "application/zip",
+      "last_modified": null,
+      "raw_path": "raw/autumn_2024.zip",
+      "selected_row_path": "selected_rows/autumn_2024.txt",
+      "matching_member_paths": [
+        "AMECO17.TXT"
+      ]
+    },
+    {
+      "release_id": "spring_2025",
+      "release_label": "Spring 2025",
+      "release_date": "2025-05-19",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/b4b375e7-80a6-4581-b8fd-9c207790cd01_en?filename=ameco0.zip",
+      "archive_sha256": "20fbc937efea13ecba148745cbef82b8b81255be7c4988d4cf4e4e65c31cc745",
+      "archive_bytes": 6526975,
+      "selected_member_path": "AMECO17.TXT",
+      "matching_member_count": 1,
+      "target_code": "ROM.1.0.319.0.UBLGBPS",
+      "matched_row_sha256": "4ae014d0143bdd672b05c2f6c37017e125a538fc47349c27caf3f2922421dabb",
+      "matched_row_bytes": 1032,
+      "status": "EXACT_TARGET_ROW_RETAINED",
+      "http_status": 200,
+      "content_type": "application/zip",
+      "last_modified": null,
+      "raw_path": "raw/spring_2025.zip",
+      "selected_row_path": "selected_rows/spring_2025.txt",
+      "matching_member_paths": [
+        "AMECO17.TXT"
+      ]
+    },
+    {
+      "release_id": "autumn_2025",
+      "release_label": "Autumn 2025",
+      "release_date": "2025-11-17",
+      "source_url": "https://economy-finance.ec.europa.eu/document/download/92bd1d5e-35e8-4a94-a8b1-8d919ced4cdb_en?filename=ameco-autumn2025.zip",
+      "archive_sha256": "3d6dcc49d69feb5578dc0d14e694fad65100ac6361f7d9fd2696efefaa21bd0c",
+      "archive_bytes": 7179297,
+      "selected_member_path": "AMECO17.TXT",
+      "matching_member_count": 1,
+      "target_code": "ROM.1.0.319.0.UBLGBPS",
+      "matched_row_sha256": "00fe61340dc9208e6a02d641e6f51f6cb4a26088d07c3460b0ba81dd78ba82ec",
+      "matched_row_bytes": 1047,
+      "status": "EXACT_TARGET_ROW_RETAINED",
+      "http_status": 200,
+      "content_type": "application/zip",
+      "last_modified": null,
+      "raw_path": "raw/autumn_2025.zip",
+      "selected_row_path": "selected_rows/autumn_2025.txt",
+      "matching_member_paths": [
+        "AMECO17.TXT"
+      ]
+    },
+    {
+      "release_id": "spring_2026",
+      "release_label": "Spring 2026",
+      "release_date": "2026-06-03",
+      "source_url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco17.zip",
+      "archive_sha256": "720c9189ca211f2a14797a45c7bedc7424b3b9f3532e4c8d6c2d7a63797f1c09",
+      "archive_bytes": 102967,
+      "selected_member_path": "AMECO17.TXT",
+      "matching_member_count": 1,
+      "target_code": "ROM.1.0.319.0.UBLGBPS",
+      "matched_row_sha256": "c1f02d1ab842586e99268a1664bdc0b53c16950bb9c0c47ff1181fd94cefa703",
+      "matched_row_bytes": 1047,
+      "status": "EXACT_TARGET_ROW_RETAINED",
+      "http_status": 200,
+      "content_type": "application/zip",
+      "last_modified": "Tue, 02 Jun 2026 14:51:27 GMT",
+      "raw_path": "raw/spring_2026.zip",
+      "selected_row_path": "selected_rows/spring_2026.txt",
+      "matching_member_paths": [
+        "AMECO17.TXT"
+      ]
+    }
+  ],
+  "normalized_outputs": [
+    {
+      "path": "fiscal_capb_release_inventory.csv",
+      "sha256": "55e494ca4010ed75c602392da0fcedee02cecf1aa27aa901833b6ed8d7775588",
+      "rows": 9,
+      "role": "release-by-release source inventory only"
+    }
+  ],
+  "audit_report": {
+    "path": "fiscal_capb_vintage_materialisation_audit.json",
+    "sha256": "6561e8d033f3dd7e80a819e3cf13dcc2ec33d703e1898e1adadef6c83995aa33"
+  },
+  "hard_boundaries": {
+    "no_parameter_estimation": true,
+    "no_model_selection": true,
+    "no_value_transform": true,
+    "no_forecast_use_for_estimation": true,
+    "no_later_revision_backfill": true,
+    "no_prior_2018_2024_holdout_opening": true,
+    "no_source_url_guessing": true,
+    "no_missing_to_zero": true,
+    "no_causal_claim": true,
+    "no_system_dynamics_activation": true,
+    "no_behavioural_closure_change": true,
+    "live_provider_work_manual_only": true
+  },
+  "canonical_promotion": "REQUIRES_EXPLICIT_REPOSITORY_REVIEW_AND_COMMIT"
+}
