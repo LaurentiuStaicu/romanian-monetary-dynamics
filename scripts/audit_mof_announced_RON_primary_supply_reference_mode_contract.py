@@ -236,7 +236,7 @@ def audit_announced_supply_reference_mode_contract(
     if link.get("announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("issuance-pressure link lacks announced-supply contract")
     if link["source_boundary_status"] != (
-        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
     ):
         errors.append("issuance-pressure link source-contract status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -260,7 +260,7 @@ def audit_announced_supply_reference_mode_contract(
     if bridge.get("announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("issuance-pressure bridge lacks announced-supply contract")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
     ):
         errors.append("issuance-pressure bridge source-contract status changed")
 
@@ -272,7 +272,7 @@ def audit_announced_supply_reference_mode_contract(
     ):
         errors.append("model contract announced-supply status changed")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
+        "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery"
     ):
         errors.append("model contract next task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
