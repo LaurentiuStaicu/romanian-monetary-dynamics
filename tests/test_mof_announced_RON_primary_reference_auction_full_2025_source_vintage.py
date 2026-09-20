@@ -49,6 +49,18 @@ class MOFAnnouncedRONPrimaryReferenceAuctionFull2025SourceVintageTests(unittest.
         self.assertTrue(discovery["no_guessed_document_ids"])
         self.assertTrue(discovery["no_search_engine_snapshot_as_repository_source"])
 
+    def test_partial_retention_cannot_impute_or_promote(self) -> None:
+        retention = self.contract["retention"]
+        self.assertTrue(retention["partial_official_retention_allowed"])
+        self.assertTrue(retention["unavailable_sources_must_remain_unavailable"])
+        self.assertTrue(
+            retention["event_materialisation_allowed_only_for_retained_raw_sources"]
+        )
+        self.assertTrue(
+            retention["canonical_promotion_requires_complete_required_source_coverage"]
+        )
+
+
     def test_hard_rules_keep_model_inactive(self) -> None:
         rules = self.contract["hard_rules"]
         for key in (
