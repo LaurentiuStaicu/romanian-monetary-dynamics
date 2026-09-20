@@ -97,6 +97,21 @@ class FiscalCapbRawSourcePreservationTests(unittest.TestCase):
             "55e494ca4010ed75c602392da0fcedee02cecf1aa27aa901833b6ed8d7775588",
         )
 
+    def test_relative_output_is_anchored_to_repository_root(self) -> None:
+        relative = Path("data/source_vintages/test-relative-output")
+        self.assertEqual(
+            module.resolve_repository_output(relative),
+            (ROOT / relative).resolve(),
+        )
+
+    def test_output_outside_repository_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            outside = Path(td).resolve()
+            if ROOT in outside.parents or outside == ROOT:
+                self.skipTest("temporary directory unexpectedly inside repository root")
+            with self.assertRaises(RuntimeError):
+                module.resolve_repository_output(outside)
+
 
 if __name__ == "__main__":
     unittest.main()
