@@ -1,0 +1,221 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-20",
+  "probe_id": "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage",
+  "purpose": "Discover and retain exact official Portal Legislativ representations of the April-December 2025 Ministry primary-market issuance base orders and identified amendment orders before amendment-aware event materialisation.",
+  "governing_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json",
+  "canonical_candidate_id": "announced_RON_primary_reference_auction_supply_level",
+  "source_boundary": {
+    "institution": "Ministerul Finanțelor",
+    "official_legal_registry": "Portal Legislativ — legislatie.just.ro",
+    "legal_publication": "Monitorul Oficial al României, Partea I",
+    "role": "Canonical legal identity, exact prospect annex text and amendment graph for full-year extension.",
+    "ministry_pdf_role": "Optional same-order transport cross-check when an exact stable Ministry/ANAF PDF URL is independently known; absence of a PDF URL does not authorize guessing one."
+  },
+  "documents": [
+    {
+      "source_id": "mof_order_541_april_2025",
+      "month": "2025-04",
+      "version_role": "BASE",
+      "order_number": "541",
+      "order_date": "2025-03-31",
+      "publication_number": "285",
+      "publication_date": "2025-04-01",
+      "title_anchor": "prospectele de emisiune",
+      "month_anchor": "aprilie 2025",
+      "supersedes": null,
+      "known_official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF541aprilie2025.pdf"
+    },
+    {
+      "source_id": "mof_order_728_may_2025",
+      "month": "2025-05",
+      "version_role": "BASE",
+      "order_number": "728",
+      "order_date": "2025-04-29",
+      "publication_number": "389",
+      "publication_date": "2025-04-30",
+      "title_anchor": "prospectele de emisiune",
+      "month_anchor": "mai 2025",
+      "supersedes": null,
+      "known_official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF728_29042025.pdf"
+    },
+    {
+      "source_id": "mof_order_752_may_2025_amendment",
+      "month": "2025-05",
+      "version_role": "AMENDMENT",
+      "order_number": "752",
+      "order_date": "2025-05-07",
+      "publication_number": "419",
+      "publication_date": "2025-05-07",
+      "title_anchor": "pentru modificarea",
+      "month_anchor": "mai 2025",
+      "supersedes": "728/2025",
+      "known_official_pdf_url": null
+    },
+    {
+      "source_id": "mof_order_871_june_2025",
+      "month": "2025-06",
+      "version_role": "BASE",
+      "order_number": "871",
+      "order_date": "2025-05-30",
+      "publication_number": "510",
+      "publication_date": "2025-05-30",
+      "title_anchor": "prospectele de emisiune",
+      "month_anchor": "iunie 2025",
+      "supersedes": null,
+      "known_official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF871iunie2025.pdf"
+    },
+    {
+      "source_id": "mof_order_1088_july_2025",
+      "month": "2025-07",
+      "version_role": "BASE",
+      "order_number": "1088",
+      "order_date": "2025-06-30",
+      "publication_number": "622",
+      "publication_date": "2025-07-02",
+      "title_anchor": "prospectele de emisiune",
+      "month_anchor": "iulie 2025",
+      "supersedes": null,
+      "known_official_pdf_url": null
+    },
+    {
+      "source_id": "mof_order_1221_august_2025",
+      "month": "2025-08",
+      "version_role": "BASE",
+      "order_number": "1221",
+      "order_date": "2025-07-31",
+      "publication_number": "717",
+      "publication_date": "2025-08-01",
+      "title_anchor": "prospectele de emisiune",
+      "month_anchor": "august 2025",
+      "supersedes": null,
+      "known_official_pdf_url": null
+    },
+    {
+      "source_id": "mof_order_1452_september_2025",
+      "month": "2025-09",
+      "version_role": "BASE",
+      "order_number": "1452",
+      "order_date": "2025-08-29",
+      "publication_number": "806",
+      "publication_date": "2025-08-29",
+      "title_anchor": "prospectele de emisiune",
+      "month_anchor": "septembrie 2025",
+      "supersedes": null,
+      "known_official_pdf_url": null
+    },
+    {
+      "source_id": "mof_order_1626_october_2025",
+      "month": "2025-10",
+      "version_role": "BASE",
+      "order_number": "1626",
+      "order_date": "2025-10-01",
+      "publication_number": "901",
+      "publication_date": "2025-10-01",
+      "title_anchor": "prospectele de emisiune",
+      "month_anchor": "octombrie 2025",
+      "supersedes": null,
+      "known_official_pdf_url": "https://static.anaf.ro/static/10/Anaf/legislatie/OMF_1626_2025.pdf"
+    },
+    {
+      "source_id": "mof_order_1795_november_2025",
+      "month": "2025-11",
+      "version_role": "BASE",
+      "order_number": "1795",
+      "order_date": "2025-10-31",
+      "publication_number": "1009",
+      "publication_date": "2025-10-31",
+      "title_anchor": "prospectele de emisiune",
+      "month_anchor": "noiembrie 2025",
+      "supersedes": null,
+      "known_official_pdf_url": null
+    },
+    {
+      "source_id": "mof_order_1831_november_2025_amendment",
+      "month": "2025-11",
+      "version_role": "AMENDMENT",
+      "order_number": "1831",
+      "order_date": "2025-11-10",
+      "publication_number": "1041",
+      "publication_date": "2025-11-11",
+      "title_anchor": "pentru modificarea",
+      "month_anchor": "noiembrie 2025",
+      "supersedes": "1795/2025",
+      "known_official_pdf_url": null
+    },
+    {
+      "source_id": "mof_order_1928_december_2025",
+      "month": "2025-12",
+      "version_role": "BASE",
+      "order_number": "1928",
+      "order_date": "2025-12-02",
+      "publication_number": "1114",
+      "publication_date": "2025-12-03",
+      "title_anchor": "prospectele de emisiune",
+      "month_anchor": "decembrie 2025",
+      "supersedes": null,
+      "known_official_pdf_url": null
+    },
+    {
+      "source_id": "mof_order_1998_december_2025_amendment",
+      "month": "2025-12",
+      "version_role": "AMENDMENT",
+      "order_number": "1998",
+      "order_date": "2025-12-19",
+      "publication_number": "1181",
+      "publication_date": "2025-12-19",
+      "title_anchor": "pentru modificarea",
+      "month_anchor": "decembrie 2025",
+      "supersedes": "1928/2025",
+      "known_official_pdf_url": null
+    }
+  ],
+  "discovery": {
+    "search_url_template": "https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext={YYYY/MM/DD}&publicatnumar={publication_number}&publicatsfarsittext={YYYY/MM/DD}",
+    "candidate_link_rule": "Follow only same-host hrefs containing DetaliiDocument; select exactly one candidate whose retained text contains the frozen order number, order date, Ministry issuer, title anchor and target month anchor.",
+    "fail_if_zero_matches": true,
+    "fail_if_multiple_matches": true,
+    "no_guessed_document_ids": true,
+    "no_search_engine_snapshot_as_repository_source": true
+  },
+  "retention": {
+    "retain_search_page_html": true,
+    "retain_selected_act_html": true,
+    "retain_normalized_text": true,
+    "retain_sha256": true,
+    "retain_http_metadata": true,
+    "optional_official_pdf_crosscheck": true,
+    "raw_values_not_materialised_in_this_probe": true
+  },
+  "amendment_graph": {
+    "2025-05": [
+      "728/2025",
+      "752/2025"
+    ],
+    "2025-11": [
+      "1795/2025",
+      "1831/2025"
+    ],
+    "2025-12": [
+      "1928/2025",
+      "1998/2025"
+    ],
+    "base_orders_may_not_be_silently_overwritten": true,
+    "amendment_order_date_is_new_information_date": true
+  },
+  "hard_rules": {
+    "no_event_materialisation_in_discovery_probe": true,
+    "no_SSON_in_full_year_canonical_candidate": true,
+    "no_accepted_or_borrowed_values": true,
+    "no_retail_or_external_issuance": true,
+    "no_manual_approximation": true,
+    "no_OCR": true,
+    "no_canonical_reference_mode_promotion": true,
+    "no_yield_effect_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "pass_effect": "Authorises amendment-aware exact event parsing/materialisation from the retained official legal source vintage; no canonical reference-mode promotion follows automatically.",
+  "fail_effect": "Retain the full-year candidate as source-vintage pending and leave unavailable acts unavailable; do not substitute guessed URLs, third-party reproductions or inferred event rows."
+}
