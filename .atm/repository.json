@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "repository_id": "rmd",
+  "acronym": "RMD",
+  "display_name": "Romanian Monetary Dynamics",
+  "version_source": {
+    "type": "cff",
+    "path": "CITATION.cff"
+  },
+  "status_source": "STATUS.md",
+  "required_paths": [
+    "CITATION.cff",
+    "STATUS.md",
+    "model/dynamics/core_contract.json",
+    "model/dynamics/feedback_registry.json",
+    "model/dynamics/reference_modes.json",
+    "model/registries/model_contract.json"
+  ],
+  "retrieval": {
+    "canonical": [
+      "STATUS.md",
+      "README.md",
+      "CITATION.cff",
+      "model/registries/scientific_baseline_manifest.json",
+      "model/dynamics/system_dynamics_conformity_gate.json"
+    ],
+    "structural": [
+      "model/dynamics",
+      "model/registries",
+      "model/accounting"
+    ],
+    "evidence": [
+      "model/empirical_dynamics",
+      "model/calibration_validation",
+      "data/provenance",
+      "data/processed"
+    ],
+    "tabular": [
+      "data/processed"
+    ],
+    "implementation": [
+      "src/romania_macro_financial_dynamics"
+    ],
+    "exclude": [
+      ".github",
+      "data/raw",
+      "__pycache__"
+    ]
+  }
+}
