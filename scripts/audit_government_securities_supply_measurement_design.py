@@ -35,6 +35,7 @@ def audit_supply_measurement_design(
     measures = {item["measure_id"]: item for item in review["measurement_vector"]}
     expected = {
         "announced_RON_primary_supply_level",
+        "announced_RON_primary_reference_auction_supply_level",
         "announced_RON_supply_surprise",
         "announced_RON_duration_supply",
         "primary_auction_absorption",
@@ -48,17 +49,27 @@ def audit_supply_measurement_design(
             f"expected={sorted(expected)}, observed={sorted(measures)}"
         )
 
-    announced = measures["announced_RON_primary_supply_level"]
+    legacy_announced = measures["announced_RON_primary_supply_level"]
+    if legacy_announced["timing"] != "EX_ANTE_AT_AUCTION_ANNOUNCEMENT":
+        errors.append("legacy announced supply timing changed")
+    if legacy_announced["preferred_observable"] != "sum_of_announced_RON_target_amounts":
+        errors.append("legacy announced supply observable changed")
+    if legacy_announced.get("primary_recovery_path") is not False:
+        errors.append("legacy Q1 combined measure may not remain primary recovery path")
+    if legacy_announced["activation_ready"] is not False:
+        errors.append("legacy announced supply may not be activation-ready")
+
+    announced = measures["announced_RON_primary_reference_auction_supply_level"]
     if announced["timing"] != "EX_ANTE_AT_AUCTION_ANNOUNCEMENT":
-        errors.append("announced supply timing changed")
-    if announced["preferred_observable"] != "sum_of_announced_RON_target_amounts":
-        errors.append("announced supply observable changed")
+        errors.append("full-year announced supply timing changed")
+    if announced["preferred_observable"] != "sum_of_competitive_announced_RON_reference_targets":
+        errors.append("full-year announced supply observable changed")
     if announced["normalisation_required"] is not False:
-        errors.append("announced supply may not require normalisation")
+        errors.append("full-year announced supply may not require normalisation")
     if announced["stock_denominator_required"] is not False:
-        errors.append("announced supply may not require stock denominator")
+        errors.append("full-year announced supply may not require stock denominator")
     if announced["activation_ready"] is not False:
-        errors.append("announced supply may not be activation-ready")
+        errors.append("full-year announced supply may not be activation-ready")
 
     surprise = measures["announced_RON_supply_surprise"]
     if surprise["current_source_status"] != (
@@ -123,7 +134,7 @@ def audit_supply_measurement_design(
         errors.append("arbitrary weighted index may not be authorized")
 
     if set(topology["ex_ante_supply_inputs"]) != {
-        "announced_RON_primary_supply_level",
+        "announced_RON_primary_reference_auction_supply_level",
         "announced_RON_supply_surprise",
         "announced_RON_duration_supply",
     }:
@@ -136,7 +147,7 @@ def audit_supply_measurement_design(
 
     strategy = review["reference_mode_strategy"]
     if strategy["first_materialisation_priority"] != (
-        "announced_RON_primary_supply_level"
+        "announced_RON_primary_reference_auction_supply_level"
     ):
         errors.append("first supply reference-mode priority changed")
     if strategy["completed_period_only_for_reference_mode"] is not True:
@@ -165,10 +176,12 @@ def audit_supply_measurement_design(
             errors.append(f"measurement design may not promote {key}")
 
     next_task = review["next_task"]
-    if next_task["id"] != "mof_announced_RON_primary_supply_full_2025_extension":
+    if next_task["id"] != (
+        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
+    ):
         errors.append("measurement-design next task changed")
     if next_task["authorization"] != (
-        "SOURCE_VINTAGE_EXTENSION_AND_EXACT_EVENT_MATERIALISATION_ONLY"
+        "OFFICIAL_SOURCE_RETENTION_AMENDMENT_AWARE_EVENT_MATERIALISATION_ONLY"
     ):
         errors.append("measurement-design next-task authorization changed")
     if next_task["may_materialise_announced_supply_reference_mode"] is not True:
@@ -191,7 +204,7 @@ def audit_supply_measurement_design(
     if source_review.get("single_scalar_search_superseded_for_primary_recovery_path") is not True:
         errors.append("source-boundary scalar search not marked superseded")
     if source_review["next_task"]["id"] != (
-        "mof_announced_RON_primary_supply_full_2025_extension"
+        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
     ):
         errors.append("source-boundary next task not advanced")
 
@@ -235,7 +248,7 @@ def audit_supply_measurement_design(
     if link.get("supply_measurement_design_review") != REVIEW_PATH:
         errors.append("issuance-pressure link lacks measurement design")
     if link["source_boundary_status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
     ):
         errors.append("issuance-pressure measurement status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -265,7 +278,7 @@ def audit_supply_measurement_design(
     if bridge.get("supply_measurement_design_review") != REVIEW_PATH:
         errors.append("issuance-pressure bridge lacks measurement design")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
     ):
         errors.append("issuance-pressure bridge measurement status changed")
 
@@ -277,7 +290,7 @@ def audit_supply_measurement_design(
     ):
         errors.append("model contract measurement architecture changed")
     if dynamic.get("government_securities_supply_first_reference_mode_priority") != (
-        "announced_RON_primary_supply_level"
+        "announced_RON_primary_reference_auction_supply_level"
     ):
         errors.append("model contract supply reference-mode priority changed")
     if dynamic.get("government_securities_supply_stock_normalisation_required") is not False:
@@ -331,15 +344,15 @@ def main() -> None:
             {
                 "status": "PASS",
                 "architecture": "STRUCTURED_MEASUREMENT_VECTOR",
-                "measurement_components": 7,
+                "measurement_components": 8,
                 "ex_ante_supply_inputs": 3,
                 "post_auction_diagnostics": 2,
                 "market_context_measures": 2,
                 "single_scalar_selected": False,
                 "umbrella_node_resolved": False,
-                "first_reference_mode_priority": "announced_RON_primary_supply_level",
+                "first_reference_mode_priority": "announced_RON_primary_reference_auction_supply_level",
                 "feedback_activation_authorized": False,
-                "next_task": "mof_announced_RON_primary_supply_full_2025_extension",
+                "next_task": "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage",
             },
             indent=2,
         )
