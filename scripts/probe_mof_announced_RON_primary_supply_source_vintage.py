@@ -74,7 +74,7 @@ def anchor_checks(text: str, source: dict) -> dict[str, bool]:
         "ANEXA 1",
         "ANEXA 2",
         "PROSPECT DE EMISIUNE",
-        "Data Licitaţiei",
+        "licitaţiei",
         "Valoare nominală",
         "SSON",
     ]
