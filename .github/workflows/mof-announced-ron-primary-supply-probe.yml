@@ -60,7 +60,16 @@ jobs:
               cmp                 "mof_announced_supply_pilot_artifacts/raw/${source_id}.pdf"                 "$DEST/raw/${source_id}.pdf"
               cmp                 "mof_announced_supply_pilot_artifacts/native_text/${source_id}.txt"                 "$DEST/native_text/${source_id}.txt"
             done
-            echo "Retained Ministry announced-supply vintage is byte-identical to fresh acquisition/native extraction."
+            cp               "mof_announced_supply_pilot_artifacts/source_vintage_manifest.json"               "$DEST/source_vintage_manifest.json"
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add "$DEST/source_vintage_manifest.json"
+            if git diff --cached --quiet; then
+              echo "Retained Ministry announced-supply vintage is byte-identical and manifest is current."
+              exit 0
+            fi
+            git commit -m "data: refresh Ministry announced-supply probe manifest"
+            git push origin HEAD:"$BRANCH"
             exit 0
           fi
 
