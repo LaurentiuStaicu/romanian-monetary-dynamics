@@ -1,0 +1,101 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "gate_id": "yield_to_interest_cost_boundary_review",
+  "purpose": "Decide whether the preferred observed long-term sovereign-yield boundary may map directly to the generic government_interest_cost node, and freeze the minimum empirically defensible decomposition without estimating the deferred refinancing/effective-rate mechanism.",
+  "decision": "DO_NOT_MAP_SOVEREIGN_YIELD_DIRECTLY_TO_INTEREST_COST_USE_PORTFOLIO_EFFECTIVE_RATE_AND_DEBT_STOCK_DECOMPOSITION_MECHANISM_REMAINS_DEFERRED",
+  "observed_boundaries": {
+    "sovereign_yield": {
+      "source_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+      "source": "ECB IRS.M.RO.L.L40.CI.0000.RON.N.Z",
+      "concept": "Representative long-term Romanian-leu central-government yield near 10-year residual maturity.",
+      "role": "MARGINAL_LONG_TERM_MARKET_PRICE_TARGET"
+    },
+    "government_effective_interest_rate": {
+      "reference_mode": "government_effective_interest_rate",
+      "assessment": "model/dynamics/government_effective_interest_rate_reference_assessment.json",
+      "contract": "model/dynamics/government_effective_interest_rate_reference_contract.json",
+      "concept": "Ministry of Finance year-end average interest rate of the government public-debt portfolio, based on following-year forecast interest relative to reference-year-end debt stock.",
+      "time_resolution": "annual_year_end",
+      "role": "PORTFOLIO_COST_RATE_INTERMEDIATE_TARGET",
+      "direct_equivalence_to_sovereign_yield": false
+    },
+    "government_interest_burden": {
+      "reference_mode": "government_interest_burden",
+      "assessment": "model/dynamics/government_interest_burden_reference_assessment.json",
+      "contract": "model/dynamics/government_interest_burden_reference_contract.json",
+      "concept": "Eurostat ESA 2010 general-government interest expenditure D41PAY, retained in nominal national-currency and percent-of-GDP forms.",
+      "time_resolution": "quarterly",
+      "role": "PREFERRED_OBSERVED_INTEREST_COST_FLOW_TARGET",
+      "direct_equivalence_to_effective_rate": false,
+      "direct_equivalence_to_sovereign_yield": false
+    }
+  },
+  "mechanism_boundary": {
+    "mechanism_id": "government_refinancing_effective_rate",
+    "registry": "model/empirical_dynamics/mechanism_registry.json",
+    "repricing_contract": "model/calibration_validation/government_repricing_ledger_contract.json",
+    "repricing_assessment": "model/calibration_validation/government_repricing_ledger_assessment.json",
+    "functional_form": "effective_rate[t] = (1-m[t])*effective_rate[t-1] + m[t]*marginal_market_yield[t]",
+    "current_status": "DEFERRED",
+    "reason": "Public data do not provide matched opening principal, realized repriced/refinanced principal, contractual reset dates, and matched old/new effective rates over the material Ministry portfolio boundary. Estimating m[t] would absorb missing instrument, currency and fixed/floating structure.",
+    "activation_authorized": false
+  },
+  "bridge_resolution": {
+    "bridge_id": "yield_to_interest_cost",
+    "from": "sovereign_yield",
+    "to": "government_interest_cost",
+    "status": "REVIEWED_DIRECT_MAPPING_REJECTED_PORTFOLIO_REPRICING_DECOMPOSITION_REQUIRED",
+    "direct_contemporaneous_mapping_supported": false,
+    "direct_scalar_multiplier_supported": false,
+    "required_empirical_decomposition": [
+      "sovereign_yield_or_other_definitionally_matched_marginal_market_rate",
+      "observed repricing/refinancing share and matched principal",
+      "government_effective_interest_rate",
+      "definitionally matched debt stock",
+      "government_interest_burden / interest expenditure"
+    ],
+    "preferred_interest_cost_reference_target": "government_interest_burden",
+    "supporting_rate_reference_target": "government_effective_interest_rate",
+    "empirical_bridge_still_required_for_activation": true
+  },
+  "dynamic_core_effect": {
+    "qualitative_feedback_topology_changed": false,
+    "government_interest_cost_current_boundary_class_after_review": "UNRESOLVED",
+    "preferred_observed_flow_target_available": true,
+    "preferred_observed_flow_target": "government_interest_burden",
+    "supporting_rate_target": "government_effective_interest_rate",
+    "exact_reference_mode_id_after_review": null,
+    "reason_for_remaining_unresolved": "The observed flow and portfolio-rate targets exist, but the generic Dynamic Core node has not been canonically narrowed and the stock/refixing propagation from marginal yield to portfolio cost remains unidentifiable at the current public-data boundary.",
+    "current_feedback_activation_authorized": false
+  },
+  "link_effect": {
+    "supply_pressure_to_sovereign_yield_link_unchanged": true,
+    "sovereign_yield_to_interest_cost_exact_integrated_equation_ready": false,
+    "refinancing_mechanism_status": "DEFERRED",
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "hard_rules": {
+    "no_sovereign_yield_equals_effective_rate_identity": true,
+    "no_sovereign_yield_times_debt_stock_shortcut_without_matched_cost_definition": true,
+    "no_effective_rate_equals_D41_interest_expenditure_identity": true,
+    "no_maturity_share_substituted_for_refixing_share": true,
+    "no_issue_size_substituted_for_repriced_principal": true,
+    "no_one_auction_yield_paired_with_aggregate_refixing_share": true,
+    "no_market_yield_substitution_for_MoF_portfolio_rate": true,
+    "no_reference_mode_promotion_by_this_review": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "next_gate": {
+    "id": "financing_channel_allocation_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "task": "Review the bridge from generic government financing need to domestic primary-market government-securities issuance across interbank auctions, retail, external securities, private placements, EU/RRF and IFI financing channels. Do not infer channel shares from residuals.",
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}
