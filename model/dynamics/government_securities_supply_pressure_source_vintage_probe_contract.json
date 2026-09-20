@@ -18,6 +18,12 @@
         "Size Announced",
         "Size Borrowed",
         "Total RON"
+      ],
+      "diagnostic_exact_tokens": [
+        "5,770.00",
+        "7,556.97",
+        "8,040.00",
+        "4,207.01"
       ]
     },
     {
@@ -48,6 +54,10 @@
         "Accepted amounts",
         "bid-to-cover ratio",
         "Holdings of government securities"
+      ],
+      "diagnostic_exact_tokens": [
+        "381.693,0",
+        "2.689,8"
       ]
     }
   ],
