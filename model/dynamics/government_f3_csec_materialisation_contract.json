@@ -1,0 +1,55 @@
+{
+  "contract_version": "0.1",
+  "purpose": "Preregister a CSEC Romania S13 F3 source probe capable of determining whether one exact monthly stock-flow boundary can be materialised without mixing units, currencies, maturities, valuations or consolidation states.",
+  "provider": "ECB Data Portal / ESCB CSEC",
+  "reference_area": "RO",
+  "reference_sector": "S13",
+  "counterpart_sector": "S1",
+  "instrument": "F3",
+  "frequency": "monthly",
+  "required_components": [
+    "gross_issues",
+    "redemptions",
+    "net_issues",
+    "closing_stock",
+    "revaluations",
+    "other_changes_in_volume"
+  ],
+  "exact_boundary_gate": {
+    "same_maturity_dimension_required": true,
+    "same_currency_denominator_required": true,
+    "same_unit_required": true,
+    "same_market_value_valuation_required": true,
+    "same_nonconsolidated_status_required": true,
+    "same_monthly_frequency_required": true,
+    "same_reference_and_counterpart_sectors_required": true,
+    "minimum_common_start": "2020-12",
+    "no_component_aggregation_from_mismatched_boundaries": true
+  },
+  "known_verified_series": {
+    "net_issues": "CSEC.M.N.RO.W0.S13.S1.N.L.F.F3.T._Z.EUR._T.M.V.N._T",
+    "closing_stock": "CSEC.M.N.RO.W0.S13.S1.N.L.LE.F3.T._Z.EUR._T.M.V.N._T"
+  },
+  "discovery_rule": "Resolve remaining component keys from official CSEC metadata/data structure or provider query output. Candidate key syntax alone is not evidence.",
+  "materialisation_rule": "Retain provider metadata and raw/normalized observations in a new immutable source vintage before any canonical model use.",
+  "identity_checks": [
+    "net_issues = gross_issues - redemptions at provider precision",
+    "closing_stock[t] = closing_stock[t-1] + net_issues[t] + revaluations[t] + other_changes_in_volume[t] at provider precision"
+  ],
+  "prohibited_shortcuts": [
+    "do not substitute BNR domestic-primary-market issue volumes for CSEC all-market S13 gross issues",
+    "do not substitute QSA net incurrence for CSEC gross issues",
+    "do not infer redemptions as gross issues minus an unrelated net-issuance boundary",
+    "do not infer revaluations or other changes from Maastricht debt changes",
+    "do not merge market-valued CSEC F3 stock with nominal Maastricht debt",
+    "do not change feedback topology from a source-discovery result alone"
+  ],
+  "current_state": {
+    "source_family_discovered": true,
+    "exact_common_six_component_boundary_materialised": false,
+    "source_vintage_retained": false,
+    "structural_refinement_authorized": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false
+  }
+}
