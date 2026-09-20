@@ -165,6 +165,9 @@ jobs:
       - name: Audit reviewed BNR government issuance pilot
         run: python scripts/audit_bnr_government_issuance_pilot.py
 
+      - name: Audit government F3 CSEC stock-flow boundary
+        run: python scripts/audit_government_f3_stock_flow_boundary.py
+
       - name: Recompute dimensional consistency independently
         run: python scripts/audit_dimensional_consistency.py
 
