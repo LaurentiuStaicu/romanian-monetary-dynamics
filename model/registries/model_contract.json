@@ -48,7 +48,18 @@
     "reference_mode_required_count": 10,
     "reference_mode_recovery_terminal_assessment": "model/dynamics/reference_mode_recovery_terminal_assessment.json",
     "reference_mode_recovery_stage_status": "STAGE_COMPLETE_FROZEN_9_OF_10_UNDER_CURRENT_PUBLIC_EVIDENCE_BOUNDARY",
-    "reference_mode_recovery_next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD"
+    "reference_mode_recovery_next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+    "instrument_specific_empirical_replays": [
+      {
+        "instrument": "F3",
+        "period_scope": "2025-Q2..2025-Q4 transitions using retained Q1..Q4 stocks/transactions",
+        "contract": "model/dynamics/f3_empirical_replay_contract.json",
+        "artifact": "model/dynamics/f3_empirical_replay_2025.json",
+        "status": "PASS_PARTIAL_INSTRUMENT_SPECIFIC_REPLAY",
+        "full_RMD_empirical_state_claim_allowed": false
+      }
+    ],
+    "full_RMD_empirical_state_claim_allowed": false
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
