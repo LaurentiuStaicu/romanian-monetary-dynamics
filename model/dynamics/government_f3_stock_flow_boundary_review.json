@@ -40,12 +40,12 @@
       }
     ],
     "source_family_verified_components": [
-      "gross issues",
+      "gross_issues",
       "redemptions",
-      "net issues",
-      "closing stocks",
+      "net_issues",
+      "closing_stock",
       "revaluations",
-      "other changes in volume"
+      "other_changes_in_volume"
     ],
     "unresolved_materialisation_detail": "Exact all-maturity/all-currency gross-issue, redemption, revaluation and other-change keys must be discovered and retained by a frozen CSEC source probe rather than inferred from key syntax."
   },
