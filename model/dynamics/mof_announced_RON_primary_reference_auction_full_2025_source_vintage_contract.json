@@ -185,7 +185,11 @@
     "retain_sha256": true,
     "retain_http_metadata": true,
     "optional_official_pdf_crosscheck": true,
-    "raw_values_not_materialised_in_this_probe": true
+    "raw_values_not_materialised_in_this_probe": true,
+    "partial_official_retention_allowed": true,
+    "unavailable_sources_must_remain_unavailable": true,
+    "event_materialisation_allowed_only_for_retained_raw_sources": true,
+    "canonical_promotion_requires_complete_required_source_coverage": true
   },
   "amendment_graph": {
     "2025-05": [
@@ -216,6 +220,6 @@
     "no_behavioural_closure_change": true,
     "no_public_version_change": true
   },
-  "pass_effect": "Authorises amendment-aware exact event parsing/materialisation from the retained official legal source vintage; no canonical reference-mode promotion follows automatically.",
-  "fail_effect": "Retain the full-year candidate as source-vintage pending and leave unavailable acts unavailable; do not substitute guessed URLs, third-party reproductions or inferred event rows."
+  "pass_effect": "A complete retained official source vintage authorises amendment-aware exact event parsing/materialisation. A partial retained vintage authorises parsing only for retained source documents and keeps full-year canonical promotion blocked.",
+  "fail_effect": "Unavailable acts remain unavailable. Do not substitute guessed URLs, third-party reproductions, inferred rows, search-engine snapshots or later auction outcomes."
 }
