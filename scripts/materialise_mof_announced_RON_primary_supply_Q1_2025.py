@@ -263,6 +263,8 @@ def materialise(out_dir: Path) -> dict:
 
     if manifest["contract"] != str(CONTRACT_PATH.relative_to(ROOT)):
         raise RuntimeError("retained source vintage is bound to a different contract")
+    if manifest["all_required_anchor_checks_pass"] is not True:
+        raise RuntimeError("retained source-vintage anchor gate is not PASS")
 
     source_manifest = {
         item["source_id"]: item for item in manifest["sources"]
@@ -427,8 +429,8 @@ def materialise(out_dir: Path) -> dict:
         "contract": str(CONTRACT_PATH.relative_to(ROOT)),
         "source_vintage_manifest": str(MANIFEST_PATH.relative_to(ROOT)),
         "source_identities": source_identities,
-        "event_level_series": str(events_path.name),
-        "monthly_series": str(monthly_path.name),
+        "event_level_series": "data/processed/mof_announced_RON_primary_supply_Q1_2025_events.csv",
+        "monthly_series": "data/processed/mof_announced_RON_primary_supply_Q1_2025_monthly.csv",
         "pilot_cutoff_date": cutoff.isoformat(),
         "document_reconciliation": reconciliations,
         "coverage": {
@@ -501,7 +503,7 @@ def materialise(out_dir: Path) -> dict:
             "may_activate_feedback": False,
         },
     }
-    assessment_path = out_dir / "mof_announced_RON_primary_supply_Q1_2025_assessment.json"
+    assessment_path = out_dir / "mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json"
     assessment_path.write_text(
         json.dumps(assessment, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
