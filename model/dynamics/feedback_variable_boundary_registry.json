@@ -320,9 +320,9 @@
     {
       "id": "sovereign_yield",
       "current_boundary_class": "UNRESOLVED",
-      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "current_runtime_role": "OBSERVED_LONG_TERM_TARGET_AVAILABLE_INACTIVE_FEEDBACK_NODE_BOUNDARY_NOT_CANONICALLY_PROMOTED",
       "exact_reference_mode_id": null,
-      "classification_basis": "A retained descriptive BNR pilot now provides instrument- and currency-specific domestic primary-market issue yields/rates for 2025, while an ECB long-term RON yield source exists separately. Neither source alone establishes the exact integrated generic sovereign_yield feedback node; instrument/maturity/market boundary and any aggregation rule remain unresolved.",
+      "classification_basis": "The ECB/ESCB long-term convergence-yield series provides an observed Romanian-leu central-government long-term target with residual maturity as close as possible to ten years. Retained BNR table 12.2 rates remain instrument- and currency-specific primary-market diagnostics and are not mapped one-to-one to this node. The node remains UNRESOLVED because no canonical reference-mode promotion or exact supply-pressure-to-yield integrated equation is authorized.",
       "related_reference_modes": [],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
       "current_feedback_activation_authorized": false,
@@ -330,9 +330,22 @@
         {
           "source": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
           "scope": "BNR_DOMESTIC_PRIMARY_MARKET_INSTRUMENT_AND_CURRENCY_SPECIFIC_ISSUE_RATES_2025",
-          "effect": "PARTIAL_ONLY: observed issue-specific primary-market yields/rates are not a single generic sovereign_yield node, are not secondary-market long yields, and are not outstanding-debt effective rates."
+          "effect": "DIAGNOSTIC_ONLY: observed primary-market rates are not the generic long-term sovereign_yield node and are not aggregated into one."
+        },
+        {
+          "source": "model/calibration_validation/sovereign_yield_source_boundary_review.json",
+          "scope": "ECB_ROMANIA_LONG_TERM_RON_10Y_CONVERGENCE_YIELD",
+          "effect": "PREFERRED_OBSERVED_TARGET_BOUNDARY_AVAILABLE: long-term national-currency central-government yield target exists, but this review does not canonically promote the Dynamic Core node."
         }
-      ]
+      ],
+      "source_boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+      "preferred_observed_target_boundary": {
+        "source": "ECB IRS",
+        "series_key": "IRS.M.RO.L.L40.CI.0000.RON.N.Z",
+        "concept": "Romania long-term RON sovereign yield, representative central-government bond boundary near 10-year residual maturity",
+        "status": "AVAILABLE_NOT_CANONICALLY_PROMOTED"
+      },
+      "primary_market_rate_bridge_status": "REVIEWED_NO_ONE_TO_ONE_BRIDGE_DIAGNOSTIC_ONLY"
     }
   ]
 }

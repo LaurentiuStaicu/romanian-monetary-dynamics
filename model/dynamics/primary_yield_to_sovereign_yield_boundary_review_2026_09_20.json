@@ -1,0 +1,122 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "gate_id": "primary_yield_to_sovereign_yield_boundary_review",
+  "purpose": "Decide whether retained BNR instrument- and currency-specific domestic primary-market issue rates should be transformed into, substituted for, or otherwise treated as the generic sovereign_yield feedback node, while preserving the already retained ECB long-term RON yield source boundary and avoiding post-hoc aggregation.",
+  "decision": "DO_NOT_BRIDGE_BNR_PRIMARY_MARKET_RATES_ONE_TO_ONE_TO_SOVEREIGN_YIELD_USE_ECB_10Y_RON_AS_PREFERRED_OBSERVED_LONG_TERM_TARGET_BOUNDARY",
+  "official_source_evidence": {
+    "bnr_primary_market": {
+      "institution": "National Bank of Romania",
+      "source": "Monthly Bulletin — December 2025, table 12.2 Government securities (new and roll-over issues)",
+      "retained_artifact": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
+      "retained_raw_manifest": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/source_vintage_manifest.json",
+      "exact_observed_concept": "Monthly instrument- and currency-specific primary-market issue yield/interest-rate observations for new and roll-over government securities.",
+      "rate_semantics": [
+        "RON discount Treasury certificates: average yield (% p.a.)",
+        "RON interest-bearing government bonds: average interest rate (% p.a.)",
+        "EUR Treasury certificates: average interest rate (% p.a.)",
+        "EUR interest-bearing government bonds: average interest rate (% p.a.)",
+        "inflation-linked RON bonds: accepted margin under the average-interest-rate heading"
+      ],
+      "aggregation_boundary": "Provider-published monthly averages by instrument/currency class; no cross-class scalar aggregation is performed in RMD.",
+      "market_boundary": "DOMESTIC_PRIMARY_MARKET_NEW_AND_ROLL_OVER_ISSUES",
+      "maturity_boundary": "HETEROGENEOUS_NOT_FIXED_TO_TEN_YEAR_RESIDUAL_MATURITY",
+      "generic_sovereign_yield_equivalent": false
+    },
+    "ecb_long_term_target": {
+      "institution": "European Central Bank / ESCB",
+      "dataset": "IRS — Long-term interest rate statistics",
+      "series_key": "IRS.M.RO.L.L40.CI.0000.RON.N.Z",
+      "existing_boundary_review": "model/calibration_validation/sovereign_yield_source_boundary_review.json",
+      "retained_quarterly_contract": "model/calibration_validation/sovereign_yield_quarterly_materialisation_contract.json",
+      "retained_source_vintage": "data/source_vintages/sovereign-yield-quarterly-vintage-2026-09-19/snapshot_manifest.json",
+      "exact_observed_concept": "Representative Romanian-leu long-term government-bond interest rate for convergence purposes, monthly average, with maturity as close as possible to ten years residual maturity.",
+      "methodology": {
+        "issuer": "central government",
+        "currency": "national currency / RON",
+        "maturity": "as close as possible to ten years residual maturity",
+        "liquidity": "selected bonds should be sufficiently liquid",
+        "yield_formula": "redemption yield",
+        "multi_bond_aggregation": "simple average of yields when more than one bond is in the sample",
+        "taxation": "gross of tax"
+      },
+      "preferred_feedback_target_role": "OBSERVED_LONG_TERM_SOVEREIGN_YIELD_TARGET_CANDIDATE",
+      "canonical_reference_mode_promoted_by_this_review": false
+    }
+  },
+  "boundary_comparison": {
+    "same_currency_for_RON_components_only": true,
+    "same_market_boundary": false,
+    "same_maturity_boundary": false,
+    "same_provider_aggregation_semantics": false,
+    "same_instrument_universe": false,
+    "same_information_generation_process": false,
+    "direct_one_to_one_mapping_supported": false,
+    "post_hoc_cross_instrument_average_supported": false,
+    "regression_based_bridge_authorized": false
+  },
+  "bridge_resolution": {
+    "bridge_id": "primary_yield_to_sovereign_yield",
+    "status": "REVIEWED_NO_ONE_TO_ONE_BRIDGE_DIAGNOSTIC_ONLY",
+    "from": "instrument_specific_domestic_primary_market_yield",
+    "to": "sovereign_yield",
+    "resolution": "Do not insert the BNR primary-market monthly rates as a required intermediate state in the empirical issuance-yield chain. Retain them as auction-pricing diagnostics. For the long-term sovereign_yield target boundary, prefer the already retained ECB 10-year RON convergence-yield source.",
+    "bnr_role_after_review": "DESCRIPTIVE_PRIMARY_MARKET_PRICING_DIAGNOSTIC",
+    "ecb_role_after_review": "PREFERRED_OBSERVED_LONG_TERM_TARGET_BOUNDARY",
+    "synthetic_scalar_created": false,
+    "one_to_one_bridge_created": false
+  },
+  "empirical_chain_effect": {
+    "previous_candidate_chain": [
+      "government_financing_need",
+      "domestic_primary_market_government_securities_gross_issuance",
+      "government_securities_supply_pressure",
+      "instrument_specific_domestic_primary_market_yield",
+      "government_interest_cost"
+    ],
+    "reviewed_candidate_chain": [
+      "government_financing_need",
+      "domestic_primary_market_government_securities_gross_issuance",
+      "government_securities_supply_pressure",
+      "sovereign_yield",
+      "government_interest_cost"
+    ],
+    "qualitative_feedback_topology_changed": false,
+    "interpretation": "The reviewed empirical chain now matches the existing qualitative supply-pressure to sovereign-yield link. This is a boundary clarification only; it does not make the link equation-ready."
+  },
+  "sovereign_yield_node_effect": {
+    "current_boundary_class_after_review": "UNRESOLVED",
+    "preferred_observed_target_boundary_available": true,
+    "preferred_observed_target": "ECB IRS.M.RO.L.L40.CI.0000.RON.N.Z",
+    "exact_reference_mode_id_after_review": null,
+    "reason_for_remaining_unresolved": "The observed long-term target boundary is available, but the Dynamic Core node has not been canonically narrowed/promoted as a reference mode and no exact supply-pressure-to-yield integrated equation has passed validation.",
+    "current_feedback_activation_authorized": false
+  },
+  "supply_pressure_to_yield_link_effect": {
+    "exact_target_boundary_available": true,
+    "supply_pressure_observable_fully_resolved": false,
+    "exact_integrated_equation_ready": false,
+    "estimation_authorized": false,
+    "current_activation_authorized": false
+  },
+  "hard_rules": {
+    "no_average_of_bnr_tbill_and_bond_rates_to_create_sovereign_yield": true,
+    "no_average_across_RON_and_EUR_primary_rates": true,
+    "no_maturity_blind_primary_rate_aggregation": true,
+    "no_primary_market_rate_relabelled_secondary_or_long_term_yield": true,
+    "no_ecb_10y_relabelled_pure_credit_spread": true,
+    "no_reference_mode_promotion_by_this_review": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "next_gate": {
+    "id": "yield_to_interest_cost_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "task": "Review how the preferred long-term sovereign-yield target can propagate to government_interest_cost through debt maturity, refinancing and re-fixing structure. Do not equate a contemporaneous 10-year yield with the effective interest cost of the outstanding debt stock.",
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}

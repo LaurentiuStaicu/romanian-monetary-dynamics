@@ -126,7 +126,7 @@
     "mof_announced_RON_primary_reference_auction_supply_missing_required_source_count": 3,
     "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
     "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_3_REQUIRED_SOURCES_REMAINING",
-    "government_issuance_yield_next_independent_task": "primary_yield_to_sovereign_yield_boundary_review",
+    "government_issuance_yield_next_independent_task": "yield_to_interest_cost_boundary_review",
     "government_issuance_yield_next_independent_task_authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
     "mof_announced_RON_primary_reference_auction_supply_event_level_complete_final_months": [
       "2025-01",
@@ -138,7 +138,11 @@
       "2025-07",
       "2025-09",
       "2025-10"
-    ]
+    ],
+    "primary_yield_to_sovereign_yield_boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+    "primary_yield_to_sovereign_yield_boundary_status": "REVIEWED_NO_ONE_TO_ONE_BRIDGE_DIAGNOSTIC_ONLY_ECB_10Y_RON_PREFERRED_TARGET_BOUNDARY",
+    "sovereign_yield_preferred_observed_target": "ECB_IRS_M_RO_L_L40_CI_0000_RON_N_Z",
+    "sovereign_yield_canonical_reference_mode_promoted": false
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",

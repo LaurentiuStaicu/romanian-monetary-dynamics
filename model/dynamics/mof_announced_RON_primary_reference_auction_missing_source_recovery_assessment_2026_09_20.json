@@ -122,11 +122,11 @@
     "reason": "Five sources were recovered. Repeated probes for the remaining three add no information unless a new official transport/source path appears."
   },
   "next_independent_issuance_yield_task": {
-    "id": "primary_yield_to_sovereign_yield_boundary_review",
+    "id": "yield_to_interest_cost_boundary_review",
     "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
-    "may_construct_generic_sovereign_yield": false,
-    "may_estimate_yield_effect": false,
-    "may_activate_feedback": false
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
   },
   "recovered_sources": [
     {
