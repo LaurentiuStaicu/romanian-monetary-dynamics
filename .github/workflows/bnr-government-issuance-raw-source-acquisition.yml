@@ -1,0 +1,38 @@
+name: BNR Government Issuance Raw Source Acquisition
+
+on:
+  push:
+    branches:
+      - source-vintage/bnr-government-issuance-raw-2026-09-20
+
+permissions:
+  contents: read
+
+jobs:
+  acquire-reviewed-bnr-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out acquisition branch
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify frozen acquisition contract and offline guards
+        run: python -m unittest tests.test_bnr_government_issuance_raw_source_acquisition -v
+
+      - name: Acquire exact official BNR source
+        run: |
+          python scripts/acquire_bnr_government_issuance_raw_source.py \
+            --output bnr_government_issuance_raw_artifacts
+
+      - name: Upload exact raw source and manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: bnr-government-issuance-raw-${{ github.sha }}
+          path: bnr_government_issuance_raw_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
