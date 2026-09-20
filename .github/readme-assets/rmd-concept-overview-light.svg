@@ -16,58 +16,58 @@
     <g font-size="17" fill="#333333">
       <rect x="75" y="125" width="150" height="70" rx="6" fill="#ffffff" stroke="#707070" stroke-width="1.5"/>
       <text x="150" y="153" text-anchor="middle" font-weight="700">H</text>
-      <text x="150" y="177" text-anchor="middle" font-size="15">Households + NPISH</text>
+      <text x="150" y="177" text-anchor="middle" font-size="16">Households + NPISH</text>
 
       <rect x="239" y="125" width="150" height="70" rx="6" fill="#ffffff" stroke="#707070" stroke-width="1.5"/>
       <text x="314" y="153" text-anchor="middle" font-weight="700">C</text>
-      <text x="314" y="177" text-anchor="middle" font-size="15">Non-financial corps.</text>
+      <text x="314" y="177" text-anchor="middle" font-size="16">Non-financial corps.</text>
 
       <rect x="403" y="125" width="150" height="70" rx="6" fill="#ffffff" stroke="#707070" stroke-width="1.5"/>
       <text x="478" y="153" text-anchor="middle" font-weight="700">F</text>
-      <text x="478" y="177" text-anchor="middle" font-size="15">Financial corps.</text>
+      <text x="478" y="177" text-anchor="middle" font-size="16">Financial corps.</text>
 
       <rect x="567" y="125" width="150" height="70" rx="6" fill="#ffffff" stroke="#707070" stroke-width="1.5"/>
       <text x="642" y="153" text-anchor="middle" font-weight="700">G</text>
-      <text x="642" y="177" text-anchor="middle" font-size="15">General government</text>
+      <text x="642" y="177" text-anchor="middle" font-size="16">General government</text>
 
       <rect x="731" y="125" width="150" height="70" rx="6" fill="#ffffff" stroke="#707070" stroke-width="1.5"/>
       <text x="806" y="153" text-anchor="middle" font-weight="700">BNR</text>
-      <text x="806" y="177" text-anchor="middle" font-size="15">Central bank</text>
+      <text x="806" y="177" text-anchor="middle" font-size="16">Central bank</text>
 
       <rect x="895" y="125" width="150" height="70" rx="6" fill="#ffffff" stroke="#707070" stroke-width="1.5"/>
       <text x="970" y="153" text-anchor="middle" font-weight="700">X</text>
-      <text x="970" y="177" text-anchor="middle" font-size="15">Rest of world</text>
+      <text x="970" y="177" text-anchor="middle" font-size="16">Rest of world</text>
     </g>
 
     <line x1="560" y1="205" x2="560" y2="238" stroke="#707070" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="578" y="228" font-size="14" fill="#707070">represented through</text>
+    <text x="578" y="228" font-size="16" fill="#707070">represented through</text>
 
     <rect x="110" y="250" width="900" height="74" rx="8" fill="#ffffff" stroke="#707070" stroke-width="2"/>
     <text x="145" y="279" font-size="21" font-weight="700" fill="#333333">Accounting Spine</text>
     <text x="145" y="305" font-size="17" fill="#707070">F2–F8 · stocks · transactions · revaluations · double-entry conservation</text>
 
     <line x1="560" y1="324" x2="560" y2="355" stroke="#707070" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="578" y="347" font-size="14" fill="#707070">checked against / constrained by</text>
+    <text x="578" y="347" font-size="16" fill="#707070">checked against / constrained by</text>
 
     <rect x="110" y="368" width="900" height="74" rx="8" fill="#ffffff" stroke="#707070" stroke-width="2"/>
     <text x="145" y="397" font-size="21" font-weight="700" fill="#333333">Observed evidence &amp; reference modes</text>
     <text x="145" y="423" font-size="17" fill="#707070">official / reproducible sources · retained vintages · 9 / 10 required modes ready</text>
 
     <line x1="560" y1="442" x2="560" y2="473" stroke="#707070" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="578" y="465" font-size="14" fill="#707070">informs; does not activate</text>
+    <text x="578" y="465" font-size="16" fill="#707070">informs; does not activate</text>
 
     <rect x="110" y="486" width="900" height="74" rx="8" fill="#ffffff" stroke="#707070" stroke-width="2"/>
     <text x="145" y="515" font-size="21" font-weight="700" fill="#333333">Candidate dynamics</text>
     <text x="145" y="541" font-size="17" fill="#707070">feedback architecture · delays · behavioural candidates · 0 quantitatively active feedback loops</text>
 
     <line x1="560" y1="560" x2="560" y2="591" stroke="#707070" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="578" y="583" font-size="14" fill="#707070">must pass before quantitative activation</text>
+    <text x="578" y="583" font-size="16" fill="#707070">must pass before quantitative activation</text>
 
     <rect x="110" y="604" width="900" height="74" rx="8" fill="#ffffff" stroke="#707070" stroke-width="2"/>
     <text x="145" y="633" font-size="21" font-weight="700" fill="#333333">Activation gates</text>
     <text x="145" y="659" font-size="17" fill="#707070">evidence · identification · units · extreme conditions · sensitivity · validation</text>
 
     <rect x="250" y="690" width="620" height="28" rx="14" fill="#333333"/>
-    <text x="560" y="710" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Current state: Evidence-Triggered Baseline Hold · behavioural closure inactive</text>
+    <text x="560" y="710" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">Current state: Evidence-Triggered Baseline Hold · behavioural closure inactive</text>
   </g>
 </svg>
