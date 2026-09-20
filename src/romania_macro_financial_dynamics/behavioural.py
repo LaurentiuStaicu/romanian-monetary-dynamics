@@ -34,6 +34,12 @@ def _unit_interval(value: float, name: str) -> None:
         raise InvalidBehaviouralInput(f"{name} must lie in [0, 1]")
 
 
+def _nonnegative(value: float, name: str) -> None:
+    _finite(value)
+    if value < 0.0:
+        raise InvalidBehaviouralInput(f"{name} must be non-negative")
+
+
 def partial_adjustment_rate(
     previous_rate: float,
     policy_rate: float,
@@ -90,7 +96,7 @@ def household_consumption_growth(
     rate_sensitivity: float,
     debt_service_sensitivity: float,
 ) -> float:
-    """Candidate reduced-form household consumption-growth equation."""
+    """Candidate reduced-form household consumption-growth equation.\n\n    Sensitivity parameters are non-negative magnitudes; the equation operators\n    own the causal signs. A negative magnitude is invalid for this frozen form.\n    """
 
     _finite(
         disposable_income_growth,
@@ -101,6 +107,9 @@ def household_consumption_growth(
         rate_sensitivity,
         debt_service_sensitivity,
     )
+    _nonnegative(income_sensitivity, "income_sensitivity")
+    _nonnegative(rate_sensitivity, "rate_sensitivity")
+    _nonnegative(debt_service_sensitivity, "debt_service_sensitivity")
     return (
         intercept
         + income_sensitivity * disposable_income_growth
@@ -156,8 +165,10 @@ def aggregate_credit_growth(
 ) -> float:
     """Candidate aggregate bank-credit growth equation.
 
-    Bank-level evidence does not by itself identify this aggregate relation; it
-    remains a candidate until the declared data and identifiability gates pass.
+    Sensitivity parameters are non-negative magnitudes; the equation operators
+    own the causal signs. Bank-level evidence does not by itself identify this
+    aggregate relation; it remains a candidate until the declared data and
+    identifiability gates pass.
     """
 
     _finite(
@@ -171,6 +182,10 @@ def aggregate_credit_growth(
         npl_sensitivity,
         capital_sensitivity,
     )
+    _nonnegative(activity_sensitivity, "activity_sensitivity")
+    _nonnegative(rate_sensitivity, "rate_sensitivity")
+    _nonnegative(npl_sensitivity, "npl_sensitivity")
+    _nonnegative(capital_sensitivity, "capital_sensitivity")
     return (
         intercept
         + activity_sensitivity * activity_growth
@@ -243,7 +258,7 @@ def npl_ratio_change(
     debt_service_sensitivity: float,
     persistence: float,
 ) -> float:
-    """Candidate credit-risk/NPL change equation; not admitted to the core yet."""
+    """Candidate credit-risk/NPL change equation; not admitted to the core yet.\n\n    Output and debt-service sensitivities are non-negative magnitudes; the\n    equation operators own their causal signs.\n    """
 
     _finite(
         output_growth,
@@ -253,6 +268,8 @@ def npl_ratio_change(
         output_sensitivity,
         debt_service_sensitivity,
     )
+    _nonnegative(output_sensitivity, "output_sensitivity")
+    _nonnegative(debt_service_sensitivity, "debt_service_sensitivity")
     _unit_interval(persistence, "persistence")
     return (
         intercept
