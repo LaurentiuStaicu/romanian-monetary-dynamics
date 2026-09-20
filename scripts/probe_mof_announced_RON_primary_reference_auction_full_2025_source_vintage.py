@@ -12,6 +12,8 @@ import hashlib
 import html
 import json
 import re
+import subprocess
+import tempfile
 import unicodedata
 from datetime import datetime, timezone
 from html.parser import HTMLParser
@@ -121,26 +123,87 @@ def act_identity_checks(text: str, document: dict) -> dict[str, bool]:
     }
 
 
+def _curl_fetch(url: str, accept: str) -> tuple[int, bytes, dict]:
+    with tempfile.TemporaryDirectory() as tmp:
+        body_path = Path(tmp) / "body.bin"
+        header_path = Path(tmp) / "headers.txt"
+        result = subprocess.run(
+            [
+                "curl",
+                "--fail-with-body",
+                "--location",
+                "--retry", "3",
+                "--retry-delay", "2",
+                "--connect-timeout", "30",
+                "--max-time", "90",
+                "--silent",
+                "--show-error",
+                "--dump-header", str(header_path),
+                "--output", str(body_path),
+                "--write-out", "%{http_code}",
+                "--header", f"Accept: {accept}",
+                "--header", "Accept-Language: ro-RO,ro;q=0.9,en;q=0.7",
+                "--header", "Cache-Control: no-cache",
+                "--header", "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/140 Safari/537.36",
+                url,
+            ],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if result.returncode != 0:
+            raise RuntimeError(
+                f"curl transport failed for {url}: "
+                f"returncode={result.returncode}; stderr={result.stderr.strip()}"
+            )
+        status_text = result.stdout.strip()
+        if not status_text.isdigit():
+            raise RuntimeError(f"curl did not return numeric HTTP status for {url}")
+        status = int(status_text)
+        payload = body_path.read_bytes()
+        raw_headers = header_path.read_text(encoding="iso-8859-1", errors="replace")
+        blocks = [block for block in raw_headers.split("\r\n\r\n") if block.strip()]
+        final_headers = blocks[-1] if blocks else raw_headers
+        metadata = {"transport": "curl_browser_headers"}
+        for line in final_headers.splitlines()[1:]:
+            if ":" not in line:
+                continue
+            key, value = line.split(":", 1)
+            lk = key.strip().casefold()
+            if lk == "content-type":
+                metadata["content_type"] = value.strip()
+            elif lk == "last-modified":
+                metadata["last_modified"] = value.strip()
+            elif lk == "etag":
+                metadata["etag"] = value.strip()
+        return status, payload, metadata
+
+
 def fetch(url: str, accept: str) -> tuple[int, bytes, dict]:
     request = Request(
         url,
         headers={
             "Accept": accept,
+            "Accept-Language": "ro-RO,ro;q=0.9,en;q=0.7",
             "User-Agent": (
-                "Romanian-Monetary-Dynamics-source-vintage/0.1 "
-                "(https://github.com/LaurentiuStaicu/romanian-monetary-dynamics)"
+                "Mozilla/5.0 (X11; Linux x86_64) "
+                "AppleWebKit/537.36 Chrome/140 Safari/537.36"
             ),
         },
     )
-    with urlopen(request, timeout=90) as response:
-        status = int(response.getcode())
-        payload = response.read()
-        metadata = {
-            "content_type": response.headers.get("Content-Type"),
-            "last_modified": response.headers.get("Last-Modified"),
-            "etag": response.headers.get("ETag"),
-        }
-    return status, payload, metadata
+    try:
+        with urlopen(request, timeout=90) as response:
+            status = int(response.getcode())
+            payload = response.read()
+            metadata = {
+                "transport": "urllib_browser_headers",
+                "content_type": response.headers.get("Content-Type"),
+                "last_modified": response.headers.get("Last-Modified"),
+                "etag": response.headers.get("ETag"),
+            }
+        return status, payload, metadata
+    except Exception:
+        return _curl_fetch(url, accept)
 
 
 def search_url(document: dict) -> str:
