@@ -122,8 +122,12 @@
     "mof_announced_RON_primary_reference_auction_supply_missing_required_source_count": 8,
     "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
     "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_PROVIDER_TRANSPORT_BLOCKED",
-    "government_issuance_yield_next_independent_task": "primary_yield_to_sovereign_yield_boundary_review",
-    "government_issuance_yield_next_independent_task_authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY"
+    "government_issuance_yield_next_independent_task": "yield_to_interest_cost_boundary_review",
+    "government_issuance_yield_next_independent_task_authorization": "STRUCTURAL_STOCK_FLOW_PROPAGATION_REVIEW_ONLY",
+    "primary_yield_to_sovereign_yield_boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+    "sovereign_yield_measurement_architecture": "STRUCTURED_YIELD_MEASUREMENT_LAYER_KEEP_GENERIC_NODE_UNRESOLVED",
+    "sovereign_yield_scalar_selected": false,
+    "sovereign_yield_node_resolved": false
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
