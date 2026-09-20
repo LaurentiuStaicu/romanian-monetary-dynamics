@@ -69,7 +69,10 @@ def refinancing_effective_rate(
     """Weighted repricing of the effective debt rate as debt is refinanced.
 
     This is a stock-composition mechanism, not a fiscal reaction function.
-    ``refinancing_share`` must be supported by maturity/refinancing data.
+    ``refinancing_share`` is a dimensionless fraction of the opening debt stock
+    repriced/refinanced during the declared observation period. It is used as a
+    convex weight, not as a continuous-time rate, and must be supported by
+    matched maturity/refinancing evidence.
     """
 
     _finite(previous_effective_rate, marginal_market_yield)

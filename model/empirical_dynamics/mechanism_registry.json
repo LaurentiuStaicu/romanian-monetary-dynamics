@@ -94,12 +94,12 @@
         {
           "id": "m[t]",
           "status": "UNIDENTIFIED_NO_DEFAULT",
-          "unit": "fraction_per_period",
+          "unit": "dimensionless_period_share",
           "bounds": [
             0,
             1
           ],
-          "interpretation": "share of debt stock repriced/refinanced in period"
+          "interpretation": "dimensionless share of the opening debt stock repriced/refinanced during the declared observation period; used as a convex weight, not as a continuous-time rate"
         }
       ],
       "estimation_plan": "Do not estimate at the current public-data boundary. Reopen only if same-boundary instrument/block evidence supplies opening outstanding principal, realized repriced/refinanced or reset principal, and matched old/new effective rates sufficient to pass the frozen government repricing-ledger gates. Maturity shares, refixing targets, aggregate financing needs, issue sizes, or one auction yield may not substitute for the missing matched repricing structure.",
@@ -572,5 +572,6 @@
         "reason": "Generic exploratory distributed-lag FX pass-through equation retained for research history. The preregistered FX-inflation candidate failed before holdout and no pass-through behavioural form is currently admitted."
       }
     ]
-  }
+  },
+  "behavioural_unit_contract": "model/empirical_dynamics/behavioural_unit_contract.json"
 }
