@@ -198,6 +198,9 @@ jobs:
       - name: Audit partial full-2025 competitive announced-supply materialisation
         run: python scripts/audit_mof_announced_RON_primary_reference_auction_partial_2025.py
 
+      - name: Audit announced-supply missing-source recovery hold
+        run: python scripts/audit_mof_announced_RON_primary_reference_auction_missing_source_recovery.py
+
       - name: Audit ECB supply-load denominator candidate probe assessment
         run: python scripts/audit_ecb_supply_load_denominator_probe_assessment.py
 
