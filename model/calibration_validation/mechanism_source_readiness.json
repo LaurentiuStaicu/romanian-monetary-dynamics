@@ -278,17 +278,18 @@
     {
       "id": "fiscal_primary_balance_reaction",
       "classification": "DEFERRED",
-      "source_readiness": "CAPB_9_RELEASE_TIMING_ADJUDICATED_PRE2022_SOURCE_PROBE_AND_RAW_RETENTION_PENDING",
-      "next_admissible_action": "Manually dispatch the preregistered Spring/Autumn 2011-2021 AMECO UBLGBPS source-structure probe and review exact release-level presence. Separately preserve the reviewed 2022-2026 raw ZIP bytes permanently. Do not estimate, select a replacement form, or open the prior 2018-2024 final evaluation.",
+      "source_readiness": "STRUCTURAL_PRIMARY_REALTIME_WINDOW_ADJUDICATED_RAW_SOURCE_PRESERVATION_PENDING",
+      "next_admissible_action": "Manually dispatch the preregistered raw-source preservation workflow to promote the exact reviewed AMECO artifacts into a repository-retained source vintage without provider refetch. Keep UBLGBPS as the exact structural-primary target; do not substitute the longer UBLGBP cyclically adjusted primary-balance family.",
       "blockers": [
-        "The 2022-2026 CAPB materialisation succeeded for 9/9 releases and its timing has been adjudicated, but the exact raw ZIP bytes remain only in a temporary GitHub Actions artifact rather than a repository-retained source vintage.",
-        "Only five first-historical CAPB observations (2021-2025) are currently retained; official Spring/Autumn archive endpoints exist back to 2011, but exact UBLGBPS presence in the 2011-2021 payloads has not yet been source-probed.",
-        "Even if all pre-2022 archives contain UBLGBPS, the maximum first-historical window is about 16 annual observations, below the prior 29-target-year calibration/selection/final-evaluation design.",
-        "No independently justified replacement validation design has been preregistered; the prior 2018-2024 final-evaluation window remains closed."
+        "Exact UBLGBPS is absent from all six valid Spring/Autumn 2011-2013 archives and first appears in Spring 2014.",
+        "The canonical Spring first-historical structural-primary chain spans 2013-2025, only 13 annual observations; the prior 29-target-year calibration/selection/final-evaluation design cannot be reproduced on this real-time target.",
+        "Autumn 2018 contains two distinct official UBLGBPS rows and remains unresolved; it is excluded from the Spring-only first-historical chain rather than resolved post hoc.",
+        "The related UBLGBP cyclically adjusted primary-balance family exists earlier, but it is not the same target and may not be substituted merely to obtain a longer sample.",
+        "Exact raw AMECO archive bytes for both reviewed artifacts remain temporary Actions evidence until the preregistered preservation workflow commits them to a dedicated source-vintage branch."
       ],
       "source_boundary_review": "model/calibration_validation/fiscal_primary_balance_source_boundary_review.json",
       "estimation_or_refit_allowed": false,
-      "priority_group": "SELECTIVE_REOPEN_PRE2022_SOURCE_PROBE_AND_RAW_PRESERVATION",
+      "priority_group": "SELECTIVE_REOPEN_RAW_SOURCE_PRESERVATION",
       "materialisation_contract": "model/calibration_validation/fiscal_primary_balance_materialisation_contract.json",
       "materialiser_workflow": ".github/workflows/fiscal-primary-balance-materialisation.yml",
       "retained_source_vintage": "data/source_vintages/fiscal-primary-balance-quarterly-vintage-2026-09-19",
@@ -313,8 +314,15 @@
       "capb_pre2022_source_probe_contract": "model/calibration_validation/fiscal_reaction_capb_pre2022_source_probe_contract.json",
       "capb_pre2022_source_probe_script": "scripts/audit_fiscal_capb_pre2022_source_probe.py",
       "capb_pre2022_source_probe_workflow": ".github/workflows/fiscal-reaction-capb-pre2022-source-probe.yml",
-      "capb_pre2022_source_probe_state": "READY_MANUAL_WORKFLOW_DISPATCH_REQUIRED_NOT_EXECUTED",
-      "capb_repository_raw_bytes_retained": false
+      "capb_pre2022_source_probe_state": "EXECUTED_REVIEWED_COMPLETE",
+      "capb_repository_raw_bytes_retained": false,
+      "capb_pre2022_source_probe_assessment": "model/calibration_validation/fiscal_capb_pre2022_source_probe_assessment_2026_09_20.json",
+      "capb_measurement_semantic_refinement": "model/calibration_validation/fiscal_capb_measurement_semantic_refinement_2026_09_20.json",
+      "capb_structural_primary_first_historical_spring": "data/processed/fiscal_capb_structural_primary_first_historical_spring.csv",
+      "capb_raw_source_preservation_contract": "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json",
+      "capb_raw_source_preservation_script": "scripts/promote_fiscal_capb_raw_source_vintage.py",
+      "capb_raw_source_preservation_workflow": ".github/workflows/fiscal-capb-raw-source-preservation.yml",
+      "capb_raw_source_preservation_state": "READY_MANUAL_WORKFLOW_DISPATCH_REQUIRED_NOT_EXECUTED"
     },
     {
       "id": "monetary_policy_reaction_function",
@@ -361,12 +369,12 @@
   "priority_rule": "Priority is determined by the shortest scientifically admissible path to new independent evidence, not by a desire to activate a feedback loop. Waiting mechanisms remain frozen; source-incomplete mechanisms are not fit with proxies.",
   "current_next_step": {
     "mechanism_id": "fiscal_primary_balance_reaction",
-    "action": "MANUAL_DISPATCH_CAPB_PRE2022_SOURCE_STRUCTURE_PROBE",
-    "reason": "The 2022-2026 CAPB source gate has executed successfully and timing adjudication is complete. The next admissible evidence gate is release-level UBLGBPS presence screening for the official 2011-2021 AMECO archives; raw-byte permanent retention remains a separate reproducibility blocker.",
+    "action": "MANUAL_DISPATCH_CAPB_RAW_SOURCE_PRESERVATION",
+    "reason": "The UBLGBPS real-time source boundary is now empirically adjudicated: exact structural-primary vintages begin in Spring 2014 and yield a 13-observation Spring first-historical chain through 2025. The remaining admissible task is preservation of already-reviewed raw bytes without provider refetch.",
     "calibration_cycle_open": false,
-    "execution_mode": "MANUAL_ONLY_LIVE_SOURCE_EVIDENCE",
+    "execution_mode": "MANUAL_ONLY_REVIEWED_ARTIFACT_PRESERVATION",
     "reopen_conditions_registry": "model/calibration_validation/mechanism_reopen_conditions_registry.json",
-    "authorized_scope": "CAPB_PRE2022_SOURCE_STRUCTURE_PROBE_ONLY"
+    "authorized_scope": "CAPB_REVIEWED_RAW_SOURCE_PRESERVATION_ONLY"
   },
   "coverage_rule": {
     "scope": "ALL_NON_REJECTED_MECHANISMS",
