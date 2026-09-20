@@ -122,12 +122,13 @@
     "public_version_change_authorized": false
   },
   "next_gate": {
-    "id": "government_securities_supply_measurement_design_review",
-    "authorization": "STRUCTURAL_MEASUREMENT_DESIGN_ONLY",
-    "task": "Reassess whether the qualitative supply-pressure node should be operationalised as a vector separating announced supply level/load, announcement surprise, maturity-duration composition, auction absorption and market-liquidity context rather than forcing a single stock-normalised scalar. The Ministry nominal holdings series may be retained as a named market-capacity proxy candidate, not assumed to be the exact auction universe.",
+    "id": "mof_announced_RON_primary_supply_reference_mode_contract",
+    "authorization": "SOURCE_CONTRACT_AND_EXACT_REFERENCE_MODE_MATERIALISATION_ONLY",
+    "task": "Freeze and materialise the Ministry event-level announced RON interbank-auction supply reference mode. Keep ECB stock candidates as context/sensitivity proxies only.",
     "may_select_denominator_from_numerical_fit": false,
     "may_promote_proxy_to_supply_pressure": false,
     "may_estimate_supply_to_yield_effect": false,
     "may_activate_feedback": false
-  }
+  },
+  "supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json"
 }

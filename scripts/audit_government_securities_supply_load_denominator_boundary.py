@@ -114,12 +114,14 @@ def audit_supply_load_denominator_boundary(
             errors.append(f"denominator review may not promote {key}")
 
     next_task = review["next_task"]
-    if next_task["id"] != "government_securities_supply_measurement_design_review":
+    if next_task["id"] != "mof_announced_RON_primary_supply_reference_mode_contract":
         errors.append("denominator review next task changed")
-    if next_task["authorization"] != "STRUCTURAL_MEASUREMENT_DESIGN_ONLY":
+    if next_task["authorization"] != (
+        "SOURCE_CONTRACT_AND_EXACT_REFERENCE_MODE_MATERIALISATION_ONLY"
+    ):
         errors.append("denominator next-task authorization changed")
     if next_task["selection_criterion"] != (
-        "structural_measurement_validity_before_scalar_construction"
+        "announced_supply_reference_mode_does_not_require_stock_denominator"
     ):
         errors.append("denominator selection criterion changed")
     if next_task["may_promote_any_ratio_to_supply_pressure"] is not False:
@@ -167,7 +169,7 @@ def audit_supply_load_denominator_boundary(
     if link["supply_load_denominator_boundary_review"] != REVIEW_PATH:
         errors.append("issuance-pressure link lacks denominator review")
     if link["source_boundary_status"] != (
-        "RAW_RETAINED_ANNOUNCED_EXACT_NO_EXACT_ONE_TO_ONE_DENOMINATOR_SELECTED"
+        "STRUCTURED_MEASUREMENT_VECTOR_ADOPTED_FIRST_EX_ANTE_REFERENCE_MODE_NOT_MATERIALISED"
     ):
         errors.append("issuance-pressure link denominator status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -182,7 +184,7 @@ def audit_supply_load_denominator_boundary(
     if bridge["denominator_boundary_review"] != REVIEW_PATH:
         errors.append("issuance-pressure bridge lacks denominator review")
     if bridge["status"] != (
-        "ANNOUNCED_EXACT_NO_ONE_TO_ONE_DENOMINATOR_SUBMITTED_BIDS_BLOCKED"
+        "STRUCTURED_VECTOR_ADOPTED_ANNOUNCED_SUPPLY_REFERENCE_MODE_NOT_MATERIALISED"
     ):
         errors.append("issuance-pressure bridge status changed")
 
@@ -195,8 +197,10 @@ def audit_supply_load_denominator_boundary(
         errors.append("model contract denominator status changed")
     if dynamic["government_securities_supply_load_ratio_materialisation_authorized"] is not False:
         errors.append("model contract may not authorize supply-load ratio")
+    if dynamic.get("government_securities_supply_stock_normalisation_required") is not False:
+        errors.append("model contract may not require stock normalization for first reference mode")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "government_securities_supply_measurement_design_review"
+        "mof_announced_RON_primary_supply_reference_mode_contract"
     ):
         errors.append("model contract next task changed")
 
@@ -243,7 +247,7 @@ def main() -> None:
                 "ratio_materialisation_authorized": False,
                 "pressure_node_resolved": False,
                 "feedback_activation_authorized": False,
-                "next_task": "government_securities_supply_measurement_design_review",
+                "next_task": "mof_announced_RON_primary_supply_reference_mode_contract",
             },
             indent=2,
         )

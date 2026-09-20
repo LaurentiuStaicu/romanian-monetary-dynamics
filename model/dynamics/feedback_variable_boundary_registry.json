@@ -162,7 +162,7 @@
     {
       "id": "government_securities_supply_pressure",
       "current_boundary_class": "UNRESOLVED",
-      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "current_runtime_role": "QUALITATIVE_UMBRELLA_NODE_STRUCTURED_MEASUREMENT_LAYER_INACTIVE",
       "exact_reference_mode_id": null,
       "classification_basis": "Official Ministry public-debt reports expose announced, submitted and accepted RON auction amounts plus published bid-to-cover, while related reports expose outstanding domestic securities and secondary-market liquidity. These support a multidimensional candidate boundary, not a single observed supply-pressure series. Announced supply load, auction absorption, published bid-to-cover and market liquidity have distinct causal/measurement roles; the generic node remains unresolved.",
       "related_reference_modes": [],
@@ -189,7 +189,19 @@
       "source_vintage_probe_status": "PASS_RAW_RETENTION_AND_NATIVE_TEXT_EXTRACTABILITY_PARTIAL_NUMERIC_BOUNDARY",
       "supply_load_denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json",
       "supply_load_denominator_selected": false,
-      "ecb_denominator_probe_assessment": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_assessment_2026_09_20.json"
+      "ecb_denominator_probe_assessment": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_assessment_2026_09_20.json",
+      "supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
+      "measurement_architecture_status": "STRUCTURED_MEASUREMENT_VECTOR_KEEP_UMBRELLA_NODE_UNRESOLVED",
+      "measurement_vector_ids": [
+        "announced_RON_primary_supply_level",
+        "announced_RON_supply_surprise",
+        "announced_RON_duration_supply",
+        "primary_auction_absorption",
+        "primary_auction_bid_to_cover",
+        "secondary_market_liquidity_context",
+        "market_capacity_stock_proxy"
+      ],
+      "single_scalar_selected": false
     },
     {
       "id": "inflationary_pressure",

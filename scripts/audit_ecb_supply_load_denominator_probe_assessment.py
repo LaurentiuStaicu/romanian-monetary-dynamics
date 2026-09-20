@@ -245,14 +245,16 @@ def audit_ecb_denominator_probe_assessment(
     if dynamic["government_securities_supply_load_ratio_materialisation_authorized"] is not False:
         errors.append("model contract may not authorize supply-load ratio")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "government_securities_supply_measurement_design_review"
+        "mof_announced_RON_primary_supply_reference_mode_contract"
     ):
         errors.append("model contract next task changed")
 
     next_gate = assessment["next_gate"]
-    if next_gate["id"] != "government_securities_supply_measurement_design_review":
+    if next_gate["id"] != "mof_announced_RON_primary_supply_reference_mode_contract":
         errors.append("ECB assessment next gate changed")
-    if next_gate["authorization"] != "STRUCTURAL_MEASUREMENT_DESIGN_ONLY":
+    if next_gate["authorization"] != (
+        "SOURCE_CONTRACT_AND_EXACT_REFERENCE_MODE_MATERIALISATION_ONLY"
+    ):
         errors.append("ECB assessment next-gate authorization changed")
     if next_gate["may_select_denominator_from_numerical_fit"] is not False:
         errors.append("next gate may not select denominator from numerical fit")
@@ -306,7 +308,7 @@ def main() -> None:
                 "denominator_selected": False,
                 "supply_load_ratio_materialised": False,
                 "feedback_activation_authorized": False,
-                "next_gate": "government_securities_supply_measurement_design_review",
+                "next_gate": "mof_announced_RON_primary_supply_reference_mode_contract",
             },
             indent=2,
         )

@@ -80,7 +80,7 @@
     "government_issuance_yield_empirical_boundary_status": "OPEN_CHAIN_PENDING_EXPLICIT_BRIDGES",
     "government_issuance_yield_conceptual_topology_status": "CLOSED_CANDIDATE_LOOP",
     "government_issuance_yield_feedback_activation_authorized": false,
-    "next_government_issuance_yield_empirical_task": "government_securities_supply_measurement_design_review",
+    "next_government_issuance_yield_empirical_task": "mof_announced_RON_primary_supply_reference_mode_contract",
     "government_issuance_bnr_primary_market_yield_pilot": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
     "government_issuance_bnr_primary_market_yield_pilot_status": "PASS_DESCRIPTIVE_INSTRUMENT_SPECIFIC_NO_GENERIC_YIELD_AGGREGATION",
     "government_securities_supply_pressure_source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
@@ -93,7 +93,11 @@
     "government_securities_supply_load_ratio_materialisation_authorized": false,
     "government_securities_supply_load_ecb_denominator_probe_contract": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_contract.json",
     "government_securities_supply_load_ecb_denominator_probe_assessment": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_assessment_2026_09_20.json",
-    "government_securities_supply_load_ecb_denominator_probe_status": "TWO_VALID_SERIES_ONE_PREREGISTERED_DOMESTIC_GFS_KEY_NOT_FOUND_NO_SELECTION"
+    "government_securities_supply_load_ecb_denominator_probe_status": "TWO_VALID_SERIES_ONE_PREREGISTERED_DOMESTIC_GFS_KEY_NOT_FOUND_NO_SELECTION",
+    "government_securities_supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
+    "government_securities_supply_measurement_architecture": "STRUCTURED_MEASUREMENT_VECTOR_KEEP_UMBRELLA_NODE_UNRESOLVED",
+    "government_securities_supply_first_reference_mode_priority": "announced_RON_primary_supply_level",
+    "government_securities_supply_stock_normalisation_required": false
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",

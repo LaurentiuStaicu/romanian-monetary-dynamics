@@ -49,7 +49,9 @@
       "why_preferred_over_accepted_amount": "The announced amount precedes auction allocation, while accepted amount may respond to bids, financing needs and the yield outcome.",
       "activation_ready": false,
       "denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json",
-      "denominator_selected": false
+      "denominator_selected": false,
+      "legacy_status": "RETAINED_SENSITIVITY_CANDIDATE_NOT_PRIMARY_MEASUREMENT_PATH",
+      "primary_recovery_path": false
     },
     {
       "candidate_id": "domestic_RON_primary_market_auction_absorption",
@@ -123,11 +125,13 @@
     "estimation_authorized": false,
     "feedback_activation_authorized": false,
     "behavioural_closure_authorized": false,
-    "public_version_change_authorized": false
+    "public_version_change_authorized": false,
+    "measurement_vector_adopted_for_recovery": true,
+    "stock_normalised_supply_load_required": false
   },
   "next_task": {
-    "id": "government_securities_supply_measurement_design_review",
-    "authorization": "STRUCTURAL_MEASUREMENT_DESIGN_ONLY",
+    "id": "mof_announced_RON_primary_supply_reference_mode_contract",
+    "authorization": "SOURCE_CONTRACT_AND_EXACT_REFERENCE_MODE_MATERIALISATION_ONLY",
     "may_compute_pressure_ratio_now": false,
     "may_create_approximate_chart_values": false,
     "may_activate_feedback": false
@@ -135,5 +139,8 @@
   "source_vintage_probe_contract": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_contract.json",
   "source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json",
   "supply_load_denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json",
-  "ecb_denominator_probe_assessment": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_assessment_2026_09_20.json"
+  "ecb_denominator_probe_assessment": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_assessment_2026_09_20.json",
+  "supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
+  "measurement_architecture_status": "STRUCTURED_MEASUREMENT_VECTOR_KEEP_UMBRELLA_NODE_UNRESOLVED",
+  "single_scalar_search_superseded_for_primary_recovery_path": true
 }
