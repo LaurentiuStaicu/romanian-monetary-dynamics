@@ -119,7 +119,11 @@
       "2025-06",
       "2025-10"
     ],
-    "mof_announced_RON_primary_reference_auction_supply_missing_required_source_count": 8
+    "mof_announced_RON_primary_reference_auction_supply_missing_required_source_count": 8,
+    "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
+    "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_PROVIDER_TRANSPORT_BLOCKED",
+    "government_issuance_yield_next_independent_task": "primary_yield_to_sovereign_yield_boundary_review",
+    "government_issuance_yield_next_independent_task_authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",

@@ -74,7 +74,9 @@
       "full_year_announced_supply_source_vintage_contract": "model/dynamics/mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract.json",
       "full_year_announced_supply_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
       "full_year_announced_supply_partial_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json",
-      "missing_required_source_count": 8
+      "missing_required_source_count": 8,
+      "announced_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
+      "missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_PROVIDER_TRANSPORT_BLOCKED"
     },
     {
       "id": "primary_yield_to_sovereign_yield",
@@ -108,5 +110,12 @@
     "artifact": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
     "completed_on": "2026-09-20"
   },
-  "next_gate_after_materialisation": "Reconcile the exact RON auction-universe stock denominator before any supply-load ratio is computed. Submitted-bids and bid-to-cover monthly series remain blocked because the monthly report exposes them graphically without reproducible native-text month/series mapping."
+  "next_gate_after_materialisation": "Reconcile the exact RON auction-universe stock denominator before any supply-load ratio is computed. Submitted-bids and bid-to-cover monthly series remain blocked because the monthly report exposes them graphically without reproducible native-text month/series mapping.",
+  "next_independent_bridge_task": {
+    "id": "primary_yield_to_sovereign_yield_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_construct_generic_sovereign_yield": false,
+    "may_estimate_yield_effect": false,
+    "may_activate_feedback": false
+  }
 }

@@ -210,7 +210,9 @@
       "full_year_announced_RON_primary_reference_auction_supply_candidate_id": "announced_RON_primary_reference_auction_supply_level",
       "full_year_announced_RON_primary_reference_auction_supply_source_vintage_contract": "model/dynamics/mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract.json",
       "full_year_announced_RON_primary_reference_auction_supply_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
-      "full_year_announced_RON_primary_reference_auction_supply_partial_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json"
+      "full_year_announced_RON_primary_reference_auction_supply_partial_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json",
+      "announced_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
+      "announced_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_PROVIDER_TRANSPORT_BLOCKED"
     },
     {
       "id": "inflationary_pressure",
