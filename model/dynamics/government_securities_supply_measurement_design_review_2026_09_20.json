@@ -1,0 +1,222 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "node_id": "government_securities_supply_pressure",
+  "purpose": "Reassess the measurement architecture of the qualitative government-securities supply-pressure concept after exact Ministry source retention and ECB denominator-candidate testing failed to justify a one-to-one stock-normalised scalar.",
+  "decision": "STRUCTURED_MEASUREMENT_VECTOR_KEEP_UMBRELLA_NODE_UNRESOLVED",
+  "evidence_base": [
+    {
+      "source_id": "ecb_wp_2056_bid_to_cover",
+      "institution": "European Central Bank",
+      "title": "Bid-to-cover and yield changes around public debt auctions in the euro area",
+      "url": "https://www.ecb.europa.eu/pub/pdf/scpwps/ecb.wp2056.en.pdf",
+      "design_implication": "Auction absorption outcomes, especially bid-to-cover, are empirically relevant to post-auction secondary-market yields and should remain distinct from ex-ante supply."
+    },
+    {
+      "source_id": "ecb_wp_1595_auction_price_effects",
+      "institution": "European Central Bank",
+      "title": "Price effects of sovereign debt auctions in the Euro-zone: the role of the crisis",
+      "url": "https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1595.pdf",
+      "design_implication": "Secondary-market yields can move in anticipation of auctions and the effect depends on supply relative to demand, supporting separate pre-auction supply and post-auction absorption observables."
+    },
+    {
+      "source_id": "fed_feds_2013_duration_local_supply",
+      "institution": "Board of Governors of the Federal Reserve System",
+      "title": "Duration Risk versus Local Supply Channel in Treasury Yields",
+      "url": "https://www.federalreserve.gov/econres/feds/duration-risk-versus-local-supply-channel-in-treasury-yields.htm",
+      "design_implication": "Local notional supply and duration risk are distinct channels and should not be collapsed into a single amount-only measure."
+    },
+    {
+      "source_id": "boe_2024_issuance_surprises",
+      "institution": "Bank of England",
+      "title": "The yield curve impact of government debt issuance surprises and the implications for QT",
+      "url": "https://www.bankofengland.co.uk/working-paper/2024/the-yield-curve-impact-of-government-debt-issuance-surprises-and-the-implications-for-qt",
+      "design_implication": "Unexpected issuance changes are conceptually distinct from announced levels and can operate through both local-supply and duration-risk channels."
+    },
+    {
+      "source_id": "bis_wp_1232_supply_liquidity",
+      "institution": "Bank for International Settlements",
+      "title": "Bond supply, yield drifts and liquidity provision before macroeconomic announcements",
+      "url": "https://www.bis.org/publications/working-paper-1232-bond-supply-yield-drifts-and-liquidity-provision-macroeconomic-announcements",
+      "design_implication": "Dealer inventory and liquidity conditions can alter the yield impact of issuance, so liquidity belongs in context/moderation rather than being relabelled supply."
+    },
+    {
+      "source_id": "imf_wp_2018_debt_portfolio_risk",
+      "institution": "International Monetary Fund",
+      "title": "A Primer on Managing Sovereign Debt-Portfolio Risks",
+      "url": "https://www.imf.org/-/media/files/publications/wp/2018/wp1874.pdf",
+      "design_implication": "Auction predictability, issuance size, maturity and investor demand are distinct design dimensions; published plans and calendars can inform expectation architecture but do not automatically reveal market expectations."
+    },
+    {
+      "source_id": "mof_2025_indicative_financing_plan",
+      "institution": "Romanian Ministry of Finance",
+      "title": "Indicative financing plan 2025",
+      "url": "https://www.mfinante.gov.ro/static/10/Mfp/emisiuni/Programindicativ2025en_26022025.pdf",
+      "design_implication": "Romania publishes indicative domestic issuance volumes at quarterly horizon and more specific prospectus terms, enabling a future official-plan revision measure but not a direct market-expectations surprise without an additional expectations source."
+    }
+  ],
+  "measurement_vector": [
+    {
+      "measure_id": "announced_RON_primary_supply_level",
+      "timing": "EX_ANTE_AT_AUCTION_ANNOUNCEMENT",
+      "concept": "Nominal RON amount offered to the domestic primary market.",
+      "preferred_observable": "sum_of_announced_RON_target_amounts",
+      "unit": "million_RON_per_event_or_period",
+      "causal_role": "DIRECT_EX_ANTE_SUPPLY_INPUT_CANDIDATE",
+      "current_source_status": "EXACT_TABLE_VALUES_AVAILABLE_FOR_RETAINED_PROBE_VINTAGE_NOT_YET_FULL_REFERENCE_MODE",
+      "normalisation_required": false,
+      "stock_denominator_required": false,
+      "activation_ready": false,
+      "guards": [
+        "accepted or borrowed amount may not replace announced amount as ex-ante supply",
+        "retail issuance may not be mixed into the interbank-auction series without an explicit boundary change",
+        "completed-period and forward-scheduled rows must be distinguished"
+      ]
+    },
+    {
+      "measure_id": "announced_RON_supply_surprise",
+      "timing": "EX_ANTE_AT_AUCTION_ANNOUNCEMENT",
+      "concept": "Unexpected component of announced RON supply relative to information available immediately before the announcement.",
+      "preferred_observable": "announced_amount_minus_preregistered_preannouncement_expectation",
+      "unit": "million_RON_or_dimensionless_standardised_surprise",
+      "causal_role": "EX_ANTE_INFORMATION_SHOCK_CANDIDATE",
+      "current_source_status": "BLOCKED_PREANNOUNCEMENT_EXPECTATION_SOURCE_NOT_FROZEN",
+      "official_plan_revision_substitute_allowed": false,
+      "activation_ready": false,
+      "guards": [
+        "quarterly indicative financing volumes are not assumed to equal auction-specific market expectations",
+        "historical averages may not be relabelled expectations without preregistration",
+        "expectation source must be timestamped before the auction announcement"
+      ]
+    },
+    {
+      "measure_id": "announced_RON_duration_supply",
+      "timing": "EX_ANTE_AT_AUCTION_ANNOUNCEMENT",
+      "concept": "Interest-rate duration risk placed on the market by the announced auction basket.",
+      "preferred_observable": "sum_i(announced_notional_i * preannouncement_DV01_per_RON_i)",
+      "fallback_descriptive_observable": "announced_notional_by_residual_maturity_bucket",
+      "unit": "RON_DV01_or_vector_of_million_RON_by_maturity_bucket",
+      "causal_role": "EX_ANTE_DURATION_RISK_INPUT_CANDIDATE",
+      "current_source_status": "BLOCKED_EXACT_PREANNOUNCEMENT_DURATION_INPUTS_NOT_FROZEN",
+      "activation_ready": false,
+      "guards": [
+        "auction clearing yield is post-announcement/post-bidding and may not be used to construct an ex-ante duration shock",
+        "residual maturity alone may be retained as a descriptive composition vector but may not be called DV01 or duration",
+        "maturity buckets may not be aggregated with arbitrary weights"
+      ]
+    },
+    {
+      "measure_id": "primary_auction_absorption",
+      "timing": "POST_AUCTION_OUTCOME",
+      "concept": "Demand submitted relative to announced supply.",
+      "preferred_observable": "submitted_RON_bids / announced_RON_amount",
+      "unit": "dimensionless",
+      "causal_role": "AUCTION_ABSORPTION_OUTCOME_DIAGNOSTIC",
+      "current_source_status": "BLOCKED_EXACT_SUBMITTED_BIDS_MONTH_SERIES_MAPPING",
+      "activation_ready": false,
+      "guards": [
+        "this is an auction outcome and may not be treated as exogenous supply",
+        "submitted and announced amounts must share currency/instrument/time boundary"
+      ]
+    },
+    {
+      "measure_id": "primary_auction_bid_to_cover",
+      "timing": "POST_AUCTION_OUTCOME",
+      "concept": "Submitted demand relative to accepted auction amount using the Ministry published definition.",
+      "preferred_observable": "submitted_RON_bids / accepted_RON_amount",
+      "unit": "dimensionless",
+      "causal_role": "AUCTION_SUCCESS_AND_DEMAND_DIAGNOSTIC",
+      "current_source_status": "BLOCKED_EXACT_MONTH_SERIES_MAPPING_FROM_CHART",
+      "activation_ready": false,
+      "guards": [
+        "bid-to-cover may not be inverted and relabelled as pure supply pressure",
+        "accepted amount remains a jointly determined auction outcome"
+      ]
+    },
+    {
+      "measure_id": "secondary_market_liquidity_context",
+      "timing": "MARKET_CONTEXT",
+      "concept": "Capacity of the secondary market to absorb and redistribute government securities.",
+      "preferred_observable_family": [
+        "secondary_market_turnover_or_liquidity_ratio",
+        "bid_ask_spread_if_exact_source_becomes_available"
+      ],
+      "unit": "dimensionless_ratio_or_basis_points",
+      "causal_role": "MODERATOR_OR_CONTROL_NOT_SUPPLY_INPUT",
+      "current_source_status": "SOURCE_FAMILY_IDENTIFIED_NUMERIC_REFERENCE_MODE_NOT_MATERIALISED",
+      "activation_ready": false
+    },
+    {
+      "measure_id": "market_capacity_stock_proxy",
+      "timing": "MARKET_CONTEXT",
+      "concept": "Descriptive scale/capacity proxy for the domestic government-securities market.",
+      "preferred_observable_family": [
+        "Ministry_RON_denominated_domestic_market_holdings_nominal",
+        "ECB_CSEC_S1311_RON_debt_securities_stock_market_value"
+      ],
+      "unit": "million_RON",
+      "causal_role": "CONTEXT_OR_SENSITIVITY_SCALER_ONLY",
+      "current_source_status": "EXACT_CANDIDATES_RETAINED_NONE_EQUIVALENT_TO_AUCTION_UNIVERSE",
+      "activation_ready": false,
+      "guards": [
+        "no capacity proxy is selected as the mandatory denominator for announced supply",
+        "valuation and issuance-channel differences must remain explicit",
+        "a ratio using a proxy may only be a named sensitivity diagnostic, never the generic pressure node by default"
+      ]
+    }
+  ],
+  "structural_topology": {
+    "umbrella_node_status": "QUALITATIVE_UNRESOLVED_MEASUREMENT_LAYER",
+    "replace_single_scalar_search": true,
+    "ex_ante_supply_inputs": [
+      "announced_RON_primary_supply_level",
+      "announced_RON_supply_surprise",
+      "announced_RON_duration_supply"
+    ],
+    "post_auction_outcome_diagnostics": [
+      "primary_auction_absorption",
+      "primary_auction_bid_to_cover"
+    ],
+    "market_context": [
+      "secondary_market_liquidity_context",
+      "market_capacity_stock_proxy"
+    ],
+    "causal_identification_guard": "Post-auction absorption outcomes may be jointly determined with yields and demand. They require separate identification before any causal supply-to-yield equation.",
+    "scalar_composite_authorized": false,
+    "arbitrary_weighted_index_authorized": false
+  },
+  "reference_mode_strategy": {
+    "first_materialisation_priority": "announced_RON_primary_supply_level",
+    "reason": "It is the cleanest ex-ante measure, requires no disputed stock denominator, and exact Ministry target amounts are available in auction/prospectus source families.",
+    "minimum_frequency": "event_level_with_monthly_aggregation_allowed",
+    "completed_period_only_for_reference_mode": true,
+    "forward_schedule_rows_may_be_retained_as_expectation_information_but_not_as_realised_completed_month_supply": true,
+    "source_hierarchy": [
+      "Ministry issuance prospectus / auction announcement with exact indicative target amount",
+      "Ministry Flash Report exact auction table as cross-check",
+      "monthly public debt report only where exact native table mapping is reproducible"
+    ]
+  },
+  "scientific_effect": {
+    "government_securities_supply_pressure_node_resolved": false,
+    "single_supply_pressure_scalar_selected": false,
+    "stock_normalised_supply_load_required": false,
+    "measurement_vector_adopted_for_recovery": true,
+    "exact_reference_mode_promoted": false,
+    "equation_selected": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_task": {
+    "id": "mof_announced_RON_primary_supply_reference_mode_contract",
+    "authorization": "SOURCE_CONTRACT_AND_EXACT_REFERENCE_MODE_MATERIALISATION_ONLY",
+    "task": "Freeze the event-level Ministry source contract for announced RON interbank-auction target amounts, including prospectus publication timestamps, auction dates, ISIN/instrument identity, indicative target amounts and completed-period handling. Then materialise a reproducible reference-mode pilot without estimating a yield effect.",
+    "may_materialise_announced_supply_reference_mode": true,
+    "may_materialise_supply_surprise": false,
+    "may_materialise_duration_supply": false,
+    "may_estimate_supply_to_yield_effect": false,
+    "may_activate_feedback": false
+  }
+}
