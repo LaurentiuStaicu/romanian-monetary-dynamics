@@ -7,7 +7,7 @@
     "DEFERRED"
   ],
   "status_semantics": {
-    "ACTIVATED": "Functional form is admitted to the empirical model and calibration set. No default parameter is implied; numerical use requires an explicit calibrated/externally sourced parameter bundle.",
+    "ACTIVATED": "Functional form is admitted only to a currently open calibration/validation cycle. It is not validated, does not activate a System Dynamics feedback loop or behavioural closure, and must be downgraded or removed when the frozen cycle disposition does not preserve that admission.",
     "CANDIDATE": "Mechanism is plausible and evidence-linked but not yet admitted to the central calibration model because identification, aggregation or regime stability is insufficient.",
     "REJECTED": "Specified shortcut/form is excluded from the scientific model unless new evidence justifies reopening it.",
     "DEFERRED": "Mechanism may matter but current observability/identification/scope is insufficient for the empirical-dynamics cycle; it is not numerically active."
@@ -264,7 +264,7 @@
       "maps_to_dynamic_core_loop": "government_issuance_yield_loop",
       "central_feedback": false,
       "functional_form": "No admitted sovereign-yield behavioural form. The preregistered quarterly fiscal-augmented common-market AR candidate was tested and failed before holdout.",
-      "implementation": "sovereign_spread",
+      "implementation": null,
       "parameters": [
         "alpha",
         "beta_d",
@@ -543,5 +543,34 @@
         "rejected by construction for omitted repayment-capacity and balance-sheet channels"
       ]
     }
-  ]
+  ],
+  "implementation_governance": {
+    "purpose": "Keep executable behavioural functions aligned with the current scientific registry so retained exploratory code cannot be mistaken for an admitted model equation.",
+    "implementation_field_rule": "A non-null mechanism implementation names an executable reference function for the mechanism's currently documented form. It does not imply empirical validation, central-feedback activation or behavioural closure.",
+    "no_admitted_form_requires_null_implementation": true,
+    "orphan_public_behavioural_function_rule": "Every public function defined in behavioural.py must either be named by a current mechanism implementation or be explicitly listed as a retained noncanonical research form.",
+    "retained_noncanonical_forms_must_not_be_current_implementations": true,
+    "retained_noncanonical_forms": [
+      {
+        "function": "partial_adjustment_rate",
+        "status": "RETAINED_RESEARCH_FORM_NOT_ADMITTED",
+        "reason": "Historical generic partial-adjustment pass-through form. The current monetary candidate is the frozen household housing delta-policy form; the generic partial-adjustment equation must not re-enter the canonical mechanism through code availability alone."
+      },
+      {
+        "function": "corporate_investment_growth",
+        "status": "RETAINED_RESEARCH_FORM_NOT_ADMITTED",
+        "reason": "Generic exploratory investment-growth equation retained for research history. The preregistered corporate-investment selection cycle failed before holdout and no behavioural investment form is currently admitted."
+      },
+      {
+        "function": "sovereign_spread",
+        "status": "RETAINED_RESEARCH_FORM_NOT_ADMITTED",
+        "reason": "Generic exploratory sovereign-spread equation retained for research history. The preregistered sovereign-yield structural-selection cycle failed before holdout and no sovereign-yield behavioural form is currently admitted."
+      },
+      {
+        "function": "fx_pass_through_inflation",
+        "status": "RETAINED_RESEARCH_FORM_NOT_ADMITTED",
+        "reason": "Generic exploratory distributed-lag FX pass-through equation retained for research history. The preregistered FX-inflation candidate failed before holdout and no pass-through behavioural form is currently admitted."
+      }
+    ]
+  }
 }

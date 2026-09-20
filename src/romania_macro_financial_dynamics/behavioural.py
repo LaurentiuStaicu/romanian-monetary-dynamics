@@ -1,9 +1,17 @@
-"""Empirical-dynamics behavioural forms for the scientific core.
+"""Behavioural research forms for the scientific core.
 
-These are transparent candidate/admitted functional forms. They never invent
-parameter values: every coefficient required for numerical use must be supplied
-explicitly by a calibration/validation layer. Accounting Spine and Dynamic Core
-identities remain hard constraints.
+This module contains executable equations used by current candidate/deferred
+mechanisms and a small number of explicitly retained noncanonical research
+forms. Code availability is never evidence of scientific admission. The
+canonical mapping from mechanism to executable implementation is governed by
+model/empirical_dynamics/mechanism_registry.json; functions listed there as
+retained noncanonical forms may not enter the reference model, calibration,
+System Dynamics feedback activation or behavioural closure merely because they
+remain executable.
+
+No coefficient has a convenience default: every numerical parameter must be
+supplied explicitly by an authorized calibration/validation or source contract.
+Accounting Spine and Dynamic Core identities remain hard constraints.
 """
 
 from __future__ import annotations
@@ -34,9 +42,13 @@ def partial_adjustment_rate(
     long_run_pass_through: float,
     adjustment_speed: float,
 ) -> float:
-    """Partial-adjustment pass-through from policy to a bank lending rate.
+    """Retained noncanonical generic partial-adjustment pass-through form.
 
     r_t = r_(t-1) + lambda * (alpha + beta * policy_t - r_(t-1))
+
+    This historical research form is not the current RMD monetary-pass-through
+    implementation. The canonical candidate is the frozen household-housing
+    delta-policy equation recorded in the mechanism registry.
 
     Rates are percentage points per annum. ``adjustment_speed`` is a fraction of
     the remaining gap closed per observation period.
@@ -104,7 +116,11 @@ def corporate_investment_growth(
     rate_sensitivity: float,
     eu_fund_sensitivity: float,
 ) -> float:
-    """Candidate reduced-form non-financial-corporate investment equation."""
+    """Retained noncanonical exploratory corporate-investment equation.
+
+    No corporate-investment behavioural form is currently admitted after the
+    preregistered structural-selection cycle failed before holdout.
+    """
 
     _finite(
         demand_growth,
@@ -171,7 +187,11 @@ def sovereign_spread(
     deficit_sensitivity: float,
     external_risk_sensitivity: float,
 ) -> float:
-    """Candidate reduced-form sovereign-spread equation."""
+    """Retained noncanonical exploratory sovereign-spread equation.
+
+    No sovereign-yield behavioural form is currently admitted after the
+    preregistered structural-selection cycle failed before holdout.
+    """
 
     _finite(
         debt_to_gdp,
@@ -196,9 +216,11 @@ def fx_pass_through_inflation(
     depreciation_lags: tuple[float, ...],
     lag_weights: tuple[float, ...],
 ) -> float:
-    """Candidate distributed-lag FX pass-through contribution to inflation.
+    """Retained noncanonical exploratory distributed-lag FX pass-through form.
 
-    No historical pass-through coefficient is hard-coded because published
+    No FX-inflation behavioural form is currently admitted after the
+    preregistered structural-selection cycle failed before holdout. No
+    historical pass-through coefficient is hard-coded because published
     Romanian evidence indicates regime dependence over time.
     """
 
