@@ -1,0 +1,233 @@
+{
+  "contract_version": "0.1",
+  "purpose": "Make dimensional semantics executable for every currently mapped behavioural implementation without inventing empirical scales, parameter values or activation authority.",
+  "scope": "Every non-null implementation in model/empirical_dynamics/mechanism_registry.json.",
+  "principles": [
+    "Symbolic dimensional consistency is distinct from empirical measurement-scale readiness.",
+    "A dimensionless economic ratio still requires an explicit representation scale before estimation (for example fraction versus percentage points).",
+    "A discrete-period share used as a convex weight is dimensionless even when its interpretation refers to the share repriced during that period.",
+    "Passing this unit gate is necessary but never sufficient for calibration admission, System Dynamics feedback activation or behavioural closure."
+  ],
+  "unit_classes": {
+    "rate_level_pp_per_annum": {
+      "dimension": "dimensionless_rate_level",
+      "representation": "percentage_points_per_annum"
+    },
+    "dimensionless_period_share": {
+      "dimension": "dimensionless",
+      "representation": "fraction_of_stock_realised_within_declared_period",
+      "admissible_bounds": [
+        0,
+        1
+      ]
+    },
+    "period_growth_fraction": {
+      "dimension": "dimensionless",
+      "representation": "fractional_growth_over_declared_observation_period",
+      "empirical_scale_must_be_frozen_before_estimation": true
+    },
+    "ratio_level_scale_unfrozen": {
+      "dimension": "dimensionless",
+      "representation": "ratio_level_with_fraction_vs_percentage_point_scale_not_yet_frozen",
+      "empirical_scale_must_be_frozen_before_estimation": true
+    },
+    "ratio_change_per_period_scale_unfrozen": {
+      "dimension": "dimensionless",
+      "representation": "change_in_ratio_over_declared_observation_period_with_scale_not_yet_frozen",
+      "empirical_scale_must_be_frozen_before_estimation": true
+    },
+    "dimensionless_growth_to_growth": {
+      "dimension": "dimensionless",
+      "representation": "output_growth_unit_per_input_growth_unit_when_both_use_the_same_frozen_transform"
+    },
+    "growth_fraction_per_rate_pp_per_annum": {
+      "dimension": "transform_coefficient",
+      "representation": "period_growth_fraction_per_percentage_point_per_annum"
+    },
+    "growth_fraction_per_ratio_unit": {
+      "dimension": "transform_coefficient",
+      "representation": "period_growth_fraction_per_frozen_ratio_unit"
+    },
+    "ratio_change_per_growth_fraction": {
+      "dimension": "transform_coefficient",
+      "representation": "ratio_change_per_period_per_growth_fraction"
+    },
+    "ratio_change_per_ratio_unit": {
+      "dimension": "transform_coefficient",
+      "representation": "ratio_change_per_period_per_frozen_ratio_unit"
+    },
+    "ratio_change_per_ratio_level": {
+      "dimension": "transform_coefficient",
+      "representation": "ratio_change_per_period_per_frozen_ratio_level_unit"
+    }
+  },
+  "hard_rules": {
+    "every_current_implementation_requires_unit_contract": true,
+    "every_parameter_requires_explicit_unit_class": true,
+    "every_input_requires_explicit_unit_class": true,
+    "all_additive_terms_must_match_output_unit_class": true,
+    "unfrozen_measurement_scale_blocks_unit_activation_readiness": true,
+    "unit_gate_never_authorizes_model_activation": true
+  },
+  "equations": [
+    {
+      "mechanism_id": "government_refinancing_effective_rate",
+      "implementation": "refinancing_effective_rate",
+      "output_unit_class": "rate_level_pp_per_annum",
+      "input_unit_classes": {
+        "previous_effective_rate": "rate_level_pp_per_annum",
+        "marginal_market_yield": "rate_level_pp_per_annum",
+        "refinancing_share": "dimensionless_period_share"
+      },
+      "parameter_unit_classes": {
+        "m[t]": "dimensionless_period_share"
+      },
+      "additive_terms": [
+        {
+          "id": "legacy_weighted_rate",
+          "unit_class": "rate_level_pp_per_annum"
+        },
+        {
+          "id": "marginal_weighted_rate",
+          "unit_class": "rate_level_pp_per_annum"
+        }
+      ],
+      "symbolic_dimensional_status": "CONSISTENT",
+      "measurement_scale_status": "FROZEN_FOR_FORM",
+      "unit_activation_readiness": "PASS_UNIT_GATE_ONLY",
+      "model_activation_authorized": false
+    },
+    {
+      "mechanism_id": "household_consumption_response",
+      "implementation": "household_consumption_growth",
+      "output_unit_class": "period_growth_fraction",
+      "input_unit_classes": {
+        "disposable_income_growth": "period_growth_fraction",
+        "real_borrowing_rate": "rate_level_pp_per_annum",
+        "debt_service_ratio": "ratio_level_scale_unfrozen"
+      },
+      "parameter_unit_classes": {
+        "alpha": "period_growth_fraction",
+        "beta_y": "dimensionless_growth_to_growth",
+        "beta_r": "growth_fraction_per_rate_pp_per_annum",
+        "beta_ds": "growth_fraction_per_ratio_unit"
+      },
+      "additive_terms": [
+        {
+          "id": "intercept",
+          "unit_class": "period_growth_fraction"
+        },
+        {
+          "id": "income_term",
+          "unit_class": "period_growth_fraction"
+        },
+        {
+          "id": "borrowing_rate_term",
+          "unit_class": "period_growth_fraction"
+        },
+        {
+          "id": "debt_service_term",
+          "unit_class": "period_growth_fraction"
+        }
+      ],
+      "symbolic_dimensional_status": "CONSISTENT_CONDITIONAL_ON_FROZEN_MEASUREMENT_TRANSFORMS",
+      "measurement_scale_status": "NOT_FROZEN",
+      "measurement_scale_blockers": [
+        "consumption/disposable-income growth transform and observation period are not frozen for this generic candidate",
+        "household debt-service ratio source and representation scale are not frozen"
+      ],
+      "unit_activation_readiness": "BLOCKED_MEASUREMENT_SCALE",
+      "model_activation_authorized": false
+    },
+    {
+      "mechanism_id": "aggregate_bank_credit_response",
+      "implementation": "aggregate_credit_growth",
+      "output_unit_class": "period_growth_fraction",
+      "input_unit_classes": {
+        "activity_growth": "period_growth_fraction",
+        "real_lending_rate": "rate_level_pp_per_annum",
+        "npl_ratio": "ratio_level_scale_unfrozen",
+        "capital_buffer": "ratio_level_scale_unfrozen"
+      },
+      "parameter_unit_classes": {
+        "alpha": "period_growth_fraction",
+        "beta_y": "dimensionless_growth_to_growth",
+        "beta_r": "growth_fraction_per_rate_pp_per_annum",
+        "beta_npl": "growth_fraction_per_ratio_unit",
+        "beta_cap": "growth_fraction_per_ratio_unit"
+      },
+      "additive_terms": [
+        {
+          "id": "intercept",
+          "unit_class": "period_growth_fraction"
+        },
+        {
+          "id": "activity_term",
+          "unit_class": "period_growth_fraction"
+        },
+        {
+          "id": "lending_rate_term",
+          "unit_class": "period_growth_fraction"
+        },
+        {
+          "id": "npl_term",
+          "unit_class": "period_growth_fraction"
+        },
+        {
+          "id": "capital_term",
+          "unit_class": "period_growth_fraction"
+        }
+      ],
+      "symbolic_dimensional_status": "CONSISTENT_CONDITIONAL_ON_FROZEN_MEASUREMENT_TRANSFORMS",
+      "measurement_scale_status": "NOT_FROZEN",
+      "measurement_scale_blockers": [
+        "credit target must be frozen as stock growth or transaction-based response before estimation",
+        "NPL and capital/solvency ratio representation scales and population definitions are not frozen for this aggregate equation"
+      ],
+      "unit_activation_readiness": "BLOCKED_MEASUREMENT_SCALE",
+      "model_activation_authorized": false
+    },
+    {
+      "mechanism_id": "credit_risk_npl_response",
+      "implementation": "npl_ratio_change",
+      "output_unit_class": "ratio_change_per_period_scale_unfrozen",
+      "input_unit_classes": {
+        "output_growth": "period_growth_fraction",
+        "debt_service_burden": "ratio_level_scale_unfrozen",
+        "previous_npl_ratio": "ratio_level_scale_unfrozen"
+      },
+      "parameter_unit_classes": {
+        "alpha": "ratio_change_per_period_scale_unfrozen",
+        "beta_y": "ratio_change_per_growth_fraction",
+        "beta_ds": "ratio_change_per_ratio_unit",
+        "rho": "ratio_change_per_ratio_level"
+      },
+      "additive_terms": [
+        {
+          "id": "intercept",
+          "unit_class": "ratio_change_per_period_scale_unfrozen"
+        },
+        {
+          "id": "output_term",
+          "unit_class": "ratio_change_per_period_scale_unfrozen"
+        },
+        {
+          "id": "debt_service_term",
+          "unit_class": "ratio_change_per_period_scale_unfrozen"
+        },
+        {
+          "id": "persistence_term",
+          "unit_class": "ratio_change_per_period_scale_unfrozen"
+        }
+      ],
+      "symbolic_dimensional_status": "CONSISTENT_CONDITIONAL_ON_FROZEN_MEASUREMENT_TRANSFORMS",
+      "measurement_scale_status": "NOT_FROZEN",
+      "measurement_scale_blockers": [
+        "NPL ratio change convention and observation period are not frozen for estimation",
+        "definitionally matched debt-service-burden source and representation scale are not retained"
+      ],
+      "unit_activation_readiness": "BLOCKED_MEASUREMENT_SCALE",
+      "model_activation_authorized": false
+    }
+  ]
+}
