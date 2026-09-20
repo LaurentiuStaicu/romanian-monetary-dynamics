@@ -43,6 +43,7 @@ def audit_government_debt_issuance_source_boundary(
         item["id"] for item in finding.get("candidate_future_split", [])
     }
     expected_candidates = {
+        "general_government_f3_gross_issuance_market_value",
         "domestic_primary_market_government_securities_gross_issuance",
         "government_total_realized_borrowing_or_securities_funding",
     }
