@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -62,32 +63,151 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
-def verify_baseline_manifest(manifest: dict) -> None:
-    if manifest["raw_sources_retained_count"] != 4:
-        raise RuntimeError("baseline source vintage no longer has four retained raw sources")
-    if set(manifest["retained_source_ids"]) != BASELINE_RETAINED:
-        raise RuntimeError("baseline retained source set changed")
-    if set(manifest["unavailable_source_ids"]) != RECOVERED | UNRESOLVED:
-        raise RuntimeError("baseline unavailable source set changed")
-    if manifest["canonical_reference_mode_promoted"] is not False:
-        raise RuntimeError("baseline manifest unexpectedly promotes reference mode")
-    if manifest["feedback_activation_authorized"] is not False:
-        raise RuntimeError("baseline manifest unexpectedly authorizes feedback")
-
+def _verify_retained_file_hashes(manifest: dict, source_ids: set[str]) -> None:
     by_id = {item["source_id"]: item for item in manifest["documents"]}
-    for source_id in BASELINE_RETAINED:
+    for source_id in source_ids:
         item = by_id[source_id]
         pdf_path = VINTAGE_ROOT / item["official_pdf_path"]
         if not pdf_path.is_file():
-            raise RuntimeError(f"{source_id}: retained baseline PDF missing")
+            raise RuntimeError(f"{source_id}: retained PDF missing")
         if sha256_file(pdf_path) != item["official_pdf_sha256"]:
-            raise RuntimeError(f"{source_id}: retained baseline PDF hash changed")
+            raise RuntimeError(f"{source_id}: retained PDF hash changed")
+
+
+def verify_manifest_state(manifest: dict, contract: dict | None = None) -> str:
+    if manifest["canonical_reference_mode_promoted"] is not False:
+        raise RuntimeError("source vintage unexpectedly promotes reference mode")
+    if manifest["feedback_activation_authorized"] is not False:
+        raise RuntimeError("source vintage unexpectedly authorizes feedback")
+    if manifest["yield_effect_estimation_authorized"] is not False:
+        raise RuntimeError("source vintage unexpectedly authorizes yield-effect estimation")
+
+    retained = set(manifest["retained_source_ids"])
+    unavailable = set(manifest["unavailable_source_ids"])
+
+    if (
+        manifest["raw_sources_retained_count"] == 4
+        and manifest["raw_sources_unavailable_count"] == 8
+        and retained == BASELINE_RETAINED
+        and unavailable == RECOVERED | UNRESOLVED
+    ):
+        _verify_retained_file_hashes(manifest, BASELINE_RETAINED)
+        return "PRE_RECOVERY_4"
+
+    expected_retained = BASELINE_RETAINED | RECOVERED
+    if (
+        manifest["raw_sources_retained_count"] == 9
+        and manifest["raw_sources_unavailable_count"] == 3
+        and retained == expected_retained
+        and unavailable == UNRESOLVED
+        and manifest["status"]
+        == "PARTIAL_OFFICIAL_SOURCE_RETENTION_9_OF_12_THREE_UNAVAILABLE"
+    ):
+        if contract is None:
+            contract = load_json(CONTRACT_PATH)
+        docs = {item["source_id"]: item for item in contract["documents"]}
+        manifest_docs = {item["source_id"]: item for item in manifest["documents"]}
+        _verify_retained_file_hashes(manifest, expected_retained)
+
+        for source_id in RECOVERED:
+            document = docs[source_id]
+            item = manifest_docs[source_id]
+            expected_sha = document["recovery_probe_expected_pdf_sha256"]
+            if item.get("official_pdf_sha256") != expected_sha:
+                raise RuntimeError(f"{source_id}: promoted PDF hash differs from recovery probe")
+            if item.get("official_pdf_url") != document["known_official_pdf_url"]:
+                raise RuntimeError(f"{source_id}: promoted PDF URL differs from recovery contract")
+            if item.get("recovery_identity_profile") != document["official_pdf_identity_profile"]:
+                raise RuntimeError(f"{source_id}: promoted identity profile changed")
+            if item.get("raw_source_retained") is not True:
+                raise RuntimeError(f"{source_id}: promoted raw source not marked retained")
+            if item.get("event_materialisation_authorized") is not True:
+                raise RuntimeError(f"{source_id}: promoted source not parser-authorized")
+            text_rel = item.get("native_text_path")
+            if not text_rel:
+                raise RuntimeError(f"{source_id}: promoted native-text path missing")
+            text_path = VINTAGE_ROOT / text_rel
+            if not text_path.is_file():
+                raise RuntimeError(f"{source_id}: promoted native text missing")
+            if sha256_file(text_path) != item.get("native_text_sha256"):
+                raise RuntimeError(f"{source_id}: promoted native-text hash changed")
+
+        transition = manifest.get("recovery_transition", {})
+        if transition.get("retained_before") != 4:
+            raise RuntimeError("post-recovery manifest lost retained-before count")
+        if transition.get("recovered_now") != 5:
+            raise RuntimeError("post-recovery manifest lost recovered-now count")
+        if transition.get("retained_after") != 9:
+            raise RuntimeError("post-recovery manifest lost retained-after count")
+        if transition.get("remaining_unavailable") != 3:
+            raise RuntimeError("post-recovery manifest lost remaining-unavailable count")
+        return "POST_RECOVERY_9"
+
+    raise RuntimeError(
+        "source-vintage manifest is neither the exact pre-recovery 4/12 state "
+        "nor the exact post-recovery 9/12 state"
+    )
+
+
+def verify_baseline_manifest(manifest: dict) -> None:
+    state = verify_manifest_state(manifest)
+    if state != "PRE_RECOVERY_4":
+        raise RuntimeError(f"expected pre-recovery state, found {state}")
+
+
+def _emit_existing_post_recovery_state(
+    output: Path,
+    manifest: dict,
+    contract: dict,
+) -> dict:
+    pdf_out = output / "official_pdf_crosschecks"
+    text_out = output / "native_text"
+    pdf_out.mkdir(parents=True, exist_ok=True)
+    text_out.mkdir(parents=True, exist_ok=True)
+
+    by_id = {item["source_id"]: item for item in manifest["documents"]}
+    for source_id in RECOVERED:
+        item = by_id[source_id]
+        shutil.copy2(
+            VINTAGE_ROOT / item["official_pdf_path"],
+            pdf_out / Path(item["official_pdf_path"]).name,
+        )
+        shutil.copy2(
+            VINTAGE_ROOT / item["native_text_path"],
+            text_out / Path(item["native_text_path"]).name,
+        )
+
+    (output / "source_vintage_manifest.json").write_text(
+        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    print(
+        json.dumps(
+            {
+                "status": manifest["status"],
+                "manifest_state": "POST_RECOVERY_9",
+                "raw_sources_retained": 9,
+                "raw_sources_unavailable": 3,
+                "unavailable_source_ids": manifest["unavailable_source_ids"],
+                "idempotent_reverification": True,
+                "event_rows_materialised": False,
+                "canonical_reference_mode_promoted": False,
+                "feedback_activation_authorized": False,
+            },
+            indent=2,
+        )
+    )
+    return manifest
 
 
 def promote(output: Path) -> dict:
     contract = load_json(CONTRACT_PATH)
     manifest = load_json(MANIFEST_PATH)
-    verify_baseline_manifest(manifest)
+    state = verify_manifest_state(manifest, contract)
+
+    output.mkdir(parents=True, exist_ok=True)
+    if state == "POST_RECOVERY_9":
+        return _emit_existing_post_recovery_state(output, manifest, contract)
 
     docs = {item["source_id"]: item for item in contract["documents"]}
     manifest_docs = {item["source_id"]: item for item in manifest["documents"]}
@@ -95,7 +215,6 @@ def promote(output: Path) -> dict:
     if set(docs) != set(manifest_docs):
         raise RuntimeError("contract/manifest document sets diverge")
 
-    output.mkdir(parents=True, exist_ok=True)
     pdf_out = output / "official_pdf_crosschecks"
     text_out = output / "native_text"
     pdf_out.mkdir(exist_ok=True)
