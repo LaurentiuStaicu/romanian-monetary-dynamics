@@ -7,7 +7,8 @@
     "Extreme-condition validity for the integrated model remains untested while behavioural closure is inactive.",
     "Sensitivity analysis requires scientifically admissible parameter distributions or ranges and frozen measurement transforms; convenience ranges are prohibited.",
     "A structural bound already implied by an equation, such as a convex weight in [0,1], may be tested without claiming an empirical parameter range.",
-    "Passing this contract never authorizes calibration, behavioural closure, feedback activation or policy simulation."
+    "Passing this contract never authorizes calibration, behavioural closure, feedback activation or policy simulation.",
+    "Directional stress tests assume the frozen parameter-sign convention: sensitivity coefficients are non-negative magnitudes and equation operators own the causal signs."
   ],
   "allowed_form_level_statuses": [
     "EXECUTABLE_FORM_STRESS_TESTED",
@@ -146,5 +147,6 @@
     "empirical_sensitivity_execution_status": "BLOCKED",
     "integrated_extreme_condition_status": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
     "activation_authorized": false
-  }
+  },
+  "behavioural_parameter_contract": "model/empirical_dynamics/behavioural_parameter_contract.json"
 }
