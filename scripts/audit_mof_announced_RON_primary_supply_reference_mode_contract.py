@@ -179,7 +179,7 @@ def audit_announced_supply_reference_mode_contract(
             errors.append(f"source contract may not authorize {key}")
 
     next_task = contract["next_task"]
-    if next_task["id"] != "mof_announced_RON_primary_supply_full_2025_extension":
+    if next_task["id"] != "mof_announced_RON_primary_supply_source_vintage_pilot":
         errors.append("source-contract next task changed")
     if next_task["authorization"] != (
         "RAW_SOURCE_RETENTION_EXACT_EVENT_EXTRACTION_AND_REFERENCE_MODE_PILOT_ONLY"
@@ -234,7 +234,7 @@ def audit_announced_supply_reference_mode_contract(
     if link.get("announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("issuance-pressure link lacks announced-supply contract")
     if link["source_boundary_status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_EXACT_Q1_PILOT_MATERIALISED_NOT_CANONICAL"
+        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
     ):
         errors.append("issuance-pressure link source-contract status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -258,7 +258,7 @@ def audit_announced_supply_reference_mode_contract(
     if bridge.get("announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("issuance-pressure bridge lacks announced-supply contract")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_EXACT_Q1_PILOT_MATERIALISED_NOT_CANONICAL"
+        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
     ):
         errors.append("issuance-pressure bridge source-contract status changed")
 
@@ -266,7 +266,7 @@ def audit_announced_supply_reference_mode_contract(
     if dynamic.get("mof_announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("model contract lacks announced-supply source contract")
     if dynamic["mof_announced_RON_primary_supply_reference_mode_status"] != (
-        "EXACT_Q1_PILOT_MATERIALISED_NOT_CANONICAL"
+        "PASS_EXACT_Q1_EVENT_LEVEL_PILOT_CANONICAL_PROMOTION_DEFERRED"
     ):
         errors.append("model contract announced-supply status changed")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
