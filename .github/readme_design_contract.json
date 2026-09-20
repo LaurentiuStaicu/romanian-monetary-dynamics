@@ -243,5 +243,32 @@
     "public_readme_replacement_authorized_by_this_contract": false,
     "visual_concept_diagram_creation_authorized_by_this_contract": false,
     "reason": "Contract and text-layout preview are separated from public README replacement and final concept-diagram artwork so visual/editorial review can occur before publication."
-  }
+  },
+  "benchmark_repository_patterns": [
+    {
+      "repository": "PyPSA/PyPSA",
+      "adopted_pattern": "Clear one-paragraph purpose and audience, then concise features/documentation/installation/usage/support/citation routing.",
+      "not_adopted": "Large badge wall and framework-centric feature catalogue, because RMD is a single scientific model core with a stricter scientific-status boundary."
+    },
+    {
+      "repository": "iiasa/message_ix",
+      "adopted_pattern": "Keep the repository landing page high-level and route mathematical specification, tutorials and detailed methodology to dedicated documentation.",
+      "not_adopted": "Framework/API emphasis that would obscure RMD's accounting and evidence boundaries."
+    },
+    {
+      "repository": "SDXorg/pysd",
+      "adopted_pattern": "Explain early why the project exists and what gap it addresses.",
+      "not_adopted": "Presenting RMD primarily as a simulation engine; RMD is a scientific model core."
+    },
+    {
+      "repository": "PSLmodels/OG-Core",
+      "adopted_pattern": "Make verification concrete by stating an expected reproducible outcome rather than only listing installation steps.",
+      "not_adopted": "Policy-analysis claims that exceed RMD's current validated boundary."
+    },
+    {
+      "repository": "econ-ark/HARK",
+      "adopted_pattern": "Route readers with different goals and levels of expertise to the appropriate entry point.",
+      "not_adopted": "Long introductory/tutorial material on the repository landing page."
+    }
+  ]
 }
