@@ -55,6 +55,11 @@
       "path": "model/registries/release_versioning_contract.json",
       "field": "current_public_release/current_repository_version/next_public_release_candidate",
       "rule": "Must be advanced atomically with the release preparation and finalized after publication."
+    },
+    {
+      "path": "releases/v<version>.md",
+      "field": "versioned release notes",
+      "rule": "Create a new immutable release-notes file for each public version; do not rewrite an older version file to describe newer work."
     }
   ],
   "external_release_surfaces": [
@@ -70,6 +75,7 @@
   "pre_publish_gates": [
     "All repository version surfaces agree.",
     "CITATION.cff release date and CHANGELOG release date agree with the intended publication date.",
+    "A versioned `releases/v<version>.md` file exists and matches the intended release version and scientific boundary.",
     "Scientific CI and all required accounting/materialization audits are green on the exact release commit.",
     "Release notes preserve current scientific boundaries and do not imply validated behavioural closure, causal identification or model completion unless those states are actually authorized.",
     "No previously published version/tag is mutated to contain new code or scientific artifacts."
