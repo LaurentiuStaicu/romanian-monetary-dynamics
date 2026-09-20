@@ -229,6 +229,14 @@ def pdftotext(payload: bytes) -> str:
 
 def identity_checks(text: str, document: dict) -> dict[str, bool]:
     folded = fold(text)
+    publication_number = document["publication_number"]
+    publication_digits = re.escape(publication_number)
+    if len(publication_number) > 3:
+        publication_digits = (
+            re.escape(publication_number[:-3])
+            + r"[\.\s]?"
+            + re.escape(publication_number[-3:])
+        )
     checks = {
         "order_number": bool(order_number_pattern(document["order_number"]).search(text)),
         "order_date": fold(romanian_date_anchor(document["order_date"])) in folded,
@@ -237,7 +245,7 @@ def identity_checks(text: str, document: dict) -> dict[str, bool]:
         "month_anchor": fold(document["month_anchor"]) in folded,
         "publication_number": bool(
             re.search(
-                rf"monitorul oficial[^\n]{{0,100}}(?:nr\.?\s*)?{re.escape(document['publication_number'])}\b",
+                rf"monitorul oficial[^\n]{{0,100}}(?:nr\.?\s*)?{publication_digits}\b",
                 folded,
                 re.IGNORECASE,
             )
