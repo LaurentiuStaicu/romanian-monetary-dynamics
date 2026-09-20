@@ -164,12 +164,12 @@ def audit_mof_supply_pressure_probe_assessment(
 
     dynamic = model_contract["dynamic_core"]
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "domestic_RON_supply_load_denominator_boundary_reconciliation"
+        "supply_load_denominator_candidate_materialisation_comparison"
     ):
         errors.append("model contract next task changed")
 
     next_gate = assessment["next_gate"]
-    if next_gate["id"] != "domestic_RON_supply_load_denominator_boundary_reconciliation":
+    if next_gate["id"] != "supply_load_denominator_candidate_materialisation_comparison":
         errors.append("assessment next gate changed")
     if next_gate["may_compute_pressure_ratio_now"] is not False:
         errors.append("assessment may not compute pressure ratio now")

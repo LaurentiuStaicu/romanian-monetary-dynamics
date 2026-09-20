@@ -47,7 +47,9 @@
       "unit": "dimensionless_ratio",
       "direction_for_pressure_hypothesis": "higher_ratio_candidate_higher_supply_load",
       "why_preferred_over_accepted_amount": "The announced amount precedes auction allocation, while accepted amount may respond to bids, financing needs and the yield outcome.",
-      "activation_ready": false
+      "activation_ready": false,
+      "denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json",
+      "denominator_selected": false
     },
     {
       "candidate_id": "domestic_RON_primary_market_auction_absorption",
@@ -124,12 +126,13 @@
     "public_version_change_authorized": false
   },
   "next_task": {
-    "id": "domestic_RON_supply_load_denominator_boundary_reconciliation",
-    "authorization": "SOURCE_BOUNDARY_RECONCILIATION_ONLY",
+    "id": "supply_load_denominator_candidate_materialisation_comparison",
+    "authorization": "DESCRIPTIVE_SOURCE_MATERIALISATION_AND_BOUNDARY_COMPARISON_ONLY",
     "may_compute_pressure_ratio_now": false,
     "may_create_approximate_chart_values": false,
     "may_activate_feedback": false
   },
   "source_vintage_probe_contract": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_contract.json",
-  "source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json"
+  "source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json",
+  "supply_load_denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json"
 }

@@ -141,9 +141,11 @@ def audit_supply_pressure_source_boundary(
             errors.append(f"supply-pressure source review may not promote {key}")
 
     task = review["next_task"]
-    if task["id"] != "domestic_RON_supply_load_denominator_boundary_reconciliation":
+    if task["id"] != "supply_load_denominator_candidate_materialisation_comparison":
         errors.append("next supply-pressure task changed")
-    if task["authorization"] != "SOURCE_BOUNDARY_RECONCILIATION_ONLY":
+    if task["authorization"] != (
+        "DESCRIPTIVE_SOURCE_MATERIALISATION_AND_BOUNDARY_COMPARISON_ONLY"
+    ):
         errors.append("next task authorization changed")
     if task["may_compute_pressure_ratio_now"] is not False:
         errors.append("next task may not compute pressure ratio")
@@ -184,7 +186,7 @@ def audit_supply_pressure_source_boundary(
     ):
         errors.append("issuance-to-pressure canonical readiness changed")
     if link.get("source_boundary_status") != (
-        "RAW_RETAINED_EXACT_AUCTION_TABLE_EXTRACTABLE_DENOMINATOR_AND_SUBMITTED_BIDS_BLOCKED"
+        "RAW_RETAINED_ANNOUNCED_EXACT_NO_EXACT_ONE_TO_ONE_DENOMINATOR_SELECTED"
     ):
         errors.append("issuance-to-pressure source-boundary status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -214,7 +216,7 @@ def audit_supply_pressure_source_boundary(
     if bridge["source_boundary_review"] != REVIEW_PATH:
         errors.append("structural preregistration lacks supply-pressure review")
     if bridge["status"] != (
-        "RAW_SOURCE_PASS_ANNOUNCED_EXACT_DENOMINATOR_AND_SUBMITTED_BIDS_BLOCKED"
+        "ANNOUNCED_EXACT_NO_ONE_TO_ONE_DENOMINATOR_SUBMITTED_BIDS_BLOCKED"
     ):
         errors.append("issuance-to-pressure bridge status changed")
 
@@ -228,7 +230,7 @@ def audit_supply_pressure_source_boundary(
     if dynamic["government_securities_supply_pressure_scalar_selected"] is not False:
         errors.append("model contract selected a scalar pressure index")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "domestic_RON_supply_load_denominator_boundary_reconciliation"
+        "supply_load_denominator_candidate_materialisation_comparison"
     ):
         errors.append("model contract next issuance-yield task changed")
 
@@ -268,7 +270,8 @@ def main() -> None:
                 "exact_auction_table_extractability": True,
                 "submitted_bids_series_extractable": False,
                 "denominator_boundary_frozen": False,
-                "next_task": "domestic_RON_supply_load_denominator_boundary_reconciliation",
+                "denominator_review": "NO_EXACT_ONE_TO_ONE_AUCTION_UNIVERSE_DENOMINATOR_SELECTED",
+                "next_task": "supply_load_denominator_candidate_materialisation_comparison",
             },
             indent=2,
         )

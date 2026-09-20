@@ -80,14 +80,17 @@
     "government_issuance_yield_empirical_boundary_status": "OPEN_CHAIN_PENDING_EXPLICIT_BRIDGES",
     "government_issuance_yield_conceptual_topology_status": "CLOSED_CANDIDATE_LOOP",
     "government_issuance_yield_feedback_activation_authorized": false,
-    "next_government_issuance_yield_empirical_task": "domestic_RON_supply_load_denominator_boundary_reconciliation",
+    "next_government_issuance_yield_empirical_task": "supply_load_denominator_candidate_materialisation_comparison",
     "government_issuance_bnr_primary_market_yield_pilot": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
     "government_issuance_bnr_primary_market_yield_pilot_status": "PASS_DESCRIPTIVE_INSTRUMENT_SPECIFIC_NO_GENERIC_YIELD_AGGREGATION",
     "government_securities_supply_pressure_source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
     "government_securities_supply_pressure_boundary_status": "MULTIDIMENSIONAL_CANDIDATE_BOUNDARY_NO_SCALAR_PROMOTION",
     "government_securities_supply_pressure_scalar_selected": false,
     "government_securities_supply_pressure_source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json",
-    "government_securities_supply_pressure_source_vintage_probe_status": "PASS_RAW_RETENTION_EXACT_ANNOUNCED_BORROWED_TEXT_DENOMINATOR_RECONCILIATION_REQUIRED"
+    "government_securities_supply_pressure_source_vintage_probe_status": "PASS_RAW_RETENTION_EXACT_ANNOUNCED_BORROWED_TEXT_DENOMINATOR_RECONCILIATION_REQUIRED",
+    "government_securities_supply_load_denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json",
+    "government_securities_supply_load_denominator_status": "NO_EXACT_ONE_TO_ONE_AUCTION_UNIVERSE_DENOMINATOR_SELECTED",
+    "government_securities_supply_load_ratio_materialisation_authorized": false
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
