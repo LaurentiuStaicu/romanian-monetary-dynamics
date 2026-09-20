@@ -1,0 +1,161 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "variable_id": "government_debt_issuance",
+  "purpose": "Determine whether the generic government_debt_issuance feedback node has a definitionally matched observed source, and prevent RMD from conflating domestic primary-market securities issuance, total Ministry borrowing, refinancing need, QSA net incurrence, and debt-stock changes.",
+  "verdict": "SOURCE_FAMILIES_FOUND_GENERIC_NODE_SEMANTICALLY_OVERLOADED_BOUNDARY_REMAINS_UNRESOLVED",
+  "sources": [
+    {
+      "id": "bnr_monthly_bulletin_government_securities",
+      "institution": "National Bank of Romania",
+      "source_type": "OFFICIAL_MONTHLY_STATISTICAL_BULLETIN",
+      "url": "https://muzeu.bnr.ro/uploads/2025-03-07monthlybulletinno.012025_documentpdf_545_1743160358.pdf",
+      "table": "12.2 Government securities (new and roll-over issues)",
+      "frequency": "monthly",
+      "observed_scope": [
+        "discount treasury certificates nominal value in RON",
+        "treasury certificates nominal value in EUR when present",
+        "interest-bearing government bonds allotted amount in RON",
+        "government bonds nominal value in EUR when present",
+        "associated average interest rates/yields"
+      ],
+      "exact_2025_examples": {
+        "2025-01": {
+          "discount_treasury_certificates_million_RON": 1907.7,
+          "interest_bearing_government_bonds_allotted_million_RON": 3565.5
+        },
+        "2025-02": {
+          "discount_treasury_certificates_million_RON": 1920,
+          "interest_bearing_government_bonds_allotted_million_RON": 10620.2
+        }
+      },
+      "semantic_strength": "Strong candidate for a domestic-primary-market securities issuance observable because the table explicitly covers new and roll-over issues at monthly frequency.",
+      "semantic_limits": [
+        "does not by itself represent all Ministry borrowing",
+        "does not include the full external Eurobond/loan financing boundary",
+        "does not automatically represent retail-government-securities issuance on the Ministry all-instruments boundary",
+        "monthly primary-market issue volumes are not refinancing need",
+        "monthly issue volumes are not a validated securities-supply-pressure state"
+      ]
+    },
+    {
+      "id": "mof_monthly_public_debt_report_actual_borrowing",
+      "institution": "Romania Ministry of Finance",
+      "source_type": "OFFICIAL_MONTHLY_PUBLIC_DEBT_REPORT",
+      "urls": [
+        "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport012025.pdf",
+        "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport022025.pdf"
+      ],
+      "section": "Actual borrowings in 2025 / by instrument, currency and market",
+      "frequency": "monthly report with cumulative year-to-date actual borrowing values",
+      "observed_scope": [
+        "MoF T-Bills",
+        "retail bonds",
+        "RON Treasury bonds",
+        "EUR-denominated Treasury bonds",
+        "Eurobonds",
+        "RRF/PNRR loan-component drawings",
+        "loans",
+        "domestic versus external market",
+        "local-government borrowing separately",
+        "cash-management certificates separately"
+      ],
+      "exact_2025_examples": {
+        "2025-01_cumulative_million_RON": {
+          "mof_t_bills": 1307.7,
+          "retail_bonds": 2125.2,
+          "ron_t_bonds": 5926.4,
+          "eur_t_bonds": 0,
+          "eurobonds": 0,
+          "loans": 43.4,
+          "central_government_total": 9402.7
+        },
+        "2025-02_cumulative_million_RON": {
+          "mof_t_bills": 2427.7,
+          "retail_bonds": 11358.6,
+          "ron_t_bonds": 14870.5,
+          "eur_t_bonds": 0,
+          "eurobonds": 19903,
+          "loans": 2734.6,
+          "central_government_total": 51294.4
+        }
+      },
+      "semantic_strength": "Strong candidate for realized Ministry borrowing/financing by instrument across domestic and external markets.",
+      "semantic_limits": [
+        "reported values are cumulative year-to-date rather than a frozen monthly flow table",
+        "foreign-currency instruments are converted to RON using stated forecast average exchange rates and conversion assumptions may change across report vintages",
+        "RON Treasury-bond line may include exchange operations",
+        "local-government borrowing is separate from central-government MoF borrowing",
+        "cash-management instruments are separately identified and may mature within the year",
+        "all-in borrowing is broader than debt-securities issuance because it also includes loans/RRF drawings"
+      ]
+    },
+    {
+      "id": "mof_investor_presentation_march_2025",
+      "institution": "Romania Ministry of Finance",
+      "source_type": "OFFICIAL_INVESTOR_PRESENTATION",
+      "url": "https://www.mfinante.gov.ro/static/10/Mfp/buget/sitebuget/InvestorPresentationMarch2025.pdf",
+      "evidence": "2025 financing plan and redemption profile; gross financing needs are presented separately from domestic/foreign debt redemption and financing sources.",
+      "semantic_strength": "Confirms that gross financing need, redemptions and issuance/funding are distinct concepts.",
+      "semantic_limits": [
+        "financing plan is not realized issuance",
+        "redemption profile is not actual gross issuance",
+        "plan values can include pre-financing"
+      ]
+    }
+  ],
+  "semantic_comparison": {
+    "qsa_f3_net_incurrence": {
+      "meaning": "financial-account net incurrence of F3 liabilities",
+      "gross_issuance_equivalent": false
+    },
+    "bnr_domestic_primary_market_issue_volume": {
+      "meaning": "monthly new and roll-over domestic primary-market government-securities issues by instrument/currency",
+      "gross_issuance_equivalent_on_exact_domestic_primary_market_boundary": true,
+      "full_government_borrowing_equivalent": false
+    },
+    "mof_actual_borrowing": {
+      "meaning": "realized cumulative borrowing by instrument/market under Ministry public-debt reporting",
+      "securities_only": false,
+      "monthly_increment_directly_observed": false
+    },
+    "government_refinancing_need": {
+      "meaning": "principal repayment/refinancing requirement",
+      "issuance_equivalent": false
+    },
+    "government_securities_supply_pressure": {
+      "meaning": "unresolved behavioural/market-pressure node",
+      "issuance_equivalent": false
+    }
+  },
+  "structural_finding": {
+    "semantic_overload_detected": true,
+    "current_generic_node_can_serve_both_loops_without_additional_boundary_work": false,
+    "affected_feedback_structures": [
+      "government_refinancing_interest_loop",
+      "government_issuance_yield_loop"
+    ],
+    "candidate_future_split": [
+      {
+        "id": "domestic_primary_market_government_securities_gross_issuance",
+        "best_current_source": "BNR monthly bulletin table 12.2",
+        "likely_role": "candidate observed driver for a narrowly defined domestic issuance/yield transmission path",
+        "status": "SOURCE_IDENTIFIED_BOUNDARY_NOT_YET_ADOPTED"
+      },
+      {
+        "id": "government_total_realized_borrowing_or_securities_funding",
+        "best_current_source": "Ministry monthly public-debt report",
+        "likely_role": "candidate financing-flow observable for a broader government financing/refinancing structure",
+        "status": "SOURCE_IDENTIFIED_BOUNDARY_NOT_YET_ADOPTED"
+      }
+    ],
+    "no_topology_change_in_this_review": true
+  },
+  "scientific_decision": {
+    "current_boundary_class": "UNRESOLVED",
+    "reference_mode_promoted": false,
+    "feedback_activation_authorized": false,
+    "estimation_or_refit_authorized": false,
+    "next_step": "Freeze a source-materialisation contract for the BNR domestic-primary-market series and separately for Ministry all-market actual borrowing. Do not merge the two series. Only after retained raw-source coverage and exact semantics are verified should RMD decide whether the generic node is split or redefined."
+  }
+}

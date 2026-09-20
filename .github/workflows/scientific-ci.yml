@@ -159,6 +159,9 @@ jobs:
       - name: Audit government F3 holder diagnostic
         run: python scripts/audit_government_f3_holder_diagnostic.py
 
+      - name: Audit government debt issuance source boundary
+        run: python scripts/audit_government_debt_issuance_source_boundary.py
+
       - name: Recompute dimensional consistency independently
         run: python scripts/audit_dimensional_consistency.py
 

@@ -65,7 +65,10 @@
         "government_holder_diagnostic_status": "PASS_DESCRIPTIVE_PARTIAL_FEEDBACK_EVIDENCE_ONLY"
       }
     ],
-    "full_RMD_empirical_state_claim_allowed": false
+    "full_RMD_empirical_state_claim_allowed": false,
+    "government_debt_issuance_source_boundary_review": "model/dynamics/government_debt_issuance_source_boundary_review.json",
+    "government_debt_issuance_materialisation_contract": "model/dynamics/government_debt_issuance_materialisation_contract.json",
+    "government_debt_issuance_boundary_status": "UNRESOLVED_SEMANTIC_OVERLOAD_BNR_DOMESTIC_PRIMARY_VS_MOF_ALL_MARKET_BORROWING"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
