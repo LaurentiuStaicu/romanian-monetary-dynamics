@@ -111,7 +111,7 @@
       "to": "sovereign_yield",
       "sign": "+_candidate",
       "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
-      "readiness_status": "RELATED_MECHANISM_AND_EXACT_10Y_BOUNDARY_NOT_EXACT_INTEGRATED_LINK_FORM",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
       "related_mechanisms": [
         "sovereign_yield_spread_response"
       ],
