@@ -51,7 +51,7 @@ The full sector-by-instrument accounting system is deliberately not reproduced a
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="readme-assets/rmd-concept-overview-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="readme-assets/rmd-concept-overview-light.svg">
-    <img src="readme-assets/rmd-concept-overview-light.svg" width="1120" alt="Conceptual structure of RMD: six institutional sectors are represented through an F2–F8 Accounting Spine, checked against observed evidence and reference modes, followed by quantitatively inactive candidate dynamics and explicit activation gates. Current state: Evidence-Triggered Baseline Hold with behavioural closure inactive.">
+    <img src="readme-assets/rmd-concept-overview-light.svg" width="760" alt="Conceptual structure of RMD: six institutional sectors are represented through an F2–F8 Accounting Spine, checked against observed evidence and reference modes, followed by quantitatively inactive candidate dynamics and explicit activation gates. Current state: Evidence-Triggered Baseline Hold with behavioural closure inactive.">
   </picture>
 </p>
 
