@@ -1,0 +1,133 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "probe_id": "supply_load_denominator_candidate_materialisation_comparison",
+  "contract": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_contract.json",
+  "denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json",
+  "retained_vintage": {
+    "root": "data/source_vintages/ecb-supply-load-denominator-candidates-2026-09-20",
+    "manifest": "data/source_vintages/ecb-supply-load-denominator-candidates-2026-09-20/ecb_denominator_probe_manifest.json",
+    "repository_retained": true,
+    "denominator_selected": false
+  },
+  "probe_result": {
+    "status": "TWO_VALID_SERIES_ONE_PREREGISTERED_DOMESTIC_GFS_KEY_NOT_FOUND_NO_SELECTION",
+    "valid_candidate_count": 2,
+    "candidate_count": 3
+  },
+  "candidates": {
+    "ecb_csec_central_government_domestic_currency_debt_securities_stock": {
+      "provider_status": "VALID_NONEMPTY_SERIES",
+      "series_key": "CSEC.M.N.RO.W0.S1311.S1.N.L.LE.F3.T._Z.XDC.XDC.M.V.N._T",
+      "provider_metadata_validation": {
+        "FREQ": "M",
+        "REF_AREA": "RO",
+        "REF_SECTOR": "S1311",
+        "CONSOLIDATION": "N",
+        "ACCOUNTING_ENTRY": "L",
+        "STO": "LE",
+        "INSTR_ASSET": "F3",
+        "MATURITY": "T",
+        "UNIT_MEASURE": "XDC",
+        "CURRENCY_DENOM": "XDC",
+        "VALUATION": "M",
+        "PRICES": "V",
+        "TRANSFORMATION": "N"
+      },
+      "observations_million_RON_market_value": {
+        "2024-12": 385370.436527296,
+        "2025-01": 385945.229057445,
+        "2025-02": 389795.0453263939
+      },
+      "semantic_strengths": [
+        "central-government issuer boundary S1311 is closer to Ministry central-government auction issuance than S13",
+        "domestic-currency denominator and domestic-currency reporting unit are explicit",
+        "monthly all-original-maturities stock is available"
+      ],
+      "blocking_mismatches": [
+        "market-value stock is not valuation-compatible with nominal announced auction amounts",
+        "CSEC covers central-government debt securities across issuance channels rather than the exact Ministry interbank-auction universe"
+      ],
+      "denominator_selected": false,
+      "candidate_ratio_materialised": false
+    },
+    "ecb_gfs_general_government_domestic_currency_debt_securities_face_value_stock": {
+      "provider_status": "PREREGISTERED_EXACT_KEY_NOT_FOUND",
+      "series_key": "GFS.M.N.RO.W0.S13.S1.N.L.LE.F3.T._Z.XDC.XDC.F.V.N._T",
+      "http_status": 404,
+      "provider_message": "No Series was returned for the exact preregistered query.",
+      "interpretation_guard": "This establishes only that the exact preregistered series key is unavailable. It does not prove that no related GFS currency-denomination series exists under another unit or breakdown.",
+      "post_hoc_substitution_performed": false,
+      "denominator_selected": false
+    },
+    "ecb_gfs_general_government_all_currency_debt_securities_face_value_context": {
+      "provider_status": "VALID_NONEMPTY_SERIES_CONTEXT_ONLY",
+      "series_key": "GFS.M.N.RO.W0.S13.S1.N.L.LE.F3.T._Z.EUR._T.F.V.N._T",
+      "provider_metadata_validation": {
+        "FREQ": "M",
+        "REF_AREA": "RO",
+        "REF_SECTOR": "S13",
+        "CONSOLIDATION": "N",
+        "ACCOUNTING_ENTRY": "L",
+        "STO": "LE",
+        "INSTR_ASSET": "F3",
+        "MATURITY": "T",
+        "UNIT_MEASURE": "EUR",
+        "CURRENCY_DENOM": "_T",
+        "VALUATION": "F",
+        "PRICES": "V",
+        "TRANSFORMATION": "N"
+      },
+      "observations_million_EUR_face_value_all_currencies": {
+        "2024-12": 159666.697,
+        "2025-01": 160122.577,
+        "2025-02": 164820.177
+      },
+      "semantic_strengths": [
+        "face-value valuation is conceptually compatible with nominal debt amounts",
+        "monthly all-original-maturities debt-securities stock is available"
+      ],
+      "blocking_mismatches": [
+        "general-government S13 is broader than central-government Ministry auction issuance",
+        "all-currency stock is not a RON-only denominator",
+        "reported in EUR and cannot be used as a RON denominator without a separately frozen conversion/denomination bridge",
+        "series is context/source-family validation only by preregistration"
+      ],
+      "denominator_selected": false,
+      "candidate_ratio_materialised": false
+    }
+  },
+  "cross_candidate_assessment": {
+    "selection_criterion": "semantic_boundary_and_valuation_compatibility_before_numerical_behavior",
+    "numerical_closeness_used_for_selection": false,
+    "fit_or_correlation_inspected_for_selection": false,
+    "candidate_ratios_computed": false,
+    "exact_auction_universe_and_valuation_compatible_ecb_denominator_found": false,
+    "denominator_selected": false,
+    "conclusion": "The CSEC series is valid and close in issuer/currency semantics but fails the valuation and exact-market-channel boundary. The preregistered GFS domestic-currency face-value key is unavailable. The valid GFS all-currency face-value series is broader in sector/currency and remains context only. No ECB candidate resolves the RON interbank-auction denominator boundary."
+  },
+  "scientific_effect": {
+    "ecb_candidate_source_retention_complete": true,
+    "csec_candidate_validated": true,
+    "gfs_domestic_currency_candidate_validated": false,
+    "gfs_context_candidate_validated": true,
+    "denominator_selected": false,
+    "supply_load_ratio_materialised": false,
+    "government_securities_supply_pressure_node_resolved": false,
+    "scalar_pressure_index_selected": false,
+    "equation_selected": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "government_securities_supply_measurement_design_review",
+    "authorization": "STRUCTURAL_MEASUREMENT_DESIGN_ONLY",
+    "task": "Reassess whether the qualitative supply-pressure node should be operationalised as a vector separating announced supply level/load, announcement surprise, maturity-duration composition, auction absorption and market-liquidity context rather than forcing a single stock-normalised scalar. The Ministry nominal holdings series may be retained as a named market-capacity proxy candidate, not assumed to be the exact auction universe.",
+    "may_select_denominator_from_numerical_fit": false,
+    "may_promote_proxy_to_supply_pressure": false,
+    "may_estimate_supply_to_yield_effect": false,
+    "may_activate_feedback": false
+  }
+}
