@@ -70,7 +70,11 @@ class MechanismReopenConditionsRegistryTests(unittest.TestCase):
             self.s["current_next_step"]["action"],
             self.r["current_baseline_action"],
         )
-        self.assertFalse(self.s["current_next_step"]["calibration_cycle_open"])\n        self.assertEqual(\n            entry["reopen_execution_state"],\n            "RAW_SOURCE_PRESERVATION_COMPLETE_RETURNED_TO_BASELINE_HOLD",\n        )\n        self.assertEqual(entry["reopen_execution_state"], "RAW_SOURCE_PRESERVATION_COMPLETE_RETURNED_TO_BASELINE_HOLD")
+        self.assertFalse(self.s["current_next_step"]["calibration_cycle_open"])
+        self.assertEqual(
+            entry["reopen_execution_state"],
+            "RAW_SOURCE_PRESERVATION_COMPLETE_RETURNED_TO_BASELINE_HOLD",
+        )
         path = "model/calibration_validation/mechanism_reopen_conditions_registry.json"
         self.assertEqual(self.s["mechanism_reopen_conditions_registry"], path)
         self.assertEqual(self.s["current_next_step"]["reopen_conditions_registry"], path)
