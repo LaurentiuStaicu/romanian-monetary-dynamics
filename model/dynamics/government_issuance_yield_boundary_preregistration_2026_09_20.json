@@ -90,6 +90,10 @@
     "id": "bnr_instrument_specific_primary_market_yield_pilot_2025",
     "authorization": "DESCRIPTIVE_MATERIALISATION_ONLY",
     "scope": "Materialise the instrument- and currency-specific 2025 primary-market yield/rate observations already present in retained BNR table 12.2, preserving missing/not-applicable cells and without constructing a generic sovereign-yield aggregate.",
-    "may_activate_feedback": false
-  }
+    "may_activate_feedback": false,
+    "status": "COMPLETED_DESCRIPTIVE_MATERIALISATION",
+    "artifact": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
+    "completed_on": "2026-09-20"
+  },
+  "next_gate_after_materialisation": "Assess supply-pressure observable candidates and their measurement boundary. The instrument-specific primary-market rate pilot does not resolve generic sovereign_yield and must not be aggregated post hoc."
 }
