@@ -93,10 +93,18 @@ def parse_romanian_number(value: str) -> float:
             value = value.replace(",", "")
     elif "," in value:
         parts = value.split(",")
-        if len(parts[-1]) == 3 and all(part.isdigit() for part in parts):
-            value = "".join(parts)
+        if len(parts) > 1 and all(part.isdigit() for part in parts):
+            if all(len(part) == 3 for part in parts[1:]):
+                value = "".join(parts)
+            else:
+                value = value.replace(",", ".")
         else:
             value = value.replace(",", ".")
+    elif "." in value:
+        parts = value.split(".")
+        if len(parts) > 1 and all(part.isdigit() for part in parts):
+            if all(len(part) == 3 for part in parts[1:]):
+                value = "".join(parts)
     return float(value)
 
 
