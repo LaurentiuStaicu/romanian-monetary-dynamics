@@ -1,0 +1,125 @@
+{
+  "snapshot_id": "mof-announced-ron-primary-supply-pilot-vintage-2026-09-20",
+  "fetched_at_utc": "2026-09-20T16:40:37+00:00",
+  "contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
+  "fetcher_script": "scripts/probe_mof_announced_RON_primary_supply_source_vintage.py",
+  "fetcher_script_sha256": "95edf926387fba98e54f8b47608bbeb303b9fa4f1c061c7c070e71b8787d96a4",
+  "native_text_extractor": "pdftotext -layout",
+  "sources": [
+    {
+      "source_id": "mof_order_6826_january_2025",
+      "order_number": "6826",
+      "order_issue_date": "2024-12-30",
+      "coverage_label": "January 2025",
+      "url": "https://www.mfinante.gov.ro/static/10/Mfp/trezorerie/OMF6826_ianuarie2025.pdf",
+      "http_status": 200,
+      "raw_path": "raw/mof_order_6826_january_2025.pdf",
+      "raw_bytes": 114623,
+      "raw_sha256": "15163db1ce6ee0b39437cb8677622e17759d9106b69584b919de12b29331521c",
+      "response_metadata": {
+        "content_type": "application/pdf",
+        "last_modified": "Tue, 31 Dec 2024 10:08:04 GMT",
+        "etag": "\"6773c284-1bfbf\""
+      },
+      "native_text_path": "native_text/mof_order_6826_january_2025.txt",
+      "native_text_bytes": 20425,
+      "native_text_sha256": "e544771304650d44c06fd9eaa42a57ab872866b9a4efde2209a73118974b3323",
+      "anchor_checks": {
+        "ORDIN NR. 6826": true,
+        "Anexa 1": true,
+        "Anexa 2": true,
+        "Data licita": false,
+        "Cod ISIN": true,
+        "Valoare": true,
+        "5200": false,
+        "570": true,
+        "5770": false
+      },
+      "all_anchor_checks_pass": false,
+      "article_1_expected": {
+        "base_RON_million": 5200.0,
+        "SSON_RON_million": 570.0,
+        "combined_RON_million": 5770.0
+      }
+    },
+    {
+      "source_id": "mof_order_159_february_2025",
+      "order_number": "159",
+      "order_issue_date": "2025-01-31",
+      "coverage_label": "February 2025",
+      "url": "https://www.mfinante.gov.ro/static/10/Mfp/trezorerie/OMF159_februarie2025.pdf",
+      "http_status": 200,
+      "raw_path": "raw/mof_order_159_february_2025.pdf",
+      "raw_bytes": 256463,
+      "raw_sha256": "10a8a0ff4771147fb65d032ca3929b8f189976ca86515a936eff5c30321f1094",
+      "response_metadata": {
+        "content_type": "application/pdf",
+        "last_modified": "Fri, 31 Jan 2025 09:52:03 GMT",
+        "etag": "\"679c9d43-3e9cf\""
+      },
+      "native_text_path": "native_text/mof_order_159_february_2025.txt",
+      "native_text_bytes": 20636,
+      "native_text_sha256": "14919b668a10619950d27f47ca6454b4938a128d81477f48e3bc1e34e8a1d559",
+      "anchor_checks": {
+        "ORDIN NR. 159": true,
+        "Anexa 1": true,
+        "Anexa 2": true,
+        "Data licita": false,
+        "Cod ISIN": true,
+        "Valoare": true,
+        "7200": false,
+        "840": true,
+        "8040": false
+      },
+      "all_anchor_checks_pass": false,
+      "article_1_expected": {
+        "base_RON_million": 7200.0,
+        "SSON_RON_million": 840.0,
+        "combined_RON_million": 8040.0
+      }
+    },
+    {
+      "source_id": "mof_order_352_march_2025",
+      "order_number": "352",
+      "order_issue_date": "2025-02-28",
+      "coverage_label": "March 2025",
+      "url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF352martie2025_28022025.pdf",
+      "http_status": 200,
+      "raw_path": "raw/mof_order_352_march_2025.pdf",
+      "raw_bytes": 256352,
+      "raw_sha256": "a7c978b241fa26e46b28a7ef08fb8bcd629814b49786da165d6b9a609ad9b4b6",
+      "response_metadata": {
+        "content_type": "application/pdf",
+        "last_modified": "Fri, 28 Feb 2025 10:59:26 GMT",
+        "etag": "\"67c1970e-3e960\""
+      },
+      "native_text_path": "native_text/mof_order_352_march_2025.txt",
+      "native_text_bytes": 20654,
+      "native_text_sha256": "2383c81703e6a9a1a22467d5715190bf5c5326e4e9661256bb992cb95bd7e391",
+      "anchor_checks": {
+        "ORDIN NR. 352": true,
+        "Anexa 1": true,
+        "Anexa 2": true,
+        "Data licita": false,
+        "Cod ISIN": true,
+        "Valoare": true,
+        "7400": false,
+        "840": true,
+        "8240": false
+      },
+      "all_anchor_checks_pass": false,
+      "article_1_expected": {
+        "base_RON_million": 7400.0,
+        "SSON_RON_million": 840.0,
+        "combined_RON_million": 8240.0
+      }
+    }
+  ],
+  "all_sources_retained": true,
+  "all_anchor_checks_pass": false,
+  "event_rows_extracted": false,
+  "reference_mode_materialised": false,
+  "ocr_used": false,
+  "visual_digitisation_used": false,
+  "feedback_activation_authorized": false
+}
