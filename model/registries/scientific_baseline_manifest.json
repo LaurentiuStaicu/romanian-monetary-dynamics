@@ -1,5 +1,5 @@
 {
-  "manifest_version": "1.0",
+  "manifest_version": "1.1",
   "baseline_id": "scientific-integrity-2026-09-19",
   "purpose": "Single canonical cross-registry snapshot of RMD scientific maturity. Values in this manifest must agree with the authoritative accounting, dynamics, reference-mode, empirical-mechanism and validation registries; the manifest is not an independent source of scientific truth.",
   "authority": {
@@ -23,7 +23,8 @@
     "sectoral_financial_positions_bnr_quarterly_s13_source_screening": "model/dynamics/sectoral_financial_positions_bnr_quarterly_s13_source_screening.json",
     "fiscal_capb_raw_source_preservation_assessment": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json",
     "latest_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
-    "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json"
+    "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json",
+    "release_versioning_contract": "model/registries/release_versioning_contract.json"
   },
   "canonical_state": {
     "accounting": {
@@ -146,6 +147,14 @@
         "date": "2026-10-08",
         "id": "prospective_monetary_policy_event"
       }
+    },
+    "release_versioning": {
+      "current_public_release": "0.1.0",
+      "current_repository_version": "0.1.0",
+      "unreleased_changes_present": true,
+      "version_bump_required_now": false,
+      "next_public_release_candidate": "0.2.0",
+      "contract": "model/registries/release_versioning_contract.json"
     }
   },
   "hard_invariants": [
