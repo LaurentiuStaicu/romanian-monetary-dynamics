@@ -87,7 +87,9 @@
       "empirical_boundary_interpretation": "The qualitative path remains a closed candidate topology, but the retained BNR domestic-primary-market issuance observable cannot replace the generic issuance node as a one-to-one closed-loop mapping. Financing-channel allocation, supply-pressure operationalisation, exact yield boundary and debt-stock interest-cost propagation remain unresolved.",
       "government_securities_supply_pressure_source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
       "supply_pressure_empirical_boundary_status": "MULTIDIMENSIONAL_CANDIDATE_BOUNDARY_NO_SCALAR_PROMOTION",
-      "supply_pressure_scalar_selected": false
+      "supply_pressure_scalar_selected": false,
+      "government_securities_supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
+      "supply_pressure_measurement_architecture": "STRUCTURED_VECTOR_UMBRELLA_UNRESOLVED"
     },
     {
       "id": "bank_credit_balance_sheet_loop",
