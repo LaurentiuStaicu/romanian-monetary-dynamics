@@ -168,7 +168,7 @@ def audit_supply_measurement_design(
     if next_task["id"] != "mof_announced_RON_primary_supply_full_2025_extension":
         errors.append("measurement-design next task changed")
     if next_task["authorization"] != (
-        "RAW_SOURCE_RETENTION_EXACT_EVENT_EXTRACTION_AND_REFERENCE_MODE_PILOT_ONLY"
+        "SOURCE_VINTAGE_EXTENSION_AND_EXACT_EVENT_MATERIALISATION_ONLY"
     ):
         errors.append("measurement-design next-task authorization changed")
     if next_task["may_materialise_announced_supply_reference_mode"] is not True:
