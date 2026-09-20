@@ -40,9 +40,14 @@
           "beta over its preregistered [0,2] validation domain",
           "signed policy-rate changes"
         ],
-        "empirical_parameter_ranges_frozen": true,
-        "frozen_range_source": "model/calibration_validation/validation_recovery_contract.json",
-        "blocker": "The frozen beta is a CANDIDATE, not validated: the final holdout contained zero policy-rate changes and could not distinguish the candidate from persistence. Prospective confirmation waits for genuinely new non-zero policy-rate variation."
+        "empirical_parameter_ranges_frozen": false,
+        "blocker": "The frozen beta is a CANDIDATE, not validated: the final holdout contained zero policy-rate changes and could not distinguish the candidate from persistence. Prospective confirmation waits for genuinely new non-zero policy-rate variation.",
+        "structural_validation_domain_frozen": true,
+        "validation_domain": [
+          0,
+          2
+        ],
+        "validation_domain_source": "model/calibration_validation/validation_recovery_contract.json"
       },
       "integrated_extreme_condition_status": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
       "model_activation_authorized": false
