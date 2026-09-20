@@ -1,17 +1,47 @@
 {
-  "assessment_version": "0.1",
+  "assessment_version": "0.2",
   "assessed_on": "2026-09-20",
   "candidate_id": "announced_RON_primary_reference_auction_supply_level",
-  "status": "PARTIAL_EXACT_EVENT_MATERIALISATION_CANONICAL_PROMOTION_BLOCKED_INCOMPLETE_REQUIRED_SOURCE_COVERAGE",
+  "status": "PARTIAL_EXACT_MONTHLY_10_OF_12_EVENT_COMPLETE_9_OF_12_CANONICAL_PROMOTION_BLOCKED_3_REQUIRED_SOURCES_MISSING",
   "definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json",
   "source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
   "event_level_series": "data/processed/mof_announced_RON_primary_reference_auction_partial_2025_events.csv",
   "monthly_series": "data/processed/mof_announced_RON_primary_reference_auction_partial_2025_monthly.csv",
+  "source_coverage": {
+    "required_document_count": 12,
+    "retained_document_count": 9,
+    "missing_document_count": 3,
+    "missing_source_ids": [
+      "mof_order_1221_august_2025",
+      "mof_order_1795_november_2025",
+      "mof_order_1998_december_2025_amendment"
+    ]
+  },
   "native_text_identities": {
+    "mof_order_1088_july_2025": {
+      "pdf_sha256": "9b46e36563935be7caea0536be06bede6f5ae9d9aa9479017bcb4585db58bb8e",
+      "native_text_bytes": 21291,
+      "native_text_sha256": "5b7a3d6008c467e9f29b5ed853e891f6faf0c84966d7a38c93d234682f580eef"
+    },
+    "mof_order_1452_september_2025": {
+      "pdf_sha256": "9e7015722f8b891151f08ce85174b2470a7b2bf642305cdd1fbdd6c85ad17a00",
+      "native_text_bytes": 21221,
+      "native_text_sha256": "efe5bc7e268ee5806f772156dcf5ce3e5bf3fdf9d1b6a1b1aef608869ea7bd33"
+    },
     "mof_order_1626_october_2025": {
       "pdf_sha256": "d687388a039c07ba6c1cf5f9c9b0fda6fa7a88ad4dd5ddaf4eb2f4bd13ad9243",
       "native_text_bytes": 20497,
       "native_text_sha256": "33411c483393f1bdedd29ee55d4f861e5ebe877443927f6c824eea5581629b3f"
+    },
+    "mof_order_1831_november_2025_amendment": {
+      "pdf_sha256": "2947ea6161b14cbf94cb5cba0eb23ddf0d1918ecab0e8f7e2b03b9c72a20b923",
+      "native_text_bytes": 9174,
+      "native_text_sha256": "a2ecf26cfe291fe6ebe3cc44320bbd889cf30fdb3381bb8a01ed3a22f3addbaa"
+    },
+    "mof_order_1928_december_2025": {
+      "pdf_sha256": "43970738c5dba7cb99240a79b22b348b3ba34521c85c8514a27608a9ff3f2087",
+      "native_text_bytes": 14274,
+      "native_text_sha256": "edb2f7d3ffd7a4ca9b57c64a76679609265b72e33a7284b08c6b991f4e28b96f"
     },
     "mof_order_541_april_2025": {
       "pdf_sha256": "d264dd89073963ba234de14710b114a2a8bcce87e9f846482e5114c09246a661",
@@ -23,6 +53,11 @@
       "native_text_bytes": 20493,
       "native_text_sha256": "06e75e32f61091c2e5334abb282f80f993e34e3ad77563486f0f927d02171901"
     },
+    "mof_order_752_may_2025_amendment": {
+      "pdf_sha256": "032e4ff83142c3785bde6df68c9910cc95401d5eff47f4cb661d2047892a8fe4",
+      "native_text_bytes": 8579,
+      "native_text_sha256": "eba08e66fca97c4ce4102779ce57b7cce9dd3d5ae56456c17d57ba63e66715ad"
+    },
     "mof_order_871_june_2025": {
       "pdf_sha256": "59c7e5c1ea8dd77d1600a857761b9dc9b34ba14aeb664d15962c446e6c15bd4a",
       "native_text_bytes": 20640,
@@ -31,36 +66,14 @@
   },
   "document_reconciliation": [
     {
-      "source_id": "mof_order_1626_october_2025",
-      "month": "2025-10",
-      "version_role": "BASE",
-      "parsed_t_bill_rows": 1,
-      "parsed_bond_rows": 14,
-      "parsed_competitive_event_count": 15,
-      "article_1_competitive_base_RON_million": 7000,
-      "parsed_competitive_RON_million": 7000,
-      "competitive_base_reconciles": true
-    },
-    {
       "source_id": "mof_order_541_april_2025",
       "month": "2025-04",
       "version_role": "BASE",
       "parsed_t_bill_rows": 2,
       "parsed_bond_rows": 9,
       "parsed_competitive_event_count": 11,
-      "article_1_competitive_base_RON_million": 6900,
-      "parsed_competitive_RON_million": 6900,
-      "competitive_base_reconciles": true
-    },
-    {
-      "source_id": "mof_order_728_may_2025",
-      "month": "2025-05",
-      "version_role": "BASE",
-      "parsed_t_bill_rows": 2,
-      "parsed_bond_rows": 10,
-      "parsed_competitive_event_count": 12,
-      "article_1_competitive_base_RON_million": 5400,
-      "parsed_competitive_RON_million": 5400,
+      "article_1_competitive_base_RON_million": 6900.0,
+      "parsed_competitive_RON_million": 6900.0,
       "competitive_base_reconciles": true
     },
     {
@@ -70,53 +83,166 @@
       "parsed_t_bill_rows": 1,
       "parsed_bond_rows": 11,
       "parsed_competitive_event_count": 12,
-      "article_1_competitive_base_RON_million": 5100,
-      "parsed_competitive_RON_million": 5100,
+      "article_1_competitive_base_RON_million": 5100.0,
+      "parsed_competitive_RON_million": 5100.0,
       "competitive_base_reconciles": true
+    },
+    {
+      "source_id": "mof_order_1088_july_2025",
+      "month": "2025-07",
+      "version_role": "BASE",
+      "parsed_t_bill_rows": 1,
+      "parsed_bond_rows": 14,
+      "parsed_competitive_event_count": 15,
+      "article_1_competitive_base_RON_million": 5800.0,
+      "parsed_competitive_RON_million": 5800.0,
+      "competitive_base_reconciles": true
+    },
+    {
+      "source_id": "mof_order_1452_september_2025",
+      "month": "2025-09",
+      "version_role": "BASE",
+      "parsed_t_bill_rows": 2,
+      "parsed_bond_rows": 13,
+      "parsed_competitive_event_count": 15,
+      "article_1_competitive_base_RON_million": 6200.0,
+      "parsed_competitive_RON_million": 6200.0,
+      "competitive_base_reconciles": true
+    },
+    {
+      "source_id": "mof_order_1626_october_2025",
+      "month": "2025-10",
+      "version_role": "BASE",
+      "parsed_t_bill_rows": 1,
+      "parsed_bond_rows": 14,
+      "parsed_competitive_event_count": 15,
+      "article_1_competitive_base_RON_million": 7000.0,
+      "parsed_competitive_RON_million": 7000.0,
+      "competitive_base_reconciles": true
+    },
+    {
+      "source_id": "mof_order_728_may_2025",
+      "month": "2025-05",
+      "version_role": "BASE",
+      "parsed_t_bill_rows": 2,
+      "parsed_bond_rows": 10,
+      "parsed_competitive_event_count": 12,
+      "article_1_competitive_base_RON_million": 5400.0,
+      "parsed_competitive_RON_million": 5400.0,
+      "competitive_base_reconciles": true
+    },
+    {
+      "source_id": "mof_order_752_may_2025_amendment",
+      "month": "2025-05",
+      "version_role": "AMENDMENT",
+      "parsed_t_bill_rows": 3,
+      "parsed_bond_rows": 5,
+      "parsed_competitive_event_count": 8,
+      "article_1_competitive_base_RON_million": 4000.0,
+      "parsed_competitive_RON_million": 4000.0,
+      "competitive_base_reconciles": true
+    },
+    {
+      "source_id": "mof_order_1831_november_2025_amendment",
+      "month": "2025-11",
+      "version_role": "AMENDMENT",
+      "parsed_t_bill_rows": 0,
+      "parsed_bond_rows": 11,
+      "parsed_competitive_event_count": 11,
+      "parsed_partial_competitive_RON_million": 5300.0,
+      "direct_final_monthly_total_RON_million": 5800.0,
+      "event_set_complete": false,
+      "missing_event_rows_inferred": false,
+      "final_monthly_total_directly_observed": true
     }
   ],
   "coverage_by_month": {
-    "2025-01": "EXACT_FINAL_COMPETITIVE_ONLY_FROM_FROZEN_Q1",
-    "2025-02": "EXACT_FINAL_COMPETITIVE_ONLY_FROM_FROZEN_Q1",
-    "2025-03": "EXACT_FINAL_COMPETITIVE_ONLY_FROM_FROZEN_Q1",
-    "2025-04": "EXACT_FINAL_COMPETITIVE_ONLY_RETAINED_BASE_NO_AMENDMENT_IDENTIFIED",
-    "2025-05": "UNAVAILABLE_FINAL_AMENDMENT_752_RAW_SOURCE_NOT_RETAINED",
-    "2025-06": "EXACT_FINAL_COMPETITIVE_ONLY_RETAINED_BASE_NO_AMENDMENT_IDENTIFIED",
-    "2025-07": "UNAVAILABLE_BASE_ORDER_RAW_SOURCE_NOT_RETAINED",
-    "2025-08": "UNAVAILABLE_BASE_ORDER_RAW_SOURCE_NOT_RETAINED",
-    "2025-09": "UNAVAILABLE_BASE_ORDER_RAW_SOURCE_NOT_RETAINED",
-    "2025-10": "EXACT_FINAL_COMPETITIVE_ONLY_RETAINED_BASE_NO_AMENDMENT_IDENTIFIED",
-    "2025-11": "UNAVAILABLE_BASE_AND_AMENDMENT_RAW_SOURCES_NOT_RETAINED",
-    "2025-12": "UNAVAILABLE_BASE_AND_AMENDMENT_RAW_SOURCES_NOT_RETAINED"
+    "2025-01": "EXACT_FINAL_EVENT_COMPLETE_FROM_FROZEN_Q1",
+    "2025-02": "EXACT_FINAL_EVENT_COMPLETE_FROM_FROZEN_Q1",
+    "2025-03": "EXACT_FINAL_EVENT_COMPLETE_FROM_FROZEN_Q1",
+    "2025-04": "EXACT_FINAL_EVENT_COMPLETE_RETAINED_BASE_NO_AMENDMENT_IDENTIFIED",
+    "2025-05": "EXACT_FINAL_EVENT_COMPLETE_FROM_RETAINED_AMENDMENT_752",
+    "2025-06": "EXACT_FINAL_EVENT_COMPLETE_RETAINED_BASE_NO_AMENDMENT_IDENTIFIED",
+    "2025-07": "EXACT_FINAL_EVENT_COMPLETE_RETAINED_BASE_NO_AMENDMENT_IDENTIFIED",
+    "2025-08": "UNAVAILABLE_BASE_ORDER_1221_RAW_SOURCE_NOT_RETAINED",
+    "2025-09": "EXACT_FINAL_EVENT_COMPLETE_RETAINED_BASE_NO_AMENDMENT_IDENTIFIED",
+    "2025-10": "EXACT_FINAL_EVENT_COMPLETE_RETAINED_BASE_NO_AMENDMENT_IDENTIFIED",
+    "2025-11": "EXACT_FINAL_MONTHLY_TOTAL_FROM_RETAINED_AMENDMENT_1831_EVENT_LEVEL_INCOMPLETE_BASE_1795_UNAVAILABLE",
+    "2025-12": "UNAVAILABLE_FINAL_AMENDMENT_1998_RAW_SOURCE_NOT_RETAINED_BASE_1928_RETAINED"
   },
   "exact_final_months": [
     "2025-01",
     "2025-02",
     "2025-03",
     "2025-04",
+    "2025-05",
     "2025-06",
+    "2025-07",
+    "2025-09",
+    "2025-10",
+    "2025-11"
+  ],
+  "event_level_complete_final_months": [
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-09",
     "2025-10"
   ],
+  "monthly_only_exact_final_months": [
+    "2025-11"
+  ],
   "exact_final_monthly_values_RON_million": {
-    "2025-01": 5200,
-    "2025-02": 7200,
-    "2025-03": 7400,
-    "2025-04": 6900,
-    "2025-06": 5100,
-    "2025-10": 7000
+    "2025-01": 5200.0,
+    "2025-02": 7200.0,
+    "2025-03": 7400.0,
+    "2025-04": 6900.0,
+    "2025-05": 4000.0,
+    "2025-06": 5100.0,
+    "2025-07": 5800.0,
+    "2025-09": 6200.0,
+    "2025-10": 7000.0,
+    "2025-11": 5800.0
   },
-  "may_base_order_history": {
-    "source_id": "mof_order_728_may_2025",
-    "competitive_event_count": 12,
-    "competitive_base_RON_million": 5400,
+  "may_version_history": {
+    "base_source_id": "mof_order_728_may_2025",
+    "base_competitive_event_count": 12,
+    "base_competitive_RON_million": 5400.0,
+    "base_is_final": false,
+    "final_amendment_source_id": "mof_order_752_may_2025_amendment",
+    "final_competitive_event_count": 8,
+    "final_competitive_RON_million": 4000.0,
+    "final_monthly_value_authorized": true,
+    "base_rows_retained_as_information_time_history": true
+  },
+  "november_direct_monthly_total": {
+    "source_id": "mof_order_1831_november_2025_amendment",
+    "final_monthly_total_RON_million": 5800.0,
+    "materialised_annex2_event_count": 11,
+    "materialised_annex2_competitive_RON_million": 5300.0,
+    "event_level_complete": false,
+    "missing_base_source_id": "mof_order_1795_november_2025",
+    "missing_annex1_event_inferred": false,
+    "monthly_total_is_direct_source_value_not_event_sum": true
+  },
+  "december_base_order_history": {
+    "source_id": "mof_order_1928_december_2025",
+    "base_competitive_RON_million": 4500.0,
     "final_monthly_value_authorized": false,
-    "reason": "OMF 752/2025 amendment raw source is not retained."
+    "missing_final_amendment_source_id": "mof_order_1998_december_2025_amendment",
+    "reason": "OMF 1998/2025 final amendment raw source is not retained."
   },
   "scientific_guards": {
     "SSON_included_in_candidate": false,
     "accepted_or_borrowed_amount_included": false,
     "missing_months_treated_as_zero": false,
     "unretained_amendment_inferred": false,
+    "missing_event_rows_inferred": false,
+    "monthly_total_promoted_to_synthetic_event_rows": false,
     "canonical_reference_mode_promoted": false,
     "government_securities_supply_pressure_node_resolved": false,
     "yield_effect_estimation_authorized": false,
@@ -128,20 +254,11 @@
     "id": "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery",
     "authorization": "OFFICIAL_SOURCE_RECOVERY_ONLY",
     "required_source_ids": [
-      "mof_order_752_may_2025_amendment",
-      "mof_order_1088_july_2025",
       "mof_order_1221_august_2025",
-      "mof_order_1452_september_2025",
       "mof_order_1795_november_2025",
-      "mof_order_1831_november_2025_amendment",
-      "mof_order_1928_december_2025",
       "mof_order_1998_december_2025_amendment"
     ],
     "event_materialisation_for_missing_sources_authorized": false,
-    "canonical_promotion_before_complete_required_source_coverage": false,
-    "recovery_state": "EVIDENCE_TRIGGERED_HOLD",
-    "active_polling": false
-  },
-  "missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
-  "missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_PROVIDER_TRANSPORT_BLOCKED"
+    "canonical_promotion_before_complete_required_source_coverage": false
+  }
 }
