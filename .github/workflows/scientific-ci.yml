@@ -150,6 +150,9 @@ jobs:
       - name: Audit canonical Accounting Spine readiness
         run: python scripts/audit_accounting_readiness.py
 
+      - name: Audit F3 empirical dynamic replay
+        run: python scripts/audit_f3_empirical_replay.py
+
       - name: Recompute dimensional consistency independently
         run: python scripts/audit_dimensional_consistency.py
 
