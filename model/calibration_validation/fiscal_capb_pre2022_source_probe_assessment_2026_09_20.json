@@ -1,0 +1,107 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "mechanism_id": "fiscal_primary_balance_reaction",
+  "phase": "Fiscal Reaction Selective Reopen — Pre-2022 UBLGBPS Source Probe Review",
+  "status": "PRE2022_PROBE_COMPLETE_UBLGBPS_PRESENT_FROM_2014_SIX_EARLY_NEGATIVES_ONE_AUTUMN2018_AMBIGUITY",
+  "workflow": {
+    "run_id": 35482485118,
+    "head_sha": "750ce01e379631bcb36b3b87675be16e775407bd",
+    "conclusion": "success",
+    "artifact_id": 10596385949,
+    "artifact_name": "fiscal-capb-pre2022-source-probe-750ce01e379631bcb36b3b87675be16e775407bd",
+    "artifact_zip_sha256": "adce7b86d485b3435c005d98765ef5752229ce9946e506a47c4fe2b13c707b3b",
+    "artifact_bytes": 133251645,
+    "artifact_expires_at": "2026-12-19T01:51:55Z"
+  },
+  "target": {
+    "code": "ROM.1.0.319.0.UBLGBPS",
+    "concept": "Structural balance of general government excluding interest; adjustment based on potential GDP; excessive deficit procedure",
+    "interpretation": "structural primary balance",
+    "exact_code_scope_preserved": true
+  },
+  "result_counts": {
+    "release_count": 22,
+    "target_present": 15,
+    "observed_target_not_found_in_valid_archive": 6,
+    "ambiguous_distinct_target_rows": 1,
+    "indeterminate_provider_or_archive_failure": 0
+  },
+  "observed_negative_releases": [
+    "spring_2011",
+    "autumn_2011",
+    "spring_2012",
+    "autumn_2012",
+    "spring_2013",
+    "autumn_2013"
+  ],
+  "first_exact_target_release": {
+    "release_id": "spring_2014",
+    "release_date": "2014-05-08",
+    "archive_sha256": "9c1a8ec7a0dbd4e61e98b788a22c3d3c768150ee5df067acaa7047bbe018e178",
+    "selected_row_sha256": "33382636e415e7bd651f8cf8d02cc0bfbc3f40e630241d7640c3b476733b4ac6"
+  },
+  "ambiguous_release": {
+    "release_id": "autumn_2018",
+    "release_date": "2018-11-08",
+    "archive_sha256": "5e0d81de7a068492d857b5f5a8b7f3affae089cbc561d5c5ba252b5c60fe68e8",
+    "matching_member_paths": [
+      "AMECO17.TXT",
+      "AMECO17_revised_semi_elasticities.TXT"
+    ],
+    "distinct_matching_rows": 2,
+    "main_file_row_sha256": "cc960d5765b4d2083cf6e156b1dfc6b510e75df54733d8f45a52eeed72f97726",
+    "revised_semi_elasticities_row_sha256": "4793c4d15905a04040d722ab0be100ae85729bb0617c4d247b3dbf7c9789ae63",
+    "adjudication": "UNRESOLVED_EXCLUDE_FROM_CANONICAL_FIRST_HISTORICAL_CHAIN",
+    "reason": "The archive itself contains two distinct official UBLGBPS rows. No release-note evidence has been retained that authorizes silently choosing one over the other."
+  },
+  "spring_first_historical_chain": {
+    "rule": "Use the first Spring full-forecast vintage after each completed year; this gives one annual release-time target observation and avoids double-counting Spring/Autumn revisions of the same completed year.",
+    "first_target_year": 2013,
+    "last_target_year": 2025,
+    "observation_count": 13,
+    "releases": "spring_2014 through spring_2026",
+    "autumn_2018_ambiguity_affects_chain": false,
+    "processed_path": "data/processed/fiscal_capb_structural_primary_first_historical_spring.csv"
+  },
+  "historical_coverage_structure": {
+    "spring_2014_historical_span": "2003..2013",
+    "spring_2015_historical_span": "2010..2014",
+    "spring_2016_to_spring_2026_common_start_year": 2010,
+    "stable_common_start_for_spring_2015_onward": 2010,
+    "warning": "The historical support set changes between Spring 2014 and Spring 2015. A real-time expanding-origin design may not pretend that a single fixed historical panel existed throughout."
+  },
+  "predecessor_family_observation": {
+    "code": "ROM.1.0.319.0.UBLGBP",
+    "concept": "Net lending (+) or net borrowing (-) excluding interest of general government adjusted for the cyclical component",
+    "interpretation": "cyclically adjusted primary balance",
+    "present_in_all_six_2011_2013_archives": true,
+    "same_target_as_ublgbps": false,
+    "substitution_authorized": false,
+    "rule": "Longer UBLGBP history may not replace UBLGBPS merely because the structural-primary real-time window is shorter. Any UBLGBP cycle requires a separately preregistered measurement-family decision justified independently of observed model performance or sample convenience."
+  },
+  "validation_implication": {
+    "prior_cycle_windows": "1996..2009 calibration; 2010..2017 structural selection; 2018..2024 untouched final evaluation",
+    "prior_cycle_design_reproducible_on_structural_primary_realtime_vintages": false,
+    "reason": "No exact UBLGBPS vintage exists before Spring 2014, and stable later vintages do not reproduce the old 1996-2009 calibration information set. The earlier 29-target-year design therefore cannot be re-labelled as a real-time UBLGBPS validation design.",
+    "stronger_claim_that_no_future_model_can_be_estimated": false,
+    "note": "The source result constrains validation design; it does not by itself prove that every future parsimonious structural-primary model is unidentifiable."
+  },
+  "raw_provenance": {
+    "raw_archive_bytes_currently_in_actions_artifact": true,
+    "repository_raw_bytes_retained": false,
+    "exact_no_refetch_reproducibility_claim_allowed": false,
+    "permanent_raw_preservation_required": true
+  },
+  "scientific_effect": {
+    "mechanism_classification": "DEFERRED",
+    "active_calibration_cycle_open": false,
+    "estimation_authorized": false,
+    "model_selection_authorized": false,
+    "prior_2018_2024_final_evaluation_opening_authorized": false,
+    "causal_claim_authorized": false,
+    "system_dynamics_activation": false,
+    "behavioural_closure_change": false
+  },
+  "next_gate": "Preserve the exact 2014-2026 UBLGBPS raw release bytes permanently under the repository source-vintage contract and freeze the semantic distinction between UBLGBPS structural primary balance and UBLGBP cyclically adjusted primary balance. Do not open a new reaction-function design merely from the longer predecessor-family history."
+}
