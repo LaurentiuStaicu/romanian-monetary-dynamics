@@ -332,7 +332,16 @@
           "scope": "BNR_DOMESTIC_PRIMARY_MARKET_INSTRUMENT_AND_CURRENCY_SPECIFIC_ISSUE_RATES_2025",
           "effect": "PARTIAL_ONLY: observed issue-specific primary-market yields/rates are not a single generic sovereign_yield node, are not secondary-market long yields, and are not outstanding-debt effective rates."
         }
-      ]
+      ],
+      "primary_yield_to_sovereign_yield_boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+      "empirical_boundary_status": "UMBRELLA_UNRESOLVED_EXACT_RON_10Y_LONG_TERM_CANDIDATE_PRIMARY_RATE_VECTOR_NOT_AGGREGATED",
+      "exact_long_term_candidate_id": "RON_10Y_long_term_sovereign_yield",
+      "exact_long_term_candidate_series_key": "IRS.M.RO.L.L40.CI.0000.RON.N.Z",
+      "exact_long_term_candidate_source_boundary_review": "model/calibration_validation/sovereign_yield_source_boundary_review.json",
+      "exact_long_term_candidate_source_vintage_promotion_review": "model/calibration_validation/sovereign_yield_source_vintage_promotion_review.json",
+      "primary_market_rate_vector_source": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
+      "primary_market_rate_vector_generic_aggregation_authorized": false,
+      "generic_node_narrowing_to_10Y_authorized": false
     }
   ]
 }
