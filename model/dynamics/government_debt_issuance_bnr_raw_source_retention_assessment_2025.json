@@ -1,0 +1,47 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "target_candidate_id": "domestic_primary_market_government_securities_gross_issuance",
+  "source": {
+    "institution": "National Bank of Romania",
+    "publication": "Monthly Bulletin — December 2025",
+    "table": "12.2 Government securities (new and roll-over issues)",
+    "pdf_page": 65,
+    "statistical_data_available_as_of": "2026-02-24",
+    "url": "https://www.bnr.ro/uploads/2026-06-02monthlybulletinno.122025_documentpdf_545_1772190284.pdf"
+  },
+  "retained_vintage": {
+    "manifest": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/source_vintage_manifest.json",
+    "raw_path": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/raw/bnr_monthly_bulletin_12_2025.pdf",
+    "bytes": 2305604,
+    "sha256": "171569f159b47ceedc9d8ba6d5628a39de49a8fb18d11e13a20ac55edb39c628",
+    "acquisition_contract": "model/dynamics/government_debt_issuance_bnr_raw_source_acquisition_contract.json",
+    "acquisition_workflow_run": 35519424397,
+    "repository_retained": true,
+    "raw_bytes_immutable": true
+  },
+  "verification": {
+    "fixed_url_fetch_passed": true,
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "pdf_magic_passed": true,
+    "minimum_size_guard_passed": true,
+    "manifest_hash_matches_retained_bytes": true,
+    "manifest_size_matches_retained_bytes": true,
+    "manual_table_review_already_completed": true,
+    "revision_check_already_completed": true
+  },
+  "scientific_effect": {
+    "raw_source_retention_blocker_closed": true,
+    "revision_check_blocker_closed": true,
+    "full_2025_native_currency_coverage_complete": true,
+    "canonical_reference_mode_promoted": false,
+    "generic_government_debt_issuance_node_resolved": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false,
+    "remaining_gate": "Preregister whether government_issuance_yield_loop is explicitly narrowed to the retained BNR domestic-primary-market issuance boundary before any reference-mode promotion, estimation or feedback activation."
+  },
+  "interpretation": "The exact official BNR PDF used for the reviewed full-2025 issuance pilot is now retained in the repository with SHA-256 and acquisition provenance. This closes only the raw-source-retention blocker. It does not resolve the semantically overloaded generic government_debt_issuance node and does not activate any feedback."
+}

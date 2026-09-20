@@ -1,0 +1,44 @@
+{
+  "snapshot_id": "bnr-government-issuance-2025-vintage-2026-09-20",
+  "fetched_at_utc": "2026-09-20T15:23:41+00:00",
+  "status": "RAW_ACQUISITION_READY_FOR_REPOSITORY_REVIEW_NOT_PROMOTED",
+  "fetcher_script": "/home/runner/work/romanian-monetary-dynamics/romanian-monetary-dynamics/scripts/acquire_bnr_government_issuance_raw_source.py",
+  "fetcher_script_sha256": "7dff7d200f02af23620cf9d72b87a3110a7d778ee2dd87a1f067682b53c933d3",
+  "target_candidate_id": "domestic_primary_market_government_securities_gross_issuance",
+  "raw_source": {
+    "name": "bnr_monthly_bulletin_12_2025.pdf",
+    "institution": "National Bank of Romania",
+    "publication": "Monthly Bulletin — December 2025",
+    "url": "https://www.bnr.ro/uploads/2026-06-02monthlybulletinno.122025_documentpdf_545_1772190284.pdf",
+    "accept": "application/pdf",
+    "status": 200,
+    "bytes": 2305604,
+    "sha256": "171569f159b47ceedc9d8ba6d5628a39de49a8fb18d11e13a20ac55edb39c628",
+    "path": "raw/bnr_monthly_bulletin_12_2025.pdf",
+    "response_metadata": {
+      "content_type": "application/pdf",
+      "last_modified": "Fri, 27 Feb 2026 11:04:44 GMT",
+      "etag": "\"69a17a4c-232e44\""
+    }
+  },
+  "source_semantics": {
+    "table": "12.2 Government securities (new and roll-over issues)",
+    "pdf_page": 65,
+    "statistical_data_available_as_of": "2026-02-24"
+  },
+  "normalized_outputs": [],
+  "scientific_guards": {
+    "raw_acquisition_only": true,
+    "manual_table_review_already_completed": true,
+    "revision_check_already_completed": true,
+    "canonical_reference_mode_promotion_authorized": false,
+    "generic_government_debt_issuance_node_resolution_authorized": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "promotion_authorized": false,
+  "generic_government_debt_issuance_node_resolved": false,
+  "feedback_activation_authorized": false
+}

@@ -95,16 +95,25 @@ class BNRGovernmentIssuancePilotTests(unittest.TestCase):
         self.assertFalse(semantics["refinancing_need_equivalent"])
         self.assertFalse(semantics["supply_pressure_equivalent"])
 
-    def test_revision_check_closes_only_revision_blocker(self) -> None:
+    def test_revision_and_raw_retention_gates_are_closed_without_promotion(self) -> None:
         extraction = self.snapshot["extraction"]
         self.assertTrue(extraction["source_revision_check_performed"])
         self.assertFalse(
             extraction["promotion_blocked_by_raw_retention_and_revision_gate"]
         )
-        self.assertTrue(extraction["promotion_blocked_by_raw_retention_gate"])
-        self.assertFalse(extraction["raw_pdf_retained_in_repository"])
+        self.assertFalse(extraction["promotion_blocked_by_raw_retention_gate"])
+        self.assertTrue(extraction["raw_pdf_retained_in_repository"])
+        self.assertEqual(
+            extraction["raw_source_sha256"],
+            "171569f159b47ceedc9d8ba6d5628a39de49a8fb18d11e13a20ac55edb39c628",
+        )
+        # The revision assessment itself did not close retention; the later
+        # dedicated retention step did. Preserve that historical distinction.
         self.assertFalse(
             self.revision["scientific_effect"]["raw_source_retention_blocker_closed"]
+        )
+        self.assertTrue(
+            self.snapshot["scientific_disposition"]["raw_source_retention_completed"]
         )
         self.assertFalse(
             self.snapshot["scientific_disposition"][

@@ -156,7 +156,7 @@
     "reference_mode_promoted": false,
     "feedback_activation_authorized": false,
     "estimation_or_refit_authorized": false,
-    "next_step": "Close raw-source retention with exact official BNR bytes or a reproducible retained acquisition path. Revision checking and complete 2025 monthly native-currency coverage are now satisfied. After raw retention, separately preregister whether the government_issuance_yield_loop is narrowed to the domestic-primary-market issuance boundary; Ministry all-market borrowing remains a separate path.",
+    "next_step": "Preregister whether the government_issuance_yield_loop is narrowed to the retained BNR domestic-primary-market issuance boundary. Raw-source retention, revision checking and complete 2025 monthly native-currency coverage are now satisfied. Ministry all-market borrowing remains a separate path and the generic government_debt_issuance node remains unresolved.",
     "bnr_pilot_snapshot": "model/dynamics/government_debt_issuance_bnr_pilot_2025.json",
     "bnr_pilot_status": "REVIEWED_FULL_2025_SOURCE_PILOT_NOT_CANONICAL_REFERENCE_SERIES",
     "bnr_pilot_coverage": "2025-01..2025-12",
@@ -167,12 +167,16 @@
       "2025-Q4"
     ],
     "bnr_pilot_promotion_blockers": [
-      "raw source bytes are not retained in repository or a reproducible retained source-vintage acquisition path",
       "generic feedback node remains semantically overloaded across two government loops",
       "a separately preregistered structural decision is still required before narrowing the issuance-yield path to the BNR domestic-primary-market boundary"
     ],
     "bnr_revision_assessment": "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json",
     "bnr_revision_check_status": "PASS_NO_CHANGES_JAN_JUL_2025_AT_PUBLISHED_PRECISION",
-    "bnr_full_year_native_currency_coverage_complete": true
+    "bnr_full_year_native_currency_coverage_complete": true,
+    "bnr_raw_source_retention_status": "PASS_RETAINED_SHA256_VERIFIED",
+    "bnr_raw_source_vintage_manifest": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/source_vintage_manifest.json",
+    "bnr_raw_source_path": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/raw/bnr_monthly_bulletin_12_2025.pdf",
+    "bnr_raw_source_sha256": "171569f159b47ceedc9d8ba6d5628a39de49a8fb18d11e13a20ac55edb39c628",
+    "bnr_raw_source_bytes": 2305604
   }
 }

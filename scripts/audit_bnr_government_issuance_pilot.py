@@ -40,10 +40,12 @@ def audit_bnr_issuance_pilot(
     extraction = snapshot["extraction"]
     if extraction["ocr_used"] is not False:
         errors.append("BNR pilot unexpectedly claims OCR extraction")
-    if extraction["raw_pdf_retained_in_repository"] is not False:
-        errors.append("raw BNR PDF may not be claimed retained")
-    if extraction["raw_source_sha256"] is not None:
-        errors.append("raw BNR source hash may not exist before raw retention")
+    if extraction["raw_pdf_retained_in_repository"] is not True:
+        errors.append("reviewed BNR raw PDF must remain repository-retained")
+    if extraction["raw_source_sha256"] != "171569f159b47ceedc9d8ba6d5628a39de49a8fb18d11e13a20ac55edb39c628":
+        errors.append("retained BNR raw-source hash changed")
+    if extraction.get("raw_source_bytes") != 2305604:
+        errors.append("retained BNR raw-source byte size changed")
     if extraction["exact_raw_source_retention_required_before_promotion"] is not True:
         errors.append("raw-source retention gate must remain required")
     if extraction["native_currency_columns_preserved"] is not True:
@@ -58,8 +60,8 @@ def audit_bnr_issuance_pilot(
         errors.append("BNR revision-check result changed")
     if extraction["promotion_blocked_by_raw_retention_and_revision_gate"] is not False:
         errors.append("closed revision blocker is still reported as open")
-    if extraction["promotion_blocked_by_raw_retention_gate"] is not True:
-        errors.append("raw-source retention must remain the promotion blocker")
+    if extraction["promotion_blocked_by_raw_retention_gate"] is not False:
+        errors.append("closed raw-source retention blocker is still reported as open")
 
     rows = snapshot.get("monthly_observations", [])
     periods = [row["period"] for row in rows]
@@ -169,8 +171,8 @@ def audit_bnr_issuance_pilot(
         errors.append("pilot scientific disposition must record completed revision check")
     if decision["full_2025_monthly_coverage"] is not True:
         errors.append("pilot scientific disposition must record full-2025 coverage")
-    if decision["raw_source_retention_completed"] is not False:
-        errors.append("pilot may not claim raw-source retention")
+    if decision["raw_source_retention_completed"] is not True:
+        errors.append("pilot must retain completed raw-source retention")
     for key in (
         "canonical_reference_mode_promoted",
         "generic_government_debt_issuance_node_resolved",
@@ -201,8 +203,10 @@ def audit_bnr_issuance_pilot(
         "PASS_NO_CHANGES_JAN_JUL_2025_FULL_YEAR_EXTENSION_COMPLETE"
     ):
         errors.append("materialisation contract revision-check status is stale")
-    if bnr_path.get("raw_source_retention_status") != "NOT_RETAINED_BLOCKS_PROMOTION":
-        errors.append("raw-source retention blocker was weakened")
+    if bnr_path.get("raw_source_retention_status") != "PASS_RETAINED_SHA256_VERIFIED":
+        errors.append("materialisation contract raw-source retention status changed")
+    if bnr_path.get("raw_source_sha256") != "171569f159b47ceedc9d8ba6d5628a39de49a8fb18d11e13a20ac55edb39c628":
+        errors.append("materialisation contract retained raw-source hash changed")
 
     node = next(
         item for item in boundary["variables"]
@@ -252,7 +256,7 @@ def main() -> None:
                 "revision_check": "PASS_NO_CHANGES_JAN_JUL_2025",
                 "full_year_RON_total_million": 98905.8,
                 "full_year_EUR_total_million": 1856.1,
-                "raw_pdf_retained": False,
+                "raw_pdf_retained": True,
                 "reference_mode_promoted": False,
                 "generic_node_resolved": False,
                 "feedback_activation_authorized": False,

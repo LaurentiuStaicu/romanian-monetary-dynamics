@@ -26,22 +26,26 @@
         "do not convert a new-and-roll-over issue series into net incurrence"
       ],
       "pilot_snapshot": "model/dynamics/government_debt_issuance_bnr_pilot_2025.json",
-      "pilot_status": "REVIEWED_FULL_2025_RAW_SOURCE_NOT_RETAINED_NO_PROMOTION",
+      "pilot_status": "REVIEWED_FULL_2025_RAW_SOURCE_RETAINED_NO_PROMOTION",
       "pilot_complete_quarters": [
         "2025-Q1",
         "2025-Q2",
         "2025-Q3",
         "2025-Q4"
       ],
-      "raw_source_retention_status": "NOT_RETAINED_BLOCKS_PROMOTION",
+      "raw_source_retention_status": "PASS_RETAINED_SHA256_VERIFIED",
       "revision_check_status": "PASS_NO_CHANGES_JAN_JUL_2025_FULL_YEAR_EXTENSION_COMPLETE",
       "pilot_full_year_native_currency_coverage": true,
       "revision_assessment": "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json",
       "revision_check_source": "BNR Monthly Bulletin — December 2025, statistical data available as of 2026-02-24",
       "remaining_promotion_gates": [
-        "retain exact official raw source bytes or a reproducible retained acquisition path",
         "preregister any structural narrowing of the generic government_debt_issuance node before feedback use"
-      ]
+      ],
+      "raw_source_vintage_manifest": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/source_vintage_manifest.json",
+      "raw_source_path": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/raw/bnr_monthly_bulletin_12_2025.pdf",
+      "raw_source_bytes": 2305604,
+      "raw_source_sha256": "171569f159b47ceedc9d8ba6d5628a39de49a8fb18d11e13a20ac55edb39c628",
+      "raw_source_acquisition_contract": "model/dynamics/government_debt_issuance_bnr_raw_source_acquisition_contract.json"
     },
     "mof_actual_borrowing": {
       "target_id": "government_total_realized_borrowing_or_securities_funding",

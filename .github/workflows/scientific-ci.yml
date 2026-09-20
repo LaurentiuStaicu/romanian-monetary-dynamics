@@ -165,6 +165,9 @@ jobs:
       - name: Audit reviewed BNR government issuance pilot
         run: python scripts/audit_bnr_government_issuance_pilot.py
 
+      - name: Audit retained BNR government issuance raw source
+        run: python scripts/audit_bnr_government_issuance_raw_source_retention.py
+
       - name: Recompute dimensional consistency independently
         run: python scripts/audit_dimensional_consistency.py
 
