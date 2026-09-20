@@ -2,7 +2,7 @@
   "assessment_version": "0.1",
   "assessed_on": "2026-09-20",
   "mechanism_id": "fiscal_primary_balance_reaction",
-  "status": "WORKFLOW_EXECUTED_SUCCESS_ARTIFACT_REVIEWED_TIMING_ADJUDICATED_RAW_REPOSITORY_RETENTION_PENDING",
+  "status": "PRE2022_PROBE_EXECUTED_REVIEWED_RAW_SOURCE_PRESERVATION_PENDING",
   "prerequisite_reopen_assessment": "model/registries/fiscal_capb_reopen_assessment_2026_09_19.json",
   "contract": "model/calibration_validation/fiscal_reaction_capb_realtime_vintage_contract.json",
   "workflow": ".github/workflows/fiscal-reaction-capb-realtime-vintage-materialisation.yml",
@@ -32,7 +32,18 @@
     "timing_adjudication": "model/calibration_validation/fiscal_capb_timing_adjudication_2026_09_20.json",
     "pre2022_source_probe_preregistered": true,
     "pre2022_source_probe_contract": "model/calibration_validation/fiscal_reaction_capb_pre2022_source_probe_contract.json",
-    "pre2022_source_probe_executed": false
+    "pre2022_source_probe_executed": true,
+    "pre2022_source_probe_run_id": 35482485118,
+    "pre2022_source_probe_conclusion": "success",
+    "pre2022_source_probe_artifact_id": 10596385949,
+    "pre2022_source_probe_artifact_name": "fiscal-capb-pre2022-source-probe-750ce01e379631bcb36b3b87675be16e775407bd",
+    "pre2022_source_probe_artifact_zip_sha256": "adce7b86d485b3435c005d98765ef5752229ce9946e506a47c4fe2b13c707b3b",
+    "pre2022_source_probe_artifact_expires_at": "2026-12-19T01:51:55Z",
+    "pre2022_source_probe_assessment": "model/calibration_validation/fiscal_capb_pre2022_source_probe_assessment_2026_09_20.json",
+    "raw_source_preservation_preregistered": true,
+    "raw_source_preservation_contract": "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json",
+    "raw_source_preservation_workflow": ".github/workflows/fiscal-capb-raw-source-preservation.yml",
+    "raw_source_preservation_executed": false
   },
   "scientific_effects": {
     "mechanism_classification": "DEFERRED",
@@ -42,5 +53,5 @@
     "system_dynamics_feedback_activation": false,
     "behavioural_closure_activation": false
   },
-  "next_gate": "Manually dispatch the frozen 2011-2021 AMECO UBLGBPS source-structure probe and review its release-level presence evidence. In parallel, preserve exact 2022-2026 raw archive bytes permanently before claiming exact source-vintage reproducibility. No model selection is authorized."
+  "next_gate": "Manually dispatch the reviewed-artifact raw-source preservation workflow. It must download the exact two reviewed Actions artifacts, verify all retained hashes, and create a dedicated source-vintage branch without AMECO refetch. No model selection or target-family switch is authorized."
 }
