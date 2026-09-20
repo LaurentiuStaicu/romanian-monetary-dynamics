@@ -180,7 +180,7 @@ def audit_supply_measurement_design(
         errors.append("measurement-design next task changed")
     if next_task["authorization"] != "OFFICIAL_SOURCE_RECOVERY_ONLY":
         errors.append("measurement-design next-task authorization changed")
-    if next_task["required_source_count"] != 8:
+    if next_task["required_source_count"] != 3:
         errors.append("measurement-design missing-source count changed")
     if next_task["may_materialise_missing_source_events_only_after_raw_retention"] is not True:
         errors.append("missing-source events must remain raw-retention gated")
@@ -246,7 +246,7 @@ def audit_supply_measurement_design(
     if link.get("supply_measurement_design_review") != REVIEW_PATH:
         errors.append("issuance-pressure link lacks measurement design")
     if link["source_boundary_status"] != (
-        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_MONTHLY_10_OF_12_EVENT_COMPLETE_9_OF_12_CANONICAL_PROMOTION_BLOCKED_3_REQUIRED_SOURCES_MISSING"
     ):
         errors.append("issuance-pressure measurement status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -276,8 +276,7 @@ def audit_supply_measurement_design(
     if bridge.get("supply_measurement_design_review") != REVIEW_PATH:
         errors.append("issuance-pressure bridge lacks measurement design")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_"
-        "8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_MONTHLY_10_OF_12_EVENT_COMPLETE_9_OF_12_CANONICAL_PROMOTION_BLOCKED_3_REQUIRED_SOURCES_MISSING"
     ):
         errors.append("issuance-pressure bridge measurement status changed")
 

@@ -1,0 +1,104 @@
+                                   MINISTERUL FINANŢELOR
+
+                                        ORDIN NR. 1831
+pentru modificarea Ordinului ministrului finanțelor nr. 1795/31.10.2025 privind prospectele de
+ emisiune a certificatelor de trezorerie cu discont şi a obligaţiunilor de stat de tip benchmark
+                                  aferente lunii noiembrie 2025
+
+        În temeiul:
+        - art.10 alin. (4) din Hotărârea Guvernului nr. 34/2009 privind organizarea și funcționarea
+Ministerului Finanțelor, cu modificările și completările ulterioare,
+        - art. 6 alin. (2) din Ordonanţă de Urgenţă a Guvernului nr. 212/2020 privind stabilirea unor
+măsuri la nivelul administraţiei publice centrale şi pentru modificarea şi completarea unor acte
+normative, aprobată cu modificări prin Legea nr. 109/2021,
+        - Ordonanţei de urgenţă a Guvernului nr. 64/2007 privind datoria publică aprobată cu
+modificări şi completări prin Legea nr. 109/2008 cu modificările și completările ulterioare, al
+Normelor metodologice de aplicare a prevederilor Ordonanţei de urgenţă a Guvernului nr. 64/2007
+privind datoria publică, aprobate prin Hotărârea Guvernului nr. 1470/2007 cu modificările şi
+completările ulterioare,
+        - Regulamentului cadru privind operațiunile de piață cu titluri de stat pe piața internă aprobat
+prin Ordinul ministrului finanțelor nr. 318/2022, cu modificările ulterioare, al Regulamentului Băncii
+Naţionale a României nr.8/2022 privind operațiunile de administrare a datoriei publice
+guvernamentale efectuate de către Ministerul Finanțelor pe piața titlurilor de stat administrată de
+Banca Naţională a României, al Normei Băncii Naționale a României nr.1/ 2022 pentru aplicarea
+Regulamentului Băncii Naționale a României nr. 8/2022 privind operațiunile de administrare a
+datoriei publice guvernamentale efectuate de către Ministerul Finanțelor pe piața titlurilor de stat
+administrată de Banca Națională a României, al Regulamentului Băncii Naționale a României
+nr.10/2024 privind piața secundară a titlurilor de stat administrată de Banca Națională a României, şi
+al Convenţiei nr.184575/13/2005, încheiată între Ministerul Finanțelor şi Banca Națională a
+României,
+
+         Ministrul finanțelor emite următorul ordin:
+Art. I Ordinul ministrului finanțelor nr. 1795/31.10.2025 privind prospectele de emisiune a
+certificatelor de trezorerie cu discont şi a obligaţiunilor de stat de tip benchmark aferente lunii
+noiembrie 2025, publicat în Monitorul Oficial al României, Partea I, nr. 1009 din 31 octombrie 2025,
+se modifică după cum urmează:
+
+1. Articolul 1 se modifică și va avea următorul cuprins:
+“Art.1 În vederea finanţării deficitului bugetului de stat, refinanţării și rambursării anticipate a
+datoriei publice în luna noiembrie 2025 se aprobă prospectele de emisiune a certificatelor de
+trezorerie cu discont şi a obligaţiunilor de stat de tip benchmark, în valoare nominală totală de 5.800
+milioane lei, la care se poate adăuga suma de 795 milioane lei din alocările sesiunilor suplimentare de
+oferte necompetitive organizate exclusiv pentru instrumentele de tip benchmark, prevăzute în anexele
+nr. 1 şi 2, care fac parte integrantă din prezentul ordin.”
+
+2. Articolul 1 din Anexa 2 se modifică și va avea următorul cuprins:
+“Art.1 În vederea finanţării deficitului bugetului de stat, refinanţării și rambursării anticipate a
+datoriei publice în luna noiembrie 2025, Ministerul Finanțelor anunță redeschiderea emisiunilor de
+obligațiuni de stat de tip benchmark cu scadenţă la 2, 4, 5, 6, 8, 10, 11 și 15 ani și organizarea de
+sesiuni suplimentare de oferte necompetitive (SSON), astfel:
+                                                                                                                      Valoare
+                                                                                    Maturitate                       nominală
+                  Data                                       Data      Maturitate                Rata Dobânda                          Valoare
+  Cod ISIN*)                   Data SSON Data emisiunii                             reziduală                        licitaţie de
+                Licitaţiei                                 scadenţei    Nr. ani                  cupon acumulată                    nominală SSON
+                                                                                     Nr. ani                          referinţă
+                                                                                                  %      Lei/titlu                       Lei
+                                                                                                                         Lei
+ ROOFOYB15203   03/11/2025     04/11/2025   05/11/2025    27/07/2031       6          5.73       7.65     105.84     500,000,000     75,000,000
+ RO45DLJ4EE76   03/11/2025     04/11/2025   05/11/2025    28/04/2027       2          1.48       7.40     193.62     500,000,000     75,000,000
+ROTM7EDD92S2    06/11/2025     07/11/2025   10/11/2025    31/07/2034      11           8.73      7.10     99.21      500,000,000     75,000,000
+ROCDG04X8WJ7    06/11/2025     07/11/2025   10/11/2025    26/04/2028       4          2.46       6.30     170.88     500,000,000     75,000,000
+ ROWLVEJ2A207   10/11/2025     11/11/2025   12/11/2025    30/10/2033      10          7.97       7.20     12.82      500,000,000     75,000,000
+ROJVM8ELBDU4    10/11/2025     11/11/2025   12/11/2025    25/04/2029       5           3.45      6.30     173.47     500,000,000     75,000,000
+ ROO7A2H5YIN8   13/11/2025     14/11/2025   17/11/2025    25/02/2032      10           6.28      6.70     243.22     500,000,000     75,000,000
+ RO677ZOKPGQ8   17/11/2025     18/11/2025   19/11/2025    30/07/2040      15          14.70      7.25     111.23     500,000,000     75,000,000
+ROYNCLHRHVV6    20/11/2025     21/11/2025   24/11/2025    29/07/2030       6          4.68       6.85     110.73     500,000,000     75,000,000
+ RO0DU3PR9NF9   24/11/2025     25/11/2025   26/11/2025    24/02/2038      15          12.25      7.90     297.60     300,000,000     45,000,000
+ROPG9LZUB0O2    26/11/2025     27/11/2025   28/11/2025    27/07/2033       8          7.67       7.50     127.40     500,000,000     75,000,000
+*) În conformitate cu prevederile Ordinului ministrului economiei şi finanţelor nr. 2231/2008 privind
+titlurile de stat ce urmează a fi tranzacţionate şi pe piaţa reglementată administrată de Societatea
+Comercială "Bursa de Valori Bucureşti" - S.A., aceste serii se tranzacţionează simultan pe piaţa
+secundară administrată de Banca Naţională a României şi pe piaţa reglementată administrată de
+Societatea Comercială "Bursa de Valori Bucureşti" - S.A. ”
+
+4. Articolul 4 din Anexa 2 se modifică și va avea următorul cuprins:
+“Art.4 (1) Pentru obligaţiunile de stat de tip benchmark redeschise, specificate la art. 1, dobânda
+(cuponul) se plăteşte la datele specificate în prospectele de emisiune aferente, după cum urmează:
+         ISIN                Ordinul privind prospectul de emisiune aferent
+                                                                                                         Luna lansării
+                                           emisiunii iniţiale
+   ROOFOYB15203                              159/31.01.2025                                             Februarie 2025
+    RO45DLJ4EE76                             159/31.01.2025                                             Februarie 2025
+   ROTM7EDD92S2                             3990/29.09.2023                                             Octombrie 2023
+  ROCDG04X8WJ7                               613/28.03.2024                                               Aprilie 2024
+   ROWLVEJ2A207                             1698/31.05.2023                                                Iunie 2023
+  ROJVM8ELBDU4                              5440/29.12.2023                                              Ianuarie 2024
+   ROO7A2H5YIN8                              282/09.03.2022                                               Martie 2022
+   RO677ZOKPGQ8                             1221/31.07.2025                                               August 2025
+  ROYNCLHRHVV6                              6439/31.10.2024                                             Noiembrie 2024
+   RO0DU3PR9NF9                             1094/28.02.2023                                               Martie 2023
+   ROPG9LZUB0O2                              541/31.03.2025                                               Aprilie 2025
+“
+Art.II Prezentul ordin se publică în Monitorul Oficial al României, Partea I.
+
+Emis la Bucureşti, la: 10.11.2025
+                                                p. Ministrul finanțelor,
+                                                    Secretar de Stat
+                                            Florin – Alexandru ZAHARIA
+
+
+
+
+                                                               2
+

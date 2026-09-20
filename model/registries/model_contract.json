@@ -105,7 +105,7 @@
     "mof_announced_RON_primary_supply_monthly_series": "data/processed/mof_announced_RON_primary_supply_Q1_2025_monthly.csv",
     "mof_announced_RON_primary_supply_full_2025_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json",
     "mof_announced_RON_primary_reference_auction_supply_candidate_id": "announced_RON_primary_reference_auction_supply_level",
-    "mof_announced_RON_primary_reference_auction_supply_status": "PARTIAL_EXACT_EVENT_MATERIALISATION_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED",
+    "mof_announced_RON_primary_reference_auction_supply_status": "PARTIAL_EXACT_MONTHLY_10_OF_12_EVENT_COMPLETE_9_OF_12_CANONICAL_PROMOTION_BLOCKED_3_REQUIRED_SOURCES_MISSING",
     "mof_announced_RON_primary_reference_auction_supply_source_vintage_contract": "model/dynamics/mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract.json",
     "mof_announced_RON_primary_reference_auction_supply_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
     "mof_announced_RON_primary_reference_auction_supply_partial_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json",
@@ -116,14 +116,29 @@
       "2025-02",
       "2025-03",
       "2025-04",
+      "2025-05",
       "2025-06",
-      "2025-10"
+      "2025-07",
+      "2025-09",
+      "2025-10",
+      "2025-11"
     ],
-    "mof_announced_RON_primary_reference_auction_supply_missing_required_source_count": 8,
+    "mof_announced_RON_primary_reference_auction_supply_missing_required_source_count": 3,
     "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
-    "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_PROVIDER_TRANSPORT_BLOCKED",
+    "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_3_REQUIRED_SOURCES_REMAINING",
     "government_issuance_yield_next_independent_task": "primary_yield_to_sovereign_yield_boundary_review",
-    "government_issuance_yield_next_independent_task_authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY"
+    "government_issuance_yield_next_independent_task_authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "mof_announced_RON_primary_reference_auction_supply_event_level_complete_final_months": [
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-09",
+      "2025-10"
+    ]
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",

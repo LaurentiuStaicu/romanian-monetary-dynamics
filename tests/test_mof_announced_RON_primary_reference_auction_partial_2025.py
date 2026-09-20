@@ -59,7 +59,7 @@ class MOFAnnouncedRONPrimaryReferenceAuctionPartial2025Tests(unittest.TestCase):
             design["excluded_from_canonical_candidate"],
         )
 
-    def test_partial_source_vintage_has_only_four_retained_raw_sources(self) -> None:
+    def test_partial_source_vintage_has_nine_retained_raw_sources(self) -> None:
         path = (
             ROOT
             / "data/source_vintages/"
@@ -67,14 +67,28 @@ class MOFAnnouncedRONPrimaryReferenceAuctionPartial2025Tests(unittest.TestCase):
             "source_vintage_manifest.json"
         )
         manifest = json.loads(path.read_text(encoding="utf-8"))
-        self.assertEqual(manifest["raw_sources_retained_count"], 4)
+        self.assertEqual(manifest["raw_sources_retained_count"], 9)
+        self.assertEqual(manifest["raw_sources_unavailable_count"], 3)
         self.assertEqual(
             set(manifest["retained_source_ids"]),
             {
                 "mof_order_541_april_2025",
                 "mof_order_728_may_2025",
+                "mof_order_752_may_2025_amendment",
                 "mof_order_871_june_2025",
+                "mof_order_1088_july_2025",
+                "mof_order_1452_september_2025",
                 "mof_order_1626_october_2025",
+                "mof_order_1831_november_2025_amendment",
+                "mof_order_1928_december_2025",
+            },
+        )
+        self.assertEqual(
+            set(manifest["unavailable_source_ids"]),
+            {
+                "mof_order_1221_august_2025",
+                "mof_order_1795_november_2025",
+                "mof_order_1998_december_2025_amendment",
             },
         )
         self.assertFalse(manifest["canonical_reference_mode_promoted"])

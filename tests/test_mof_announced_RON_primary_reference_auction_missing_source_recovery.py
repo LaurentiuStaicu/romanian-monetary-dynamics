@@ -50,11 +50,20 @@ class MOFAnnouncedSupplyMissingSourceRecoveryTests(unittest.TestCase):
     def test_current_recovery_hold_passes(self) -> None:
         self.assertEqual(self.audit(), [])
 
-    def test_documents_exist_but_raw_retention_is_blocked(self) -> None:
+    def test_five_sources_are_recovered_and_three_remain_blocked(self) -> None:
+        current = self.assessment["current_materialisation"]
+        self.assertEqual(current["retained_required_source_count"], 9)
+        self.assertEqual(current["required_missing_source_count"], 3)
+        self.assertEqual(current["exact_final_month_count"], 10)
+        self.assertEqual(current["event_level_complete_final_month_count"], 9)
+        self.assertEqual(len(self.assessment["recovered_sources"]), 5)
+        self.assertEqual(len(self.assessment["missing_sources"]), 3)
         interpretation = self.assessment["interpretation"]
         self.assertFalse(interpretation["documents_do_not_exist"])
         self.assertFalse(interpretation["public_legal_identity_is_unavailable"])
-        self.assertTrue(interpretation["repository_raw_retention_is_currently_unavailable"])
+        self.assertTrue(
+            interpretation["remaining_repository_raw_retention_is_currently_unavailable"]
+        )
 
     def test_web_snippets_and_third_party_sources_cannot_be_raw_sources(self) -> None:
         interpretation = self.assessment["interpretation"]

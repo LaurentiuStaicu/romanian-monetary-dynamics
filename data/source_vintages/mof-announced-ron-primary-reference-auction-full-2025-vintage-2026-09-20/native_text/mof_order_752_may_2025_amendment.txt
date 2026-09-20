@@ -1,0 +1,106 @@
+                                        MINISTERUL FINANŢELOR
+
+                                       ORDIN NR. 752
+  pentru modificarea Ordinului viceprim-ministru, ministrului finanțelor nr. 728/29.04.2025
+ privind prospectele de emisiune a certificatelor de trezorerie cu discont şi a obligaţiunilor de
+                        stat de tip benchmark aferente lunii mai 2025
+
+        În temeiul:
+        - art.10 alin. (4) din Hotărârea Guvernului nr. 34/2009 privind organizarea și funcționarea
+Ministerului Finanțelor, cu modificările și completările ulterioare,
+        - art. 6 alin. (2) din Ordonanţă de Urgenţă a Guvernului nr. 212/2020 privind stabilirea unor
+măsuri la nivelul administraţiei publice centrale şi pentru modificarea şi completarea unor acte
+normative, aprobată cu modificări prin Legea nr. 109/2021,
+        - Ordonanţei de urgenţă a Guvernului nr. 64/2007 privind datoria publică aprobată cu
+modificări şi completări prin Legea nr. 109/2008 cu modificările și completările ulterioare, al
+Normelor metodologice de aplicare a prevederilor Ordonanţei de urgenţă a Guvernului nr. 64/2007
+privind datoria publică, aprobate prin Hotărârea Guvernului nr. 1470/2007 cu modificările şi
+completările ulterioare,
+        - Regulamentului cadru privind operațiunile de piață cu titluri de stat pe piața internă aprobat
+prin Ordinul ministrului finanțelor nr. 318/2022, cu modificările ulterioare, al Regulamentului Băncii
+Naţionale a României nr.8/2022 privind operațiunile de administrare a datoriei publice
+guvernamentale efectuate de către Ministerul Finanțelor pe piața titlurilor de stat administrată de
+Banca Naţională a României, al Normei Băncii Naționale a României nr.1/ 2022 pentru aplicarea
+Regulamentului Băncii Naționale a României nr. 8/2022 privind operațiunile de administrare a
+datoriei publice guvernamentale efectuate de către Ministerul Finanțelor pe piața titlurilor de stat
+administrată de Banca Națională a României, al Regulamentului Băncii Naționale a României
+nr.10/2024 privind piața secundară a titlurilor de stat administrată de Banca Națională a României, şi
+al Convenţiei nr.184575/13/2005, încheiată între Ministerul Finanțelor şi Banca Națională a
+României,
+
+        Viceprim-ministru, ministrul finanțelor emite următorul ordin:
+Art. I Ordinul viceprim-ministru, ministrului finanțelor nr. 728/29.04.2025 privind prospectele de
+emisiune a certificatelor de trezorerie cu discont şi a obligaţiunilor de stat de tip benchmark aferente
+lunii mai 2025, publicat în Monitorul Oficial al României, Partea I, nr. 389 din 30 aprilie 2025, se
+modifică după cum urmează:
+
+1. Articolul 1 se modifică și va avea următorul cuprins:
+“Art.1 În vederea finanţării deficitului bugetului de stat, refinanţării și rambursării anticipate a
+datoriei publice în luna mai 2025 se aprobă prospectele de emisiune a certificatelor de trezorerie cu
+discont şi a obligaţiunilor de stat de tip benchmark, în valoare nominală totală de 4.000 milioane lei,
+la care se poate adăuga suma de 375 milioane lei din alocările sesiunilor suplimentare de oferte
+necompetitive organizate exclusiv pentru instrumentele de tip benchmark, prevăzute în anexele nr. 1
+şi 2, care fac parte integrantă din prezentul ordin.”
+
+2. Articolul 1 din Anexa 1 se modifică și va avea următorul cuprins:
+“Art.1 În vederea finanţării deficitului bugetului de stat, refinanţării și rambursării anticipate a
+datoriei publice în luna mai 2025, Ministerul Finanțelor anunță lansarea a trei emisiuni de certificate
+de trezorerie cu discont, astfel:
+                             Data                              Data                    Valoare emisiune
+      Cod ISIN                             Data emisiunii                  Nr. zile
+                           licitaţiei                        scadenţei                       lei
+
+  RO7Q5L1O12N6           08/05/2025         12/05/2025      29/12/2025      231          500,000,000
+  RO937L7DZQF3           15/05/2025         19/05/2025      29/04/2026      345          500,000,000
+  RO25VL26UHW0           22/05/2025         26/05/2025      27/08/2025       93          500,000,000
+“
+3. Articolul 1 din Anexa 2 se modifică și va avea următorul cuprins:
+“Art.1 În vederea finanţării deficitului bugetului de stat, refinanţării și rambursării anticipate a
+datoriei publice în luna mai 2025, Ministerul Finanțelor anunță redeschiderea emisiunilor de
+obligațiuni de stat de tip benchmark cu scadenţă la 1, 2, 4, 5 și 6 ani și organizarea de sesiuni
+suplimentare de oferte necompetitive (SSON), astfel:
+                                                                                                                        Valoare
+                                                                                      Maturitate                       nominală
+                    Data                                       Data      Maturitate                Rata Dobânda                          Valoare
+    Cod ISIN*)                   Data SSON Data emisiunii                             reziduală                        licitaţie de
+                  Licitaţiei                                 scadenţei    Nr. ani                  cupon acumulată                    nominală SSON
+                                                                                       Nr. ani                          referinţă
+                                                                                                    %      Lei/titlu                       Lei
+                                                                                                                           Lei
+ROJVM8ELBDU4      05/05/2025     06/05/2025   07/05/2025    25/04/2029       5           3.97      6.30     10.36      500,000,000     75,000,000
+ROXNS8ONSUB3      12/05/2025     13/05/2025   14/05/2025    27/07/2026       1           1.20      7.20     287.01     500,000,000     75,000,000
+ROCDG04X8WJ7      19/05/2025     20/05/2025   21/05/2025    26/04/2028       4           2.93      6.30     21.58      500,000,000     75,000,000
+ RO45DLJ4EE76     26/05/2025     27/05/2025   28/05/2025    28/04/2027       2           1.92      7.40     30.41      500,000,000     75,000,000
+ROYNCLHRHVV6      29/05/2025     30/05/2025   02/06/2025    29/07/2030       6           5.16      6.85     289.01     500,000,000     75,000,000
+*) În conformitate cu prevederile Ordinului ministrului economiei şi finanţelor nr. 2231/2008 privind
+titlurile de stat ce urmează a fi tranzacţionate şi pe piaţa reglementată administrată de Societatea
+Comercială "Bursa de Valori Bucureşti" - S.A., aceste serii se tranzacţionează simultan pe piaţa
+secundară administrată de Banca Naţională a României şi pe piaţa reglementată administrată de
+Societatea Comercială "Bursa de Valori Bucureşti" - S.A. ”
+
+4. Articolul 4 din Anexa 2 se modifică și va avea următorul cuprins:
+“Art.4 (1) Pentru obligaţiunile de stat de tip benchmark redeschise, specificate la art. 1, dobânda
+(cuponul) se plăteşte la datele specificate în prospectele de emisiune aferente, după cum urmează:
+           ISIN                Ordinul privind prospectul de emisiune aferent
+                                                                                                           Luna lansării
+                                             emisiunii iniţiale
+    ROJVM8ELBDU4                              5440/29.12.2023                                              Ianuarie 2024
+    ROXNS8ONSUB3                              6826/30.12.2024                                              Ianuarie 2025
+    ROCDG04X8WJ7                               613/28.03.2024                                               Aprilie 2024
+     RO45DLJ4EE76                              159/31.01.2025                                             Februarie 2025
+    ROYNCLHRHVV6                              6439/31.10.2024                                             Noiembrie 2024
+“
+
+Art.II Prezentul ordin se publică în Monitorul Oficial al României, Partea I.
+
+Emis la Bucureşti, la: 07.05.2025
+
+                                      p. Viceprim-ministru, ministrul finanțelor,
+                                                  Secretar de Stat
+                                                 Alin Marius Andrieș
+
+
+
+
+                                                                 2
+

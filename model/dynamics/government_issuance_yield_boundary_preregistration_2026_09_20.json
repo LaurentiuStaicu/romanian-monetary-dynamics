@@ -63,7 +63,7 @@
       "to": "government_securities_supply_pressure",
       "requirement": "Define and validate a supply-pressure observable or transform. Raw gross issuance volume alone must not be relabelled supply pressure; market depth, investor absorption, maturity/currency composition or another preregistered denominator/structure may be required.",
       "source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
-      "status": "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED",
+      "status": "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_MONTHLY_10_OF_12_EVENT_COMPLETE_9_OF_12_CANONICAL_PROMOTION_BLOCKED_3_REQUIRED_SOURCES_MISSING",
       "source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json",
       "denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json",
       "supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
@@ -74,9 +74,9 @@
       "full_year_announced_supply_source_vintage_contract": "model/dynamics/mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract.json",
       "full_year_announced_supply_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
       "full_year_announced_supply_partial_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json",
-      "missing_required_source_count": 8,
+      "missing_required_source_count": 3,
       "announced_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
-      "missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_PROVIDER_TRANSPORT_BLOCKED"
+      "missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_3_REQUIRED_SOURCES_REMAINING"
     },
     {
       "id": "primary_yield_to_sovereign_yield",

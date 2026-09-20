@@ -169,7 +169,7 @@ def audit_supply_load_denominator_boundary(
     if link["supply_load_denominator_boundary_review"] != REVIEW_PATH:
         errors.append("issuance-pressure link lacks denominator review")
     if link["source_boundary_status"] != (
-        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_MONTHLY_10_OF_12_EVENT_COMPLETE_9_OF_12_CANONICAL_PROMOTION_BLOCKED_3_REQUIRED_SOURCES_MISSING"
     ):
         errors.append("issuance-pressure link denominator status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -184,7 +184,7 @@ def audit_supply_load_denominator_boundary(
     if bridge["denominator_boundary_review"] != REVIEW_PATH:
         errors.append("issuance-pressure bridge lacks denominator review")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_MONTHLY_10_OF_12_EVENT_COMPLETE_9_OF_12_CANONICAL_PROMOTION_BLOCKED_3_REQUIRED_SOURCES_MISSING"
     ):
         errors.append("issuance-pressure bridge status changed")
 

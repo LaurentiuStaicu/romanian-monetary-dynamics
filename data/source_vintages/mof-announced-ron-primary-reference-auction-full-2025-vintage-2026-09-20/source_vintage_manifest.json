@@ -1,6 +1,6 @@
 {
   "snapshot_id": "mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20",
-  "fetched_at_utc": "2026-09-20T18:44:37+00:00",
+  "fetched_at_utc": "2026-09-20T19:12:48+00:00",
   "contract": "model/dynamics/mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract.json",
   "fetcher_script": "scripts/probe_mof_announced_RON_primary_reference_auction_full_2025_source_vintage.py",
   "fetcher_script_sha256": "01d533fd81946d43ec0c9cc582ea2858e1f15107c6a4b1de9b1ab350d50ea1b3",
@@ -67,11 +67,46 @@
       "publication_date": "2025-05-07",
       "supersedes": "728/2025",
       "legal_registry_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
-      "official_pdf_status": "NOT_CONFIGURED",
-      "raw_source_retained": false,
-      "event_materialisation_authorized": false,
+      "official_pdf_status": "RETAINED_EXACT_OFFICIAL_PDF_RECOVERED",
+      "raw_source_retained": true,
+      "event_materialisation_authorized": true,
       "search_url": "https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F05%2F07&publicatnumar=419&publicatsfarsittext=2025%2F05%2F07",
-      "legal_registry_error": "curl transport failed for https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F05%2F07&publicatnumar=419&publicatsfarsittext=2025%2F05%2F07: returncode=52; stderr=curl: (52) Empty reply from server"
+      "legal_registry_error": "curl transport failed for https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F05%2F07&publicatnumar=419&publicatsfarsittext=2025%2F05%2F07: returncode=52; stderr=curl: (52) Empty reply from server",
+      "official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF752mai2025.pdf",
+      "official_pdf_path": "official_pdf_crosschecks/mof_order_752_may_2025_amendment.pdf",
+      "official_pdf_bytes": 224434,
+      "official_pdf_sha256": "032e4ff83142c3785bde6df68c9910cc95401d5eff47f4cb661d2047892a8fe4",
+      "official_pdf_response_metadata": {
+        "transport": "urllib",
+        "content_type": "application/pdf",
+        "last_modified": "Wed, 07 May 2025 13:48:55 GMT",
+        "etag": "\"681b64c7-36cb2\""
+      },
+      "recovery_identity_profile": "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA",
+      "recovery_identity_checks": {
+        "order_number": true,
+        "order_date": false,
+        "ministry": true,
+        "title_anchor": true,
+        "month_anchor": true,
+        "publication_number": false,
+        "superseded_order_number": true
+      },
+      "recovery_required_identity_checks": [
+        "order_number",
+        "ministry",
+        "title_anchor",
+        "month_anchor",
+        "superseded_order_number"
+      ],
+      "recovery_frozen_legal_metadata": {
+        "order_date": "2025-05-07",
+        "publication_number": "419",
+        "publication_date": "2025-05-07"
+      },
+      "native_text_path": "native_text/mof_order_752_may_2025_amendment.txt",
+      "native_text_bytes": 8579,
+      "native_text_sha256": "eba08e66fca97c4ce4102779ce57b7cce9dd3d5ae56456c17d57ba63e66715ad"
     },
     {
       "source_id": "mof_order_871_june_2025",
@@ -109,13 +144,46 @@
       "publication_date": "2025-07-02",
       "supersedes": null,
       "legal_registry_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
-      "official_pdf_status": "NOT_CONFIGURED",
-      "raw_source_retained": false,
-      "event_materialisation_authorized": false,
+      "official_pdf_status": "RETAINED_EXACT_OFFICIAL_PDF_RECOVERED",
+      "raw_source_retained": true,
+      "event_materialisation_authorized": true,
       "known_official_legal_url": "https://legislatie.just.ro/public/DetaliiDocument/299572",
       "direct_legal_url_error": "curl transport failed for https://legislatie.just.ro/public/DetaliiDocument/299572: returncode=52; stderr=curl: (52) Empty reply from server",
       "search_url": "https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F07%2F02&publicatnumar=622&publicatsfarsittext=2025%2F07%2F02",
-      "legal_registry_error": "curl transport failed for https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F07%2F02&publicatnumar=622&publicatsfarsittext=2025%2F07%2F02: returncode=52; stderr=curl: (52) Empty reply from server"
+      "legal_registry_error": "curl transport failed for https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F07%2F02&publicatnumar=622&publicatsfarsittext=2025%2F07%2F02: returncode=52; stderr=curl: (52) Empty reply from server",
+      "official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF1088iulie2025.pdf",
+      "official_pdf_path": "official_pdf_crosschecks/mof_order_1088_july_2025.pdf",
+      "official_pdf_bytes": 102306,
+      "official_pdf_sha256": "9b46e36563935be7caea0536be06bede6f5ae9d9aa9479017bcb4585db58bb8e",
+      "official_pdf_response_metadata": {
+        "transport": "urllib",
+        "content_type": "application/pdf",
+        "last_modified": "Wed, 02 Jul 2025 07:19:01 GMT",
+        "etag": "\"6864dd65-18fa2\""
+      },
+      "recovery_identity_profile": "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA",
+      "recovery_identity_checks": {
+        "order_number": true,
+        "order_date": false,
+        "ministry": true,
+        "title_anchor": true,
+        "month_anchor": true,
+        "publication_number": false
+      },
+      "recovery_required_identity_checks": [
+        "order_number",
+        "ministry",
+        "title_anchor",
+        "month_anchor"
+      ],
+      "recovery_frozen_legal_metadata": {
+        "order_date": "2025-06-30",
+        "publication_number": "622",
+        "publication_date": "2025-07-02"
+      },
+      "native_text_path": "native_text/mof_order_1088_july_2025.txt",
+      "native_text_bytes": 21291,
+      "native_text_sha256": "5b7a3d6008c467e9f29b5ed853e891f6faf0c84966d7a38c93d234682f580eef"
     },
     {
       "source_id": "mof_order_1221_august_2025",
@@ -145,13 +213,46 @@
       "publication_date": "2025-08-29",
       "supersedes": null,
       "legal_registry_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
-      "official_pdf_status": "NOT_CONFIGURED",
-      "raw_source_retained": false,
-      "event_materialisation_authorized": false,
+      "official_pdf_status": "RETAINED_EXACT_OFFICIAL_PDF_RECOVERED",
+      "raw_source_retained": true,
+      "event_materialisation_authorized": true,
       "known_official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocument/301803",
       "direct_legal_url_error": "curl transport failed for https://legislatie.just.ro/Public/DetaliiDocument/301803: returncode=52; stderr=curl: (52) Empty reply from server",
       "search_url": "https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F08%2F29&publicatnumar=806&publicatsfarsittext=2025%2F08%2F29",
-      "legal_registry_error": "curl transport failed for https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F08%2F29&publicatnumar=806&publicatsfarsittext=2025%2F08%2F29: returncode=52; stderr=curl: (52) Empty reply from server"
+      "legal_registry_error": "curl transport failed for https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F08%2F29&publicatnumar=806&publicatsfarsittext=2025%2F08%2F29: returncode=52; stderr=curl: (52) Empty reply from server",
+      "official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF1452_29082025.pdf",
+      "official_pdf_path": "official_pdf_crosschecks/mof_order_1452_september_2025.pdf",
+      "official_pdf_bytes": 254849,
+      "official_pdf_sha256": "9e7015722f8b891151f08ce85174b2470a7b2bf642305cdd1fbdd6c85ad17a00",
+      "official_pdf_response_metadata": {
+        "transport": "urllib",
+        "content_type": "application/pdf",
+        "last_modified": "Fri, 29 Aug 2025 09:39:57 GMT",
+        "etag": "\"68b1756d-3e381\""
+      },
+      "recovery_identity_profile": "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA",
+      "recovery_identity_checks": {
+        "order_number": true,
+        "order_date": false,
+        "ministry": true,
+        "title_anchor": true,
+        "month_anchor": true,
+        "publication_number": false
+      },
+      "recovery_required_identity_checks": [
+        "order_number",
+        "ministry",
+        "title_anchor",
+        "month_anchor"
+      ],
+      "recovery_frozen_legal_metadata": {
+        "order_date": "2025-08-29",
+        "publication_number": "806",
+        "publication_date": "2025-08-29"
+      },
+      "native_text_path": "native_text/mof_order_1452_september_2025.txt",
+      "native_text_bytes": 21221,
+      "native_text_sha256": "efe5bc7e268ee5806f772156dcf5ce3e5bf3fdf9d1b6a1b1aef608869ea7bd33"
     },
     {
       "source_id": "mof_order_1626_october_2025",
@@ -207,13 +308,48 @@
       "publication_date": "2025-11-11",
       "supersedes": "1795/2025",
       "legal_registry_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
-      "official_pdf_status": "NOT_CONFIGURED",
-      "raw_source_retained": false,
-      "event_materialisation_authorized": false,
+      "official_pdf_status": "RETAINED_EXACT_OFFICIAL_PDF_RECOVERED",
+      "raw_source_retained": true,
+      "event_materialisation_authorized": true,
       "known_official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocument/304106",
       "direct_legal_url_error": "curl transport failed for https://legislatie.just.ro/Public/DetaliiDocument/304106: returncode=52; stderr=curl: (52) Empty reply from server",
       "search_url": "https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F11%2F11&publicatnumar=1041&publicatsfarsittext=2025%2F11%2F11",
-      "legal_registry_error": "curl transport failed for https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F11%2F11&publicatnumar=1041&publicatsfarsittext=2025%2F11%2F11: returncode=52; stderr=curl: (52) Empty reply from server"
+      "legal_registry_error": "curl transport failed for https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F11%2F11&publicatnumar=1041&publicatsfarsittext=2025%2F11%2F11: returncode=52; stderr=curl: (52) Empty reply from server",
+      "official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF1831_10112025.pdf",
+      "official_pdf_path": "official_pdf_crosschecks/mof_order_1831_november_2025_amendment.pdf",
+      "official_pdf_bytes": 225390,
+      "official_pdf_sha256": "2947ea6161b14cbf94cb5cba0eb23ddf0d1918ecab0e8f7e2b03b9c72a20b923",
+      "official_pdf_response_metadata": {
+        "transport": "urllib",
+        "content_type": "application/pdf",
+        "last_modified": "Tue, 11 Nov 2025 12:53:37 GMT",
+        "etag": "\"691331d1-3706e\""
+      },
+      "recovery_identity_profile": "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA",
+      "recovery_identity_checks": {
+        "order_number": true,
+        "order_date": false,
+        "ministry": true,
+        "title_anchor": true,
+        "month_anchor": true,
+        "publication_number": false,
+        "superseded_order_number": true
+      },
+      "recovery_required_identity_checks": [
+        "order_number",
+        "ministry",
+        "title_anchor",
+        "month_anchor",
+        "superseded_order_number"
+      ],
+      "recovery_frozen_legal_metadata": {
+        "order_date": "2025-11-10",
+        "publication_number": "1041",
+        "publication_date": "2025-11-11"
+      },
+      "native_text_path": "native_text/mof_order_1831_november_2025_amendment.txt",
+      "native_text_bytes": 9174,
+      "native_text_sha256": "a2ecf26cfe291fe6ebe3cc44320bbd889cf30fdb3381bb8a01ed3a22f3addbaa"
     },
     {
       "source_id": "mof_order_1928_december_2025",
@@ -225,13 +361,48 @@
       "publication_date": "2025-12-03",
       "supersedes": null,
       "legal_registry_status": "UNAVAILABLE_FROM_GITHUB_RUNNER",
-      "official_pdf_status": "NOT_CONFIGURED",
-      "raw_source_retained": false,
-      "event_materialisation_authorized": false,
+      "official_pdf_status": "RETAINED_EXACT_OFFICIAL_PDF_RECOVERED",
+      "raw_source_retained": true,
+      "event_materialisation_authorized": true,
       "known_official_legal_url": "https://legislatie.just.ro/Public/FormaPrintabila/00000G1RB4W7CFF2RO825LZVAE9ZO2TI",
       "direct_legal_url_error": "curl transport failed for https://legislatie.just.ro/Public/FormaPrintabila/00000G1RB4W7CFF2RO825LZVAE9ZO2TI: returncode=52; stderr=curl: (52) Empty reply from server",
       "search_url": "https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F12%2F03&publicatnumar=1114&publicatsfarsittext=2025%2F12%2F03",
-      "legal_registry_error": "curl transport failed for https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F12%2F03&publicatnumar=1114&publicatsfarsittext=2025%2F12%2F03: returncode=52; stderr=curl: (52) Empty reply from server"
+      "legal_registry_error": "curl transport failed for https://legislatie.just.ro/Public/RezultateCautare?publicatinceputtext=2025%2F12%2F03&publicatnumar=1114&publicatsfarsittext=2025%2F12%2F03: returncode=52; stderr=curl: (52) Empty reply from server",
+      "official_pdf_url": "https://static.anaf.ro/static/10/Anaf/legislatie/OMF_1928_2025.pdf",
+      "official_pdf_path": "official_pdf_crosschecks/mof_order_1928_december_2025.pdf",
+      "official_pdf_bytes": 122749,
+      "official_pdf_sha256": "43970738c5dba7cb99240a79b22b348b3ba34521c85c8514a27608a9ff3f2087",
+      "official_pdf_response_metadata": {
+        "transport": "urllib",
+        "content_type": "application/pdf",
+        "last_modified": "Thu, 11 Dec 2025 10:40:44 GMT",
+        "etag": "\"1df7d-645aac6e64300\""
+      },
+      "recovery_identity_profile": "LEGAL_PUBLICATION_PDF",
+      "recovery_identity_checks": {
+        "order_number": true,
+        "order_date": true,
+        "ministry": true,
+        "title_anchor": true,
+        "month_anchor": true,
+        "publication_number": true
+      },
+      "recovery_required_identity_checks": [
+        "order_number",
+        "order_date",
+        "ministry",
+        "title_anchor",
+        "month_anchor",
+        "publication_number"
+      ],
+      "recovery_frozen_legal_metadata": {
+        "order_date": "2025-12-02",
+        "publication_number": "1114",
+        "publication_date": "2025-12-03"
+      },
+      "native_text_path": "native_text/mof_order_1928_december_2025.txt",
+      "native_text_bytes": 14274,
+      "native_text_sha256": "edb2f7d3ffd7a4ca9b57c64a76679609265b72e33a7284b08c6b991f4e28b96f"
     },
     {
       "source_id": "mof_order_1998_december_2025_amendment",
@@ -255,27 +426,108 @@
   "document_count": 12,
   "base_order_count": 9,
   "amendment_order_count": 3,
-  "raw_sources_retained_count": 4,
-  "raw_sources_unavailable_count": 8,
+  "raw_sources_retained_count": 9,
+  "raw_sources_unavailable_count": 3,
   "retained_source_ids": [
     "mof_order_541_april_2025",
     "mof_order_728_may_2025",
+    "mof_order_752_may_2025_amendment",
     "mof_order_871_june_2025",
-    "mof_order_1626_october_2025"
+    "mof_order_1088_july_2025",
+    "mof_order_1452_september_2025",
+    "mof_order_1626_october_2025",
+    "mof_order_1831_november_2025_amendment",
+    "mof_order_1928_december_2025"
   ],
   "unavailable_source_ids": [
-    "mof_order_752_may_2025_amendment",
-    "mof_order_1088_july_2025",
     "mof_order_1221_august_2025",
-    "mof_order_1452_september_2025",
     "mof_order_1795_november_2025",
-    "mof_order_1831_november_2025_amendment",
-    "mof_order_1928_december_2025",
     "mof_order_1998_december_2025_amendment"
   ],
   "event_rows_materialised": false,
   "canonical_reference_mode_promoted": false,
   "yield_effect_estimation_authorized": false,
   "feedback_activation_authorized": false,
-  "status": "PARTIAL_OFFICIAL_SOURCE_RETENTION_EXPLICIT_UNAVAILABLE_REMAINDER"
+  "status": "PARTIAL_OFFICIAL_SOURCE_RETENTION_9_OF_12_THREE_UNAVAILABLE",
+  "recovery_transition": {
+    "transition_id": "official_pdf_recovery_2026_09_20",
+    "retained_before": 4,
+    "recovered_now": 5,
+    "retained_after": 9,
+    "remaining_unavailable": 3,
+    "recovery_records": [
+      {
+        "source_id": "mof_order_1088_july_2025",
+        "official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF1088iulie2025.pdf",
+        "official_pdf_sha256": "9b46e36563935be7caea0536be06bede6f5ae9d9aa9479017bcb4585db58bb8e",
+        "identity_profile": "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA",
+        "required_identity_checks": [
+          "order_number",
+          "ministry",
+          "title_anchor",
+          "month_anchor"
+        ],
+        "all_required_identity_checks_pass": true
+      },
+      {
+        "source_id": "mof_order_1452_september_2025",
+        "official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF1452_29082025.pdf",
+        "official_pdf_sha256": "9e7015722f8b891151f08ce85174b2470a7b2bf642305cdd1fbdd6c85ad17a00",
+        "identity_profile": "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA",
+        "required_identity_checks": [
+          "order_number",
+          "ministry",
+          "title_anchor",
+          "month_anchor"
+        ],
+        "all_required_identity_checks_pass": true
+      },
+      {
+        "source_id": "mof_order_1831_november_2025_amendment",
+        "official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF1831_10112025.pdf",
+        "official_pdf_sha256": "2947ea6161b14cbf94cb5cba0eb23ddf0d1918ecab0e8f7e2b03b9c72a20b923",
+        "identity_profile": "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA",
+        "required_identity_checks": [
+          "order_number",
+          "ministry",
+          "title_anchor",
+          "month_anchor",
+          "superseded_order_number"
+        ],
+        "all_required_identity_checks_pass": true
+      },
+      {
+        "source_id": "mof_order_1928_december_2025",
+        "official_pdf_url": "https://static.anaf.ro/static/10/Anaf/legislatie/OMF_1928_2025.pdf",
+        "official_pdf_sha256": "43970738c5dba7cb99240a79b22b348b3ba34521c85c8514a27608a9ff3f2087",
+        "identity_profile": "LEGAL_PUBLICATION_PDF",
+        "required_identity_checks": [
+          "order_number",
+          "order_date",
+          "ministry",
+          "title_anchor",
+          "month_anchor",
+          "publication_number"
+        ],
+        "all_required_identity_checks_pass": true
+      },
+      {
+        "source_id": "mof_order_752_may_2025_amendment",
+        "official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF752mai2025.pdf",
+        "official_pdf_sha256": "032e4ff83142c3785bde6df68c9910cc95401d5eff47f4cb661d2047892a8fe4",
+        "identity_profile": "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA",
+        "required_identity_checks": [
+          "order_number",
+          "ministry",
+          "title_anchor",
+          "month_anchor",
+          "superseded_order_number"
+        ],
+        "all_required_identity_checks_pass": true
+      }
+    ],
+    "no_event_materialisation_in_this_transition": true,
+    "no_canonical_reference_mode_promotion": true,
+    "no_feedback_activation": true
+  }
 }

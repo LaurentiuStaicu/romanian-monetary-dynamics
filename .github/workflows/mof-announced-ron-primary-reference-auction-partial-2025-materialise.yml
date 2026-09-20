@@ -3,7 +3,7 @@ name: Ministry Announced RON Reference Auction Partial-2025 Materialisation
 on:
   push:
     branches:
-      - source-vintage/mof-announced-ron-primary-reference-auction-full-2025-2026-09-20
+      - recovery/mof-announced-ron-primary-reference-auction-missing-sources-2026-09-20
     paths:
       - .github/workflows/mof-announced-ron-primary-reference-auction-partial-2025-materialise.yml
       - scripts/materialise_mof_announced_RON_primary_reference_auction_partial_2025.py
@@ -52,7 +52,7 @@ jobs:
 
       - name: Retain native text, processed series and assessment
         run: |
-          BRANCH="source-vintage/mof-announced-ron-primary-reference-auction-full-2025-2026-09-20"
+          BRANCH="recovery/mof-announced-ron-primary-reference-auction-missing-sources-2026-09-20"
           MAT="mof_announced_reference_auction_partial_2025_materialised"
           VINTAGE="data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20"
           EVENTS="data/processed/mof_announced_RON_primary_reference_auction_partial_2025_events.csv"

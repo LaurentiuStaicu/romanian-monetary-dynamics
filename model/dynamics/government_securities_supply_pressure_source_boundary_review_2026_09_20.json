@@ -132,6 +132,7 @@
   "next_task": {
     "id": "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery",
     "authorization": "OFFICIAL_SOURCE_RECOVERY_ONLY",
+    "required_source_count": 3,
     "may_compute_pressure_ratio_now": false,
     "may_create_approximate_chart_values": false,
     "may_activate_feedback": false,
@@ -155,5 +156,14 @@
   "full_year_primary_supply_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
   "full_year_primary_supply_partial_materialisation_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json",
   "full_year_primary_supply_status": "PARTIAL_EXACT_EVENT_MATERIALISATION_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED",
-  "announced_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json"
+  "announced_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
+  "full_year_announced_RON_primary_reference_auction_supply_status": "PARTIAL_EXACT_MONTHLY_10_OF_12_EVENT_COMPLETE_9_OF_12_CANONICAL_PROMOTION_BLOCKED_3_REQUIRED_SOURCES_MISSING",
+  "announced_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_3_REQUIRED_SOURCES_REMAINING",
+  "next_independent_issuance_yield_task": {
+    "id": "primary_yield_to_sovereign_yield_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_construct_generic_sovereign_yield": false,
+    "may_estimate_yield_effect": false,
+    "may_activate_feedback": false
+  }
 }
