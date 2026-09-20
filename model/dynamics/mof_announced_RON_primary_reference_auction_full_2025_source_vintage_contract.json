@@ -76,7 +76,8 @@
       "title_anchor": "prospectele de emisiune",
       "month_anchor": "iulie 2025",
       "supersedes": null,
-      "known_official_pdf_url": null
+      "known_official_pdf_url": null,
+      "known_official_legal_url": "https://legislatie.just.ro/public/DetaliiDocument/299572"
     },
     {
       "source_id": "mof_order_1221_august_2025",
@@ -89,7 +90,8 @@
       "title_anchor": "prospectele de emisiune",
       "month_anchor": "august 2025",
       "supersedes": null,
-      "known_official_pdf_url": null
+      "known_official_pdf_url": null,
+      "known_official_legal_url": "https://legislatie.just.ro/Public/FormaPrintabila/00000G1PDDT6BYBUL5X0XOPOZQICRDM9"
     },
     {
       "source_id": "mof_order_1452_september_2025",
@@ -102,7 +104,8 @@
       "title_anchor": "prospectele de emisiune",
       "month_anchor": "septembrie 2025",
       "supersedes": null,
-      "known_official_pdf_url": null
+      "known_official_pdf_url": null,
+      "known_official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocument/301803"
     },
     {
       "source_id": "mof_order_1626_october_2025",
@@ -128,7 +131,8 @@
       "title_anchor": "prospectele de emisiune",
       "month_anchor": "noiembrie 2025",
       "supersedes": null,
-      "known_official_pdf_url": null
+      "known_official_pdf_url": null,
+      "known_official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/303894"
     },
     {
       "source_id": "mof_order_1831_november_2025_amendment",
@@ -141,7 +145,8 @@
       "title_anchor": "pentru modificarea",
       "month_anchor": "noiembrie 2025",
       "supersedes": "1795/2025",
-      "known_official_pdf_url": null
+      "known_official_pdf_url": null,
+      "known_official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocument/304106"
     },
     {
       "source_id": "mof_order_1928_december_2025",
@@ -154,7 +159,8 @@
       "title_anchor": "prospectele de emisiune",
       "month_anchor": "decembrie 2025",
       "supersedes": null,
-      "known_official_pdf_url": null
+      "known_official_pdf_url": null,
+      "known_official_legal_url": "https://legislatie.just.ro/Public/FormaPrintabila/00000G1RB4W7CFF2RO825LZVAE9ZO2TI"
     },
     {
       "source_id": "mof_order_1998_december_2025_amendment",
@@ -167,7 +173,8 @@
       "title_anchor": "pentru modificarea",
       "month_anchor": "decembrie 2025",
       "supersedes": "1928/2025",
-      "known_official_pdf_url": null
+      "known_official_pdf_url": null,
+      "known_official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/305670"
     }
   ],
   "discovery": {
@@ -176,7 +183,9 @@
     "fail_if_zero_matches": true,
     "fail_if_multiple_matches": true,
     "no_guessed_document_ids": true,
-    "no_search_engine_snapshot_as_repository_source": true
+    "no_search_engine_snapshot_as_repository_source": true,
+    "direct_official_legal_url_preferred_when_frozen": true,
+    "direct_url_must_pass_same_identity_checks": true
   },
   "retention": {
     "retain_search_page_html": true,
