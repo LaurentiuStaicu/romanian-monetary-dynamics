@@ -58,6 +58,10 @@ MF_FILENAME_CANDIDATES = {
     "mof_order_1221_august_2025": [
         "OMF1221august2025.pdf",
         "OMF1221_31072025.pdf",
+        "OMF1221_01082025.pdf",
+        "OMF1221august25.pdf",
+        "ordin1221_31072025.pdf",
+        "ordin1221august2025.pdf",
     ],
     "mof_order_1452_september_2025": [
         "OMF1452septembrie2025.pdf",
@@ -66,6 +70,10 @@ MF_FILENAME_CANDIDATES = {
     "mof_order_1795_november_2025": [
         "OMF1795noiembrie2025.pdf",
         "OMF1795_31102025.pdf",
+        "OMF1795nov2025.pdf",
+        "OMF1795_31102025MO.pdf",
+        "ordin1795_31102025.pdf",
+        "ordin1795noiembrie2025.pdf",
     ],
     "mof_order_1831_november_2025_amendment": [
         "OMF1831_10112025.pdf",
@@ -74,6 +82,12 @@ MF_FILENAME_CANDIDATES = {
     "mof_order_1998_december_2025_amendment": [
         "OMF1998_19122025.pdf",
         "OMF1998decembrie2025.pdf",
+        "OMF1998dec2025.pdf",
+        "ordin1998_19122025.pdf",
+        "OMF1998modif1928_19122025.pdf",
+        "OMF1998mod1928_19122025.pdf",
+        "ordin1998modif1928_19122025.pdf",
+        "ordin1998nodif1928_19122025.pdf",
     ],
 }
 
