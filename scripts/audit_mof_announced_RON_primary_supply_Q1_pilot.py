@@ -50,7 +50,7 @@ def audit_announced_supply_q1_pilot(
     errors: list[str] = []
 
     if pilot["status"] != (
-        "PASS_EXACT_Q1_EVENT_LEVEL_PILOT_CANONICAL_PROMOTION_DEFERRED"
+        "PASS_EXACT_Q1_LEGACY_COMBINED_PILOT_FULL_YEAR_DEFINITION_NOT_STABLE"
     ):
         errors.append("Q1 announced-supply pilot status changed")
     if pilot["reference_mode_id"] != "announced_RON_primary_supply_level":
@@ -217,10 +217,12 @@ def audit_announced_supply_q1_pilot(
         errors.append("exact monthly pilot must remain materialised")
 
     next_gate = pilot["next_gate"]
-    if next_gate["id"] != "mof_announced_RON_primary_supply_full_2025_extension":
+    if next_gate["id"] != (
+        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
+    ):
         errors.append("Q1 pilot next gate changed")
     if next_gate["authorization"] != (
-        "SOURCE_VINTAGE_EXTENSION_AND_EXACT_EVENT_MATERIALISATION_ONLY"
+        "OFFICIAL_SOURCE_RETENTION_AMENDMENT_AWARE_EVENT_MATERIALISATION_ONLY"
     ):
         errors.append("Q1 pilot next-gate authorization changed")
     if next_gate["may_estimate_supply_to_yield_effect"] is not False:
@@ -235,9 +237,11 @@ def audit_announced_supply_q1_pilot(
     if measure.get("reference_mode_pilot_assessment") != PILOT_PATH:
         errors.append("measurement design lacks Q1 pilot assessment")
     if measure["current_source_status"] != (
-        "EXACT_Q1_EVENT_LEVEL_PILOT_MATERIALISED_FULL_2025_EXTENSION_PENDING"
+        "EXACT_Q1_LEGACY_PILOT_RETAINED_FULL_YEAR_DEFINITION_CHANGED"
     ):
         errors.append("measurement design Q1 pilot status changed")
+    if measure.get("primary_recovery_path") is not False:
+        errors.append("legacy Q1 measure may not remain primary recovery path")
 
     node = next(
         item for item in boundary["variables"]
@@ -246,7 +250,7 @@ def audit_announced_supply_q1_pilot(
     if node.get("announced_RON_primary_supply_reference_mode_pilot_assessment") != PILOT_PATH:
         errors.append("boundary registry lacks Q1 pilot assessment")
     if node["announced_RON_primary_supply_reference_mode_status"] != (
-        "EXACT_Q1_PILOT_MATERIALISED_NOT_CANONICAL"
+        "LEGACY_Q1_COMBINED_PILOT_RETAINED_NOT_FULL_YEAR_STABLE"
     ):
         errors.append("boundary registry Q1 pilot status changed")
     if node["current_boundary_class"] != "UNRESOLVED":
@@ -263,7 +267,7 @@ def audit_announced_supply_q1_pilot(
     if link.get("announced_RON_primary_supply_reference_mode_pilot_assessment") != PILOT_PATH:
         errors.append("issuance-pressure link lacks Q1 pilot assessment")
     if link["source_boundary_status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
     ):
         errors.append("issuance-pressure link Q1 status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -287,7 +291,7 @@ def audit_announced_supply_q1_pilot(
     if bridge.get("announced_RON_primary_supply_reference_mode_pilot_assessment") != PILOT_PATH:
         errors.append("issuance-pressure bridge lacks Q1 pilot assessment")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
     ):
         errors.append("issuance-pressure bridge Q1 status changed")
 
@@ -299,7 +303,7 @@ def audit_announced_supply_q1_pilot(
     ):
         errors.append("model contract Q1 pilot status changed")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_supply_full_2025_extension"
+        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
     ):
         errors.append("model contract next task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
@@ -361,7 +365,7 @@ def main() -> None:
                 "post_cutoff_forward_SSON_RON_million": 75.0,
                 "canonical_reference_mode_promoted": False,
                 "feedback_activation_authorized": False,
-                "next_gate": "mof_announced_RON_primary_supply_full_2025_extension",
+                "next_gate": "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage",
             },
             indent=2,
         )
