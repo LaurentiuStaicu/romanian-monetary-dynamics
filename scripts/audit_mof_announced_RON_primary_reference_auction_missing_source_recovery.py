@@ -133,14 +133,14 @@ def audit_missing_source_recovery(
         errors.append("recovery disposition remaining count changed")
 
     independent = assessment["next_independent_issuance_yield_task"]
-    if independent["id"] != "primary_yield_to_sovereign_yield_boundary_review":
+    if independent["id"] != "yield_to_interest_cost_boundary_review":
         errors.append("next independent issuance-yield task changed")
     if independent["authorization"] != "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY":
         errors.append("next independent task authorization changed")
     for key in (
-        "may_construct_generic_sovereign_yield",
-        "may_estimate_yield_effect",
+        "may_estimate_parameters",
         "may_activate_feedback",
+        "may_change_behavioural_closure",
     ):
         if independent[key] is not False:
             errors.append(f"next independent task may not authorize {key}")
@@ -163,7 +163,7 @@ def audit_missing_source_recovery(
     if measurement["next_task"].get("active_polling") is not False:
         errors.append("measurement-design recovery may not actively poll")
     if measurement.get("next_independent_issuance_yield_task", {}).get("id") != (
-        "primary_yield_to_sovereign_yield_boundary_review"
+        "yield_to_interest_cost_boundary_review"
     ):
         errors.append("measurement-design next independent task changed")
 
@@ -210,7 +210,7 @@ def audit_missing_source_recovery(
     if bridge.get("missing_required_source_count") != 3:
         errors.append("issuance-pressure bridge remaining source count changed")
     if prereg.get("next_independent_bridge_task", {}).get("id") != (
-        "primary_yield_to_sovereign_yield_boundary_review"
+        "yield_to_interest_cost_boundary_review"
     ):
         errors.append("preregistration next independent bridge changed")
 
@@ -228,7 +228,7 @@ def audit_missing_source_recovery(
     ) != 3:
         errors.append("model contract remaining source count changed")
     if dynamic.get("government_issuance_yield_next_independent_task") != (
-        "primary_yield_to_sovereign_yield_boundary_review"
+        "yield_to_interest_cost_boundary_review"
     ):
         errors.append("model contract next independent task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
@@ -267,7 +267,7 @@ def main() -> None:
         "active_polling": False,
         "canonical_reference_mode_promoted": False,
         "feedback_activation_authorized": False,
-        "next_independent_task": "primary_yield_to_sovereign_yield_boundary_review",
+        "next_independent_task": "yield_to_interest_cost_boundary_review",
     }, indent=2))
 
 
