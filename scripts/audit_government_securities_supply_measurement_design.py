@@ -296,7 +296,7 @@ def audit_supply_measurement_design(
     if dynamic.get("government_securities_supply_stock_normalisation_required") is not False:
         errors.append("model contract may not require stock normalisation")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_supply_full_2025_extension"
+        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
     ):
         errors.append("model contract next task changed")
 
