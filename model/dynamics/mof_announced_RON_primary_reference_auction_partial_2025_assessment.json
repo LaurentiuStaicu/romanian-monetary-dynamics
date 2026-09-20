@@ -37,8 +37,8 @@
       "parsed_t_bill_rows": 1,
       "parsed_bond_rows": 14,
       "parsed_competitive_event_count": 15,
-      "article_1_competitive_base_RON_million": 7000.0,
-      "parsed_competitive_RON_million": 7000.0,
+      "article_1_competitive_base_RON_million": 7000,
+      "parsed_competitive_RON_million": 7000,
       "competitive_base_reconciles": true
     },
     {
@@ -48,8 +48,8 @@
       "parsed_t_bill_rows": 2,
       "parsed_bond_rows": 9,
       "parsed_competitive_event_count": 11,
-      "article_1_competitive_base_RON_million": 6900.0,
-      "parsed_competitive_RON_million": 6900.0,
+      "article_1_competitive_base_RON_million": 6900,
+      "parsed_competitive_RON_million": 6900,
       "competitive_base_reconciles": true
     },
     {
@@ -59,8 +59,8 @@
       "parsed_t_bill_rows": 2,
       "parsed_bond_rows": 10,
       "parsed_competitive_event_count": 12,
-      "article_1_competitive_base_RON_million": 5400.0,
-      "parsed_competitive_RON_million": 5400.0,
+      "article_1_competitive_base_RON_million": 5400,
+      "parsed_competitive_RON_million": 5400,
       "competitive_base_reconciles": true
     },
     {
@@ -70,8 +70,8 @@
       "parsed_t_bill_rows": 1,
       "parsed_bond_rows": 11,
       "parsed_competitive_event_count": 12,
-      "article_1_competitive_base_RON_million": 5100.0,
-      "parsed_competitive_RON_million": 5100.0,
+      "article_1_competitive_base_RON_million": 5100,
+      "parsed_competitive_RON_million": 5100,
       "competitive_base_reconciles": true
     }
   ],
@@ -98,17 +98,17 @@
     "2025-10"
   ],
   "exact_final_monthly_values_RON_million": {
-    "2025-01": 5200.0,
-    "2025-02": 7200.0,
-    "2025-03": 7400.0,
-    "2025-04": 6900.0,
-    "2025-06": 5100.0,
-    "2025-10": 7000.0
+    "2025-01": 5200,
+    "2025-02": 7200,
+    "2025-03": 7400,
+    "2025-04": 6900,
+    "2025-06": 5100,
+    "2025-10": 7000
   },
   "may_base_order_history": {
     "source_id": "mof_order_728_may_2025",
     "competitive_event_count": 12,
-    "competitive_base_RON_million": 5400.0,
+    "competitive_base_RON_million": 5400,
     "final_monthly_value_authorized": false,
     "reason": "OMF 752/2025 amendment raw source is not retained."
   },
@@ -138,6 +138,10 @@
       "mof_order_1998_december_2025_amendment"
     ],
     "event_materialisation_for_missing_sources_authorized": false,
-    "canonical_promotion_before_complete_required_source_coverage": false
-  }
+    "canonical_promotion_before_complete_required_source_coverage": false,
+    "recovery_state": "EVIDENCE_TRIGGERED_HOLD",
+    "active_polling": false
+  },
+  "missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
+  "missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_PROVIDER_TRANSPORT_BLOCKED"
 }
