@@ -188,7 +188,12 @@ class RMDConceptDiagramContractTests(unittest.TestCase):
         self.assertIn("prefers-color-scheme: light", self.public)
         self.assertIn("assets/readme/rmd-concept-overview-dark.svg", self.public)
         self.assertIn("assets/readme/rmd-concept-overview-light.svg", self.public)
-        self.assertIn("six institutional sectors", self.public)
+        alt_match = re.search(r'<img[^>]+alt="([^"]+)"[^>]+rmd-concept-overview-light\.svg', self.public)
+        self.assertIsNotNone(alt_match)
+        alt = alt_match.group(1)
+        self.assertGreaterEqual(len(alt), 40)
+        self.assertLessEqual(len(alt), 150)
+        self.assertIn("RMD sectors", alt)
         self.assertIn("not** a causal-loop diagram", self.public)
 
     def test_preview_is_retained_for_design_traceability(self) -> None:
