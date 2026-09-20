@@ -1,0 +1,327 @@
+{
+  "diagnostic_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "contract": "model/dynamics/government_f3_holder_diagnostic_contract.json",
+  "source_replay": "model/dynamics/f3_empirical_replay_2025.json",
+  "issuer": "G",
+  "instrument": "F3",
+  "quarterly_holder_composition": {
+    "2025-Q1": {
+      "total_government_F3_liabilities_million_RON": 790301.34,
+      "domestic_holder_stock_million_RON": 414574.41,
+      "nonresident_holder_stock_million_RON": 375726.93,
+      "domestic_holder_share": 0.524578,
+      "nonresident_holder_share": 0.475422,
+      "holder_concentration_hhi": 0.428752,
+      "effective_holder_count": 2.332351,
+      "holders": {
+        "H": {
+          "stock_million_RON": 32751.52,
+          "share": 0.041442
+        },
+        "C": {
+          "stock_million_RON": 15637.79,
+          "share": 0.019787
+        },
+        "F": {
+          "stock_million_RON": 353836.98,
+          "share": 0.447724
+        },
+        "G": {
+          "stock_million_RON": 9645.73,
+          "share": 0.012205
+        },
+        "X": {
+          "stock_million_RON": 375726.93,
+          "share": 0.475422
+        },
+        "BNR": {
+          "stock_million_RON": 2702.39,
+          "share": 0.003419
+        }
+      }
+    },
+    "2025-Q2": {
+      "total_government_F3_liabilities_million_RON": 837078.08,
+      "domestic_holder_stock_million_RON": 443042.29,
+      "nonresident_holder_stock_million_RON": 394035.79,
+      "domestic_holder_share": 0.529272,
+      "nonresident_holder_share": 0.470728,
+      "holder_concentration_hhi": 0.429504,
+      "effective_holder_count": 2.328267,
+      "holders": {
+        "H": {
+          "stock_million_RON": 35901.18,
+          "share": 0.042889
+        },
+        "C": {
+          "stock_million_RON": 14559.7,
+          "share": 0.017393
+        },
+        "F": {
+          "stock_million_RON": 379572.27,
+          "share": 0.453449
+        },
+        "G": {
+          "stock_million_RON": 10275.21,
+          "share": 0.012275
+        },
+        "X": {
+          "stock_million_RON": 394035.79,
+          "share": 0.470728
+        },
+        "BNR": {
+          "stock_million_RON": 2733.93,
+          "share": 0.003266
+        }
+      }
+    },
+    "2025-Q3": {
+      "total_government_F3_liabilities_million_RON": 882970.25,
+      "domestic_holder_stock_million_RON": 451888.09,
+      "nonresident_holder_stock_million_RON": 431082.16,
+      "domestic_holder_share": 0.511782,
+      "nonresident_holder_share": 0.488218,
+      "holder_concentration_hhi": 0.432238,
+      "effective_holder_count": 2.31354,
+      "holders": {
+        "H": {
+          "stock_million_RON": 36167.05,
+          "share": 0.040961
+        },
+        "C": {
+          "stock_million_RON": 16079.59,
+          "share": 0.018211
+        },
+        "F": {
+          "stock_million_RON": 386617.48,
+          "share": 0.43786
+        },
+        "G": {
+          "stock_million_RON": 10533.57,
+          "share": 0.01193
+        },
+        "X": {
+          "stock_million_RON": 431082.16,
+          "share": 0.488218
+        },
+        "BNR": {
+          "stock_million_RON": 2490.4,
+          "share": 0.00282
+        }
+      }
+    },
+    "2025-Q4": {
+      "total_government_F3_liabilities_million_RON": 916941.28,
+      "domestic_holder_stock_million_RON": 468705.62,
+      "nonresident_holder_stock_million_RON": 448235.66,
+      "domestic_holder_share": 0.511162,
+      "nonresident_holder_share": 0.488838,
+      "holder_concentration_hhi": 0.434652,
+      "effective_holder_count": 2.300691,
+      "holders": {
+        "H": {
+          "stock_million_RON": 36382.75,
+          "share": 0.039678
+        },
+        "C": {
+          "stock_million_RON": 16661.8,
+          "share": 0.018171
+        },
+        "F": {
+          "stock_million_RON": 403504.78,
+          "share": 0.440055
+        },
+        "G": {
+          "stock_million_RON": 10606.39,
+          "share": 0.011567
+        },
+        "X": {
+          "stock_million_RON": 448235.66,
+          "share": 0.488838
+        },
+        "BNR": {
+          "stock_million_RON": 1549.9,
+          "share": 0.00169
+        }
+      }
+    }
+  },
+  "transition_net_incurrence_and_other_flows": {
+    "2025-Q2": {
+      "total_government_F3_net_incurrence_million_RON": 40310.64,
+      "total_combined_nontransaction_change_million_RON": 6466.1,
+      "total_stock_change_million_RON": 46776.74,
+      "decomposition_residual_million_RON": 0,
+      "holders": {
+        "H": {
+          "net_incurrence_million_RON": 1963.15,
+          "combined_nontransaction_change_million_RON": 1186.51,
+          "stock_change_million_RON": 3149.66
+        },
+        "C": {
+          "net_incurrence_million_RON": -1328.82,
+          "combined_nontransaction_change_million_RON": 250.73,
+          "stock_change_million_RON": -1078.09
+        },
+        "F": {
+          "net_incurrence_million_RON": 25639.59,
+          "combined_nontransaction_change_million_RON": 95.7,
+          "stock_change_million_RON": 25735.29
+        },
+        "G": {
+          "net_incurrence_million_RON": 629.48,
+          "combined_nontransaction_change_million_RON": 0,
+          "stock_change_million_RON": 629.48
+        },
+        "X": {
+          "net_incurrence_million_RON": 13407.24,
+          "combined_nontransaction_change_million_RON": 4901.62,
+          "stock_change_million_RON": 18308.86
+        },
+        "BNR": {
+          "net_incurrence_million_RON": 0,
+          "combined_nontransaction_change_million_RON": 31.54,
+          "stock_change_million_RON": 31.54
+        }
+      }
+    },
+    "2025-Q3": {
+      "total_government_F3_net_incurrence_million_RON": 38188.29,
+      "total_combined_nontransaction_change_million_RON": 7703.88,
+      "total_stock_change_million_RON": 45892.17,
+      "decomposition_residual_million_RON": 0,
+      "holders": {
+        "H": {
+          "net_incurrence_million_RON": 560.88,
+          "combined_nontransaction_change_million_RON": -295.01,
+          "stock_change_million_RON": 265.87
+        },
+        "C": {
+          "net_incurrence_million_RON": 1543.77,
+          "combined_nontransaction_change_million_RON": -23.88,
+          "stock_change_million_RON": 1519.89
+        },
+        "F": {
+          "net_incurrence_million_RON": 5931.34,
+          "combined_nontransaction_change_million_RON": 1113.87,
+          "stock_change_million_RON": 7045.21
+        },
+        "G": {
+          "net_incurrence_million_RON": 258.36,
+          "combined_nontransaction_change_million_RON": 0,
+          "stock_change_million_RON": 258.36
+        },
+        "X": {
+          "net_incurrence_million_RON": 30150.47,
+          "combined_nontransaction_change_million_RON": 6895.9,
+          "stock_change_million_RON": 37046.37
+        },
+        "BNR": {
+          "net_incurrence_million_RON": -256.53,
+          "combined_nontransaction_change_million_RON": 13,
+          "stock_change_million_RON": -243.53
+        }
+      }
+    },
+    "2025-Q4": {
+      "total_government_F3_net_incurrence_million_RON": 16088.08,
+      "total_combined_nontransaction_change_million_RON": 17882.95,
+      "total_stock_change_million_RON": 33971.03,
+      "decomposition_residual_million_RON": 0,
+      "holders": {
+        "H": {
+          "net_incurrence_million_RON": -859.25,
+          "combined_nontransaction_change_million_RON": 1074.95,
+          "stock_change_million_RON": 215.7
+        },
+        "C": {
+          "net_incurrence_million_RON": 13.33,
+          "combined_nontransaction_change_million_RON": 568.88,
+          "stock_change_million_RON": 582.21
+        },
+        "F": {
+          "net_incurrence_million_RON": 10281.62,
+          "combined_nontransaction_change_million_RON": 6605.68,
+          "stock_change_million_RON": 16887.3
+        },
+        "G": {
+          "net_incurrence_million_RON": 72.81,
+          "combined_nontransaction_change_million_RON": 0.01,
+          "stock_change_million_RON": 72.82
+        },
+        "X": {
+          "net_incurrence_million_RON": 7479.57,
+          "combined_nontransaction_change_million_RON": 9673.93,
+          "stock_change_million_RON": 17153.5
+        },
+        "BNR": {
+          "net_incurrence_million_RON": -900,
+          "combined_nontransaction_change_million_RON": -40.5,
+          "stock_change_million_RON": -940.5
+        }
+      }
+    }
+  },
+  "q1_to_q4_holder_summary": {
+    "H": {
+      "q1_stock_million_RON": 32751.52,
+      "q4_stock_million_RON": 36382.75,
+      "stock_change_million_RON": 3631.23,
+      "q1_share": 0.041442,
+      "q4_share": 0.039678,
+      "share_change_percentage_points": -0.1764
+    },
+    "C": {
+      "q1_stock_million_RON": 15637.79,
+      "q4_stock_million_RON": 16661.8,
+      "stock_change_million_RON": 1024.01,
+      "q1_share": 0.019787,
+      "q4_share": 0.018171,
+      "share_change_percentage_points": -0.1616
+    },
+    "F": {
+      "q1_stock_million_RON": 353836.98,
+      "q4_stock_million_RON": 403504.78,
+      "stock_change_million_RON": 49667.8,
+      "q1_share": 0.447724,
+      "q4_share": 0.440055,
+      "share_change_percentage_points": -0.7669
+    },
+    "G": {
+      "q1_stock_million_RON": 9645.73,
+      "q4_stock_million_RON": 10606.39,
+      "stock_change_million_RON": 960.66,
+      "q1_share": 0.012205,
+      "q4_share": 0.011567,
+      "share_change_percentage_points": -0.0638
+    },
+    "X": {
+      "q1_stock_million_RON": 375726.93,
+      "q4_stock_million_RON": 448235.66,
+      "stock_change_million_RON": 72508.73,
+      "q1_share": 0.475422,
+      "q4_share": 0.488838,
+      "share_change_percentage_points": 1.3416
+    },
+    "BNR": {
+      "q1_stock_million_RON": 2702.39,
+      "q4_stock_million_RON": 1549.9,
+      "stock_change_million_RON": -1152.49,
+      "q1_share": 0.003419,
+      "q4_share": 0.00169,
+      "share_change_percentage_points": -0.1729
+    }
+  },
+  "current_summary": {
+    "total_government_F3_liability_change_q1_to_q4_million_RON": 126639.94,
+    "nonresident_holder_share_q1": 0.475422,
+    "nonresident_holder_share_q4": 0.488838,
+    "nonresident_holder_share_change_percentage_points": 1.3416,
+    "all_transition_decomposition_residuals_zero": true,
+    "net_incurrence_is_gross_issuance": false,
+    "net_incurrence_is_refinancing_need": false,
+    "holder_composition_is_supply_pressure": false,
+    "feedback_activation_authorized": false
+  }
+}
