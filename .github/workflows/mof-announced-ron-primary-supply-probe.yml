@@ -66,22 +66,38 @@ jobs:
           git rebase "origin/$BRANCH"
 
           if [ -e "$DEST" ]; then
-            for source_id in               mof_order_6826_january_2025               mof_order_159_february_2025               mof_order_352_march_2025
+            for source_id in \
+              mof_order_6826_january_2025 \
+              mof_order_159_february_2025 \
+              mof_order_352_march_2025
             do
-              cmp                 "mof_announced_supply_pilot_artifacts/raw/${source_id}.pdf"                 "$DEST/raw/${source_id}.pdf"
-              cmp                 "mof_announced_supply_pilot_artifacts/native_text/${source_id}.txt"                 "$DEST/native_text/${source_id}.txt"
+              cmp \
+                "mof_announced_supply_pilot_artifacts/raw/${source_id}.pdf" \
+                "$DEST/raw/${source_id}.pdf"
+              cmp \
+                "mof_announced_supply_pilot_artifacts/native_text/${source_id}.txt" \
+                "$DEST/native_text/${source_id}.txt"
             done
             echo "Retained Ministry announced-supply source vintage is byte-identical."
+          else
+            mkdir -p "$DEST"
+            cp -a mof_announced_supply_pilot_artifacts/. "$DEST/"
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            "$DEST" \
+            data/processed/government_securities_announced_RON_primary_supply_2025Q1_events.csv \
+            data/processed/government_securities_announced_RON_primary_supply_2025Q1_monthly.csv \
+            model/dynamics/mof_announced_RON_primary_supply_pilot_assessment_2026_09_20.json
+
+          if git diff --cached --quiet; then
+            echo "Retained source vintage and pilot artifacts already match."
             exit 0
           fi
 
-          mkdir -p "$DEST"
-          cp -a mof_announced_supply_pilot_artifacts/. "$DEST/"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$DEST"
-          git diff --cached --quiet && { echo "No retained source-vintage changes."; exit 1; }
-          git commit -m "data: retain announced RON primary-supply source vintage"
+          git commit -m "data: materialise announced RON primary-supply Q1 pilot"
           git push origin HEAD:"$BRANCH"
 
       - name: Upload source-vintage artifact
