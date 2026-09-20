@@ -184,7 +184,9 @@
         "domestic_RON_primary_market_bid_to_cover",
         "domestic_government_securities_secondary_market_liquidity"
       ],
-      "scalar_pressure_index_selected": false
+      "scalar_pressure_index_selected": false,
+      "source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json",
+      "source_vintage_probe_status": "PASS_RAW_RETENTION_AND_NATIVE_TEXT_EXTRACTABILITY_PARTIAL_NUMERIC_BOUNDARY"
     },
     {
       "id": "inflationary_pressure",
