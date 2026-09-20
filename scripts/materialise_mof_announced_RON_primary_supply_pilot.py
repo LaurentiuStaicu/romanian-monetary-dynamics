@@ -376,6 +376,24 @@ def main() -> None:
             "mof-announced-ron-primary-supply-pilot-2026-09-20/"
             "source_vintage_manifest.json"
         ),
+        "raw_probe_diagnostic": {
+            "manifest_all_sources_retained": manifest["all_sources_retained"],
+            "manifest_all_anchor_checks_pass": manifest["all_anchor_checks_pass"],
+            "interpretation": (
+                "LEGACY_NAIVE_ANCHOR_FALSE_NEGATIVE_SUPERSEDED_BY_EXACT_"
+                "ARTICLE1_AND_EVENT_ROW_RECONCILIATION"
+                if manifest["all_anchor_checks_pass"] is False
+                else "ANCHOR_AND_EXACT_RECONCILIATION_PASS"
+            ),
+            "source_retention_is_blocked_by_legacy_anchor_diagnostic": False,
+            "reason": (
+                "The acquisition probe used coarse string anchors including "
+                "unformatted combined totals not printed verbatim in Article 1. "
+                "The exact parser independently recovers Article 1 base/SSON "
+                "values and all Annex 1/2 rows, and hard-fails unless every "
+                "document reconciles arithmetically."
+            ),
+        },
         "source_identity": {
             source_id: {
                 "raw_sha256": item["raw_sha256"],
