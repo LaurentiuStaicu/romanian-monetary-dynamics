@@ -155,10 +155,13 @@ def audit_primary_yield_to_sovereign_yield_boundary(
     )
     if link.get("primary_yield_to_sovereign_yield_boundary_review") != REVIEW_PATH:
         errors.append("supply-to-yield link lacks yield-boundary review")
-    if link["readiness_status"] != (
-        "RELATED_MECHANISM_AND_EXACT_10Y_BOUNDARY_NOT_EXACT_INTEGRATED_LINK_FORM"
+    if link["readiness_status"] != "RELATED_MECHANISM_NOT_EXACT_LINK_FORM":
+        errors.append("supply-to-yield canonical readiness changed")
+    if link.get("sovereign_yield_boundary_status") != (
+        "UMBRELLA_UNRESOLVED_EXACT_RON_10Y_LONG_TERM_CANDIDATE_"
+        "PRIMARY_RATE_VECTOR_NOT_AGGREGATED"
     ):
-        errors.append("supply-to-yield link readiness changed")
+        errors.append("supply-to-yield semantic boundary status changed")
     if link["exact_integrated_equation_ready"] is not False:
         errors.append("yield-boundary review may not make integrated link ready")
     if link["current_activation_authorized"] is not False:
