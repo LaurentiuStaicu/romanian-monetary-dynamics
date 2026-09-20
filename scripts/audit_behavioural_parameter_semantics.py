@@ -95,6 +95,17 @@ def audit_behavioural_parameter_semantics(
                     errors.append(
                         f"{implementation}:{runtime_name}: magnitude requires explicit +/- equation operator"
                     )
+                if "upper_bound" in row:
+                    upper_bound = row["upper_bound"]
+                    if not isinstance(upper_bound, (int, float)) or upper_bound <= 0:
+                        errors.append(
+                            f"{implementation}:{runtime_name}: upper_bound must be positive"
+                        )
+                    frozen_domain = row.get("frozen_validation_domain")
+                    if frozen_domain != [0, upper_bound]:
+                        errors.append(
+                            f"{implementation}:{runtime_name}: frozen validation domain must match [0, upper_bound]"
+                        )
             elif semantic in {"UNIT_INTERVAL_SHARE", "UNIT_INTERVAL_PERSISTENCE"}:
                 if row.get("bounds") != [0, 1]:
                     errors.append(
@@ -113,6 +124,7 @@ def audit_behavioural_parameter_semantics(
         "negative_estimate_for_magnitude_parameter_requires_candidate_failure_or_new_preregistered_form",
         "no_absolute_value_repair_of_negative_estimates",
         "no_post_fit_sign_flip",
+        "frozen_parameter_domain_must_be_enforced_when_present",
         "parameter_semantics_do_not_authorize_estimation_or_activation",
     ):
         if rules.get(key) is not True:
