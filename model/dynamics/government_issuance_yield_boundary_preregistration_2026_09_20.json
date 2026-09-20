@@ -35,8 +35,8 @@
     "structural_effect": "government_financing_need_to_bnr_domestic_primary_issuance_is_not_an_identity"
   },
   "bnr_yield_boundary_evidence": {
-    "finding": "BNR table 12.2 reports issue volumes together with instrument- and currency-specific primary-market yields or interest rates. It does not provide one scalar generic sovereign_yield for the feedback node.",
-    "structural_effect": "instrument_specific_primary_market_yield_observables_are_materialisable_but_scalar_sovereign_yield_mapping_is_not_frozen"
+    "finding": "BNR table 12.2 reports instrument- and currency-specific primary-market issue rates. Review against the ECB long-term RON convergence-yield boundary confirms these are not a one-to-one generic sovereign_yield measure and must remain descriptive auction-pricing diagnostics.",
+    "structural_effect": "PRIMARY_MARKET_RATE_BRIDGE_REJECTED_AS_ONE_TO_ONE_ECB_10Y_RON_PREFERRED_AS_LONG_TERM_TARGET_BOUNDARY"
   },
   "empirical_boundary_status": {
     "status": "OPEN_CHAIN_PENDING_EXPLICIT_BRIDGES",
@@ -44,11 +44,13 @@
       "government_financing_need",
       "domestic_primary_market_government_securities_gross_issuance",
       "government_securities_supply_pressure",
-      "instrument_specific_domestic_primary_market_yield",
+      "sovereign_yield",
       "government_interest_cost"
     ],
     "closure_not_claimed": true,
-    "generic_government_debt_issuance_node_remains_unresolved": true
+    "generic_government_debt_issuance_node_remains_unresolved": true,
+    "primary_market_rate_diagnostic_removed_as_required_intermediate": true,
+    "primary_yield_to_sovereign_yield_boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json"
   },
   "required_bridges_before_any_closed_empirical_loop_claim": [
     {
@@ -82,7 +84,13 @@
       "id": "primary_yield_to_sovereign_yield",
       "from": "instrument_specific_domestic_primary_market_yield",
       "to": "sovereign_yield",
-      "requirement": "Freeze the exact instrument, currency and maturity boundary or an ex-ante aggregation rule. Do not average heterogeneous issue yields post hoc to manufacture a generic scalar yield."
+      "requirement": "Freeze the exact instrument, currency and maturity boundary or an ex-ante aggregation rule. Do not average heterogeneous issue yields post hoc to manufacture a generic scalar yield.",
+      "status": "REVIEWED_NO_ONE_TO_ONE_BRIDGE_DIAGNOSTIC_ONLY",
+      "boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+      "resolution": "Do not construct or require a scalar bridge from BNR instrument-specific primary-market issue rates to sovereign_yield. Retain BNR rates as diagnostics and use the existing ECB long-term RON 10-year convergence-yield source as the preferred observed target boundary for sovereign_yield.",
+      "required_for_empirical_chain_after_review": false,
+      "synthetic_aggregation_authorized": false,
+      "reference_mode_promotion_authorized": false
     },
     {
       "id": "yield_to_interest_cost",
@@ -112,10 +120,10 @@
   },
   "next_gate_after_materialisation": "Reconcile the exact RON auction-universe stock denominator before any supply-load ratio is computed. Submitted-bids and bid-to-cover monthly series remain blocked because the monthly report exposes them graphically without reproducible native-text month/series mapping.",
   "next_independent_bridge_task": {
-    "id": "primary_yield_to_sovereign_yield_boundary_review",
+    "id": "yield_to_interest_cost_boundary_review",
     "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
-    "may_construct_generic_sovereign_yield": false,
-    "may_estimate_yield_effect": false,
-    "may_activate_feedback": false
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
   }
 }
