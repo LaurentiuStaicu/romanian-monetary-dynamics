@@ -1,6 +1,6 @@
 {
   "registry_version": "0.1",
-  "assessed_on": "2026-09-19",
+  "assessed_on": "2026-09-20",
   "purpose": "Operational source-readiness map for behavioural-mechanism research. It ranks only the next admissible empirical action; it is not a ranking of economic importance, model truth, causal evidence or validation status.",
   "global_state": {
     "active_calibration_cycle_open": false,
@@ -278,17 +278,17 @@
     {
       "id": "fiscal_primary_balance_reaction",
       "classification": "DEFERRED",
-      "source_readiness": "REOPENED_CAPB_SOURCE_GATE_READY_MANUAL_MATERIALISATION_PENDING",
-      "next_admissible_action": "Manually dispatch the frozen AMECO CAPB real-time vintage materialisation workflow, retain and review its artifact, then perform the separate information-set/timing adjudication. No estimation/refit or prior final-evaluation opening is authorized.",
+      "source_readiness": "CAPB_9_RELEASE_TIMING_ADJUDICATED_PRE2022_SOURCE_PROBE_AND_RAW_RETENTION_PENDING",
+      "next_admissible_action": "Manually dispatch the preregistered Spring/Autumn 2011-2021 AMECO UBLGBPS source-structure probe and review exact release-level presence. Separately preserve the reviewed 2022-2026 raw ZIP bytes permanently. Do not estimate, select a replacement form, or open the prior 2018-2024 final evaluation.",
       "blockers": [
-        "The new CAPB/structural-primary-balance measurement trigger is satisfied, but the exact release-by-release source vintage has not yet been retained in the repository.",
-        "Forecast-versus-actual and information-availability semantics must be adjudicated release by release before a new estimation sample can be defined.",
-        "No new fiscal structural-selection equation, lag convention, regime term or evaluation window has been preregistered.",
-        "The untouched 2018-2024 final-evaluation window from the failed prior cycle remains closed and cannot be reused to choose the new specification."
+        "The 2022-2026 CAPB materialisation succeeded for 9/9 releases and its timing has been adjudicated, but the exact raw ZIP bytes remain only in a temporary GitHub Actions artifact rather than a repository-retained source vintage.",
+        "Only five first-historical CAPB observations (2021-2025) are currently retained; official Spring/Autumn archive endpoints exist back to 2011, but exact UBLGBPS presence in the 2011-2021 payloads has not yet been source-probed.",
+        "Even if all pre-2022 archives contain UBLGBPS, the maximum first-historical window is about 16 annual observations, below the prior 29-target-year calibration/selection/final-evaluation design.",
+        "No independently justified replacement validation design has been preregistered; the prior 2018-2024 final-evaluation window remains closed."
       ],
       "source_boundary_review": "model/calibration_validation/fiscal_primary_balance_source_boundary_review.json",
       "estimation_or_refit_allowed": false,
-      "priority_group": "SELECTIVE_REOPEN_MANUAL_SOURCE_MATERIALISATION",
+      "priority_group": "SELECTIVE_REOPEN_PRE2022_SOURCE_PROBE_AND_RAW_PRESERVATION",
       "materialisation_contract": "model/calibration_validation/fiscal_primary_balance_materialisation_contract.json",
       "materialiser_workflow": ".github/workflows/fiscal-primary-balance-materialisation.yml",
       "retained_source_vintage": "data/source_vintages/fiscal-primary-balance-quarterly-vintage-2026-09-19",
@@ -308,7 +308,13 @@
       "capb_realtime_vintage_workflow": ".github/workflows/fiscal-reaction-capb-realtime-vintage-materialisation.yml",
       "capb_live_execution_policy": "MANUAL_ONLY_LIVE_SOURCE_EVIDENCE",
       "capb_materialisation_execution_readiness": "model/registries/fiscal_capb_materialisation_execution_readiness_2026_09_19.json",
-      "capb_live_execution_state": "READY_MANUAL_WORKFLOW_DISPATCH_REQUIRED_NOT_EXECUTED"
+      "capb_live_execution_state": "MATERIALISED_9_RELEASES_ARTIFACT_REVIEWED_TIMING_ADJUDICATED",
+      "capb_timing_adjudication": "model/calibration_validation/fiscal_capb_timing_adjudication_2026_09_20.json",
+      "capb_pre2022_source_probe_contract": "model/calibration_validation/fiscal_reaction_capb_pre2022_source_probe_contract.json",
+      "capb_pre2022_source_probe_script": "scripts/audit_fiscal_capb_pre2022_source_probe.py",
+      "capb_pre2022_source_probe_workflow": ".github/workflows/fiscal-reaction-capb-pre2022-source-probe.yml",
+      "capb_pre2022_source_probe_state": "READY_MANUAL_WORKFLOW_DISPATCH_REQUIRED_NOT_EXECUTED",
+      "capb_repository_raw_bytes_retained": false
     },
     {
       "id": "monetary_policy_reaction_function",
@@ -355,12 +361,12 @@
   "priority_rule": "Priority is determined by the shortest scientifically admissible path to new independent evidence, not by a desire to activate a feedback loop. Waiting mechanisms remain frozen; source-incomplete mechanisms are not fit with proxies.",
   "current_next_step": {
     "mechanism_id": "fiscal_primary_balance_reaction",
-    "action": "MANUAL_DISPATCH_CAPB_REALTIME_VINTAGE_MATERIALISATION",
-    "reason": "The selective fiscal reopen and source tooling are integrated and green. Live AMECO acquisition is contractually manual-only; no retained CAPB vintage exists yet.",
+    "action": "MANUAL_DISPATCH_CAPB_PRE2022_SOURCE_STRUCTURE_PROBE",
+    "reason": "The 2022-2026 CAPB source gate has executed successfully and timing adjudication is complete. The next admissible evidence gate is release-level UBLGBPS presence screening for the official 2011-2021 AMECO archives; raw-byte permanent retention remains a separate reproducibility blocker.",
     "calibration_cycle_open": false,
     "execution_mode": "MANUAL_ONLY_LIVE_SOURCE_EVIDENCE",
     "reopen_conditions_registry": "model/calibration_validation/mechanism_reopen_conditions_registry.json",
-    "authorized_scope": "CAPB_REALTIME_VINTAGE_SOURCE_MATERIALISATION_ONLY"
+    "authorized_scope": "CAPB_PRE2022_SOURCE_STRUCTURE_PROBE_ONLY"
   },
   "coverage_rule": {
     "scope": "ALL_NON_REJECTED_MECHANISMS",
