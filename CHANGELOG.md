@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- discovered the ECB CSEC Romania S13 securities-issues source family and froze a complete F3 stock-flow boundary requirement (`gross issues - redemptions + revaluations + other changes`); the qualitative issuance-to-debt-stock link remains blocked because market-valued non-consolidated F3 is not the consolidated nominal Maastricht AF2+AF3+AF4 debt target;
 - completed a later-vintage BNR revision check for the domestic-primary-market issuance pilot: all 28 Jan-Jul native-currency amount cells are unchanged at published precision, and the reviewed pilot now covers all twelve months of 2025 while raw-source retention remains the explicit promotion blocker;
 - retained a reviewed Jan-Jul 2025 BNR domestic-primary-market government-securities issuance pilot with native RON/EUR columns and complete Q1-Q2 RON aggregation; raw-source retention, revision checks and generic-node resolution remain explicit promotion blockers;
 - screened official BNR and Ministry of Finance issuance/borrowing sources and identified `government_debt_issuance` as semantically overloaded across the two government feedback loops; froze separate domestic-primary-market and all-market borrowing materialisation paths while keeping the generic node unresolved;
