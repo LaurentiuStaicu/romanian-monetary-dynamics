@@ -141,10 +141,12 @@ def audit_supply_pressure_source_boundary(
             errors.append(f"supply-pressure source review may not promote {key}")
 
     task = review["next_task"]
-    if task["id"] != "mof_announced_RON_primary_supply_full_2025_extension":
+    if task["id"] != (
+        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
+    ):
         errors.append("next supply-pressure task changed")
     if task["authorization"] != (
-        "SOURCE_VINTAGE_EXTENSION_AND_EXACT_EVENT_MATERIALISATION_ONLY"
+        "OFFICIAL_SOURCE_RETENTION_AMENDMENT_AWARE_EVENT_MATERIALISATION_ONLY"
     ):
         errors.append("next task authorization changed")
     if task["may_compute_pressure_ratio_now"] is not False:
@@ -186,7 +188,7 @@ def audit_supply_pressure_source_boundary(
     ):
         errors.append("issuance-to-pressure canonical readiness changed")
     if link.get("source_boundary_status") != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
     ):
         errors.append("issuance-to-pressure source-boundary status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -216,7 +218,7 @@ def audit_supply_pressure_source_boundary(
     if bridge["source_boundary_review"] != REVIEW_PATH:
         errors.append("structural preregistration lacks supply-pressure review")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
     ):
         errors.append("issuance-to-pressure bridge status changed")
 
@@ -234,13 +236,13 @@ def audit_supply_pressure_source_boundary(
     ):
         errors.append("model contract measurement architecture changed")
     if dynamic.get("government_securities_supply_first_reference_mode_priority") != (
-        "announced_RON_primary_supply_level"
+        "announced_RON_primary_reference_auction_supply_level"
     ):
         errors.append("model contract first supply reference-mode priority changed")
     if dynamic.get("government_securities_supply_stock_normalisation_required") is not False:
         errors.append("stock normalisation may not be required for first supply reference mode")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_supply_full_2025_extension"
+        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
     ):
         errors.append("model contract next issuance-yield task changed")
 
@@ -282,7 +284,7 @@ def main() -> None:
                 "denominator_boundary_frozen": False,
                 "denominator_review": "NO_EXACT_ONE_TO_ONE_AUCTION_UNIVERSE_DENOMINATOR_SELECTED",
                 "measurement_architecture": "STRUCTURED_MEASUREMENT_VECTOR_KEEP_UMBRELLA_NODE_UNRESOLVED",
-                "next_task": "mof_announced_RON_primary_supply_full_2025_extension",
+                "next_task": "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage",
             },
             indent=2,
         )
