@@ -43,10 +43,11 @@
     "debt": "Use the already retained official government_debt_stock reference mode / Eurostat Maastricht-debt source when constructing debt-to-GDP controls.",
     "deficit": "Require an exact official ESA government net-lending/borrowing or deficit-to-GDP source and retained vintage before opening estimation.",
     "frequency_rule": "Do not forward-fill low-frequency fiscal ratios into monthly observations and then treat the repeated months as independent fiscal information. A mixed-frequency rule or lower-frequency estimation boundary must be preregistered.",
-    "no_issuance_proxy": "Gross issuance or refinancing need may not be inserted as 'supply pressure' without a separately specified and validated source/stock-flow mapping.",
+    "no_issuance_proxy": "Gross issuance or refinancing need may not be inserted as 'supply pressure' without a separately specified and validated source/stock-flow mapping. The 2026-09-20 structural preregistration explicitly preserves this rule after raw BNR source retention.",
     "government_issuance_source_boundary_review": "model/dynamics/government_debt_issuance_source_boundary_review.json",
     "government_issuance_materialisation_contract": "model/dynamics/government_debt_issuance_materialisation_contract.json",
-    "issuance_semantic_update": "Official BNR and Ministry source families are now identified, but the generic issuance node remains semantically overloaded. Domestic primary-market gross securities issuance may support a future separately preregistered supply-channel design; Ministry all-market borrowing is a broader financing concept. Neither is inserted into the failed 2026-09-19 yield form."
+    "issuance_semantic_update": "The retained BNR domestic-primary-market issuance source is exact on its own source boundary, but structural preregistration rejects one-to-one substitution into the generic closed issuance-yield loop. Gross financing need spans multiple domestic and external channels; raw issuance is not supply pressure; BNR primary-market yields remain instrument/currency-specific; and new-issue yields do not equal outstanding-debt interest cost.",
+    "government_issuance_yield_boundary_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
   },
   "candidate_reformulation": {
     "current_registry_label": "sovereign_yield_spread_response",
