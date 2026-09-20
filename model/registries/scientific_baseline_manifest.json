@@ -36,7 +36,8 @@
     "government_debt_issuance_bnr_revision_assessment": "model/dynamics/government_debt_issuance_bnr_revision_assessment_2025.json",
     "government_debt_issuance_bnr_raw_source_acquisition_contract": "model/dynamics/government_debt_issuance_bnr_raw_source_acquisition_contract.json",
     "government_debt_issuance_bnr_raw_source_retention_assessment": "model/dynamics/government_debt_issuance_bnr_raw_source_retention_assessment_2025.json",
-    "government_debt_issuance_bnr_source_vintage_manifest": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/source_vintage_manifest.json"
+    "government_debt_issuance_bnr_source_vintage_manifest": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/source_vintage_manifest.json",
+    "government_issuance_yield_boundary_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
   },
   "canonical_state": {
     "accounting": {
