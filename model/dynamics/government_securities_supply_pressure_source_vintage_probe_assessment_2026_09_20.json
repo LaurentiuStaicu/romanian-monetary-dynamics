@@ -35,14 +35,14 @@
       "status": "PASS_EXACT_TABLE_TEXT_AVAILABLE",
       "january_2025": {
         "coverage_status": "COMPLETED_MONTH_IN_REVIEWED_FLASH_TABLE",
-        "total_announced_RON_million": 5770.0,
+        "total_announced_RON_million": 5770,
         "total_borrowed_RON_million": 7556.97,
         "exact_tokens_present": true,
         "safe_as_exact_descriptive_values": true
       },
       "february_2025": {
         "coverage_status": "FORWARD_SCHEDULE_PLUS_PARTIAL_BORROWED_RESULTS_AS_OF_FLASH_REPORT",
-        "total_announced_RON_million": 8040.0,
+        "total_announced_RON_million": 8040,
         "borrowed_total_shown_RON_million": 4207.01,
         "exact_tokens_present": true,
         "safe_as_final_full_month_borrowed_total": false,
@@ -63,7 +63,7 @@
     },
     "january_stock_denominator_candidates": {
       "status": "EXACT_VALUES_AVAILABLE_BOUNDARY_RECONCILIATION_REQUIRED",
-      "monthly_report_all_domestic_market_securities_available_at_nominal_value_LEI_million": 395936.0,
+      "monthly_report_all_domestic_market_securities_available_at_nominal_value_LEI_million": 395936,
       "monthly_report_RON_denom_domestic_market_securities_available_at_nominal_value_LEI_million": 381933.8,
       "monthly_report_EUR_denom_domestic_market_securities_available_at_nominal_value_EUR_million": 2813.5,
       "flash_current_outstanding_total_domestic_market_text": "RON 435.4 bln",
@@ -114,10 +114,11 @@
     "public_version_change_authorized": false
   },
   "next_gate": {
-    "id": "domestic_RON_supply_load_denominator_boundary_reconciliation",
-    "authorization": "SOURCE_BOUNDARY_RECONCILIATION_ONLY",
-    "task": "Determine the exact instrument/market coverage of the monthly holdings totals versus the interbank auction universe and reconcile or reject the inconsistent Flash current-outstanding headline before any announced_amount / lagged_stock ratio is computed.",
+    "id": "supply_load_denominator_candidate_materialisation_comparison",
+    "authorization": "DESCRIPTIVE_SOURCE_MATERIALISATION_AND_BOUNDARY_COMPARISON_ONLY",
+    "task": "Retain exact ECB denominator candidates only after exact series-key freezing, compare their sector/currency/valuation semantics with the retained Ministry nominal holdings boundary, and do not select a denominator from fit or correlation.",
     "may_compute_pressure_ratio_now": false,
     "may_activate_feedback": false
-  }
+  },
+  "denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json"
 }
