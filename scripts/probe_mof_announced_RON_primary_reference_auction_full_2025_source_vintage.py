@@ -293,6 +293,49 @@ def discover_document(document: dict, out_dir: Path) -> dict:
             result["official_pdf_status"] = "UNAVAILABLE_FROM_GITHUB_RUNNER"
             result["official_pdf_error"] = str(exc)
 
+    # Prefer a frozen direct official legal URL when one has been independently
+    # identified. This bypasses the Portal search endpoint but preserves the
+    # same identity checks and official-host boundary.
+    direct_legal_url = document.get("known_official_legal_url")
+    if direct_legal_url:
+        result["known_official_legal_url"] = direct_legal_url
+        try:
+            act_status, act_payload, act_meta = fetch(direct_legal_url, "text/html")
+            text = extract_text(act_payload)
+            checks = act_identity_checks(text, document)
+            result["direct_legal_identity_checks"] = checks
+            if act_status == 200 and all(checks.values()):
+                act_path = act_dir / f"{sid}.html"
+                act_path.write_bytes(act_payload)
+                text_path = text_dir / f"{sid}.txt"
+                text_path.write_text(text, encoding="utf-8")
+                result.update(
+                    {
+                        "legal_registry_status": "RETAINED_EXACT_OFFICIAL_ACT_DIRECT_URL",
+                        "selected_act_url": direct_legal_url,
+                        "selected_act_path": f"acts/{act_path.name}",
+                        "selected_act_bytes": len(act_payload),
+                        "selected_act_sha256": sha256_bytes(act_payload),
+                        "selected_act_response_metadata": act_meta,
+                        "normalized_text_path": f"normalized_text/{text_path.name}",
+                        "normalized_text_bytes": text_path.stat().st_size,
+                        "normalized_text_sha256": sha256_file(text_path),
+                        "identity_checks": checks,
+                        "all_identity_checks_pass": True,
+                        "raw_source_retained": True,
+                        "event_materialisation_authorized": True,
+                    }
+                )
+            else:
+                result["legal_registry_status"] = "DIRECT_OFFICIAL_URL_IDENTITY_CHECK_FAILED"
+        except Exception as exc:
+            result["direct_legal_url_error"] = str(exc)
+
+    # Only use the blocked search endpoint as a fallback when the direct legal
+    # URL did not produce an exact retained act.
+    if result["legal_registry_status"] == "RETAINED_EXACT_OFFICIAL_ACT_DIRECT_URL":
+        return result
+
     # Independently try Portal Legislativ. Failure is transport evidence, not a
     # reason to guess document IDs or substitute third-party text.
     s_url = search_url(document)
