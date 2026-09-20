@@ -91,8 +91,23 @@ jobs:
                           if fv != kv:
                               raise SystemExit(f"{source_id}: retained hash mismatch for {hash_key}")
 
-          print("Retained source vintage matches fresh probe on frozen identities and available raw-source hashes.")
+          print("Retained raw source vintage matches fresh probe on frozen identities and available raw-source hashes.")
           PY
+
+            # Refresh only the manifest/probe metadata after successful raw-source
+            # revalidation. Retained raw bytes are not replaced here.
+            cp \
+              mof_announced_reference_auction_full_2025_source_artifacts/source_vintage_manifest.json \
+              "$DEST/source_vintage_manifest.json"
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add "$DEST/source_vintage_manifest.json"
+            if git diff --cached --quiet; then
+              echo "Raw source vintage and probe manifest already current."
+              exit 0
+            fi
+            git commit -m "data: refresh full-2025 Ministry source-vintage probe manifest"
+            git push origin HEAD:"$BRANCH"
             exit 0
           fi
 
