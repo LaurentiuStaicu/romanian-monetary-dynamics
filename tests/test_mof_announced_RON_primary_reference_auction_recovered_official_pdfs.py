@@ -10,7 +10,7 @@ from scripts.promote_mof_announced_RON_primary_reference_auction_recovered_offic
     MANIFEST_PATH,
     RECOVERED,
     UNRESOLVED,
-    verify_baseline_manifest,
+    verify_manifest_state,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,8 +34,9 @@ class MOFRecoveredOfficialPDFPromotionTests(unittest.TestCase):
             {item["source_id"] for item in self.contract["documents"]},
         )
 
-    def test_baseline_manifest_is_exactly_the_expected_pre_recovery_state(self) -> None:
-        verify_baseline_manifest(self.manifest)
+    def test_manifest_is_exactly_pre_or_post_recovery_state(self) -> None:
+        state = verify_manifest_state(self.manifest, self.contract)
+        self.assertIn(state, {"PRE_RECOVERY_4", "POST_RECOVERY_9"})
 
     def test_recovered_contract_entries_freeze_url_profile_and_probe_sha(self) -> None:
         for source_id in RECOVERED:
