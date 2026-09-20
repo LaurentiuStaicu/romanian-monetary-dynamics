@@ -47,7 +47,18 @@ class FiscalCapbTimingAdjudicationTests(unittest.TestCase):
         inventory_path = BASE / "fiscal_capb_release_inventory.csv"
         self.assertEqual(
             sha256(inventory_path),
-            self.a["source_materialisation"]["inventory_sha256"],
+            self.a["source_materialisation"][
+                "repository_inventory_review_copy_sha256"
+            ],
+        )
+        self.assertFalse(
+            self.a["source_materialisation"][
+                "repository_inventory_copy_byte_identical_to_artifact"
+            ]
+        )
+        self.assertEqual(
+            self.a["source_materialisation"]["artifact_inventory_sha256"],
+            "55e494ca4010ed75c602392da0fcedee02cecf1aa27aa901833b6ed8d7775588",
         )
         with inventory_path.open(encoding="utf-8", newline="") as handle:
             rows = list(csv.DictReader(handle))
