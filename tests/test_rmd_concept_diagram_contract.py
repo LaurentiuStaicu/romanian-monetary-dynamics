@@ -188,7 +188,7 @@ class RMDConceptDiagramContractTests(unittest.TestCase):
         self.assertIn("prefers-color-scheme: light", self.public)
         self.assertIn("assets/readme/rmd-concept-overview-dark.svg", self.public)
         self.assertIn("assets/readme/rmd-concept-overview-light.svg", self.public)
-        alt_match = re.search(r'<img[^>]+alt="([^"]+)"[^>]+rmd-concept-overview-light\.svg', self.public)
+        alt_match = re.search(r'<img[^>]+src="assets/readme/rmd-concept-overview-light\.svg"[^>]+alt="([^"]+)"', self.public)
         self.assertIsNotNone(alt_match)
         alt = alt_match.group(1)
         self.assertGreaterEqual(len(alt), 40)
