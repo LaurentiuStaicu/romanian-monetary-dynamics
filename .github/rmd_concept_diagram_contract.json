@@ -61,12 +61,14 @@
     "style": "monochrome, flat, no gradients, no shadows, no decorative illustration",
     "font_stack": "Arial, Helvetica, sans-serif",
     "canvas": {
-      "width": 1120,
-      "height": 650
+      "width": 760,
+      "height": 930
     },
     "light_asset": ".github/readme-assets/rmd-concept-overview-light.svg",
     "dark_asset": ".github/readme-assets/rmd-concept-overview-dark.svg",
-    "final_public_asset_location_after_approval": "assets/readme/"
+    "final_public_asset_location_after_approval": "assets/readme/",
+    "layout": "compact portrait; 3x2 sector grid above four vertically stacked scientific layers",
+    "responsive_rationale": "The earlier 1120px-wide draft was too dense when scaled to narrow GitHub viewports. The 760px portrait layout preserves larger effective text and clearer hierarchy."
   },
   "information_hierarchy": [
     {
