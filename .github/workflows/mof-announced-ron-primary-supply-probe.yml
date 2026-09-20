@@ -8,6 +8,7 @@ on:
       - .github/workflows/mof-announced-ron-primary-supply-probe.yml
       - model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json
       - scripts/probe_mof_announced_RON_primary_supply_source_vintage.py
+      - scripts/materialise_mof_announced_RON_primary_supply_pilot.py
       - tests/test_mof_announced_RON_primary_supply_source_vintage_probe.py
 
 concurrency:
@@ -48,7 +49,15 @@ jobs:
           python scripts/probe_mof_announced_RON_primary_supply_source_vintage.py \
             --output mof_announced_supply_pilot_artifacts
 
-      - name: Retain or reverify source vintage
+      - name: Materialise exact Q1 event and monthly pilot
+        run: |
+          python scripts/materialise_mof_announced_RON_primary_supply_pilot.py \
+            --source-root mof_announced_supply_pilot_artifacts \
+            --events-out data/processed/government_securities_announced_RON_primary_supply_2025Q1_events.csv \
+            --monthly-out data/processed/government_securities_announced_RON_primary_supply_2025Q1_monthly.csv \
+            --assessment-out model/dynamics/mof_announced_RON_primary_supply_pilot_assessment_2026_09_20.json
+
+      - name: Retain or reverify source vintage and pilot artifacts
         run: |
           BRANCH="source-vintage/mof-announced-ron-primary-supply-pilot-2026-09-20"
           DEST="data/source_vintages/mof-announced-ron-primary-supply-pilot-2026-09-20"
