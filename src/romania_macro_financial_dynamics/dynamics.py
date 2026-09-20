@@ -64,6 +64,29 @@ def advance_position(opening: float, change: PositionChange) -> float:
     return closing
 
 
+def advance_empirical_replay_position(
+    opening: float,
+    *,
+    transaction: float,
+    combined_nontransaction_change: float,
+) -> float:
+    """Replay an observed financial-account stock transition.
+
+    The combined nontransaction change is the bookkeeping sum of revaluations
+    and other changes in volume implied by observed opening/closing stocks and
+    observed transactions. It must not be interpreted as either component
+    separately and carries no behavioural or causal content.
+    """
+
+    values = (opening, transaction, combined_nontransaction_change)
+    if not all(isfinite(value) for value in values):
+        raise ValueError("Empirical replay inputs must be finite")
+    closing = opening + transaction + combined_nontransaction_change
+    if not isfinite(closing):
+        raise ValueError("Empirical replay result must be finite")
+    return closing
+
+
 def rate_to_period_amount(rate_per_year: float, dt_years: float = DEFAULT_DT_YEARS) -> float:
     """Convert a currency/year flow rate to a currency amount over dt years."""
 
