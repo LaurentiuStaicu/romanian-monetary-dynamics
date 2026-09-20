@@ -259,6 +259,30 @@ def identity_checks(text: str, document: dict) -> dict[str, bool]:
     return checks
 
 
+def required_identity_checks(candidate_url: str, document: dict) -> list[str]:
+    if candidate_url.startswith("https://static.anaf.ro/"):
+        required = [
+            "order_number",
+            "order_date",
+            "ministry",
+            "title_anchor",
+            "month_anchor",
+            "publication_number",
+        ]
+    elif candidate_url.startswith("https://mfinante.gov.ro/"):
+        required = [
+            "order_number",
+            "ministry",
+            "title_anchor",
+            "month_anchor",
+        ]
+    else:
+        raise RuntimeError(f"unapproved official host in recovery probe: {candidate_url}")
+    if document.get("supersedes"):
+        required.append("superseded_order_number")
+    return required
+
+
 def run_probe(output: Path) -> dict:
     contract = load_contract()
     docs = {
@@ -293,9 +317,18 @@ def run_probe(output: Path) -> dict:
             if status == 200 and payload.startswith(b"%PDF-"):
                 text = pdftotext(payload)
                 checks = identity_checks(text, document)
+                required = required_identity_checks(candidate["url"], document)
+                required_pass = all(checks.get(key) is True for key in required)
                 attempt["identity_checks"] = checks
+                attempt["required_identity_checks"] = required
+                attempt["all_required_identity_checks_pass"] = required_pass
                 attempt["all_identity_checks_pass"] = bool(checks) and all(checks.values())
-                if attempt["all_identity_checks_pass"]:
+                attempt["identity_profile"] = (
+                    "LEGAL_PUBLICATION_PDF"
+                    if candidate["url"].startswith("https://static.anaf.ro/")
+                    else "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA"
+                )
+                if required_pass:
                     pdf_path = pdf_dir / f"{source_id}.pdf"
                     text_path = text_dir / f"{source_id}.txt"
                     pdf_path.write_bytes(payload)
@@ -310,6 +343,13 @@ def run_probe(output: Path) -> dict:
                         "native_text_path": str(text_path.relative_to(output)),
                         "native_text_sha256": sha256_bytes(text.encode("utf-8")),
                         "identity_checks": checks,
+                        "required_identity_checks": required,
+                        "identity_profile": attempt["identity_profile"],
+                        "frozen_legal_metadata": {
+                            "order_date": document["order_date"],
+                            "publication_number": document["publication_number"],
+                            "publication_date": document["publication_date"],
+                        },
                     }
                     accepted.append(source_id)
                     attempts.append(attempt)
@@ -357,9 +397,16 @@ def run_probe(output: Path) -> dict:
                         "bytes": attempt["bytes"],
                         "pdf_magic": attempt["pdf_magic"],
                         "identity_checks": attempt.get("identity_checks"),
+                        "required_identity_checks": attempt.get(
+                            "required_identity_checks"
+                        ),
+                        "all_required_identity_checks_pass": attempt.get(
+                            "all_required_identity_checks_pass"
+                        ),
                         "all_identity_checks_pass": attempt.get(
                             "all_identity_checks_pass"
                         ),
+                        "identity_profile": attempt.get("identity_profile"),
                         "transport": attempt["response_metadata"].get("transport"),
                         "returncode": attempt["response_metadata"].get("returncode"),
                         "stderr": attempt["response_metadata"].get("stderr"),
