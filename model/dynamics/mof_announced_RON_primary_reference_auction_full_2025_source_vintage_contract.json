@@ -50,7 +50,9 @@
       "title_anchor": "pentru modificarea",
       "month_anchor": "mai 2025",
       "supersedes": "728/2025",
-      "known_official_pdf_url": null
+      "known_official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF752mai2025.pdf",
+      "official_pdf_identity_profile": "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA",
+      "recovery_probe_expected_pdf_sha256": "032e4ff83142c3785bde6df68c9910cc95401d5eff47f4cb661d2047892a8fe4"
     },
     {
       "source_id": "mof_order_871_june_2025",
@@ -76,8 +78,10 @@
       "title_anchor": "prospectele de emisiune",
       "month_anchor": "iulie 2025",
       "supersedes": null,
-      "known_official_pdf_url": null,
-      "known_official_legal_url": "https://legislatie.just.ro/public/DetaliiDocument/299572"
+      "known_official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF1088iulie2025.pdf",
+      "known_official_legal_url": "https://legislatie.just.ro/public/DetaliiDocument/299572",
+      "official_pdf_identity_profile": "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA",
+      "recovery_probe_expected_pdf_sha256": "9b46e36563935be7caea0536be06bede6f5ae9d9aa9479017bcb4585db58bb8e"
     },
     {
       "source_id": "mof_order_1221_august_2025",
@@ -104,8 +108,10 @@
       "title_anchor": "prospectele de emisiune",
       "month_anchor": "septembrie 2025",
       "supersedes": null,
-      "known_official_pdf_url": null,
-      "known_official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocument/301803"
+      "known_official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF1452_29082025.pdf",
+      "known_official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocument/301803",
+      "official_pdf_identity_profile": "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA",
+      "recovery_probe_expected_pdf_sha256": "9e7015722f8b891151f08ce85174b2470a7b2bf642305cdd1fbdd6c85ad17a00"
     },
     {
       "source_id": "mof_order_1626_october_2025",
@@ -145,8 +151,10 @@
       "title_anchor": "pentru modificarea",
       "month_anchor": "noiembrie 2025",
       "supersedes": "1795/2025",
-      "known_official_pdf_url": null,
-      "known_official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocument/304106"
+      "known_official_pdf_url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF1831_10112025.pdf",
+      "known_official_legal_url": "https://legislatie.just.ro/Public/DetaliiDocument/304106",
+      "official_pdf_identity_profile": "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA",
+      "recovery_probe_expected_pdf_sha256": "2947ea6161b14cbf94cb5cba0eb23ddf0d1918ecab0e8f7e2b03b9c72a20b923"
     },
     {
       "source_id": "mof_order_1928_december_2025",
@@ -159,8 +167,10 @@
       "title_anchor": "prospectele de emisiune",
       "month_anchor": "decembrie 2025",
       "supersedes": null,
-      "known_official_pdf_url": null,
-      "known_official_legal_url": "https://legislatie.just.ro/Public/FormaPrintabila/00000G1RB4W7CFF2RO825LZVAE9ZO2TI"
+      "known_official_pdf_url": "https://static.anaf.ro/static/10/Anaf/legislatie/OMF_1928_2025.pdf",
+      "known_official_legal_url": "https://legislatie.just.ro/Public/FormaPrintabila/00000G1RB4W7CFF2RO825LZVAE9ZO2TI",
+      "official_pdf_identity_profile": "LEGAL_PUBLICATION_PDF",
+      "recovery_probe_expected_pdf_sha256": "43970738c5dba7cb99240a79b22b348b3ba34521c85c8514a27608a9ff3f2087"
     },
     {
       "source_id": "mof_order_1998_december_2025_amendment",
@@ -198,7 +208,13 @@
     "partial_official_retention_allowed": true,
     "unavailable_sources_must_remain_unavailable": true,
     "event_materialisation_allowed_only_for_retained_raw_sources": true,
-    "canonical_promotion_requires_complete_required_source_coverage": true
+    "canonical_promotion_requires_complete_required_source_coverage": true,
+    "official_pdf_recovery_identity_profiles": {
+      "LEGAL_PUBLICATION_PDF": "Require order number, order date, Ministry issuer, title anchor, target month and Monitorul Oficial publication number in native PDF text.",
+      "MINISTRY_PROSPECT_PDF_WITH_FROZEN_LEGAL_METADATA": "Require order number, Ministry issuer, title anchor and target month in the official Ministry PDF; amendments must also identify the superseded order. Order/publication dates remain frozen from the independently identified legal-registry metadata."
+    },
+    "recovered_official_pdf_urls_must_match_probe_sha256": true,
+    "recovery_probe": "scripts/probe_mof_announced_RON_primary_reference_auction_missing_official_pdfs.py"
   },
   "amendment_graph": {
     "2025-05": [
