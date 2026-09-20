@@ -1,0 +1,186 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "bridge_id": "primary_yield_to_sovereign_yield",
+  "purpose": "Decide whether retained BNR instrument- and currency-specific domestic primary-market issue yields/rates can be mapped or aggregated into the generic sovereign_yield node, given the separately retained ECB Romania 10-year RON long-term yield boundary and the failed sovereign-yield structural-selection cycle.",
+  "decision": "DO_NOT_AGGREGATE_PRIMARY_ISSUE_RATES_INTO_GENERIC_SOVEREIGN_YIELD_KEEP_UMBRELLA_NODE_UNRESOLVED",
+  "primary_market_boundary": {
+    "source": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
+    "institution": "National Bank of Romania",
+    "publication": "Monthly Bulletin — December 2025, table 12.2",
+    "status": "EXACT_RETAINED_2025_INSTRUMENT_AND_CURRENCY_SPECIFIC_PRIMARY_MARKET_RATES",
+    "observables": [
+      {
+        "id": "RON_discount_treasury_certificate_primary_average_yield",
+        "currency": "RON",
+        "instrument": "discount Treasury certificates",
+        "source_rate_type": "average_yield",
+        "role": "PRIMARY_MARKET_ISSUE_OUTCOME"
+      },
+      {
+        "id": "RON_interest_bearing_government_bond_primary_average_interest_rate",
+        "currency": "RON",
+        "instrument": "interest-bearing government bonds",
+        "source_rate_type": "average_interest_rate",
+        "role": "PRIMARY_MARKET_ISSUE_OUTCOME"
+      },
+      {
+        "id": "EUR_treasury_certificate_primary_average_interest_rate",
+        "currency": "EUR",
+        "instrument": "Treasury certificates",
+        "source_rate_type": "average_interest_rate",
+        "role": "PRIMARY_MARKET_ISSUE_OUTCOME"
+      },
+      {
+        "id": "EUR_interest_bearing_government_bond_primary_average_interest_rate",
+        "currency": "EUR",
+        "instrument": "interest-bearing government bonds",
+        "source_rate_type": "average_interest_rate",
+        "role": "PRIMARY_MARKET_ISSUE_OUTCOME"
+      }
+    ],
+    "generic_scalar_aggregation_authorized": false,
+    "reason": "The BNR columns mix instrument classes, currencies and rate semantics. They are monthly primary-market outcomes and do not share a frozen maturity structure. A post-hoc weighted or unweighted average would manufacture a new concept rather than observe the generic sovereign_yield node."
+  },
+  "long_term_RON_boundary": {
+    "candidate_id": "RON_10Y_long_term_sovereign_yield",
+    "institution": "ECB / ESCB",
+    "dataset": "IRS — Long-term interest rate statistics",
+    "series_key": "IRS.M.RO.L.L40.CI.0000.RON.N.Z",
+    "provider_label": "Long-term interest rate for convergence purposes - Romanian leu, Romania, Monthly",
+    "frequency": "monthly",
+    "maturity": "10 years",
+    "currency": "RON",
+    "unit": "percent",
+    "collection_indicator": "average of observations through period",
+    "source_vintage_promotion_review": "model/calibration_validation/sovereign_yield_source_vintage_promotion_review.json",
+    "quarterly_materialisation_contract": "model/calibration_validation/sovereign_yield_quarterly_materialisation_contract.json",
+    "source_boundary_review": "model/calibration_validation/sovereign_yield_source_boundary_review.json",
+    "status": "EXACT_RETAINED_LONG_TERM_10Y_RON_BOUNDARY_NOT_GENERIC_ALL_MATURITY_YIELD",
+    "valid_as_exact_observed_boundary_for": [
+      "RON_10Y_long_term_sovereign_yield"
+    ],
+    "not_equivalent_to": [
+      "generic all-maturity sovereign_yield",
+      "instrument-specific primary-market issue yield",
+      "government debt-stock effective interest rate",
+      "government interest cost",
+      "pure sovereign credit spread"
+    ],
+    "generic_sovereign_yield_node_resolution_authorized": false
+  },
+  "secondary_market_curve_context": {
+    "institution": "National Bank of Romania",
+    "source_family": "BNR Inflation Report charts/tables reporting reference rates on the secondary market for government securities by maturity",
+    "documented_maturity_examples": [
+      "12M",
+      "3Y",
+      "5Y",
+      "10Y"
+    ],
+    "role": "SOURCE_FAMILY_FOR_MATURITY_SPECIFIC_SECONDARY_MARKET_CURVE_CONTEXT",
+    "exact_repository_source_vintage_for_curve_vector": false,
+    "curve_aggregation_to_generic_scalar_authorized": false,
+    "effect": "The source family supports the conceptual distinction between maturity-specific secondary-market yields and primary-market issue outcomes. It does not justify a generic scalar without a separately frozen maturity rule."
+  },
+  "conceptual_separation": [
+    {
+      "concept": "primary_market_issue_rate",
+      "timing": "AUCTION_OR_ISSUE_OUTCOME",
+      "market": "PRIMARY",
+      "maturity_boundary": "INSTRUMENT_MIX_NOT_FROZEN_AS_SINGLE_MATURITY",
+      "observed": true,
+      "generic_sovereign_yield_equivalent": false
+    },
+    {
+      "concept": "RON_10Y_long_term_sovereign_yield",
+      "timing": "MARKET_LONG_TERM_RATE",
+      "market": "LONG_TERM_GOVERNMENT_SECURITIES_REFERENCE",
+      "maturity_boundary": "10Y",
+      "observed": true,
+      "generic_sovereign_yield_equivalent": false
+    },
+    {
+      "concept": "secondary_market_yield_curve",
+      "timing": "SECONDARY_MARKET",
+      "market": "SECONDARY",
+      "maturity_boundary": "VECTOR_BY_MATURITY",
+      "observed": "SOURCE_FAMILY_IDENTIFIED_NOT_RETAINED_AS_EXACT_CURVE_VECTOR",
+      "generic_sovereign_yield_equivalent": false
+    },
+    {
+      "concept": "government_effective_interest_rate",
+      "timing": "DEBT_STOCK_COST",
+      "market": "OUTSTANDING_DEBT_STOCK",
+      "maturity_boundary": "PORTFOLIO_AGGREGATE",
+      "observed": true,
+      "generic_sovereign_yield_equivalent": false
+    }
+  ],
+  "mapping_assessment": {
+    "primary_market_issue_rate_to_generic_sovereign_yield": "NOT_ONE_TO_ONE_AND_NO_EX_ANTE_AGGREGATION_RULE_JUSTIFIED",
+    "primary_market_issue_rate_to_RON_10Y_long_term_yield": "RELATED_BUT_NOT_DEFINITIONALLY_EQUIVALENT",
+    "RON_10Y_long_term_yield_to_generic_sovereign_yield": "VALID_SPECIFIC_LONG_TERM_BOUNDARY_NOT_GENERIC_NODE_RESOLUTION",
+    "secondary_curve_to_generic_sovereign_yield": "VECTOR_REQUIRES_EXPLICIT_MATURITY_TARGET_NOT_SCALAR_AVERAGING",
+    "generic_sovereign_yield_to_interest_cost": "REQUIRES_SEPARATE_DEBT_STOCK_PROPAGATION_BRIDGE"
+  },
+  "existing_structural_selection_evidence": {
+    "source": "model/calibration_validation/sovereign_yield_structural_selection_result.json",
+    "selection_verdict": "FAIL_BEFORE_HOLDOUT",
+    "candidate_beat_persistence_baseline": false,
+    "candidate_beat_common_market_baseline": false,
+    "final_evaluation_opened": false,
+    "causal_claim_allowed": false,
+    "system_dynamics_activation": false,
+    "effect": "The exact 10Y source boundary remains scientifically useful as an observed long-term yield series, but the failed candidate equation cannot be reused as an integrated feedback equation."
+  },
+  "umbrella_node_disposition": {
+    "node_id": "sovereign_yield",
+    "current_boundary_class": "UNRESOLVED",
+    "keep_generic_umbrella_node": true,
+    "exact_reference_mode_id": null,
+    "narrow_generic_node_to_10Y_now": false,
+    "reason": "The qualitative issuance-yield topology currently uses a generic sovereign_yield concept that subsequently feeds debt-stock interest cost. Replacing that node silently with a 10Y rate would change the model's semantics and would still not solve the maturity/refinancing bridge to outstanding-debt cost.",
+    "current_feedback_activation_authorized": false
+  },
+  "prohibited_shortcuts": [
+    "Average BNR Treasury-bill and bond issue rates to manufacture a generic sovereign yield.",
+    "Mix RON and EUR issue rates in one scalar without an ex-ante currency boundary.",
+    "Treat primary-market issue rates as secondary-market yields.",
+    "Treat the ECB 10Y convergence-purpose rate as an all-maturity debt cost.",
+    "Relabel the ECB 10Y RON minus a EUR/Germany rate as a pure sovereign credit spread without a matched benchmark contract.",
+    "Reuse the failed sovereign-yield structural-selection equation as a feedback equation.",
+    "Infer a causal supply-pressure-to-yield coefficient from co-movement or predictive fit."
+  ],
+  "scientific_effect": {
+    "primary_market_rate_vector_retained_as_descriptive_evidence": true,
+    "RON_10Y_long_term_boundary_recognized_as_exact_observed_candidate": true,
+    "generic_sovereign_yield_node_resolved": false,
+    "generic_sovereign_yield_scalar_constructed": false,
+    "primary_to_sovereign_aggregation_selected": false,
+    "reference_mode_promoted": false,
+    "equation_selected": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "bridge_disposition": {
+    "id": "primary_yield_to_sovereign_yield",
+    "status": "BOUNDARY_REVIEWED_NO_ONE_TO_ONE_MAPPING_NO_GENERIC_AGGREGATION",
+    "closed_empirical_bridge_claim_allowed": false,
+    "reopen_conditions": [
+      "A scientific question explicitly narrows the target to a preregistered maturity/currency/market boundary.",
+      "An ex-ante aggregation rule is justified independently of observed fit and exact component series are retained.",
+      "A revised feedback topology explicitly replaces the generic node with a maturity-specific yield state and passes conformity review."
+    ]
+  },
+  "next_independent_bridge_task": {
+    "id": "yield_to_interest_cost_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "scope": "Review the semantic and temporal bridge from a market/new-issue yield boundary to government_interest_cost, including outstanding debt maturity, refinancing and re-fixing propagation. Do not estimate or activate the link.",
+    "may_select_interest_cost_equation": false,
+    "may_estimate_yield_to_cost_effect": false,
+    "may_activate_feedback": false
+  }
+}
