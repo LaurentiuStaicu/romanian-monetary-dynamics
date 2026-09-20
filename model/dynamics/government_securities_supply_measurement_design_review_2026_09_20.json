@@ -63,7 +63,7 @@
       "preferred_observable": "sum_of_competitive_announced_RON_reference_targets",
       "unit": "million_RON_per_event_or_period",
       "causal_role": "DIRECT_EX_ANTE_SUPPLY_INPUT_CANDIDATE",
-      "current_source_status": "PARTIAL_EXACT_MONTHLY_10_OF_12_EVENT_COMPLETE_9_OF_12_3_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED",
+      "current_source_status": "PARTIAL_EXACT_MONTHLY_10_OF_12_EVENT_COMPLETE_9_OF_12_CANONICAL_PROMOTION_BLOCKED_3_REQUIRED_SOURCES_MISSING",
       "normalisation_required": false,
       "stock_denominator_required": false,
       "activation_ready": false,
