@@ -95,7 +95,7 @@ def fetch_candidate(candidate: dict, contract: dict, out_dir: Path) -> dict:
     raw_path = raw_dir / safe_name
 
     try:
-        with urlopen(request, timeout=90) as response:
+        with urlopen(request, timeout=30) as response:
             status = int(response.getcode())
             payload = response.read()
             response_meta = {
@@ -118,7 +118,13 @@ def fetch_candidate(candidate: dict, contract: dict, out_dir: Path) -> dict:
             "error_body_preview": body.decode("utf-8", errors="replace")[:500],
             "eligible_for_selection_now": False,
         }
-    except URLError as exc:
+    except (URLError, TimeoutError) as exc:
+        if isinstance(exc, URLError):
+            error_text = str(exc.reason)
+            error_type = "URLError"
+        else:
+            error_text = str(exc)
+            error_type = "TimeoutError"
         return {
             "candidate_id": candidate["candidate_id"],
             "dataset": candidate["dataset"],
@@ -128,7 +134,8 @@ def fetch_candidate(candidate: dict, contract: dict, out_dir: Path) -> dict:
             "http_status": None,
             "transport_ok": False,
             "valid_nonempty_csv": False,
-            "transport_error": str(exc.reason),
+            "transport_error_type": error_type,
+            "transport_error": error_text,
             "eligible_for_selection_now": False,
         }
 
