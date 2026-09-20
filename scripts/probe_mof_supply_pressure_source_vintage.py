@@ -140,6 +140,11 @@ def run_probe(out_dir: Path) -> dict:
         text = text_path.read_text(encoding="utf-8", errors="replace")
         checks = anchor_assessment(text, source["required_text_anchors"])
         all_anchor_checks_pass = all_anchor_checks_pass and all(checks.values())
+        diagnostic_tokens = source.get("diagnostic_exact_tokens", [])
+        token_checks = {
+            token: token in text
+            for token in diagnostic_tokens
+        }
 
         excerpt_path = excerpt_dir / (raw_path.stem + "_anchors.txt")
         excerpt_chunks = []
@@ -165,6 +170,10 @@ def run_probe(out_dir: Path) -> dict:
                 "anchor_excerpt_path": f"anchor_excerpts/{excerpt_path.name}",
                 "required_anchor_checks": checks,
                 "all_required_anchors_found": all(checks.values()),
+                "diagnostic_exact_token_checks": token_checks,
+                "all_diagnostic_exact_tokens_found": (
+                    all(token_checks.values()) if token_checks else None
+                ),
             }
         )
 
@@ -204,6 +213,9 @@ def run_probe(out_dir: Path) -> dict:
                 "sha256": item["raw_sha256"],
                 "native_text_bytes": item["native_text_bytes"],
                 "anchors_pass": item["all_required_anchors_found"],
+                "diagnostic_exact_tokens_pass": item[
+                    "all_diagnostic_exact_tokens_found"
+                ],
             }
             for item in source_results
         ],
