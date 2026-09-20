@@ -9,6 +9,17 @@ NEW_ID = "announced_RON_primary_reference_auction_supply_level"
 NEXT_TASK = (
     "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
 )
+CURRENT_TASK = (
+    "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery"
+)
+CURRENT_STATUS = (
+    "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_"
+    "8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
+)
+CURRENT_MEASURE_STATUS = (
+    "PARTIAL_EXACT_EVENT_MATERIALISATION_6_FINAL_MONTHS_"
+    "8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
+)
 
 
 def load(path: str) -> dict:
@@ -142,7 +153,7 @@ def audit_full_2025_definition(
         new = measures[NEW_ID]
         if new["preferred_observable"] != "sum_of_competitive_announced_RON_reference_targets":
             errors.append("full-year competitive observable changed")
-        if new["current_source_status"] != "DEFINITION_FROZEN_FULL_2025_SOURCE_VINTAGE_PENDING":
+        if new["current_source_status"] != CURRENT_MEASURE_STATUS:
             errors.append("full-year source status changed")
         if new["activation_ready"] is not False:
             errors.append("full-year candidate may not be activation-ready")
@@ -160,7 +171,7 @@ def audit_full_2025_definition(
 
     if measurement_design["reference_mode_strategy"]["first_materialisation_priority"] != NEW_ID:
         errors.append("measurement-design first reference-mode priority changed")
-    if measurement_design["next_task"]["id"] != NEXT_TASK:
+    if measurement_design["next_task"]["id"] != CURRENT_TASK:
         errors.append("measurement-design next task changed")
 
     if q1_pilot.get("full_2025_definition_review") != REVIEW_PATH:
@@ -176,7 +187,7 @@ def audit_full_2025_definition(
         errors.append("supply-pressure source review lacks full-year definition review")
     if source_review.get("full_year_primary_supply_candidate_id") != NEW_ID:
         errors.append("supply-pressure source review full-year candidate changed")
-    if source_review["next_task"]["id"] != NEXT_TASK:
+    if source_review["next_task"]["id"] != CURRENT_TASK:
         errors.append("supply-pressure source review next task changed")
 
     node = next(
@@ -200,9 +211,7 @@ def audit_full_2025_definition(
     )
     if link.get("mof_announced_RON_primary_supply_full_2025_definition_review") != REVIEW_PATH:
         errors.append("issuance-pressure link lacks full-year definition review")
-    if link["source_boundary_status"] != (
-        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
-    ):
+    if link["source_boundary_status"] != CURRENT_STATUS:
         errors.append("issuance-pressure link full-year status changed")
     if link["exact_integrated_equation_ready"] is not False:
         errors.append("definition review may not make integrated equation ready")
@@ -238,7 +247,7 @@ def audit_full_2025_definition(
         errors.append("model contract legacy Q1 status changed")
     if dynamic["government_securities_supply_first_reference_mode_priority"] != NEW_ID:
         errors.append("model contract full-year reference-mode priority changed")
-    if dynamic["next_government_issuance_yield_empirical_task"] != NEXT_TASK:
+    if dynamic["next_government_issuance_yield_empirical_task"] != CURRENT_TASK:
         errors.append("model contract next task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
         errors.append("definition review may not authorize issuance-yield feedback")

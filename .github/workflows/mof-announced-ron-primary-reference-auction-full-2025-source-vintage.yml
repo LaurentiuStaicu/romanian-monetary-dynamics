@@ -1,0 +1,130 @@
+name: Ministry Announced RON Reference Auction Full-2025 Source Vintage
+
+on:
+  push:
+    branches:
+      - source-vintage/mof-announced-ron-primary-reference-auction-full-2025-2026-09-20
+    paths:
+      - .github/workflows/mof-announced-ron-primary-reference-auction-full-2025-source-vintage.yml
+      - model/dynamics/mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract.json
+      - scripts/probe_mof_announced_RON_primary_reference_auction_full_2025_source_vintage.py
+      - tests/test_mof_announced_RON_primary_reference_auction_full_2025_source_vintage.py
+
+concurrency:
+  group: mof-announced-ron-primary-reference-auction-full-2025-source-vintage
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  discover-and-retain:
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source-vintage branch
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify frozen legal-source discovery contract
+        run: |
+          python -m unittest \
+            tests.test_mof_announced_RON_primary_reference_auction_full_2025_source_vintage -v
+
+      - name: Discover and retain exact official legal acts
+        run: |
+          python scripts/probe_mof_announced_RON_primary_reference_auction_full_2025_source_vintage.py \
+            --output mof_announced_reference_auction_full_2025_source_artifacts
+
+      - name: Retain or reverify source vintage on branch
+        run: |
+          BRANCH="source-vintage/mof-announced-ron-primary-reference-auction-full-2025-2026-09-20"
+          DEST="data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20"
+
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+
+          if [ -e "$DEST" ]; then
+            python - <<'PY'
+          import json
+          from pathlib import Path
+
+          fresh_root = Path("mof_announced_reference_auction_full_2025_source_artifacts")
+          kept_root = Path("data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20")
+          fresh = json.loads((fresh_root / "source_vintage_manifest.json").read_text())
+          kept = json.loads((kept_root / "source_vintage_manifest.json").read_text())
+
+          fresh_by_id = {x["source_id"]: x for x in fresh["documents"]}
+          kept_by_id = {x["source_id"]: x for x in kept["documents"]}
+          if set(fresh_by_id) != set(kept_by_id):
+              raise SystemExit("retained source-vintage document set changed")
+
+          for source_id in sorted(fresh_by_id):
+              f = fresh_by_id[source_id]
+              k = kept_by_id[source_id]
+              for key in (
+                  "order_number",
+                  "order_date",
+                  "publication_number",
+                  "publication_date",
+                  "version_role",
+                  "supersedes",
+              ):
+                  if f.get(key) != k.get(key):
+                      raise SystemExit(f"{source_id}: retained identity mismatch for {key}")
+
+              if f.get("raw_source_retained") != k.get("raw_source_retained"):
+                  raise SystemExit(f"{source_id}: raw-source availability changed")
+
+              if f.get("raw_source_retained"):
+                  for hash_key in ("official_pdf_sha256", "selected_act_sha256", "normalized_text_sha256"):
+                      fv = f.get(hash_key)
+                      kv = k.get(hash_key)
+                      if fv is not None or kv is not None:
+                          if fv != kv:
+                              raise SystemExit(f"{source_id}: retained hash mismatch for {hash_key}")
+
+          print("Retained raw source vintage matches fresh probe on frozen identities and available raw-source hashes.")
+          PY
+
+            # Refresh only the manifest/probe metadata after successful raw-source
+            # revalidation. Retained raw bytes are not replaced here.
+            cp \
+              mof_announced_reference_auction_full_2025_source_artifacts/source_vintage_manifest.json \
+              "$DEST/source_vintage_manifest.json"
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add "$DEST/source_vintage_manifest.json"
+            if git diff --cached --quiet; then
+              echo "Raw source vintage and probe manifest already current."
+              exit 0
+            fi
+            git commit -m "data: refresh full-2025 Ministry source-vintage probe manifest"
+            git push origin HEAD:"$BRANCH"
+            exit 0
+          fi
+
+          mkdir -p "$DEST"
+          cp -a mof_announced_reference_auction_full_2025_source_artifacts/. "$DEST/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DEST"
+          git diff --cached --quiet && { echo "No retained source-vintage changes."; exit 1; }
+          git commit -m "data: retain full-2025 Ministry announced-supply legal source vintage"
+          git push origin HEAD:"$BRANCH"
+
+      - name: Upload exact discovery artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mof-announced-ron-reference-auction-full-2025-${{ github.sha }}
+          path: mof_announced_reference_auction_full_2025_source_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0

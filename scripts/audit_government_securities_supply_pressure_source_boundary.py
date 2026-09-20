@@ -141,13 +141,9 @@ def audit_supply_pressure_source_boundary(
             errors.append(f"supply-pressure source review may not promote {key}")
 
     task = review["next_task"]
-    if task["id"] != (
-        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
-    ):
+    if task["id"] != "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery":
         errors.append("next supply-pressure task changed")
-    if task["authorization"] != (
-        "OFFICIAL_SOURCE_RETENTION_AMENDMENT_AWARE_EVENT_MATERIALISATION_ONLY"
-    ):
+    if task["authorization"] != "OFFICIAL_SOURCE_RECOVERY_ONLY":
         errors.append("next task authorization changed")
     if task["may_compute_pressure_ratio_now"] is not False:
         errors.append("next task may not compute pressure ratio")
@@ -188,7 +184,7 @@ def audit_supply_pressure_source_boundary(
     ):
         errors.append("issuance-to-pressure canonical readiness changed")
     if link.get("source_boundary_status") != (
-        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
     ):
         errors.append("issuance-to-pressure source-boundary status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -218,7 +214,7 @@ def audit_supply_pressure_source_boundary(
     if bridge["source_boundary_review"] != REVIEW_PATH:
         errors.append("structural preregistration lacks supply-pressure review")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
     ):
         errors.append("issuance-to-pressure bridge status changed")
 
@@ -242,7 +238,7 @@ def audit_supply_pressure_source_boundary(
     if dynamic.get("government_securities_supply_stock_normalisation_required") is not False:
         errors.append("stock normalisation may not be required for first supply reference mode")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
+        "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery"
     ):
         errors.append("model contract next issuance-yield task changed")
 

@@ -63,7 +63,7 @@
       "preferred_observable": "sum_of_competitive_announced_RON_reference_targets",
       "unit": "million_RON_per_event_or_period",
       "causal_role": "DIRECT_EX_ANTE_SUPPLY_INPUT_CANDIDATE",
-      "current_source_status": "DEFINITION_FROZEN_FULL_2025_SOURCE_VINTAGE_PENDING",
+      "current_source_status": "PARTIAL_EXACT_EVENT_MATERIALISATION_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED",
       "normalisation_required": false,
       "stock_denominator_required": false,
       "activation_ready": false,
@@ -75,7 +75,19 @@
         "retail and external issuance remain outside this market boundary",
         "base-order announcements and later amendments must retain separate information dates and lineage",
         "forward-scheduled events may not be relabelled completed-period realised supply"
-      ]
+      ],
+      "full_2025_source_vintage_contract": "model/dynamics/mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract.json",
+      "full_2025_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
+      "partial_2025_materialisation_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json",
+      "exact_final_months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-06",
+        "2025-10"
+      ],
+      "missing_required_source_count": 8
     },
     {
       "measure_id": "announced_RON_primary_supply_level",
@@ -223,9 +235,12 @@
       "monthly public debt report only where exact native table mapping is reproducible"
     ],
     "q1_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json",
-    "canonical_promotion_status": "DEFERRED_FULL_2025_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING",
+    "canonical_promotion_status": "BLOCKED_INCOMPLETE_REQUIRED_SOURCE_COVERAGE_6_OF_12_MONTHS_EXACT",
     "full_2025_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json",
-    "q1_legacy_combined_pilot": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json"
+    "q1_legacy_combined_pilot": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json",
+    "full_2025_source_vintage_contract": "model/dynamics/mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract.json",
+    "full_2025_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
+    "partial_2025_materialisation_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json"
   },
   "scientific_effect": {
     "government_securities_supply_pressure_node_resolved": false,
@@ -240,10 +255,11 @@
     "public_version_change_authorized": false
   },
   "next_task": {
-    "id": "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage",
-    "authorization": "OFFICIAL_SOURCE_RETENTION_AMENDMENT_AWARE_EVENT_MATERIALISATION_ONLY",
-    "task": "Retain exact official April-December base orders and identified amendment orders; preserve information-date version history; materialise competitive reference-auction targets only; retain SSON separately as a non-canonical auxiliary.",
-    "may_materialise_announced_supply_reference_mode": true,
+    "id": "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery",
+    "authorization": "OFFICIAL_SOURCE_RECOVERY_ONLY",
+    "task": "Recover exact official raw sources for the eight missing base/amendment orders. Do not infer rows or final monthly values from indexed snippets, consolidated later forms, auction outcomes or memory.",
+    "required_source_count": 8,
+    "may_materialise_missing_source_events_only_after_raw_retention": true,
     "may_materialise_supply_surprise": false,
     "may_materialise_duration_supply": false,
     "may_estimate_supply_to_yield_effect": false,
