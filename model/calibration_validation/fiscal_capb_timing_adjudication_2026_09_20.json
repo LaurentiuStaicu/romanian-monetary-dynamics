@@ -17,7 +17,11 @@
     "repository_raw_bytes_retained": false,
     "exact_source_vintage_reproducibility_claim_allowed": false,
     "reproducibility_classification": "HASH_AND_SELECTED_ROW_REVIEW_WITH_TEMPORARY_ACTIONS_RAW_BYTES",
-    "reason": "Exact raw ZIP bytes are present in the reviewed GitHub Actions artifact and hash-identified, but the canonical source-vintage contract requires repository-retained raw bytes for a no-refetch exact reproducibility claim."
+    "reason": "Exact raw ZIP bytes and the original inventory are present in the reviewed GitHub Actions artifact and hash-identified. The repository retains exact selected-row evidence plus normalized review tables, but not the raw ZIP set or a byte-identical inventory copy. The canonical source-vintage contract therefore forbids a no-refetch exact reproducibility claim.",
+    "artifact_inventory_sha256": "55e494ca4010ed75c602392da0fcedee02cecf1aa27aa901833b6ed8d7775588",
+    "repository_inventory_review_copy_sha256": "42fd71e75e2fffb068e503c716ad20a9781b00489e7218197596ee83e43a81f3",
+    "repository_inventory_copy_byte_identical_to_artifact": false,
+    "repository_inventory_copy_role": "NORMALIZED_REVIEW_COPY_ONLY"
   },
   "timing_rule": {
     "official_ameco_metadata_rule": "Spring forecasts cover two forecast years and Autumn forecasts three forecast years, including the current year; AMECO text files do not directly flag forecast versus historical observations.",
