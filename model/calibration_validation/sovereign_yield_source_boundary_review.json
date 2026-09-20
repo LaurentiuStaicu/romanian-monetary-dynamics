@@ -37,7 +37,10 @@
     "pure_sovereign_credit_spread_observed": false,
     "prohibited_label": "Do not label Romania RON 10y minus Germany/euro-area EUR 10y as a pure sovereign credit spread.",
     "reason": "The cross-currency yield differential combines sovereign risk with currency, monetary-policy and inflation-expectation components.",
-    "loop_mapping": "The Dynamic Core loop uses sovereign_yield, so a validated yield-response equation could support that node without claiming decomposition of the yield into a pure credit spread."
+    "loop_mapping": "The Dynamic Core loop uses sovereign_yield, so a validated yield-response equation could support that node without claiming decomposition of the yield into a pure credit spread.",
+    "generic_sovereign_yield_node_resolved": false,
+    "ecb_long_term_RON_yield_role": "LONG_TERM_RON_BENCHMARK_OBSERVABLE_NOT_GENERIC_ALL_MATURITY_ISSUE_RATE",
+    "bnr_primary_issue_rate_role": "INSTRUMENT_AND_CURRENCY_SPECIFIC_PRIMARY_AUCTION_OUTCOME_NOT_GENERIC_SOVEREIGN_YIELD"
   },
   "fiscal_source_boundary": {
     "debt": "Use the already retained official government_debt_stock reference mode / Eurostat Maastricht-debt source when constructing debt-to-GDP controls.",
@@ -57,7 +60,8 @@
     "provisional_equation_family": "RON_long_yield = f(common_long_rate, fiscal_state, external_financial_stress, macro/monetary_state)",
     "status": "SOURCE_BOUNDARY_ONLY_FORM_NOT_SELECTED",
     "rationale": "A yield-level equation is aligned with the feedback-registry sovereign_yield node. A pure spread equation would require a definitionally matched same-currency benchmark or an explicit decomposition not currently observed.",
-    "causal_claim_allowed": false
+    "causal_claim_allowed": false,
+    "issuance_yield_loop_effect": "The retained ECB long-term yield may remain an observed benchmark for the historical conditional-yield candidate, but it is not a one-to-one empirical replacement for the generic sovereign_yield node in the issuance-yield loop."
   },
   "source_materialisation_gate": {
     "calibration_cycle_open": false,
@@ -91,5 +95,6 @@
     "behavioural_closure": "UNCHANGED_INACTIVE",
     "accounting_spine": "UNCHANGED"
   },
-  "quarterly_materialisation_contract": "model/calibration_validation/sovereign_yield_quarterly_materialisation_contract.json"
+  "quarterly_materialisation_contract": "model/calibration_validation/sovereign_yield_quarterly_materialisation_contract.json",
+  "primary_yield_to_sovereign_yield_boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json"
 }
