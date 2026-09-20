@@ -23,15 +23,17 @@ When a new public version is prepared, update these repository surfaces in the s
 5. `CITATION.cff` → `date-released`
 6. `CHANGELOG.md` → move released material from **Unreleased** to the new version/date heading
 7. `model/registries/release_versioning_contract.json` → advance current release/version fields and the next candidate
+8. create `releases/v<version>.md` with the version-specific scientific status, included changes and non-claims
 
 Before publication, the exact release commit must pass Scientific CI and the required accounting/materialization audits.
 
 After repository metadata is synchronized:
 
-8. create tag `v<version>` at the exact reviewed release commit;
-9. create the GitHub Release from that same tag;
-10. ensure release notes describe the actual scientific maturity and current non-claims;
-11. verify the tag, GitHub Release, package metadata, README, citation metadata and changelog all identify the same version.
+9. create tag `v<version>` at the exact reviewed release commit;
+10. create the GitHub Release from that same tag;
+11. use the versioned `releases/v<version>.md` content as the reviewed release-note source or verify semantic equivalence;
+12. ensure release notes describe the actual scientific maturity and current non-claims;
+13. verify the tag, GitHub Release, package metadata, README, citation metadata, changelog and versioned release-note file all identify the same version.
 
 ## Version selection during 0.x development
 
