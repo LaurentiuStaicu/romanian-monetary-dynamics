@@ -100,7 +100,7 @@ class ValidationRecoveryStageTerminalAssessmentTests(unittest.TestCase):
             stage["next_operational_state"],
             self.t["next_operational_state"]["id"],
         )
-        self.assertTrue(stage["selective_reopen_active"])
+        self.assertFalse(stage["selective_reopen_active"])
         self.assertEqual(
             stage["selective_reopen_mechanism"],
             "fiscal_primary_balance_reaction",
