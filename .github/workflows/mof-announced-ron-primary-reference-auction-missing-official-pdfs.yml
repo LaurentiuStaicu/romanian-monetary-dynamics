@@ -11,6 +11,10 @@ on:
       - model/dynamics/mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract.json
   workflow_dispatch:
 
+concurrency:
+  group: mof-missing-official-pdf-recovery-probe
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
