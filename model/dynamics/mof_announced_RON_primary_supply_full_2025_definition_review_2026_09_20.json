@@ -1,0 +1,194 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "purpose": "Determine whether the Q1 announced-RON primary-supply pilot can be extended definitionally unchanged through full-year 2025 before any canonical reference-mode promotion.",
+  "legacy_pilot_reference_mode_id": "announced_RON_primary_supply_level",
+  "legacy_pilot": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json",
+  "decision": "DO_NOT_EXTEND_Q1_COMBINED_REFERENCE_AUCTION_PLUS_SSON_SCALAR_UNCHANGED_TO_FULL_2025",
+  "reason": "The Q1 pilot combines competitive reference-auction target amounts with fixed nominal SSON capacity. In December 2025 the Ministry changed the SSON rule to a percentage of the nominal amount adjudicated at the reference auction, so the SSON amount is no longer a nominal ex-ante quantity known at the official issuance announcement. A definitionally stable full-year ex-ante reference mode must therefore separate competitive announced supply from SSON capacity.",
+  "official_legal_screening": {
+    "role": "Official act identity, amendment graph and legal-text screening. Portal Legislativ is not silently substituted for the retained Ministry raw-source family used by the Q1 materialisation.",
+    "months": [
+      {
+        "month": "2025-04",
+        "base_order": "541/2025",
+        "base_order_date": "2025-03-31",
+        "portal_url": "https://legislatie.just.ro/Public/DetaliiDocument/296033",
+        "amendment_identified_in_screening": false,
+        "base_article_1_nominal_RON_million": 6900.0,
+        "base_article_1_fixed_SSON_max_RON_million": 795.0
+      },
+      {
+        "month": "2025-05",
+        "base_order": "728/2025",
+        "base_order_date": "2025-04-29",
+        "portal_url": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/297037",
+        "amendment_identified_in_screening": true,
+        "amendments": [
+          {
+            "order": "752/2025",
+            "order_date": "2025-05-07",
+            "effect": "Changes Article 1 and Annex 1/Annex 2 auction schedule after the original monthly announcement."
+          }
+        ],
+        "initial_article_1_nominal_RON_million": 4000.0,
+        "initial_article_1_fixed_SSON_max_RON_million": 375.0,
+        "post_amendment_article_1_nominal_RON_million": 5400.0,
+        "post_amendment_article_1_fixed_SSON_max_RON_million": 660.0
+      },
+      {
+        "month": "2025-06",
+        "base_order": "871/2025",
+        "base_order_date": "2025-05-30",
+        "portal_publication": "Monitorul Oficial nr. 510/2025",
+        "amendment_identified_in_screening": false
+      },
+      {
+        "month": "2025-07",
+        "base_order": "1088/2025",
+        "base_order_date": "2025-06-30",
+        "portal_url": "https://legislatie.just.ro/public/DetaliiDocument/299572",
+        "amendment_identified_in_screening": false,
+        "base_article_1_nominal_RON_million": 5800.0,
+        "base_article_1_fixed_SSON_max_RON_million": 795.0
+      },
+      {
+        "month": "2025-08",
+        "base_order": "1221/2025",
+        "base_order_date": "2025-07-31",
+        "portal_url": "https://legislatie.just.ro/Public/FormaPrintabila/00000G1PDDT6BYBUL5X0XOPOZQICRDM9",
+        "amendment_identified_in_screening": false,
+        "base_article_1_nominal_RON_million": 5800.0,
+        "base_article_1_fixed_SSON_max_RON_million": 810.0
+      },
+      {
+        "month": "2025-09",
+        "base_order": "1452/2025",
+        "base_order_date": "2025-08-29",
+        "portal_url": "https://legislatie.just.ro/Public/DetaliiDocument/301803",
+        "amendment_identified_in_screening": false,
+        "base_article_1_nominal_RON_million": 6200.0,
+        "base_article_1_fixed_SSON_max_RON_million": 795.0
+      },
+      {
+        "month": "2025-10",
+        "base_order": "1626/2025",
+        "base_order_date": "2025-10-01",
+        "official_copy_url": "https://static.anaf.ro/static/10/Anaf/legislatie/OMF_1626_2025.pdf",
+        "amendment_identified_in_screening": false,
+        "base_article_1_nominal_RON_million": 7000.0,
+        "base_article_1_fixed_SSON_max_RON_million": 990.0
+      },
+      {
+        "month": "2025-11",
+        "base_order": "1795/2025",
+        "base_order_date": "2025-10-31",
+        "portal_url": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/303894",
+        "amendment_identified_in_screening": true,
+        "amendments": [
+          {
+            "order": "1831/2025",
+            "order_date": "2025-11-10",
+            "portal_url": "https://legislatie.just.ro/Public/DetaliiDocument/304106",
+            "effect": "Replaces Article 1 and Annex 2 schedule during November."
+          }
+        ],
+        "initial_article_1_nominal_RON_million": 6800.0,
+        "initial_article_1_fixed_SSON_max_RON_million": 945.0,
+        "post_amendment_article_1_nominal_RON_million": 5800.0,
+        "post_amendment_article_1_fixed_SSON_max_RON_million": 795.0
+      },
+      {
+        "month": "2025-12",
+        "base_order": "1928/2025",
+        "base_order_date": "2025-12-02",
+        "portal_url": "https://legislatie.just.ro/Public/FormaPrintabila/00000G1RB4W7CFF2RO825LZVAE9ZO2TI",
+        "amendment_identified_in_screening": true,
+        "amendments": [
+          {
+            "order": "1998/2025",
+            "order_date": "2025-12-19",
+            "portal_url": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/305670",
+            "effect": "Changes Article 1 and Annex schedule during December."
+          }
+        ],
+        "initial_article_1_nominal_RON_million": 4500.0,
+        "post_amendment_article_1_nominal_RON_million": 5300.0,
+        "SSON_rule": "15_percent_of_nominal_amount_adjudicated_at_reference_auctions",
+        "fixed_nominal_SSON_amount_known_at_announcement": false
+      }
+    ]
+  },
+  "full_year_measurement_design": {
+    "canonical_candidate_id": "announced_RON_primary_reference_auction_supply_level",
+    "concept": "Nominal RON target amount explicitly announced ex ante for competitive Treasury-bill auctions and benchmark-bond reference auctions.",
+    "unit": "million_RON_nominal",
+    "included_event_types": [
+      "T_BILL_COMPETITIVE_REFERENCE_AUCTION",
+      "BENCHMARK_BOND_COMPETITIVE_REFERENCE_AUCTION"
+    ],
+    "excluded_from_canonical_candidate": [
+      "BENCHMARK_BOND_SSON",
+      "accepted_or_borrowed_amounts",
+      "submitted_bids",
+      "retail_issuance",
+      "external_issuance",
+      "exchange_operations"
+    ],
+    "reason_for_excluding_SSON": "Fixed nominal SSON capacity is ex-ante observable in earlier 2025 orders, but December defines SSON as 15% of the amount adjudicated at the reference auction. Including SSON would therefore change the information timing and measurement definition during the year.",
+    "stock_normalisation_required": false,
+    "canonical_promotion_authorized_now": false
+  },
+  "SSON_auxiliary": {
+    "candidate_id": "announced_RON_fixed_SSON_capacity",
+    "role": "AUXILIARY_ANNOUNCEMENT_COMPONENT_NOT_CANONICAL_FULL_YEAR_SUPPLY_REFERENCE_MODE",
+    "January_to_November": "Retain exact fixed nominal capacity when explicitly printed in source orders.",
+    "December": "Retain the published 15% rule as a non-numeric ex-ante formula. Do not multiply it by later adjudicated amounts and call the result ex-ante announced capacity.",
+    "missing_or_formula_dependent_is_not_zero": true
+  },
+  "amendment_handling": {
+    "versioned_announcement_history_required": true,
+    "base_order_rows_may_not_be_silently_overwritten": true,
+    "amendment_order_date_is_new_information_date": true,
+    "monthly_final_schedule_may_use_latest_legally_effective_schedule": true,
+    "prospective_or_as_of_analysis_must_use_schedule_known_at_each_information_date": true,
+    "required_lineage_fields": [
+      "source_order_number",
+      "source_order_date",
+      "source_version_role",
+      "supersedes_order_if_any",
+      "event_identity",
+      "event_status_under_version"
+    ],
+    "event_status_values": [
+      "ANNOUNCED",
+      "ADDED_BY_AMENDMENT",
+      "CHANGED_BY_AMENDMENT",
+      "REMOVED_BY_AMENDMENT",
+      "UNCHANGED"
+    ]
+  },
+  "Q1_disposition": {
+    "legacy_Q1_pilot_remains_valid_on_its_frozen_definition": true,
+    "legacy_Q1_pilot_may_be_rewritten_in_place": false,
+    "full_year_comparable_competitive_only_Q1_subset_may_be_derived_from_retained_Q1_events": true,
+    "reason": "Preserve audit history while allowing a definitionally stable competitive-only full-year series."
+  },
+  "scientific_effect": {
+    "legacy_Q1_reference_mode_promoted": false,
+    "full_year_canonical_candidate_promoted": false,
+    "government_securities_supply_pressure_node_resolved": false,
+    "yield_effect_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_task": {
+    "id": "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage",
+    "authorization": "OFFICIAL_SOURCE_RETENTION_AMENDMENT_AWARE_EVENT_MATERIALISATION_ONLY",
+    "scope": "Retain exact official April-December base orders and identified amendment orders, verify the amendment graph against the official legal registry, materialise versioned competitive-auction announcement events, derive a full-year competitive-only monthly reference-mode candidate, and retain SSON separately as an auxiliary without converting December's adjudication-dependent 15% rule into an ex-ante nominal amount.",
+    "may_promote_canonical_reference_mode_only_after_full_year_reconciliation": true,
+    "may_estimate_supply_to_yield_effect": false,
+    "may_activate_feedback": false
+  }
+}
