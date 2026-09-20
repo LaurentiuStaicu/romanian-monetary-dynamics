@@ -19,6 +19,35 @@
   ],
   "forms": [
     {
+      "mechanism_id": "monetary_policy_lending_rate_pass_through",
+      "implementation": "household_housing_delta_policy_rate",
+      "classification": "CANDIDATE",
+      "form_level_extreme_condition_test_status": "EXECUTABLE_FORM_STRESS_TESTED",
+      "structural_extreme_conditions": [
+        "zero policy-rate change returns the previous household-housing lending rate exactly",
+        "beta=0 returns the previous lending rate regardless of the policy-rate change",
+        "for beta>0 a positive policy-rate change raises and a negative policy-rate change lowers the candidate lending rate by beta times the signed change",
+        "beta values outside the preregistered [0,2] validation domain are rejected",
+        "non-finite numerical inputs are rejected"
+      ],
+      "structural_sensitivity_checks": [
+        "local sensitivity to the signed policy-rate change equals beta",
+        "local sensitivity to beta equals current_policy_rate - previous_policy_rate"
+      ],
+      "sensitivity_plan": {
+        "status": "PLAN_DEFINED_EMPIRICAL_EXECUTION_BLOCKED",
+        "structurally_admissible_axes": [
+          "beta over its preregistered [0,2] validation domain",
+          "signed policy-rate changes"
+        ],
+        "empirical_parameter_ranges_frozen": true,
+        "frozen_range_source": "model/calibration_validation/validation_recovery_contract.json",
+        "blocker": "The frozen beta is a CANDIDATE, not validated: the final holdout contained zero policy-rate changes and could not distinguish the candidate from persistence. Prospective confirmation waits for genuinely new non-zero policy-rate variation."
+      },
+      "integrated_extreme_condition_status": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
+      "model_activation_authorized": false
+    },
+    {
       "mechanism_id": "government_refinancing_effective_rate",
       "implementation": "refinancing_effective_rate",
       "classification": "DEFERRED",
@@ -142,7 +171,7 @@
     }
   ],
   "current_summary": {
-    "current_implementations_covered": 4,
+    "current_implementations_covered": 5,
     "form_level_structural_stress_status": "PASS_CURRENT_IMPLEMENTATIONS",
     "empirical_sensitivity_execution_status": "BLOCKED",
     "integrated_extreme_condition_status": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
