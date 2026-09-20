@@ -208,6 +208,21 @@ class RMDReadmeDesignContractTests(unittest.TestCase):
         self.assertLessEqual(len(words), budget["maximum_words"])
         self.assertLessEqual(len(headings), budget["maximum_primary_headings"])
 
+    def test_quick_navigation_anchors_match_public_headings(self) -> None:
+        headings = []
+        for line in self.public.splitlines():
+            match = re.match(r"^#{1,6}\\s+(.+?)\\s*$", line)
+            if match:
+                heading = re.sub(r"[^w\\s-]", "", match.group(1).lower())
+                heading = re.sub(r"\\s+", "-", heading.strip())
+                headings.append(heading)
+
+        header = self.public.split("---", 1)[0]
+        anchors = re.findall(r'href="#([^"]+)"', header)
+        self.assertTrue(anchors)
+        for anchor in anchors:
+            self.assertIn(anchor, headings)
+
     def test_public_readme_has_explicit_support_and_maintainer_route(self) -> None:
         self.assertIn(
             "https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/issues",
