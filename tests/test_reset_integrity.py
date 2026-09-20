@@ -44,6 +44,27 @@ class ResetIntegrityTests(unittest.TestCase):
             ),
         )
 
+    def test_integration_metadata_scope_is_exact(self) -> None:
+        allowed = set(self.contract["allowed_integration_paths"])
+        actual = {
+            path.as_posix()
+            for path in self.tracked
+            if path.parts and path.parts[0] == ".atm"
+        }
+        self.assertEqual(
+            actual,
+            allowed,
+            msg=(
+                "AtM integration metadata expanded beyond the explicitly "
+                f"reviewed scope: {sorted(actual - allowed)}"
+            ),
+        )
+        self.assertTrue(
+            self.contract["rules"][
+                "integration_metadata_may_not_redefine_scientific_model"
+            ]
+        )
+
     def test_required_scientific_roots_have_tracked_content(self) -> None:
         tracked_roots = {path.parts[0] for path in self.tracked if path.parts}
         for relative in self.contract["required_scientific_roots"]:
