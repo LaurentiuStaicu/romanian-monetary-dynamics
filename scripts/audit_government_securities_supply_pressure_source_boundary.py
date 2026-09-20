@@ -168,9 +168,13 @@ def audit_supply_pressure_source_boundary(
     if link["supply_pressure_source_boundary_review"] != REVIEW_PATH:
         errors.append("issuance-to-pressure link lacks source review")
     if link["readiness_status"] != (
+        "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION"
+    ):
+        errors.append("issuance-to-pressure canonical readiness changed")
+    if link.get("source_boundary_status") != (
         "SOURCE_BOUNDARY_REVIEWED_EXACT_SERIES_NOT_MATERIALISED"
     ):
-        errors.append("issuance-to-pressure link readiness changed")
+        errors.append("issuance-to-pressure source-boundary status changed")
     if link["exact_integrated_equation_ready"] is not False:
         errors.append("source review may not make issuance-to-pressure equation ready")
     if link["current_activation_authorized"] is not False:
