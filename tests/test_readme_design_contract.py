@@ -192,6 +192,29 @@ class RMDReadmeDesignContractTests(unittest.TestCase):
 
         self.assertEqual(unresolved, [])
 
+    def test_public_readme_stays_within_quality_budget(self) -> None:
+        budget = self.contract["public_readme_quality_budget"]
+        plain = re.sub(r"<[^>]+>", " ", self.public)
+        words = [
+            token
+            for token in re.split(r"\\s+", re.sub(r"[\`|#>*_\\-\\[\\]\\(\\)~]", " ", plain))
+            if token
+        ]
+        headings = [
+            line
+            for line in self.public.splitlines()
+            if re.match(r"^#{1,6}\\s", line) or re.search(r"<h[1-6]", line)
+        ]
+        self.assertLessEqual(len(words), budget["maximum_words"])
+        self.assertLessEqual(len(headings), budget["maximum_primary_headings"])
+
+    def test_public_readme_has_explicit_support_and_maintainer_route(self) -> None:
+        self.assertIn(
+            "https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/issues",
+            self.public,
+        )
+        self.assertIn("maintained by **Laurentiu Staicu**", self.public)
+
     def test_preview_remains_as_review_history_but_public_readme_is_root_adapted(self) -> None:
         self.assertNotEqual(self.public, self.preview)
         self.assertIn('src="assets/icon.png"', self.public)
