@@ -159,6 +159,9 @@ jobs:
       - name: Audit feedback endogenous/exogenous boundary
         run: python scripts/audit_feedback_variable_boundary.py
 
+      - name: Audit behavioural form robustness
+        run: python scripts/audit_behavioural_robustness.py
+
       - name: Run System Dynamics conformity gate explicitly
         run: python scripts/audit_system_dynamics_conformity.py
 
