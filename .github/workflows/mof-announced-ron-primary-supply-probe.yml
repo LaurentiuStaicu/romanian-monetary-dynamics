@@ -62,8 +62,10 @@ jobs:
           BRANCH="source-vintage/mof-announced-ron-primary-supply-pilot-2026-09-20"
           DEST="data/source_vintages/mof-announced-ron-primary-supply-pilot-2026-09-20"
 
+          git stash push -u -m "generated-announced-supply-pilot"
           git fetch origin "$BRANCH"
           git rebase "origin/$BRANCH"
+          git stash pop
 
           if [ -e "$DEST" ]; then
             for source_id in \
