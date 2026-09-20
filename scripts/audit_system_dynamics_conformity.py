@@ -454,6 +454,7 @@ def main() -> None:
     feedback = load("model/dynamics/feedback_registry.json")
     feedback_boundary = load("model/dynamics/feedback_variable_boundary_registry.json")
     feedback_link_readiness = load("model/dynamics/feedback_link_readiness_registry.json")
+    delay_evidence = load("model/dynamics/delay_evidence_registry.json")
     units = load("model/dynamics/unit_registry.json")
     references = load("model/dynamics/reference_modes.json")
     gate = load("model/dynamics/system_dynamics_conformity_gate.json")
@@ -591,6 +592,41 @@ def main() -> None:
 
     structures = feedback["loops"]
     check(structures, "Feedback registry must contain the candidate feedback architecture")
+
+    delay_evidence_path = "model/dynamics/delay_evidence_registry.json"
+    check(
+        feedback["delay_evidence_registry"] == delay_evidence_path,
+        "Feedback registry does not point to canonical delay-evidence registry",
+    )
+    check(
+        gate["feedback_activation_gate"]["delay_evidence_registry"]
+        == delay_evidence_path,
+        "SD gate does not point to canonical delay-evidence registry",
+    )
+    check(
+        delay_evidence["current_summary"]["registered_delay_candidates"]
+        == gate["feedback_activation_gate"]["current_registered_delay_candidates"],
+        "SD gate registered-delay count is stale",
+    )
+    check(
+        delay_evidence["current_summary"]["scalar_tau_activation_ready"]
+        == gate["feedback_activation_gate"]["current_scalar_tau_activation_ready"],
+        "SD gate scalar-tau readiness count is stale",
+    )
+    check(
+        delay_evidence["current_summary"]["active_delay_candidates"]
+        == gate["feedback_activation_gate"]["current_active_delay_candidates"],
+        "SD gate active-delay count is stale",
+    )
+    check(
+        delay_evidence["current_summary"]["current_status"]
+        == gate["feedback_activation_gate"]["current_delay_parameter_status"],
+        "SD gate delay-parameter status is stale",
+    )
+    check(
+        delay_evidence["current_summary"]["activation_authorized"] is False,
+        "Delay-evidence registry may not authorize activation",
+    )
 
     link_readiness_path = "model/dynamics/feedback_link_readiness_registry.json"
     check(
