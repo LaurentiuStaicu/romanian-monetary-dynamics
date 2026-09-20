@@ -1,0 +1,41 @@
+{
+  "contract_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "source_id": "bnr_monthly_bulletin_december_2025_government_securities",
+  "target_candidate_id": "domestic_primary_market_government_securities_gross_issuance",
+  "purpose": "Acquire and retain the exact official BNR Monthly Bulletin source used by the reviewed full-2025 government-securities issuance pilot, without promoting the series or resolving the generic government_debt_issuance feedback node.",
+  "source": {
+    "institution": "National Bank of Romania",
+    "publication": "Monthly Bulletin — December 2025",
+    "url": "https://www.bnr.ro/uploads/2026-06-02monthlybulletinno.122025_documentpdf_545_1772190284.pdf",
+    "accept": "application/pdf",
+    "table": "12.2 Government securities (new and roll-over issues)",
+    "pdf_page": 65,
+    "statistical_data_available_as_of": "2026-02-24"
+  },
+  "acquisition": {
+    "method": "HTTPS_EXACT_FIXED_URL",
+    "raw_filename": "bnr_monthly_bulletin_12_2025.pdf",
+    "minimum_bytes": 100000,
+    "required_magic_prefix": "%PDF-",
+    "allowed_content_types": [
+      "application/pdf",
+      "application/octet-stream"
+    ],
+    "hash_algorithm": "SHA-256",
+    "retain_response_metadata": true,
+    "retain_fetcher_script_hash": true
+  },
+  "scientific_guards": {
+    "raw_acquisition_only": true,
+    "manual_table_review_already_completed": true,
+    "revision_check_already_completed": true,
+    "canonical_reference_mode_promotion_authorized": false,
+    "generic_government_debt_issuance_node_resolution_authorized": false,
+    "estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "promotion_rule": "A successful live acquisition artifact validates the reproducible acquisition path only. Exact source-vintage reproducibility is not claimed until the acquired raw PDF and its manifest are retained in the repository and independently checked against this contract."
+}
