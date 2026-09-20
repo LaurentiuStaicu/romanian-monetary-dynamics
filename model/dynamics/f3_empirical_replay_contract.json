@@ -1,0 +1,67 @@
+{
+  "contract_version": "0.1",
+  "phase": "Accounting-constrained empirical dynamics / F3 replay",
+  "purpose": "Use the complete retained F3 debt-securities matrix as an instrument-specific empirical dynamic replay without claiming full-RMD initialization or behavioural closure.",
+  "instrument": "F3",
+  "source_vintage": "data/source_vintages/accounting-f3-2025-vintage-2026-09-18",
+  "source_audit": "data/source_vintages/accounting-f3-2025-vintage-2026-09-18/qsa_f3_coverage_audit.json",
+  "source_manifest": "data/source_vintages/accounting-f3-2025-vintage-2026-09-18/qsa_f3_series_manifest.json",
+  "canonical_benchmark": "model/accounting/benchmark_2025.json",
+  "periods": {
+    "retained_quarterly_stock_and_transaction_values": [
+      "2025-Q1",
+      "2025-Q2",
+      "2025-Q3",
+      "2025-Q4"
+    ],
+    "replayable_transitions": [
+      "2025-Q2",
+      "2025-Q3",
+      "2025-Q4"
+    ],
+    "q1_replay_status": "NOT_REPLAYED_OPENING_2024_Q4_NOT_IN_RETAINED_VINTAGE"
+  },
+  "identity": {
+    "equation": "closing_stock[t] = opening_stock[t] + financial_transaction[t] + combined_nontransaction_change[t]",
+    "derived_term": "combined_nontransaction_change[t] = closing_stock[t] - opening_stock[t] - financial_transaction[t]",
+    "unit": "million_RON",
+    "combined_nontransaction_change_semantics": "Bookkeeping residual equal to revaluations plus other changes in volume at the retained bilateral F3 boundary. It is not decomposed or interpreted causally.",
+    "methodological_basis": [
+      "ESA 2010 financial balance-sheet identity: closing positions differ from opening positions through financial transactions and other flows.",
+      "Other flows comprise revaluations and other changes in volume."
+    ],
+    "external_methodology_sources": [
+      "https://ec.europa.eu/eurostat/cache/metadata/en/nasq_10_f_esms.htm",
+      "https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF"
+    ]
+  },
+  "hard_rules": {
+    "instrument_scope_is_F3_only": true,
+    "no_missing_value_imputation": true,
+    "x_to_x_remains_not_applicable": true,
+    "use_only_retained_source_vintage": true,
+    "no_network_required_for_replay": true,
+    "financial_sector_F_cells_use_only_exact_S12_minus_S121_identity": true,
+    "source_values_use_published_precision": true,
+    "combined_nontransaction_change_must_not_be_relabelled_as_revaluation": true,
+    "combined_nontransaction_change_must_not_be_relabelled_as_other_volume_change": true,
+    "replay_is_accounting_identity_not_behavioural_equation": true,
+    "replay_does_not_validate_or_activate_feedback": true,
+    "replay_does_not_change_accounting_readiness": true,
+    "replay_does_not_complete_sectoral_financial_positions_reference_mode": true,
+    "replay_must_not_be_described_as_full_RMD": true
+  },
+  "required_checks": [
+    "all 70 source series required by canonical F3 stock/transaction cell terms are AVAILABLE for 2025-Q1..Q4",
+    "all 35 in-boundary F3 cells are finite for stock and transaction in each retained quarter",
+    "every Q2-Q4 cell transition closes exactly at published two-decimal precision",
+    "Q4 replay closing stocks reproduce the canonical F3 stock benchmark",
+    "Q1-Q4 transaction sums reproduce the canonical 2025 F3 flow benchmark",
+    "double-entry system net financial worth remains zero for every replayed quarterly state",
+    "no non-F3 instrument is initialized or changed"
+  ],
+  "scientific_status": "PARTIAL_INSTRUMENT_SPECIFIC_EMPIRICAL_REPLAY",
+  "full_RMD_empirical_state_claim_allowed": false,
+  "behavioural_closure_active": false,
+  "feedback_activation_authorized": false
+}
