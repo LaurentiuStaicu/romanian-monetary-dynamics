@@ -6,13 +6,22 @@ from pathlib import Path
 from romania_macro_financial_dynamics.dynamics import (
     advance_empirical_replay_position,
 )
-from scripts.generate_f3_empirical_replay import (
-    AUDIT,
-    BENCHMARK,
-    MANIFEST,
-    build_artifact,
-    load,
-)
+try:
+    from scripts.generate_f3_empirical_replay import (
+        AUDIT,
+        BENCHMARK,
+        MANIFEST,
+        build_artifact,
+        load,
+    )
+except ModuleNotFoundError:
+    from generate_f3_empirical_replay import (
+        AUDIT,
+        BENCHMARK,
+        MANIFEST,
+        build_artifact,
+        load,
+    )
 
 ROOT = Path(__file__).resolve().parents[1]
 ARTIFACT = ROOT / "model" / "dynamics" / "f3_empirical_replay_2025.json"
