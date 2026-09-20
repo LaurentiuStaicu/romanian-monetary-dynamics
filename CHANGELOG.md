@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- retained a reviewed Jan-Jul 2025 BNR domestic-primary-market government-securities issuance pilot with native RON/EUR columns and complete Q1-Q2 RON aggregation; raw-source retention, revision checks and generic-node resolution remain explicit promotion blockers;
 - screened official BNR and Ministry of Finance issuance/borrowing sources and identified `government_debt_issuance` as semantically overloaded across the two government feedback loops; froze separate domestic-primary-market and all-market borrowing materialisation paths while keeping the generic node unresolved;
 - added a government F3 holder-composition and net-incurrence diagnostic for 2025, explicitly distinguishing financial-account net incurrence from gross issuance/refinancing need and keeping holder absorption separate from the unresolved securities-supply-pressure feedback node;
 - added deterministic F3 observed behavior-over-time diagnostics for 2025, decomposing sector and bilateral Q1-Q4 stock changes into Q2-Q4 financial transactions plus combined non-transaction changes while explicitly preserving the 9/10 partial sectoral-financial-positions reference-mode boundary;

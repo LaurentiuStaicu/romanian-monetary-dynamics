@@ -24,7 +24,20 @@
         "do not infer refinancing need from gross primary-market issuance",
         "do not call the resulting series securities supply pressure",
         "do not convert a new-and-roll-over issue series into net incurrence"
-      ]
+      ],
+      "pilot_snapshot": "model/dynamics/government_debt_issuance_bnr_pilot_2025.json",
+      "pilot_status": "REVIEWED_JAN_JUL_2025_RAW_SOURCE_NOT_RETAINED_NO_PROMOTION",
+      "pilot_complete_quarters": [
+        "2025-Q1",
+        "2025-Q2"
+      ],
+      "pilot_partial_quarters": {
+        "2025-Q3": [
+          "2025-07"
+        ]
+      },
+      "raw_source_retention_status": "NOT_RETAINED_BLOCKS_PROMOTION",
+      "revision_check_status": "NOT_COMPLETED_BLOCKS_PROMOTION"
     },
     "mof_actual_borrowing": {
       "target_id": "government_total_realized_borrowing_or_securities_funding",
