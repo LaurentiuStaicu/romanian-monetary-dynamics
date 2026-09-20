@@ -1,0 +1,274 @@
+{
+  "contract_version": "1.0",
+  "frozen_on": "2026-09-20",
+  "implementation_status": "DESIGN_AND_PREVIEW_ONLY_PUBLIC_README_NOT_YET_REPLACED",
+  "purpose": "Define the professional first-page information architecture, visual shell, scientific-boundary rules and machine-checkable status sources for the Romanian Monetary Dynamics repository, while preserving suite consistency with AtM, EWD and CBD without forcing paradigm uniformity.",
+  "evidence_basis": [
+    {
+      "source": "GitHub repository README guidance",
+      "url": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes",
+      "rule": "README must explain what the project does, why it is useful, how to get started, where to get help and who maintains it; detailed material should be delegated."
+    },
+    {
+      "source": "GitHub Docs content-design guidance",
+      "url": "https://docs.github.com/en/contributing/writing-for-github-docs/best-practices-for-github-docs",
+      "rule": "Use reader-needs ordering, scannability, inverted-pyramid structure and progressive disclosure."
+    },
+    {
+      "source": "JOSS review criteria",
+      "url": "https://joss.readthedocs.io/en/latest/review_criteria.html",
+      "rule": "Expose statement of need, installation/reproduction path, usage/verification, tests, support and citation/release practice."
+    },
+    {
+      "source": "FAIR4RS",
+      "url": "https://www.rd-alliance.org/groups/fair-research-software-fair4rs-wg/outputs/",
+      "rule": "Make software identity, versioning, provenance and reuse-relevant metadata explicit."
+    },
+    {
+      "source": "System Dynamics Review model-transparency guidance",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/sdr.1471",
+      "rule": "Expose model structure transparently while delegating equation-level details, units and source information to navigable detailed documentation."
+    },
+    {
+      "source": "MESSAGEix / mature scientific modelling documentation",
+      "url": "https://docs.messageix.org/en/main/",
+      "rule": "Separate overview/getting-started from mathematical specification, tutorials, reproducibility and developer documentation."
+    }
+  ],
+  "suite_consistency": {
+    "applies_to_visual_shell": [
+      "ask-the-model",
+      "empirical-world3-dynamics",
+      "cognitive-belief-dynamics",
+      "romanian-monetary-dynamics"
+    ],
+    "scientific_model_editorial_family": [
+      "empirical-world3-dynamics",
+      "cognitive-belief-dynamics",
+      "romanian-monetary-dynamics"
+    ],
+    "shared_visual_tokens": {
+      "icon_width_px": 112,
+      "title_html": "h2 centered",
+      "badge_style": "flat-square",
+      "palette": [
+        "#333333",
+        "#707070",
+        "#a0a0a0",
+        "white",
+        "black"
+      ],
+      "header_primary_badge_limit": 3,
+      "header_primary_badges_order": [
+        "release",
+        "Scientific CI or project build health",
+        "license"
+      ],
+      "tagline": "one centered sentence; small text permitted",
+      "quick_navigation": "one centered compact text-link row",
+      "body_typography": "normal GitHub Markdown size; small text reserved for metadata, notes and navigation"
+    },
+    "shared_scientific_model_section_order": [
+      "What is the model?",
+      "Model at a glance",
+      "How the model is structured",
+      "Scientific status at a glance",
+      "What is established and not established",
+      "Reproduce or verify the scientific baseline",
+      "Data and provenance",
+      "Repository map",
+      "Where should I start?",
+      "Documentation",
+      "Release, citation, support and license"
+    ],
+    "non_uniformity_rule": "The common shell and navigation grammar must not force EWD, CBD and RMD into the same scientific paradigm. Model-specific structure/status blocks must reflect the canonical paradigm of each repository."
+  },
+  "rmd_specific_identity": {
+    "plain_language_purpose": "RMD models how financial stocks, transactions and financing relationships evolve across the Romanian economy under explicit accounting constraints.",
+    "technical_identity": "An accounting-constrained empirical stock-flow-consistent dynamic model core of Romania's monetary and macro-financial system, under development toward an endogenous System Dynamics reference model.",
+    "canonical_paradigm_boundary": "Accounting / stock-flow core plus observed reference modes plus candidate feedback architecture. Behavioural closure is inactive and RMD must not be presented as a complete endogenous System Dynamics model.",
+    "primary_audiences": [
+      "macroeconomic and macro-financial researchers",
+      "stock-flow-consistent and System Dynamics modelers",
+      "research-software and reproducibility reviewers",
+      "developers inspecting the scientific model core"
+    ],
+    "system_boundary": {
+      "sectors": [
+        "H — Households + NPISH",
+        "C — Non-financial corporations",
+        "F — Financial corporations excluding BNR when shown separately",
+        "G — General government",
+        "BNR — Central bank",
+        "X — Rest of world"
+      ],
+      "instruments": [
+        "F2 — Currency and deposits",
+        "F3 — Debt securities",
+        "F4 — Loans",
+        "F5 — Equity and investment fund shares/units",
+        "F6 — Insurance, pensions and standardised guarantees",
+        "F7 — Financial derivatives and employee stock options",
+        "F8 — Other accounts receivable/payable"
+      ]
+    },
+    "presentation_spine": [
+      "Accounting Spine",
+      "Observed evidence and reference modes",
+      "Candidate dynamics and feedbacks",
+      "Validation / activation gates"
+    ]
+  },
+  "above_the_fold_requirements": {
+    "must_show": [
+      "project identity",
+      "one-sentence purpose understandable without SFC/SD jargon",
+      "current public release link",
+      "Scientific CI link",
+      "license",
+      "quick navigation",
+      "one explicit sentence that RMD is a scientific model core rather than an end-user application"
+    ],
+    "must_not_show": [
+      "PR or workflow history",
+      "raw workflow IDs",
+      "long validation chronology",
+      "more than three primary badges",
+      "full feedback diagrams",
+      "large status tables before the overview"
+    ]
+  },
+  "first_page_sections": [
+    {
+      "id": "what-is-rmd",
+      "goal": "Explain problem, purpose, audience and technical identity in two levels: plain language first, technical definition second.",
+      "target_length": "2-4 short paragraphs"
+    },
+    {
+      "id": "model-at-a-glance",
+      "goal": "Expose sectors, F2-F8 instrument scope, accounting constraint and dynamic maturity without showing the full 6x6x7 accounting matrix.",
+      "visual_rule": "Prefer one compact conceptual figure or compact table. No decorative banner."
+    },
+    {
+      "id": "how-rmd-is-structured",
+      "goal": "Make the distinction Accounting Spine -> observed evidence/reference modes -> candidate dynamics -> validation/activation gates immediately visible.",
+      "required_warning": "Candidate behavioural structures are not quantitatively active merely because they exist in a registry."
+    },
+    {
+      "id": "scientific-status",
+      "goal": "Render the canonical baseline as a compact status table sourced from machine-readable registries.",
+      "canonical_fields": [
+        "Accounting / Stock-Flow Core",
+        "Complete canonical stock+flow instruments",
+        "Reference modes",
+        "Validated behavioural mechanisms",
+        "Quantitatively active feedback loops",
+        "Behavioural closure",
+        "Calibration/refit cycle",
+        "Operational state"
+      ]
+    },
+    {
+      "id": "candidate-dynamics",
+      "goal": "Summarize four topologically closed candidate loops and one open candidate chain without implying activation.",
+      "detail_location": "model/dynamics/feedback_registry.json"
+    },
+    {
+      "id": "claims-boundary",
+      "goal": "Separate established capabilities/evidence from explicit non-claims.",
+      "required_non_claims": [
+        "not a complete endogenous System Dynamics model",
+        "not a validated policy-forecasting engine",
+        "no validated reference behavioural mechanism",
+        "no behavioural closure",
+        "no automatic inference of missing/TBD values"
+      ]
+    },
+    {
+      "id": "reproduce",
+      "goal": "Provide the shortest faithful local path corresponding to Scientific CI and explain what PASS verifies and does not verify.",
+      "python_requirement": ">=3.12"
+    },
+    {
+      "id": "data-provenance",
+      "goal": "Explain source-vintage -> processed data -> evidence/artifact -> validation flow and the core data-integrity rules.",
+      "hard_rules": [
+        "missing/TBD is not zero",
+        "partial/component evidence is not canonical completion",
+        "aggregate evidence is not a bilateral allocation",
+        "provider/access failure is not negative scientific evidence",
+        "no invented bilateral allocations"
+      ]
+    },
+    {
+      "id": "repository-map",
+      "goal": "Route readers to model/accounting, model/dynamics, model/empirical_dynamics, model/calibration_validation, model/registries, data/source_vintages, data/processed, scripts, tests and releases.",
+      "max_rows": 10
+    },
+    {
+      "id": "reader-routing",
+      "goal": "Route reader intent: understand model, exact status, reproduce, inspect provenance, inspect contracts, cite, frozen release."
+    }
+  ],
+  "canonical_dynamic_status_sources": {
+    "public_release": "model/registries/release_versioning_contract.json -> versioning_basis.current_public_release.version",
+    "operational_state": "model/registries/model_contract.json -> scientific_stage.next_operational_state",
+    "accounting_maturity": "model/dynamics/system_dynamics_conformity_gate.json -> maturity_dimensions['Accounting / Stock-Flow Core']",
+    "canonical_complete_stock_flow_instruments": "model/accounting/accounting_readiness_gate.json -> current_expected_state.canonical_complete_stock_and_flow_instruments",
+    "reference_modes": "model/registries/scientific_baseline_manifest.json -> canonical_state.reference_modes",
+    "validated_behavioural_mechanisms": "model/registries/scientific_baseline_manifest.json -> canonical_state.empirical_validation.validated_reference_behavioural_mechanisms",
+    "activated_mechanisms": "model/registries/scientific_baseline_manifest.json -> canonical_state.empirical_validation.activated_mechanisms_count",
+    "behavioural_closure": "model/registries/model_contract.json -> dynamic_core.behavioural_closure_active",
+    "calibration_cycle": "model/registries/scientific_baseline_manifest.json -> canonical_state.mechanism_readiness.calibration_cycle_open",
+    "feedback_topology": "model/dynamics/feedback_registry.json"
+  },
+  "readme_consistency_gate": {
+    "required_after_implementation": true,
+    "rule": "README current-state values must be automatically checked against canonical registries in Scientific CI. A stale public status must fail CI rather than silently diverge.",
+    "version_rule": "README release/version metadata remains governed by model/registries/release_versioning_contract.json."
+  },
+  "content_budget": {
+    "target_reading_layers": [
+      "30 seconds: identity, purpose, boundary, current state",
+      "5 minutes: structure, evidence, dynamic candidates, reproduction",
+      "deep dive: canonical registry and STATUS links"
+    ],
+    "no_duplicate_status_history": true,
+    "status_history_location": "STATUS.md",
+    "equation_level_documentation_location": "model/ contracts and registries",
+    "large_machine_artifact_location": "data/source_vintages and model artifacts"
+  },
+  "preview_path": ".github/RMD_README_PREVIEW.md",
+  "approval_boundary": {
+    "public_readme_replacement_authorized_by_this_contract": false,
+    "visual_concept_diagram_creation_authorized_by_this_contract": false,
+    "reason": "Contract and text-layout preview are separated from public README replacement and final concept-diagram artwork so visual/editorial review can occur before publication."
+  },
+  "benchmark_repository_patterns": [
+    {
+      "repository": "PyPSA/PyPSA",
+      "adopted_pattern": "Clear one-paragraph purpose and audience, then concise features/documentation/installation/usage/support/citation routing.",
+      "not_adopted": "Large badge wall and framework-centric feature catalogue, because RMD is a single scientific model core with a stricter scientific-status boundary."
+    },
+    {
+      "repository": "iiasa/message_ix",
+      "adopted_pattern": "Keep the repository landing page high-level and route mathematical specification, tutorials and detailed methodology to dedicated documentation.",
+      "not_adopted": "Framework/API emphasis that would obscure RMD's accounting and evidence boundaries."
+    },
+    {
+      "repository": "SDXorg/pysd",
+      "adopted_pattern": "Explain early why the project exists and what gap it addresses.",
+      "not_adopted": "Presenting RMD primarily as a simulation engine; RMD is a scientific model core."
+    },
+    {
+      "repository": "PSLmodels/OG-Core",
+      "adopted_pattern": "Make verification concrete by stating an expected reproducible outcome rather than only listing installation steps.",
+      "not_adopted": "Policy-analysis claims that exceed RMD's current validated boundary."
+    },
+    {
+      "repository": "econ-ark/HARK",
+      "adopted_pattern": "Route readers with different goals and levels of expertise to the appropriate entry point.",
+      "not_adopted": "Long introductory/tutorial material on the repository landing page."
+    }
+  ]
+}
