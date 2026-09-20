@@ -57,9 +57,9 @@ class MechanismReopenConditionsRegistryTests(unittest.TestCase):
     def test_selective_reopen_preserves_closed_calibration(self):
         self.assertEqual(
             self.r["current_baseline_action"],
-            "MANUAL_DISPATCH_CAPB_RAW_SOURCE_PRESERVATION",
+            "EVIDENCE_TRIGGERED_BASELINE_HOLD",
         )
-        self.assertTrue(self.r["selective_reopen_active"])
+        self.assertFalse(self.r["selective_reopen_active"])
         self.assertEqual(
             self.r["selective_reopen_mechanism"],
             "fiscal_primary_balance_reaction",
@@ -70,7 +70,7 @@ class MechanismReopenConditionsRegistryTests(unittest.TestCase):
             self.s["current_next_step"]["action"],
             self.r["current_baseline_action"],
         )
-        self.assertFalse(self.s["current_next_step"]["calibration_cycle_open"])
+        self.assertFalse(self.s["current_next_step"]["calibration_cycle_open"])\n        self.assertEqual(entry["reopen_execution_state"], "RAW_SOURCE_PRESERVATION_COMPLETE_RETURNED_TO_BASELINE_HOLD")
         path = "model/calibration_validation/mechanism_reopen_conditions_registry.json"
         self.assertEqual(self.s["mechanism_reopen_conditions_registry"], path)
         self.assertEqual(self.s["current_next_step"]["reopen_conditions_registry"], path)
@@ -101,7 +101,7 @@ class MechanismReopenConditionsRegistryTests(unittest.TestCase):
         self.assertTrue(entry["reopen_trigger_satisfied"])
         self.assertEqual(
             entry["source_readiness"],
-            "STRUCTURAL_PRIMARY_REALTIME_WINDOW_ADJUDICATED_RAW_SOURCE_PRESERVATION_PENDING",
+            "STRUCTURAL_PRIMARY_REALTIME_WINDOW_ADJUDICATED_RAW_SOURCE_RETAINED_BASELINE_HOLD",
         )
         self.assertEqual(
             entry["reopen_authorized_scope"],
