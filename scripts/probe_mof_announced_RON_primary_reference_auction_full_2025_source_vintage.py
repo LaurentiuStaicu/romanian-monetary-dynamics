@@ -158,7 +158,7 @@ def search_url(document: dict) -> str:
 def candidate_links(search_payload: bytes) -> list[str]:
     parser = LinkParser()
     parser.feed(search_payload.decode("utf-8", errors="replace"))
-    links: list[str] = []
+    by_document_id: dict[str, str] = {}
     for href in parser.links:
         absolute = urljoin(PORTAL_ORIGIN, href)
         parsed = urlparse(absolute)
@@ -166,9 +166,15 @@ def candidate_links(search_payload: bytes) -> list[str]:
             continue
         if "detaliidocument" not in parsed.path.casefold():
             continue
-        if absolute not in links:
-            links.append(absolute)
-    return links
+        document_id = parsed.path.rstrip("/").split("/")[-1]
+        if not document_id:
+            continue
+        previous = by_document_id.get(document_id)
+        if previous is None:
+            by_document_id[document_id] = absolute
+        elif "detaliidocumentafis" in previous.casefold() and "detaliidocumentafis" not in absolute.casefold():
+            by_document_id[document_id] = absolute
+    return list(by_document_id.values())
 
 
 def discover_document(document: dict, out_dir: Path) -> dict:
