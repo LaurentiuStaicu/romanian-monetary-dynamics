@@ -1,7 +1,7 @@
 {
   "contract_version": "1.0",
   "frozen_on": "2026-09-20",
-  "implementation_status": "DESIGN_AND_PREVIEW_ONLY_PUBLIC_README_NOT_YET_REPLACED",
+  "implementation_status": "PUBLIC_README_IMPLEMENTATION_PROPOSED_NOT_MERGED",
   "purpose": "Define the professional first-page information architecture, visual shell, scientific-boundary rules and machine-checkable status sources for the Romanian Monetary Dynamics repository, while preserving suite consistency with AtM, EWD and CBD without forcing paradigm uniformity.",
   "evidence_basis": [
     {
@@ -242,7 +242,9 @@
   "approval_boundary": {
     "public_readme_replacement_authorized_by_this_contract": false,
     "visual_concept_diagram_creation_authorized_by_this_contract": false,
-    "reason": "Contract and text-layout preview are separated from public README replacement and final concept-diagram artwork so visual/editorial review can occur before publication."
+    "reason": "The professional landing page is implemented on a review branch with promoted public assets and CI checks, but publication on main remains gated by review of the complete rendered page.",
+    "public_readme_replacement_proposed": true,
+    "public_readme_implementation_branch": "docs/professional-rmd-landing-page-2026-09-20"
   },
   "benchmark_repository_patterns": [
     {
