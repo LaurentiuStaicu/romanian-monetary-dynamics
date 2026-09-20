@@ -131,6 +131,10 @@
     "merge_authorization_assessment": "model/registries/scientific_baseline_merge_authorization.json",
     "human_merge_authorized": true,
     "integration_terminal_assessment": "model/registries/scientific_baseline_integration_terminal_assessment.json",
-    "integration_complete": true
+    "integration_complete": true,
+    "release_versioning_contract": "model/registries/release_versioning_contract.json",
+    "current_public_release": "0.1.0",
+    "next_public_release_candidate": "0.2.0",
+    "version_bump_required_now": false
   }
 }

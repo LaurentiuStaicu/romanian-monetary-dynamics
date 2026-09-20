@@ -2,6 +2,29 @@
 
 All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) are recorded here.
 
+## Unreleased
+
+### Scientific integrity and reproducibility
+
+- completed scientific-baseline consolidation and integration with executable cross-registry consistency checks;
+- retained exact source vintages and strengthened offline provenance verification so accepted historical evidence does not depend on future provider availability;
+- completed the fiscal structural-primary real-time source adjudication and preserved the reviewed AMECO raw source vintage without later refetch;
+- returned the fiscal mechanism to `DEFERRED` after the source-only reopen, without estimation, target-family substitution or final-evaluation inspection;
+- added post-closure reopen-trigger monitoring and a trigger-aware monitoring horizon that prevents repeated unchanged-source probing from being treated as scientific progress;
+- preserved the Evidence-Triggered Baseline Hold, inactive behavioural closure and zero validated reference behavioural mechanisms.
+
+### Accounting and reference-mode recovery
+
+- strengthened Accounting Spine readiness and retained instrument-specific rank/materialization boundaries;
+- completed current-public-source recovery screening for the remaining sectoral-financial-position reference-mode blocker;
+- retained explicit reopen conditions instead of using synthetic allocations or relaxed source boundaries.
+
+### Repository governance
+
+- added an atomic release/versioning contract and release checklist;
+- future version changes must synchronize package metadata, README badge, citation metadata, changelog, release contract, Git tag and GitHub Release.
+
+
 ## 0.1.0 - 2026-09-18
 
 Initial public scientific-core baseline.
