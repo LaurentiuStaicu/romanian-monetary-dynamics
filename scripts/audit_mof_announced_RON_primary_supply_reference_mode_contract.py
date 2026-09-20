@@ -201,7 +201,7 @@ def audit_announced_supply_reference_mode_contract(
     if measure.get("reference_mode_contract") != CONTRACT_PATH:
         errors.append("announced-supply measure lacks source contract")
     if measure["current_source_status"] != (
-        "SOURCE_CONTRACT_FROZEN_RAW_PILOT_NOT_YET_MATERIALISED"
+        "EXACT_Q1_EVENT_LEVEL_PILOT_MATERIALISED_FULL_2025_EXTENSION_PENDING"
     ):
         errors.append("announced-supply measure source status changed")
     if measurement_design["scientific_effect"]["exact_reference_mode_promoted"] is not False:
@@ -217,7 +217,7 @@ def audit_announced_supply_reference_mode_contract(
     if node.get("announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("boundary registry lacks announced-supply contract")
     if node["announced_RON_primary_supply_reference_mode_status"] != (
-        "SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
+        "EXACT_Q1_PILOT_MATERIALISED_NOT_CANONICAL"
     ):
         errors.append("boundary registry announced-supply status changed")
     if node["current_boundary_class"] != "UNRESOLVED":
@@ -234,7 +234,7 @@ def audit_announced_supply_reference_mode_contract(
     if link.get("announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("issuance-pressure link lacks announced-supply contract")
     if link["source_boundary_status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
+        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
     ):
         errors.append("issuance-pressure link source-contract status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -258,7 +258,7 @@ def audit_announced_supply_reference_mode_contract(
     if bridge.get("announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("issuance-pressure bridge lacks announced-supply contract")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
+        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
     ):
         errors.append("issuance-pressure bridge source-contract status changed")
 
@@ -266,11 +266,11 @@ def audit_announced_supply_reference_mode_contract(
     if dynamic.get("mof_announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("model contract lacks announced-supply source contract")
     if dynamic["mof_announced_RON_primary_supply_reference_mode_status"] != (
-        "SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
+        "PASS_EXACT_Q1_EVENT_LEVEL_PILOT_CANONICAL_PROMOTION_DEFERRED"
     ):
         errors.append("model contract announced-supply status changed")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_supply_source_vintage_pilot"
+        "mof_announced_RON_primary_supply_full_2025_extension"
     ):
         errors.append("model contract next task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
@@ -324,7 +324,7 @@ def main() -> None:
                 "stock_normalisation_required": False,
                 "reference_mode_promoted": False,
                 "feedback_activation_authorized": False,
-                "next_task": "mof_announced_RON_primary_supply_source_vintage_pilot",
+                "next_task": "mof_announced_RON_primary_supply_full_2025_extension",
             },
             indent=2,
         )

@@ -245,7 +245,7 @@ def audit_ecb_denominator_probe_assessment(
     if dynamic["government_securities_supply_load_ratio_materialisation_authorized"] is not False:
         errors.append("model contract may not authorize supply-load ratio")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_supply_source_vintage_pilot"
+        "mof_announced_RON_primary_supply_full_2025_extension"
     ):
         errors.append("model contract next task changed")
 

@@ -1,0 +1,92 @@
+name: Ministry Announced RON Primary Supply Source Vintage Probe
+
+on:
+  push:
+    branches:
+      - source-vintage/mof-announced-ron-primary-supply-2026-09-20
+    paths:
+      - .github/workflows/mof-announced-ron-primary-supply-probe.yml
+      - model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json
+      - scripts/probe_mof_announced_RON_primary_supply_source_vintage.py
+      - tests/test_mof_announced_RON_primary_supply_source_vintage_probe.py
+
+concurrency:
+  group: mof-announced-ron-primary-supply-probe
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  acquire-and-retain:
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out probe branch
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install native PDF text extractor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+          pdftotext -v
+
+      - name: Verify frozen probe contract and offline guards
+        run: python -m unittest tests.test_mof_announced_RON_primary_supply_source_vintage_probe -v
+
+      - name: Acquire exact Ministry orders and extract native text
+        run: |
+          python scripts/probe_mof_announced_RON_primary_supply_source_vintage.py \
+            --output mof_announced_supply_pilot_artifacts
+
+      - name: Retain or reverify exact source vintage
+        run: |
+          BRANCH="source-vintage/mof-announced-ron-primary-supply-2026-09-20"
+          DEST="data/source_vintages/mof-announced-ron-primary-supply-pilot-2026-09-20"
+
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+
+          if [ -e "$DEST" ]; then
+            for source_id in               mof_order_6826_january_2025               mof_order_159_february_2025               mof_order_352_march_2025
+            do
+              cmp                 "mof_announced_supply_pilot_artifacts/raw/${source_id}.pdf"                 "$DEST/raw/${source_id}.pdf"
+              cmp                 "mof_announced_supply_pilot_artifacts/native_text/${source_id}.txt"                 "$DEST/native_text/${source_id}.txt"
+            done
+            cp               "mof_announced_supply_pilot_artifacts/source_vintage_manifest.json"               "$DEST/source_vintage_manifest.json"
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add "$DEST/source_vintage_manifest.json"
+            if git diff --cached --quiet; then
+              echo "Retained Ministry announced-supply vintage is byte-identical and manifest is current."
+              exit 0
+            fi
+            git commit -m "data: refresh Ministry announced-supply probe manifest"
+            git push origin HEAD:"$BRANCH"
+            exit 0
+          fi
+
+          mkdir -p "$DEST"
+          cp -a mof_announced_supply_pilot_artifacts/. "$DEST/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DEST"
+          git diff --cached --quiet && { echo "No retained source-vintage changes."; exit 1; }
+          git commit -m "data: retain Ministry announced-supply pilot source vintage"
+          git push origin HEAD:"$BRANCH"
+
+      - name: Upload exact source-vintage probe
+        uses: actions/upload-artifact@v4
+        with:
+          name: mof-announced-ron-primary-supply-${{ github.sha }}
+          path: mof_announced_supply_pilot_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0

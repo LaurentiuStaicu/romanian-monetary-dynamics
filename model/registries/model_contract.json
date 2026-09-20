@@ -80,7 +80,7 @@
     "government_issuance_yield_empirical_boundary_status": "OPEN_CHAIN_PENDING_EXPLICIT_BRIDGES",
     "government_issuance_yield_conceptual_topology_status": "CLOSED_CANDIDATE_LOOP",
     "government_issuance_yield_feedback_activation_authorized": false,
-    "next_government_issuance_yield_empirical_task": "mof_announced_RON_primary_supply_source_vintage_pilot",
+    "next_government_issuance_yield_empirical_task": "mof_announced_RON_primary_supply_full_2025_extension",
     "government_issuance_bnr_primary_market_yield_pilot": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
     "government_issuance_bnr_primary_market_yield_pilot_status": "PASS_DESCRIPTIVE_INSTRUMENT_SPECIFIC_NO_GENERIC_YIELD_AGGREGATION",
     "government_securities_supply_pressure_source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
@@ -99,7 +99,10 @@
     "government_securities_supply_first_reference_mode_priority": "announced_RON_primary_supply_level",
     "government_securities_supply_stock_normalisation_required": false,
     "mof_announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
-    "mof_announced_RON_primary_supply_reference_mode_status": "SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
+    "mof_announced_RON_primary_supply_reference_mode_status": "PASS_EXACT_Q1_EVENT_LEVEL_PILOT_CANONICAL_PROMOTION_DEFERRED",
+    "mof_announced_RON_primary_supply_reference_mode_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json",
+    "mof_announced_RON_primary_supply_event_series": "data/processed/mof_announced_RON_primary_supply_Q1_2025_events.csv",
+    "mof_announced_RON_primary_supply_monthly_series": "data/processed/mof_announced_RON_primary_supply_Q1_2025_monthly.csv"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
