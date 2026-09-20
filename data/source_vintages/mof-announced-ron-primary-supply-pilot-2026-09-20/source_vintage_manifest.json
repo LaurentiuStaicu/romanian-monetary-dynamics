@@ -1,9 +1,9 @@
 {
   "snapshot_id": "mof-announced-ron-primary-supply-pilot-vintage-2026-09-20",
-  "fetched_at_utc": "2026-09-20T17:05:19+00:00",
+  "fetched_at_utc": "2026-09-20T17:06:47+00:00",
   "contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
   "fetcher_script": "scripts/probe_mof_announced_RON_primary_supply_source_vintage.py",
-  "fetcher_script_sha256": "7f9a7ff2b8f3d9a934522e7e2601363d859424c8535ca9c9970083d2554228fd",
+  "fetcher_script_sha256": "523168df6ac0201dcbd620bf3b687c51c47c3d1535157371d60c546cdf3c9a9e",
   "native_text_extractor": "pdftotext -layout",
   "sources": [
     {
