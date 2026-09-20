@@ -81,8 +81,18 @@ class ReleaseVersioningContractTests(unittest.TestCase):
                 "model/registries/release_versioning_contract.json",
                 "current_public_release/current_repository_version/next_public_release_candidate",
             ),
+            ("releases/v<version>.md", "versioned release notes"),
         }
         self.assertEqual(surfaces, required)
+
+
+    def test_current_release_has_versioned_release_notes(self) -> None:
+        release = self.c["versioning_basis"]["current_public_release"]
+        notes = ROOT / "releases" / f"v{release['version']}.md"
+        self.assertTrue(notes.is_file())
+        text = notes.read_text(encoding="utf-8")
+        self.assertIn(f"v{release['version']}", text)
+        self.assertIn("historical v0.1.0 release snapshot", text)
 
     def test_external_release_surfaces_require_tag_and_github_release(self) -> None:
         surfaces = {entry["surface"] for entry in self.c["external_release_surfaces"]}
@@ -115,6 +125,7 @@ class ReleaseVersioningContractTests(unittest.TestCase):
             "pyproject.toml",
             "CITATION.cff",
             "CHANGELOG.md",
+            "releases/v<version>.md",
             "GitHub Release",
             "v<version>",
         ):
