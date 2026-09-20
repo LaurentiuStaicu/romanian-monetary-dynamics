@@ -289,7 +289,12 @@ class MechanismSourceReadinessTests(unittest.TestCase):
             fiscal["capb_realtime_vintage_workflow"],
             ".github/workflows/fiscal-reaction-capb-realtime-vintage-materialisation.yml",
         )
-        self.assertFalse(fiscal["estimation_or_refit_allowed"])\n        self.assertTrue(fiscal["capb_repository_raw_bytes_retained"])\n        self.assertEqual(\n            fiscal["capb_raw_source_preservation_state"],\n            "EXECUTED_REVIEWED_REPOSITORY_RETAINED",\n        )
+        self.assertFalse(fiscal["estimation_or_refit_allowed"])
+        self.assertTrue(fiscal["capb_repository_raw_bytes_retained"])
+        self.assertEqual(
+            fiscal["capb_raw_source_preservation_state"],
+            "EXECUTED_REVIEWED_REPOSITORY_RETAINED",
+        )
 
         fx = mechanisms["exchange_rate_pass_through_to_inflation"]
         self.assertEqual(
