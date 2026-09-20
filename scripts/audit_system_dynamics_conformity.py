@@ -455,6 +455,7 @@ def main() -> None:
     feedback_boundary = load("model/dynamics/feedback_variable_boundary_registry.json")
     feedback_link_readiness = load("model/dynamics/feedback_link_readiness_registry.json")
     delay_evidence = load("model/dynamics/delay_evidence_registry.json")
+    activation_matrix = load("model/dynamics/feedback_activation_criteria_matrix.json")
     units = load("model/dynamics/unit_registry.json")
     references = load("model/dynamics/reference_modes.json")
     gate = load("model/dynamics/system_dynamics_conformity_gate.json")
@@ -625,6 +626,44 @@ def main() -> None:
 
     structures = feedback["loops"]
     check(structures, "Feedback registry must contain the candidate feedback architecture")
+
+    activation_matrix_path = "model/dynamics/feedback_activation_criteria_matrix.json"
+    check(
+        gate["feedback_activation_gate"]["activation_criteria_matrix"]
+        == activation_matrix_path,
+        "SD gate does not point to canonical per-feedback activation matrix",
+    )
+    check(
+        activation_matrix["current_summary"]["activation_ready_structures"]
+        == gate["feedback_activation_gate"]["current_activation_ready_structures"],
+        "SD gate activation-ready feedback count is stale",
+    )
+    check(
+        activation_matrix["current_summary"]["current_status"]
+        == gate["feedback_activation_gate"]["current_activation_matrix_status"],
+        "SD gate activation-matrix status is stale",
+    )
+    check(
+        activation_matrix["current_summary"]["quantitatively_authorized_structures"]
+        == 0,
+        "Activation matrix may not authorize feedback structures",
+    )
+    matrix_feedback_ids = {
+        str(item["loop_id"]) for item in activation_matrix["feedbacks"]
+    }
+    check(
+        matrix_feedback_ids == {str(item["id"]) for item in feedback["loops"]},
+        "Activation matrix does not cover exactly the feedback registry",
+    )
+    required_activation_criteria = {
+        key
+        for key, value in gate["feedback_activation_gate"].items()
+        if key.startswith("requires_") and value is True
+    }
+    check(
+        set(activation_matrix["criteria_order"]) == required_activation_criteria,
+        "Activation matrix does not cover every canonical requires_* criterion",
+    )
 
     delay_evidence_path = "model/dynamics/delay_evidence_registry.json"
     check(
