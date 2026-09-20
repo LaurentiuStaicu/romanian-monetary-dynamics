@@ -1,0 +1,131 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-20",
+  "purpose": "Determine the exact stock-flow structure required if RMD uses gross government debt-securities issuance, and separate the market-valued S13 F3 securities stock from the Maastricht gross-debt reference target.",
+  "external_methodology": {
+    "ecb_csec_methodology": "https://data.ecb.europa.eu/methodology/securities-issues",
+    "ecb_csec_government_concept": "https://data.ecb.europa.eu/data/concepts/debt-securities-issued-by-general-government",
+    "eurlex_csec_guideline": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022O0971",
+    "eurostat_maastricht_debt_metadata": "https://ec.europa.eu/eurostat/cache/metadata/en/gov_10dd_sgd_esms.htm",
+    "eurostat_deficit_debt_relation": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20260122-1"
+  },
+  "source_discovery": {
+    "institution": "European Central Bank / ESCB",
+    "dataset": "CSEC — Securities Issues Statistics",
+    "frequency": "monthly",
+    "Romania_general_government_available": true,
+    "reference_area": "RO",
+    "reference_sector": "S13 general government",
+    "counterpart_sector": "S1 total economy",
+    "consolidation": "non-consolidated",
+    "instrument": "F3 debt securities",
+    "valuation": "market value",
+    "source_start_context": "CSEC methodology states availability from December 2020; exact series coverage must be retained by a source probe before promotion.",
+    "exact_verified_series": [
+      {
+        "role": "net_issues",
+        "key": "CSEC.M.N.RO.W0.S13.S1.N.L.F.F3.T._Z.EUR._T.M.V.N._T",
+        "maturity": "all original maturities",
+        "currency_denominator": "all currencies",
+        "unit": "million EUR",
+        "status": "PORTAL_METADATA_VERIFIED"
+      },
+      {
+        "role": "closing_stock",
+        "key": "CSEC.M.N.RO.W0.S13.S1.N.L.LE.F3.T._Z.EUR._T.M.V.N._T",
+        "maturity": "all original maturities",
+        "currency_denominator": "all currencies",
+        "unit": "million EUR",
+        "status": "PORTAL_METADATA_VERIFIED"
+      }
+    ],
+    "source_family_verified_components": [
+      "gross issues",
+      "redemptions",
+      "net issues",
+      "closing stocks",
+      "revaluations",
+      "other changes in volume"
+    ],
+    "unresolved_materialisation_detail": "Exact all-maturity/all-currency gross-issue, redemption, revaluation and other-change keys must be discovered and retained by a frozen CSEC source probe rather than inferred from key syntax."
+  },
+  "stock_flow_identity": {
+    "exact_csec_form": "F3_stock[t] = F3_stock[t-1] + gross_issues[t] - redemptions[t] + revaluations[t] + other_changes_in_volume[t]",
+    "net_issue_identity": "net_issues[t] = gross_issues[t] - redemptions[t]",
+    "implication": "Gross issuance alone is not a stock update. A quantitative gross-issuance-to-stock implementation without redemptions and other flows is structurally incomplete."
+  },
+  "boundary_comparison": {
+    "csec_S13_F3_stock": {
+      "instrument_scope": "F3 debt securities only",
+      "valuation": "market value",
+      "consolidation": "non-consolidated",
+      "frequency": "monthly",
+      "exact_role": "candidate observed stock-flow substate for securities issuance dynamics"
+    },
+    "maastricht_government_debt_reference": {
+      "instrument_scope": "AF2 + AF3 + AF4 Maastricht debt",
+      "valuation": "nominal/face value",
+      "consolidation": "consolidated within general government",
+      "frequency": "quarterly reference mode in RMD",
+      "exact_role": "observed government_debt_stock reference target"
+    },
+    "exact_equivalence": false,
+    "bridge_required": true
+  },
+  "current_feedback_link_finding": {
+    "loop_id": "government_refinancing_interest_loop",
+    "link": "government_debt_issuance -> government_debt_stock",
+    "current_sign": "+",
+    "qualitative_direction_can_remain": true,
+    "exact_integrated_equation_ready": false,
+    "blockers": [
+      "government_debt_issuance has no single frozen semantic boundary across loops",
+      "gross issuance requires redemptions for a transaction-level net stock effect",
+      "market-valued F3 stocks additionally require revaluations and other changes in volume",
+      "the existing government_debt_stock reference target is Maastricht debt, not CSEC market-valued non-consolidated F3",
+      "a bridge from an F3 stock-flow substate to Maastricht AF2+AF3+AF4 debt has not been defined or validated"
+    ]
+  },
+  "candidate_structural_refinement": {
+    "status": "PREREGISTRATION_REQUIRED_NO_TOPOLOGY_CHANGE",
+    "candidate_nodes": [
+      {
+        "id": "government_f3_gross_issuance",
+        "role": "gross inflow into a market-valued S13 F3 securities substate",
+        "candidate_source": "ECB CSEC gross issues"
+      },
+      {
+        "id": "government_f3_redemptions",
+        "role": "gross outflow from the market-valued S13 F3 securities substate",
+        "candidate_source": "ECB CSEC redemptions"
+      },
+      {
+        "id": "government_f3_securities_stock",
+        "role": "market-valued non-consolidated S13 F3 stock",
+        "candidate_source": "ECB CSEC closing stock"
+      },
+      {
+        "id": "government_f3_revaluations",
+        "role": "non-transaction stock change",
+        "candidate_source": "ECB CSEC revaluations"
+      },
+      {
+        "id": "government_f3_other_changes",
+        "role": "other changes in volume",
+        "candidate_source": "ECB CSEC other changes in volume"
+      }
+    ],
+    "maastricht_target_remains_separate": "government_debt_stock",
+    "future_bridge_requirement": "Any future bridge must preserve AF2/AF3/AF4 scope, nominal/face valuation, consolidation and stock-flow-adjustment semantics; F3 market-value stock may not be substituted directly."
+  },
+  "scientific_decision": {
+    "current_feedback_topology_changed": false,
+    "government_debt_issuance_boundary_resolved": false,
+    "government_debt_stock_boundary_resolved": false,
+    "exact_issuance_to_stock_equation_admitted": false,
+    "reference_mode_promoted": false,
+    "estimation_or_refit_authorized": false,
+    "feedback_activation_authorized": false,
+    "next_step": "Freeze and execute a CSEC Romania S13 F3 source-discovery/materialisation contract for gross issues, redemptions, net issues, stock, revaluations and other changes on one exact unit/currency/maturity boundary. Only after that source state exists should RMD preregister a topology refinement or an F3 stock-flow submodel."
+  }
+}
