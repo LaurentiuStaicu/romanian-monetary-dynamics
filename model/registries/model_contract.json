@@ -80,9 +80,12 @@
     "government_issuance_yield_empirical_boundary_status": "OPEN_CHAIN_PENDING_EXPLICIT_BRIDGES",
     "government_issuance_yield_conceptual_topology_status": "CLOSED_CANDIDATE_LOOP",
     "government_issuance_yield_feedback_activation_authorized": false,
-    "next_government_issuance_yield_empirical_task": "assess_securities_supply_pressure_observable_candidates",
+    "next_government_issuance_yield_empirical_task": "mof_primary_market_pressure_source_vintage_probe",
     "government_issuance_bnr_primary_market_yield_pilot": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
-    "government_issuance_bnr_primary_market_yield_pilot_status": "PASS_DESCRIPTIVE_INSTRUMENT_SPECIFIC_NO_GENERIC_YIELD_AGGREGATION"
+    "government_issuance_bnr_primary_market_yield_pilot_status": "PASS_DESCRIPTIVE_INSTRUMENT_SPECIFIC_NO_GENERIC_YIELD_AGGREGATION",
+    "government_securities_supply_pressure_source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
+    "government_securities_supply_pressure_boundary_status": "MULTIDIMENSIONAL_CANDIDATE_BOUNDARY_NO_SCALAR_PROMOTION",
+    "government_securities_supply_pressure_scalar_selected": false
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
