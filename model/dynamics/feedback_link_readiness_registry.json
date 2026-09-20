@@ -111,21 +111,23 @@
       "to": "sovereign_yield",
       "sign": "+_candidate",
       "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
-      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "readiness_status": "RELATED_MECHANISM_AND_EXACT_10Y_BOUNDARY_NOT_EXACT_INTEGRATED_LINK_FORM",
       "related_mechanisms": [
         "sovereign_yield_spread_response"
       ],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "A related sovereign-yield candidate exists, but neither the supply-pressure observable nor an exact mapping from instrument/currency-specific primary-market conditions to the generic sovereign_yield node is contracted.",
+      "reason": "The ECB 10Y RON long-term yield is an exact retained observed boundary and BNR primary-market rate vectors are retained separately, but the generic sovereign_yield node is not definitionally identical to either. No generic aggregation or supply-pressure-to-yield integrated equation is authorized.",
       "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
       "partial_observed_evidence": [
         {
           "source": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
           "effect": "Instrument- and currency-specific BNR primary-market issue rates are observed for 2025, but no exact supply-pressure observable or generic sovereign_yield mapping is frozen."
         }
-      ]
+      ],
+      "primary_yield_to_sovereign_yield_boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+      "sovereign_yield_boundary_status": "UMBRELLA_UNRESOLVED_EXACT_RON_10Y_LONG_TERM_CANDIDATE_PRIMARY_RATE_VECTOR_NOT_AGGREGATED"
     },
     {
       "link_key": "government_issuance_yield_loop|sovereign_yield|government_interest_cost",
