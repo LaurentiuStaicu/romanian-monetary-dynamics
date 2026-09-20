@@ -169,7 +169,7 @@ def audit_mof_supply_pressure_probe_assessment(
         errors.append("model contract next task changed")
 
     next_gate = assessment["next_gate"]
-    if next_gate["id"] != "supply_load_denominator_candidate_materialisation_comparison":
+    if next_gate["id"] != "mof_announced_RON_primary_supply_reference_mode_contract":
         errors.append("assessment next gate changed")
     if next_gate["may_compute_pressure_ratio_now"] is not False:
         errors.append("assessment may not compute pressure ratio now")
