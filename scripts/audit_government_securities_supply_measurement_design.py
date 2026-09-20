@@ -235,7 +235,7 @@ def audit_supply_measurement_design(
     if link.get("supply_measurement_design_review") != REVIEW_PATH:
         errors.append("issuance-pressure link lacks measurement design")
     if link["source_boundary_status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
+        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
     ):
         errors.append("issuance-pressure measurement status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -265,7 +265,7 @@ def audit_supply_measurement_design(
     if bridge.get("supply_measurement_design_review") != REVIEW_PATH:
         errors.append("issuance-pressure bridge lacks measurement design")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_SOURCE_CONTRACT_FROZEN_PILOT_NOT_MATERIALISED"
+        "STRUCTURED_VECTOR_ANNOUNCED_SUPPLY_Q1_PILOT_PASS_FULL_2025_EXTENSION_PENDING"
     ):
         errors.append("issuance-pressure bridge measurement status changed")
 
