@@ -69,10 +69,10 @@ class MechanismSourceReadinessTests(unittest.TestCase):
         )
         self.assertEqual(
             step["execution_mode"],
-            "MANUAL_ONLY_LIVE_SOURCE_EVIDENCE",
+            "MANUAL_ONLY_REVIEWED_ARTIFACT_PRESERVATION",
         )
-        self.assertIn("2011-2021", step["reason"])
-        self.assertIn("raw-byte", step["reason"])
+        self.assertIn("13-observation", step["reason"])
+        self.assertIn("reviewed raw bytes", step["reason"])
 
         mechanisms = {
             item["id"]: item for item in self.readiness["mechanisms"]
