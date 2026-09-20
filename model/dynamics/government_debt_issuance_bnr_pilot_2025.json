@@ -184,10 +184,12 @@
     "generic_government_debt_issuance_node_resolved": false,
     "estimation_authorized": false,
     "feedback_activation_authorized": false,
-    "next_gate": "Preregister whether the government_issuance_yield_loop is explicitly narrowed to the BNR domestic-primary-market issuance boundary before any reference-mode promotion, estimation or feedback use. Raw-source retention, revision checking and full-2025 monthly coverage are complete; Ministry all-market borrowing remains a separate source path.",
+    "next_gate": "Structural issuance-yield boundary preregistration is complete and the descriptive instrument-specific primary-market rate pilot is materialised. Next assess securities-supply-pressure observable candidates without relabelling raw gross issuance as pressure or constructing a generic sovereign-yield aggregate.",
     "revision_check_completed": true,
     "full_2025_monthly_coverage": true,
-    "raw_source_retention_completed": true
+    "raw_source_retention_completed": true,
+    "issuance_yield_structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
+    "primary_market_rate_pilot": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json"
   },
   "source_lineage": {
     "initial_pilot_source": {
