@@ -164,7 +164,7 @@
       "current_boundary_class": "UNRESOLVED",
       "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
       "exact_reference_mode_id": null,
-      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "classification_basis": "Official Ministry public-debt reports expose announced, submitted and accepted RON auction amounts plus published bid-to-cover, while related reports expose outstanding domestic securities and secondary-market liquidity. These support a multidimensional candidate boundary, not a single observed supply-pressure series. Announced supply load, auction absorption, published bid-to-cover and market liquidity have distinct causal/measurement roles; the generic node remains unresolved.",
       "related_reference_modes": [],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
       "current_feedback_activation_authorized": false,
@@ -175,7 +175,16 @@
           "scope": "GENERAL_GOVERNMENT_F3_HOLDER_COMPOSITION_AND_NET_INCURRANCE_2025",
           "effect": "DESCRIPTIVE_ONLY: holder composition and net absorption do not operationalize securities supply pressure."
         }
-      ]
+      ],
+      "source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
+      "empirical_boundary_status": "MULTIDIMENSIONAL_CANDIDATE_BOUNDARY_NO_SCALAR_PROMOTION",
+      "candidate_observable_vector": [
+        "domestic_RON_primary_market_supply_load",
+        "domestic_RON_primary_market_auction_absorption",
+        "domestic_RON_primary_market_bid_to_cover",
+        "domestic_government_securities_secondary_market_liquidity"
+      ],
+      "scalar_pressure_index_selected": false
     },
     {
       "id": "inflationary_pressure",

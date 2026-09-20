@@ -88,8 +88,10 @@
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The retained BNR series measures gross domestic primary-market securities issuance. Structural preregistration forbids relabelling raw issue volume as securities supply pressure without a validated pressure transform or market-capacity/absorption boundary.",
-      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
+      "reason": "The retained BNR issuance series measures accepted/allotted domestic-primary issuance, while Ministry reports separately expose announced supply, submitted bids, accepted amounts, bid-to-cover, outstanding stock and liquidity. The source boundary is now reviewed as multidimensional, but exact source values and a validated pressure transform are not materialised; no exact integrated equation is ready.",
+      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
+      "supply_pressure_source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
+      "source_boundary_status": "SOURCE_BOUNDARY_REVIEWED_EXACT_SERIES_NOT_MATERIALISED"
     },
     {
       "link_key": "government_issuance_yield_loop|government_securities_supply_pressure|sovereign_yield",
