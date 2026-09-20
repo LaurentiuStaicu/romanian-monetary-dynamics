@@ -29,7 +29,9 @@
     "f3_behavior_over_time_diagnostics": "model/dynamics/f3_behavior_over_time_diagnostics_2025.json",
     "f3_behavior_over_time_diagnostics_contract": "model/dynamics/f3_behavior_over_time_diagnostics_contract.json",
     "government_f3_holder_diagnostic": "model/dynamics/government_f3_holder_diagnostic_2025.json",
-    "government_f3_holder_diagnostic_contract": "model/dynamics/government_f3_holder_diagnostic_contract.json"
+    "government_f3_holder_diagnostic_contract": "model/dynamics/government_f3_holder_diagnostic_contract.json",
+    "government_debt_issuance_source_boundary_review": "model/dynamics/government_debt_issuance_source_boundary_review.json",
+    "government_debt_issuance_materialisation_contract": "model/dynamics/government_debt_issuance_materialisation_contract.json"
   },
   "canonical_state": {
     "accounting": {
