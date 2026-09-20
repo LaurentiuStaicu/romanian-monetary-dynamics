@@ -210,9 +210,9 @@ def audit_missing_source_recovery(
     if bridge.get("missing_required_source_count") != 3:
         errors.append("issuance-pressure bridge remaining source count changed")
     if prereg.get("next_independent_bridge_task", {}).get("id") != (
-        "primary_yield_to_sovereign_yield_boundary_review"
+        "yield_to_interest_cost_boundary_review"
     ):
-        errors.append("preregistration next independent bridge changed")
+        errors.append("preregistration current next independent bridge changed")
 
     dynamic = model_contract["dynamic_core"]
     if dynamic.get(
@@ -228,9 +228,9 @@ def audit_missing_source_recovery(
     ) != 3:
         errors.append("model contract remaining source count changed")
     if dynamic.get("government_issuance_yield_next_independent_task") != (
-        "primary_yield_to_sovereign_yield_boundary_review"
+        "yield_to_interest_cost_boundary_review"
     ):
-        errors.append("model contract next independent task changed")
+        errors.append("model contract current next independent task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
         errors.append("recovery hold may not authorize issuance-yield feedback")
 
