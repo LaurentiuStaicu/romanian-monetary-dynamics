@@ -195,15 +195,11 @@ class RMDReadmeDesignContractTests(unittest.TestCase):
     def test_public_readme_stays_within_quality_budget(self) -> None:
         budget = self.contract["public_readme_quality_budget"]
         plain = re.sub(r"<[^>]+>", " ", self.public)
-        words = [
-            token
-            for token in re.split(r"\\s+", re.sub(r"[\`|#>*_\\-\\[\\]\\(\\)~]", " ", plain))
-            if token
-        ]
+        words = re.findall(r"\b[\w][\w./+-]*\b", plain)
         headings = [
             line
             for line in self.public.splitlines()
-            if re.match(r"^#{1,6}\\s", line) or re.search(r"<h[1-6]", line)
+            if re.match(r"^#{1,6}\s", line) or re.search(r"<h[1-6]", line)
         ]
         self.assertLessEqual(len(words), budget["maximum_words"])
         self.assertLessEqual(len(headings), budget["maximum_primary_headings"])
@@ -211,10 +207,10 @@ class RMDReadmeDesignContractTests(unittest.TestCase):
     def test_quick_navigation_anchors_match_public_headings(self) -> None:
         headings = []
         for line in self.public.splitlines():
-            match = re.match(r"^#{1,6}\\s+(.+?)\\s*$", line)
+            match = re.match(r"^#{1,6}\s+(.+?)\s*$", line)
             if match:
-                heading = re.sub(r"[^w\\s-]", "", match.group(1).lower())
-                heading = re.sub(r"\\s+", "-", heading.strip())
+                heading = re.sub(r"[^\w\s-]", "", match.group(1).lower())
+                heading = re.sub(r"\s+", "-", heading.strip())
                 headings.append(heading)
 
         header = self.public.split("---", 1)[0]
