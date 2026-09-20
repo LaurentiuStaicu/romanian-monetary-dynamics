@@ -1,0 +1,98 @@
+name: ECB Supply Load Denominator Candidate Probe
+
+on:
+  push:
+    branches:
+      - source-vintage/ecb-supply-load-denominator-candidates-2026-09-20
+    paths:
+      - .github/workflows/ecb-supply-load-denominator-probe.yml
+      - model/dynamics/government_securities_supply_load_ecb_denominator_probe_contract.json
+      - scripts/probe_ecb_supply_load_denominator_candidates.py
+      - tests/test_ecb_supply_load_denominator_probe.py
+
+concurrency:
+  group: ecb-supply-load-denominator-probe
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  probe-and-retain:
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out probe branch
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify frozen candidate contract
+        run: python -m unittest tests.test_ecb_supply_load_denominator_probe -v
+
+      - name: Probe preregistered ECB candidate keys
+        run: |
+          python scripts/probe_ecb_supply_load_denominator_candidates.py \
+            --output ecb_supply_load_denominator_probe_artifacts
+
+      - name: Retain or reverify probe vintage
+        run: |
+          BRANCH="source-vintage/ecb-supply-load-denominator-candidates-2026-09-20"
+          DEST="data/source_vintages/ecb-supply-load-denominator-candidates-2026-09-20"
+
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+
+          if [ -e "$DEST" ]; then
+            python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          fresh = Path("ecb_supply_load_denominator_probe_artifacts")
+          kept = Path("data/source_vintages/ecb-supply-load-denominator-candidates-2026-09-20")
+          fresh_manifest = json.loads((fresh / "ecb_denominator_probe_manifest.json").read_text())
+          kept_manifest = json.loads((kept / "ecb_denominator_probe_manifest.json").read_text())
+
+          fresh_by_id = {x["candidate_id"]: x for x in fresh_manifest["candidates"]}
+          kept_by_id = {x["candidate_id"]: x for x in kept_manifest["candidates"]}
+          if set(fresh_by_id) != set(kept_by_id):
+              raise SystemExit("candidate set changed")
+
+          for candidate_id in sorted(fresh_by_id):
+              f = fresh_by_id[candidate_id]
+              k = kept_by_id[candidate_id]
+              for key in ("http_status", "transport_ok", "valid_nonempty_csv"):
+                  if f.get(key) != k.get(key):
+                      raise SystemExit(f"{candidate_id}: status mismatch for {key}")
+              if f.get("valid_nonempty_csv"):
+                  if f["raw_sha256"] != k["raw_sha256"]:
+                      raise SystemExit(f"{candidate_id}: raw CSV SHA mismatch")
+
+          print("Retained ECB denominator probe is semantically identical to fresh acquisition.")
+          PY
+            exit 0
+          fi
+
+          mkdir -p "$DEST"
+          cp -a ecb_supply_load_denominator_probe_artifacts/. "$DEST/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DEST"
+          git diff --cached --quiet && { echo "No retained source-vintage changes."; exit 1; }
+          git commit -m "data: retain ECB supply-load denominator candidate probe"
+          git push origin HEAD:"$BRANCH"
+
+      - name: Upload probe artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecb-supply-load-denominator-probe-${{ github.sha }}
+          path: ecb_supply_load_denominator_probe_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
