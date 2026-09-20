@@ -107,7 +107,12 @@
     "requires_accounting_conservation_preservation": true,
     "rule": "Failure of any item keeps the feedback quantitatively inactive. Missing data or non-identifiability are valid scientific outcomes and must not be repaired with convenience coefficients.",
     "endogenous_exogenous_registry": "model/dynamics/feedback_variable_boundary_registry.json",
-    "endogenous_exogenous_rule": "Every feedback node must have an explicit current classification. Qualitative topology, observed-target availability, or a related time series cannot silently promote a node to current ENDOGENOUS or OBSERVED_FORCING status."
+    "endogenous_exogenous_rule": "Every feedback node must have an explicit current classification. Qualitative topology, observed-target availability, or a related time series cannot silently promote a node to current ENDOGENOUS or OBSERVED_FORCING status.",
+    "behavioural_robustness_contract": "model/empirical_dynamics/behavioural_robustness_contract.json",
+    "current_form_level_extreme_condition_status": "PASS_CURRENT_IMPLEMENTATIONS_ONLY",
+    "current_integrated_extreme_condition_status": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
+    "current_empirical_sensitivity_execution_status": "BLOCKED",
+    "robustness_rule": "Form-level algebraic stress tests are necessary implementation checks but are not empirical validation. Integrated extreme-condition testing and empirical sensitivity analysis remain blocked until behavioural closure, measurement transforms and scientifically admissible parameter ranges are frozen."
   },
   "candidate_feedbacks": [
     "government_refinancing_interest_loop",
