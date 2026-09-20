@@ -93,7 +93,7 @@
       "current_boundary_class": "UNRESOLVED",
       "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
       "exact_reference_mode_id": null,
-      "classification_basis": "Official source screening identifies at least two distinct observed source families: BNR monthly domestic primary-market new/roll-over government-securities issues and Ministry monthly all-market actual borrowing by instrument. These are not definitionally interchangeable, and neither may be silently promoted to the generic node used by both government feedback structures. The node remains unresolved pending an explicit split or frozen common boundary.",
+      "classification_basis": "Official source screening now identifies three distinct boundaries: ECB CSEC market-valued non-consolidated S13 F3 gross issues with explicit redemption/stock-flow components; BNR domestic primary-market new/roll-over securities issues; and Ministry all-market actual borrowing by instrument. These are not interchangeable. The generic node remains unresolved pending an explicitly preregistered structural split or common boundary.",
       "related_reference_modes": [],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
       "current_feedback_activation_authorized": false,
@@ -109,16 +109,19 @@
       "source_materialisation_contract": "model/dynamics/government_debt_issuance_materialisation_contract.json",
       "semantic_overload_detected": true,
       "candidate_observed_boundaries": [
+        "general_government_f3_gross_issuance_market_value",
         "domestic_primary_market_government_securities_gross_issuance",
         "government_total_realized_borrowing_or_securities_funding"
-      ]
+      ],
+      "csec_stock_flow_boundary_review": "model/dynamics/government_f3_stock_flow_boundary_review.json",
+      "csec_materialisation_contract": "model/dynamics/government_f3_csec_materialisation_contract.json"
     },
     {
       "id": "government_debt_stock",
       "current_boundary_class": "UNRESOLVED",
       "current_runtime_role": "OBSERVED_TARGET_AVAILABLE_INACTIVE_FEEDBACK_NODE",
       "exact_reference_mode_id": "government_debt_stock",
-      "classification_basis": "An observed Maastricht-debt reference target exists, but the feedback node's integrated endogenous stock boundary is not frozen and must not be conflated with market-valued holder-by-issuer Accounting Spine positions.",
+      "classification_basis": "The observed reference target is consolidated Maastricht debt at nominal/face value across AF2+AF3+AF4. ECB CSEC provides a potentially complete monthly market-valued non-consolidated F3 stock-flow substate, but it is not definitionally identical. The feedback node remains unresolved until an explicit boundary choice or validated bridge is preregistered.",
       "related_reference_modes": [
         "government_debt_stock"
       ],
@@ -131,7 +134,9 @@
           "scope": "GENERAL_GOVERNMENT_F3_HOLDER_COMPOSITION_AND_NET_INCURRANCE_2025",
           "effect": "PARTIAL_ONLY: market-valued ESA F3 liabilities are an instrument subset and are not the Maastricht nominal/face-value debt-stock reference target."
         }
-      ]
+      ],
+      "csec_stock_flow_boundary_review": "model/dynamics/government_f3_stock_flow_boundary_review.json",
+      "csec_materialisation_contract": "model/dynamics/government_f3_csec_materialisation_contract.json"
     },
     {
       "id": "government_financing_need",
