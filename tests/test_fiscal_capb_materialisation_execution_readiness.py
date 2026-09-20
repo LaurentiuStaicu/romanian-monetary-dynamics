@@ -43,7 +43,11 @@ class FiscalCapbMaterialisationExecutionReadinessTests(unittest.TestCase):
         self.assertEqual(state["pre2022_source_probe_conclusion"], "success")
         self.assertEqual(state["pre2022_source_probe_artifact_id"], 10596385949)
         self.assertTrue(state["raw_source_preservation_preregistered"])
-        self.assertTrue(state["raw_source_preservation_executed"])\n        self.assertEqual(state["raw_source_preservation_run_id"], 35483550266)\n        self.assertEqual(state["raw_source_preservation_successful_attempt"], 2)\n        self.assertEqual(state["raw_source_preservation_conclusion"], "success")\n        self.assertEqual(state["raw_source_preservation_commit"], "efb1f3ae5b025176645d45276b684efe65aa4174")
+        self.assertTrue(state["raw_source_preservation_executed"])
+        self.assertEqual(state["raw_source_preservation_run_id"], 35483550266)
+        self.assertEqual(state["raw_source_preservation_successful_attempt"], 2)
+        self.assertEqual(state["raw_source_preservation_conclusion"], "success")
+        self.assertEqual(state["raw_source_preservation_commit"], "efb1f3ae5b025176645d45276b684efe65aa4174")
         self.assertEqual(
             state["raw_source_preservation_contract"],
             "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json",
