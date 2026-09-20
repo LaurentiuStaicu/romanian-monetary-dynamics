@@ -63,7 +63,7 @@
       "preferred_observable": "sum_of_announced_RON_target_amounts",
       "unit": "million_RON_per_event_or_period",
       "causal_role": "DIRECT_EX_ANTE_SUPPLY_INPUT_CANDIDATE",
-      "current_source_status": "SOURCE_CONTRACT_FROZEN_RAW_PILOT_NOT_YET_MATERIALISED",
+      "current_source_status": "Q1_EXACT_EVENT_MONTH_PILOT_MATERIALISED_FULL_REFERENCE_MODE_NOT_PROMOTED",
       "normalisation_required": false,
       "stock_denominator_required": false,
       "activation_ready": false,
@@ -72,7 +72,10 @@
         "retail issuance may not be mixed into the interbank-auction series without an explicit boundary change",
         "completed-period and forward-scheduled rows must be distinguished"
       ],
-      "reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json"
+      "reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
+      "pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_pilot_assessment_2026_09_20.json",
+      "pilot_events": "data/processed/government_securities_announced_RON_primary_supply_2025Q1_events.csv",
+      "pilot_monthly": "data/processed/government_securities_announced_RON_primary_supply_2025Q1_monthly.csv"
     },
     {
       "measure_id": "announced_RON_supply_surprise",
@@ -211,14 +214,17 @@
     "public_version_change_authorized": false
   },
   "next_task": {
-    "id": "mof_announced_RON_primary_supply_source_vintage_pilot",
-    "authorization": "RAW_SOURCE_RETENTION_EXACT_EVENT_EXTRACTION_AND_REFERENCE_MODE_PILOT_ONLY",
-    "task": "Retain January-March 2025 Ministry monthly issuance orders, extract Annex 1/2 event rows exactly, reconcile rows to Article 1 and retained Flash announced totals, and create a completed-period event/month pilot through 2025-03-31.",
+    "id": "mof_announced_RON_primary_supply_full_2025_extension_contract",
+    "authorization": "SOURCE_EXTENSION_AND_REFERENCE_MODE_MATERIALISATION_ONLY",
+    "task": "Extend the proven Ministry event-level announced-RON extraction contract through all 2025 monthly issuance orders, preserving exact document reconciliation and event-date aggregation before any full reference-mode promotion.",
     "may_materialise_announced_supply_reference_mode": true,
     "may_materialise_supply_surprise": false,
     "may_materialise_duration_supply": false,
     "may_estimate_supply_to_yield_effect": false,
     "may_activate_feedback": false
   },
-  "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json"
+  "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
+  "announced_RON_primary_supply_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_pilot_assessment_2026_09_20.json",
+  "announced_RON_primary_supply_pilot_events": "data/processed/government_securities_announced_RON_primary_supply_2025Q1_events.csv",
+  "announced_RON_primary_supply_pilot_monthly": "data/processed/government_securities_announced_RON_primary_supply_2025Q1_monthly.csv"
 }
