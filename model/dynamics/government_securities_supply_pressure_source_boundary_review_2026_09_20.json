@@ -130,8 +130,8 @@
     "stock_normalised_supply_load_required": false
   },
   "next_task": {
-    "id": "mof_announced_RON_primary_supply_reference_mode_contract",
-    "authorization": "SOURCE_CONTRACT_AND_EXACT_REFERENCE_MODE_MATERIALISATION_ONLY",
+    "id": "mof_announced_RON_primary_supply_source_vintage_pilot",
+    "authorization": "RAW_SOURCE_RETENTION_EXACT_EVENT_EXTRACTION_AND_REFERENCE_MODE_PILOT_ONLY",
     "may_compute_pressure_ratio_now": false,
     "may_create_approximate_chart_values": false,
     "may_activate_feedback": false
@@ -142,5 +142,6 @@
   "ecb_denominator_probe_assessment": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_assessment_2026_09_20.json",
   "supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
   "measurement_architecture_status": "STRUCTURED_MEASUREMENT_VECTOR_KEEP_UMBRELLA_NODE_UNRESOLVED",
-  "single_scalar_search_superseded_for_primary_recovery_path": true
+  "single_scalar_search_superseded_for_primary_recovery_path": true,
+  "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json"
 }
