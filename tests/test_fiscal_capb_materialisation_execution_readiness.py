@@ -21,7 +21,7 @@ class FiscalCapbMaterialisationExecutionReadinessTests(unittest.TestCase):
     def test_original_live_gate_executed_successfully_and_was_reviewed(self) -> None:
         self.assertEqual(
             self.a["status"],
-            "WORKFLOW_EXECUTED_SUCCESS_ARTIFACT_REVIEWED_TIMING_ADJUDICATED_RAW_REPOSITORY_RETENTION_PENDING",
+            "PRE2022_PROBE_EXECUTED_REVIEWED_RAW_SOURCE_PRESERVATION_PENDING",
         )
         state = self.a["execution_state"]
         self.assertTrue(state["live_provider_work_manual_only"])
@@ -61,11 +61,11 @@ class FiscalCapbMaterialisationExecutionReadinessTests(unittest.TestCase):
         self.assertIsNone(stage["active_autonomous_empirical_task"])
         self.assertEqual(
             stage["active_manual_empirical_gate"],
-            "FISCAL_PRIMARY_BALANCE_CAPB_PRE2022_SOURCE_STRUCTURE_PROBE",
+            "FISCAL_PRIMARY_BALANCE_CAPB_RAW_SOURCE_PRESERVATION",
         )
         self.assertEqual(
             stage["selective_reopen_execution_state"],
-            "TIMING_ADJUDICATED_PRE2022_SOURCE_PROBE_AND_RAW_RETENTION_PENDING",
+            "SOURCE_BOUNDARY_ADJUDICATED_RAW_SOURCE_PRESERVATION_PENDING",
         )
         self.assertFalse(stage["fiscal_capb_repository_raw_bytes_retained"])
 
