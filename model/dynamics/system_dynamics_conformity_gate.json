@@ -40,7 +40,11 @@
     ],
     "accounting_boundary": "Closed for double-entry conservation across represented holder/issuer positions.",
     "behavioural_boundary_status": "PARTIAL",
-    "rule": "Every behavioural mechanism must explicitly classify each driver as endogenous, exogenous, observed forcing, policy input, or unresolved before activation."
+    "rule": "Every behavioural mechanism must explicitly classify each driver as endogenous, exogenous, observed forcing, policy input, or unresolved before activation.",
+    "behavioural_boundary_registry": "model/dynamics/feedback_variable_boundary_registry.json",
+    "behavioural_boundary_coverage_status": "COMPLETE_FOR_REGISTERED_FEEDBACK_NODES",
+    "endogenous_closure_readiness": "BLOCKED",
+    "interpretation": "All feedback-registry nodes now have explicit current boundary classifications, but unresolved nodes remain and behavioural closure is inactive. Coverage completeness is not endogenous closure."
   },
   "classification_rules": {
     "accounting_identity": "Definition or conservation relation that must hold by construction and is not estimated behaviour.",
@@ -101,7 +105,9 @@
     "requires_validation_gate": true,
     "requires_reference_mode_link": true,
     "requires_accounting_conservation_preservation": true,
-    "rule": "Failure of any item keeps the feedback quantitatively inactive. Missing data or non-identifiability are valid scientific outcomes and must not be repaired with convenience coefficients."
+    "rule": "Failure of any item keeps the feedback quantitatively inactive. Missing data or non-identifiability are valid scientific outcomes and must not be repaired with convenience coefficients.",
+    "endogenous_exogenous_registry": "model/dynamics/feedback_variable_boundary_registry.json",
+    "endogenous_exogenous_rule": "Every feedback node must have an explicit current classification. Qualitative topology, observed-target availability, or a related time series cannot silently promote a node to current ENDOGENOUS or OBSERVED_FORCING status."
   },
   "candidate_feedbacks": [
     "government_refinancing_interest_loop",
@@ -122,6 +128,7 @@
       "double-entry conservation",
       "dimensional consistency",
       "boundary consistency",
+      "endogenous/exogenous boundary classification",
       "integration time-step convergence",
       "extreme conditions",
       "missing-data rejection"
