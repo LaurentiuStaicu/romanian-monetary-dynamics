@@ -7,7 +7,7 @@
   "numerator_boundary": {
     "concept": "announced RON amount in Ministry domestic primary-market auctions",
     "source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json",
-    "january_2025_exact_announced_RON_million": 5770.0,
+    "january_2025_exact_announced_RON_million": 5770,
     "status": "EXACT_NATIVE_TABLE_VALUE_AVAILABLE",
     "role": "EX_ANTE_AUCTION_SUPPLY"
   },
@@ -56,7 +56,10 @@
         "would require a preregistered valuation/boundary bridge before use as a supply-load denominator"
       ],
       "exact_auction_universe_equivalence_established": false,
-      "selected": false
+      "selected": false,
+      "source_retained": true,
+      "provider_series_valid": true,
+      "provider_metadata_validated": true
     },
     {
       "candidate_id": "ecb_gfs_general_government_debt_securities_face_value_stock",
@@ -78,7 +81,11 @@
         "requires exact series-key selection and source-vintage retention before numerical comparison"
       ],
       "exact_auction_universe_equivalence_established": false,
-      "selected": false
+      "selected": false,
+      "source_probe_completed": true,
+      "exact_preregistered_domestic_currency_key_available": false,
+      "all_currency_context_series_available": true,
+      "post_hoc_substitution_authorized": false
     }
   ],
   "flash_report_consistency_check": {
@@ -111,12 +118,15 @@
     "public_version_change_authorized": false
   },
   "next_task": {
-    "id": "supply_load_denominator_candidate_materialisation_comparison",
-    "authorization": "DESCRIPTIVE_SOURCE_MATERIALISATION_AND_BOUNDARY_COMPARISON_ONLY",
-    "scope": "Retain exact ECB denominator candidate series only if exact series keys are frozen, then compare their boundary/valuation semantics with the retained Ministry nominal holdings series. Do not select a denominator from numerical fit or correlation.",
-    "selection_criterion": "semantic_boundary_and_valuation_compatibility_before_numerical_behavior",
-    "may_compute_candidate_ratios_for_diagnostic_comparison_after_source_retention": true,
+    "id": "government_securities_supply_measurement_design_review",
+    "authorization": "STRUCTURAL_MEASUREMENT_DESIGN_ONLY",
+    "scope": "Reassess the supply-pressure measurement architecture as a vector separating announced supply level/load, announcement surprise, maturity-duration composition, auction absorption and liquidity context. Ministry nominal holdings may remain a named market-capacity proxy candidate, not an assumed exact auction-universe denominator.",
+    "selection_criterion": "structural_measurement_validity_before_scalar_construction",
+    "may_compute_candidate_ratios_for_diagnostic_comparison_after_source_retention": false,
     "may_promote_any_ratio_to_supply_pressure": false,
     "may_activate_feedback": false
-  }
+  },
+  "ecb_denominator_probe_contract": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_contract.json",
+  "ecb_denominator_probe_assessment": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_assessment_2026_09_20.json",
+  "ecb_denominator_probe_status": "TWO_VALID_SERIES_ONE_PREREGISTERED_DOMESTIC_GFS_KEY_NOT_FOUND_NO_SELECTION"
 }

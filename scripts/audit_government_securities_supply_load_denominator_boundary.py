@@ -114,14 +114,12 @@ def audit_supply_load_denominator_boundary(
             errors.append(f"denominator review may not promote {key}")
 
     next_task = review["next_task"]
-    if next_task["id"] != "supply_load_denominator_candidate_materialisation_comparison":
+    if next_task["id"] != "government_securities_supply_measurement_design_review":
         errors.append("denominator review next task changed")
-    if next_task["authorization"] != (
-        "DESCRIPTIVE_SOURCE_MATERIALISATION_AND_BOUNDARY_COMPARISON_ONLY"
-    ):
+    if next_task["authorization"] != "STRUCTURAL_MEASUREMENT_DESIGN_ONLY":
         errors.append("denominator next-task authorization changed")
     if next_task["selection_criterion"] != (
-        "semantic_boundary_and_valuation_compatibility_before_numerical_behavior"
+        "structural_measurement_validity_before_scalar_construction"
     ):
         errors.append("denominator selection criterion changed")
     if next_task["may_promote_any_ratio_to_supply_pressure"] is not False:
@@ -198,7 +196,7 @@ def audit_supply_load_denominator_boundary(
     if dynamic["government_securities_supply_load_ratio_materialisation_authorized"] is not False:
         errors.append("model contract may not authorize supply-load ratio")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "supply_load_denominator_candidate_materialisation_comparison"
+        "government_securities_supply_measurement_design_review"
     ):
         errors.append("model contract next task changed")
 
@@ -245,7 +243,7 @@ def main() -> None:
                 "ratio_materialisation_authorized": False,
                 "pressure_node_resolved": False,
                 "feedback_activation_authorized": False,
-                "next_task": "supply_load_denominator_candidate_materialisation_comparison",
+                "next_task": "government_securities_supply_measurement_design_review",
             },
             indent=2,
         )

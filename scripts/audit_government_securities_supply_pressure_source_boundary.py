@@ -141,11 +141,9 @@ def audit_supply_pressure_source_boundary(
             errors.append(f"supply-pressure source review may not promote {key}")
 
     task = review["next_task"]
-    if task["id"] != "supply_load_denominator_candidate_materialisation_comparison":
+    if task["id"] != "government_securities_supply_measurement_design_review":
         errors.append("next supply-pressure task changed")
-    if task["authorization"] != (
-        "DESCRIPTIVE_SOURCE_MATERIALISATION_AND_BOUNDARY_COMPARISON_ONLY"
-    ):
+    if task["authorization"] != "STRUCTURAL_MEASUREMENT_DESIGN_ONLY":
         errors.append("next task authorization changed")
     if task["may_compute_pressure_ratio_now"] is not False:
         errors.append("next task may not compute pressure ratio")
@@ -230,7 +228,7 @@ def audit_supply_pressure_source_boundary(
     if dynamic["government_securities_supply_pressure_scalar_selected"] is not False:
         errors.append("model contract selected a scalar pressure index")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "supply_load_denominator_candidate_materialisation_comparison"
+        "government_securities_supply_measurement_design_review"
     ):
         errors.append("model contract next issuance-yield task changed")
 
@@ -271,7 +269,7 @@ def main() -> None:
                 "submitted_bids_series_extractable": False,
                 "denominator_boundary_frozen": False,
                 "denominator_review": "NO_EXACT_ONE_TO_ONE_AUCTION_UNIVERSE_DENOMINATOR_SELECTED",
-                "next_task": "supply_load_denominator_candidate_materialisation_comparison",
+                "next_task": "government_securities_supply_measurement_design_review",
             },
             indent=2,
         )

@@ -126,13 +126,14 @@
     "public_version_change_authorized": false
   },
   "next_task": {
-    "id": "supply_load_denominator_candidate_materialisation_comparison",
-    "authorization": "DESCRIPTIVE_SOURCE_MATERIALISATION_AND_BOUNDARY_COMPARISON_ONLY",
+    "id": "government_securities_supply_measurement_design_review",
+    "authorization": "STRUCTURAL_MEASUREMENT_DESIGN_ONLY",
     "may_compute_pressure_ratio_now": false,
     "may_create_approximate_chart_values": false,
     "may_activate_feedback": false
   },
   "source_vintage_probe_contract": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_contract.json",
   "source_vintage_probe_assessment": "model/dynamics/government_securities_supply_pressure_source_vintage_probe_assessment_2026_09_20.json",
-  "supply_load_denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json"
+  "supply_load_denominator_boundary_review": "model/dynamics/government_securities_supply_load_denominator_boundary_review_2026_09_20.json",
+  "ecb_denominator_probe_assessment": "model/dynamics/government_securities_supply_load_ecb_denominator_probe_assessment_2026_09_20.json"
 }
