@@ -21,7 +21,7 @@ class FiscalCapbMaterialisationExecutionReadinessTests(unittest.TestCase):
     def test_original_live_gate_executed_successfully_and_was_reviewed(self) -> None:
         self.assertEqual(
             self.a["status"],
-            "PRE2022_PROBE_EXECUTED_REVIEWED_RAW_SOURCE_PRESERVATION_PENDING",
+            "RAW_SOURCE_PRESERVATION_COMPLETE_SOURCE_CYCLE_CLOSED",
         )
         state = self.a["execution_state"]
         self.assertTrue(state["live_provider_work_manual_only"])
@@ -32,8 +32,8 @@ class FiscalCapbMaterialisationExecutionReadinessTests(unittest.TestCase):
         self.assertEqual(state["release_count"], 9)
         self.assertTrue(state["retained_artifact_reviewed"])
         self.assertTrue(state["timing_adjudication_completed"])
-        self.assertFalse(state["repository_raw_bytes_retained"])
-        self.assertFalse(state["retained_source_vintage_created"])
+        self.assertTrue(state["repository_raw_bytes_retained"])
+        self.assertTrue(state["retained_source_vintage_created"])
 
     def test_pre2022_probe_is_executed_and_raw_preservation_is_next(self) -> None:
         state = self.a["execution_state"]
@@ -43,7 +43,7 @@ class FiscalCapbMaterialisationExecutionReadinessTests(unittest.TestCase):
         self.assertEqual(state["pre2022_source_probe_conclusion"], "success")
         self.assertEqual(state["pre2022_source_probe_artifact_id"], 10596385949)
         self.assertTrue(state["raw_source_preservation_preregistered"])
-        self.assertFalse(state["raw_source_preservation_executed"])
+        self.assertTrue(state["raw_source_preservation_executed"])\n        self.assertEqual(state["raw_source_preservation_run_id"], 35483550266)\n        self.assertEqual(state["raw_source_preservation_successful_attempt"], 2)\n        self.assertEqual(state["raw_source_preservation_conclusion"], "success")\n        self.assertEqual(state["raw_source_preservation_commit"], "efb1f3ae5b025176645d45276b684efe65aa4174")
         self.assertEqual(
             state["raw_source_preservation_contract"],
             "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json",
@@ -62,7 +62,7 @@ class FiscalCapbMaterialisationExecutionReadinessTests(unittest.TestCase):
 
     def test_model_contract_points_to_pre2022_manual_gate_not_autonomous_work(self) -> None:
         stage = self.m["scientific_stage"]
-        self.assertTrue(stage["selective_reopen_active"])
+        self.assertFalse(stage["selective_reopen_active"])
         self.assertIsNone(stage["active_autonomous_empirical_task"])
         self.assertEqual(
             stage["active_manual_empirical_gate"],
@@ -70,9 +70,9 @@ class FiscalCapbMaterialisationExecutionReadinessTests(unittest.TestCase):
         )
         self.assertEqual(
             stage["selective_reopen_execution_state"],
-            "SOURCE_BOUNDARY_ADJUDICATED_RAW_SOURCE_PRESERVATION_PENDING",
+            "RAW_SOURCE_PRESERVATION_COMPLETE_RETURNED_TO_BASELINE_HOLD",
         )
-        self.assertFalse(stage["fiscal_capb_repository_raw_bytes_retained"])
+        self.assertTrue(stage["fiscal_capb_repository_raw_bytes_retained"])
 
 
 if __name__ == "__main__":
