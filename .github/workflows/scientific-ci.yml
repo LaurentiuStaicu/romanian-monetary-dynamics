@@ -156,6 +156,9 @@ jobs:
       - name: Audit F3 observed behavior diagnostics
         run: python scripts/audit_f3_behavior_diagnostics.py
 
+      - name: Audit government F3 holder diagnostic
+        run: python scripts/audit_government_f3_holder_diagnostic.py
+
       - name: Recompute dimensional consistency independently
         run: python scripts/audit_dimensional_consistency.py
 
