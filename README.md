@@ -222,8 +222,8 @@ Version changes are governed atomically by [releases/README.md](releases/README.
 
 ### Support, citation and license
 
-For reproducible bugs, documentation problems or questions about repository behaviour, open a GitHub issue and include the RMD version or commit, Python version, command executed and relevant traceback/output. Scientific claims should be discussed against the canonical contracts and retained evidence rather than inferred from README prose alone.
+For reproducible bugs, documentation problems or questions about repository behaviour, [open a GitHub issue](https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/issues) and include the RMD version or commit, Python version, command executed and relevant traceback/output. Scientific claims should be discussed against the canonical contracts and retained evidence rather than inferred from README prose alone.
 
 If you use RMD in research, cite the exact released version using [CITATION.cff](CITATION.cff).
 
-RMD is released under the [MIT License](LICENSE). Third-party datasets and source documents retain their own licensing and reuse terms.
+RMD is maintained by **Laurentiu Staicu** and released under the [MIT License](LICENSE). Third-party datasets and source documents retain their own licensing and reuse terms.
