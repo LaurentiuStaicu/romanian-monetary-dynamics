@@ -1,7 +1,7 @@
 {
   "contract_version": "1.0",
   "frozen_on": "2026-09-20",
-  "status": "PREVIEW_ONLY_NOT_PUBLIC_README_ASSET",
+  "status": "PUBLIC_ASSET_PROMOTION_PROPOSED_NOT_MERGED",
   "purpose": "Define the first-page conceptual figure for RMD without implying complete bilateral accounting coverage, validated causal links, active feedback loops or behavioural closure.",
   "evidence_basis": [
     {
@@ -68,7 +68,9 @@
     "dark_asset": ".github/readme-assets/rmd-concept-overview-dark.svg",
     "final_public_asset_location_after_approval": "assets/readme/",
     "layout": "compact portrait; 3x2 sector grid above four vertically stacked scientific layers",
-    "responsive_rationale": "The earlier 1120px-wide draft was too dense when scaled to narrow GitHub viewports. The 760px portrait layout preserves larger effective text and clearer hierarchy."
+    "responsive_rationale": "The earlier 1120px-wide draft was too dense when scaled to narrow GitHub viewports. The 760px portrait layout preserves larger effective text and clearer hierarchy.",
+    "public_light_asset": "assets/readme/rmd-concept-overview-light.svg",
+    "public_dark_asset": "assets/readme/rmd-concept-overview-dark.svg"
   },
   "information_hierarchy": [
     {
@@ -164,6 +166,7 @@
   "public_readme_boundary": {
     "diagram_publication_authorized": false,
     "public_readme_replacement_authorized": false,
-    "next_step": "Render/review the preview inside .github/RMD_README_PREVIEW.md. Promote assets to assets/readme and replace the public README only after visual/editorial approval."
+    "next_step": "Review the fully rendered public README proposal and its light/dark diagram on the implementation PR; merge only after approval.",
+    "public_implementation_proposed": true
   }
 }
