@@ -1,4 +1,18 @@
-"""Behavioural research forms for the scientific core.\n\nThis module contains executable equations used by current candidate/deferred\nmechanisms and a small number of explicitly retained noncanonical research\nforms. Code availability is never evidence of scientific admission. The\ncanonical mapping from mechanism to executable implementation is governed by\nmodel/empirical_dynamics/mechanism_registry.json; functions listed there as\nretained noncanonical forms may not enter the reference model, calibration,\nSystem Dynamics feedback activation or behavioural closure merely because they\nremain executable.\n\nNo coefficient has a convenience default: every numerical parameter must be\nsupplied explicitly by an authorized calibration/validation or source contract.\nAccounting Spine and Dynamic Core identities remain hard constraints.\n"""
+"""Behavioural research forms for the scientific core.
+
+This module contains executable equations used by current candidate/deferred
+mechanisms and a small number of explicitly retained noncanonical research
+forms. Code availability is never evidence of scientific admission. The
+canonical mapping from mechanism to executable implementation is governed by
+model/empirical_dynamics/mechanism_registry.json; functions listed there as
+retained noncanonical forms may not enter the reference model, calibration,
+System Dynamics feedback activation or behavioural closure merely because they
+remain executable.
+
+No coefficient has a convenience default: every numerical parameter must be
+supplied explicitly by an authorized calibration/validation or source contract.
+Accounting Spine and Dynamic Core identities remain hard constraints.
+"""
 
 from __future__ import annotations
 
@@ -28,7 +42,17 @@ def partial_adjustment_rate(
     long_run_pass_through: float,
     adjustment_speed: float,
 ) -> float:
-    """Retained noncanonical generic partial-adjustment pass-through form.\n\n    r_t = r_(t-1) + lambda * (alpha + beta * policy_t - r_(t-1))\n\n    This historical research form is not the current RMD monetary-pass-through\n    implementation. The canonical candidate is the frozen household-housing\n    delta-policy equation recorded in the mechanism registry.\n\n    Rates are percentage points per annum. ``adjustment_speed`` is a fraction of\n    the remaining gap closed per observation period.\n    """
+    """Retained noncanonical generic partial-adjustment pass-through form.
+
+    r_t = r_(t-1) + lambda * (alpha + beta * policy_t - r_(t-1))
+
+    This historical research form is not the current RMD monetary-pass-through
+    implementation. The canonical candidate is the frozen household-housing
+    delta-policy equation recorded in the mechanism registry.
+
+    Rates are percentage points per annum. ``adjustment_speed`` is a fraction of
+    the remaining gap closed per observation period.
+    """
 
     _finite(previous_rate, policy_rate, intercept, long_run_pass_through)
     _unit_interval(adjustment_speed, "adjustment_speed")
@@ -92,7 +116,11 @@ def corporate_investment_growth(
     rate_sensitivity: float,
     eu_fund_sensitivity: float,
 ) -> float:
-    """Retained noncanonical exploratory corporate-investment equation.\n\n    No corporate-investment behavioural form is currently admitted after the\n    preregistered structural-selection cycle failed before holdout.\n    """
+    """Retained noncanonical exploratory corporate-investment equation.
+
+    No corporate-investment behavioural form is currently admitted after the
+    preregistered structural-selection cycle failed before holdout.
+    """
 
     _finite(
         demand_growth,
@@ -159,7 +187,11 @@ def sovereign_spread(
     deficit_sensitivity: float,
     external_risk_sensitivity: float,
 ) -> float:
-    """Retained noncanonical exploratory sovereign-spread equation.\n\n    No sovereign-yield behavioural form is currently admitted after the\n    preregistered structural-selection cycle failed before holdout.\n    """
+    """Retained noncanonical exploratory sovereign-spread equation.
+
+    No sovereign-yield behavioural form is currently admitted after the
+    preregistered structural-selection cycle failed before holdout.
+    """
 
     _finite(
         debt_to_gdp,
@@ -184,7 +216,13 @@ def fx_pass_through_inflation(
     depreciation_lags: tuple[float, ...],
     lag_weights: tuple[float, ...],
 ) -> float:
-    """Retained noncanonical exploratory distributed-lag FX pass-through form.\n\n    No FX-inflation behavioural form is currently admitted after the\n    preregistered structural-selection cycle failed before holdout. No\n    historical pass-through coefficient is hard-coded because published\n    Romanian evidence indicates regime dependence over time.\n    """
+    """Retained noncanonical exploratory distributed-lag FX pass-through form.
+
+    No FX-inflation behavioural form is currently admitted after the
+    preregistered structural-selection cycle failed before holdout. No
+    historical pass-through coefficient is hard-coded because published
+    Romanian evidence indicates regime dependence over time.
+    """
 
     _finite(baseline_inflation, *depreciation_lags, *lag_weights)
     if len(depreciation_lags) != len(lag_weights) or not lag_weights:
