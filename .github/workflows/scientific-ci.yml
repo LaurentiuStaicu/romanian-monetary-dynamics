@@ -168,6 +168,9 @@ jobs:
       - name: Audit candidate delay evidence
         run: python scripts/audit_delay_evidence.py
 
+      - name: Audit per-feedback activation criteria
+        run: python scripts/audit_feedback_activation_criteria.py
+
       - name: Audit behavioural form robustness
         run: python scripts/audit_behavioural_robustness.py
 
