@@ -1,0 +1,169 @@
+{
+  "contract_version": "1.0",
+  "frozen_on": "2026-09-20",
+  "status": "PREVIEW_ONLY_NOT_PUBLIC_README_ASSET",
+  "purpose": "Define the first-page conceptual figure for RMD without implying complete bilateral accounting coverage, validated causal links, active feedback loops or behavioural closure.",
+  "evidence_basis": [
+    {
+      "source": "Nature scientific illustration guidance",
+      "url": "https://www.nature.com/documents/Nature_scientific_illustration_author_guide.pdf",
+      "adopted_rules": [
+        "clear visual hierarchy",
+        "visual editing to essential information",
+        "clarity",
+        "accessibility"
+      ]
+    },
+    {
+      "source": "Nature research figure guide",
+      "url": "https://research-figure-guide.nature.com/figures/building-and-exporting-figure-panels/",
+      "adopted_rules": [
+        "standard sans-serif fonts",
+        "high contrast",
+        "accessible colour use",
+        "avoid decorative clutter"
+      ]
+    },
+    {
+      "source": "System Dynamics Review author guidance",
+      "url": "https://onlinelibrary.wiley.com/page/journal/10991727/homepage/forauthors.html",
+      "adopted_rules": [
+        "a structure image communicates only a comprehensible piece of the model",
+        "do not treat the diagram as full model documentation",
+        "avoid crowded diagrams"
+      ]
+    },
+    {
+      "source": "Jalali & Beaulieu 2024",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/sdr.1753",
+      "adopted_rules": [
+        "distinguish sourced/modelled causal content from intuition",
+        "make qualitative-structure status transparent"
+      ]
+    },
+    {
+      "source": "GitHub responsive image guidance",
+      "url": "https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github",
+      "adopted_rules": [
+        "provide light/dark image variants with picture/prefers-color-scheme",
+        "include descriptive alt text"
+      ]
+    }
+  ],
+  "visual_identity": {
+    "suite_palette": [
+      "#333333",
+      "#707070",
+      "#a0a0a0",
+      "#ffffff",
+      "#000000"
+    ],
+    "style": "monochrome, flat, no gradients, no shadows, no decorative illustration",
+    "font_stack": "Arial, Helvetica, sans-serif",
+    "canvas": {
+      "width": 760,
+      "height": 930
+    },
+    "light_asset": ".github/readme-assets/rmd-concept-overview-light.svg",
+    "dark_asset": ".github/readme-assets/rmd-concept-overview-dark.svg",
+    "final_public_asset_location_after_approval": "assets/readme/",
+    "layout": "compact portrait; 3x2 sector grid above four vertically stacked scientific layers",
+    "responsive_rationale": "The earlier 1120px-wide draft was too dense when scaled to narrow GitHub viewports. The 760px portrait layout preserves larger effective text and clearer hierarchy."
+  },
+  "information_hierarchy": [
+    {
+      "level": 1,
+      "label": "RMD system boundary",
+      "content": [
+        "H — Households + NPISH",
+        "C — Non-financial corporations",
+        "F — Financial corporations",
+        "G — General government",
+        "BNR — Central bank",
+        "X — Rest of world"
+      ],
+      "semantic_rule": "Sector labels identify the institutional boundary only. No inter-sector causal or bilateral-completeness arrows are shown."
+    },
+    {
+      "level": 2,
+      "label": "Accounting Spine",
+      "content": [
+        "F2–F8",
+        "stocks",
+        "transactions",
+        "revaluations",
+        "double-entry conservation"
+      ],
+      "semantic_rule": "Accounting constraints are visually primary because they are hard constraints."
+    },
+    {
+      "level": 3,
+      "label": "Observed evidence & reference modes",
+      "content": [
+        "official/reproducible sources",
+        "retained vintages",
+        "9/10 required reference modes ready"
+      ],
+      "semantic_rule": "Evidence informs the model but does not by itself activate behavioural structure."
+    },
+    {
+      "level": 4,
+      "label": "Candidate dynamics",
+      "content": [
+        "feedback architecture",
+        "delays",
+        "behavioural candidates",
+        "0 quantitatively active feedback loops"
+      ],
+      "semantic_rule": "Candidate status and inactivity must be explicit in the figure."
+    },
+    {
+      "level": 5,
+      "label": "Activation gates",
+      "content": [
+        "evidence",
+        "identification",
+        "units",
+        "extreme-condition tests",
+        "sensitivity",
+        "validation"
+      ],
+      "semantic_rule": "Dynamic activation is conditional and downstream of explicit gates."
+    },
+    {
+      "level": 6,
+      "label": "Current state",
+      "content": [
+        "Evidence-Triggered Baseline Hold",
+        "behavioural closure inactive"
+      ],
+      "semantic_rule": "Current state is a status footer, not a visual claim of completeness."
+    }
+  ],
+  "arrow_semantics": {
+    "sector_to_accounting": "represented through",
+    "accounting_to_evidence": "checked against / constrained by",
+    "evidence_to_candidate_dynamics": "informs; does not activate",
+    "candidate_dynamics_to_activation_gates": "must pass before quantitative activation",
+    "prohibited": [
+      "causal +/- polarity arrows between sectors",
+      "R/B loop labels",
+      "arrows implying complete bilateral source coverage",
+      "arrows implying candidate feedbacks are active"
+    ]
+  },
+  "accessibility": {
+    "requires_svg_title": true,
+    "requires_svg_desc": true,
+    "requires_readme_alt_text": true,
+    "colour_is_not_sole_status_channel": true,
+    "status_is_always_written_as_text": true,
+    "dark_and_light_variants_required": true,
+    "minimum_effective_body_font_px": 16
+  },
+  "public_readme_boundary": {
+    "diagram_publication_authorized": false,
+    "public_readme_replacement_authorized": false,
+    "next_step": "Render/review the preview inside .github/RMD_README_PREVIEW.md. Promote assets to assets/readme and replace the public README only after visual/editorial approval."
+  }
+}

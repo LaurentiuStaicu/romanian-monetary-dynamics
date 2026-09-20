@@ -22,6 +22,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 ### Repository governance
 
 - defined a professional scientific-model README design contract and a canonical-state-checked RMD landing-page preview, without replacing the public README before review;
+- added a light/dark, accessibility-checked RMD conceptual-structure diagram preview that shows the institutional boundary and accounting/evidence/dynamics/activation layers without implying validated causal links or complete bilateral coverage;
 - added an atomic release/versioning contract and release checklist;
 - future version changes must synchronize package metadata, README badge, citation metadata, changelog, release contract, Git tag and GitHub Release.
 
