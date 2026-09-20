@@ -11,6 +11,7 @@ import argparse
 import hashlib
 import json
 import subprocess
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -58,7 +59,12 @@ def extract_native_text(pdf_path: Path, text_path: Path) -> None:
 
 
 def normalized(text: str) -> str:
-    return " ".join(text.split()).casefold()
+    decomposed = unicodedata.normalize("NFKD", text)
+    without_marks = "".join(
+        char for char in decomposed
+        if not unicodedata.combining(char)
+    )
+    return " ".join(without_marks.split()).casefold()
 
 
 def anchor_checks(text: str, source: dict) -> dict[str, bool]:
