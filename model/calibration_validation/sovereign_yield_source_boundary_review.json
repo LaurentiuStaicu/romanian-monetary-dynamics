@@ -46,8 +46,10 @@
     "no_issuance_proxy": "Gross issuance or refinancing need may not be inserted as 'supply pressure' without a separately specified and validated source/stock-flow mapping. The 2026-09-20 structural preregistration explicitly preserves this rule after raw BNR source retention.",
     "government_issuance_source_boundary_review": "model/dynamics/government_debt_issuance_source_boundary_review.json",
     "government_issuance_materialisation_contract": "model/dynamics/government_debt_issuance_materialisation_contract.json",
-    "issuance_semantic_update": "The retained BNR domestic-primary-market issuance source is exact on its own source boundary, but structural preregistration rejects one-to-one substitution into the generic closed issuance-yield loop. Gross financing need spans multiple domestic and external channels; raw issuance is not supply pressure; BNR primary-market yields remain instrument/currency-specific; and new-issue yields do not equal outstanding-debt interest cost.",
-    "government_issuance_yield_boundary_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
+    "issuance_semantic_update": "Exact retained BNR evidence now covers both domestic-primary issuance volumes and instrument/currency-specific primary-market issue rates for 2025. Structural preregistration still rejects one-to-one substitution into the generic closed issuance-yield loop: raw issuance is not supply pressure, primary issue rates are not a single generic sovereign yield, and new-issue rates do not equal outstanding-debt interest cost.",
+    "government_issuance_yield_boundary_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
+    "bnr_primary_market_rate_pilot": "model/dynamics/government_issuance_bnr_primary_market_yield_pilot_2025.json",
+    "bnr_primary_market_rate_pilot_effect": "DESCRIPTIVE_PARTIAL_EVIDENCE_ONLY_NOT_GENERIC_SOVEREIGN_YIELD"
   },
   "candidate_reformulation": {
     "current_registry_label": "sovereign_yield_spread_response",
