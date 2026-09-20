@@ -89,7 +89,8 @@
       "supply_pressure_empirical_boundary_status": "MULTIDIMENSIONAL_CANDIDATE_BOUNDARY_NO_SCALAR_PROMOTION",
       "supply_pressure_scalar_selected": false,
       "government_securities_supply_measurement_design_review": "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
-      "supply_pressure_measurement_architecture": "STRUCTURED_VECTOR_UMBRELLA_UNRESOLVED"
+      "supply_pressure_measurement_architecture": "STRUCTURED_VECTOR_UMBRELLA_UNRESOLVED",
+      "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json"
     },
     {
       "id": "bank_credit_balance_sheet_loop",
