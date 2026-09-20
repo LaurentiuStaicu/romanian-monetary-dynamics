@@ -51,7 +51,10 @@
     "mof_announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
     "mof_announced_RON_primary_supply_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-supply-pilot-2026-09-20/source_vintage_manifest.json",
     "mof_announced_RON_primary_supply_reference_mode_pilot": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json",
-    "mof_announced_RON_primary_supply_full_2025_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json"
+    "mof_announced_RON_primary_supply_full_2025_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json",
+    "mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract": "model/dynamics/mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract.json",
+    "mof_announced_RON_primary_reference_auction_full_2025_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
+    "mof_announced_RON_primary_reference_auction_partial_2025_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json"
   },
   "canonical_state": {
     "accounting": {
