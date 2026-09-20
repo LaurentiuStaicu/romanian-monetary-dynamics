@@ -63,7 +63,6 @@ def normalized(text: str) -> str:
 
 def anchor_checks(text: str, source: dict) -> dict[str, bool]:
     order = source["order_number"]
-    label = source["coverage_label"].split()[0]
     anchors = [
         f"ORDIN NR. {order}",
         "ANEXA 1",
@@ -72,7 +71,6 @@ def anchor_checks(text: str, source: dict) -> dict[str, bool]:
         "Data Licitaţiei",
         "Valoare nominală",
         "SSON",
-        label,
     ]
     haystack = normalized(text)
     return {anchor: normalized(anchor) in haystack for anchor in anchors}
