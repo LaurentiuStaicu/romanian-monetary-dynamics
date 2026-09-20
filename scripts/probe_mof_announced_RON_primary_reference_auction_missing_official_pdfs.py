@@ -336,6 +336,30 @@ def run_probe(output: Path) -> dict:
         json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
+    diagnostic_records = []
+    for record in records:
+        diagnostic_records.append(
+            {
+                "source_id": record["source_id"],
+                "attempts": [
+                    {
+                        "url": attempt["url"],
+                        "discovery_basis": attempt["discovery_basis"],
+                        "http_status": attempt["http_status"],
+                        "bytes": attempt["bytes"],
+                        "pdf_magic": attempt["pdf_magic"],
+                        "identity_checks": attempt.get("identity_checks"),
+                        "all_identity_checks_pass": attempt.get(
+                            "all_identity_checks_pass"
+                        ),
+                        "transport": attempt["response_metadata"].get("transport"),
+                        "returncode": attempt["response_metadata"].get("returncode"),
+                        "stderr": attempt["response_metadata"].get("stderr"),
+                    }
+                    for attempt in record["attempts"]
+                ],
+            }
+        )
     print(
         json.dumps(
             {
@@ -343,6 +367,7 @@ def run_probe(output: Path) -> dict:
                 "accepted_source_ids": manifest["accepted_source_ids"],
                 "unresolved_source_ids": manifest["unresolved_source_ids"],
                 "no_model_state_changed": True,
+                "diagnostics": diagnostic_records,
             },
             indent=2,
         )
