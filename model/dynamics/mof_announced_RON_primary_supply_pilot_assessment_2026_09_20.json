@@ -1,0 +1,161 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-20",
+  "reference_mode_id": "announced_RON_primary_supply_level",
+  "contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
+  "retained_source_vintage": "data/source_vintages/mof-announced-ron-primary-supply-pilot-2026-09-20/source_vintage_manifest.json",
+  "source_identity": {
+    "mof_order_159_february_2025": {
+      "raw_sha256": "10a8a0ff4771147fb65d032ca3929b8f189976ca86515a936eff5c30321f1094",
+      "native_text_sha256": "14919b668a10619950d27f47ca6454b4938a128d81477f48e3bc1e34e8a1d559",
+      "raw_bytes": 256463,
+      "response_metadata": {
+        "content_type": "application/pdf",
+        "last_modified": "Fri, 31 Jan 2025 09:52:03 GMT",
+        "etag": "\"679c9d43-3e9cf\""
+      }
+    },
+    "mof_order_352_march_2025": {
+      "raw_sha256": "a7c978b241fa26e46b28a7ef08fb8bcd629814b49786da165d6b9a609ad9b4b6",
+      "native_text_sha256": "2383c81703e6a9a1a22467d5715190bf5c5326e4e9661256bb992cb95bd7e391",
+      "raw_bytes": 256352,
+      "response_metadata": {
+        "content_type": "application/pdf",
+        "last_modified": "Fri, 28 Feb 2025 10:59:26 GMT",
+        "etag": "\"67c1970e-3e960\""
+      }
+    },
+    "mof_order_6826_january_2025": {
+      "raw_sha256": "15163db1ce6ee0b39437cb8677622e17759d9106b69584b919de12b29331521c",
+      "native_text_sha256": "e544771304650d44c06fd9eaa42a57ab872866b9a4efde2209a73118974b3323",
+      "raw_bytes": 114623,
+      "response_metadata": {
+        "content_type": "application/pdf",
+        "last_modified": "Tue, 31 Dec 2024 10:08:04 GMT",
+        "etag": "\"6773c284-1bfbf\""
+      }
+    }
+  },
+  "document_reconciliations": [
+    {
+      "source_id": "mof_order_6826_january_2025",
+      "order_number": "6826",
+      "order_issue_date": "2024-12-30",
+      "t_bill_row_count": 2,
+      "benchmark_row_count": 9,
+      "t_bill_competitive_RON_million": 1400.0,
+      "benchmark_competitive_RON_million": 3800.0,
+      "benchmark_SSON_RON_million": 570.0,
+      "parsed_base_RON_million": 5200.0,
+      "parsed_combined_RON_million": 5770.0,
+      "expected_base_RON_million": 5200.0,
+      "expected_SSON_RON_million": 570.0,
+      "expected_combined_RON_million": 5770.0,
+      "checks": {
+        "printed_base_matches_contract": true,
+        "printed_SSON_matches_contract": true,
+        "annex1_plus_annex2_competitive_matches_article1_base": true,
+        "annex2_SSON_matches_article1_SSON": true,
+        "all_event_rows_match_article1_combined": true
+      }
+    },
+    {
+      "source_id": "mof_order_159_february_2025",
+      "order_number": "159",
+      "order_issue_date": "2025-01-31",
+      "t_bill_row_count": 2,
+      "benchmark_row_count": 10,
+      "t_bill_competitive_RON_million": 1600.0,
+      "benchmark_competitive_RON_million": 5600.0,
+      "benchmark_SSON_RON_million": 840.0,
+      "parsed_base_RON_million": 7200.0,
+      "parsed_combined_RON_million": 8040.0,
+      "expected_base_RON_million": 7200.0,
+      "expected_SSON_RON_million": 840.0,
+      "expected_combined_RON_million": 8040.0,
+      "checks": {
+        "printed_base_matches_contract": true,
+        "printed_SSON_matches_contract": true,
+        "annex1_plus_annex2_competitive_matches_article1_base": true,
+        "annex2_SSON_matches_article1_SSON": true,
+        "all_event_rows_match_article1_combined": true
+      }
+    },
+    {
+      "source_id": "mof_order_352_march_2025",
+      "order_number": "352",
+      "order_issue_date": "2025-02-28",
+      "t_bill_row_count": 2,
+      "benchmark_row_count": 10,
+      "t_bill_competitive_RON_million": 1800.0,
+      "benchmark_competitive_RON_million": 5600.0,
+      "benchmark_SSON_RON_million": 840.0,
+      "parsed_base_RON_million": 7400.0,
+      "parsed_combined_RON_million": 8240.0,
+      "expected_base_RON_million": 7400.0,
+      "expected_SSON_RON_million": 840.0,
+      "expected_combined_RON_million": 8240.0,
+      "checks": {
+        "printed_base_matches_contract": true,
+        "printed_SSON_matches_contract": true,
+        "annex1_plus_annex2_competitive_matches_article1_base": true,
+        "annex2_SSON_matches_article1_SSON": true,
+        "all_event_rows_match_article1_combined": true
+      }
+    }
+  ],
+  "event_level_pilot": {
+    "artifact": "data/processed/government_securities_announced_RON_primary_supply_2025Q1_events.csv",
+    "event_count_all_scheduled": 64,
+    "event_count_completed_by_cutoff": 63,
+    "cutoff_date": "2025-03-31",
+    "post_cutoff_forward_event_count": 1,
+    "post_cutoff_forward_events": [
+      {
+        "event_date": "2025-04-01",
+        "event_type": "BENCHMARK_BOND_SSON",
+        "isin": "RO45DLJ4EE76",
+        "announced_nominal_RON_million": 75.0,
+        "source_id": "mof_order_352_march_2025"
+      }
+    ]
+  },
+  "monthly_pilot": {
+    "artifact": "data/processed/government_securities_announced_RON_primary_supply_2025Q1_monthly.csv",
+    "values_RON_million": {
+      "2025-01": 5770.0,
+      "2025-02": 8040.0,
+      "2025-03": 8165.0
+    },
+    "january_flash_crosscheck": "PASS_5770",
+    "february_flash_announced_schedule_crosscheck": "PASS_8040",
+    "march_order_total_not_equal_march_event_month_by_design": true,
+    "march_difference_RON_million": 75.0,
+    "march_difference_reason": "RO45DLJ4EE76 SSON belongs to 2025-04-01 under the frozen event-date aggregation rule."
+  },
+  "pilot_result": {
+    "status": "PASS_EXACT_EVENT_LEVEL_AND_MONTHLY_Q1_PILOT",
+    "raw_source_retention_complete": true,
+    "native_text_extraction_complete": true,
+    "all_document_reconciliations_pass": true,
+    "monthly_event_date_aggregation_pass": true,
+    "reference_mode_pilot_materialised": true,
+    "full_reference_mode_promoted": false
+  },
+  "scientific_effect": {
+    "supply_surprise_materialised": false,
+    "duration_supply_materialised": false,
+    "yield_effect_estimation_authorized": false,
+    "government_securities_supply_pressure_node_resolved": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "mof_announced_RON_primary_supply_full_2025_extension_contract",
+    "authorization": "SOURCE_EXTENSION_AND_REFERENCE_MODE_MATERIALISATION_ONLY",
+    "task": "Extend the proven event-level extraction contract across all 2025 monthly Ministry issuance orders, preserving event-date aggregation and document reconciliation before any full reference-mode promotion.",
+    "may_estimate_supply_to_yield_effect": false,
+    "may_activate_feedback": false
+  }
+}
