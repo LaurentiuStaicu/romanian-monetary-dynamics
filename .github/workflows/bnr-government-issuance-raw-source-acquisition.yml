@@ -6,14 +6,17 @@ on:
       - source-vintage/bnr-government-issuance-raw-2026-09-20
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   acquire-reviewed-bnr-source:
+    if: ${{ github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out acquisition branch
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
       - name: Set up Python 3.12
         uses: actions/setup-python@v7
@@ -27,6 +30,22 @@ jobs:
         run: |
           python scripts/acquire_bnr_government_issuance_raw_source.py \
             --output bnr_government_issuance_raw_artifacts
+
+      - name: Retain exact raw source vintage on acquisition branch
+        run: |
+          DEST="data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20"
+          if [ -e "$DEST" ]; then
+            echo "Destination source vintage already exists; refusing overwrite."
+            exit 1
+          fi
+          mkdir -p "$DEST"
+          cp -a bnr_government_issuance_raw_artifacts/. "$DEST/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DEST"
+          git diff --cached --quiet && { echo "No retained source-vintage changes."; exit 1; }
+          git commit -m "data: retain exact BNR government issuance source vintage"
+          git push origin HEAD:source-vintage/bnr-government-issuance-raw-2026-09-20
 
       - name: Upload exact raw source and manifest
         uses: actions/upload-artifact@v4
