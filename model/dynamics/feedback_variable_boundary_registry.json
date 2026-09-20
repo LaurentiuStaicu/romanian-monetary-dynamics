@@ -296,9 +296,9 @@
     {
       "id": "sovereign_yield",
       "current_boundary_class": "UNRESOLVED",
-      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "current_runtime_role": "QUALITATIVE_UMBRELLA_NODE_STRUCTURED_YIELD_MEASUREMENT_LAYER_INACTIVE",
       "exact_reference_mode_id": null,
-      "classification_basis": "A retained descriptive BNR pilot now provides instrument- and currency-specific domestic primary-market issue yields/rates for 2025, while an ECB long-term RON yield source exists separately. Neither source alone establishes the exact integrated generic sovereign_yield feedback node; instrument/maturity/market boundary and any aggregation rule remain unresolved.",
+      "classification_basis": "Retained evidence spans distinct yield concepts: BNR instrument/currency-specific domestic primary-market issue rates and the ECB harmonised long-term RON convergence yield near 10-year maturity. These are not definitionally interchangeable, so sovereign_yield remains an unresolved qualitative umbrella with a structured yield-measurement layer.",
       "related_reference_modes": [],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
       "current_feedback_activation_authorized": false,
@@ -308,7 +308,14 @@
           "scope": "BNR_DOMESTIC_PRIMARY_MARKET_INSTRUMENT_AND_CURRENCY_SPECIFIC_ISSUE_RATES_2025",
           "effect": "PARTIAL_ONLY: observed issue-specific primary-market yields/rates are not a single generic sovereign_yield node, are not secondary-market long yields, and are not outstanding-debt effective rates."
         }
-      ]
+      ],
+      "primary_yield_to_sovereign_yield_boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+      "yield_measurement_layer_ids": [
+        "domestic_primary_issue_rate_vector",
+        "RON_long_term_liquid_benchmark_yield",
+        "maturity_matched_secondary_yield_or_curve"
+      ],
+      "single_sovereign_yield_scalar_selected": false
     }
   ]
 }
