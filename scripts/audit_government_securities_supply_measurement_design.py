@@ -176,16 +176,14 @@ def audit_supply_measurement_design(
             errors.append(f"measurement design may not promote {key}")
 
     next_task = review["next_task"]
-    if next_task["id"] != (
-        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
-    ):
+    if next_task["id"] != "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery":
         errors.append("measurement-design next task changed")
-    if next_task["authorization"] != (
-        "OFFICIAL_SOURCE_RETENTION_AMENDMENT_AWARE_EVENT_MATERIALISATION_ONLY"
-    ):
+    if next_task["authorization"] != "OFFICIAL_SOURCE_RECOVERY_ONLY":
         errors.append("measurement-design next-task authorization changed")
-    if next_task["may_materialise_announced_supply_reference_mode"] is not True:
-        errors.append("announced supply reference-mode materialisation must be authorized")
+    if next_task["required_source_count"] != 8:
+        errors.append("measurement-design missing-source count changed")
+    if next_task["may_materialise_missing_source_events_only_after_raw_retention"] is not True:
+        errors.append("missing-source events must remain raw-retention gated")
     for key in (
         "may_materialise_supply_surprise",
         "may_materialise_duration_supply",
@@ -248,7 +246,7 @@ def audit_supply_measurement_design(
     if link.get("supply_measurement_design_review") != REVIEW_PATH:
         errors.append("issuance-pressure link lacks measurement design")
     if link["source_boundary_status"] != (
-        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_FULL_2025_DEFINITION_FROZEN_AMENDMENT_AWARE_SOURCE_VINTAGE_PENDING"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
     ):
         errors.append("issuance-pressure measurement status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -296,7 +294,7 @@ def audit_supply_measurement_design(
     if dynamic.get("government_securities_supply_stock_normalisation_required") is not False:
         errors.append("model contract may not require stock normalisation")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_reference_auction_supply_full_2025_source_vintage"
+        "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery"
     ):
         errors.append("model contract next task changed")
 
