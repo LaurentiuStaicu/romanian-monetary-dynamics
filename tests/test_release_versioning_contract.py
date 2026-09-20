@@ -120,7 +120,7 @@ class ReleaseVersioningContractTests(unittest.TestCase):
         self.assertFalse(governance["release_or_version_change_authorized"])
 
     def test_release_checklist_is_user_visible(self) -> None:
-        release_doc = (ROOT / "RELEASE.md").read_text(encoding="utf-8")
+        release_doc = (ROOT / "releases" / "README.md").read_text(encoding="utf-8")
         for token in (
             "pyproject.toml",
             "CITATION.cff",
