@@ -35,13 +35,18 @@ class FiscalCapbMaterialisationExecutionReadinessTests(unittest.TestCase):
         self.assertFalse(state["repository_raw_bytes_retained"])
         self.assertFalse(state["retained_source_vintage_created"])
 
-    def test_next_probe_is_preregistered_but_not_executed(self) -> None:
+    def test_pre2022_probe_is_executed_and_raw_preservation_is_next(self) -> None:
         state = self.a["execution_state"]
         self.assertTrue(state["pre2022_source_probe_preregistered"])
-        self.assertFalse(state["pre2022_source_probe_executed"])
+        self.assertTrue(state["pre2022_source_probe_executed"])
+        self.assertEqual(state["pre2022_source_probe_run_id"], 35482485118)
+        self.assertEqual(state["pre2022_source_probe_conclusion"], "success")
+        self.assertEqual(state["pre2022_source_probe_artifact_id"], 10596385949)
+        self.assertTrue(state["raw_source_preservation_preregistered"])
+        self.assertFalse(state["raw_source_preservation_executed"])
         self.assertEqual(
-            state["pre2022_source_probe_contract"],
-            "model/calibration_validation/fiscal_reaction_capb_pre2022_source_probe_contract.json",
+            state["raw_source_preservation_contract"],
+            "model/calibration_validation/fiscal_capb_raw_source_preservation_contract.json",
         )
 
     def test_scientific_effect_remains_closed(self) -> None:
