@@ -236,7 +236,7 @@ def audit_announced_supply_reference_mode_contract(
     if link.get("announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("issuance-pressure link lacks announced-supply contract")
     if link["source_boundary_status"] != (
-        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_MONTHLY_10_OF_12_EVENT_COMPLETE_9_OF_12_CANONICAL_PROMOTION_BLOCKED_3_REQUIRED_SOURCES_MISSING"
     ):
         errors.append("issuance-pressure link source-contract status changed")
     if link["exact_integrated_equation_ready"] is not False:
@@ -260,7 +260,7 @@ def audit_announced_supply_reference_mode_contract(
     if bridge.get("announced_RON_primary_supply_reference_mode_contract") != CONTRACT_PATH:
         errors.append("issuance-pressure bridge lacks announced-supply contract")
     if bridge["status"] != (
-        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED"
+        "STRUCTURED_VECTOR_COMPETITIVE_ONLY_PARTIAL_EXACT_MONTHLY_10_OF_12_EVENT_COMPLETE_9_OF_12_CANONICAL_PROMOTION_BLOCKED_3_REQUIRED_SOURCES_MISSING"
     ):
         errors.append("issuance-pressure bridge source-contract status changed")
 
