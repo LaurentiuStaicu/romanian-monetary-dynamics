@@ -146,7 +146,7 @@ class F3BehaviorDiagnosticsTests(unittest.TestCase):
         errors = self.audit(artifact=mutated)
         self.assertTrue(
             any(
-                "differs from deterministic regeneration" in error
+                "differ from deterministic regeneration" in error
                 for error in errors
             )
         )
