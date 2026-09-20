@@ -206,8 +206,11 @@
       "announced_RON_primary_supply_reference_mode_status": "LEGACY_Q1_COMBINED_PILOT_RETAINED_NOT_FULL_YEAR_STABLE",
       "announced_RON_primary_supply_reference_mode_pilot_assessment": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_pilot_Q1_2025.json",
       "mof_announced_RON_primary_supply_full_2025_definition_review": "model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json",
-      "full_year_announced_RON_primary_reference_auction_supply_status": "DEFINITION_FROZEN_SOURCE_VINTAGE_PENDING",
-      "full_year_announced_RON_primary_reference_auction_supply_candidate_id": "announced_RON_primary_reference_auction_supply_level"
+      "full_year_announced_RON_primary_reference_auction_supply_status": "PARTIAL_EXACT_EVENT_MATERIALISATION_6_FINAL_MONTHS_8_REQUIRED_SOURCES_MISSING_CANONICAL_PROMOTION_BLOCKED",
+      "full_year_announced_RON_primary_reference_auction_supply_candidate_id": "announced_RON_primary_reference_auction_supply_level",
+      "full_year_announced_RON_primary_reference_auction_supply_source_vintage_contract": "model/dynamics/mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract.json",
+      "full_year_announced_RON_primary_reference_auction_supply_source_vintage_manifest": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
+      "full_year_announced_RON_primary_reference_auction_supply_partial_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json"
     },
     {
       "id": "inflationary_pressure",
