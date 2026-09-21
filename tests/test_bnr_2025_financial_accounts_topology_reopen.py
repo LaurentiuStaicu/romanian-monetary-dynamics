@@ -30,10 +30,14 @@ class Bnr2025FinancialAccountsTopologyReopenTests(unittest.TestCase):
     def test_current_reopen_state_passes(self):
         self.assertEqual(self.audit(),[])
 
-    def test_reference_mode_stays_partial_and_9_of_10(self):
+    def test_historical_topology_gate_did_not_promote_but_successor_did(self):
         mode=next(x for x in self.rm["modes"] if x["id"]=="sectoral_financial_positions")
-        self.assertEqual(mode["status"],"PARTIAL_SERIES_AVAILABLE")
-        self.assertEqual(self.model["dynamic_core"]["reference_mode_ready_count"],9)
+        self.assertEqual(mode["status"],"OBSERVED_SERIES_AVAILABLE")
+        self.assertEqual(
+            mode["promotion_assessment"],
+            "model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json",
+        )
+        self.assertEqual(self.model["dynamic_core"]["reference_mode_ready_count"],10)
         self.assertEqual(self.model["dynamic_core"]["reference_mode_required_count"],10)
 
     def test_metadata_only_cannot_promote_reference_mode(self):
