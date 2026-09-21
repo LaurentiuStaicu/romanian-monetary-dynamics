@@ -1,5 +1,5 @@
 {
-  "manifest_version": "1.2",
+  "manifest_version": "1.3",
   "baseline_id": "scientific-integrity-2026-09-19",
   "purpose": "Single canonical cross-registry snapshot of RMD scientific maturity. Values in this manifest must agree with the authoritative accounting, dynamics, reference-mode, empirical-mechanism and validation registries; the manifest is not an independent source of scientific truth.",
   "authority": {
@@ -123,9 +123,15 @@
     "f8_oecd_counterpart_reopen_contract": "model/accounting/f8_oecd_counterpart_reopen_contract_2026_09_21.json",
     "f8_oecd_counterpart_reopen_assessment": "model/accounting/f8_oecd_counterpart_reopen_assessment_2026_09_21.json",
     "f8_oecd_counterpart_stage2_execution": "model/accounting/f8_oecd_counterpart_stage2_execution_assessment_2026_09_21.json",
-    "accounting_spine_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json",
+    "accounting_spine_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_post_f4_structural_terminal_assessment_2026_09_21.json",
     "v0_3_0_release_readiness_assessment": "model/registries/v0_3_0_release_readiness_assessment_2026_09_21.json",
-    "v0_3_0_release_publication_record": "model/registries/v0_3_0_release_publication_record_2026_09_21.json"
+    "v0_3_0_release_publication_record": "model/registries/v0_3_0_release_publication_record_2026_09_21.json",
+    "previous_accounting_spine_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json",
+    "f4_bnr_zero_liability_structural_adjudication": "model/accounting/f4_bnr_zero_liability_structural_adjudication_2026_09_21.json",
+    "f4_structural_zero_successor_materialization_contract": "model/accounting/f4_structural_zero_successor_materialization_contract_2026_09_21.json",
+    "f4_structural_zero_successor_materialization_assessment": "model/accounting/f4_structural_zero_successor_materialization_assessment_2026_09_21.json",
+    "f4_structural_zero_successor_partial": "model/accounting/f4_partial_structural_2025.json",
+    "f4_structural_zero_successor_manifest": "model/accounting/f4_structural_zero_materialization_manifest_2026_09_21.json"
   },
   "canonical_state": {
     "accounting": {
