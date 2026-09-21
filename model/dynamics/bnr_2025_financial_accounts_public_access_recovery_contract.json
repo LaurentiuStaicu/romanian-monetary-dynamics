@@ -1,0 +1,129 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-21",
+  "contract_id": "bnr_2025_financial_accounts_public_access_recovery",
+  "purpose": "Test whether the post-benchmark/post-IT-system official BNR financial-accounts dissemination exposes a reproducible public machine-readable boundary sufficient for either the aggregate sectoral_financial_positions reference mode or, more stringently, instrument-specific bilateral Accounting Spine reopen consideration.",
+  "trigger_assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
+  "governing_reference_assessment": "model/dynamics/sectoral_financial_positions_reference_assessment.json",
+  "governing_boundary_review": "model/dynamics/sectoral_financial_positions_boundary_review.json",
+  "frozen_target": {
+    "frequency": "quarterly",
+    "required_common_history_quarters_min": 40,
+    "valuation_consistency_required": true,
+    "stock_measure": "closing positions/stocks",
+    "flow_measure": "financial transactions; stock differences are prohibited substitutes",
+    "required_rmd_sectors": [
+      "H",
+      "C",
+      "F",
+      "G",
+      "X",
+      "BNR"
+    ],
+    "required_source_sector_semantics": {
+      "H": "S14+S15 or exact S1M equivalent",
+      "C": "S11",
+      "F": "S12 excluding S121, requiring exact same-boundary S12 and S121 or direct equivalent",
+      "G": "S13",
+      "X": "S2/rest-of-world orientation compatible with RMD mapping",
+      "BNR": "S121 separately observable"
+    },
+    "required_instruments": [
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "missing_to_zero": false,
+    "interpolation": false,
+    "synthetic_counterparty_allocation": false
+  },
+  "nested_gates": {
+    "aggregate_reference_mode_gate": {
+      "purpose": "Potentially observe sector-level F2-F8 stocks and transactions for all six RMD sectors without claiming bilateral Accounting Spine completion.",
+      "requires_counterparty_dimension": false,
+      "requires_s121_separate": true,
+      "requires_exact_f2_f8_stock_and_transaction_coverage": true,
+      "promotion_effect_if_pass": "REFERENCE_MODE_ONLY; Accounting Spine remains unchanged."
+    },
+    "bilateral_accounting_reopen_gate": {
+      "purpose": "Determine whether a public source exposes holder/counterparty values sufficient to reconsider frozen F2/F4/F5/F6/F7/F8 accounting boundaries.",
+      "requires_counterparty_dimension": true,
+      "requires_s121_separate": true,
+      "requires_assets_liabilities_or_holder_issuer_orientation": true,
+      "requires_exact_f2_f8_stock_and_transaction_coverage": true,
+      "effect_if_pass": "OPEN_INSTRUMENT_SPECIFIC_REPASS_ONLY; no automatic materialisation or completion."
+    }
+  },
+  "allowed_discovery_surfaces": [
+    {
+      "id": "BNR_INTERACTIVE_DATABASE",
+      "institution": "National Bank of Romania",
+      "role": "priority public-access path because BNR documentation identifies an online interactive database for monthly/quarterly series",
+      "rule": "Use published navigation/catalogue/export paths only. Do not guess internal filenames, timestamps or undocumented endpoints."
+    },
+    {
+      "id": "ECB_QSA_POST_2025_TOPOLOGY",
+      "institution": "European Central Bank",
+      "role": "verify whether the post-2025 BNR transmission topology exposes new public sector/instrument/counterpart dimensions beyond the frozen prior QSA result",
+      "rule": "A new quarterly vintage alone is not evidence; only demonstrable topology/coverage expansion counts."
+    },
+    {
+      "id": "OECD_POST_2025_FINANCIAL_ACCOUNTS",
+      "institution": "OECD",
+      "role": "verify whether regular post-April-2025 Romanian transmissions expose S121 separately in any public financial-accounts dataflow satisfying the frozen boundary",
+      "rule": "Do not reinterpret the frozen counterpart dataflow that lacked S121 unless a distinct or changed public dataflow is identified."
+    },
+    {
+      "id": "EUROSTAT_ESA_TABLES_AND_COUNTERPART",
+      "institution": "Eurostat",
+      "role": "cross-check whether post-benchmark public dissemination adds exact counterpart/instrument coverage",
+      "rule": "Annual Tables 6/7 or incomplete counterpart subsets cannot substitute for the quarterly frozen target."
+    }
+  ],
+  "execution_sequence": [
+    "Freeze provider, dataset/dataflow identifier, dimensions and semantic mapping before downloading values.",
+    "Retain exact raw metadata/catalogue response first; hash it.",
+    "Decide topology/semantic pass or fail before any historical value extraction.",
+    "If and only if topology passes, preregister exact historical extraction keys and requested periods.",
+    "Retain raw value response with hashes.",
+    "Run aggregate reference-mode gate independently from the stricter bilateral accounting gate.",
+    "Any failure returns only the relevant path to hold; it does not relax the target."
+  ],
+  "stop_conditions": [
+    "No stable public machine-readable endpoint is identified.",
+    "S121 is not separately observable where required.",
+    "Any required F2-F8 instrument is absent from both stocks and financial transactions.",
+    "Only annual data are exposed.",
+    "Only aggregated sectors are exposed where exact RMD mapping is impossible.",
+    "Only internally documented but non-public who-to-whom topology is confirmed.",
+    "Provider access failure remains indeterminate; it is not converted to absence."
+  ],
+  "current_state": {
+    "execution_authorized": true,
+    "execution_completed": false,
+    "topology_pass": null,
+    "aggregate_reference_mode_gate_pass": null,
+    "bilateral_accounting_reopen_gate_pass": null,
+    "reference_mode_promotion_authorized": false,
+    "accounting_reopen_authorized": false
+  },
+  "hard_rules": {
+    "one_frozen_pass_only": true,
+    "no_repeated_polling_without_new_trigger": true,
+    "no_hidden_endpoint_guessing": true,
+    "no_missing_to_zero": true,
+    "no_interpolation": true,
+    "no_stock_difference_flow_proxy": true,
+    "no_synthetic_allocation": true,
+    "no_post_result_sector_dropping": true,
+    "no_reference_mode_promotion_from_metadata_only": true,
+    "no_accounting_promotion_from_metadata_only": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true
+  }
+}
