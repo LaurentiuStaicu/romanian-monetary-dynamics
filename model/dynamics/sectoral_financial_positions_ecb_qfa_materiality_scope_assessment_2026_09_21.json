@@ -1,0 +1,61 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "ecb_qfa_internal_consistency_materiality_scope_romania",
+  "reference_mode": "sectoral_financial_positions",
+  "purpose": "Determine whether an official ECB quantitative internal-consistency materiality rule can be applied to Romanian quarterly financial accounts for the narrow aggregate reference-mode acceptability test, independently of the residual magnitudes already observed.",
+  "official_evidence": [
+    {
+      "institution": "European Central Bank",
+      "document": "Euro area quarterly financial accounts 2013 quality report",
+      "url": "https://www.ecb.europa.eu/pub/pdf/euroareafinancialaccounts/euroaareafinancialaccountsquarterlytreport2013en.pdf",
+      "section": "Internal consistency",
+      "exact_semantics": [
+        "Horizontal consistency is equality between assets summed over relevant sectors and liabilities summed over relevant sectors.",
+        "Discrepancies of less than EUR 10 million are considered acceptable in the national data."
+      ],
+      "role": "Explicit quantitative acceptability rule."
+    },
+    {
+      "institution": "European Central Bank",
+      "document": "Euro area and national quarterly financial accounts – Quality report 2024",
+      "url": "https://www.ecb.europa.eu/pub/euroareafinancialaccounts/html/ecb.eaqfa202506.en.html",
+      "section": "6 Internal consistency / Annex 1",
+      "exact_semantics": [
+        "Internal consistency concerns accounting identities and hierarchical relationships between aggregates and components.",
+        "Horizontal consistency is equality between the sum of financial assets and the sum of liabilities for each financial instrument.",
+        "The national financial accounts datasets transmitted to the ECB are internally consistent except for minor issues.",
+        "Internal discrepancies and unexplained negative stocks of more than EUR 10 million were observed in a few countries and were generally corrected in later transmissions.",
+        "The ECB runs quality checks on all quarterly financial accounts received from EU Member States."
+      ],
+      "romania_scope": {
+        "included_in_common_validation_table": true,
+        "classification": "Non-euro area",
+        "validation_rules_satisfied_percent": 96,
+        "period": "Q4 2012 to Q2 2024"
+      },
+      "role": "Current continuity and direct EU/Romania scope."
+    }
+  ],
+  "scope_adjudication": {
+    "rule_family": "ECB_QFA_INTERNAL_CONSISTENCY",
+    "target_identity_family": "HORIZONTAL_AND_AGGREGATION_CONSISTENCY_OF_NATIONAL_FINANCIAL_ACCOUNTS",
+    "romania_is_in_scope": true,
+    "threshold_eur_million": 10,
+    "threshold_semantics": "MATERIALITY_ACCEPTABILITY_FOR_NATIONAL_QFA_INTERNAL_DISCREPANCIES",
+    "rule_is_independent_of_rmd_observed_residuals": true,
+    "rule_predates_current_rmd_gate": true,
+    "current_report_retains_threshold_context": true,
+    "conclusion": "PASS_ECB_QFA_10M_EUR_INTERNAL_CONSISTENCY_MATERIALITY_RULE_APPLICABLE_TO_ROMANIA_REFERENCE_MODE_ACCEPTABILITY"
+  },
+  "scientific_boundary": {
+    "may_reassess_aggregate_reference_mode_acceptability": true,
+    "may_rewrite_historical_rmd_0_1m_gate": false,
+    "may_change_accounting_spine_readiness": false,
+    "may_relax_canonical_accounting_identity": false,
+    "may_activate_behavioural_closure": false,
+    "may_estimate_parameters": false,
+    "interpretation": "The ECB materiality rule may govern whether the disseminated aggregate series is acceptable as an observed behaviour-over-time reference mode. It does not make the public data an exact accounting spine."
+  },
+  "decision": "PASS_AUTHORIZE_ONE_PREREGISTERED_ECB_MATERIALITY_ACCEPTABILITY_GATE"
+}
