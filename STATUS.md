@@ -90,6 +90,18 @@ Its operational state is **EVIDENCE_TRIGGERED_HOLD**. There is no active empiric
 
 This closure changes neither the canonical modeling paradigm nor the public version.
 
+### Bank credit–balance-sheet loop structural closure — 2026-09-21
+
+The complete declared path of the `bank_credit_balance_sheet_loop` has now received explicit structural/source-boundary review. The qualitative balancing-candidate topology is retained, but the loop is **not quantitatively active**.
+
+The four links remain blocked for distinct reasons. ECB BSI financial transactions do not equal loan-stock changes because non-transaction adjustments are required; loan stock is exposure scale rather than debt-service burden or credit-risk state; NPL, DSTI, prudential capital/funding conditions and BLS lending standards do not define one scalar credit-supply-capacity state; and realized credit transactions reflect both supply conditions and borrower demand.
+
+The integrated loop has **0/4 exact integrated link equations ready**, all four feedback nodes remain `UNRESOLVED`, and both `credit_risk_recognition_delay` and `credit_supply_adjustment_delay` remain `TBD`. The aggregate bank-credit mechanism remains `CANDIDATE`, while the NPL-response mechanism remains `DEFERRED`. No estimation cycle is open.
+
+The terminal assessment is `model/dynamics/bank_credit_balance_sheet_loop_terminal_assessment_2026_09_21.json`. Its operational state is **EVIDENCE_TRIGGERED_HOLD**: there is no active empirical task, repeated unchanged-source polling is not scientific progress, and no synthetic debt-service measure, prudential-capacity index, inferred loan demand, parameter estimation, feedback activation or behavioural-closure change is authorized. Reopening requires one of the explicitly recorded new-source or new-identification triggers.
+
+This closure changes neither the canonical modeling paradigm nor the public version.
+
 ## Canonical modeling paradigm
 
 **Romanian Monetary Dynamics (RMD) is an accounting-constrained, stock-flow-consistent dynamic model with a developing System Dynamics feedback architecture; behavioural closure remains inactive pending empirical identification and validation.**
