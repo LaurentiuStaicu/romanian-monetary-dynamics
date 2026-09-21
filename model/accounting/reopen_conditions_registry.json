@@ -54,7 +54,8 @@
         "F511-only substitution for F51",
         "F51 substitution for total F5 where F52 applies",
         "synthetic allocation of F512/F519",
-        "a live refresh reproducing the same unresolved component topology"
+        "a live refresh reproducing the same unresolved component topology",
+        "the retained OECD F512/F519 counterpart source after Stage 2 failure at the preregistered 0.1 million RON aggregate-consistency gate, unless a changed source or independently justified source-specific precision/reconciliation rule satisfies a separately preregistered successor gate"
       ],
       "selective_reopen_contract": "model/accounting/f5_oecd_counterpart_reopen_contract_2026_09_21.json",
       "selective_reopen_assessment": "model/accounting/f5_oecd_counterpart_reopen_assessment_2026_09_21.json",
@@ -64,7 +65,8 @@
       "selective_reopen_execution_assessment": "model/accounting/f5_oecd_counterpart_stage2_execution_assessment_2026_09_21.json",
       "current_reopen_gate_open": false,
       "selective_reopen_terminal_result": "The retained OECD F512/F519 rows pass extraction and A/L mirror checks but fail the preregistered 0.1 million RON S1 aggregate-consistency gate (16/44 stock checks, max 1.0; 24/44 flow checks, max 3.0). No new rank equations are admitted.",
-      "next_reopen_boundary": "Changed official counterpart evidence satisfying the frozen boundary, or an independently justified source-specific precision/reconciliation rule preregistered before a successor value gate; observed residuals do not define the tolerance."
+      "next_reopen_boundary": "Changed official counterpart evidence satisfying the frozen boundary, or an independently justified source-specific precision/reconciliation rule preregistered before a successor value gate; observed residuals do not define the tolerance.",
+      "post_stage2_boundary": "OECD F512/F519 counterpart topology exists, but the preregistered 0.1 million RON source aggregate-consistency gate fails; no new equations are admitted and F5 returns to evidence-triggered hold."
     },
     "F6": {
       "current_status": "FROZEN_AGGREGATE_ONLY_PUBLIC_DATA_BOUNDARY",
