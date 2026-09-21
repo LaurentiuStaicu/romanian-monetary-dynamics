@@ -1,7 +1,7 @@
 {
   "assessment_version": "0.1",
   "phase": "Reference Mode Recovery — Sectoral Financial Positions",
-  "verdict": "BLOCKED_BY_CANONICAL_ACCOUNTING_READINESS",
+  "verdict": "AGGREGATE_REFERENCE_MODE_OBSERVED_CANONICAL_ACCOUNTING_READINESS_STILL_BLOCKED",
   "reference_mode": "sectoral_financial_positions",
   "canonical_requirement": "Complete holder-by-issuer financial stocks and transactions by represented instrument on the RMD sector boundary.",
   "accounting_gate": "model/accounting/accounting_readiness_gate.json",
@@ -44,8 +44,8 @@
   ],
   "reopen_condition": "Promote only after either (a) the canonical Accounting Readiness Gate establishes complete stock and flow matrices for the original holder-by-issuer boundary, or (b) a separately preregistered aggregate reference boundary passes an immutable source gate on the exact RMD instrument scope without missing-to-zero, synthetic allocation, post-result sector dropping or stock-difference flow proxies.",
   "disposition": {
-    "status": "PARTIAL_SERIES_AVAILABLE",
-    "readiness_count_change": 0,
+    "status": "OBSERVED_SERIES_AVAILABLE",
+    "readiness_count_change": 1,
     "behavioural_closure": "UNCHANGED_INACTIVE",
     "strict_aggregate_gate": "FAILED_NO_PROMOTION",
     "aggregate_identity_gate": "FAILED_STRICT_STOCK_RECONCILIATION_NO_PROMOTION",
@@ -58,7 +58,9 @@
     "exploratory_f1_zero_refinement": "REJECTED_BY_PUBLISHED_QSA_SDR_LIABILITIES",
     "s1n_boundary_diagnostic": "EXECUTED_NEGATIVE_NO_REOPEN_EVIDENCE",
     "external_source_screening": "POST_2025_BNR_TOPOLOGY_TRIGGER_EXECUTED_OECD_EXACT_ROW_GATE_FAIL_NO_PROMOTION",
-    "further_external_counterpart_recovery": "FROZEN_UNTIL_NEW_SOURCE_OR_CHANGED_DATASET_TRIGGER"
+    "further_external_counterpart_recovery": "FROZEN_FOR_ACCOUNTING_ONLY_UNTIL_NEW_SOURCE_OR_CHANGED_DATASET_TRIGGER",
+    "official_ecb_qfa_tolerance_gate": "PASS_PROMOTED_AGGREGATE_REFERENCE_MODE",
+    "canonical_bilateral_accounting": "UNCHANGED_INCOMPLETE_F3_ONLY_COMPLETE_STOCK_AND_FLOW"
   },
   "boundary_review": "model/dynamics/sectoral_financial_positions_boundary_review.json",
   "strict_source_gate_contract": "model/dynamics/sectoral_financial_positions_reference_contract.json",
@@ -147,6 +149,21 @@
     "current_post_terminal_source_task": null,
     "oecd_nonconsolidated_topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
     "oecd_exact_row_gate_assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
-    "terminal_blocker": "S1M/L/F2 missing in all 49 quarters for both flow and stock; values were not reviewed."
+    "terminal_blocker": "S1M/L/F2 missing in all 49 quarters for both flow and stock; values were not reviewed.",
+    "current_successor_promotion_assessment": "model/dynamics/sectoral_financial_positions_reference_mode_promotion_assessment_2026_09_21.json",
+    "current_reference_mode_status": "OBSERVED_SERIES_AVAILABLE",
+    "current_readiness_count_change": 1
+  },
+  "historical_verdict": "BLOCKED_BY_CANONICAL_ACCOUNTING_READINESS",
+  "aggregate_reference_requirement": "Observed quarterly RMD-sector aggregate financial stocks and financial transactions across F2-F8 with explicit source semantics, sufficient common history and official-domain internal-consistency validation.",
+  "current_aggregate_reference_mode": {
+    "status": "OBSERVED_SERIES_AVAILABLE",
+    "retained_series": "data/processed/sectoral_financial_positions_reference_oecd_2014Q1_2026Q1.csv.gz",
+    "retained_vintage": "data/source_vintages/sectoral-financial-positions-ecb-qfa-tolerance-pass-2026-09-21/source_vintage_manifest.json",
+    "official_tolerance_gate_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_assessment_2026_09_21.json",
+    "promotion_assessment": "model/dynamics/sectoral_financial_positions_reference_mode_promotion_assessment_2026_09_21.json",
+    "common_quarters": 49,
+    "readiness_count_change": 1,
+    "canonical_accounting_readiness_change": false
   }
 }
