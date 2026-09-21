@@ -502,3 +502,17 @@ Manifest version **1.2** now records public/repository version **0.2.0**, unrele
 
 This synchronization does **not** authorize a version bump. The canonical release contract remains authoritative and continues to state that no immediate bump is required. Its rationale now explicitly acknowledges the substantive post-v0.2.0 reference-mode promotion and Accounting Spine boundary work instead of describing all post-release changes as governance-only.
 
+### Accounting Spine recovery terminal assessment — 2026-09-21
+
+The current Accounting Empirical Recovery cycle is now formally classified as **STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD**. This is a recovery-stage completion statement, not Accounting Spine completion.
+
+The canonical readiness state is unchanged: **F3** is the only complete stock-and-flow instrument; **F2, F4, F5, F6, F7 and F8** remain incomplete or partial. However, every currently incomplete instrument now has both a reproducible terminal boundary and an explicit reopen trigger:
+
+- F2 retains materialized F2M but cannot complete F21/total F2 through standard BPM6/Eurostat/BNR Direct-Investment dissemination; a country-specific supplementary DI-F2 source or exact bridge is required.
+- F4 retains its 15-cell unconditional stock and flow cores; the unresolved boundary is the F-versus-BNR counterpart allocation, especially the BNR 6.1 million RON asset stock.
+- F5-F8 completed their OECD selective-reopen cycles and returned to evidence-triggered hold after their preregistered source-reconciliation gates failed before rank admission.
+
+No selective accounting reopen gate is currently open and no unconditional accounting-recovery task remains active. Governance therefore prohibits repeating the same live probes merely to reproduce an already-frozen topology. A future accounting cycle begins only when a declared evidence trigger is satisfied or when a new source-specific gate is scientifically preregistered.
+
+The terminal state is recorded in `model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json`, linked from the readiness gate, reopen registry and scientific baseline, and enforced by Scientific CI. It does not authorize synthetic completion, behavioural closure, parameter estimation, or a version bump.
+
