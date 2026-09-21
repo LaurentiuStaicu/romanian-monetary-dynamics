@@ -101,7 +101,10 @@
     "trigger_aware_monitoring_horizon_2026_09_21": "model/registries/trigger_aware_monitoring_horizon_2026_09_21.json",
     "oecd_sectoral_financial_positions_decimal_arithmetic_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
     "oecd_sectoral_financial_positions_decimal_arithmetic_correction_vintage": "data/source_vintages/oecd-decimal-arithmetic-correction-2026-09-21/source_vintage_manifest.json",
-    "oecd_sectoral_financial_positions_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json"
+    "oecd_sectoral_financial_positions_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json",
+    "sectoral_financial_positions_ecb_official_tolerance_assessment": "model/dynamics/sectoral_financial_positions_ecb_official_tolerance_assessment_2026_09_21.json",
+    "sectoral_financial_positions_observed_snapshot": "model/dynamics/sectoral_financial_positions_observed_snapshot_2026_09_21.json",
+    "reference_mode_post_terminal_promotion_assessment": "model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json"
   },
   "canonical_state": {
     "accounting": {
@@ -121,8 +124,8 @@
     },
     "reference_modes": {
       "required_count": 10,
-      "ready_count": 9,
-      "closure_ready": false,
+      "ready_count": 10,
+      "closure_ready": true,
       "ready": [
         "policy_rate",
         "household_lending_rate",
@@ -132,18 +135,20 @@
         "government_debt_stock",
         "government_interest_burden",
         "government_refinancing_need",
-        "government_effective_interest_rate"
-      ],
-      "blockers": [
+        "government_effective_interest_rate",
         "sectoral_financial_positions"
       ],
+      "blockers": [],
       "external_counterpart_screening_state": "EXHAUSTED_NO_SEMANTICALLY_ADMISSIBLE_CURRENT_PUBLIC_SOURCE",
       "sectoral_financial_positions_external_counterpart_recovery_state": "FROZEN_UNTIL_NEW_SOURCE_OR_CHANGED_DATASET_TRIGGER",
       "external_counterpart_exact_historical_extraction_authorized": false,
-      "recovery_stage_status": "STAGE_COMPLETE_FROZEN_9_OF_10_UNDER_CURRENT_PUBLIC_EVIDENCE_BOUNDARY",
+      "recovery_stage_status": "POST_TERMINAL_PROMOTION_COMPLETE_10_OF_10_REFERENCE_MODES_READY",
       "recovery_substage_complete": true,
       "next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
-      "final_blocker_public_source_completion_status": "EUROSTAT_INSTRUMENT_SCOPE_FAIL_OECD_S121_SCOPE_FAIL_BNR_ANNUAL_FREQUENCY_TRANSACTION_HISTORY_FAIL_BNR_QUARTERLY_S13_SECTOR_COUNTERPART_CONSOLIDATION_FAIL"
+      "final_blocker_public_source_completion_status": "EUROSTAT_INSTRUMENT_SCOPE_FAIL_OECD_S121_SCOPE_FAIL_BNR_ANNUAL_FREQUENCY_TRANSACTION_HISTORY_FAIL_BNR_QUARTERLY_S13_SECTOR_COUNTERPART_CONSOLIDATION_FAIL",
+      "aggregate_reference_mode_promotion_state": "SECTORAL_FINANCIAL_POSITIONS_OBSERVED_AGGREGATE_PROMOTED_ACCOUNTING_SPINE_UNCHANGED",
+      "post_terminal_promotion_assessment": "model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json",
+      "official_tolerance_assessment": "model/dynamics/sectoral_financial_positions_ecb_official_tolerance_assessment_2026_09_21.json"
     },
     "system_dynamics": {
       "complete_endogenous_system_dynamics_model": false,
