@@ -296,6 +296,9 @@ jobs:
       - name: Audit successor trigger-aware monitoring horizon
         run: python scripts/audit_trigger_aware_monitoring_horizon_2026_09_21.py
 
+      - name: Audit 10-of-10 reference-mode promotion
+        run: python scripts/audit_sectoral_financial_positions_reference_mode_promotion.py
+
       - name: Audit F3 empirical dynamic replay
         run: python scripts/audit_f3_empirical_replay.py
 
