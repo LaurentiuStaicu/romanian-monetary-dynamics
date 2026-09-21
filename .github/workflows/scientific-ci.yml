@@ -150,6 +150,9 @@ jobs:
       - name: Audit canonical Accounting Spine readiness
         run: python scripts/audit_accounting_readiness.py
 
+      - name: Audit BNR 2025 financial-accounts topology reopen
+        run: python scripts/audit_bnr_2025_financial_accounts_topology_reopen.py
+
       - name: Audit F3 empirical dynamic replay
         run: python scripts/audit_f3_empirical_replay.py
 
