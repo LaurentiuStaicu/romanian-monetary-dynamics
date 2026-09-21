@@ -12,23 +12,25 @@ class ReleasePublicationAuthorizationTests(unittest.TestCase):
     def test_current_release_publication_state_passes(self):
         self.assertEqual(audit_release_publication_authorization(), [])
 
-    def test_v020_publication_is_recorded_and_authorization_consumed(self):
+    def test_v030_publication_is_one_shot_ci_gated(self):
         auth=json.loads((ROOT/"model/registries/release_publication_authorization.json").read_text(encoding="utf-8"))
-        self.assertFalse(auth["publication_authorized"])
-        self.assertTrue(auth["trigger_consumed"])
-        self.assertEqual(auth["publication_state"],"PUBLISHED_AND_AUTHORIZATION_CONSUMED")
-        self.assertEqual(auth["release_version"],"0.2.0")
-        self.assertEqual(auth["tag"],"v0.2.0")
-        self.assertEqual(auth["exact_release_commit"],"51114123c19471448356aee10e487994744233a0")
-        self.assertTrue((ROOT/auth["publication_record"]).is_file())
+        self.assertTrue(auth["publication_authorized"])
+        self.assertFalse(auth["trigger_consumed"])
+        self.assertEqual(auth["publication_state"],"READY_FOR_PUBLICATION_AFTER_GREEN_MAIN_CI")
+        self.assertEqual(auth["release_version"],"0.3.0")
+        self.assertEqual(auth["tag"],"v0.3.0")
+        self.assertEqual(auth["intended_release_date"],"2026-09-21")
+        self.assertEqual(auth["target_commit_strategy"],"SCIENTIFIC_CI_WORKFLOW_RUN_HEAD_SHA")
+        self.assertNotIn("exact_release_commit",auth)
+        self.assertNotIn("publication_record",auth)
 
-    def test_publication_record_matches_exact_release_commit(self):
-        auth=json.loads((ROOT/"model/registries/release_publication_authorization.json").read_text(encoding="utf-8"))
-        record=json.loads((ROOT/auth["publication_record"]).read_text(encoding="utf-8"))
-        self.assertEqual(record["release_target_commit"],auth["exact_release_commit"])
-        self.assertEqual(record["tag_target_commit"],auth["exact_release_commit"])
-        self.assertTrue(record["github_release_immutable"])
-        self.assertEqual(record["publication_workflow_conclusion"],"success")
+    def test_current_public_release_is_not_advanced_before_tag_exists(self):
+        contract=json.loads((ROOT/"model/registries/release_versioning_contract.json").read_text(encoding="utf-8"))
+        basis=contract["versioning_basis"]
+        self.assertEqual(basis["current_public_release"]["version"],"0.2.0")
+        self.assertEqual(basis["current_repository_version"],"0.3.0")
+        self.assertEqual(basis["next_public_release_candidate"],"0.3.0")
+        self.assertEqual(basis["release_preparation"]["state"],"READY_FOR_PUBLICATION_AFTER_GREEN_MAIN_CI")
 
     def test_release_has_no_scientific_activation_effect(self):
         auth=json.loads((ROOT/"model/registries/release_publication_authorization.json").read_text(encoding="utf-8"))
