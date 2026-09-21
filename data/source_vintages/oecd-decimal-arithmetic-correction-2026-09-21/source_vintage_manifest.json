@@ -1,0 +1,14 @@
+{
+  "manifest_version": "0.1",
+  "retained_on": "2026-09-21",
+  "source_class": "OFFLINE_NUMERICAL_CORRECTION_FROM_RETAINED_WORKFLOW_ARTIFACT",
+  "historical_artifact_id": 10634064870,
+  "historical_artifact_zip_sha256": "18b0a611e018d12196cbdbcf980f17bc3211dc0c88269c96aa10f59076077310",
+  "correction_assessment": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
+  "compact_false_positive_evidence": "legacy_float_boundary_false_positives.csv",
+  "compact_false_positive_evidence_sha256": "bb92d8d90c5b7fc77a53dc03869267711b86e8eaf1c60be361047960da4649ed",
+  "provider_reaccessed": false,
+  "values_changed": false,
+  "tolerance_changed": false,
+  "historical_artifact_rewritten": false
+}
