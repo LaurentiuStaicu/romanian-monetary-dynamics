@@ -25,7 +25,29 @@
         "foreign-currency buffer / pre-financing",
         "buybacks and exchange transactions"
       ],
-      "interpretation": "The Ministry plans financing over multiple market, currency and official-sector channels. Quarterly domestic interbank issuance is only one component."
+      "interpretation": "The Ministry plans financing over multiple market, currency and official-sector channels. Quarterly domestic interbank issuance is only one component.",
+      "numeric_context": {
+        "gross_financing_need_bn_RON": 232,
+        "projected_budget_deficit_bn_RON": 135,
+        "public_debt_refinancing_bn_RON": 97,
+        "indicative_domestic_market_borrowing_bn_RON_range": [
+          145,
+          150
+        ],
+        "deficit_financing_internal_share_pct": 45,
+        "deficit_financing_external_share_pct": 55,
+        "international_market_financing_bn_EUR_range": [
+          16,
+          17
+        ],
+        "eurobonds_and_external_private_placements_bn_EUR_range": [
+          12,
+          13
+        ],
+        "RRF_EC_loan_disbursement_bn_EUR": 3,
+        "IFI_drawings_bn_EUR": 1
+      },
+      "scope_guard": "The 45% internal / 55% external statement applies to financing the projected budget deficit, not to allocation of the full RON 232bn gross financing need. It may not be used as a channel-share vector for total GFN."
     },
     "ministry_2024_realized_financing_example": {
       "source": "Romania Investor Presentation, December 2024",
@@ -64,6 +86,19 @@
       "full_2025_EUR_total_million": 1856.1,
       "total_government_borrowing_equivalent": false,
       "government_financing_need_equivalent": false
+    },
+    "ministry_investor_presentation_april_2025": {
+      "institution": "Romanian Ministry of Finance",
+      "url": "https://www.mfinante.gov.ro/static/10/Mfp/buget/sitebuget/InvestorPresentationApril2025.pdf",
+      "findings": {
+        "financing_needs_covered_as_of_2025_04_30_pct_approx": 44,
+        "retail_bonds_issued_through_2025_04_30_bn_RON": 19.5,
+        "domestic_market_volume_bn_RON_range": [
+          145,
+          150
+        ]
+      },
+      "interpretation": "Retail issuance is a quantitatively material domestic financing channel outside the retained BNR interbank-style instrument boundary; realized coverage percentages do not identify exact bilateral allocation from GFN to BNR issuance."
     }
   },
   "channel_architecture": {
@@ -121,7 +156,11 @@
     "all_financing_channels_share_same_instrument_type": false,
     "all_financing_channels_are_observed_at_same_frequency": false,
     "all_financing_channels_have_frozen_monthly_realized_source_vintages": false,
-    "residual_channel_can_be_inferred_as_GFN_minus_BNR_issuance": false
+    "residual_channel_can_be_inferred_as_GFN_minus_BNR_issuance": false,
+    "deficit_45_55_split_is_full_GFN_allocation": false,
+    "indicative_domestic_145_150_bn_is_realized_BNR_primary_issuance": false,
+    "april_44_pct_GFN_covered_identifies_channel_mix": false,
+    "retail_19_5_bn_through_april_is_in_BNR_primary_pilot": false
   },
   "allocation_bridge_resolution": {
     "bridge_id": "financing_channel_allocation",
@@ -180,7 +219,10 @@
     "no_parameter_estimation": true,
     "no_feedback_activation": true,
     "no_behavioural_closure_change": true,
-    "no_public_version_change": true
+    "no_public_version_change": true,
+    "no_apply_45_55_deficit_split_to_total_GFN": true,
+    "no_treat_indicative_domestic_envelope_as_realized_BNR_issuance": true,
+    "no_use_GFN_coverage_percentage_to_infer_channel_shares": true
   },
   "scientific_effect": {
     "government_financing_need_node_resolved": false,
