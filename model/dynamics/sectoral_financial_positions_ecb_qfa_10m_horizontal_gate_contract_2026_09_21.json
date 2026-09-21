@@ -1,0 +1,187 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-21",
+  "reference_mode": "sectoral_financial_positions",
+  "phase": "ECB-QFA-threshold-aligned OECD per-instrument horizontal-consistency gate",
+  "threshold_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_threshold_assessment_2026_09_21.json",
+  "semantic_assessment": "model/dynamics/sectoral_financial_positions_esa2010_s1m_f2_liability_semantic_assessment_2026_09_21.json",
+  "prior_decimal_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
+  "purpose": "Evaluate the same public OECD non-consolidated Romania stock/transaction boundary against the independently documented ECB QFA horizontal-consistency criterion, per financial instrument, using exact decimal arithmetic. The gate cannot alter bilateral Accounting Spine readiness.",
+  "source_boundary": {
+    "institution": "OECD",
+    "flow_dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T620R_Q",
+    "stock_dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T720R_Q",
+    "reference_area": "ROU",
+    "frequency": "Q",
+    "start_period": "2014-Q1",
+    "end_period": "2026-Q1",
+    "required_source_sectors": [
+      "S1M",
+      "S11",
+      "S12",
+      "S121",
+      "S13",
+      "S2"
+    ],
+    "accounting_entries": [
+      "A",
+      "L"
+    ],
+    "instruments": [
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "instrument_maturity": {
+      "F2": "T",
+      "F3": "T",
+      "F4": "T",
+      "F5": "_Z",
+      "F6": "_Z",
+      "F7": "T",
+      "F8": "T"
+    },
+    "fixed_dimensions": {
+      "ADJUSTMENT": "N",
+      "COUNTERPART_AREA": "W",
+      "COUNTERPART_SECTOR": "S1",
+      "CONSOLIDATION": "N",
+      "UNIT_MEASURE": "XDC",
+      "UNIT_MULT": "6",
+      "CURRENCY_DENOM": "_T",
+      "VALUATION": "S",
+      "PRICE_BASE": "V",
+      "TRANSFORMATION": "N",
+      "DEBT_BREAKDOWN": "_Z"
+    },
+    "measure_dimensions": {
+      "flow": {
+        "TRANSACTION": "F",
+        "TABLE_IDENTIFIER": "T0620"
+      },
+      "stock": {
+        "TRANSACTION": "LE",
+        "TABLE_IDENTIFIER": "T0720"
+      }
+    }
+  },
+  "semantic_exception": {
+    "exact_key_pattern": {
+      "source_sector": "S1M",
+      "accounting_entry": "L",
+      "instrument": "F2"
+    },
+    "treatment": "STRUCTURAL_ZERO_BY_ESA2010_NORMATIVE_SEMANTICS",
+    "value_million_ron": "0",
+    "if_explicit_provider_row_appears": "FAIL_SEMANTIC_SOURCE_CONFLICT"
+  },
+  "horizontal_identity": {
+    "per_measure_per_period_per_instrument": true,
+    "rmd_sector_mapping": {
+      "H": [
+        [
+          "S1M",
+          1
+        ]
+      ],
+      "C": [
+        [
+          "S11",
+          1
+        ]
+      ],
+      "F": [
+        [
+          "S12",
+          1
+        ],
+        [
+          "S121",
+          -1
+        ]
+      ],
+      "G": [
+        [
+          "S13",
+          1
+        ]
+      ],
+      "BNR": [
+        [
+          "S121",
+          1
+        ]
+      ],
+      "X": [
+        [
+          "S2",
+          1
+        ]
+      ]
+    },
+    "net_by_sector": "assets - liabilities",
+    "system_residual": "H+C+F+G+BNR+X",
+    "algebraic_equivalent_source_identity": "S1M + S11 + S12 + S13 + S2 net for each instrument; S121 cancels between F and BNR."
+  },
+  "official_threshold_gate": {
+    "ecb_threshold_eur_million": "10",
+    "threshold_basis": "ECB QFA national-data internal-consistency quality reports; horizontal consistency is per financial instrument.",
+    "first_stage_strict_sufficient_bound_million_ron": "10",
+    "fx_safety_check": {
+      "source": "ECB",
+      "series": [
+        "EXR.Q.RON.EUR.SP00.A",
+        "EXR.Q.RON.EUR.SP00.E"
+      ],
+      "requirement": "All returned RON-per-EUR rates covering the test period must be > 1.",
+      "interpretation": "Then abs(residual) < 10 million RON is strictly stronger than abs(residual) < EUR 10 million, so no choice between average and end-of-period conversion is needed."
+    },
+    "pass_rule": "Every stock and flow residual for every quarter and each F2-F8 instrument must satisfy abs(exact_decimal_residual_million_ron) < 10.0, and the ECB FX safety check must pass.",
+    "indeterminate_rule": "If any residual is >= 10.0 million RON but source/row/value gates otherwise pass, stop as INDETERMINATE_EXACT_EUR_CONVERSION_RULE_REQUIRED; do not choose a conversion convention after observing which measure failed.",
+    "fail_rule": "Row/semantic conflict, missing/duplicate/non-finite value, or an official FX safety check failure causes FAIL/INDETERMINATE as specified; the gate may not be rescued by aggregate cancellation across instruments."
+  },
+  "coverage_gate": {
+    "minimum_common_quarters": 40,
+    "required_2025_quarters": [
+      "2025-Q1",
+      "2025-Q2",
+      "2025-Q3",
+      "2025-Q4"
+    ],
+    "every_nonexception_row_exactly_once": true,
+    "no_other_missing_rows": true,
+    "no_duplicate_rows": true,
+    "finite_values_required": true
+  },
+  "promotion_rule": "A complete PASS authorizes only a separate explicit reference-mode promotion assessment. It does not itself promote sectoral_financial_positions and cannot change Accounting Spine instrument completeness.",
+  "hard_rules": {
+    "exact_decimal_arithmetic_required": true,
+    "no_binary_float_threshold_comparison": true,
+    "no_instrument_aggregation_before_threshold_test": true,
+    "no_observed_residual_derived_tolerance": true,
+    "no_post_result_fx_convention_choice": true,
+    "no_filter_change_after_preregistration": true,
+    "no_sector_mapping_change_after_preregistration": true,
+    "no_semantic_exception_expansion": true,
+    "no_interpolation": true,
+    "no_residual_allocation": true,
+    "no_period_dropping": true,
+    "no_window_switching": true,
+    "no_bilateral_accounting_completion_claim": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true
+  },
+  "execution_policy": {
+    "live_execution_manual_only": true,
+    "branch": "model/ecb-qfa-10m-horizontal-consistency-gate-2026-09-21",
+    "manual_job": "manual-ecb-qfa-10m-horizontal-consistency-gate",
+    "initial_pull_request_attempt_behavior": "SKIP",
+    "activation_condition": "pull_request on exact branch AND github.run_attempt > 1",
+    "scientific_effect_while_pending": "NONE"
+  }
+}

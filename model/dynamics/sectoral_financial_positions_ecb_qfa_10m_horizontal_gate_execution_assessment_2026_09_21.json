@@ -1,0 +1,83 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "ecb_qfa_10m_horizontal_consistency_gate_execution",
+  "reference_mode": "sectoral_financial_positions",
+  "contract": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_contract_2026_09_21.json",
+  "threshold_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_threshold_assessment_2026_09_21.json",
+  "workflow": {
+    "run_id": 35617117194,
+    "run_attempt": 2,
+    "job_id": 106391108980,
+    "artifact_id": 10646454834,
+    "artifact_zip_sha256": "0cf63d2293c4b2652c5b9345e76110827967cbb164067de868fa9576ad2c551e"
+  },
+  "source_requests": {
+    "flow": {
+      "dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T620R_Q",
+      "http_status": 200,
+      "data_sha256": "9797dcb2a8e5076316c2e6c8417668c6547242e9c2c666e136e66a7f153d704b",
+      "bytes": 2965487
+    },
+    "stock": {
+      "dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T720R_Q",
+      "http_status": 200,
+      "data_sha256": "a62f3d81110a95a31d6b03888cfb73c9d9bd111ea37564538f3a8dae1fb3f0e6",
+      "bytes": 3030407
+    }
+  },
+  "official_fx_safety": {
+    "quarterly_average": {
+      "series": "EXR.Q.RON.EUR.SP00.A",
+      "http_status": 200,
+      "response_sha256": "40350e22d6b7cfa29205523ebacefc4e908d6a37df457948b6317b450971685a",
+      "bytes": 14538,
+      "minimum_ron_per_eur": "4.4146136363636"
+    },
+    "quarter_end": {
+      "series": "EXR.Q.RON.EUR.SP00.E",
+      "http_status": 200,
+      "response_sha256": "ed5a0a1bb46b835dae7432110fec56278fab2ea75fcb5b2bb585516e19963188",
+      "bytes": 14136,
+      "minimum_ron_per_eur": "4.383"
+    },
+    "requirement": "Both official ECB RON-per-EUR series cover the full 49-quarter test span and remain >1, making the preregistered <10 million RON sufficient bound strictly stronger than <EUR 10 million.",
+    "pass": true
+  },
+  "gates": {
+    "row_gate_flow": "PASS_ZERO_MISSING_ZERO_DUPLICATES_ZERO_SEMANTIC_CONFLICTS",
+    "row_gate_stock": "PASS_ZERO_MISSING_ZERO_DUPLICATES_ZERO_SEMANTIC_CONFLICTS",
+    "finite_values": "PASS",
+    "common_history": "PASS_49_QUARTERS_2014Q1_2026Q1",
+    "all_2025_quarters": "PASS",
+    "horizontal_test_count": 686,
+    "exact_decimal_arithmetic": true,
+    "per_instrument_threshold_test": true,
+    "strict_sufficient_bound_million_ron": "10",
+    "strict_bound_exceedance_count": 0,
+    "global_max_abs_residual_million_ron": "0.2",
+    "max_abs_residual_by_instrument_million_ron": {
+      "F2": "0.2",
+      "F3": "0.2",
+      "F4": "0.2",
+      "F5": "0.2",
+      "F6": "0.2",
+      "F7": "0.2",
+      "F8": "0.2"
+    }
+  },
+  "scientific_gate_result": "PASS",
+  "disposition": "ECB_QFA_HORIZONTAL_CONSISTENCY_STRICT_SUFFICIENT_PASS_PROMOTION_ASSESSMENT_AUTHORIZED",
+  "interpretation": "The exact per-instrument RMD aggregate reference boundary satisfies a deliberately stricter sufficient condition than the official ECB national-QFA EUR 10 million acceptability threshold. The largest observed per-instrument residual is 0.2 million RON, while official ECB RON/EUR rates remain above 4.38 over the tested period.",
+  "scientific_effect": {
+    "separate_reference_mode_promotion_assessment_authorized": true,
+    "reference_mode_promoted_by_this_assessment": false,
+    "readiness_count_change": 0,
+    "accounting_readiness_change": false,
+    "bilateral_accounting_completion_claim": false,
+    "calibration_cycle_open": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false
+  }
+}

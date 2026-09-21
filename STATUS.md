@@ -135,6 +135,20 @@ The failure also persists after the 2025 benchmark revision and new BNR financia
 No post-result window shortening, period dropping or tolerance change is authorized. The mode remains `PARTIAL_SERIES_AVAILABLE` and 9/10 ready.
 
 
+
+### ECB QFA official internal-consistency threshold reopen — 2026-09-21
+
+A new official domain-specific trigger has been identified after the dissemination-precision hold. The ECB's 2013 QFA quality report defines horizontal consistency as equality between total assets and liabilities **for each financial instrument** and states that discrepancies below EUR 10 million are acceptable in national data. ECB quality reports for 2020, 2022 and 2024 continue to use EUR 10 million as the operational level above which internal discrepancies are reported and generally corrected. The 2024 annex includes Romania in the national validation-rule assessment.
+
+This is materially different from the earlier generic SDMX `DECIMALS` evidence: it is a QFA-specific quantitative internal-consistency rule and therefore satisfies the declared precision/balancing reopen condition.
+
+A new gate is preregistered under `model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_contract_2026_09_21.json`. It does **not** reuse the prior aggregate F2-F8 residual test. Instead, stocks and financial transactions must satisfy horizontal consistency separately for each of F2, F3, F4, F5, F6, F7 and F8 over the frozen 2014Q1–2026Q1 boundary, using exact decimal arithmetic and the already-established ESA 2010 structural-zero rule for S1M/L/F2.
+
+The first-stage currency test is deliberately stricter than the ECB threshold: every per-instrument residual must be below 10 million RON, while official ECB RON-per-EUR quarterly rates must remain above 1. If that strict sufficient condition fails for any cell, the result is indeterminate and an exact EUR-conversion convention must be preregistered before further interpretation.
+
+No value has yet been inspected under this new gate. The canonical state remains 9/10 with `sectoral_financial_positions = PARTIAL_SERIES_AVAILABLE`; Accounting Spine and behavioural closure are unchanged.
+
+
 ### Trigger-aware monitoring horizon — successor frozen 2026-09-21
 
 After the BNR/CMFB → OECD → ESA 2010 → dissemination-precision recovery chain returned to hold, the previous 2026-09-20 trigger horizon is preserved as an immutable historical snapshot and superseded operationally by `model/registries/trigger_aware_monitoring_horizon_2026_09_21.json`.
@@ -142,6 +156,18 @@ After the BNR/CMFB → OECD → ESA 2010 → dissemination-precision recovery ch
 No monitoring gate is open now. The successor registry preserves the existing dated/event-conditioned checks and adds one explicit precision-specific reopen condition for `sectoral_financial_positions`: only a **domain-specific official financial-accounts rule** that quantitatively defines dissemination precision, rounding, balancing tolerance or exact reconciliation semantics — or a changed public source whose exact values satisfy the frozen identity — may reopen that path. Generic SDMX `DECIMALS`, lexical CSV formatting and the already observed residual magnitudes cannot define a future tolerance.
 
 The next scheduled event check remains the **BNR monetary-policy decision on 2026-10-08**. Until then, repeated AMECO probing, BLS filename guessing, government-repricing proxy substitution, routine ECB-QSA vintage reruns and repeated OECD/Eurostat financial-account value probes do not count as scientific progress and remain prohibited without their declared triggers.
+
+
+
+### ECB QFA official-tolerance per-instrument gate — 2026-09-21
+
+An independent official ECB QFA consistency rule supplied the domain-specific quantitative criterion required by the monitoring horizon. ECB defines horizontal consistency **per financial instrument** and states that national-data discrepancies below EUR 10 million are acceptable; later quality reports continue to flag internal discrepancies above EUR 10 million, and Romania is included in the common validation framework.
+
+RMD preregistered and executed a new gate without rewriting the historical strict 0.1 million RON failures. The gate tested F2-F8 separately for both stocks and financial transactions over 49 quarters (2014Q1-2026Q1), for **686 exact decimal instrument-quarter tests**. Row coverage passed with no non-semantic missing rows, no duplicates and no semantic conflicts; all values were finite.
+
+A deliberately stricter sufficient currency condition was fixed before execution: every residual had to be below 10 million RON and official ECB quarterly RON/EUR average and end-of-period rates had to remain above 1. Both FX series passed over the full test span, with minima above 4.38 RON/EUR. Therefore a residual below 10 million RON is necessarily far below the official EUR 10 million criterion without choosing a stock-versus-flow FX convention after observing results.
+
+The executed result is **PASS**: zero of 686 tests reached 10 million RON and the maximum absolute per-instrument residual was only **0.2 million RON**. This execution authorizes a **separate reference-mode promotion assessment only**. It does not itself promote `sectoral_financial_positions`, change Accounting Spine readiness, open calibration, estimate parameters, activate feedbacks or activate behavioural closure. The canonical state therefore remains 9/10 and `PARTIAL_SERIES_AVAILABLE` until that separate promotion assessment passes.
 
 
 ### Government refinancing–interest loop structural closure — 2026-09-21
