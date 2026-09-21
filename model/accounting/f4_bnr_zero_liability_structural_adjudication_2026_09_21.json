@@ -140,5 +140,6 @@
     "behavioural_closure_change": false,
     "version_change": false
   },
-  "decision": "PASS_PROMOTE_BNR_F4_STOCK_ZERO_LIABILITY_PARTITION_TO_EXACT_STRUCTURAL_CONSTRAINT"
+  "decision": "PASS_PROMOTE_BNR_F4_STOCK_ZERO_LIABILITY_PARTITION_TO_EXACT_STRUCTURAL_CONSTRAINT",
+  "source_coverage_assessment": "model/accounting/f4_loans_coverage_assessment.json"
 }
