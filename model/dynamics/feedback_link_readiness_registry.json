@@ -16,7 +16,8 @@
     "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED",
     "EXPOSURE_SCALE_OBSERVED_DEBT_SERVICE_AND_CREDIT_RISK_STATE_BOUNDARY_UNRECONCILED",
     "RISK_AND_PRUDENTIAL_STATE_OBSERVED_CREDIT_SUPPLY_CAPACITY_SCALAR_NOT_IDENTIFIED",
-    "SUPPLY_CONDITION_AND_DEMAND_OBSERVABLES_AVAILABLE_REALIZED_CREDIT_FLOW_JOINTLY_DETERMINED"
+    "SUPPLY_CONDITION_AND_DEMAND_OBSERVABLES_AVAILABLE_REALIZED_CREDIT_FLOW_JOINTLY_DETERMINED",
+    "RATE_PRICE_AND_CREDIT_TRANSACTION_BOUNDARIES_DISTINCT_JOINT_DETERMINATION_UNRESOLVED"
   ],
   "hard_rules": {
     "every_feedback_path_link_must_be_registered_exactly_once": true,
@@ -299,15 +300,16 @@
       "from": "market_and_lending_rates",
       "to": "credit_flow",
       "sign": "-_candidate",
-      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
-      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK_PRICE_TO_JOINT_SUPPLY_DEMAND_OUTCOME",
+      "readiness_status": "RATE_PRICE_AND_CREDIT_TRANSACTION_BOUNDARIES_DISTINCT_JOINT_DETERMINATION_UNRESOLVED",
       "related_mechanisms": [
         "aggregate_bank_credit_response"
       ],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+      "reason": "Lending rates are price variables, while ECB BSI credit_flow is a realized net financial transaction. MIR new-business volume is a distinct agreement-volume concept, and realized credit transactions reflect both loan demand and bank supply conditions.",
+      "market_and_lending_rates_to_credit_flow_boundary_review": "model/dynamics/market_and_lending_rates_to_credit_flow_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "monetary_credit_transmission_loop|credit_flow|private_demand_and_investment",

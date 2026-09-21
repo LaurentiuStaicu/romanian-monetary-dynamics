@@ -230,7 +230,10 @@
       "topology_status": "CLOSED_CANDIDATE_LOOP",
       "policy_rate_to_market_and_lending_rates_boundary_review": "model/dynamics/policy_rate_to_market_and_lending_rates_boundary_review_2026_09_21.json",
       "policy_rate_to_market_and_lending_rates_status": "TARGET_SPECIFIC_PASS_THROUGH_CANDIDATE_AVAILABLE_GENERIC_RATE_NODE_UNRESOLVED",
-      "policy_rate_to_market_and_lending_rates_equation_ready": false
+      "policy_rate_to_market_and_lending_rates_equation_ready": false,
+      "market_and_lending_rates_to_credit_flow_boundary_review": "model/dynamics/market_and_lending_rates_to_credit_flow_boundary_review_2026_09_21.json",
+      "market_and_lending_rates_to_credit_flow_status": "RATE_PRICE_AND_CREDIT_TRANSACTION_BOUNDARIES_DISTINCT_JOINT_DETERMINATION_UNRESOLVED",
+      "market_and_lending_rates_to_credit_flow_equation_ready": false
     },
     {
       "id": "external_fx_refinancing_loop",
