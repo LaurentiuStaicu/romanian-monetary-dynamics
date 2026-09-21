@@ -264,7 +264,9 @@
     "sectoral_financial_positions_semantic_adjusted_gate_status": "EXECUTED_FAIL_FROZEN_RECONCILIATION_TOLERANCE_NO_PROMOTION",
     "sectoral_financial_positions_semantic_adjusted_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
     "sectoral_financial_positions_oecd_precision_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_precision_diagnostic_2026_09_21.json",
-    "sectoral_financial_positions_oecd_precision_diagnostic_status": "NO_PRECISION_BASED_REOPEN_DECIMALS_ONLY_EXPLANATION_INSUFFICIENT"
+    "sectoral_financial_positions_oecd_precision_diagnostic_status": "NO_PRECISION_BASED_REOPEN_DECIMALS_ONLY_EXPLANATION_INSUFFICIENT",
+    "sectoral_financial_positions_oecd_decimal_arithmetic_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
+    "sectoral_financial_positions_oecd_decimal_arithmetic_status": "CORRECTED_63_MACHINE_FLOAT_TO_47_EXACT_DECIMAL_VIOLATIONS_VERDICT_UNCHANGED"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
@@ -345,7 +347,9 @@
     "post_terminal_precision_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_precision_diagnostic_2026_09_21.json",
     "post_terminal_precision_diagnostic_status": "EXECUTED_NEGATIVE_NO_REOPEN",
     "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json",
-    "trigger_aware_monitoring_horizon_status": "NO_GATE_OPEN_NEXT_DATED_CHECK_2026_10_08"
+    "trigger_aware_monitoring_horizon_status": "NO_GATE_OPEN_NEXT_DATED_CHECK_2026_10_08",
+    "post_terminal_decimal_arithmetic_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
+    "post_terminal_decimal_arithmetic_correction_status": "EXECUTED_CORRECTION_ONLY_BASELINE_HOLD_UNCHANGED"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",

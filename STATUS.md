@@ -111,6 +111,18 @@ The result remains `PARTIAL_SERIES_AVAILABLE` and **9/10 reference modes ready**
 
 
 
+
+### OECD reconciliation arithmetic correction — 2026-09-21
+
+An offline reproducibility check of the already-retained semantic-adjusted OECD artifact identified a numerical implementation issue in the historical reconciliation runner: the frozen threshold test used binary floating-point arithmetic directly as `abs(residual) > 0.1`. Some residuals that are exactly ±0.1 million RON in the decimal source values were therefore represented infinitesimally above 0.1 and counted as violations.
+
+The historical workflow and its artifact remain immutable. Recomputing the same retained source rows with exact base-10 decimal arithmetic, the correct violation count is **47 of 98**, not 63: **21 flow quarters** and **26 stock quarters**. There are 28 exact boundary cases with |residual| = 0.1; binary floating point misclassified 16 of them as violations and left 12 correctly non-violating. Maximum residuals remain exactly **0.5 million RON for flows** and **0.6 million RON for stocks**.
+
+This is a correction to the violation **count**, not a tolerance change and not a new source run. The scientific verdict remains **FAIL** at the frozen 0.1 million RON threshold, because 47 mathematically genuine violations remain. Future summaries must use 47 as the corrected count while preserving 63 only as provenance of the historical machine-float execution.
+
+ECB quality documentation provides useful context but not a rescue rule: quarterly financial-account internal consistency covers sector/instrument aggregation, horizontal asset-liability equality, balancing items and counterpart-sector consistency, and Romania is reported at 96% validation-rule compliance over Q4 2012–Q2 2024. This shows that minor validation exceptions have existed historically, but it does not identify the 2025–2026 OECD residuals or authorize a looser threshold.
+
+
 ### Trigger-aware monitoring horizon — successor frozen 2026-09-21
 
 After the BNR/CMFB → OECD → ESA 2010 → dissemination-precision recovery chain returned to hold, the previous 2026-09-20 trigger horizon is preserved as an immutable historical snapshot and superseded operationally by `model/registries/trigger_aware_monitoring_horizon_2026_09_21.json`.
