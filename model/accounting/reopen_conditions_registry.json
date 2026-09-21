@@ -76,7 +76,12 @@
         "issuer-applicability assumptions not supported by ESA/source evidence",
         "non-negativity or missing-to-zero completion",
         "a live refresh reproducing rank 11/nullity 24"
-      ]
+      ],
+      "selective_reopen_contract": "model/accounting/f6_oecd_counterpart_reopen_contract_2026_09_21.json",
+      "selective_reopen_assessment": "model/accounting/f6_oecd_counterpart_reopen_assessment_2026_09_21.json",
+      "selective_reopen_state": "PREREGISTERED_STAGE2_PENDING_EXECUTION",
+      "reopen_trigger_satisfied": true,
+      "reopen_trigger_basis": "Retained OECD quarterly counterpart stocks/flows publish total F6 and F61-F66 by reporting/counterpart sector; S121 remains absent, so F-versus-BNR stays unresolved."
     },
     "F7": {
       "current_status": "FROZEN_AGGREGATE_ONLY_PUBLIC_DATA_BOUNDARY",
