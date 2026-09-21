@@ -45,10 +45,13 @@
         "model/accounting/f4_structural_zero_successor_materialization_assessment_2026_09_21.json",
         "model/accounting/f4_partial_structural_2025.json",
         "model/accounting/f4_structural_zero_materialization_manifest_2026_09_21.json",
-        "model/accounting/f4_eurostat_bsi_bridge_diagnostic_2026_09_21.json"
+        "model/accounting/f4_eurostat_bsi_bridge_diagnostic_2026_09_21.json",
+        "model/accounting/f4_bnr_cnf_2025_stock_trigger_monitoring_2026_09_21.json"
       ],
       "current_reopen_gate_open": false,
-      "reopen_class": "NEW_OFFICIAL_BNR_ASSET_COUNTERPART_EVIDENCE_OR_ADDITIONAL_EXACT_CONSTRAINTS"
+      "reopen_class": "NEW_OFFICIAL_BNR_ASSET_COUNTERPART_EVIDENCE_OR_ADDITIONAL_EXACT_CONSTRAINTS",
+      "priority_monitoring": "BNR_CNF_2025_F4_CENTRAL_BANK_ASSET_COUNTERPART_STOCK_MATRIX",
+      "priority_monitoring_state": "MONITOR_PUBLICATION_NO_REOPEN"
     },
     "F5": {
       "status": "FROZEN_AT_PUBLIC_DATA_BOUNDARY",
