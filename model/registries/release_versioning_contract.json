@@ -16,27 +16,23 @@
       "immutable_historical_identity": true,
       "publication_record": "model/registries/v0_2_0_release_publication_record_2026_09_21.json"
     },
-    "current_repository_version": "0.2.0",
-    "unreleased_changes_present": true,
+    "current_repository_version": "0.3.0",
+    "unreleased_changes_present": false,
     "version_bump_required_now": false,
-    "rationale": "v0.2.0 remains an immutable published snapshot. Main now contains substantive post-release scientific-governance progress, including promotion of aggregate reference-mode observability to 10/10 and additional Accounting Spine source-boundary/reopen diagnostics, but no new canonical multi-instrument Accounting Spine completion, behavioural activation, calibration authorization or validated-model milestone that requires an immediate release. The post-release work remains Unreleased until a coherent v0.3.0 milestone is intentionally prepared.",
+    "rationale": "The post-v0.2.0 work has reached a coherent v0.3.0 release milestone: aggregate reference-mode observability is 10/10 and the Accounting Spine recovery cycle has a terminal evidence-triggered hold with explicit reopen conditions for every incomplete instrument. The repository metadata are advanced atomically to 0.3.0 for release preparation; the current public release remains the immutable v0.2.0 snapshot until the exact green main commit is tagged and published.",
     "next_public_release_candidate": "0.3.0",
-    "next_candidate_rationale": "The default next substantive 0.x scientific-core milestone is 0.3.0. It should package a coherent post-v0.2.0 scientific boundary rather than being triggered by individual diagnostics alone. A narrowly scoped corrective release may instead use 0.2.1 when that classification is accurate.",
+    "next_candidate_rationale": "v0.3.0 is the active substantive release candidate. After successful publication and post-publish verification, the default next substantive 0.x milestone should advance to v0.4.0; a corrective patch may use v0.3.1 when appropriate.",
     "release_preparation": {
-      "state": "PUBLISHED_AND_FINALIZED",
-      "candidate_version": "0.2.0",
-      "candidate_tag": "v0.2.0",
+      "state": "READY_FOR_PUBLICATION_AFTER_GREEN_MAIN_CI",
+      "candidate_version": "0.3.0",
+      "candidate_tag": "v0.3.0",
       "intended_release_date": "2026-09-21",
-      "release_name": "v0.2.0 — Structural review and reproducibility milestone",
-      "release_notes": "releases/v0.2.0.md",
-      "readiness_assessment": "model/registries/v0_2_0_release_readiness_assessment_2026_09_21.json",
+      "release_name": "v0.3.0 — Reference-mode closure and Accounting Spine recovery boundary",
+      "release_notes": "releases/v0.3.0.md",
+      "readiness_assessment": "model/registries/v0_3_0_release_readiness_assessment_2026_09_21.json",
       "publication_authorization": "model/registries/release_publication_authorization.json",
-      "publication_record": "model/registries/v0_2_0_release_publication_record_2026_09_21.json",
-      "exact_release_commit": "51114123c19471448356aee10e487994744233a0",
-      "published_at": "2026-09-21T09:40:42Z",
-      "release_id": 392838630,
       "public_release_identity_advances_only_after_tag_and_github_release_exist": true,
-      "publication_complete": true
+      "publication_complete": false
     }
   },
   "atomic_repository_surfaces": [

@@ -134,18 +134,18 @@ class CommunityHealthContractTests(unittest.TestCase):
         self.assertFalse((ROOT / "SECURITY.md").exists())
         self.assertFalse((ROOT / "CODE_OF_CONDUCT.md").exists())
 
-    def test_community_health_change_does_not_bump_release(self) -> None:
+    def test_community_health_change_does_not_control_release_version(self) -> None:
         release = load_json(
             ROOT / "model" / "registries" / "release_versioning_contract.json"
         )
         basis = release["versioning_basis"]
-        self.assertEqual(basis["current_repository_version"], "0.2.0")
+        self.assertEqual(basis["current_repository_version"], "0.3.0")
         self.assertEqual(basis["current_public_release"]["version"], "0.2.0")
         self.assertFalse(basis["version_bump_required_now"])
         prep = basis["release_preparation"]
         self.assertEqual(
             prep["readiness_assessment"],
-            "model/registries/v0_2_0_release_readiness_assessment_2026_09_21.json",
+            "model/registries/v0_3_0_release_readiness_assessment_2026_09_21.json",
         )
         self.assertNotIn("community_health", prep["readiness_assessment"])
 
