@@ -1,0 +1,45 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "stage": "Reference-Mode Recovery — Successor Promotion Assessment",
+  "supersedes_operationally": "model/dynamics/reference_mode_recovery_terminal_assessment.json",
+  "historical_assessment_preserved": true,
+  "purpose": "Adjudicate the reference-mode set after the official ECB QFA EUR 10 million materiality-aligned gate passed. This assessment changes only observed reference-mode availability and does not change Accounting Spine completeness, behavioural equations, calibration readiness or System Dynamics activation.",
+  "promoted_mode": {
+    "id": "sectoral_financial_positions",
+    "previous_status": "PARTIAL_SERIES_AVAILABLE",
+    "new_status": "OBSERVED_SERIES_AVAILABLE",
+    "evidence_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_assessment_2026_09_21.json",
+    "retained_series": "data/processed/sectoral_financial_positions_oecd_ecb_qfa_2014Q1_2026Q1.csv",
+    "boundary": "Aggregate quarterly RMD H,C,F,G,BNR,X assets/liabilities/net positions and financial transactions on explicit F2-F8 non-consolidated sector boundary.",
+    "does_not_mean": "Holder-by-issuer bilateral Accounting Spine completion."
+  },
+  "current_reference_mode_state": {
+    "required_reference_modes": 10,
+    "ready_reference_modes": 10,
+    "ready_status": "OBSERVED_SERIES_AVAILABLE",
+    "blockers": [],
+    "reference_mode_set_complete": true,
+    "integrated_quantitative_reference_target_prerequisite_satisfied": true
+  },
+  "preserved_non_effects": {
+    "canonical_complete_stock_and_flow_instruments": [
+      "F3"
+    ],
+    "canonical_full_2025_stock_flow_benchmark_ready": false,
+    "multi_instrument_stock_initialization_ready": false,
+    "accounting_spine_is_hard_constraint": true,
+    "full_rmd_empirical_state_claim_allowed": false,
+    "active_calibration_cycle_open": false,
+    "activated_mechanisms_count": 0,
+    "validated_reference_behavioural_mechanisms": 0,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_active": false,
+    "complete_endogenous_system_dynamics_model": false,
+    "forecasting_readiness_claim_allowed": false,
+    "policy_simulation_readiness_claim_allowed": false
+  },
+  "decision": "REFERENCE_MODE_SET_COMPLETE_10_OF_10_SECTORAL_FINANCIAL_POSITIONS_PROMOTED_ACCOUNTING_AND_BEHAVIOURAL_STATE_UNCHANGED",
+  "next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+  "interpretation": "The empirical reference-target layer is now complete at 10/10 under its documented heterogeneous source boundaries. This removes the missing-reference-mode blocker for future mechanism validation but does not itself identify, estimate, calibrate or activate any behavioural closure."
+}
