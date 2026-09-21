@@ -1,0 +1,145 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "phase": "Accounting Spine / F4 BNR zero-liability structural adjudication",
+  "instrument": "F4",
+  "predecessor_rank_assessment": "model/accounting/f4_exact_complement_rank_assessment.json",
+  "retained_source_vintage": "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18",
+  "purpose": "Adjudicate whether the previously conditional stock-only BNR zero-liability partition may be promoted to an exact structural constraint under ESA 2010 financial-balance-sheet semantics, without extending the result to transactions or allocating the BNR asset row.",
+  "retained_empirical_condition": {
+    "series_key": "Q.N.RO.W0.S121.S1.N.L.LE.F4.T._Z.XDC._T.S.V.N._T",
+    "reference_area": "RO",
+    "reference_sector": "S121",
+    "counterpart_area": "W0",
+    "counterpart_sector": "S1",
+    "consolidation": "N",
+    "accounting_entry": "L",
+    "measure": "LE",
+    "instrument": "F4",
+    "maturity": "T",
+    "unit": "XDC",
+    "values_million_RON": {
+      "2025-Q1": "0.0",
+      "2025-Q2": "0.0",
+      "2025-Q3": "0.0",
+      "2025-Q4": "0.0"
+    },
+    "condition": "BNR total non-consolidated F4 liability stock is exactly zero throughout the retained 2025 boundary."
+  },
+  "official_methodological_evidence": [
+    {
+      "source": "ESA 2010",
+      "url": "https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF",
+      "paragraphs": [
+        "5.112",
+        "5.113(c)"
+      ],
+      "finding": "Loans arise when creditors lend to debtors and constitute an unconditional debt to the creditor that must be repaid."
+    },
+    {
+      "source": "ESA 2010",
+      "url": "https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF",
+      "paragraphs": [
+        "7.61",
+        "7.70"
+      ],
+      "finding": "Non-negotiable financial instruments are recorded at nominal value and counterpart financial assets and liabilities carry the same balance-sheet value; loans are recorded at nominal value for both creditors and debtors, including non-performing loans."
+    },
+    {
+      "source": "ESA 2010",
+      "url": "https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF",
+      "paragraphs": [
+        "7.92",
+        "7.93"
+      ],
+      "finding": "A non-consolidated financial balance sheet shows all financial assets and liabilities of units in the sector, including positions whose counterparty is within the same sector; the debtor/creditor balance sheet is a breakdown of financial assets by debtor sector and liabilities by creditor sector."
+    },
+    {
+      "source": "ESA 2010",
+      "url": "https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF",
+      "paragraphs": [
+        "5.23"
+      ],
+      "finding": "Financial transactions are recorded net of acquisitions/disposals or incurrence/repayment within an instrument category; therefore a zero transaction total does not imply zero bilateral transaction components."
+    },
+    {
+      "source": "ECB QSA",
+      "url": "https://data.ecb.europa.eu/data/datasets/QSA",
+      "finding": "The retained BNR F4 liability stock control is a non-consolidated closing-balance-sheet position using ESA-standard valuation."
+    }
+  ],
+  "structural_argument": {
+    "stock_partition_rule": "For the non-consolidated debtor/creditor balance sheet, total BNR F4 liabilities are partitioned by creditor sector. Each bilateral F4 stock liability is the nominal amount of an outstanding debt claim and is therefore non-negative within the F4 liability classification.",
+    "implication": "If the complete non-consolidated BNR F4 liability stock equals zero, every bilateral holder→BNR F4 stock position in that partition must equal zero.",
+    "self_counterparty_included": true,
+    "no_consolidation_netting": true,
+    "no_missing_to_zero": true,
+    "no_residual_allocation": true,
+    "stock_only": true,
+    "flow_extension_authorized": false
+  },
+  "adjudication": {
+    "structural_zero_condition_satisfied": true,
+    "BNR_issuer_stock_column_exact_zero": true,
+    "exact_zero_cells": [
+      "H→BNR",
+      "C→BNR",
+      "F→BNR",
+      "G→BNR",
+      "X→BNR",
+      "BNR→BNR"
+    ],
+    "predecessor_conditional_stock_rank": 31,
+    "predecessor_conditional_stock_nullity": 4,
+    "successor_current_stock_rank": 31,
+    "successor_current_stock_nullity": 4,
+    "successor_current_stock_unique_cell_count": 25,
+    "successor_current_flow_rank": 26,
+    "successor_current_flow_nullity": 9,
+    "successor_current_flow_unique_cell_count": 15,
+    "newly_current_stock_unique_cells_beyond_predecessor_unconditional": [
+      "H→F",
+      "H→BNR",
+      "C→F",
+      "C→BNR",
+      "F→BNR",
+      "G→F",
+      "G→BNR",
+      "X→F",
+      "X→BNR",
+      "BNR→BNR"
+    ],
+    "remaining_stock_nonunique_cells": [
+      "F→H",
+      "F→C",
+      "F→F",
+      "F→G",
+      "F→X",
+      "BNR→H",
+      "BNR→C",
+      "BNR→F",
+      "BNR→G",
+      "BNR→X"
+    ],
+    "remaining_stock_degrees_of_freedom": 4,
+    "remaining_stock_boundary": "The BNR-holder F4 asset row remains 6.1 million RON in aggregate but its five counterpart allocations H/C/F/G/X remain unidentified; paired F-holder cells move through the exact S12=F+BNR identity.",
+    "flow_state_unchanged": true
+  },
+  "materialization_effect": {
+    "materialization_authorized_by_this_assessment": false,
+    "successor_materialization_gate_required": true,
+    "existing_f4_partial_2025_must_remain_historical": true,
+    "canonical_benchmark_change": false,
+    "complete_F4_matrix": false
+  },
+  "system_effect": {
+    "accounting_readiness_complete": false,
+    "reference_mode_change": false,
+    "calibration_or_refit_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_change": false,
+    "version_change": false
+  },
+  "decision": "PASS_PROMOTE_BNR_F4_STOCK_ZERO_LIABILITY_PARTITION_TO_EXACT_STRUCTURAL_CONSTRAINT",
+  "source_coverage_assessment": "model/accounting/f4_loans_coverage_assessment.json"
+}
