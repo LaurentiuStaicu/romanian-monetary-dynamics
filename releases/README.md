@@ -4,13 +4,14 @@ Romanian Monetary Dynamics (RMD) uses Semantic Versioning-compatible version ide
 
 ## Current release state
 
-- Current public release: **v0.1.0**
-- Current repository/package version: **0.1.0**
-- Unreleased work exists on `main`.
-- Next public scientific-core release candidate: **v0.2.0**
-- No new release is being published merely because unreleased work exists.
+- Last already-published public release: **v0.1.0**
+- Prepared repository/package release candidate: **v0.2.0**
+- Intended v0.2.0 release date: **2026-09-21**
+- Publication gate: **exact main release commit must pass Scientific CI**
+- Release notes: **releases/v0.2.0.md**
+- Publication authorization: **model/registries/release_publication_authorization.json**
 
-The published v0.1.0 tag and release are historical identities and must not be moved or rewritten to contain newer work.
+The published v0.1.0 tag and release remain historical identities and must not be moved or rewritten. The v0.2.0 tag/GitHub Release may be created only for the exact reviewed main commit that passes the publication gate.
 
 ## Atomic version bump checklist
 
