@@ -87,7 +87,9 @@
     "bnr_2025_financial_accounts_topology_reopen_assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
     "bnr_2025_financial_accounts_public_access_recovery_contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
     "bnr_2025_financial_accounts_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_21_bnr_financial_accounts_topology.json",
-    "oecd_nonconsolidated_sectoral_financial_positions_probe_contract": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_probe_contract_2026_09_21.json"
+    "oecd_nonconsolidated_sectoral_financial_positions_probe_contract": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_probe_contract_2026_09_21.json",
+    "oecd_nonconsolidated_sectoral_financial_positions_topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
+    "oecd_exact_sectoral_financial_positions_gate": "model/dynamics/sectoral_financial_positions_oecd_exact_extraction_reconciliation_contract_2026_09_21.json"
   },
   "canonical_state": {
     "accounting": {
