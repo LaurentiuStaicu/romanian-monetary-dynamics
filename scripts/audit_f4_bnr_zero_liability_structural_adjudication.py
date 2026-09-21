@@ -15,13 +15,16 @@ def audit_f4_bnr_zero_liability_structural_adjudication() -> list[str]:
     errors: list[str] = []
     a = load(ASSESSMENT)
     predecessor = load("model/accounting/f4_exact_complement_rank_assessment.json")
+    coverage = load("model/accounting/f4_loans_coverage_assessment.json")
     partial = load("model/accounting/f4_partial_materialization_manifest.json")
     reopen = load("model/accounting/reopen_conditions_registry.json")
 
     if a["decision"] != "PASS_PROMOTE_BNR_F4_STOCK_ZERO_LIABILITY_PARTITION_TO_EXACT_STRUCTURAL_CONSTRAINT":
         errors.append("F4 structural-zero decision changed")
+    if a.get("source_coverage_assessment") != "model/accounting/f4_loans_coverage_assessment.json":
+        errors.append("F4 structural-zero source coverage authority changed")
 
-    evidence = predecessor["bnr_boundary_evidence"]
+    evidence = coverage["bnr_boundary_evidence"]
     expected = {"2025-Q1": 0, "2025-Q2": 0, "2025-Q3": 0, "2025-Q4": 0}
     if evidence["stock_F4_liabilities_W0_million_RON"] != expected:
         errors.append("retained BNR F4 liability stock is no longer zero across 2025")
