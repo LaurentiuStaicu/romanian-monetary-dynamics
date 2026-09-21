@@ -34,7 +34,7 @@ def audit_inflation_to_policy_rate(review,reaction,reference_modes,boundary,read
  if loop.get("inflationary_pressure_to_policy_rate_status")!=STATUS:e.append("loop status changed")
  d=model["dynamic_core"]
  if d.get("inflationary_pressure_to_policy_rate_boundary_review")!=REVIEW_PATH:e.append("model pointer missing")
- if d.get("monetary_credit_transmission_next_structural_task")!="monetary_credit_transmission_loop_terminal_assessment":e.append("next monetary task changed")
+ if d.get("monetary_credit_transmission_next_structural_task")!="monetary_credit_transmission_loop_evidence_triggered_hold":e.append("next monetary task changed")
  if baseline["authority"].get("inflationary_pressure_to_policy_rate_boundary_review")!=REVIEW_PATH:e.append("baseline authority missing")
  for k,v in review["hard_rules"].items():
   if v is not True:e.append(f"hard rule disabled: {k}")
@@ -42,5 +42,5 @@ def audit_inflation_to_policy_rate(review,reaction,reference_modes,boundary,read
 def main():
  errors=audit_inflation_to_policy_rate(load(REVIEW_PATH),load("model/calibration_validation/monetary_policy_reaction_source_screening.json"),load("model/dynamics/reference_modes.json"),load("model/dynamics/feedback_variable_boundary_registry.json"),load("model/dynamics/feedback_link_readiness_registry.json"),load("model/dynamics/feedback_registry.json"),load("model/registries/model_contract.json"),load("model/registries/scientific_baseline_manifest.json"))
  if errors:raise RuntimeError("Inflation-to-policy-rate boundary audit failed:\n- "+"\n- ".join(errors))
- print(json.dumps({"status":"PASS","bridge_status":STATUS,"policy_rate_endogenous":False,"exact_integrated_equation_ready":False,"feedback_activation_authorized":False,"next_gate":"monetary_credit_transmission_loop_terminal_assessment"},indent=2))
+ print(json.dumps({"status":"PASS","bridge_status":STATUS,"policy_rate_endogenous":False,"exact_integrated_equation_ready":False,"feedback_activation_authorized":False,"next_gate":"monetary_credit_transmission_loop_evidence_triggered_hold"},indent=2))
 if __name__=="__main__":main()
