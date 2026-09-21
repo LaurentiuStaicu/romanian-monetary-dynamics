@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REVIEW_PATH = "model/dynamics/government_debt_stock_to_interest_cost_boundary_review_2026_09_21.json"
 PREREG_PATH = "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
 STATUS = "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL"
-NEXT_GATE = "government_refinancing_interest_loop_terminal_assessment"
+NEXT_GATE = "government_refinancing_interest_loop_evidence_triggered_hold"
 
 
 def load(path: str) -> dict:
