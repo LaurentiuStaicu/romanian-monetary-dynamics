@@ -70,7 +70,12 @@
       "materialisation_contract": "model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json",
       "materialisation_contract_status": "FROZEN_CUMULATIVE_YTD_ONLY_MONTHLY_DIFFERENCING_NOT_AUTHORIZED",
       "monthly_differencing_authorized": false,
-      "cumulative_ytd_materialisation_authorized_after_raw_retention": true
+      "cumulative_ytd_materialisation_authorized_after_raw_retention": true,
+      "source_vintage_manifest": "data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21/source_vintage_manifest.json",
+      "source_vintage_assessment": "model/dynamics/mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json",
+      "source_vintage_status": "PASS_FULL_2025_EXACT_CUMULATIVE_YTD_MONTHLY_DIFFERENCING_BLOCKED",
+      "full_2025_cumulative_ytd_coverage": true,
+      "allocation_vector_identified": false
     },
     {
       "id": "issuance_to_supply_pressure",
@@ -155,15 +160,13 @@
   },
   "next_gate_after_materialisation": "Reconcile the exact RON auction-universe stock denominator before any supply-load ratio is computed. Submitted-bids and bid-to-cover monthly series remain blocked because the monthly report exposes them graphically without reproducible native-text month/series mapping.",
   "next_independent_bridge_task": {
-    "id": "mof_realized_financing_channel_source_vintage_probe",
-    "authorization": "OFFICIAL_SOURCE_RETENTION_AND_CUMULATIVE_YTD_EXTRACTION_ONLY",
-    "may_retain_raw_sources": true,
-    "may_extract_published_cumulative_ytd_values": true,
-    "may_difference_cumulative_values": false,
-    "may_infer_channel_residuals": false,
-    "may_estimate_allocation_shares": false,
-    "may_promote_generic_debt_issuance_node": false,
-    "may_activate_feedback": false
+    "id": "government_debt_issuance_to_debt_stock_boundary_review",
+    "authorization": "STRUCTURAL_ACCOUNTING_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_map_gross_borrowing_one_to_one_to_debt_stock_change": false,
+    "may_treat_exchange_operations_as_net_new_debt": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
   },
   "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
   "interest_cost_to_financing_need_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",

@@ -280,7 +280,7 @@ def audit_mof_realized_financing_channel_materialisation_contract(
     if bridge.get("cumulative_ytd_materialisation_authorized_after_raw_retention") is not True:
         errors.append("preregistration cumulative-YTD gate changed")
     if prereg["next_independent_bridge_task"]["id"] != (
-        "mof_realized_financing_channel_source_vintage_probe"
+        "government_debt_issuance_to_debt_stock_boundary_review"
     ):
         errors.append("preregistration next independent bridge changed")
 
@@ -296,7 +296,7 @@ def audit_mof_realized_financing_channel_materialisation_contract(
     ) is not True:
         errors.append("model contract cumulative-YTD gate changed")
     if dynamic.get("government_issuance_yield_next_independent_task") != (
-        "mof_realized_financing_channel_source_vintage_probe"
+        "government_debt_issuance_to_debt_stock_boundary_review"
     ):
         errors.append("model contract next independent task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:

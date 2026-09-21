@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- retained all twelve 2025 Ministry monthly public-debt reports and extracted exact provider-published cumulative-YTD financing channels; changing FX-conversion regimes, exchange-operation semantics and non-monotone published lines block month-to-month differencing, so no monthly realized-financing flow series or channel allocation is promoted;
 - froze a Ministry realized-financing channel source contract for provider-published cumulative-YTD actual borrowing by instrument/market; raw source retention and exact cumulative extraction are authorized, while monthly differencing, residual channel inference, synthetic allocation shares and cross-vintage FX conversion assumptions remain blocked;
 - reviewed the bridge from government financing need to debt issuance as an explicit multi-channel allocation problem: the retained BNR domestic primary-market series remains one channel only, the Ministry 45%/55% split is scoped to deficit financing rather than total GFN, no residual or synthetic channel shares are allowed, and the generic financing-need/debt-issuance link remains unresolved;
 - reviewed the government-interest-cost to financing-need boundary as a conditional accounting composition rather than a behavioural equation: headline-deficit GFN forms already include interest, primary-deficit forms include interest exactly once, and no cross-boundary Eurostat/MoF identity or canonical financing-need reference mode is promoted;

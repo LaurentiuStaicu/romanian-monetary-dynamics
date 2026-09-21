@@ -182,7 +182,7 @@ def audit_primary_yield_to_sovereign_yield_boundary(
         errors.append("preregistration may not authorize reference-mode promotion")
     if prereg["empirical_boundary_status"]["candidate_chain"] != chain["reviewed_candidate_chain"]:
         errors.append("preregistration empirical chain differs from reviewed chain")
-    if prereg["next_independent_bridge_task"]["id"] != "mof_realized_financing_channel_source_vintage_probe":
+    if prereg["next_independent_bridge_task"]["id"] != "government_debt_issuance_to_debt_stock_boundary_review":
         errors.append("preregistration next independent bridge changed")
 
     dynamic = model_contract["dynamic_core"]
@@ -196,7 +196,7 @@ def audit_primary_yield_to_sovereign_yield_boundary(
     if dynamic.get("sovereign_yield_canonical_reference_mode_promoted") is not False:
         errors.append("model contract may not promote sovereign-yield reference mode")
     if dynamic.get("government_issuance_yield_next_independent_task") != (
-        "mof_realized_financing_channel_source_vintage_probe"
+        "government_debt_issuance_to_debt_stock_boundary_review"
     ):
         errors.append("model contract next independent task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:

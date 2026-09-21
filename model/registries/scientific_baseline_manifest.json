@@ -60,7 +60,8 @@
     "yield_to_interest_cost_boundary_review": "model/dynamics/yield_to_interest_cost_boundary_review_2026_09_21.json",
     "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
     "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
-    "mof_realized_financing_channel_materialisation_contract": "model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json"
+    "mof_realized_financing_channel_materialisation_contract": "model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json",
+    "mof_realized_financing_channel_source_vintage_assessment": "model/dynamics/mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json"
   },
   "canonical_state": {
     "accounting": {
