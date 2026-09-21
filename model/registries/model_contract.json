@@ -126,8 +126,8 @@
     "mof_announced_RON_primary_reference_auction_supply_missing_required_source_count": 3,
     "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
     "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_3_REQUIRED_SOURCES_REMAINING",
-    "government_issuance_yield_next_independent_task": "interest_cost_to_financing_need_boundary_review",
-    "government_issuance_yield_next_independent_task_authorization": "STRUCTURAL_ACCOUNTING_BOUNDARY_REVIEW_ONLY",
+    "government_issuance_yield_next_independent_task": "financing_channel_allocation_boundary_review",
+    "government_issuance_yield_next_independent_task_authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
     "mof_announced_RON_primary_reference_auction_supply_event_level_complete_final_months": [
       "2025-01",
       "2025-02",
@@ -147,7 +147,11 @@
     "yield_to_interest_cost_boundary_status": "REVIEWED_TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED",
     "government_interest_cost_canonical_reference_mode_promoted": false,
     "government_interest_cost_preferred_portfolio_cost_target": "government_effective_interest_rate",
-    "government_interest_cost_preferred_interest_expenditure_target": "government_interest_burden"
+    "government_interest_cost_preferred_interest_expenditure_target": "government_interest_burden",
+    "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
+    "interest_cost_to_financing_need_boundary_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
+    "government_financing_need_canonical_boundary_selected": false,
+    "government_financing_need_canonical_reference_mode_promoted": false
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
