@@ -1,0 +1,81 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "phase": "Accounting Spine / F2 Direct-Investment instrument-dissemination diagnostic",
+  "instrument": "F2",
+  "purpose": "Determine whether repeated searching of standard BPM6/Eurostat/BNR/OECD direct-investment presentations is scientifically capable of supplying the missing Direct-Investment currency-and-deposits subinstrument required by the existing BPM6-to-ESA F2 bridge.",
+  "predecessor": {
+    "governing_assessment": "model/accounting/f21_bpm6_esa_concept_bridge_assessment.json",
+    "current_F2M_state": "materialized",
+    "current_F21_state": "unresolved",
+    "current_total_F2_state": "incomplete"
+  },
+  "official_standard_evidence": [
+    {
+      "institution": "IMF",
+      "source": "BPM6 / External Debt Statistics standard-component presentation",
+      "url": "https://www.elibrary.imf.org/display/book/9781484366622/back-1.xml",
+      "finding": "Direct-investment debt instruments are not required in the IIP standard components to be presented broken down by type of instrument; debt securities may be compiled as a supplementary item.",
+      "implication": "Standard BPM6 IIP dissemination does not guarantee a separately published Direct-Investment currency-and-deposits item."
+    },
+    {
+      "institution": "IMF",
+      "source": "BPM6 Update Direct Investment Task Team — Sectoral Breakdown of Direct Investment",
+      "url": "https://www.imf.org/-/media/files/data/statistics/bpm6/approved-guidance-notes/d7-sectoral-breakdown-of-direct-investment.pdf",
+      "finding": "Direct-investment debt instruments are not disaggregated by specific instrument in the standard classification and can include debt securities, currency and deposits, loans, insurance/pension items, trade credits and other accounts; debt securities are the separately requested supplementary item.",
+      "implication": "A broad Direct-Investment debt-instruments series cannot be substituted for F2."
+    },
+    {
+      "institution": "Eurostat",
+      "source": "Balance of payments — International transactions (BPM6) metadata",
+      "url": "https://ec.europa.eu/eurostat/cache/metadata/en/bop_6_esms.htm",
+      "finding": "Eurostat describes Direct Investment as equity/reinvested earnings/debt instruments, while currency and deposits are explicitly instrumented under Other Investment.",
+      "implication": "The standard Eurostat BOP/IIP presentation does not supply the missing Direct-Investment F2 subinstrument used by the RMD bridge."
+    },
+    {
+      "institution": "OECD",
+      "source": "Benchmark Definition of Foreign Direct Investment, Fifth Edition",
+      "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/03/oecd-benchmark-definition-of-foreign-direct-investment-fifth-edition_38a25baf/7f05c0a3-en.pdf",
+      "finding": "The definition of Direct-Investment debt instruments includes currency and deposits among several debt instrument types.",
+      "implication": "Currency and deposits may conceptually belong inside Direct-Investment debt, but an aggregate debt-instruments publication does not identify the F2 share."
+    },
+    {
+      "institution": "National Bank of Romania",
+      "source": "Monthly Bulletin / International investment position presentation",
+      "url": "https://muzeu.bnr.ro/uploads/2025-03-07monthlybulletinno.012025_documentpdf_545_1743160358.pdf",
+      "finding": "The Romanian public IIP presentation reports Direct Investment as equity plus debt instruments; currency and deposits are separately shown under Other Investment.",
+      "implication": "The reviewed standard Romanian public presentation does not provide the required Direct-Investment currency-and-deposits split."
+    }
+  ],
+  "adjudication": {
+    "standard_BPM6_BOP_IIP_route_can_identify_DI_F2": false,
+    "broad_DI_debt_is_exact_F2_substitute": false,
+    "residual_gap_is_exact_F2_substitute": false,
+    "current_public_evidence_of_Romania_DI_F2_2025": false,
+    "reopen_trigger_satisfied": false,
+    "reason": "The missing bridge item is a specific instrument nested inside the broader Direct-Investment debt category. Official standards do not require that category to be broken down by instrument in standard IIP/BOP dissemination, and the reviewed Eurostat/BNR presentations retain the broader debt aggregate. Repeating standard-dataset searches without a new country-specific supplementary source cannot satisfy the frozen F2 trigger."
+  },
+  "search_boundary": {
+    "standard_BPM6_BOP_IIP_presentations": "EXHAUSTED_FOR_DI_F2_SUBINSTRUMENT",
+    "standard_Eurostat_bop_iip_route": "EXHAUSTED_FOR_DI_F2_SUBINSTRUMENT",
+    "standard_BNR_public_IIP_presentation": "EXHAUSTED_FOR_DI_F2_SUBINSTRUMENT",
+    "OECD_standard_FDI_aggregate_route": "DOES_NOT_IDENTIFY_DI_F2_SHARE",
+    "still_valid_reopen_paths": [
+      "A Romania-specific supplementary table/API/microdata publication explicitly separates currency and deposits inside Direct-Investment debt instruments for the required 2025 sector/unit boundary.",
+      "An equivalent official exact bridge identifies the Direct-Investment F2 contribution without residual allocation or historical shares."
+    ]
+  },
+  "scientific_effect": {
+    "F2M_change": false,
+    "F21_materialization_change": false,
+    "total_F2_materialization_change": false,
+    "accounting_readiness_change": false,
+    "benchmark_change": false,
+    "reference_mode_change": false,
+    "parameter_estimation_change": false,
+    "feedback_activation_change": false,
+    "behavioural_closure_change": false,
+    "version_change": false
+  },
+  "decision": "NO_REOPEN_STANDARD_DIRECT_INVESTMENT_DISSEMINATION_DOES_NOT_IDENTIFY_F2_SUBINSTRUMENT"
+}
