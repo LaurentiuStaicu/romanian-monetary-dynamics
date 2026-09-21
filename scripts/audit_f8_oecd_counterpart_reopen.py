@@ -35,7 +35,10 @@ def audit_f8_oecd_counterpart_reopen()->list[str]:
     f8=reopen["instruments"]["F8"]
     if f8.get("selective_reopen_contract")!=CONTRACT: errors.append("F8 registry lacks Stage 2 contract")
     if f8.get("selective_reopen_assessment")!=ASSESSMENT: errors.append("F8 registry lacks topology assessment")
-    if f8.get("selective_reopen_state")!="PREREGISTERED_STAGE2_PENDING_EXECUTION": errors.append("F8 selective reopen state stale")
+    allowed={"PREREGISTERED_STAGE2_PENDING_EXECUTION","STAGE2_EXECUTED_FAIL_SOURCE_RECONCILIATION_RETURNED_TO_HOLD","STAGE2_EXECUTED_PASS_PENDING_MATERIALIZATION_DECISION"}
+    if f8.get("selective_reopen_state") not in allowed: errors.append("F8 selective reopen state invalid")
+    if f8.get("selective_reopen_state")!="PREREGISTERED_STAGE2_PENDING_EXECUTION":
+        if f8.get("selective_reopen_execution_assessment")!="model/accounting/f8_oecd_counterpart_stage2_execution_assessment_2026_09_21.json": errors.append("F8 successor state lacks execution assessment")
     if f8.get("reopen_trigger_satisfied") is not True: errors.append("F8 trigger not registered")
     if a["adjudication"]["accounting_readiness_change"] is not False or a["adjudication"]["F8_materialization_change"] is not False: errors.append("F8 topology reopen may not change readiness/materialization")
     if a["adjudication"]["conditional_BNR_zero_stock_promotion"] is not False: errors.append("F8 topology reopen may not promote conditional BNR zeros")
@@ -44,6 +47,7 @@ def audit_f8_oecd_counterpart_reopen()->list[str]:
 def main():
     errors=audit_f8_oecd_counterpart_reopen()
     if errors: raise RuntimeError("F8 OECD counterpart reopen audit failed:\n- "+"\n- ".join(errors))
-    print(json.dumps({"status":"PASS","trigger":"OECD_F8_COUNTERPART_PUBLICATION","stage2":"PREREGISTERED_PENDING_EXECUTION","base_rank_stock":11,"base_rank_flow":11,"accounting_readiness_changed":False},indent=2))
+    state=load("model/accounting/reopen_conditions_registry.json")["instruments"]["F8"]["selective_reopen_state"]
+    print(json.dumps({"status":"PASS","trigger":"OECD_F8_COUNTERPART_PUBLICATION","stage2":state,"base_rank_stock":11,"base_rank_flow":11,"accounting_readiness_changed":False},indent=2))
 
 if __name__=="__main__": main()
