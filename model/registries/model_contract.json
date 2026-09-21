@@ -242,7 +242,11 @@
     "feedback_architecture_active_structural_review_task": null,
     "feedback_architecture_registered_structures": 5,
     "feedback_architecture_exact_integrated_link_forms_ready": 0,
-    "feedback_architecture_activation_ready_structures": 0
+    "feedback_architecture_activation_ready_structures": 0,
+    "numerical_integration_contract": "model/dynamics/numerical_integration_contract.json",
+    "numerical_structural_primitive_convergence": "PASS",
+    "numerical_default_dt_delay_adequacy": "CONDITIONAL_ON_TAU_GREATER_THAN_0_75_YEARS",
+    "integrated_model_numerical_robustness": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
