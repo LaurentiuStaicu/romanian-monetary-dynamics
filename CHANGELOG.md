@@ -4,6 +4,10 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ## Unreleased
 
+### Scientific integrity and reproducibility
+
+- identified an official NBR/CMFB 2025 financial-accounts structural-metadata change sufficient to reopen one preregistered public-access/source-topology pass for `sectoral_financial_positions`; the mode remains partial at 9/10 readiness, Accounting Spine readiness is unchanged, and metadata alone cannot authorize value extraction, promotion, estimation or feedback activation;
+
 ### Repository governance
 
 - finalized the post-publication v0.2.0 governance state: recorded the immutable GitHub release/tag identity, consumed the one-shot publication authorization, advanced the current public release to v0.2.0 and set v0.3.0 as the default next substantive milestone candidate without changing any scientific model state;
