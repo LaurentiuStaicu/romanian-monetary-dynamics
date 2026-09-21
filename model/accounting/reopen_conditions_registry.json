@@ -31,19 +31,27 @@
       "standard_bop_iip_route_reason": "BPM6 standard components do not require Direct-Investment debt to be broken down by instrument; Eurostat/BNR standard presentations retain aggregate DI debt while currency/deposits are separately instrumented under Other Investment. A country-specific supplementary DI-F2 source or equivalent exact bridge is required."
     },
     "F4": {
-      "current_status": "PARTIAL_UNCONDITIONAL_CORE_ONLY",
-      "governing_assessment": "model/accounting/f4_exact_complement_rank_assessment.json",
+      "current_status": "PARTIAL_STRUCTURAL_ZERO_RANK_EXPANDED_PENDING_SUCCESSOR_MATERIALIZATION",
+      "governing_assessment": "model/accounting/f4_bnr_zero_liability_structural_adjudication_2026_09_21.json",
       "retained_vintage": "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18",
-      "frozen_boundary": "F4 has 15 unconditional rank-unique stock cells and 15 unconditional rank-unique flow cells; the remaining bilateral cells are non-unique. The stock ambiguity is concentrated in the F-versus-BNR holder split and the BNR 6.1 million RON asset counterpart allocation; flow remains rank 26/nullity 9. A retained Eurostat–ECB BSI bridge diagnostic also rejects cross-domain subtraction as an exact BNR allocation identity.",
-      "reopen_when": "A definitionally comparable official counterpart source or additional exact counterparty constraints make currently non-unique F4 coordinates invariant. For the stock BNR boundary, an official BNR/financial-accounts counterpart source for the 6.1 million RON asset stock, or a separately justified structural-zero adjudication, is required.",
+      "frozen_boundary": "F4 stock now has 25 exact rank-unique cells after ESA 2010 structural adjudication of the non-consolidated zero BNR loan-liability column; flow remains at 15 exact rank-unique cells because zero aggregate transactions do not imply bilateral zero flows. The remaining stock ambiguity is localized to the BNR-holder 6.1 million RON asset allocation across H/C/F/G/X and the paired F-holder cells through S12=F+BNR. The historical 15/15 partial artifact remains immutable until a separate successor materialization gate.",
+      "reopen_when": "For the remaining stock boundary, an official BNR/financial-accounts counterpart source for the 6.1 million RON BNR F4 asset stock or additional exact counterparty constraints must resolve the four remaining allocation degrees of freedom. For flow, a definitionally comparable official counterpart source or additional exact constraints must reduce the current nullity 9. A separate successor materialization gate is required before the newly exact stock cells enter a current partial artifact.",
       "evidence_that_does_not_reopen": [
         "zero aggregate BNR transactions used as bilateral flow zeros",
         "allocation of the 6.1 million RON BNR asset row by shares",
-        "conditional BNR-zero stock cells promoted as unconditional",
         "a fresh live QSA response that reproduces the same coefficient topology",
         "subtracting ECB BSI MFIs-excluding-NCB loan series from Eurostat/financial-accounts MFI counterpart totals without a validated exact concept bridge"
       ],
-      "bridge_diagnostic": "model/accounting/f4_eurostat_bsi_bridge_diagnostic_2026_09_21.json"
+      "bridge_diagnostic": "model/accounting/f4_eurostat_bsi_bridge_diagnostic_2026_09_21.json",
+      "predecessor_rank_assessment": "model/accounting/f4_exact_complement_rank_assessment.json",
+      "structural_zero_adjudication": "model/accounting/f4_bnr_zero_liability_structural_adjudication_2026_09_21.json",
+      "current_stock_rank": 31,
+      "current_stock_nullity": 4,
+      "current_stock_unique_cell_count": 25,
+      "current_flow_rank": 26,
+      "current_flow_nullity": 9,
+      "current_flow_unique_cell_count": 15,
+      "successor_materialization_gate_required": true
     },
     "F5": {
       "current_status": "FROZEN_AT_PUBLIC_DATA_BOUNDARY",
