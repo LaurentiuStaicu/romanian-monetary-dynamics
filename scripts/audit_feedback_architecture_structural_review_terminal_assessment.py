@@ -97,8 +97,12 @@ def audit_feedback_architecture_terminal(
     dynamic = model["dynamic_core"]
     if dynamic["behavioural_closure_active"] is not False:
         errors.append("behavioural closure changed")
-    if dynamic["reference_mode_ready_count"] != 9 or dynamic["reference_mode_required_count"] != 10:
-        errors.append("reference-mode readiness snapshot changed")
+    if dynamic["reference_mode_ready_count"] != 10 or dynamic["reference_mode_required_count"] != 10:
+        errors.append("current reference-mode readiness must be 10/10")
+    if dynamic["reference_mode_closure_ready"] is not True:
+        errors.append("current reference-target prerequisite must be ready")
+    if dynamic["behavioural_closure_active"] is not False:
+        errors.append("reference-target readiness may not activate behavioural closure")
     if dynamic["canonical_multi_instrument_stock_initialization_ready"] is not False:
         errors.append("canonical multi-instrument stock initialization unexpectedly ready")
     if dynamic["canonical_full_2025_stock_flow_benchmark_ready"] is not False:
