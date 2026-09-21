@@ -158,6 +158,18 @@ No monitoring gate is open now. The successor registry preserves the existing da
 The next scheduled event check remains the **BNR monetary-policy decision on 2026-10-08**. Until then, repeated AMECO probing, BLS filename guessing, government-repricing proxy substitution, routine ECB-QSA vintage reruns and repeated OECD/Eurostat financial-account value probes do not count as scientific progress and remain prohibited without their declared triggers.
 
 
+
+### ECB QFA official-tolerance per-instrument gate — 2026-09-21
+
+An independent official ECB QFA consistency rule supplied the domain-specific quantitative criterion required by the monitoring horizon. ECB defines horizontal consistency **per financial instrument** and states that national-data discrepancies below EUR 10 million are acceptable; later quality reports continue to flag internal discrepancies above EUR 10 million, and Romania is included in the common validation framework.
+
+RMD preregistered and executed a new gate without rewriting the historical strict 0.1 million RON failures. The gate tested F2-F8 separately for both stocks and financial transactions over 49 quarters (2014Q1-2026Q1), for **686 exact decimal instrument-quarter tests**. Row coverage passed with no non-semantic missing rows, no duplicates and no semantic conflicts; all values were finite.
+
+A deliberately stricter sufficient currency condition was fixed before execution: every residual had to be below 10 million RON and official ECB quarterly RON/EUR average and end-of-period rates had to remain above 1. Both FX series passed over the full test span, with minima above 4.38 RON/EUR. Therefore a residual below 10 million RON is necessarily far below the official EUR 10 million criterion without choosing a stock-versus-flow FX convention after observing results.
+
+The executed result is **PASS**: zero of 686 tests reached 10 million RON and the maximum absolute per-instrument residual was only **0.2 million RON**. This execution authorizes a **separate reference-mode promotion assessment only**. It does not itself promote `sectoral_financial_positions`, change Accounting Spine readiness, open calibration, estimate parameters, activate feedbacks or activate behavioural closure. The canonical state therefore remains 9/10 and `PARTIAL_SERIES_AVAILABLE` until that separate promotion assessment passes.
+
+
 ### Government refinancing–interest loop structural closure — 2026-09-21
 
 The complete declared path of the `government_refinancing_interest_loop` has now received explicit structural/accounting boundary review. The qualitative reinforcing topology is retained, but the loop is **not quantitatively active**.
