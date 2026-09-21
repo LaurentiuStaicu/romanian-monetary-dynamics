@@ -1,0 +1,125 @@
+{
+  "registry_version": "0.3",
+  "frozen_on": "2026-09-21",
+  "supersedes": "model/registries/trigger_aware_monitoring_horizon_2026_09_21.json",
+  "purpose": "Successor monitoring horizon after independent official ECB QFA internal-consistency evidence permitted promotion of the final aggregate reference mode. Reference-mode observability is now 10/10 while Accounting Spine and behavioural closure remain incomplete; only the remaining declared mechanism/accounting triggers may reopen work.",
+  "governing_state": {
+    "model_contract": "model/registries/model_contract.json",
+    "canonical_baseline_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
+    "post_terminal_source_topology_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_21_bnr_financial_accounts_topology.json",
+    "sectoral_financial_positions_terminal_row_gate": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
+    "sectoral_financial_positions_semantic_terminal": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
+    "sectoral_financial_positions_precision_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_precision_diagnostic_2026_09_21.json",
+    "behavioural_reopen_registry": "model/calibration_validation/mechanism_reopen_conditions_registry.json",
+    "accounting_reopen_registry": "model/accounting/reopen_conditions_registry.json",
+    "current_scientific_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+    "reference_mode_post_terminal_promotion": "model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json",
+    "reference_mode_readiness": "10/10",
+    "reference_mode_official_threshold_execution": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_execution_assessment_2026_09_21.json"
+  },
+  "monitoring_rules": {
+    "no_repeated_probe_without_trigger": true,
+    "no_response_peeking_before_event_and_release_gate": true,
+    "no_provider_polling_counts_as_scientific_progress": true,
+    "source_nonconfirmation_is_not_source_absence": true,
+    "changed_dataset_release_is_not_automatically_changed_topology": true,
+    "event_or_release_only_opens_the_declared_next_gate": true,
+    "no_estimation_refit_model_selection_or_holdout_opening_from_monitoring_alone": true,
+    "no_tolerance_relaxation_from_observed_residuals": true,
+    "lexical_formatting_is_not_a_precision_rule": true,
+    "generic_sdmx_decimals_metadata_alone_does_not_reopen_sectoral_financial_positions": true,
+    "no_post_result_period_window_switch": true,
+    "reference_mode_observability_is_complete": true,
+    "reference_mode_completion_does_not_imply_accounting_completion": true,
+    "reference_mode_completion_does_not_imply_behavioural_closure": true
+  },
+  "horizons": [
+    {
+      "id": "prospective_monetary_policy_event",
+      "mechanism_id": "monetary_policy_lending_rate_pass_through",
+      "next_check_type": "DATE_SCHEDULED_EVENT_CHECK",
+      "next_check_date": "2026-10-08",
+      "source_class": "BNR monetary-policy decision",
+      "trigger": "Actually observed non-zero BNR policy-rate change in the reserved prospective window.",
+      "action_if_no_trigger": "Record unchanged-rate event only; do not inspect MIR response values and return to baseline hold.",
+      "action_if_trigger": "Open Stage 1 driver-side diagnostic only. Preserve frozen candidate and beta. Do not inspect same-month MIR response before official release.",
+      "downstream_release_gate": {
+        "reference_month_if_event_occurs_on_2026_10_08": "2026-10",
+        "earliest_official_MIR_release_date": "2026-12-02",
+        "source": "ECB MIR release calendar",
+        "rule": "The October-reference MIR response may be inspected only on or after 2026-12-02 and only if October contains a non-zero policy-rate event."
+      }
+    },
+    {
+      "id": "ameco_structural_primary_new_full_vintage",
+      "mechanism_id": "fiscal_primary_balance_reaction",
+      "next_check_type": "RELEASE_CONDITIONED_CHECK",
+      "next_check_condition": "European Commission publishes the Autumn 2026 full macroeconomic forecast / corresponding AMECO full release.",
+      "current_latest_full_release": "2026-06-03",
+      "current_latest_full_release_label": "Spring 2026 Economic Forecast",
+      "trigger": "A genuinely new full AMECO vintage materially changes the admissible real-time UBLGBPS structural-primary history or supplies new identification-relevant evidence.",
+      "action_if_release_occurs": "Archive and adjudicate the new vintage under a new preregistered source cycle before any modelling decision.",
+      "action_before_release": "No repeated AMECO probing; remain in baseline hold."
+    },
+    {
+      "id": "bnr_bls_2025_q2_exact_source",
+      "mechanism_id": "aggregate_bank_credit_response",
+      "next_check_type": "NEW_OFFICIAL_EVIDENCE_ONLY",
+      "trigger": "BNR exposes the exact official 2025-Q2 BLS workbook endpoint or an exact machine-readable time-series/catalog target with matching realised-round semantics.",
+      "action_without_new_evidence": "Do not repeat filename/timestamp guessing, indexed search loops or rounded-report substitution.",
+      "action_if_trigger": "Reopen source materialisation only; retain exact bytes and semantics before any credit-equation work."
+    },
+    {
+      "id": "government_repricing_ledger",
+      "mechanism_id": "government_refinancing_effective_rate",
+      "next_check_type": "NEW_OFFICIAL_EVIDENCE_ONLY",
+      "trigger": "An official or reproducible source supplies same-boundary opening principal, realised repriced/refinanced principal and matched old/new effective rates across material debt blocks.",
+      "action_without_new_evidence": "Do not reinterpret marginal maturity/refixing indicators as a matched repricing ledger.",
+      "action_if_trigger": "Repass the frozen ledger completeness and identification gates only."
+    },
+    {
+      "id": "accounting_counterpart_topology",
+      "mechanism_id": null,
+      "next_check_type": "CHANGED_DATASET_TOPOLOGY_OR_NEW_SOURCE_ONLY",
+      "trigger": "A changed official ECB/Eurostat/BNR/OECD dataset topology or genuinely new official source supplies the frozen bilateral holder-by-issuer Accounting Spine boundary, including required sectors, instruments, quarterly stocks and financial transactions.",
+      "current_known_release_context": {
+        "ECB_QSA_next_data_release": "2026-10-02",
+        "rule": "Routine new quarterly vintages do not reopen the bilateral Accounting Spine. Aggregate reference-mode observability is already complete."
+      },
+      "latest_adjudicated_chain": {
+        "bnr_2025_topology_trigger": "PASS_SOURCE_TOPOLOGY_REVIEW_ONLY",
+        "oecd_nonconsolidated_topology": "PASS_AGGREGATE_SECTOR_STOCK_FLOW_TOPOLOGY",
+        "exact_row_gate": "FAIL_S1M_L_F2_MISSING_ALL_PERIODS",
+        "esa2010_semantic_applicability": "PASS_NARROW_STRUCTURAL_ZERO_FOR_S1M_L_F2",
+        "semantic_adjusted_reconciliation": "FAIL_FROZEN_0_1_MILLION_RON_TOLERANCE",
+        "precision_diagnostic": "NO_REOPEN_GENERIC_DECIMALS_ONLY_EXPLANATION_INSUFFICIENT",
+        "aggregate_reference_mode_promotion": "PASS_10_OF_10_REFERENCE_MODES_READY",
+        "official_ecb_per_instrument_gate": "PASS_686_TESTS_ZERO_STRICT_BOUND_EXCEEDANCES"
+      },
+      "action_without_topology_change": "Do not rerun exhausted historical source probes.",
+      "action_if_trigger": "Preregister a new bilateral Accounting Spine source-topology pass only; aggregate reference-mode readiness remains separately complete."
+    }
+  ],
+  "current_disposition": {
+    "any_monitoring_gate_open_now": false,
+    "active_calibration_cycle_open": false,
+    "active_source_task_open": false,
+    "active_semantic_task_open": false,
+    "active_precision_task_open": false,
+    "response_values_authorized_for_inspection_now": false,
+    "estimation_or_refit_authorized": false,
+    "model_selection_authorized": false,
+    "target_family_switch_authorized": false,
+    "holdout_opening_authorized": false,
+    "system_dynamics_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "reference_mode_promotion_authorized": false,
+    "next_dated_check": {
+      "date": "2026-10-08",
+      "id": "prospective_monetary_policy_event"
+    },
+    "reference_mode_observability_ready": "10/10",
+    "reference_mode_closure_ready": true,
+    "accounting_spine_completion_authorized": false
+  }
+}
