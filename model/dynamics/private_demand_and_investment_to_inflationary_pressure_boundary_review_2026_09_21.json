@@ -1,0 +1,114 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "private_demand_and_investment_to_inflationary_pressure_boundary_review",
+  "loop_id": "monetary_credit_transmission_loop",
+  "purpose": "Determine whether the qualitative private-demand/investment node can be mapped into an exact inflationary-pressure state without collapsing demand-pull, supply, external-price, tax/administered-price, wage/profit and expectations channels into one behavioural equation.",
+  "decision": "DO_NOT_EQUATE_PRIVATE_DEMAND_OR_INVESTMENT_WITH_INFLATIONARY_PRESSURE_KEEP_HICP_OBSERVATION_AND_MULTI_DRIVER_INFLATION_IDENTIFICATION_DISTINCT",
+  "official_source_evidence": {
+    "ecb_transmission": {
+      "institution": "European Central Bank",
+      "source": "Monetary policy transmission mechanism",
+      "finding": "Consumption and investment affect aggregate demand; upward price pressure is likely when demand exceeds supply, but transmission to the price level is subject to long, variable and uncertain lags.",
+      "implication": "The qualitative positive demand-to-price path is economically coherent but is not a one-to-one identity or an exact integrated equation."
+    },
+    "ecb_inflation_drivers": {
+      "institution": "European Central Bank",
+      "source": "2026 analysis of inflation drivers",
+      "finding": "Inflation outcomes can be dominated by supply shocks such as energy, while demand-side factors can be minor or material depending on episode and state.",
+      "implication": "Observed inflation cannot be attributed to private demand without a multi-driver identification design."
+    },
+    "retained_HICP_boundary": {
+      "source": "model/calibration_validation/fx_inflation_pass_through_source_boundary_review.json",
+      "concept": "Romania all-items HICP ECOICOP v2 TOTAL, monthly, 2025=100",
+      "exact_raw_source_available": true,
+      "core_reference_mode_promoted": false,
+      "interpretation": "HICP is an observed inflation outcome used in a separate candidate-family evidence path. Its availability does not define the Dynamic Core inflationary_pressure node or justify a new core reference-mode extension."
+    },
+    "retained_FX_selection": {
+      "source": "model/calibration_validation/fx_inflation_structural_selection_result.json",
+      "result": "FAIL_BEFORE_HOLDOUT",
+      "final_evaluation_opened": false,
+      "interpretation": "Even the separately preregistered FX-inflation candidate failed incremental predictive gates before holdout; no inflation behavioural form is admitted."
+    }
+  },
+  "concept_boundary": {
+    "private_demand_equals_inflationary_pressure": false,
+    "private_investment_equals_inflationary_pressure": false,
+    "HICP_equals_demand_pressure": false,
+    "HICP_observation_identifies_demand_contribution": false,
+    "output_or_demand_gap_selected": false,
+    "supply_shocks_can_be_ignored": false,
+    "external_price_shocks_can_be_ignored": false,
+    "tax_administered_price_shocks_can_be_ignored": false,
+    "inflation_expectations_can_be_ignored": false
+  },
+  "structural_interpretation": {
+    "private_demand_and_investment_role": "Unresolved expenditure-side node representing parts of domestic demand, not an observed output gap or excess-demand measure.",
+    "inflationary_pressure_role": "Qualitative umbrella for upward/downward price pressure arising from demand relative to supply together with external-price, cost, tax/administered-price, expectation and other channels.",
+    "HICP_role": "Observed inflation outcome available for diagnostics/candidate-family empirical analysis, not automatically the exact state variable for this feedback node.",
+    "qualitative_positive_sign_retained_as_candidate": true,
+    "exact_integrated_equation_ready": false
+  },
+  "bridge_resolution": {
+    "from": "private_demand_and_investment",
+    "to": "inflationary_pressure",
+    "status": "MULTI_DRIVER_INFLATION_HICP_OBSERVABLE_DEMAND_CONTRIBUTION_NOT_IDENTIFIED",
+    "causal_role": "BEHAVIOURAL_CANDIDATE_LINK_MULTI_DRIVER_PRICE_PRESSURE_IDENTIFICATION_UNRESOLVED",
+    "direct_demand_to_inflation_identity_authorized": false,
+    "HICP_as_demand_pressure_state_authorized": false,
+    "output_gap_proxy_inference_authorized": false,
+    "omit_supply_controls_authorized": false,
+    "reuse_failed_FX_form_authorized": false,
+    "add_core_inflation_reference_mode_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effect": {
+    "private_demand_and_investment": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id_after_review": null,
+      "current_feedback_activation_authorized": false
+    },
+    "inflationary_pressure": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id_after_review": null,
+      "observed_inflation_diagnostic_available": true,
+      "observed_inflation_source": "Romania HICP TOTAL retained by fx-inflation evidence path",
+      "core_reference_mode_promotion_authorized": false,
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "hard_rules": {
+    "no_private_demand_equals_inflation_identity": true,
+    "no_HICP_equals_demand_pressure": true,
+    "no_unobserved_output_gap_inference": true,
+    "no_omitted_supply_or_external_price_completion": true,
+    "no_failed_FX_form_reuse": true,
+    "no_core_inflation_reference_mode_extension": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "demand_to_inflation_boundary_strengthened": true,
+    "inflationary_pressure_node_resolved": false,
+    "core_reference_mode_count_changed": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "inflationary_pressure_to_policy_rate_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_endogenize_policy_rate": false,
+    "may_estimate_Taylor_rule": false,
+    "may_digitize_expectations_or_gap_charts": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}
