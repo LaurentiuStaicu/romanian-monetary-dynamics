@@ -58,9 +58,13 @@
       ],
       "selective_reopen_contract": "model/accounting/f5_oecd_counterpart_reopen_contract_2026_09_21.json",
       "selective_reopen_assessment": "model/accounting/f5_oecd_counterpart_reopen_assessment_2026_09_21.json",
-      "selective_reopen_state": "PREREGISTERED_STAGE2_PENDING_EXECUTION",
+      "selective_reopen_state": "STAGE2_EXECUTED_FAIL_SOURCE_AGGREGATE_RECONCILIATION_RETURNED_TO_HOLD",
       "reopen_trigger_satisfied": true,
-      "reopen_trigger_basis": "Retained OECD quarterly counterpart stocks/flows publish F512 and F519 by sector/counterpart; S121 remains absent, so only a preregistered rank-equation expansion is authorized."
+      "reopen_trigger_basis": "Retained OECD quarterly counterpart stocks/flows publish F512 and F519 by sector/counterpart; S121 remains absent, so only a preregistered rank-equation expansion is authorized.",
+      "selective_reopen_execution_assessment": "model/accounting/f5_oecd_counterpart_stage2_execution_assessment_2026_09_21.json",
+      "current_reopen_gate_open": false,
+      "selective_reopen_terminal_result": "The retained OECD F512/F519 rows pass extraction and A/L mirror checks but fail the preregistered 0.1 million RON S1 aggregate-consistency gate (16/44 stock checks, max 1.0; 24/44 flow checks, max 3.0). No new rank equations are admitted.",
+      "next_reopen_boundary": "Changed official counterpart evidence satisfying the frozen boundary, or an independently justified source-specific precision/reconciliation rule preregistered before a successor value gate; observed residuals do not define the tolerance."
     },
     "F6": {
       "current_status": "FROZEN_AGGREGATE_ONLY_PUBLIC_DATA_BOUNDARY",

@@ -1,0 +1,107 @@
+{
+  "assessment_version": "0.1",
+  "executed_on": "2026-09-21",
+  "phase": "Accounting Spine / F5 selective reopen — OECD F512/F519 counterpart Stage 2 execution",
+  "instrument": "F5",
+  "contract": "model/accounting/f5_oecd_counterpart_reopen_contract_2026_09_21.json",
+  "topology_reopen_assessment": "model/accounting/f5_oecd_counterpart_reopen_assessment_2026_09_21.json",
+  "source_identity": {
+    "retained_workflow_artifact_id": 10586683826,
+    "stocks_raw_sha256": "039d910150ece7d264284ffc8dfb713e99d255cb17bd366b66decfa214c4ae5f",
+    "flows_raw_sha256": "7585836c1b3b181fa233fbc21243813498911215b5ac9b28e7073da17e52629a",
+    "canonical_filtered_extraction_sha256": "8ccd1b695395d3a88e4809b768a7cba1199cda2029070c6598edb8dd2389f9dc",
+    "canonical_filtered_extraction_bytes": 83480
+  },
+  "extraction_gate": {
+    "stock_rows_2025_q4": 120,
+    "flow_rows_2025_q1_q4": 480,
+    "total_rows": 600,
+    "required_row_duplicates": 0,
+    "missing_required_values": 0,
+    "nonfinite_required_values": 0,
+    "status": "PASS"
+  },
+  "asset_liability_mirror_gate": {
+    "definition": "For each F512/F519 resident-group pair among S11, S12, S13 and S1M, compare asset-side reporter→counterpart with liability-side counterpart←reporter after annual aggregation for flows.",
+    "tolerance_million_RON": "0.1",
+    "stock_checks": 32,
+    "stock_violations": 0,
+    "stock_max_abs_residual_million_RON": "0.0",
+    "flow_checks": 32,
+    "flow_violations": 0,
+    "flow_max_abs_residual_million_RON": "0.0",
+    "status": "PASS"
+  },
+  "source_aggregate_consistency_gate": {
+    "definition": [
+      "For each component, counterpart and accounting entry, compare reporting-sector S1 with S11+S12+S13+S1M.",
+      "For each component, reporting sector and accounting entry, compare counterpart-sector S1 with counterpart S11+S12+S13+S1M."
+    ],
+    "tolerance_million_RON": "0.1",
+    "stock_checks": 44,
+    "stock_violations": 16,
+    "stock_max_abs_residual_million_RON": "1.0",
+    "flow_checks": 44,
+    "flow_violations": 24,
+    "flow_max_abs_residual_million_RON": "3.0",
+    "representative_stock_violation": {
+      "instrument": "F512",
+      "check": "reporting S1 vs resident-sector sum",
+      "counterpart_sector": "S11",
+      "accounting_entry": "A",
+      "lhs_million_RON": "126921.0",
+      "rhs_million_RON": "126920.0",
+      "residual_million_RON": "1.0"
+    },
+    "representative_flow_violation": {
+      "instrument": "F519",
+      "check": "reporting S1 vs resident-sector sum",
+      "counterpart_sector": "S1",
+      "accounting_entry": "A",
+      "lhs_million_RON": "11992.0",
+      "rhs_million_RON": "11995.0",
+      "residual_million_RON": "-3.0"
+    },
+    "status": "FAIL"
+  },
+  "gate_order": {
+    "extraction_before_reconciliation": true,
+    "mirror_before_aggregate_consistency": true,
+    "rank_only_after_all_source_value_reconciliation_gates_pass": true,
+    "stopped_before_rank": true
+  },
+  "rank_effect": {
+    "rank_recomputation_executed": false,
+    "reason": "The preregistered source aggregate-consistency gate failed, so no OECD F512/F519 equation is admissible in this Stage 2 execution.",
+    "predecessor_stock_rank": 73,
+    "predecessor_stock_nullity": 67,
+    "predecessor_flow_rank": 73,
+    "predecessor_flow_nullity": 67,
+    "predecessor_unique_F51_total_cells": 0,
+    "predecessor_unique_F5_total_cells": 0,
+    "rank_change": 0
+  },
+  "scientific_effect": {
+    "F5_status": "FROZEN_AT_PUBLIC_DATA_BOUNDARY",
+    "F5_materialization_change": false,
+    "benchmark_change": false,
+    "accounting_readiness_change": false,
+    "reference_mode_change": false,
+    "calibration_change": false,
+    "feedback_activation_change": false,
+    "behavioural_closure_change": false,
+    "version_change": false
+  },
+  "provenance_rules": {
+    "failed_0_1_million_RON_gate_is_immutable": true,
+    "no_post_result_tolerance_relaxation": true,
+    "no_partial_equation_salvage_after_global_gate_failure": true,
+    "no_BNR_residual_allocation": true,
+    "no_missing_to_zero": true
+  },
+  "next_reopen_boundary": {
+    "state": "EVIDENCE_TRIGGERED_HOLD",
+    "condition": "A changed official counterpart source satisfies the frozen exact boundary, or an independently justified source-specific precision/reconciliation rule is preregistered before any successor value gate. The observed 1–3 million RON residuals do not themselves authorize a new tolerance."
+  },
+  "decision": "STAGE2_FAIL_SOURCE_AGGREGATE_RECONCILIATION_NO_NEW_EQUATIONS_NO_RANK_CHANGE"
+}
