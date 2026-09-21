@@ -1,0 +1,107 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "inflationary_pressure_to_policy_rate_boundary_review",
+  "loop_id": "monetary_credit_transmission_loop",
+  "purpose": "Determine whether observed inflation evidence and the BNR inflation-target regime are sufficient to endogenize the policy rate through an exact reaction function.",
+  "decision": "DO_NOT_ENDOGENIZE_POLICY_RATE_FROM_INFLATION_PRESSURE_KEEP_POLICY_RATE_OBSERVED_UNTIL_REAL_TIME_REACTION_FUNCTION_BOUNDARY_IS_IDENTIFIED",
+  "official_source_evidence": {
+    "bnr_targeting": {
+      "institution": "National Bank of Romania",
+      "source": "Inflation-targeting framework and annual-report documentation",
+      "finding": "BNR's primary objective is price stability under a flat inflation target of 2.5 percent with a ±1 percentage-point variation band.",
+      "implication": "The target midpoint is observable, but the target alone does not identify the policy reaction function."
+    },
+    "retained_reaction_screening": {
+      "source": "model/calibration_validation/monetary_policy_reaction_source_screening.json",
+      "verdict": "POLICY_TARGET_OBSERVED_QUANTITATIVE_ANALYST_EXPECTATIONS_CONCEPT_CONFIRMED_QUARTERLY_BNR_GAP_VISIBLE_FORMATION_TIME_AND_REAL_TIME_VINTAGES_NOT_RETAINED",
+      "actual_inflation_available": true,
+      "exact_inflation_target_midpoint": true,
+      "quantitative_expectations_concept_observed": true,
+      "formation_time_expectations_history_retained": false,
+      "real_time_activity_gap_vintages_retained": false,
+      "estimation_or_refit_allowed": false,
+      "policy_rule_activation": false
+    },
+    "policy_rate_reference": {
+      "source": "model/dynamics/reference_modes.json",
+      "reference_mode": "policy_rate",
+      "current_endogeneity": "EXOGENOUS_OBSERVED_INPUT",
+      "role": "Observed forcing in early monetary-transmission validation."
+    }
+  },
+  "concept_boundary": {
+    "inflationary_pressure_equals_inflation_gap": false,
+    "inflation_gap_alone_determines_policy_rate": false,
+    "current_HICP_alone_determines_policy_rate": false,
+    "qualitative_expectations_balance_equals_percent_expectation": false,
+    "revised_output_gap_equals_real_time_policy_information": false,
+    "BNR_staff_forecast_equals_private_expectations": false,
+    "exchange_rate_is_exogenous_policy_rule_regressor": false
+  },
+  "structural_interpretation": {
+    "inflationary_pressure_role": "Unresolved multi-driver price-pressure node, not an exact real-time inflation-gap state.",
+    "policy_rate_role": "Observed/exogenous reference input until a separately preregistered policy-reaction measurement and identification cycle passes.",
+    "reaction_function_requirement": "A policy-rule equation requires formation-date quantitative inflation expectations, real-time activity-gap vintages, explicit policy-regime/intervention treatment and simultaneity identification before estimation.",
+    "qualitative_positive_sign_retained_as_candidate": true,
+    "exact_integrated_equation_ready": false
+  },
+  "bridge_resolution": {
+    "from": "inflationary_pressure",
+    "to": "policy_rate",
+    "status": "POLICY_RATE_OBSERVED_FORCING_REACTION_FUNCTION_MEASUREMENT_AND_IDENTIFICATION_BLOCKED",
+    "causal_role": "BEHAVIOURAL_CANDIDATE_LINK_POLICY_REACTION_MEASUREMENT_AND_IDENTIFICATION_BLOCKED",
+    "direct_inflation_to_policy_rate_identity_authorized": false,
+    "Taylor_rule_estimation_authorized": false,
+    "qualitative_expectations_conversion_authorized": false,
+    "revised_gap_backfill_authorized": false,
+    "chart_digitisation_authorized": false,
+    "policy_rate_endogenization_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effect": {
+    "inflationary_pressure": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id_after_review": null,
+      "current_feedback_activation_authorized": false
+    },
+    "policy_rate": {
+      "current_boundary_class_after_review": "OBSERVED_FORCING",
+      "exact_reference_mode_id": "policy_rate",
+      "observed_forcing_retained": true,
+      "endogenous_reaction_function_ready": false,
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "hard_rules": {
+    "no_inflation_to_policy_rate_identity": true,
+    "no_Taylor_rule_without_real_time_information_set": true,
+    "no_qualitative_expectations_to_percent_conversion": true,
+    "no_revised_gap_backfill": true,
+    "no_chart_digitisation": true,
+    "no_endogenization_of_policy_rate": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "policy_reaction_boundary_strengthened": true,
+    "policy_rate_endogeneity_changed": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "monetary_credit_transmission_loop_terminal_assessment",
+    "authorization": "STRUCTURAL_TERMINAL_ASSESSMENT_ONLY",
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false,
+    "may_relax_existing_gates": false
+  }
+}

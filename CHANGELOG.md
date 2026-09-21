@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- reviewed `inflationary_pressure → policy_rate`: the BNR inflation target and actual inflation are observed, but formation-date expectations, real-time activity-gap vintages and simultaneity/regime identification remain insufficient for a policy rule; the policy rate stays observed/exogenous and no Taylor-rule closure is introduced;
 - reviewed `private_demand_and_investment → inflationary_pressure`: observed HICP remains diagnostic evidence rather than a new Dynamic Core reference mode; inflation is multi-driver and the demand contribution is not identified, so no demand-to-inflation equation or core inflation extension is introduced;
 - reviewed `credit_flow → private_demand_and_investment`: aggregate NFC/household credit transactions finance multiple purposes, including working capital, refinancing and house purchase, so they cannot be relabelled as household consumption or NFC fixed investment without an observed purpose-allocation bridge;
 - reviewed `market_and_lending_rates → credit_flow`: MIR rates are price variables, MIR new-business volumes are agreement volumes, and the retained ECB BSI credit flow is a distinct realized net-transaction concept jointly shaped by supply and demand; no rate-to-flow identity or implicit elasticity is introduced;

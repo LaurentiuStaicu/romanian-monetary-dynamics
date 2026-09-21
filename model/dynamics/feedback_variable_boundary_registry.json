@@ -308,7 +308,9 @@
       "private_demand_and_investment_to_inflationary_pressure_boundary_review": "model/dynamics/private_demand_and_investment_to_inflationary_pressure_boundary_review_2026_09_21.json",
       "private_demand_and_investment_to_inflationary_pressure_status": "MULTI_DRIVER_INFLATION_HICP_OBSERVABLE_DEMAND_CONTRIBUTION_NOT_IDENTIFIED",
       "observed_inflation_diagnostic_available": true,
-      "core_reference_mode_promotion_authorized": false
+      "core_reference_mode_promotion_authorized": false,
+      "inflationary_pressure_to_policy_rate_boundary_review": "model/dynamics/inflationary_pressure_to_policy_rate_boundary_review_2026_09_21.json",
+      "inflationary_pressure_to_policy_rate_status": "POLICY_RATE_OBSERVED_FORCING_REACTION_FUNCTION_MEASUREMENT_AND_IDENTIFICATION_BLOCKED"
     },
     {
       "id": "loan_stock",
@@ -356,7 +358,10 @@
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
       "current_feedback_activation_authorized": false,
       "policy_rate_to_market_and_lending_rates_boundary_review": "model/dynamics/policy_rate_to_market_and_lending_rates_boundary_review_2026_09_21.json",
-      "policy_rate_to_market_and_lending_rates_status": "TARGET_SPECIFIC_PASS_THROUGH_CANDIDATE_AVAILABLE_GENERIC_RATE_NODE_UNRESOLVED"
+      "policy_rate_to_market_and_lending_rates_status": "TARGET_SPECIFIC_PASS_THROUGH_CANDIDATE_AVAILABLE_GENERIC_RATE_NODE_UNRESOLVED",
+      "inflationary_pressure_to_policy_rate_boundary_review": "model/dynamics/inflationary_pressure_to_policy_rate_boundary_review_2026_09_21.json",
+      "inflationary_pressure_to_policy_rate_status": "POLICY_RATE_OBSERVED_FORCING_REACTION_FUNCTION_MEASUREMENT_AND_IDENTIFICATION_BLOCKED",
+      "endogenous_reaction_function_ready": false
     },
     {
       "id": "private_demand_and_investment",
