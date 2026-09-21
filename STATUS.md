@@ -502,19 +502,19 @@ Manifest version **1.2** now records public/repository version **0.2.0**, unrele
 
 This synchronization does **not** authorize a version bump. The canonical release contract remains authoritative and continues to state that no immediate bump is required. Its rationale now explicitly acknowledges the substantive post-v0.2.0 reference-mode promotion and Accounting Spine boundary work instead of describing all post-release changes as governance-only.
 
-### Accounting Spine recovery terminal assessment — 2026-09-21
+### Historical Accounting Spine recovery terminal checkpoint — 2026-09-21
 
-The current Accounting Empirical Recovery cycle is now formally classified as **STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD**. This is a recovery-stage completion statement, not Accounting Spine completion.
+This section records the **pre-F4-successor terminal checkpoint** reached before the later structural-zero adjudication and successor materialization. It is retained for provenance and should not be read as the current F4 state.
 
-The canonical readiness state is unchanged: **F3** is the only complete stock-and-flow instrument; **F2, F4, F5, F6, F7 and F8** remain incomplete or partial. However, every currently incomplete instrument now has both a reproducible terminal boundary and an explicit reopen trigger:
+At that checkpoint, the Accounting Empirical Recovery cycle was classified as **STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD**. **F3** was the only complete stock-and-flow instrument; **F2, F4, F5, F6, F7 and F8** remained incomplete or partial, and every incomplete instrument had an explicit reopen trigger.
 
-- F2 retains materialized F2M but cannot complete F21/total F2 through standard BPM6/Eurostat/BNR Direct-Investment dissemination; a country-specific supplementary DI-F2 source or exact bridge is required.
-- F4 retains its 15-cell unconditional stock and flow cores; the unresolved boundary is the F-versus-BNR counterpart allocation, especially the BNR 6.1 million RON asset stock.
-- F5-F8 completed their OECD selective-reopen cycles and returned to evidence-triggered hold after their preregistered source-reconciliation gates failed before rank admission.
+- F2 retained materialized F2M but could not complete F21/total F2 through standard BPM6/Eurostat/BNR Direct-Investment dissemination.
+- F4 then had a 15-stock / 15-flow unconditional partial core; its unresolved boundary was the F-versus-BNR counterpart allocation, especially the BNR 6.1 million RON asset stock.
+- F5-F8 had completed their OECD selective-reopen cycles and returned to evidence-triggered hold after their preregistered source-reconciliation gates failed before rank admission.
 
-No selective accounting reopen gate is currently open and no unconditional accounting-recovery task remains active. Governance therefore prohibits repeating the same live probes merely to reproduce an already-frozen topology. A future accounting cycle begins only when a declared evidence trigger is satisfied or when a new source-specific gate is scientifically preregistered.
+That historical state is preserved in `model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json`. The **current** Accounting Spine terminal authority is `model/accounting/accounting_spine_recovery_post_f4_structural_terminal_assessment_2026_09_21.json`, under which F4 has **25 exact stock cells and 15 exact flow cells** and the recovery stage is again on evidence-triggered hold.
 
-The terminal state is recorded in `model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json`, linked from the readiness gate, reopen registry and scientific baseline, and enforced by Scientific CI. It does not authorize synthetic completion, behavioural closure, parameter estimation, or a version bump.
+The historical checkpoint remains immutable evidence and does not authorize synthetic completion, behavioural closure, parameter estimation, or a version bump.
 
 ### Public release v0.3.0 finalized — 2026-09-21
 
