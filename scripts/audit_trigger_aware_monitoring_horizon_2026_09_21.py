@@ -34,15 +34,22 @@ def audit_trigger_horizon_2026_09_21():
     if precision["current_negative_evidence"]["observed_residuals_may_define_future_tolerance"] is not False:
         e.append("observed residuals may not define a future tolerance")
     d=h["current_disposition"]
+    if d["any_monitoring_gate_open_now"] is not True:
+        e.append("official-tolerance trigger must open exactly one monitoring gate")
+    if d["active_source_task_open"] is not True:
+        e.append("official-tolerance source task must be marked open")
     for key in (
-        "any_monitoring_gate_open_now","active_calibration_cycle_open","active_source_task_open",
-        "active_semantic_task_open","active_precision_task_open","response_values_authorized_for_inspection_now",
-        "estimation_or_refit_authorized","model_selection_authorized","target_family_switch_authorized",
-        "holdout_opening_authorized","system_dynamics_activation_authorized","behavioural_closure_authorized",
-        "reference_mode_promotion_authorized",
+        "active_calibration_cycle_open","active_semantic_task_open","active_precision_task_open",
+        "response_values_authorized_for_inspection_now","estimation_or_refit_authorized",
+        "model_selection_authorized","target_family_switch_authorized","holdout_opening_authorized",
+        "system_dynamics_activation_authorized","behavioural_closure_authorized","reference_mode_promotion_authorized",
     ):
         if d[key] is not False:
             e.append(f"monitoring disposition may not open {key}")
+    if precision.get("trigger_status")!="SATISFIED_OFFICIAL_DOMAIN_SPECIFIC_TOLERANCE_GATE_PREREGISTERED":
+        e.append("precision trigger status changed")
+    if precision.get("active_gate")!="model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_contract_2026_09_21.json":
+        e.append("precision trigger active-gate pointer changed")
     if d["next_dated_check"]!={"date":"2026-10-08","id":"prospective_monetary_policy_event"}:
         e.append("next dated check changed")
     s=m["scientific_stage"]
@@ -63,10 +70,10 @@ def main():
         raise RuntimeError("Trigger-aware monitoring horizon audit failed:\n- "+"\n- ".join(errors))
     print(json.dumps({
         "status":"PASS",
-        "monitoring_gate_open":False,
+        "monitoring_gate_open":True,
         "next_dated_check":"2026-10-08",
         "next_dated_check_id":"prospective_monetary_policy_event",
-        "precision_reopen_requires":"NEW_OFFICIAL_DOMAIN_SPECIFIC_PRECISION_EVIDENCE",
+        "precision_reopen_requires":"SATISFIED_OFFICIAL_ECB_QFA_TOLERANCE_GATE_PREREGISTERED",
         "scientific_state":"EVIDENCE_TRIGGERED_BASELINE_HOLD"
     },indent=2))
 
