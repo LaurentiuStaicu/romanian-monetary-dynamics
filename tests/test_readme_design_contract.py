@@ -154,13 +154,14 @@ class RMDReadmeDesignContractTests(unittest.TestCase):
         self.assertIn("None is quantitatively active", self.public)
         self.assertIn("missing / TBD is not zero", self.public)
 
-    def test_public_readme_exposes_release_state_without_bumping_version(self) -> None:
+    def test_public_readme_exposes_finalized_v020_release_state(self) -> None:
         basis = self.release["versioning_basis"]
-        self.assertEqual(basis["current_public_release"]["version"], "0.1.0")
-        self.assertEqual(basis["next_public_release_candidate"], "0.2.0")
+        self.assertEqual(basis["current_public_release"]["version"], "0.2.0")
+        self.assertEqual(basis["next_public_release_candidate"], "0.3.0")
         self.assertFalse(basis["version_bump_required_now"])
-        self.assertIn("**v0.1.0**", self.public)
-        self.assertIn("**v0.2.0**", self.public)
+        self.assertIn("**v0.2.0", self.public)
+        self.assertIn("**v0.3.0**", self.public)
+        self.assertIn("**v0.2.1**", self.public)
 
     def test_public_readme_uses_promoted_concept_assets(self) -> None:
         self.assertIn("assets/readme/rmd-concept-overview-light.svg", self.public)
