@@ -1,0 +1,99 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "policy_rate_to_market_and_lending_rates_boundary_review",
+  "loop_id": "monetary_credit_transmission_loop",
+  "purpose": "Determine whether the frozen household-housing policy-rate pass-through candidate can define the generic market_and_lending_rates feedback node without conflating target-specific new-business lending rates, NFC rates, market rates and outstanding-stock rates.",
+  "decision": "DO_NOT_PROMOTE_HOUSEHOLD_HOUSING_PASS_THROUGH_TO_GENERIC_MARKET_AND_LENDING_RATES_KEEP_TARGET_SPECIFIC_CANDIDATE_ONLY",
+  "official_source_evidence": {
+    "ecb_mir_boundary": {
+      "institution": "European Central Bank",
+      "source": "MFI interest rate statistics",
+      "finding": "MIR separately reports new-business and outstanding-amount loan rates. New-business rates are rates on new or renegotiated agreements and reflect contemporaneous loan-market demand/supply conditions.",
+      "implication": "A new-business household housing rate is not a generic rate on the outstanding loan stock or all market/lending rates."
+    },
+    "retained_validation": {
+      "source": "model/calibration_validation/validation_recovery_disposition.json",
+      "household_form": "lend[t] = lend[t-1] + beta * (policy[t]-policy[t-1])",
+      "household_status": "CANDIDATE",
+      "holdout_nonzero_policy_changes": 0,
+      "nfc_selected_form": null,
+      "nfc_holdout_opened": false
+    },
+    "prospective_gate": {
+      "source": "model/calibration_validation/prospective_monetary_confirmation_status.json",
+      "status": "WAIT_FOR_NEW_POLICY_RATE_EVENT",
+      "interpretation": "The frozen household form awaits genuinely identifying future policy-rate variation and may not be respecified from elapsed time."
+    }
+  },
+  "concept_boundary": {
+    "household_housing_new_business_rate_equals_generic_rate_node": false,
+    "nfc_rate_form_selected": false,
+    "market_rate_form_selected": false,
+    "outstanding_loan_rate_form_selected": false,
+    "household_candidate_validated": false,
+    "generic_pass_through_validated": false
+  },
+  "bridge_resolution": {
+    "from": "policy_rate",
+    "to": "market_and_lending_rates",
+    "status": "TARGET_SPECIFIC_PASS_THROUGH_CANDIDATE_AVAILABLE_GENERIC_RATE_NODE_UNRESOLVED",
+    "causal_role": "TARGET_SPECIFIC_BEHAVIOURAL_CANDIDATE_NOT_GENERIC_LINK",
+    "household_target_specific_implementation_retained": true,
+    "household_target_specific_scope": "HOUSEHOLD_HOUSING_ONLY",
+    "generic_rate_node_mapping_authorized": false,
+    "nfc_form_inference_authorized": false,
+    "market_rate_aggregation_authorized": false,
+    "outstanding_rate_substitution_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effect": {
+    "policy_rate": {
+      "current_boundary_class_after_review": "OBSERVED_FORCING",
+      "exact_reference_mode_id": "policy_rate",
+      "current_feedback_activation_authorized": false
+    },
+    "market_and_lending_rates": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id_after_review": null,
+      "related_reference_modes": [
+        "household_lending_rate",
+        "nfc_lending_rate"
+      ],
+      "generic_rate_mapping_selected": false,
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "hard_rules": {
+    "no_household_form_promoted_to_generic_rate_node": true,
+    "no_nfc_form_inference": true,
+    "no_market_rate_synthetic_aggregation": true,
+    "no_new_business_to_outstanding_rate_substitution": true,
+    "no_prospective_holdout_respecification": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "generic_rate_node_resolved": false,
+    "exact_integrated_equation_ready": false,
+    "household_candidate_status_changed": false,
+    "nfc_form_selected": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "market_and_lending_rates_to_credit_flow_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_map_new_business_rate_one_to_one_to_credit_flow": false,
+    "may_ignore_loan_demand": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}
