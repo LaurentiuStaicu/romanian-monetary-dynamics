@@ -195,6 +195,9 @@ jobs:
       - name: Audit government debt issuance-to-stock accounting boundary
         run: python scripts/audit_government_debt_issuance_to_debt_stock_boundary.py
 
+      - name: Audit government debt-stock to interest-cost accounting boundary
+        run: python scripts/audit_government_debt_stock_to_interest_cost_boundary.py
+
       - name: Audit government securities supply-pressure source boundary
         run: python scripts/audit_government_securities_supply_pressure_source_boundary.py
 
