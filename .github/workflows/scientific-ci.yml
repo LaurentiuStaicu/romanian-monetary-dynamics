@@ -228,6 +228,9 @@ jobs:
       - name: Audit monetary-credit transmission loop terminal state
         run: python scripts/audit_monetary_credit_transmission_loop_terminal_assessment.py
 
+      - name: Audit external FX-refinancing open-chain terminal state
+        run: python scripts/audit_external_fx_refinancing_open_chain_terminal_assessment.py
+
       - name: Audit government debt-stock to interest-cost accounting boundary
         run: python scripts/audit_government_debt_stock_to_interest_cost_boundary.py
 

@@ -20,7 +20,11 @@
     "RATE_PRICE_AND_CREDIT_TRANSACTION_BOUNDARIES_DISTINCT_JOINT_DETERMINATION_UNRESOLVED",
     "FINANCING_FLOW_PURPOSES_MULTIPLE_PRIVATE_DEMAND_AND_INVESTMENT_MAPPING_UNIDENTIFIED",
     "MULTI_DRIVER_INFLATION_HICP_OBSERVABLE_DEMAND_CONTRIBUTION_NOT_IDENTIFIED",
-    "POLICY_RATE_OBSERVED_FORCING_REACTION_FUNCTION_MEASUREMENT_AND_IDENTIFICATION_BLOCKED"
+    "POLICY_RATE_OBSERVED_FORCING_REACTION_FUNCTION_MEASUREMENT_AND_IDENTIFICATION_BLOCKED",
+    "FX_DEBT_SERVICE_TRANSLATION_CONDITIONAL_JOINT_CURRENCY_RESIDUAL_MATURITY_HEDGING_UNRESOLVED",
+    "DEBT_SERVICE_DUE_NOT_EQUAL_REFINANCING_NEED_SECTOR_LIQUIDITY_AND_BUFFER_BOUNDARY_UNRESOLVED",
+    "MULTI_DRIVER_RISK_PREMIUM_REFINANCING_CONTRIBUTION_NOT_IDENTIFIED",
+    "RISK_PREMIUM_AND_EXCHANGE_RATE_PRESSURE_SIMULTANEOUS_MANAGED_FLOAT_BOUNDARY_UNRESOLVED"
   ],
   "hard_rules": {
     "every_feedback_path_link_must_be_registered_exactly_once": true,
@@ -370,15 +374,16 @@
       "from": "exchange_rate_depreciation",
       "to": "fx_debt_service_burden",
       "sign": "+_candidate",
-      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
-      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "causal_role": "CONDITIONAL_TRANSLATION_EFFECT_CANDIDATE_JOINT_EXPOSURE_BOUNDARY_UNRESOLVED",
+      "readiness_status": "FX_DEBT_SERVICE_TRANSLATION_CONDITIONAL_JOINT_CURRENCY_RESIDUAL_MATURITY_HEDGING_UNRESOLVED",
       "related_mechanisms": [
         "external_fx_refinancing_feedback"
       ],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+      "reason": "A depreciation can raise home-currency foreign-currency debt service only on the actually denominated, due and unhedged exposure. The required joint sector × currency denomination × residual-maturity/debt-service schedule × hedging boundary is not observed.",
+      "boundary_review": "model/dynamics/exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "external_fx_refinancing_loop|fx_debt_service_burden|refinancing_need",
@@ -386,15 +391,16 @@
       "from": "fx_debt_service_burden",
       "to": "refinancing_need",
       "sign": "+_candidate",
-      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
-      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "causal_role": "LIQUIDITY_AND_ROLLOVER_CANDIDATE_BOUNDARY_SECTOR_SPECIFIC_AND_UNRESOLVED",
+      "readiness_status": "DEBT_SERVICE_DUE_NOT_EQUAL_REFINANCING_NEED_SECTOR_LIQUIDITY_AND_BUFFER_BOUNDARY_UNRESOLVED",
       "related_mechanisms": [
         "external_fx_refinancing_feedback"
       ],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+      "reason": "Contractual FX debt service due is not refinancing need. Sector-specific liquidity buffers, cash flow, principal due, rollover decisions and alternative financing channels are unresolved.",
+      "boundary_review": "model/dynamics/fx_debt_service_burden_to_refinancing_need_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "external_fx_refinancing_loop|refinancing_need|risk_premium",
@@ -402,15 +408,16 @@
       "from": "refinancing_need",
       "to": "risk_premium",
       "sign": "+_candidate",
-      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
-      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "causal_role": "MULTI_DRIVER_RISK_PRICING_CANDIDATE_CONTRIBUTION_NOT_IDENTIFIED",
+      "readiness_status": "MULTI_DRIVER_RISK_PREMIUM_REFINANCING_CONTRIBUTION_NOT_IDENTIFIED",
       "related_mechanisms": [
         "external_fx_refinancing_feedback"
       ],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+      "reason": "Risk premia are multi-driver and sector/instrument specific. The marginal contribution of refinancing need is not identified, and the sovereign-yield candidate cannot be reused as a generic external risk premium.",
+      "boundary_review": "model/dynamics/refinancing_need_to_risk_premium_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "external_fx_refinancing_loop|risk_premium|exchange_rate_pressure",
@@ -418,15 +425,16 @@
       "from": "risk_premium",
       "to": "exchange_rate_pressure",
       "sign": "+_candidate",
-      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
-      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "causal_role": "MANAGED_FLOAT_AND_SIMULTANEITY_CANDIDATE_BOUNDARY_UNRESOLVED",
+      "readiness_status": "RISK_PREMIUM_AND_EXCHANGE_RATE_PRESSURE_SIMULTANEOUS_MANAGED_FLOAT_BOUNDARY_UNRESOLVED",
       "related_mechanisms": [
         "external_fx_refinancing_feedback"
       ],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+      "reason": "Managed-float intervention, global risk, external rates, capital flows and simultaneity prevent a one-to-one risk-premium mapping. Exchange-rate pressure has no exact selected measure and no closing link is inferred.",
+      "boundary_review": "model/dynamics/risk_premium_to_exchange_rate_pressure_boundary_review_2026_09_21.json"
     }
   ],
   "current_summary": {

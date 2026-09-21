@@ -1,0 +1,85 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review",
+  "loop_id": "external_fx_refinancing_loop",
+  "purpose": "Determine whether an exchange-rate depreciation can be mapped to an exact FX debt-service-burden equation without confusing reporting currency with debt denomination, original maturity with residual payment timing, or gross foreign-currency debt with unhedged exposure.",
+  "decision": "DO_NOT_MAP_GENERIC_DEPRECIATION_TO_FX_DEBT_SERVICE_BURDEN_UNTIL_JOINT_CURRENCY_RESIDUAL_MATURITY_AND_HEDGING_BOUNDARY_IS_IDENTIFIED",
+  "retained_source_boundary": {
+    "source": "model/calibration_validation/external_fx_refinancing_source_boundary_review.json",
+    "verdict": "SECTOR_ORIGINAL_MATURITY_AND_PARTIAL_AGGREGATE_CURRENCY_RISK_MARGINS_OBSERVED_JOINT_CURRENCY_RESIDUAL_MATURITY_HEDGING_UNRESOLVED",
+    "sector_breakdown_available": true,
+    "original_maturity_breakdown_available": true,
+    "residual_maturity_schedule_available": false,
+    "debt_currency_denomination_available_from_confirmed_series": false,
+    "hedging_positions_available": false,
+    "matched_interest_or_coupon_schedule_available": false
+  },
+  "concept_boundary": {
+    "reporting_unit_equals_debt_currency_denomination": false,
+    "original_maturity_equals_residual_maturity": false,
+    "gross_external_debt_equals_unhedged_fx_exposure": false,
+    "contemporaneous_fx_move_applies_to_all_external_debt": false,
+    "exchange_rate_depreciation_alone_determines_fx_debt_service_burden": false
+  },
+  "structural_interpretation": {
+    "conditional_relation": "For a liability actually denominated in foreign currency, a home-currency depreciation mechanically raises the home-currency value of contractual foreign-currency payments only to the extent that those payments fall due on the relevant horizon and are not offset by matching foreign-currency assets, income or hedges.",
+    "missing_joint_boundary": "RMD does not currently retain the required joint sector × currency denomination × residual-maturity/debt-service schedule × hedging boundary.",
+    "qualitative_positive_sign_retained_as_candidate": true,
+    "exact_integrated_equation_ready": false
+  },
+  "bridge_resolution": {
+    "from": "exchange_rate_depreciation",
+    "to": "fx_debt_service_burden",
+    "status": "FX_DEBT_SERVICE_TRANSLATION_CONDITIONAL_JOINT_CURRENCY_RESIDUAL_MATURITY_HEDGING_UNRESOLVED",
+    "causal_role": "CONDITIONAL_TRANSLATION_EFFECT_CANDIDATE_JOINT_EXPOSURE_BOUNDARY_UNRESOLVED",
+    "stock_times_spot_shortcut_authorized": false,
+    "reporting_currency_inference_authorized": false,
+    "original_to_residual_maturity_substitution_authorized": false,
+    "zero_hedging_assumption_authorized": false,
+    "cross_sector_aggregation_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effect": {
+    "exchange_rate_depreciation": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id_after_review": null,
+      "current_feedback_activation_authorized": false
+    },
+    "fx_debt_service_burden": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id_after_review": null,
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "hard_rules": {
+    "no_reporting_unit_as_currency_denomination": true,
+    "no_original_maturity_as_residual_maturity": true,
+    "no_gross_debt_as_unhedged_exposure": true,
+    "no_zero_hedging_assumption": true,
+    "no_stock_times_spot_shortcut": true,
+    "no_cross_sector_synthetic_aggregation": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "joint_fx_exposure_boundary_resolved": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "fx_debt_service_burden_to_refinancing_need_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_infer_refinancing_from_debt_service_due": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}

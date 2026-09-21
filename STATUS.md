@@ -114,6 +114,20 @@ The terminal assessment is `model/dynamics/monetary_credit_transmission_loop_ter
 
 This closure changes neither the canonical modeling paradigm nor the public version.
 
+
+### External FX–refinancing open-chain structural closure — 2026-09-21
+
+The complete declared path of the `external_fx_refinancing_loop` has now received explicit structural/source-boundary review. The canonical identifier is retained for compatibility, but the structure remains an **OPEN_CHAIN**, not a closed feedback loop, and it is **not quantitatively active**.
+
+All four declared links remain non-integrated. Exchange-rate depreciation can raise the domestic-currency value of foreign-currency debt service only on the actually denominated, due and unhedged exposure, while the required joint sector × currency denomination × residual-maturity/debt-service schedule × hedging boundary is not observed. Debt service due is not identical to refinancing need because sector-specific liquidity buffers, cash flow, rollover choices and alternative financing channels matter. Risk premia are multi-driver and sector/instrument specific, so the marginal refinancing-need contribution is not identified. Under a managed-float regime, intervention, external rates, global risk, capital flows and simultaneity also prevent a one-to-one mapping from a generic risk premium to an exact exchange-rate-pressure state.
+
+The integrated chain therefore has **0/4 exact integrated link equations ready**, all five nodes remain `UNRESOLVED`, and both `refinancing_maturity_delay` and `fx_pass_through_delay` remain `TBD`. The mapped `external_fx_refinancing_feedback` mechanism remains `DEFERRED`. Most importantly, no `exchange_rate_pressure → exchange_rate_depreciation` closing link is inferred merely to manufacture a loop.
+
+The terminal assessment is `model/dynamics/external_fx_refinancing_open_chain_terminal_assessment_2026_09_21.json`. Its operational state is **EVIDENCE_TRIGGERED_HOLD**: there is no active empirical task, no repeated polling of unchanged marginal sources, no reporting-currency-as-denomination shortcut, no original-to-residual-maturity substitution, no zero-hedging assumption, no cross-sector synthetic aggregation, no parameter estimation, no feedback activation and no behavioural-closure change. Reopening requires genuinely new joint exposure, sector-liquidity/refinancing, risk-pricing, exchange-rate-pressure or explicit closing-path evidence satisfying the recorded triggers.
+
+This closure changes neither the canonical modeling paradigm nor the public version.
+
+
 ## Canonical modeling paradigm
 
 **Romanian Monetary Dynamics (RMD) is an accounting-constrained, stock-flow-consistent dynamic model with a developing System Dynamics feedback architecture; behavioural closure remains inactive pending empirical identification and validation.**
