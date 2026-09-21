@@ -548,3 +548,16 @@ The frozen next trigger is `BNR_CNF_2025_F4_CENTRAL_BANK_ASSET_COUNTERPART_STOCK
 
 The previous CNF reports state data-availability cutoffs at end-October of the following year (2023 report: end-October 2024; retained 2024 report: end-October 2025). RMD therefore records **after 2026-10-31** only as the earliest sensible evidence-monitoring window for the 2025 counterpart publication. It is not a BNR publication promise or forecast.
 
+### MoF realized-financing provenance-chain audit — 2026-09-21
+
+A baseline-authority sweep found one current provenance omission outside the Accounting Spine: the retained 2025 Ministry realized-financing assessment already referenced a frozen source-vintage probe contract and a retained source-vintage manifest, but those two intermediate authorities were not themselves registered in the scientific baseline.
+
+The chain is now explicit and machine-checked as:
+
+`mof_realized_financing_channel_materialisation_contract_2026_09_21.json`
+→ `mof_realized_financing_channel_source_vintage_probe_contract_2026_09_21.json`
+→ `data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21/source_vintage_manifest.json`
+→ `mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json`.
+
+The baseline manifest is advanced to **1.5** and cross-registry CI now verifies that all four links agree. This is a provenance/governance repair only: the retained cumulative-YTD financing vector, the block on monthly differencing, the inactive feedback state, calibration closure and public version **0.3.0** are unchanged.
+
