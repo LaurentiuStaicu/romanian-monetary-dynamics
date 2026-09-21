@@ -207,6 +207,9 @@ jobs:
       - name: Audit credit-supply-capacity to credit-flow boundary
         run: python scripts/audit_credit_supply_capacity_to_credit_flow_boundary.py
 
+      - name: Audit bank credit-balance-sheet loop terminal state
+        run: python scripts/audit_bank_credit_balance_sheet_loop_terminal_assessment.py
+
       - name: Audit government debt-stock to interest-cost accounting boundary
         run: python scripts/audit_government_debt_stock_to_interest_cost_boundary.py
 

@@ -181,7 +181,12 @@
       "debt_service_and_credit_risk_to_credit_supply_capacity_equation_ready": false,
       "credit_supply_capacity_to_credit_flow_boundary_review": "model/dynamics/credit_supply_capacity_to_credit_flow_boundary_review_2026_09_21.json",
       "credit_supply_capacity_to_credit_flow_status": "SUPPLY_CONDITION_AND_DEMAND_OBSERVABLES_AVAILABLE_REALIZED_CREDIT_FLOW_JOINTLY_DETERMINED",
-      "credit_supply_capacity_to_credit_flow_equation_ready": false
+      "credit_supply_capacity_to_credit_flow_equation_ready": false,
+      "structural_terminal_assessment": "model/dynamics/bank_credit_balance_sheet_loop_terminal_assessment_2026_09_21.json",
+      "structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_IDENTIFICATION_AND_MEASUREMENT_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
+      "operational_state": "EVIDENCE_TRIGGERED_HOLD",
+      "active_empirical_task": null,
+      "reopen_trigger_required": true
     },
     {
       "id": "monetary_credit_transmission_loop",
