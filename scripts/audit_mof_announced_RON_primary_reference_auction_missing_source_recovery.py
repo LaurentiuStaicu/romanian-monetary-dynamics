@@ -210,7 +210,7 @@ def audit_missing_source_recovery(
     if bridge.get("missing_required_source_count") != 3:
         errors.append("issuance-pressure bridge remaining source count changed")
     if prereg.get("next_independent_bridge_task", {}).get("id") != (
-        "mof_realized_financing_channel_source_vintage_probe"
+        "government_debt_issuance_to_debt_stock_boundary_review"
     ):
         errors.append("preregistration next independent bridge changed")
 
@@ -228,7 +228,7 @@ def audit_missing_source_recovery(
     ) != 3:
         errors.append("model contract remaining source count changed")
     if dynamic.get("government_issuance_yield_next_independent_task") != (
-        "mof_realized_financing_channel_source_vintage_probe"
+        "government_debt_issuance_to_debt_stock_boundary_review"
     ):
         errors.append("model contract next independent task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
