@@ -179,10 +179,10 @@ def audit_bnr_2025_financial_accounts_topology_reopen(
             e.append(f"scientific baseline authority missing {path}")
 
     # Accounting Spine remains unchanged: F3 only is complete.
-    complete = accounting["canonical_readiness"]["complete_stock_and_flow_instruments"]
+    complete = accounting["current_expected_state"]["canonical_complete_stock_and_flow_instruments"]
     if complete != ["F3"]:
         e.append(f"accounting complete stock+flow instruments changed: {complete}")
-    if accounting["canonical_readiness"]["canonical_full_2025_stock_flow_benchmark_ready"] is not False:
+    if accounting["current_expected_state"]["canonical_full_2025_stock_flow_benchmark_ready"] is not False:
         e.append("full 2025 Accounting Spine benchmark may not become ready")
 
     return e
