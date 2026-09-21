@@ -452,3 +452,13 @@ Before detailed observation values or rank outcomes are reviewed, Stage 2 is fro
 
 This is a selective reopen only. F7 remains canonically incomplete at the predecessor stock rank 11/nullity 24 and flow rank 10/nullity 25 until Stage 2 executes. No benchmark cell, reference mode, calibration state, feedback structure, behavioural closure or version is changed by preregistration.
 
+### F7 OECD counterpart Stage 2 terminal result — 2026-09-21
+
+The preregistered F7 Stage 2 gate was executed strictly from the retained OECD counterpart artifact. The required 2025 boundary contains **180 stock rows at 2025-Q4** and **720 transaction rows for 2025-Q1..Q4** across F7, F71 and F72, with no required duplicates, missing values or non-finite observations.
+
+The resident-group asset/liability mirror layer passes exactly: **48 stock checks and 48 annual-flow checks, zero violations, maximum residual 0.0 million RON**. The next two frozen source-reconciliation layers fail at **0.1 million RON**. S1 aggregation fails in **4 of 66 stock checks** with a maximum absolute residual of **1.0 million RON**, and **19 of 66 annual-flow checks** with a maximum of **2.0 million RON**. The component identity **F7 = F71 + F72** also fails: **2/60 stock**, **3/60 annual-flow**, and **9/240 quarterly-flow** checks exceed the threshold.
+
+Because every source-value/reconciliation gate must pass before a new OECD total-F7 equation enters the exact rank system, execution stops **before rank recomputation**. F7 therefore remains at its predecessor **stock rank 11 / nullity 24** and **flow rank 10 / nullity 25**, with zero unconditional rank-unique bilateral cells.
+
+The observed discrepancies are retained as immutable negative gate evidence. They do not authorize post-result tolerance relaxation, selective salvage of mirrored rows, materiality allocation, F-versus-BNR residual splitting or missing-to-zero assumptions. F7 returns to **EVIDENCE_TRIGGERED_HOLD** pending changed official evidence or an independently justified source-specific reconciliation basis preregistered before a successor gate.
+

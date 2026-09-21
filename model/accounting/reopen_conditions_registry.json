@@ -97,13 +97,18 @@
         "aggregate sector complements treated as bilateral cells",
         "aggregate zero controls converted to bilateral zeros",
         "materiality assumptions used to allocate counterparties",
-        "a live refresh reproducing the same rank/nullspace boundary"
+        "a live refresh reproducing the same rank/nullspace boundary",
+        "the retained OECD F7/F71/F72 counterpart source after Stage 2 failure at the preregistered 0.1 million RON S1 aggregation and component-identity gates, unless a changed source or independently justified source-specific precision/reconciliation rule satisfies a separately preregistered successor gate"
       ],
       "selective_reopen_contract": "model/accounting/f7_oecd_counterpart_reopen_contract_2026_09_21.json",
       "selective_reopen_assessment": "model/accounting/f7_oecd_counterpart_reopen_assessment_2026_09_21.json",
-      "selective_reopen_state": "PREREGISTERED_STAGE2_PENDING_EXECUTION",
+      "selective_reopen_state": "STAGE2_EXECUTED_FAIL_SOURCE_RECONCILIATION_RETURNED_TO_HOLD",
       "reopen_trigger_satisfied": true,
-      "reopen_trigger_basis": "Retained OECD quarterly counterpart stocks/flows publish total F7 and F71/F72 by reporting/counterpart sector; S121 remains absent, so F-versus-BNR stays unresolved."
+      "reopen_trigger_basis": "Retained OECD quarterly counterpart stocks/flows publish total F7 and F71/F72 by reporting/counterpart sector; S121 remains absent, so F-versus-BNR stays unresolved.",
+      "selective_reopen_execution_assessment": "model/accounting/f7_oecd_counterpart_stage2_execution_assessment_2026_09_21.json",
+      "current_reopen_gate_open": false,
+      "selective_reopen_terminal_result": "The retained OECD F7/F71/F72 rows pass extraction and resident A/L mirror checks but fail the preregistered 0.1 million RON S1 aggregate-consistency and F7=F71+F72 component-identity gates. No new rank equations are admitted.",
+      "next_reopen_boundary": "Changed official counterpart evidence satisfying the frozen boundary, or an independently justified source-specific precision/reconciliation rule preregistered before a successor value gate; observed residuals do not define the tolerance."
     },
     "F8": {
       "current_status": "FROZEN_AGGREGATE_ONLY_PUBLIC_DATA_BOUNDARY",
