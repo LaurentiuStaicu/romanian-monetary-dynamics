@@ -268,7 +268,10 @@
     "sectoral_financial_positions_oecd_decimal_arithmetic_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
     "sectoral_financial_positions_oecd_decimal_arithmetic_status": "CORRECTED_63_MACHINE_FLOAT_TO_47_EXACT_DECIMAL_VIOLATIONS_VERDICT_UNCHANGED",
     "sectoral_financial_positions_oecd_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json",
-    "sectoral_financial_positions_oecd_window_stability_status": "NO_CONTIGUOUS_40Q_WINDOW_PASSES_POST_BENCHMARK_FAILURE_PERSISTS"
+    "sectoral_financial_positions_oecd_window_stability_status": "NO_CONTIGUOUS_40Q_WINDOW_PASSES_POST_BENCHMARK_FAILURE_PERSISTS",
+    "sectoral_financial_positions_ecb_qfa_10m_trigger_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_threshold_reopen_assessment_2026_09_21.json",
+    "sectoral_financial_positions_ecb_qfa_10m_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_validation_contract_2026_09_21.json",
+    "sectoral_financial_positions_ecb_qfa_10m_gate_status": "PREREGISTERED_PENDING_MANUAL_EXECUTION"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
@@ -353,7 +356,10 @@
     "post_terminal_decimal_arithmetic_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
     "post_terminal_decimal_arithmetic_correction_status": "EXECUTED_CORRECTION_ONLY_BASELINE_HOLD_UNCHANGED",
     "post_terminal_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json",
-    "post_terminal_window_stability_status": "EXECUTED_NEGATIVE_NO_REOPEN"
+    "post_terminal_window_stability_status": "EXECUTED_NEGATIVE_NO_REOPEN",
+    "post_terminal_official_qfa_validation_task": "ecb_qfa_10m_sectoral_financial_positions_validation",
+    "post_terminal_official_qfa_validation_contract": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_validation_contract_2026_09_21.json",
+    "post_terminal_official_qfa_validation_status": "PREREGISTERED_PENDING_MANUAL_EXECUTION"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",
