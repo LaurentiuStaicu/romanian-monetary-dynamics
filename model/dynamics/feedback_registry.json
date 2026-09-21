@@ -285,7 +285,25 @@
         "fx_pass_through_delay"
       ],
       "topology_status": "OPEN_CHAIN",
-      "activation_blocker": "The retained path ends at exchange_rate_pressure rather than returning to exchange_rate_depreciation. No closing causal link is inferred merely to create a loop; closure requires explicit evidence and specification."
+      "activation_blocker": "The retained path ends at exchange_rate_pressure rather than returning to exchange_rate_depreciation. No closing causal link is inferred merely to create a loop; closure requires explicit evidence and specification.",
+      "exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review": "model/dynamics/exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review_2026_09_21.json",
+      "exchange_rate_depreciation_to_fx_debt_service_burden_status": "FX_DEBT_SERVICE_TRANSLATION_CONDITIONAL_JOINT_CURRENCY_RESIDUAL_MATURITY_HEDGING_UNRESOLVED",
+      "exchange_rate_depreciation_to_fx_debt_service_burden_equation_ready": false,
+      "fx_debt_service_burden_to_refinancing_need_boundary_review": "model/dynamics/fx_debt_service_burden_to_refinancing_need_boundary_review_2026_09_21.json",
+      "fx_debt_service_burden_to_refinancing_need_status": "DEBT_SERVICE_DUE_NOT_EQUAL_REFINANCING_NEED_SECTOR_LIQUIDITY_AND_BUFFER_BOUNDARY_UNRESOLVED",
+      "fx_debt_service_burden_to_refinancing_need_equation_ready": false,
+      "refinancing_need_to_risk_premium_boundary_review": "model/dynamics/refinancing_need_to_risk_premium_boundary_review_2026_09_21.json",
+      "refinancing_need_to_risk_premium_status": "MULTI_DRIVER_RISK_PREMIUM_REFINANCING_CONTRIBUTION_NOT_IDENTIFIED",
+      "refinancing_need_to_risk_premium_equation_ready": false,
+      "risk_premium_to_exchange_rate_pressure_boundary_review": "model/dynamics/risk_premium_to_exchange_rate_pressure_boundary_review_2026_09_21.json",
+      "risk_premium_to_exchange_rate_pressure_status": "RISK_PREMIUM_AND_EXCHANGE_RATE_PRESSURE_SIMULTANEOUS_MANAGED_FLOAT_BOUNDARY_UNRESOLVED",
+      "risk_premium_to_exchange_rate_pressure_equation_ready": false,
+      "structural_terminal_assessment": "model/dynamics/external_fx_refinancing_open_chain_terminal_assessment_2026_09_21.json",
+      "structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_OPEN_CHAIN_MEASUREMENT_AND_IDENTIFICATION_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
+      "operational_state": "EVIDENCE_TRIGGERED_HOLD",
+      "active_empirical_task": null,
+      "reopen_trigger_required": true,
+      "closing_link_authorized": false
     }
   ],
   "delay_candidates": [
