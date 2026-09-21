@@ -166,8 +166,10 @@ def audit_bnr_2025_financial_accounts_topology_reopen(
         e.append("behavioural closure changed")
 
     stage = model["scientific_stage"]
-    if stage.get("latest_reopen_trigger_monitoring") != M:
-        e.append("model contract latest trigger monitoring pointer changed")
+    if stage.get("latest_reopen_trigger_monitoring") != "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json":
+        e.append("historical baseline monitoring pointer may not be rewritten")
+    if stage.get("post_terminal_source_topology_trigger_monitoring") != M:
+        e.append("model contract post-terminal source-topology monitoring pointer changed")
     if stage.get("active_noncalibration_source_task") != "bnr_2025_financial_accounts_public_access_recovery":
         e.append("active source-topology task pointer changed")
     if stage.get("calibration_cycle_open") is not False:
