@@ -104,7 +104,10 @@
     "oecd_sectoral_financial_positions_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json",
     "ecb_qfa_10m_threshold_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_threshold_assessment_2026_09_21.json",
     "ecb_qfa_10m_horizontal_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_contract_2026_09_21.json",
-    "ecb_qfa_10m_horizontal_gate_execution": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_execution_assessment_2026_09_21.json"
+    "ecb_qfa_10m_horizontal_gate_execution": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_execution_assessment_2026_09_21.json",
+    "reference_mode_post_terminal_promotion": "model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json",
+    "sectoral_financial_positions_observed_snapshot": "model/dynamics/sectoral_financial_positions_observed_snapshot_2026_09_21.json",
+    "trigger_aware_monitoring_horizon_post_reference_closure": "model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_reference_closure.json"
   },
   "canonical_state": {
     "accounting": {
@@ -124,8 +127,8 @@
     },
     "reference_modes": {
       "required_count": 10,
-      "ready_count": 9,
-      "closure_ready": false,
+      "ready_count": 10,
+      "closure_ready": true,
       "ready": [
         "policy_rate",
         "household_lending_rate",
@@ -135,18 +138,20 @@
         "government_debt_stock",
         "government_interest_burden",
         "government_refinancing_need",
-        "government_effective_interest_rate"
-      ],
-      "blockers": [
+        "government_effective_interest_rate",
         "sectoral_financial_positions"
       ],
+      "blockers": [],
       "external_counterpart_screening_state": "EXHAUSTED_NO_SEMANTICALLY_ADMISSIBLE_CURRENT_PUBLIC_SOURCE",
       "sectoral_financial_positions_external_counterpart_recovery_state": "FROZEN_UNTIL_NEW_SOURCE_OR_CHANGED_DATASET_TRIGGER",
       "external_counterpart_exact_historical_extraction_authorized": false,
-      "recovery_stage_status": "STAGE_COMPLETE_FROZEN_9_OF_10_UNDER_CURRENT_PUBLIC_EVIDENCE_BOUNDARY",
+      "recovery_stage_status": "POST_TERMINAL_PROMOTION_COMPLETE_10_OF_10_REFERENCE_MODES_READY",
       "recovery_substage_complete": true,
       "next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
-      "final_blocker_public_source_completion_status": "EUROSTAT_INSTRUMENT_SCOPE_FAIL_OECD_S121_SCOPE_FAIL_BNR_ANNUAL_FREQUENCY_TRANSACTION_HISTORY_FAIL_BNR_QUARTERLY_S13_SECTOR_COUNTERPART_CONSOLIDATION_FAIL"
+      "final_blocker_public_source_completion_status": "EUROSTAT_INSTRUMENT_SCOPE_FAIL_OECD_S121_SCOPE_FAIL_BNR_ANNUAL_FREQUENCY_TRANSACTION_HISTORY_FAIL_BNR_QUARTERLY_S13_SECTOR_COUNTERPART_CONSOLIDATION_FAIL",
+      "post_terminal_promotion_assessment": "model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json",
+      "sectoral_financial_positions_observed_snapshot": "model/dynamics/sectoral_financial_positions_observed_snapshot_2026_09_21.json",
+      "historical_terminal_9_of_10_assessment": "model/dynamics/reference_mode_recovery_terminal_assessment.json"
     },
     "system_dynamics": {
       "complete_endogenous_system_dynamics_model": false,
@@ -222,12 +227,12 @@
       "latest_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
       "latest_reopen_trigger_monitoring_status": "NO_DECLARED_REOPEN_TRIGGER_SATISFIED_POST_FISCAL_CLOSURE_BASELINE_HOLD_CONTINUES",
       "previous_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_19.json",
-      "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21.json",
+      "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_reference_closure.json",
       "next_dated_trigger_check": {
         "date": "2026-10-08",
         "id": "prospective_monetary_policy_event"
       },
-      "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json"
+      "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21.json"
     },
     "release_versioning": {
       "current_public_release": "0.1.0",
