@@ -234,6 +234,36 @@ jobs:
           if-no-files-found: error
           retention-days: 90
 
+  manual-sectoral-financial-positions-materialisation:
+    if: ${{ github.event_name == 'pull_request' && github.head_ref == 'model/ecb-qfa-10m-validation-gate-2026-09-21' && github.run_attempt > 1 }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out frozen ECB-QFA gate branch
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify sectoral-position materialisation contract
+        run: python -m unittest tests.test_sectoral_financial_positions_materialisation -v
+
+      - name: Materialise observed sectoral financial positions
+        env:
+          SECTORAL_POSITIONS_OUT: sectoral_financial_positions_materialisation_artifacts
+        run: python scripts/materialize_sectoral_financial_positions_oecd.py
+
+      - name: Upload materialised reference-mode evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sectoral-financial-positions-materialisation-${{ github.sha }}
+          path: sectoral_financial_positions_materialisation_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+
   verify-baseline:
     runs-on: ubuntu-latest
 
