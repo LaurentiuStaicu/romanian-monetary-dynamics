@@ -75,7 +75,9 @@
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+      "reason": "The positive structural direction is retained, but government_interest_cost is not itself financing need. Eurostat D41 is accrual interest expenditure, the Ministry refinancing reference is a principal component on a different debt-management boundary, and no same-boundary realized GFN accounting identity is currently contracted.",
+      "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
+      "bridge_status": "REVIEWED_POSITIVE_STRUCTURAL_DIRECTION_GFN_DECOMPOSITION_VALID_EXACT_INTEGRATED_CASH_ACCOUNTING_BOUNDARY_UNRESOLVED"
     },
     {
       "link_key": "government_issuance_yield_loop|government_debt_issuance|government_securities_supply_pressure",
@@ -165,8 +167,10 @@
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes.",
-      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
+      "reason": "The positive structural direction is retained, but government_interest_cost is not itself financing need. Eurostat D41 is accrual interest expenditure, the Ministry refinancing reference is a principal component on a different debt-management boundary, and no same-boundary realized GFN accounting identity is currently contracted.",
+      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
+      "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
+      "bridge_status": "REVIEWED_POSITIVE_STRUCTURAL_DIRECTION_GFN_DECOMPOSITION_VALID_EXACT_INTEGRATED_CASH_ACCOUNTING_BOUNDARY_UNRESOLVED"
     },
     {
       "link_key": "government_issuance_yield_loop|government_financing_need|government_debt_issuance",
