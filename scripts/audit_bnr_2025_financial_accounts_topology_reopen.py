@@ -171,10 +171,12 @@ def audit_bnr_2025_financial_accounts_topology_reopen(
         e.append("historical baseline monitoring pointer may not be rewritten")
     if stage.get("post_terminal_source_topology_trigger_monitoring") != M:
         e.append("model contract post-terminal source-topology monitoring pointer changed")
-    if stage.get("active_noncalibration_source_task") is not None:
-        e.append("terminal source-topology path must not remain active")
+    if stage.get("active_noncalibration_source_task") != "sectoral_financial_positions_ecb_qfa_official_tolerance_gate":
+        e.append("only the independent official-tolerance source task may be active")
+    if stage.get("active_noncalibration_source_task_contract") != "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_contract_2026_09_21.json":
+        e.append("official-tolerance active task contract pointer changed")
     if stage.get("active_noncalibration_source_subtask") is not None:
-        e.append("terminal exact-source subtask must not remain active")
+        e.append("terminal exact-source subtask must remain closed")
     if stage.get("next_operational_state") != "EVIDENCE_TRIGGERED_BASELINE_HOLD":
         e.append("terminal source path must return to baseline hold")
     if stage.get("calibration_cycle_open") is not False:
