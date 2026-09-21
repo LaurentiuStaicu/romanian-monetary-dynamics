@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REVIEW_PATH = "model/dynamics/government_debt_stock_to_interest_cost_boundary_review_2026_09_21.json"
 PREREG_PATH = "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
 STATUS = "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL"
-NEXT_GATE = "government_refinancing_interest_loop_terminal_assessment"
+NEXT_GATE = "government_refinancing_interest_loop_evidence_triggered_hold"
 
 
 def load(path: str) -> dict:
@@ -168,11 +168,19 @@ def audit_government_debt_stock_to_interest_cost_boundary(
     next_task = prereg["next_independent_bridge_task"]
     if next_task["id"] != NEXT_GATE:
         errors.append("preregistration next independent task changed")
-    if next_task["authorization"] != "STRUCTURAL_TERMINAL_ASSESSMENT_ONLY":
-        errors.append("next independent task authorization changed")
-    for key in ("may_estimate_parameters","may_activate_feedback","may_change_behavioural_closure","may_relax_existing_gates"):
+    if next_task["authorization"] != "NO_ACTIVE_TASK_UNTIL_DECLARED_REOPEN_TRIGGER":
+        errors.append("next-state hold authorization changed")
+    if next_task["reopen_trigger_required"] is not True:
+        errors.append("next-state hold must require a reopen trigger")
+    for key in (
+        "may_poll_unchanged_sources",
+        "may_estimate_parameters",
+        "may_activate_feedback",
+        "may_change_behavioural_closure",
+        "may_relax_existing_gates",
+    ):
         if next_task[key] is not False:
-            errors.append(f"next independent task may not authorize {key}")
+            errors.append(f"next-state hold may not authorize {key}")
 
     dynamic = model_contract["dynamic_core"]
     if dynamic.get("government_debt_stock_to_interest_cost_boundary_review") != REVIEW_PATH:

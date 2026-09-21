@@ -160,8 +160,10 @@
   },
   "next_gate_after_materialisation": "Reconcile the exact RON auction-universe stock denominator before any supply-load ratio is computed. Submitted-bids and bid-to-cover monthly series remain blocked because the monthly report exposes them graphically without reproducible native-text month/series mapping.",
   "next_independent_bridge_task": {
-    "id": "government_refinancing_interest_loop_terminal_assessment",
-    "authorization": "STRUCTURAL_TERMINAL_ASSESSMENT_ONLY",
+    "id": "government_refinancing_interest_loop_evidence_triggered_hold",
+    "authorization": "NO_ACTIVE_TASK_UNTIL_DECLARED_REOPEN_TRIGGER",
+    "reopen_trigger_required": true,
+    "may_poll_unchanged_sources": false,
     "may_estimate_parameters": false,
     "may_activate_feedback": false,
     "may_change_behavioural_closure": false,
@@ -174,5 +176,7 @@
   "government_debt_issuance_to_debt_stock_boundary_review": "model/dynamics/government_debt_issuance_to_debt_stock_boundary_review_2026_09_21.json",
   "government_debt_issuance_to_debt_stock_boundary_status": "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED",
   "government_debt_stock_to_interest_cost_boundary_review": "model/dynamics/government_debt_stock_to_interest_cost_boundary_review_2026_09_21.json",
-  "government_debt_stock_to_interest_cost_boundary_status": "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL"
+  "government_debt_stock_to_interest_cost_boundary_status": "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL",
+  "government_refinancing_interest_loop_terminal_assessment": "model/dynamics/government_refinancing_interest_loop_terminal_assessment_2026_09_21.json",
+  "government_refinancing_interest_loop_structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_CURRENT_EVIDENCE_INSUFFICIENT_EVIDENCE_TRIGGERED_HOLD"
 }

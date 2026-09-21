@@ -126,8 +126,8 @@
     "mof_announced_RON_primary_reference_auction_supply_missing_required_source_count": 3,
     "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
     "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_3_REQUIRED_SOURCES_REMAINING",
-    "government_issuance_yield_next_independent_task": "government_refinancing_interest_loop_terminal_assessment",
-    "government_issuance_yield_next_independent_task_authorization": "STRUCTURAL_TERMINAL_ASSESSMENT_ONLY",
+    "government_issuance_yield_next_independent_task": "government_refinancing_interest_loop_evidence_triggered_hold",
+    "government_issuance_yield_next_independent_task_authorization": "NO_ACTIVE_TASK_UNTIL_DECLARED_REOPEN_TRIGGER",
     "mof_announced_RON_primary_reference_auction_supply_event_level_complete_final_months": [
       "2025-01",
       "2025-02",
@@ -170,7 +170,11 @@
     "government_debt_issuance_matched_net_transaction_stream_identified": false,
     "government_debt_stock_to_interest_cost_boundary_review": "model/dynamics/government_debt_stock_to_interest_cost_boundary_review_2026_09_21.json",
     "government_debt_stock_to_interest_cost_boundary_status": "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL",
-    "government_debt_stock_to_interest_cost_equation_ready": false
+    "government_debt_stock_to_interest_cost_equation_ready": false,
+    "government_refinancing_interest_loop_terminal_assessment": "model/dynamics/government_refinancing_interest_loop_terminal_assessment_2026_09_21.json",
+    "government_refinancing_interest_loop_structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_CURRENT_EVIDENCE_INSUFFICIENT_EVIDENCE_TRIGGERED_HOLD",
+    "government_refinancing_interest_loop_operational_state": "EVIDENCE_TRIGGERED_HOLD",
+    "government_refinancing_interest_loop_active_empirical_task": null
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",

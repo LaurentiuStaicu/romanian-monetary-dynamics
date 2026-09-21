@@ -66,6 +66,18 @@ The next dated check is **2026-10-08** and is limited to the BNR monetary-policy
 Fiscal AMECO monitoring is release-conditioned rather than polled: the next legitimate check occurs only after the Commission publishes the Autumn 2026 full forecast / corresponding AMECO release. The exact BNR BLS 2025-Q2 source, the government repricing ledger and the accounting/reference-mode counterpart boundaries are new-evidence-only triggers. Routine quarterly data releases without changed topology do not reopen frozen source paths.
 
 
+### Government refinancing–interest loop structural closure — 2026-09-21
+
+The complete declared path of the `government_refinancing_interest_loop` has now received explicit structural/accounting boundary review. The qualitative reinforcing topology is retained, but the loop is **not quantitatively active**.
+
+The four links remain blocked for different reasons: financing need is allocated across multiple financing channels without an identified allocation vector; gross borrowing is not the net transaction that accumulates Maastricht debt; debt stock scales accrued interest only conditionally on a matched rate/debt boundary; and interest enters gross financing need only under a selected matched accounting form that prevents double counting.
+
+The integrated loop therefore has **0/4 exact integrated link equations ready**, all four feedback nodes remain `UNRESOLVED`, the debt-service maturity delay remains `TBD`, and both mapped behavioural mechanisms remain `DEFERRED`. The government repricing ledger still fails before estimation because same-boundary opening principal, realized repriced principal and matched old/new rates are unavailable.
+
+The terminal structural assessment is `model/dynamics/government_refinancing_interest_loop_terminal_assessment_2026_09_21.json`. Its operational state is **EVIDENCE_TRIGGERED_HOLD**: no active empirical task, no repeated polling of unchanged source paths, no aggregate-proxy refit, no parameter estimation, no feedback activation and no behavioural-closure change are authorized. Reopening requires genuinely new matched evidence satisfying one of the recorded source/identification triggers.
+
+This closure changes neither the canonical modeling paradigm nor the public version.
+
 ## Canonical modeling paradigm
 
 **Romanian Monetary Dynamics (RMD) is an accounting-constrained, stock-flow-consistent dynamic model with a developing System Dynamics feedback architecture; behavioural closure remains inactive pending empirical identification and validation.**
