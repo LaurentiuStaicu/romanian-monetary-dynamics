@@ -1,0 +1,78 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "v0_3_0_release_readiness_assessment",
+  "purpose": "Determine whether post-v0.2.0 reference-mode closure, Accounting Spine recovery-boundary consolidation and associated reproducibility/governance work form a coherent public scientific-core milestone suitable for v0.3.0 without implying model completion, canonical Accounting Spine completion or behavioural validation.",
+  "compared_release": {
+    "base_tag": "v0.2.0",
+    "base_version": "0.2.0",
+    "base_release_date": "2026-09-21",
+    "base_commit": "51114123c19471448356aee10e487994744233a0",
+    "candidate_base_main_commit": "f847a78726b0b2e8a542bcd1392a437f561b7984",
+    "commits_ahead_before_release_preparation": 22,
+    "files_changed_or_added_before_release_preparation": 131,
+    "additions_before_release_preparation": 8895,
+    "deletions_before_release_preparation": 226
+  },
+  "milestone_state": {
+    "accounting_spine": "PARTIAL_PASS_F3_ONLY_CANONICALLY_COMPLETE",
+    "accounting_recovery_stage": "STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD",
+    "active_unconditional_accounting_recovery_task": null,
+    "required_reference_modes_ready": 10,
+    "required_reference_modes_total": 10,
+    "reference_mode_closure_ready": true,
+    "remaining_reference_mode_blocker": null,
+    "validated_reference_behavioural_mechanisms": 0,
+    "quantitative_feedback_structures_active": 0,
+    "behavioural_closure": "INACTIVE",
+    "calibration_refit_cycle": "CLOSED",
+    "operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+    "model_complete": false,
+    "open_pull_requests_at_readiness_assessment": 0,
+    "main_scientific_ci": "PASS"
+  },
+  "substantive_changes_since_v0_2_0": [
+    "Promoted sectoral_financial_positions to observed aggregate reference-mode status after a preregistered ECB QFA official-consistency gate, advancing required reference-mode observability from 9/10 to 10/10 without changing the bilateral Accounting Spine.",
+    "Completed BNR/OECD/ESA source-topology, semantic, precision, exact-decimal and window-stability diagnostics under retained-vintage and no-post-result-tolerance-relaxation governance.",
+    "Executed instrument-specific Accounting Spine selective-reopen cycles for F5-F8 from retained OECD counterpart evidence; each cycle was preregistered and returned to hold when frozen source-reconciliation gates failed before rank admission.",
+    "Closed the repeated standard BPM6/Eurostat/BNR Direct-Investment route for the missing F2 subinstrument at a standards-supported dissemination boundary, preserving F2M but leaving F21/total F2 incomplete.",
+    "Rejected a cross-domain Eurostat-financial-accounts minus ECB-BSI subtraction as an exact F4 BNR counterpart bridge, preserving the existing F4 partial core and unresolved BNR allocation.",
+    "Consolidated Accounting Spine recovery into a terminal evidence-triggered hold assessment with explicit reopen triggers for every incomplete instrument and no active unconditional recovery task.",
+    "Strengthened cross-registry baseline governance so release-version state and Accounting Spine terminal recovery state are CI-checked against their canonical contracts.",
+    "Updated README/STATUS/CHANGELOG to expose the current scientific boundary and reproducibility path without overstating model maturity."
+  ],
+  "release_classification": {
+    "semver_series": "0.x.y_initial_development",
+    "selected_version": "0.3.0",
+    "classification": "SUBSTANTIVE_REFERENCE_MODE_AND_ACCOUNTING_RECOVERY_MILESTONE",
+    "patch_release_rejected": true,
+    "major_release_rejected": true,
+    "rationale": "The post-v0.2.0 change set introduces a new public scientific boundary—10/10 aggregate reference-mode observability plus a terminal machine-checkable Accounting Spine recovery state—and substantial new reproducibility contracts. It is broader than a corrective patch, while RMD remains in initial development and does not claim a stable 1.0 API or complete endogenous behavioural model."
+  },
+  "pre_publish_gate_snapshot": {
+    "current_main_clean_of_open_prs": true,
+    "current_main_scientific_ci_green": true,
+    "release_versioning_contract_present": true,
+    "versioned_release_notes_required": true,
+    "atomic_metadata_update_required": true,
+    "exact_release_commit_must_pass_scientific_ci": true,
+    "publication_must_use_tag_for_exact_reviewed_commit": true
+  },
+  "scientific_nonclaims": [
+    "v0.3.0 does not mean the Accounting Spine is complete.",
+    "v0.3.0 does not mean all bilateral F2-F8 matrices are available.",
+    "v0.3.0 does not validate a behavioural reference mechanism.",
+    "v0.3.0 does not activate any System Dynamics feedback loop.",
+    "v0.3.0 does not activate behavioural closure.",
+    "v0.3.0 is not a calibrated forecasting or policy-simulation release."
+  ],
+  "decision": "PREPARE_V0_3_0_AND_PUBLISH_ONLY_AFTER_EXACT_MAIN_RELEASE_COMMIT_PASSES_SCIENTIFIC_CI",
+  "publication_gate": {
+    "publication_authorized_in_release_preparation": true,
+    "requires_exact_main_commit_green_scientific_ci": true,
+    "requires_atomic_version_surface_consistency": true,
+    "requires_versioned_release_notes": true,
+    "requires_tag_and_github_release_same_commit": true,
+    "no_historical_tag_mutation": true
+  }
+}
