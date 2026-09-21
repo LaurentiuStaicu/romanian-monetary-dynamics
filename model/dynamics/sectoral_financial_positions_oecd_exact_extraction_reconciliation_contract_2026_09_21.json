@@ -231,5 +231,16 @@
     "Only after exact-row completeness passes, parse finite OBS_VALUE values and construct the frozen RMD sectors.",
     "Run stock and flow system reconciliation and source-sector diagnostics.",
     "Retain targeted raw responses, hashes, exact filtered rows, constructed series and diagnostics."
-  ]
+  ],
+  "execution_result": {
+    "executed": true,
+    "result": "FAIL_EXACT_REQUIRED_ROW_COVERAGE_NO_VALUE_REVIEW_NO_PROMOTION",
+    "assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
+    "workflow_run_id": 35590873931,
+    "workflow_job_id": 106304893566,
+    "artifact_id": 10634456456,
+    "numeric_observation_value_review_performed": false,
+    "reconciliation_test_performed": false,
+    "terminal_blocker": "S1M/L/F2 missing for all 49 requested quarters in both flow and stock."
+  }
 }
