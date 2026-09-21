@@ -1,0 +1,114 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "market_and_lending_rates_to_credit_flow_boundary_review",
+  "loop_id": "monetary_credit_transmission_loop",
+  "purpose": "Determine whether observed or candidate market/lending-rate measures can be mapped directly into the observed ECB BSI private-credit transaction flow without conflating loan prices, new-business agreement volumes, realized net financial transactions, borrower demand and bank supply conditions.",
+  "decision": "DO_NOT_MAP_LENDING_RATE_ONE_TO_ONE_TO_CREDIT_FLOW_KEEP_PRICE_NEW_BUSINESS_VOLUME_AND_BSI_TRANSACTION_CONCEPTS_DISTINCT",
+  "official_source_evidence": {
+    "ecb_mir": {
+      "institution": "European Central Bank",
+      "source": "MFI interest rate statistics",
+      "finding": "MIR measures interest rates individually agreed between banks and customers and separately reports new-business volumes. New business includes newly agreed contracts and renegotiations, while MIR new-business rates reflect contemporaneous demand and supply conditions.",
+      "implication": "A lending rate is a price variable, not a realized credit-flow quantity. MIR new-business volume is also not definitionally the same object as BSI net financial transactions."
+    },
+    "ecb_bsi": {
+      "institution": "European Central Bank",
+      "source": "Balance Sheet Items methodology",
+      "finding": "BSI financial transactions are derived from changes in stocks after removing non-transaction effects such as reclassifications, revaluations, exchange-rate changes and loan write-offs/write-downs.",
+      "implication": "The RMD credit_flow reference is a net transaction concept distinct from MIR rate observations and MIR agreement volumes."
+    },
+    "ecb_bls": {
+      "institution": "European Central Bank / Eurosystem",
+      "source": "Bank Lending Survey",
+      "finding": "BLS explicitly separates loan supply conditions/credit standards from loan demand; both help explain observed loan growth.",
+      "implication": "Observed credit transactions cannot identify a lending-rate-to-flow response without a design that separately controls or identifies supply and demand."
+    },
+    "retained_rmd": {
+      "credit_flow_reference": "model/dynamics/private_credit_reference_assessment.json",
+      "aggregate_bank_credit_review": "model/calibration_validation/aggregate_bank_credit_source_boundary_review.json",
+      "policy_rate_rate_review": "model/dynamics/policy_rate_to_market_and_lending_rates_boundary_review_2026_09_21.json",
+      "finding": "RMD already requires sector-specific supply/demand separation and does not admit the aggregate bank-credit response equation for calibration."
+    }
+  },
+  "concept_boundary": {
+    "lending_rate_is_credit_flow": false,
+    "MIR_new_business_volume_is_BSI_financial_transaction": false,
+    "rate_change_identifies_credit_quantity_response": false,
+    "observed_credit_flow_is_demand_only": false,
+    "observed_credit_flow_is_supply_only": false,
+    "household_housing_rate_can_price_NFC_credit_flow": false,
+    "NFC_rate_can_price_household_credit_flow": false,
+    "new_business_rate_can_be_substituted_for_outstanding_effective_rate": false
+  },
+  "structural_interpretation": {
+    "market_and_lending_rates_role": "Price-side monetary/financial conditions. The generic node remains unresolved because household, NFC, market and outstanding-rate concepts are not one scalar.",
+    "credit_flow_role": "Observed realized ECB BSI financial transaction for the frozen private non-financial credit boundary.",
+    "identification_requirement": "Any quantitative rate-to-credit-flow relation must be preregistered on a sector-specific boundary with matched rate, credit-flow target, activity and separate supply/demand evidence. Predictive association does not establish a causal demand elasticity or supply response.",
+    "qualitative_negative_sign_retained_as_candidate": true,
+    "exact_integrated_equation_ready": false
+  },
+  "bridge_resolution": {
+    "from": "market_and_lending_rates",
+    "to": "credit_flow",
+    "status": "RATE_PRICE_AND_CREDIT_TRANSACTION_BOUNDARIES_DISTINCT_JOINT_DETERMINATION_UNRESOLVED",
+    "causal_role": "BEHAVIOURAL_CANDIDATE_LINK_PRICE_TO_JOINT_SUPPLY_DEMAND_OUTCOME",
+    "direct_rate_to_credit_flow_identity_authorized": false,
+    "MIR_new_business_volume_substitution_authorized": false,
+    "demand_elasticity_inference_authorized": false,
+    "supply_response_inference_authorized": false,
+    "cross_sector_rate_mapping_authorized": false,
+    "outstanding_rate_substitution_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effect": {
+    "market_and_lending_rates": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id_after_review": null,
+      "related_reference_modes": [
+        "household_lending_rate",
+        "nfc_lending_rate"
+      ],
+      "current_feedback_activation_authorized": false
+    },
+    "credit_flow": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id": "credit_flow",
+      "observed_transaction_target_available": true,
+      "rate_to_flow_mapping_ready": false,
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "hard_rules": {
+    "no_rate_equals_credit_flow": true,
+    "no_MIR_new_business_volume_equals_BSI_transaction": true,
+    "no_cross_sector_rate_mapping": true,
+    "no_new_business_to_outstanding_rate_substitution": true,
+    "no_demand_inference_from_credit_flow_alone": true,
+    "no_supply_inference_from_credit_flow_alone": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "rate_to_flow_boundary_strengthened": true,
+    "exact_integrated_equation_ready": false,
+    "generic_rate_node_resolved": false,
+    "credit_flow_endogeneity_resolved": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "credit_flow_to_private_demand_and_investment_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_equate_credit_flow_with_consumption_or_investment": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}
