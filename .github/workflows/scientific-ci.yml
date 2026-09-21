@@ -201,6 +201,9 @@ jobs:
       - name: Audit government refinancing-interest loop terminal state
         run: python scripts/audit_government_refinancing_interest_loop_terminal_assessment.py
 
+      - name: Audit government issuance-yield loop terminal state
+        run: python scripts/audit_government_issuance_yield_loop_terminal_assessment.py
+
       - name: Audit government securities supply-pressure source boundary
         run: python scripts/audit_government_securities_supply_pressure_source_boundary.py
 
