@@ -502,3 +502,17 @@ Manifest version **1.2** now records public/repository version **0.2.0**, unrele
 
 This synchronization does **not** authorize a version bump. The canonical release contract remains authoritative and continues to state that no immediate bump is required. Its rationale now explicitly acknowledges the substantive post-v0.2.0 reference-mode promotion and Accounting Spine boundary work instead of describing all post-release changes as governance-only.
 
+### F4 BNR zero-liability structural adjudication — 2026-09-21
+
+The stock-only BNR zero-liability scenario from the historical F4 Phase B assessment has been re-evaluated against ESA 2010 methodology rather than treated as a modelling convenience.
+
+ESA 2010 defines loans as creditor/debtor debt claims, records F4 positions at the same nominal value on creditor and debtor balance sheets, requires the non-consolidated financial balance sheet to retain all financial liabilities including intra-sector positions, and defines the debtor/creditor balance sheet as a breakdown of liabilities by creditor sector. The retained Romanian QSA control `Q.N.RO.W0.S121.S1.N.L.LE.F4.T._Z.XDC._T.S.V.N._T` is exactly **0.0 million RON in every quarter of 2025**.
+
+Under those semantics, the BNR total F4 liability stock is a complete non-consolidated partition of non-negative outstanding loan obligations by creditor sector. A zero total therefore implies that **H→BNR, C→BNR, F→BNR, G→BNR, X→BNR and BNR→BNR are each exactly zero for stock**. This is now an exact structural constraint, not a conditional allocation assumption.
+
+The existing Phase B algebra already shows the consequence: current F4 stock rank becomes **31**, nullity **4**, and **25 of 35** in-boundary stock cells are exact rank-unique. The ten remaining non-unique stock cells are the paired F-holder and BNR-holder positions across H/C/F/G/X, because the **6.1 million RON BNR F4 asset row still lacks counterpart allocation evidence**.
+
+No equivalent promotion is made for flows. Financial transactions are net acquisitions/incurrences within the instrument category, so zero aggregate BNR F4 transactions do not imply every bilateral transaction is zero. Flow therefore remains **rank 26 / nullity 9 / 15 unique cells**.
+
+This assessment does not rewrite `f4_exact_complement_rank_assessment.json` or `f4_partial_2025.json`; both remain historical artifacts. A separate successor materialization gate is required before the ten newly exact stock cells are written into a current partial-F4 artifact. Full F4 remains incomplete and the canonical benchmark remains unchanged.
+
