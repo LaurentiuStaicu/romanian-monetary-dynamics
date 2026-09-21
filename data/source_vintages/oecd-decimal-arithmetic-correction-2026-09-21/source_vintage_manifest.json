@@ -10,5 +10,7 @@
   "provider_reaccessed": false,
   "values_changed": false,
   "tolerance_changed": false,
-  "historical_artifact_rewritten": false
+  "historical_artifact_rewritten": false,
+  "full_exact_decimal_reconciliation_diagnostics": "exact_decimal_reconciliation_diagnostics.csv",
+  "full_exact_decimal_reconciliation_diagnostics_sha256": "f91e1a552de8ae7fabc863e2e2bfc023dbab723431f6d662608fe94f4ea6e4f0"
 }
