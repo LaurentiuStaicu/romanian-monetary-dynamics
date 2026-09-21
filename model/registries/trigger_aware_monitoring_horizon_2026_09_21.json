@@ -24,7 +24,8 @@
     "no_estimation_refit_model_selection_or_holdout_opening_from_monitoring_alone": true,
     "no_tolerance_relaxation_from_observed_residuals": true,
     "lexical_formatting_is_not_a_precision_rule": true,
-    "generic_sdmx_decimals_metadata_alone_does_not_reopen_sectoral_financial_positions": true
+    "generic_sdmx_decimals_metadata_alone_does_not_reopen_sectoral_financial_positions": true,
+    "no_post_result_period_window_switch": true
   },
   "horizons": [
     {
@@ -99,9 +100,12 @@
         "generic_sdmx_decimals": 2,
         "generic_sdmx_result": "INSUFFICIENT_TO_EXPLAIN_ALL_PUBLIC_DIAGNOSTICS",
         "lexical_csv_precision": "NOT_ACCEPTED_AS_NORMATIVE_RULE",
-        "observed_residuals_may_define_future_tolerance": false
+        "observed_residuals_may_define_future_tolerance": false,
+        "all_contiguous_40_quarter_windows_fail": true,
+        "post_benchmark_2025_2026_failure_persists": true,
+        "window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json"
       },
-      "action_without_new_evidence": "Do not rerun the semantic-adjusted OECD value gate and do not change the 0.1 million RON historical threshold.",
+      "action_without_new_evidence": "Do not rerun the semantic-adjusted OECD value gate, do not change the 0.1 million RON historical threshold, and do not shorten or shift the historical window after observing results.",
       "action_if_trigger": "Create a new preregistered precision/balancing assessment first. Only if that independent assessment passes may one new value/reconciliation gate be designed; historical failed gates remain immutable."
     }
   ],
