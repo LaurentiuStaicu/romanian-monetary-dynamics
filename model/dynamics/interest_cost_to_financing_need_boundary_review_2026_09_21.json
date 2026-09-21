@@ -1,0 +1,172 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "interest_cost_to_financing_need_boundary_review",
+  "purpose": "Decide whether the generic government_interest_cost feedback node can map directly into government_financing_need, and whether the existing Eurostat interest-expenditure and Ministry refinancing reference modes are sufficient to contract an exact financing-need identity without mixing accrual, cash, direct-government-debt and general-government boundaries.",
+  "decision": "DO_NOT_EQUATE_GOVERNMENT_INTEREST_COST_WITH_FINANCING_NEED_KEEP_GFN_COMPONENT_DECOMPOSITION_EXPLICIT_EXACT_INTEGRATED_BOUNDARY_UNRESOLVED",
+  "official_source_evidence": {
+    "eurostat_accrual_interest": {
+      "institution": "Eurostat",
+      "source": "ESA 2010 / gov_10q_ggnfa",
+      "methodology_url": "https://ec.europa.eu/eurostat/en/web/government-finance-statistics/methodology",
+      "reference_mode": "government_interest_burden",
+      "concept": "General-government S13 interest expenditure D41PAY on an accrual basis.",
+      "timing": "ACCRUAL_NOT_CASH",
+      "direct_cash_financing_requirement_equivalent": false
+    },
+    "eurostat_overall_and_primary_balance": {
+      "institution": "Eurostat",
+      "retained_boundary_review": "model/calibration_validation/fiscal_primary_balance_source_boundary_review.json",
+      "materialisation_contract": "model/calibration_validation/fiscal_primary_balance_materialisation_contract.json",
+      "exact_matched_identity": "primary_balance_pct_gdp = B9_pct_gdp + D41PAY_pct_gdp",
+      "implication": "On the same ESA boundary, D41PAY is part of the overall deficit/net-borrowing arithmetic. This is an accrual fiscal-accounting identity, not a cash gross-financing-needs identity.",
+      "exact_GFN_identity_established": false
+    },
+    "mof_refinancing_component": {
+      "institution": "Romanian Ministry of Finance",
+      "reference_mode": "government_refinancing_need",
+      "promotion_assessment": "model/dynamics/government_refinancing_need_promotion_assessment.json",
+      "reference_assessment": "model/dynamics/government_refinancing_need_reference_assessment.json",
+      "series": "data/processed/government_debt_refinancing_mof_2013_2024.csv",
+      "concept": "Annual government public-debt principal repayments/refinancing component on the Ministry debt-management boundary.",
+      "frequency": "annual",
+      "gross_financing_need_equivalent": false,
+      "interest_expenditure_equivalent": false
+    },
+    "mof_2025_financing_plan": {
+      "institution": "Romanian Ministry of Finance",
+      "source": "Romania Investor Presentation, February 2025",
+      "url": "https://www.mfinante.gov.ro/static/10/Mfp/buget/sitebuget/InvestorPresentationFebruary2025.pdf",
+      "status": "PLAN_NOT_REALIZED_CANONICAL_GFN_SERIES",
+      "gross_financing_requirements_RON_billion": 232,
+      "budget_deficit_RON_billion": 135,
+      "public_debt_refinancing_RON_billion": 97,
+      "arithmetic_reconciles": true,
+      "financing_channels": [
+        "domestic interbank government-securities auctions",
+        "retail government securities",
+        "international Eurobonds/private placements",
+        "European Commission RRF loan disbursements",
+        "IFI loan drawings"
+      ],
+      "implication": "The Ministry financing-plan presentation confirms the decomposition of financing requirements and the multi-channel funding boundary, but plan values are not realized financing-need observations."
+    },
+    "imf_gfn_framework": {
+      "institution": "International Monetary Fund",
+      "source": "Staff Guidance Note on the Sovereign Risk and Debt Sustainability Framework for Market Access Countries",
+      "url": "https://www.imf.org/-/media/files/publications/pp/2022/english/ppea2022039.pdf",
+      "concept": "GFN combines the primary deficit, debt service including interest and amortization, and relevant contingent-liability realizations, net of interest revenue under the IMF framework.",
+      "debt_issuance_equivalent": false,
+      "implication": "Interest is one GFN component; financing need is not interest cost alone, and debt issuance can also reflect transactions outside GFN such as financial-asset accumulation."
+    }
+  },
+  "semantic_decomposition": {
+    "government_interest_cost_umbrella": {
+      "current_boundary": "UNRESOLVED",
+      "relevant_for_financing_need": "Interest-service component requires a flow/timing measure, not the portfolio-rate target alone.",
+      "portfolio_rate_target_may_enter_GFN_directly": false,
+      "eurostat_D41_may_be_used_as_cash_interest_without_bridge": false
+    },
+    "government_financing_need_umbrella": {
+      "current_boundary": "UNRESOLVED",
+      "candidate_components": [
+        {
+          "id": "primary_or_overall_fiscal_deficit_component",
+          "current_source_status": "ESA_BALANCE_OBSERVABLE_AVAILABLE",
+          "exact_GFN_component_boundary": "NOT_YET_CONTRACTED"
+        },
+        {
+          "id": "interest_service_component",
+          "current_source_status": "D41_ACCRUAL_INTEREST_OBSERVED",
+          "exact_cash_GFN_component_boundary": "UNRESOLVED_ACCRUAL_CASH_TIMING"
+        },
+        {
+          "id": "principal_refinancing_component",
+          "current_source_status": "MOF_ANNUAL_REFINANCING_NEED_OBSERVED",
+          "exact_GFN_component_boundary": "CLOSE_CONCEPTUALLY_BUT_DIFFERENT_POPULATION_FREQUENCY_AND_STATUS_FROM_ESA_COMPONENTS"
+        },
+        {
+          "id": "other_financing_adjustments_and_prefunding",
+          "current_source_status": "CONCEPT_OBSERVED_IN_MINISTRY_AND_IMF_DOCUMENTATION_NOT_CANONICAL_SERIES",
+          "exact_GFN_component_boundary": "UNRESOLVED"
+        }
+      ],
+      "scalar_GFN_selected": false,
+      "exact_reference_mode_id": null
+    }
+  },
+  "accounting_boundary": {
+    "exact_esa_identity_available": true,
+    "exact_esa_identity": "B9 = primary_balance - D41PAY, equivalently primary_balance = B9 + D41PAY, when same unit/seasonal/vintage boundary is used.",
+    "exact_GFN_identity_available_on_current_RMD_sources": false,
+    "reasons": [
+      "D41PAY is accrual interest expenditure rather than cash interest paid.",
+      "The retained Ministry refinancing series is annual and uses the Ministry government-debt management boundary, while B9/D41 are quarterly ESA S13 general-government accounts.",
+      "Gross financing needs may include additional financing adjustments/contingent-liability effects and are not identical to debt issuance.",
+      "Ministry financing-plan totals are plans and revision-sensitive, not a frozen realized GFN history."
+    ],
+    "cross_boundary_sum_authorized": false,
+    "frequency_interpolation_authorized": false,
+    "planned_GFN_may_fill_realized_GFN": false
+  },
+  "link_resolution": {
+    "bridge_id": "interest_cost_to_financing_need",
+    "from": "government_interest_cost",
+    "to": "government_financing_need",
+    "status": "REVIEWED_POSITIVE_STRUCTURAL_DIRECTION_GFN_DECOMPOSITION_VALID_EXACT_INTEGRATED_CASH_ACCOUNTING_BOUNDARY_UNRESOLVED",
+    "qualitative_sign": "+",
+    "qualitative_sign_retained": true,
+    "sign_interpretation": "Holding primary balance, principal amortization/refinancing and other financing adjustments fixed, larger interest-service obligations increase financing needs. This ceteris-paribus direction does not supply a complete integrated financing equation.",
+    "exact_integrated_equation_ready": false,
+    "accounting_identity_ready": false,
+    "parameter_estimation_required_for_accounting_identity": false,
+    "estimation_authorized": false,
+    "current_activation_authorized": false
+  },
+  "government_financing_need_node_effect": {
+    "current_boundary_class_after_review": "UNRESOLVED",
+    "current_runtime_role": "OBSERVED_COMPONENTS_AVAILABLE_INACTIVE_UMBRELLA_NODE",
+    "related_reference_modes": [
+      "government_refinancing_need",
+      "government_interest_burden"
+    ],
+    "exact_reference_mode_id_after_review": null,
+    "scalar_financing_need_selected": false,
+    "canonical_GFN_reference_mode_promoted": false,
+    "current_feedback_activation_authorized": false
+  },
+  "multi_loop_effect": {
+    "affected_loops": [
+      "government_refinancing_interest_loop",
+      "government_issuance_yield_loop"
+    ],
+    "qualitative_topology_changed": false,
+    "exact_link_equation_ready_in_either_loop": false,
+    "feedback_activation_authorized_in_either_loop": false
+  },
+  "hard_rules": {
+    "no_portfolio_interest_rate_relabelled_financing_need": true,
+    "no_D41_accrual_relabelled_cash_interest_payment": true,
+    "no_D41_alone_relabelled_GFN": true,
+    "no_refinancing_need_alone_relabelled_GFN": true,
+    "no_cross_boundary_ESA_plus_MoF_sum_without_bridge": true,
+    "no_frequency_interpolation_to_create_GFN": true,
+    "no_planned_GFN_relabelled_realized_GFN": true,
+    "no_debt_issuance_relabelled_GFN": true,
+    "no_missing_component_to_zero": true,
+    "no_parameter_estimation": true,
+    "no_reference_mode_promotion_by_this_review": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "next_gate": {
+    "id": "financing_channel_allocation_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "task": "Review the government_financing_need to government_debt_issuance boundary across domestic interbank issuance, retail, external bonds/private placements, RRF/EC and IFI loans. Preserve the distinction between financing requirements and realized borrowing/issuance, including prefunding and financial-asset transactions.",
+    "may_construct_one_to_one_financing_need_to_bnr_issuance_mapping": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}
