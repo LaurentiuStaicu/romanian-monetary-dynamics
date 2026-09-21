@@ -149,10 +149,41 @@ def main() -> None:
         public_release["immutable_historical_identity"] is True,
         "Current published release must retain immutable historical identity",
     )
-    check(
-        release_basis["release_preparation"]["publication_complete"] is True,
-        "Baseline may not describe an incompletely published current release",
-    )
+    release_prep = release_basis["release_preparation"]
+    release_prep_state = release_prep["state"]
+    if release_prep_state == "PUBLISHED_AND_FINALIZED":
+        check(
+            release_prep["publication_complete"] is True,
+            "Finalized release preparation must be publication-complete",
+        )
+        check(
+            release_prep["candidate_version"] == public_release["version"],
+            "Finalized release candidate must match the current public release",
+        )
+    elif release_prep_state == "READY_FOR_PUBLICATION_AFTER_GREEN_MAIN_CI":
+        check(
+            release_prep["publication_complete"] is False,
+            "Prepublication candidate must not claim publication completion",
+        )
+        check(
+            release_prep["candidate_version"]
+            == release_state["current_repository_version"],
+            "Prepublication candidate must match the repository version",
+        )
+        check(
+            release_prep["candidate_version"]
+            == release_state["next_public_release_candidate"],
+            "Prepublication candidate must match the next public release candidate",
+        )
+        check(
+            release_state["current_public_release"]
+            != release_state["current_repository_version"],
+            "Prepublication state must preserve the previous public release identity",
+        )
+    else:
+        raise RuntimeError(
+            f"Unsupported release-preparation state in scientific baseline: {release_prep_state}"
+        )
     check(
         model["calibration_validation"]["mechanism_source_readiness"]
         == "model/calibration_validation/mechanism_source_readiness.json",
@@ -1007,6 +1038,7 @@ def main() -> None:
         "version_bump_required_now": release_state[
             "version_bump_required_now"
         ],
+        "release_preparation_state": release_prep_state,
     }
     print(json.dumps(report, indent=2))
 
