@@ -179,7 +179,11 @@
     "government_issuance_yield_loop_structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_SOURCE_AND_IDENTIFICATION_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
     "government_issuance_yield_loop_operational_state": "EVIDENCE_TRIGGERED_HOLD",
     "government_issuance_yield_loop_active_empirical_task": null,
-    "government_issuance_yield_loop_reopen_trigger_required": true
+    "government_issuance_yield_loop_reopen_trigger_required": true,
+    "credit_flow_to_loan_stock_boundary_review": "model/dynamics/credit_flow_to_loan_stock_boundary_review_2026_09_21.json",
+    "credit_flow_to_loan_stock_boundary_status": "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED",
+    "credit_flow_to_loan_stock_equation_ready": false,
+    "bank_credit_balance_sheet_next_structural_task": "loan_stock_to_debt_service_and_credit_risk_boundary_review"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
