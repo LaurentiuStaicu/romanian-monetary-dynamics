@@ -55,37 +55,22 @@ class SystemDynamicsConformityTests(unittest.TestCase):
             implied_loop_polarity(path)
 
 
-    def test_reference_mode_readiness_is_explicitly_blocked(self) -> None:
+    def test_reference_mode_readiness_is_ready_but_not_behavioural_closure(self) -> None:
         references = json.loads(
-            (
-                ROOT / "model" / "dynamics" / "reference_modes.json"
-            ).read_text(encoding="utf-8")
+            (ROOT / "model" / "dynamics" / "reference_modes.json").read_text(encoding="utf-8")
         )
-        readiness = reference_mode_readiness(
-            references,
-            REQUIRED_REFERENCE_MODES,
+        readiness = reference_mode_readiness(references, REQUIRED_REFERENCE_MODES)
+        self.assertEqual(readiness["status"], "READY")
+        self.assertEqual(set(readiness["ready_modes"]), REQUIRED_REFERENCE_MODES)
+        self.assertEqual(readiness["blocking_modes"], [])
+
+        model = json.loads(
+            (ROOT / "model" / "registries" / "model_contract.json").read_text(encoding="utf-8")
         )
-        self.assertEqual(readiness["status"], "BLOCKED")
-        self.assertEqual(
-            set(readiness["ready_modes"]),
-            {
-                "policy_rate",
-                "household_lending_rate",
-                "nfc_lending_rate",
-                "credit_stock",
-                "credit_flow",
-                "government_debt_stock",
-                "government_interest_burden",
-                "government_refinancing_need",
-                "government_effective_interest_rate",
-            },
-        )
-        self.assertEqual(
-            set(readiness["blocking_modes"]),
-            {
-                "sectoral_financial_positions",
-            },
-        )
+        self.assertTrue(model["dynamic_core"]["reference_mode_closure_ready"])
+        self.assertFalse(model["dynamic_core"]["behavioural_closure_active"])
+        self.assertFalse(model["dynamic_core"]["complete_endogenous_system_dynamics_model"])
+
 
     def test_qualitative_reference_exception_requires_explicit_basis(self) -> None:
         references = json.loads(
