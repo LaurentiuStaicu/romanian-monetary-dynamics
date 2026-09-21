@@ -1,0 +1,166 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "bank_credit_balance_sheet_loop_terminal_assessment",
+  "loop_id": "bank_credit_balance_sheet_loop",
+  "purpose": "Close the current structural/source-boundary review cycle for the bank credit–balance-sheet candidate loop after all four declared path links have explicit boundary reviews, and determine whether any further current-evidence task is scientifically admissible without synthetic measurement, demand/supply conflation or unauthorized calibration.",
+  "decision": "STRUCTURAL_REVIEW_COMPLETE_IDENTIFICATION_AND_MEASUREMENT_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
+  "topology": {
+    "status": "CLOSED_CANDIDATE_LOOP",
+    "polarity_hypothesis": "balancing_candidate",
+    "qualitative_topology_retained": true,
+    "quantitatively_active": false,
+    "behavioural_closure_active": false
+  },
+  "link_boundary_reviews": [
+    {
+      "from": "credit_flow",
+      "to": "loan_stock",
+      "review": "model/dynamics/credit_flow_to_loan_stock_boundary_review_2026_09_21.json",
+      "status": "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "The observed ECB BSI financial transaction is not the stock first difference; the integrated non-transaction adjustment process is not frozen."
+    },
+    {
+      "from": "loan_stock",
+      "to": "debt_service_and_credit_risk",
+      "review": "model/dynamics/loan_stock_to_debt_service_and_credit_risk_boundary_review_2026_09_21.json",
+      "status": "EXPOSURE_SCALE_OBSERVED_DEBT_SERVICE_AND_CREDIT_RISK_STATE_BOUNDARY_UNRECONCILED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "Loan stock is exposure scale, while debt-service burden and asset-quality risk require distinct aligned observables; no aggregate matched debt-service/risk state is frozen."
+    },
+    {
+      "from": "debt_service_and_credit_risk",
+      "to": "credit_supply_capacity",
+      "review": "model/dynamics/debt_service_and_credit_risk_to_credit_supply_capacity_boundary_review_2026_09_21.json",
+      "status": "RISK_AND_PRUDENTIAL_STATE_OBSERVED_CREDIT_SUPPLY_CAPACITY_SCALAR_NOT_IDENTIFIED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "Risk, capital/funding constraints and lending standards are multidimensional and population-boundary specific; no scalar credit-supply-capacity measure is identified."
+    },
+    {
+      "from": "credit_supply_capacity",
+      "to": "credit_flow",
+      "review": "model/dynamics/credit_supply_capacity_to_credit_flow_boundary_review_2026_09_21.json",
+      "status": "SUPPLY_CONDITION_AND_DEMAND_OBSERVABLES_AVAILABLE_REALIZED_CREDIT_FLOW_JOINTLY_DETERMINED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "Realized credit transactions are jointly determined by lending supply conditions and borrower demand; no supply-only flow equation is identified."
+    }
+  ],
+  "integrated_readiness": {
+    "path_link_count": 4,
+    "exact_integrated_link_forms_ready": 0,
+    "unresolved_boundary_nodes": [
+      "credit_flow",
+      "loan_stock",
+      "debt_service_and_credit_risk",
+      "credit_supply_capacity"
+    ],
+    "activation_status": "BLOCKED",
+    "blockers": [
+      "EXACT_LINK_EQUATION_COVERAGE_INCOMPLETE",
+      "UNRESOLVED_FEEDBACK_BOUNDARY_NODES",
+      "DELAY_SPECIFICATION_NOT_ACTIVATION_READY",
+      "NO_ACTIVATED_EMPIRICAL_MECHANISM"
+    ],
+    "quantitative_activation_authorized": false
+  },
+  "activation_gate_snapshot": {
+    "source": "model/dynamics/feedback_activation_criteria_matrix.json",
+    "passed_criteria_count": 1,
+    "partial_criteria_count": 6,
+    "blocked_criteria_count": 6,
+    "not_assessable_criteria_count": 1,
+    "all_requirements_pass": false,
+    "quantitative_activation_authorized": false
+  },
+  "delay_state": [
+    {
+      "delay_id": "credit_risk_recognition_delay",
+      "current_tau": "TBD",
+      "evidence_status": "DISCRETE_OBSERVATION_TIMING_SCALAR_TAU_NOT_IDENTIFIED",
+      "scalar_tau_activation_ready": false
+    },
+    {
+      "delay_id": "credit_supply_adjustment_delay",
+      "current_tau": "TBD",
+      "evidence_status": "DISCRETE_OBSERVATION_TIMING_SCALAR_TAU_NOT_IDENTIFIED",
+      "scalar_tau_activation_ready": false
+    }
+  ],
+  "mechanism_state": {
+    "aggregate_bank_credit_response": {
+      "classification": "CANDIDATE",
+      "active_calibration_cycle_open": false,
+      "current_aggregate_equation_eligible": false,
+      "reason": "The aggregate reduced form mixes demand and supply; BLS standards and loan demand must remain separate and matched prudential controls remain incomplete/misaligned."
+    },
+    "credit_risk_npl_response": {
+      "classification": "DEFERRED",
+      "exact_aggregate_NPL_target_available": true,
+      "matched_debt_service_burden_available": false,
+      "estimation_authorized": false
+    }
+  },
+  "source_state": {
+    "private_credit_stock_and_flow": "OBSERVED_SERIES_AVAILABLE",
+    "BLS_realized_round_panel": "11_OF_12_EXACT_ROUNDS_SINGLE_GAP_2025_Q2",
+    "BLS_2025Q2_discovery": "STAGE_CLOSED_FROZEN_UNDER_CURRENT_PUBLIC_DISCOVERY_SURFACE",
+    "prudential_population_bridge": "DIRECT_CBD2_TO_BNR_EQUIVALENCE_REJECTED",
+    "exact_aggregate_debt_service_burden": "NOT_RETAINED",
+    "credit_supply_capacity_scalar": "NOT_IDENTIFIED"
+  },
+  "no_further_current_evidence_task_findings": {
+    "repeat_BLS_2025Q2_source_polling_scientifically_useful": false,
+    "repeat_same_prudential_source_discovery_scientifically_useful": false,
+    "loan_stock_times_rate_measurement_shortcut_authorized": false,
+    "synthetic_prudential_capacity_index_authorized": false,
+    "aggregate_credit_equation_estimation_authorized": false,
+    "infer_loan_demand_from_realized_credit_flow_authorized": false,
+    "proxy_based_scalar_delay_authorized": false,
+    "interpretation": "The current structural boundaries have been exhausted without closing identification. Further progress requires genuinely new official source material or a separately preregistered identification cycle, not repeated unchanged-source searches or synthetic proxy completion."
+  },
+  "reopen_triggers": [
+    {
+      "id": "matched_BSI_non_transaction_adjustment_components",
+      "requirement": "A reproducible same-boundary decomposition or retained component series sufficient to contract the private-credit stock transition without setting non-transaction adjustments to zero."
+    },
+    {
+      "id": "matched_debt_service_credit_risk_boundary",
+      "requirement": "An observed debt-service burden aligned to the chosen aggregate or separately preregistered borrower/portfolio risk target, with activity/lag/break semantics frozen."
+    },
+    {
+      "id": "matched_prudential_population_or_bridge",
+      "requirement": "A retained BNR prudential history on the intended population or an explicit official bridge to ECB CBD2 population/consolidation semantics."
+    },
+    {
+      "id": "complete_sector_specific_BLS_supply_demand_panel",
+      "requirement": "New official evidence resolving the frozen 2025-Q2 BLS gap or another preregistered exact sector-specific supply/demand history sufficient for a new identification cycle."
+    },
+    {
+      "id": "new_bank_credit_identification_cycle",
+      "requirement": "A separately preregistered sector-specific design that preserves supply-demand separation, matched observables and untouched evaluation data; source completion alone does not activate feedback."
+    }
+  ],
+  "disposition": {
+    "structural_review_complete": true,
+    "current_operational_state": "EVIDENCE_TRIGGERED_HOLD",
+    "active_empirical_task": null,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false,
+    "qualitative_topology_changed": false
+  },
+  "next_state": {
+    "id": "bank_credit_balance_sheet_loop_evidence_triggered_hold",
+    "authorization": "NO_ACTIVE_TASK_UNTIL_DECLARED_REOPEN_TRIGGER",
+    "reopen_trigger_required": true,
+    "may_poll_unchanged_sources": false,
+    "may_estimate_parameters": false,
+    "may_open_holdout": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false,
+    "may_relax_existing_gates": false
+  }
+}
