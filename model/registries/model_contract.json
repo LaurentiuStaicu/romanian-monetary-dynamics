@@ -323,7 +323,7 @@
     "fiscal_capb_retained_raw_source_branch": "source-vintage/fiscal-capb-raw-2026-09-20",
     "fiscal_capb_retained_raw_source_commit": "efb1f3ae5b025176645d45276b684efe65aa4174",
     "previous_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_19.json",
-    "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json",
+    "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21.json",
     "next_dated_trigger_check": {
       "date": "2026-10-08",
       "id": "prospective_monetary_policy_event",
@@ -343,7 +343,9 @@
     "post_terminal_semantic_reopen_status": "EXECUTED_FAIL_RETURNED_TO_BASELINE_HOLD",
     "post_terminal_semantic_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
     "post_terminal_precision_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_precision_diagnostic_2026_09_21.json",
-    "post_terminal_precision_diagnostic_status": "EXECUTED_NEGATIVE_NO_REOPEN"
+    "post_terminal_precision_diagnostic_status": "EXECUTED_NEGATIVE_NO_REOPEN",
+    "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json",
+    "trigger_aware_monitoring_horizon_status": "NO_GATE_OPEN_NEXT_DATED_CHECK_2026_10_08"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",
