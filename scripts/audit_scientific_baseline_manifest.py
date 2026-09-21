@@ -56,9 +56,7 @@ def main() -> None:
     reset = load("model/registries/reset_integrity_contract.json")
     accounting = load("model/accounting/accounting_readiness_gate.json")
     reopen = load("model/accounting/reopen_conditions_registry.json")
-    accounting_terminal = load(
-        "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json"
-    )
+    accounting_terminal = load(accounting["accounting_recovery_terminal_assessment"])
     sd = load("model/dynamics/system_dynamics_conformity_gate.json")
     refs = load("model/dynamics/reference_modes.json")
     sectoral_external_screening = load(
@@ -274,9 +272,9 @@ def main() -> None:
         "Accounting readiness terminal-stage status disagrees with terminal assessment",
     )
     check(
-        accounting["accounting_recovery_terminal_assessment"]
-        == "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json",
-        "Accounting readiness gate does not register terminal recovery assessment",
+        manifest["authority"]["accounting_spine_recovery_terminal_assessment"]
+        == accounting["accounting_recovery_terminal_assessment"],
+        "Scientific baseline authority does not point to the current Accounting Spine terminal assessment",
     )
     check(
         reopen["accounting_recovery_stage_status"]
