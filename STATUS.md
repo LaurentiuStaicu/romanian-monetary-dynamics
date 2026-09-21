@@ -500,5 +500,5 @@ The scientific conclusions were not stale: Accounting Spine readiness, 10/10 agg
 
 Manifest version **1.2** now records public/repository version **0.2.0**, unreleased changes present, `version_bump_required_now = false`, and next candidate **0.3.0**. It also registers the current F2/F4/F5/F6/F7/F8 Accounting Spine boundary assessments as explicit authorities. The cross-registry audit and a focused invariant test now bind these baseline release fields to `model/registries/release_versioning_contract.json`.
 
-This synchronization does **not** authorize a version bump. The canonical release contract remains authoritative and continues to state that no immediate bump is required.
+This synchronization does **not** authorize a version bump. The canonical release contract remains authoritative and continues to state that no immediate bump is required. Its rationale now explicitly acknowledges the substantive post-v0.2.0 reference-mode promotion and Accounting Spine boundary work instead of describing all post-release changes as governance-only.
 
