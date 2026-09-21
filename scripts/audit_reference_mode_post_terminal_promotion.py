@@ -21,6 +21,7 @@ def audit_reference_mode_post_terminal_promotion() -> list[str]:
     base=load("model/registries/scientific_baseline_manifest.json")
     acc=load("model/accounting/accounting_readiness_gate.json")
     historical=load("model/dynamics/reference_mode_recovery_terminal_assessment.json")
+    horizon=load("model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_reference_closure.json")
 
     if tol["decision"]!="PASS_OFFICIAL_ECB_NATIONAL_QFA_INTERNAL_CONSISTENCY_TOLERANCE_REFERENCE_MODE_PROMOTION_AUTHORIZED":
         e.append("official-tolerance decision changed")
@@ -84,6 +85,17 @@ def audit_reference_mode_post_terminal_promotion() -> list[str]:
     # Historical 9/10 terminal assessment remains immutable provenance.
     if historical["ready_reference_modes"]!=9 or historical["blocker_count"]!=1:
         e.append("historical 9/10 terminal assessment was rewritten")
+
+    ids={x["id"] for x in horizon["horizons"]}
+    if "sectoral_financial_positions_public_precision_rule" in ids:
+        e.append("resolved aggregate precision trigger remains active in successor horizon")
+    if "accounting_counterpart_topology" not in ids:
+        e.append("bilateral Accounting Spine topology trigger missing from successor horizon")
+    hd=horizon["current_disposition"]
+    if hd.get("reference_mode_observability_ready")!="10/10" or hd.get("reference_mode_closure_ready") is not True:
+        e.append("successor horizon does not register 10/10 reference-mode closure")
+    if hd.get("accounting_spine_completion_authorized") is not False:
+        e.append("reference-mode closure may not authorize Accounting Spine completion")
 
     effect=prom["promotion_effect"]
     for key in ("accounting_spine_is_complete","accounting_readiness_change","canonical_full_2025_stock_flow_benchmark_ready","canonical_multi_instrument_stock_initialization_ready","calibration_cycle_open","parameter_estimation_authorized","feedback_activation_authorized","behavioural_closure_active","complete_endogenous_system_dynamics_model"):
