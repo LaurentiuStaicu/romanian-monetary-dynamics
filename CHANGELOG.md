@@ -4,6 +4,10 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ## Unreleased
 
+_No unreleased changes after v0.3.0 release preparation._
+
+## 0.3.0 - 2026-09-21
+
 ### Scientific integrity and reproducibility
 
 - consolidated the Accounting Spine recovery cycle into a terminal evidence-triggered hold assessment: F3 remains the only canonically complete stock+flow instrument; F2, F4 and F5-F8 retain explicit partial/frozen dispositions and reopen triggers; no selective reopen or unconditional accounting-recovery task remains active; README now exposes this state and the new terminal audit is part of Scientific CI/local reproduction;
