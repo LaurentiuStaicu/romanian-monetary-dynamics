@@ -536,3 +536,15 @@ A materialization contract was frozen at preregistration commit `f8a78e984fed430
 
 Accounting Spine recovery has therefore returned to **STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD**. F3 remains the only canonically complete stock-and-flow instrument. The next F4 stock reopen requires an official BNR/financial-accounts counterpart source for the 6.1 million RON asset stock or additional exact constraints that remove the four remaining degrees of freedom; flow requires new exact counterpart evidence or constraints. This post-v0.3.0 progress does not authorize behavioural closure, calibration/refit, feedback activation or a version bump.
 
+### F4 next stock-specific evidence trigger: BNR CNF 2025 counterpart matrix — 2026-09-21
+
+After the structural-zero successor materialization, the remaining F4 stock boundary is no longer a generic source-search problem. It is the allocation of the **6.1 million RON BNR F4 asset stock** across H/C/F/G/X.
+
+BNR's annual National Financial Accounts (CNF) counterpart publication is a legitimate evidence family for this **stock-only** question. The retained RMD screening of the annual 2024 CNF matrix already established that the table is non-consolidated, exposes S121, AF4, assets/liabilities and a counterpart-sector structure compatible with the RMD stock mapping. It was rejected for the sectoral-financial-positions reference mode because a single annual stock matrix cannot replace quarterly stocks plus financial transactions; that rejection does not make the same source semantically unsuitable for a same-year stock-only F4 gate.
+
+The current reviewed matrix covers **2024**, not year-end 2025. No exact 2025 CNF counterpart matrix was identified in the present review, and web-search absence is explicitly **not** treated as proof of non-publication. The trigger therefore remains closed.
+
+The frozen next trigger is `BNR_CNF_2025_F4_CENTRAL_BANK_ASSET_COUNTERPART_STOCK_MATRIX`. If an official 2025 BNR CNF table exposes S121 AF4 assets by counterpart sectors and reconciles to the retained 2025-Q4 BNR F4 asset total without residual allocation or missing-to-zero assumptions, only an **F4 stock exact-counterpart materialization gate** may reopen. Flow, reference-mode readiness, calibration and behavioural closure do not reopen from that annual stock evidence.
+
+The previous CNF reports state data-availability cutoffs at end-October of the following year (2023 report: end-October 2024; retained 2024 report: end-October 2025). RMD therefore records **after 2026-10-31** only as the earliest sensible evidence-monitoring window for the 2025 counterpart publication. It is not a BNR publication promise or forecast.
+
