@@ -1,0 +1,51 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "phase": "Accounting Spine / F6 OECD counterpart topology reopen assessment",
+  "instrument": "F6",
+  "contract": "model/accounting/f6_oecd_counterpart_reopen_contract_2026_09_21.json",
+  "retained_source_assessment": "model/dynamics/sectoral_financial_positions_oecd_counterpart_discovery_assessment.json",
+  "purpose": "Determine only whether the declared F6 counterpart-source reopen condition is satisfied before detailed value/reconciliation or rank review.",
+  "topology_only_review": true,
+  "detailed_value_review_performed": false,
+  "rank_recomputation_performed": false,
+  "evidence": {
+    "exact_total_present": "F6",
+    "exact_components_present": [
+      "F61",
+      "F62",
+      "F63",
+      "F64",
+      "F65",
+      "F66"
+    ],
+    "reporting_sectors": [
+      "S1",
+      "S11",
+      "S12",
+      "S13",
+      "S1M"
+    ],
+    "counterpart_sectors": [
+      "S1",
+      "S11",
+      "S12",
+      "S13",
+      "S1M",
+      "S2"
+    ],
+    "S121_present": false,
+    "standard_2025_stock_rows_per_instrument_per_entry": 30,
+    "standard_2025_flow_rows_per_instrument_per_entry": 120
+  },
+  "adjudication": {
+    "declared_reopen_trigger_satisfied": true,
+    "reason": "The retained official OECD from-whom-to-whom source publishes total F6 and all F61-F66 components by reporting/counterpart sector, satisfying the frozen F6 reopen condition. Missing S121 preserves the unresolved F-versus-BNR split.",
+    "stage2_authorized": true,
+    "stage2_contract": "model/accounting/f6_oecd_counterpart_reopen_contract_2026_09_21.json",
+    "accounting_readiness_change": false,
+    "F6_materialization_change": false,
+    "benchmark_change": false
+  },
+  "decision": "PASS_F6_REOPEN_TRIGGER_OECD_COUNTERPART_STAGE2_PREREGISTERED"
+}
