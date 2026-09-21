@@ -301,6 +301,9 @@ jobs:
       - name: Audit executed ECB QFA 10m horizontal gate
         run: python scripts/audit_ecb_qfa_10m_horizontal_gate_execution.py
 
+      - name: Audit post-terminal 10-of-10 reference-mode promotion
+        run: python scripts/audit_reference_mode_post_terminal_promotion.py
+
       - name: Audit successor trigger-aware monitoring horizon
         run: python scripts/audit_trigger_aware_monitoring_horizon_2026_09_21.py
 
