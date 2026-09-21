@@ -1,0 +1,34 @@
+{
+  "record_version": "0.1",
+  "recorded_on": "2026-09-21",
+  "release_version": "0.2.0",
+  "tag": "v0.2.0",
+  "release_name": "v0.2.0 — Structural review and reproducibility milestone",
+  "release_id": 392838630,
+  "release_url": "https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/releases/tag/v0.2.0",
+  "published_at": "2026-09-21T09:40:42Z",
+  "release_target_commit": "51114123c19471448356aee10e487994744233a0",
+  "tag_target_commit": "51114123c19471448356aee10e487994744233a0",
+  "source_scientific_ci_run_id": 35584539826,
+  "publication_workflow_run_id": 35584600862,
+  "publication_workflow_conclusion": "success",
+  "github_release_immutable": true,
+  "prerelease": false,
+  "draft": false,
+  "verification": {
+    "tag_and_release_same_commit": true,
+    "exact_main_release_commit_scientific_ci_passed": true,
+    "versioned_release_notes": "releases/v0.2.0.md",
+    "package_version": "0.2.0",
+    "citation_version": "0.2.0",
+    "citation_release_date": "2026-09-21"
+  },
+  "scientific_effect": {
+    "accounting_readiness_changed": false,
+    "reference_mode_readiness_changed": false,
+    "parameter_estimation_authorized": false,
+    "holdout_opening_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false
+  }
+}
