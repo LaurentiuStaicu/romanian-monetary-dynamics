@@ -57,7 +57,16 @@
       "id": "financing_channel_allocation",
       "from": "government_financing_need",
       "to": "domestic_primary_market_government_securities_gross_issuance",
-      "requirement": "Preregister and validate how gross financing need is allocated across interbank domestic securities, retail, external securities, private placements, RRF/EC financing, IFI loans and other relevant channels."
+      "requirement": "Preregister and validate how gross financing need is allocated across interbank domestic securities, retail, external securities, private placements, RRF/EC financing, IFI loans and other relevant channels.",
+      "status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
+      "boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
+      "one_to_one_GFN_to_BNR_issuance_authorized": false,
+      "residual_allocation_authorized": false,
+      "synthetic_channel_shares_authorized": false,
+      "cross_currency_aggregation_without_frozen_conversion_authorized": false,
+      "parameter_estimation_authorized": false,
+      "feedback_activation_authorized": false,
+      "next_source_contract": "mof_realized_financing_channel_materialisation_contract"
     },
     {
       "id": "issuance_to_supply_pressure",
