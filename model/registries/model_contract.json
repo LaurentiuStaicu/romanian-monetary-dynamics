@@ -246,7 +246,13 @@
     "numerical_integration_contract": "model/dynamics/numerical_integration_contract.json",
     "numerical_structural_primitive_convergence": "PASS",
     "numerical_default_dt_delay_adequacy": "CONDITIONAL_ON_TAU_GREATER_THAN_0_75_YEARS",
-    "integrated_model_numerical_robustness": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE"
+    "integrated_model_numerical_robustness": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
+    "sectoral_financial_positions_bnr_2025_topology_reopen_assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
+    "sectoral_financial_positions_public_access_recovery_contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
+    "sectoral_financial_positions_public_access_recovery_state": "ACTIVE_ONE_FROZEN_SOURCE_TOPOLOGY_PASS",
+    "sectoral_financial_positions_reference_mode_status": "PARTIAL_SERIES_AVAILABLE",
+    "sectoral_financial_positions_reference_mode_promotion_authorized": false,
+    "sectoral_financial_positions_accounting_reopen_authorized": false
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
@@ -310,7 +316,13 @@
       "date": "2026-10-08",
       "id": "prospective_monetary_policy_event",
       "rule": "Check only the BNR policy decision. If unchanged, do not inspect MIR response values. If non-zero, the October-reference MIR response remains closed until its official 2026-12-02 release."
-    }
+    },
+    "active_noncalibration_source_task": "bnr_2025_financial_accounts_public_access_recovery",
+    "active_noncalibration_source_task_contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
+    "calibration_cycle_open": false,
+    "post_terminal_source_topology_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_21_bnr_financial_accounts_topology.json",
+    "post_terminal_source_topology_trigger_status": "ONE_DECLARED_REOPEN_TRIGGER_SATISFIED_SOURCE_TOPOLOGY_RECOVERY_ONLY",
+    "post_terminal_source_topology_trigger_assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",

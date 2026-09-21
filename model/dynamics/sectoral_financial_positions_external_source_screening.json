@@ -173,6 +173,30 @@
         "The published S13 quarterly data are consolidated, which does not match the frozen non-consolidated sector/counterpart boundary.",
         "No reference-mode promotion or exact historical extraction is authorized."
       ]
+    },
+    {
+      "id": "BNR_CMFB_2025_FINANCIAL_ACCOUNTS_STRUCTURAL_METADATA",
+      "institution": "National Bank of Romania",
+      "official_report_url": "https://circabc.europa.eu/sd/a/89ddc57a-7e1d-436e-b217-bd266cfb23fd/23%20-%20RO%20-%20CMFB%20FA%20level%203.pdf",
+      "reference_year": 2024,
+      "update_date": "2025-09",
+      "semantic_fit": "HIGH_FOR_CHANGED_COMPILATION_TOPOLOGY_TRIGGER_PUBLIC_VALUE_ACCESS_UNRESOLVED",
+      "positive_evidence": [
+        "Last major national financial-accounts benchmark revision concluded in April 2025.",
+        "A new financial-accounts IT system has been in place since mid-2025.",
+        "Quarterly financial accounts extend from 1995Q1 and compilation is described as who-to-whom.",
+        "Compilation and consistency checks use institutional-sector, financial-instrument and counterpart-sector dimensions.",
+        "All sectors are disseminated quarterly and annually for stocks and flows, and regular OECD transmission of all financial-accounts datasets began in April 2025."
+      ],
+      "scope_limit": [
+        "The report is structural metadata, not the required published bilateral numerical dataset.",
+        "The annex maps compilation sources and instrument coverage but does not demonstrate a public S121-separated counterparty value dimension on the exact RMD boundary.",
+        "Existing Eurostat and OECD public counterpart results remain frozen and are not reinterpreted.",
+        "Public machine-readable access must pass the newly preregistered recovery contract before any value extraction or promotion."
+      ],
+      "topology_reopen_assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
+      "public_access_recovery_contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
+      "status": "NEW_OFFICIAL_TOPOLOGY_TRIGGER_PASS_PUBLIC_ACCESS_RECOVERY_ONLY_NO_PROMOTION"
     }
   ],
   "decision": {
@@ -208,7 +232,9 @@
     "bnr_annual_cnf_screening_state": "ANNUAL_SEMANTIC_STOCK_PASS_QUARTERLY_TRANSACTION_HISTORY_FAIL_NO_REOPEN",
     "current_public_source_completion_status": "EUROSTAT_INSTRUMENT_SCOPE_FAIL_OECD_S121_SCOPE_FAIL_BNR_ANNUAL_FREQUENCY_TRANSACTION_HISTORY_FAIL_BNR_QUARTERLY_S13_SECTOR_COUNTERPART_CONSOLIDATION_FAIL",
     "bnr_quarterly_s13_screening_assessment": "model/dynamics/sectoral_financial_positions_bnr_quarterly_s13_source_screening.json",
-    "bnr_quarterly_s13_screening_state": "QUARTERLY_FREQUENCY_PASS_SECTOR_COUNTERPART_CONSOLIDATION_FAIL_NO_REOPEN"
+    "bnr_quarterly_s13_screening_state": "QUARTERLY_FREQUENCY_PASS_SECTOR_COUNTERPART_CONSOLIDATION_FAIL_NO_REOPEN",
+    "bnr_2025_topology_reopen_assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
+    "bnr_2025_public_access_recovery_contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json"
   },
   "hard_rules": {
     "no_reinterpretation_of_historical_phase_A_D": true,
@@ -220,5 +246,15 @@
     "no_accounting_readiness_promotion": true,
     "no_system_dynamics_activation": true,
     "no_behavioural_closure_change": true
+  },
+  "post_2025_topology_trigger": {
+    "assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
+    "public_access_recovery_contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
+    "trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_21_bnr_financial_accounts_topology.json",
+    "state": "ACTIVE_ONE_FROZEN_BNR_2025_PUBLIC_ACCESS_TOPOLOGY_PASS",
+    "historical_screening_reinterpreted": false,
+    "reference_mode_status": "PARTIAL_SERIES_AVAILABLE",
+    "readiness_count_change": 0,
+    "accounting_readiness_change": false
   }
 }

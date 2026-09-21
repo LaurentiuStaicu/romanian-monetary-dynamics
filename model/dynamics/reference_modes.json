@@ -165,7 +165,12 @@
       "bnr_quarterly_s13_source_screening_status": "OFFICIAL_QUARTERLY_S13_FINANCIAL_ACCOUNTS_CONFIRMED_FREQUENCY_PASS_SECTOR_COUNTERPART_CONSOLIDATION_FAIL_NO_REOPEN",
       "f3_observed_behavior_diagnostics": "model/dynamics/f3_behavior_over_time_diagnostics_2025.json",
       "f3_observed_behavior_diagnostics_contract": "model/dynamics/f3_behavior_over_time_diagnostics_contract.json",
-      "f3_observed_behavior_diagnostics_effect": "Instrument-specific observed behavior evidence only. F3 is complete, but the multi-instrument sectoral_financial_positions reference mode remains PARTIAL_SERIES_AVAILABLE and is not promoted."
+      "f3_observed_behavior_diagnostics_effect": "Instrument-specific observed behavior evidence only. F3 is complete, but the multi-instrument sectoral_financial_positions reference mode remains PARTIAL_SERIES_AVAILABLE and is not promoted.",
+      "bnr_2025_topology_reopen_assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
+      "bnr_2025_public_access_recovery_contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
+      "bnr_2025_public_access_recovery_status": "ACTIVE_ONE_FROZEN_SOURCE_TOPOLOGY_PASS_NO_PROMOTION",
+      "bnr_2025_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_21_bnr_financial_accounts_topology.json",
+      "current_reopen_effect": "SOURCE_DISCOVERY_ONLY_REFERENCE_MODE_REMAINS_PARTIAL"
     }
   ],
   "closure_rule": "Integrated behavioural closure may not be declared validated until the reference modes required by each active loop have explicit observed targets or a documented reason why only qualitative/reference-pattern validation is possible.",
