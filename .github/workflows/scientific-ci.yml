@@ -177,6 +177,9 @@ jobs:
       - name: Audit primary-yield to sovereign-yield boundary
         run: python scripts/audit_primary_yield_to_sovereign_yield_boundary.py
 
+      - name: Audit sovereign-yield to government-interest-cost boundary
+        run: python scripts/audit_yield_to_interest_cost_boundary.py
+
       - name: Audit government securities supply-pressure source boundary
         run: python scripts/audit_government_securities_supply_pressure_source_boundary.py
 

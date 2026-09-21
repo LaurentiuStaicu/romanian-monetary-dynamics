@@ -96,7 +96,15 @@
       "id": "yield_to_interest_cost",
       "from": "sovereign_yield",
       "to": "government_interest_cost",
-      "requirement": "Specify debt-stock propagation through maturity, refinancing and re-fixing structure; a new-issue yield is not contemporaneously equal to the interest cost on the outstanding debt stock."
+      "requirement": "Specify debt-stock propagation through maturity, refinancing and re-fixing structure; a new-issue yield is not contemporaneously equal to the interest cost on the outstanding debt stock.",
+      "status": "REVIEWED_TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED",
+      "boundary_review": "model/dynamics/yield_to_interest_cost_boundary_review_2026_09_21.json",
+      "resolution": "Do not map the contemporaneous ECB 10-year RON yield directly to government_interest_cost. Retain Ministry portfolio-average interest rate and Eurostat D41PAY as distinct observed targets; any future propagation requires matched repriced principal and matched old/new or reset rates by relevant debt blocks.",
+      "direct_one_to_one_mapping_authorized": false,
+      "synthetic_repricing_share_authorized": false,
+      "synthetic_lag_distribution_authorized": false,
+      "parameter_estimation_authorized": false,
+      "feedback_activation_authorized": false
     }
   ],
   "scientific_effect": {
@@ -120,8 +128,8 @@
   },
   "next_gate_after_materialisation": "Reconcile the exact RON auction-universe stock denominator before any supply-load ratio is computed. Submitted-bids and bid-to-cover monthly series remain blocked because the monthly report exposes them graphically without reproducible native-text month/series mapping.",
   "next_independent_bridge_task": {
-    "id": "yield_to_interest_cost_boundary_review",
-    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "id": "interest_cost_to_financing_need_boundary_review",
+    "authorization": "STRUCTURAL_ACCOUNTING_BOUNDARY_REVIEW_ONLY",
     "may_estimate_parameters": false,
     "may_activate_feedback": false,
     "may_change_behavioural_closure": false

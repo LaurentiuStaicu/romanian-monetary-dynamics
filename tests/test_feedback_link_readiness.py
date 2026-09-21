@@ -89,6 +89,22 @@ class FeedbackLinkReadinessTests(unittest.TestCase):
             "PARTIAL_TARGET_SPECIFIC_FORM_NOT_INTEGRATED",
         )
 
+    def test_repricing_transition_unidentified_status_is_registered(self) -> None:
+        status = "TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED"
+        self.assertIn(status, self.registry["readiness_status_vocabulary"])
+        row = next(
+            item
+            for item in self.registry["links"]
+            if item["link_key"]
+            == (
+                "government_issuance_yield_loop|"
+                "sovereign_yield|government_interest_cost"
+            )
+        )
+        self.assertEqual(row["readiness_status"], status)
+        self.assertFalse(row["exact_integrated_equation_ready"])
+        self.assertFalse(row["current_activation_authorized"])
+
     def test_exact_ready_requires_canonical_equation_pointer(self) -> None:
         mutated = copy.deepcopy(self.registry)
         row = mutated["links"][0]
