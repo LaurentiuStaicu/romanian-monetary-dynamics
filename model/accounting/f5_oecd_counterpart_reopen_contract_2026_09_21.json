@@ -1,0 +1,148 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-21",
+  "phase": "Accounting Spine / F5 selective reopen — OECD F512/F519 counterpart Stage 2",
+  "instrument": "F5",
+  "purpose": "Preregister a retained-source value/reconciliation and exact-rank gate after an existing official OECD counterpart artifact was found to satisfy the declared F5 reopen trigger for F512/F519 counterpart publication. The gate may add exact equations but may not infer a central-bank split, allocate residuals, or promote F5 unless the frozen value and rank criteria pass.",
+  "predecessor": {
+    "component_rank_assessment": "model/accounting/f5_component_aware_rank_assessment.json",
+    "topology_snapshot": "model/accounting/f5_rank_topology_snapshot_2025.json",
+    "reopen_registry": "model/accounting/reopen_conditions_registry.json"
+  },
+  "source": {
+    "institution": "OECD",
+    "stocks_dataflow": "OECD.SDD.NAD:DSD_NASEC20@DF_T725R_Q",
+    "flows_dataflow": "OECD.SDD.NAD:DSD_NASEC20@DF_T625R_Q",
+    "retained_discovery_assessment": "model/dynamics/sectoral_financial_positions_oecd_counterpart_discovery_assessment.json",
+    "retained_workflow_artifact_id": 10586683826,
+    "stocks_raw_sha256": "039d910150ece7d264284ffc8dfb713e99d255cb17bd366b66decfa214c4ae5f",
+    "flows_raw_sha256": "7585836c1b3b181fa233fbc21243813498911215b5ac9b28e7073da17e52629a",
+    "lineage": "OECD-ECB financial-accounts collection; not treated as statistically independent measurement."
+  },
+  "topology_trigger": {
+    "declared_reopen_condition": "official bilateral or counterpart-sector publication for F512 and/or F519",
+    "exact_components_present": [
+      "F512",
+      "F519"
+    ],
+    "reporting_sectors_present": [
+      "S1",
+      "S11",
+      "S12",
+      "S13",
+      "S1M"
+    ],
+    "counterpart_sectors_present": [
+      "S1",
+      "S11",
+      "S12",
+      "S13",
+      "S1M",
+      "S2"
+    ],
+    "central_bank_sector_S121_present": false,
+    "stock_2025_q4_rows_per_component_per_accounting_entry": 30,
+    "flow_2025_q1_q4_rows_per_component_per_accounting_entry": 120,
+    "trigger_satisfied": true,
+    "effect": "AUTHORIZE_STAGE2_RETAINED_SOURCE_VALUE_RECONCILIATION_AND_RANK_GATE_ONLY"
+  },
+  "frozen_mapping": {
+    "H": "S1M",
+    "C": "S11",
+    "G": "S13",
+    "X": "S2 only through explicit asset/liability counterpart orientation",
+    "S12": "F + BNR aggregate only",
+    "forbidden": [
+      "S12 may not be relabelled as RMD F.",
+      "S12 may not be split into F and BNR by residual, shares, historical proportions or missing-to-zero assumptions.",
+      "Absence of S121 may not be interpreted as BNR=0."
+    ]
+  },
+  "stage2_gate": {
+    "source_rows": {
+      "stock_period": "2025-Q4",
+      "stock_transaction_code": "LE",
+      "flow_periods": [
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4"
+      ],
+      "flow_transaction_code": "F",
+      "instruments": [
+        "F512",
+        "F519"
+      ],
+      "required_consolidation": "N",
+      "required_unit_measure": "XDC",
+      "required_unit_mult": 6,
+      "required_currency": "RON",
+      "required_currency_denomination": "_T",
+      "required_valuation": "S",
+      "required_price_base": "V",
+      "required_transformation": "N",
+      "required_maturity": "_Z",
+      "required_accounting_entries": [
+        "A",
+        "L"
+      ],
+      "missing_row_to_zero": false,
+      "duplicate_required_row_allowed": false,
+      "finite_required_values": true
+    },
+    "reconciliation": {
+      "tolerance_million_RON": "0.1",
+      "tolerance_basis": "Inherited canonical Accounting Spine/F5 aggregate-control tolerance; frozen before detailed Stage 2 residual review.",
+      "asset_liability_mirror_check": true,
+      "source_aggregate_consistency_check": true,
+      "failure_effect": "NO_NEW_OECD_F512_F519_EQUATIONS_ADMITTED"
+    },
+    "equation_admission": {
+      "direct_resident_sectors": [
+        "H",
+        "C",
+        "G"
+      ],
+      "direct_external_sector": "X",
+      "aggregate_financial_sector_equations": "S12 rows may enter only as exact F+BNR sum equations.",
+      "use_observed_zero_rows_as_observed_equations": true,
+      "infer_unobserved_zero_rows": false,
+      "coefficients": "exact integers/rationals",
+      "rhs_required_before_rank_admission": true
+    },
+    "rank_recomputation": {
+      "base_component_variables": 140,
+      "components": [
+        "F511",
+        "F512",
+        "F519",
+        "F52"
+      ],
+      "base_rank_stock": 73,
+      "base_rank_flow": 73,
+      "recompute_exact_nullspace": true,
+      "test_linear_forms": [
+        "F51 = F511+F512+F519",
+        "F5 = F511+F512+F519+F52"
+      ],
+      "promotion_rule": "A bilateral F51 or F5 cell may be promoted only if its linear form is invariant over every exact nullspace basis vector after all admitted source equations pass the value/reconciliation gate."
+    }
+  },
+  "hard_rules": {
+    "no_live_refetch_required": true,
+    "no_BNR_residual_allocation": true,
+    "no_missing_to_zero": true,
+    "no_post_result_mapping_change": true,
+    "no_post_result_tolerance_change": true,
+    "no_reference_mode_change": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_version_change": true
+  },
+  "allowed_outcomes": [
+    "SOURCE_GATE_FAIL_NO_RANK_CHANGE",
+    "SOURCE_GATE_PASS_RANK_IMPROVES_NO_TOTAL_F5_CELL_UNIQUE",
+    "SOURCE_GATE_PASS_PARTIAL_F51_OR_F5_IDENTIFICATION_REQUIRES_SEPARATE_MATERIALIZATION_GATE"
+  ]
+}
