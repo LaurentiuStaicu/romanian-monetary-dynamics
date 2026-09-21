@@ -19,9 +19,9 @@
     "current_repository_version": "0.2.0",
     "unreleased_changes_present": true,
     "version_bump_required_now": false,
-    "rationale": "v0.2.0 was published from the exact green main release commit. Main now contains only post-publication governance finalization beyond that immutable release snapshot; no immediate new version is required.",
+    "rationale": "v0.2.0 remains an immutable published snapshot. Main now contains substantive post-release scientific-governance progress, including promotion of aggregate reference-mode observability to 10/10 and additional Accounting Spine source-boundary/reopen diagnostics, but no new canonical multi-instrument Accounting Spine completion, behavioural activation, calibration authorization or validated-model milestone that requires an immediate release. The post-release work remains Unreleased until a coherent v0.3.0 milestone is intentionally prepared.",
     "next_public_release_candidate": "0.3.0",
-    "next_candidate_rationale": "The default next substantive 0.x scientific-core milestone is 0.3.0. A narrowly scoped corrective release may instead use 0.2.1 when that classification is accurate.",
+    "next_candidate_rationale": "The default next substantive 0.x scientific-core milestone is 0.3.0. It should package a coherent post-v0.2.0 scientific boundary rather than being triggered by individual diagnostics alone. A narrowly scoped corrective release may instead use 0.2.1 when that classification is accurate.",
     "release_preparation": {
       "state": "PUBLISHED_AND_FINALIZED",
       "candidate_version": "0.2.0",

@@ -93,6 +93,7 @@ def main() -> None:
     stage_terminal = load(
         "model/registries/validation_recovery_stage_terminal_assessment.json"
     )
+    release = load("model/registries/release_versioning_contract.json")
 
     # Authority paths must exist and the manifest must be registered centrally.
     for label, relative in manifest["authority"].items():
@@ -106,6 +107,48 @@ def main() -> None:
         reset["scientific_baseline_manifest"]
         == "model/registries/scientific_baseline_manifest.json",
         "Reset integrity contract does not register the scientific baseline manifest",
+    )
+
+    # Release/version state is derived from the canonical release-versioning contract.
+    release_state = state["release_versioning"]
+    release_basis = release["versioning_basis"]
+    public_release = release_basis["current_public_release"]
+    check(
+        release_state["contract"]
+        == "model/registries/release_versioning_contract.json",
+        "Baseline release-versioning contract path is stale",
+    )
+    check(
+        release_state["current_public_release"] == public_release["version"],
+        "Baseline current public release is stale",
+    )
+    check(
+        release_state["current_repository_version"]
+        == release_basis["current_repository_version"],
+        "Baseline repository version is stale",
+    )
+    check(
+        release_state["unreleased_changes_present"]
+        is release_basis["unreleased_changes_present"],
+        "Baseline unreleased-change state is stale",
+    )
+    check(
+        release_state["version_bump_required_now"]
+        is release_basis["version_bump_required_now"],
+        "Baseline version-bump requirement is stale",
+    )
+    check(
+        release_state["next_public_release_candidate"]
+        == release_basis["next_public_release_candidate"],
+        "Baseline next public release candidate is stale",
+    )
+    check(
+        public_release["immutable_historical_identity"] is True,
+        "Current published release must retain immutable historical identity",
+    )
+    check(
+        release_basis["release_preparation"]["publication_complete"] is True,
+        "Baseline may not describe an incompletely published current release",
     )
     check(
         model["calibration_validation"]["mechanism_source_readiness"]
@@ -903,6 +946,18 @@ def main() -> None:
         ],
         "live_refresh_workflows_manual_only": source_state[
             "live_refresh_workflows_manual_only"
+        ],
+        "current_public_release": release_state[
+            "current_public_release"
+        ],
+        "current_repository_version": release_state[
+            "current_repository_version"
+        ],
+        "next_public_release_candidate": release_state[
+            "next_public_release_candidate"
+        ],
+        "version_bump_required_now": release_state[
+            "version_bump_required_now"
         ],
     }
     print(json.dumps(report, indent=2))

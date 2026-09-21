@@ -1,5 +1,5 @@
 {
-  "manifest_version": "1.1",
+  "manifest_version": "1.2",
   "baseline_id": "scientific-integrity-2026-09-19",
   "purpose": "Single canonical cross-registry snapshot of RMD scientific maturity. Values in this manifest must agree with the authoritative accounting, dynamics, reference-mode, empirical-mechanism and validation registries; the manifest is not an independent source of scientific truth.",
   "authority": {
@@ -108,7 +108,21 @@
     "sectoral_financial_positions_ecb_official_tolerance_assessment": "model/dynamics/sectoral_financial_positions_ecb_official_tolerance_assessment_2026_09_21.json",
     "sectoral_financial_positions_observed_snapshot": "model/dynamics/sectoral_financial_positions_observed_snapshot_2026_09_21.json",
     "reference_mode_post_terminal_promotion_assessment": "model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json",
-    "trigger_aware_monitoring_horizon_post_reference_closure": "model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_reference_closure.json"
+    "trigger_aware_monitoring_horizon_post_reference_closure": "model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_reference_closure.json",
+    "f2_direct_investment_instrument_dissemination_diagnostic": "model/accounting/f2_direct_investment_instrument_dissemination_diagnostic_2026_09_21.json",
+    "f4_eurostat_bsi_bridge_diagnostic": "model/accounting/f4_eurostat_bsi_bridge_diagnostic_2026_09_21.json",
+    "f5_oecd_counterpart_reopen_contract": "model/accounting/f5_oecd_counterpart_reopen_contract_2026_09_21.json",
+    "f5_oecd_counterpart_reopen_assessment": "model/accounting/f5_oecd_counterpart_reopen_assessment_2026_09_21.json",
+    "f5_oecd_counterpart_stage2_execution": "model/accounting/f5_oecd_counterpart_stage2_execution_assessment_2026_09_21.json",
+    "f6_oecd_counterpart_reopen_contract": "model/accounting/f6_oecd_counterpart_reopen_contract_2026_09_21.json",
+    "f6_oecd_counterpart_reopen_assessment": "model/accounting/f6_oecd_counterpart_reopen_assessment_2026_09_21.json",
+    "f6_oecd_counterpart_stage2_execution": "model/accounting/f6_oecd_counterpart_stage2_execution_assessment_2026_09_21.json",
+    "f7_oecd_counterpart_reopen_contract": "model/accounting/f7_oecd_counterpart_reopen_contract_2026_09_21.json",
+    "f7_oecd_counterpart_reopen_assessment": "model/accounting/f7_oecd_counterpart_reopen_assessment_2026_09_21.json",
+    "f7_oecd_counterpart_stage2_execution": "model/accounting/f7_oecd_counterpart_stage2_execution_assessment_2026_09_21.json",
+    "f8_oecd_counterpart_reopen_contract": "model/accounting/f8_oecd_counterpart_reopen_contract_2026_09_21.json",
+    "f8_oecd_counterpart_reopen_assessment": "model/accounting/f8_oecd_counterpart_reopen_assessment_2026_09_21.json",
+    "f8_oecd_counterpart_stage2_execution": "model/accounting/f8_oecd_counterpart_stage2_execution_assessment_2026_09_21.json"
   },
   "canonical_state": {
     "accounting": {
@@ -236,11 +250,11 @@
       "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21.json"
     },
     "release_versioning": {
-      "current_public_release": "0.1.0",
-      "current_repository_version": "0.1.0",
+      "current_public_release": "0.2.0",
+      "current_repository_version": "0.2.0",
       "unreleased_changes_present": true,
       "version_bump_required_now": false,
-      "next_public_release_candidate": "0.2.0",
+      "next_public_release_candidate": "0.3.0",
       "contract": "model/registries/release_versioning_contract.json"
     }
   },
