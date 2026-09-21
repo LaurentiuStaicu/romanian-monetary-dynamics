@@ -1,5 +1,5 @@
 {
-  "manifest_version": "1.2",
+  "manifest_version": "1.4",
   "baseline_id": "scientific-integrity-2026-09-19",
   "purpose": "Single canonical cross-registry snapshot of RMD scientific maturity. Values in this manifest must agree with the authoritative accounting, dynamics, reference-mode, empirical-mechanism and validation registries; the manifest is not an independent source of scientific truth.",
   "authority": {
@@ -125,7 +125,9 @@
     "f8_oecd_counterpart_stage2_execution": "model/accounting/f8_oecd_counterpart_stage2_execution_assessment_2026_09_21.json",
     "accounting_spine_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json",
     "v0_3_0_release_readiness_assessment": "model/registries/v0_3_0_release_readiness_assessment_2026_09_21.json",
-    "v0_3_0_release_publication_record": "model/registries/v0_3_0_release_publication_record_2026_09_21.json"
+    "v0_3_0_release_publication_record": "model/registries/v0_3_0_release_publication_record_2026_09_21.json",
+    "f4_bnr_zero_liability_structural_adjudication": "model/accounting/f4_bnr_zero_liability_structural_adjudication_2026_09_21.json",
+    "accounting_spine_recovery_f4_structural_reopen_assessment": "model/accounting/accounting_spine_recovery_f4_structural_reopen_assessment_2026_09_21.json"
   },
   "canonical_state": {
     "accounting": {
@@ -142,9 +144,12 @@
       ],
       "multi_instrument_stock_initialization_ready": false,
       "full_2025_stock_flow_benchmark_ready": false,
-      "recovery_stage_status": "STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD",
-      "next_operational_state": "EVIDENCE_TRIGGERED_ACCOUNTING_SPINE_HOLD",
-      "active_unconditional_recovery_task": null
+      "recovery_stage_status": "SELECTIVE_REOPEN_F4_STRUCTURAL_ZERO_MATERIALIZATION_PENDING",
+      "next_operational_state": "EXECUTE_F4_STRUCTURAL_ZERO_SUCCESSOR_MATERIALIZATION_GATE",
+      "active_unconditional_recovery_task": "F4_STRUCTURAL_ZERO_SUCCESSOR_MATERIALIZATION_GATE",
+      "active_selective_reopen_instruments": [
+        "F4"
+      ]
     },
     "reference_modes": {
       "required_count": 10,
