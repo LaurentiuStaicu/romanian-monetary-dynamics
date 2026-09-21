@@ -103,7 +103,11 @@
     "oecd_sectoral_financial_positions_decimal_arithmetic_correction_vintage": "data/source_vintages/oecd-decimal-arithmetic-correction-2026-09-21/source_vintage_manifest.json",
     "oecd_sectoral_financial_positions_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json",
     "sectoral_financial_positions_ecb_qfa_tolerance_authority": "model/dynamics/sectoral_financial_positions_ecb_qfa_tolerance_authority_assessment_2026_09_21.json",
-    "sectoral_financial_positions_ecb_qfa_official_tolerance_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_contract_2026_09_21.json"
+    "sectoral_financial_positions_ecb_qfa_official_tolerance_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_contract_2026_09_21.json",
+    "sectoral_financial_positions_ecb_qfa_official_tolerance_gate_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_assessment_2026_09_21.json",
+    "sectoral_financial_positions_reference_mode_promotion_assessment": "model/dynamics/sectoral_financial_positions_reference_mode_promotion_assessment_2026_09_21.json",
+    "reference_mode_recovery_successor_assessment_2026_09_21": "model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json",
+    "sectoral_financial_positions_promoted_source_vintage": "data/source_vintages/sectoral-financial-positions-ecb-qfa-tolerance-pass-2026-09-21/source_vintage_manifest.json"
   },
   "canonical_state": {
     "accounting": {
@@ -123,8 +127,8 @@
     },
     "reference_modes": {
       "required_count": 10,
-      "ready_count": 9,
-      "closure_ready": false,
+      "ready_count": 10,
+      "closure_ready": true,
       "ready": [
         "policy_rate",
         "household_lending_rate",
@@ -134,18 +138,20 @@
         "government_debt_stock",
         "government_interest_burden",
         "government_refinancing_need",
-        "government_effective_interest_rate"
-      ],
-      "blockers": [
+        "government_effective_interest_rate",
         "sectoral_financial_positions"
       ],
+      "blockers": [],
       "external_counterpart_screening_state": "EXHAUSTED_NO_SEMANTICALLY_ADMISSIBLE_CURRENT_PUBLIC_SOURCE",
       "sectoral_financial_positions_external_counterpart_recovery_state": "FROZEN_UNTIL_NEW_SOURCE_OR_CHANGED_DATASET_TRIGGER",
       "external_counterpart_exact_historical_extraction_authorized": false,
-      "recovery_stage_status": "STAGE_COMPLETE_FROZEN_9_OF_10_UNDER_CURRENT_PUBLIC_EVIDENCE_BOUNDARY",
+      "recovery_stage_status": "REOPEN_COMPLETE_10_OF_10_OBSERVED_REFERENCE_MODES_READY",
       "recovery_substage_complete": true,
       "next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
-      "final_blocker_public_source_completion_status": "EUROSTAT_INSTRUMENT_SCOPE_FAIL_OECD_S121_SCOPE_FAIL_BNR_ANNUAL_FREQUENCY_TRANSACTION_HISTORY_FAIL_BNR_QUARTERLY_S13_SECTOR_COUNTERPART_CONSOLIDATION_FAIL"
+      "final_blocker_public_source_completion_status": "RESOLVED_FOR_AGGREGATE_REFERENCE_MODE_VIA_OECD_NONCONSOLIDATED_PLUS_ESA2010_SEMANTICS_AND_ECB_QFA_OFFICIAL_TOLERANCE; BILATERAL_ACCOUNTING_BOUNDARY_REMAINS_INCOMPLETE",
+      "aggregate_sectoral_financial_positions_status": "OBSERVED_SERIES_AVAILABLE",
+      "aggregate_sectoral_financial_positions_series": "data/processed/sectoral_financial_positions_reference_oecd_2014Q1_2026Q1.csv.gz",
+      "aggregate_sectoral_financial_positions_promotion_assessment": "model/dynamics/sectoral_financial_positions_reference_mode_promotion_assessment_2026_09_21.json"
     },
     "system_dynamics": {
       "complete_endogenous_system_dynamics_model": false,
@@ -226,7 +232,8 @@
         "date": "2026-10-08",
         "id": "prospective_monetary_policy_event"
       },
-      "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json"
+      "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json",
+      "reference_mode_reopen_completion_assessment": "model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json"
     },
     "release_versioning": {
       "current_public_release": "0.1.0",
