@@ -1,0 +1,89 @@
+{
+  "assessment_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "reference_mode": "sectoral_financial_positions",
+  "phase": "ECB-QFA-materiality-aligned OECD aggregate reference gate",
+  "contract": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_contract_2026_09_21.json",
+  "materiality_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_assessment_2026_09_21.json",
+  "workflow": {
+    "run_id": 35607795887,
+    "run_attempt": 2,
+    "job_id": 106359413140,
+    "artifact_id": 10642481970,
+    "artifact_zip_sha256": "c1cebd4cd7cc72bc8188b902ea12e92234de04b301971d8f193ef45b06bfae7a"
+  },
+  "source_provenance": {
+    "oecd_flow": {
+      "dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T620R_Q",
+      "structure_sha256": "871348831fa77a556bfe600861bb9e15a413ed9e8b06509c5d6ba08a0af5ff2f",
+      "response_sha256": "06c23cfdcc405b2f1689b695392f4f99a9aaa1085e3b90a6254482eb13d0a616",
+      "response_bytes": 3456922
+    },
+    "oecd_stock": {
+      "dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T720R_Q",
+      "structure_sha256": "2663b7e8374c31540951669a5e9ac1494d361487aaafe41f3f80da879fb62bb9",
+      "response_sha256": "ca41b25cb31f02baeaa31d2b74444b3ea0e59cfd0f1cc974f5f92327a838f4d1",
+      "response_bytes": 3532909
+    },
+    "ecb_fx": {
+      "series": "EXR.Q.RON.EUR.SP00.A",
+      "response_sha256": "40350e22d6b7cfa29205523ebacefc4e908d6a37df457948b6317b450971685a",
+      "response_bytes": 14538
+    }
+  },
+  "row_gate": {
+    "flow": "PASS_NO_MISSING_NO_DUPLICATES_NO_SEMANTIC_CONFLICT",
+    "stock": "PASS_NO_MISSING_NO_DUPLICATES_NO_SEMANTIC_CONFLICT",
+    "common_quarters": 49,
+    "start": "2014-Q1",
+    "end": "2026-Q1",
+    "all_2025_quarters_present": true
+  },
+  "materiality_gate": {
+    "numeric_arithmetic": "EXACT_BASE10_DECIMAL",
+    "official_threshold_million_eur": "10",
+    "instrument_identity_tests": 2058,
+    "aggregate_identity_tests": 98,
+    "total_tests": 2156,
+    "violation_count": 0,
+    "max_abs_residual_million_eur": "0.1359122336454864137167045030",
+    "margin_to_threshold_factor": "73.57689393939333333333333334",
+    "min_eurron_quarter_average": "4.4146136363636",
+    "max_eurron_quarter_average": "5.093939682539683",
+    "result": "PASS"
+  },
+  "retained_reference_series": {
+    "path": "data/processed/sectoral_financial_positions_oecd_ecb_qfa_2014Q1_2026Q1.csv",
+    "git_blob_sha": "f1d845bcd757184d678a9b49a24587245abde9ba",
+    "data_rows": 588,
+    "measures": [
+      "flow",
+      "stock"
+    ],
+    "rmd_sectors": [
+      "H",
+      "C",
+      "F",
+      "G",
+      "BNR",
+      "X"
+    ],
+    "common_quarters": 49,
+    "construction": "Exact OECD F2-F8 rows with the preregistered ESA2010 S1M/L/F2 structural zero, then frozen RMD sector mapping and assets/liabilities/net construction.",
+    "canonical_runtime_network_required": false
+  },
+  "decision": "PASS_ECB_QFA_MATERIALITY_GATE_REFERENCE_MODE_PROMOTION_AUTHORIZED",
+  "scientific_effect": {
+    "sectoral_financial_positions_promotion_authorized": true,
+    "target_status": "OBSERVED_SERIES_AVAILABLE",
+    "reference_mode_ready_count_after_promotion": 10,
+    "reference_mode_required_count": 10,
+    "accounting_spine_change": false,
+    "bilateral_accounting_completion_change": false,
+    "parameter_estimation_authorized": false,
+    "calibration_cycle_opened": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "complete_endogenous_system_dynamics_model": false
+  }
+}
