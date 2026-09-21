@@ -206,7 +206,7 @@ def main() -> None:
     request_records=[]
 
     for measure in ("flow","stock"):
-        structure_url=f"https://sdmx.oecd.org/public/rest/dataflow/OECD.SDD.NAD/{flow_ref[measure].split('@')[-1]}/?references=all"
+        structure_id=flow_ref[measure].split(",",1)[1]\n        structure_url=f"https://sdmx.oecd.org/public/rest/dataflow/OECD.SDD.NAD/{structure_id}/?references=all"
         sb,sh,ss,se=fetch(structure_url,accept="application/vnd.sdmx.structure+xml,application/xml,text/xml,*/*")
         s_hash=sha256(sb) if sb else None
         if ss!=200 or se or s_hash!=expected_hash[measure]:
