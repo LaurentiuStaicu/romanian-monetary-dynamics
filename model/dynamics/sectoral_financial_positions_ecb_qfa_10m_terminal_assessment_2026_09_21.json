@@ -1,0 +1,54 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "sectoral_financial_positions_ecb_qfa_10m_terminal",
+  "reference_mode": "sectoral_financial_positions",
+  "contract": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_validation_contract_2026_09_21.json",
+  "workflow_run_id": 35612800023,
+  "workflow_job_id": 106376336254,
+  "artifact_id": 10645291259,
+  "artifact_zip_sha256": "80c6a937590f49f4ae0f4796c6f0483ddf901932bcf81a06520de83725ec0c98",
+  "exact_source_identity": {
+    "oecd_flow_sha256": "06c23cfdcc405b2f1689b695392f4f99a9aaa1085e3b90a6254482eb13d0a616",
+    "oecd_stock_sha256": "ca41b25cb31f02baeaa31d2b74444b3ea0e59cfd0f1cc974f5f92327a838f4d1",
+    "ecb_flow_fx_sha256": "40350e22d6b7cfa29205523ebacefc4e908d6a37df457948b6317b450971685a",
+    "ecb_stock_fx_sha256": "ed5a0a1bb46b835dae7432110fec56278fab2ea75fcb5b2bb585516e19963188",
+    "common_quarters": 49,
+    "start": "2014-Q1",
+    "end": "2026-Q1"
+  },
+  "official_validation_gate": {
+    "threshold_eur_million": "10",
+    "required_tests": 686,
+    "passed_tests": 686,
+    "failed_tests": 0,
+    "maximum_absolute_per_instrument_discrepancy_million_eur": "0.04563084645220168834131873146",
+    "maximum_case": {
+      "measure": "stock",
+      "time_period": "2014-Q2",
+      "instrument": "F3",
+      "residual_million_ron": "0.2",
+      "ron_per_eur": "4.383"
+    },
+    "maximum_absolute_aggregate_f2_f8_diagnostic_million_eur": "0.1360482517799646274545372092",
+    "result": "PASS"
+  },
+  "historical_gate_lineage": {
+    "historical_0_1_million_ron_gate": "FAIL",
+    "historical_exact_decimal_violation_count": 47,
+    "historical_gate_rewritten": false
+  },
+  "decision": "PASS_OFFICIAL_ECB_QFA_VALIDATION_REFERENCE_MODE_MATERIALISATION_AND_PROMOTION_ASSESSMENT_AUTHORIZED",
+  "scientific_effect": {
+    "reference_mode_materialisation_authorized": true,
+    "reference_mode_promotion_assessment_authorized": true,
+    "reference_mode_promoted_by_this_assessment": false,
+    "accounting_readiness_change": false,
+    "bilateral_accounting_completion": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "model_complete": false,
+    "version_change_authorized": false
+  }
+}
