@@ -37,7 +37,10 @@
       "delay_candidates": [
         "debt_service_maturity_delay"
       ],
-      "topology_status": "CLOSED_CANDIDATE_LOOP"
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
+      "interest_cost_to_financing_need_bridge_status": "REVIEWED_POSITIVE_STRUCTURAL_DIRECTION_GFN_DECOMPOSITION_VALID_EXACT_INTEGRATED_CASH_ACCOUNTING_BOUNDARY_UNRESOLVED",
+      "government_financing_need_boundary_status": "UNRESOLVED_OBSERVED_COMPONENTS_AVAILABLE_NO_CANONICAL_GFN"
     },
     {
       "id": "government_issuance_yield_loop",
@@ -102,7 +105,10 @@
       "announced_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_3_REQUIRED_SOURCES_REMAINING",
       "yield_to_interest_cost_boundary_review": "model/dynamics/yield_to_interest_cost_boundary_review_2026_09_21.json",
       "yield_to_interest_cost_bridge_status": "REVIEWED_NO_CONTEMPORANEOUS_ONE_TO_ONE_MAPPING_REPRICING_BRIDGE_DEFERRED",
-      "government_interest_cost_boundary_status": "UNRESOLVED_DISTINCT_PORTFOLIO_RATE_AND_INTEREST_EXPENDITURE_TARGETS"
+      "government_interest_cost_boundary_status": "UNRESOLVED_DISTINCT_PORTFOLIO_RATE_AND_INTEREST_EXPENDITURE_TARGETS",
+      "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
+      "interest_cost_to_financing_need_bridge_status": "REVIEWED_POSITIVE_STRUCTURAL_DIRECTION_GFN_DECOMPOSITION_VALID_EXACT_INTEGRATED_CASH_ACCOUNTING_BOUNDARY_UNRESOLVED",
+      "government_financing_need_boundary_status": "UNRESOLVED_OBSERVED_COMPONENTS_AVAILABLE_NO_CANONICAL_GFN"
     },
     {
       "id": "bank_credit_balance_sheet_loop",
