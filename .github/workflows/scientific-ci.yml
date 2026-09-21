@@ -289,6 +289,9 @@ jobs:
       - name: Audit F6 OECD counterpart Stage 2 terminal execution
         run: python scripts/audit_f6_oecd_counterpart_stage2_execution.py
 
+      - name: Audit F7 OECD counterpart selective reopen preregistration
+        run: python scripts/audit_f7_oecd_counterpart_reopen.py
+
       - name: Audit BNR 2025 financial-accounts topology reopen
         run: python scripts/audit_bnr_2025_financial_accounts_topology_reopen.py
 

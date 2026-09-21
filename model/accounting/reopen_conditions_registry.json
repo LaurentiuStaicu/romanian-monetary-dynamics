@@ -98,7 +98,12 @@
         "aggregate zero controls converted to bilateral zeros",
         "materiality assumptions used to allocate counterparties",
         "a live refresh reproducing the same rank/nullspace boundary"
-      ]
+      ],
+      "selective_reopen_contract": "model/accounting/f7_oecd_counterpart_reopen_contract_2026_09_21.json",
+      "selective_reopen_assessment": "model/accounting/f7_oecd_counterpart_reopen_assessment_2026_09_21.json",
+      "selective_reopen_state": "PREREGISTERED_STAGE2_PENDING_EXECUTION",
+      "reopen_trigger_satisfied": true,
+      "reopen_trigger_basis": "Retained OECD quarterly counterpart stocks/flows publish total F7 and F71/F72 by reporting/counterpart sector; S121 remains absent, so F-versus-BNR stays unresolved."
     },
     "F8": {
       "current_status": "FROZEN_AGGREGATE_ONLY_PUBLIC_DATA_BOUNDARY",
