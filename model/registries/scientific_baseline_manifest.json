@@ -73,7 +73,8 @@
     "bank_credit_balance_sheet_loop_terminal_assessment": "model/dynamics/bank_credit_balance_sheet_loop_terminal_assessment_2026_09_21.json",
     "policy_rate_to_market_and_lending_rates_boundary_review": "model/dynamics/policy_rate_to_market_and_lending_rates_boundary_review_2026_09_21.json",
     "market_and_lending_rates_to_credit_flow_boundary_review": "model/dynamics/market_and_lending_rates_to_credit_flow_boundary_review_2026_09_21.json",
-    "credit_flow_to_private_demand_and_investment_boundary_review": "model/dynamics/credit_flow_to_private_demand_and_investment_boundary_review_2026_09_21.json"
+    "credit_flow_to_private_demand_and_investment_boundary_review": "model/dynamics/credit_flow_to_private_demand_and_investment_boundary_review_2026_09_21.json",
+    "private_demand_and_investment_to_inflationary_pressure_boundary_review": "model/dynamics/private_demand_and_investment_to_inflationary_pressure_boundary_review_2026_09_21.json"
   },
   "canonical_state": {
     "accounting": {

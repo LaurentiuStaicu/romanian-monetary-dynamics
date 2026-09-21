@@ -33,7 +33,7 @@ def audit_rates_to_credit_flow(review,private_credit,aggregate_review,boundary,r
  if loop["quantitatively_active"] is not False:e.append("loop may not activate")
  d=model["dynamic_core"]
  if d.get("market_and_lending_rates_to_credit_flow_boundary_review")!=REVIEW_PATH:e.append("model pointer missing")
- if d.get("monetary_credit_transmission_next_structural_task")!="private_demand_and_investment_to_inflationary_pressure_boundary_review":e.append("next monetary task changed")
+ if d.get("monetary_credit_transmission_next_structural_task")!="inflationary_pressure_to_policy_rate_boundary_review":e.append("next monetary task changed")
  if baseline["authority"].get("market_and_lending_rates_to_credit_flow_boundary_review")!=REVIEW_PATH:e.append("baseline authority missing")
  for k,v in review["hard_rules"].items():
   if v is not True:e.append(f"hard rule disabled: {k}")
@@ -41,5 +41,5 @@ def audit_rates_to_credit_flow(review,private_credit,aggregate_review,boundary,r
 def main():
  errors=audit_rates_to_credit_flow(load(REVIEW_PATH),load("model/dynamics/private_credit_reference_assessment.json"),load("model/calibration_validation/aggregate_bank_credit_source_boundary_review.json"),load("model/dynamics/feedback_variable_boundary_registry.json"),load("model/dynamics/feedback_link_readiness_registry.json"),load("model/dynamics/feedback_registry.json"),load("model/registries/model_contract.json"),load("model/registries/scientific_baseline_manifest.json"))
  if errors:raise RuntimeError("Rates-to-credit-flow boundary audit failed:\n- "+"\n- ".join(errors))
- print(json.dumps({"status":"PASS","bridge_status":STATUS,"exact_integrated_equation_ready":False,"feedback_activation_authorized":False,"next_gate":"private_demand_and_investment_to_inflationary_pressure_boundary_review"},indent=2))
+ print(json.dumps({"status":"PASS","bridge_status":STATUS,"exact_integrated_equation_ready":False,"feedback_activation_authorized":False,"next_gate":"inflationary_pressure_to_policy_rate_boundary_review"},indent=2))
 if __name__=="__main__":main()

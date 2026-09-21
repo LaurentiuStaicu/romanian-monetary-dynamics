@@ -33,7 +33,7 @@ def audit_credit_flow_to_private_demand(review,private_credit,household,investme
  if loop.get("credit_flow_to_private_demand_and_investment_status")!=STATUS:e.append("loop status changed")
  d=model["dynamic_core"]
  if d.get("credit_flow_to_private_demand_and_investment_boundary_review")!=REVIEW_PATH:e.append("model pointer missing")
- if d.get("monetary_credit_transmission_next_structural_task")!="private_demand_and_investment_to_inflationary_pressure_boundary_review":e.append("next monetary task changed")
+ if d.get("monetary_credit_transmission_next_structural_task")!="inflationary_pressure_to_policy_rate_boundary_review":e.append("next monetary task changed")
  if baseline["authority"].get("credit_flow_to_private_demand_and_investment_boundary_review")!=REVIEW_PATH:e.append("baseline authority missing")
  for k,v in review["hard_rules"].items():
   if v is not True:e.append(f"hard rule disabled: {k}")
@@ -41,5 +41,5 @@ def audit_credit_flow_to_private_demand(review,private_credit,household,investme
 def main():
  errors=audit_credit_flow_to_private_demand(load(REVIEW_PATH),load("model/dynamics/private_credit_reference_assessment.json"),load("model/calibration_validation/household_consumption_source_boundary_review.json"),load("model/calibration_validation/corporate_investment_source_boundary_review.json"),load("model/dynamics/feedback_variable_boundary_registry.json"),load("model/dynamics/feedback_link_readiness_registry.json"),load("model/dynamics/feedback_registry.json"),load("model/registries/model_contract.json"),load("model/registries/scientific_baseline_manifest.json"))
  if errors:raise RuntimeError("Credit-flow to private-demand boundary audit failed:\n- "+"\n- ".join(errors))
- print(json.dumps({"status":"PASS","bridge_status":STATUS,"exact_integrated_equation_ready":False,"feedback_activation_authorized":False,"next_gate":"private_demand_and_investment_to_inflationary_pressure_boundary_review"},indent=2))
+ print(json.dumps({"status":"PASS","bridge_status":STATUS,"exact_integrated_equation_ready":False,"feedback_activation_authorized":False,"next_gate":"inflationary_pressure_to_policy_rate_boundary_review"},indent=2))
 if __name__=="__main__":main()
