@@ -200,10 +200,13 @@
     "policy_rate_to_market_and_lending_rates_boundary_review": "model/dynamics/policy_rate_to_market_and_lending_rates_boundary_review_2026_09_21.json",
     "policy_rate_to_market_and_lending_rates_boundary_status": "TARGET_SPECIFIC_PASS_THROUGH_CANDIDATE_AVAILABLE_GENERIC_RATE_NODE_UNRESOLVED",
     "policy_rate_to_market_and_lending_rates_equation_ready": false,
-    "monetary_credit_transmission_next_structural_task": "credit_flow_to_private_demand_and_investment_boundary_review",
+    "monetary_credit_transmission_next_structural_task": "private_demand_and_investment_to_inflationary_pressure_boundary_review",
     "market_and_lending_rates_to_credit_flow_boundary_review": "model/dynamics/market_and_lending_rates_to_credit_flow_boundary_review_2026_09_21.json",
     "market_and_lending_rates_to_credit_flow_boundary_status": "RATE_PRICE_AND_CREDIT_TRANSACTION_BOUNDARIES_DISTINCT_JOINT_DETERMINATION_UNRESOLVED",
-    "market_and_lending_rates_to_credit_flow_equation_ready": false
+    "market_and_lending_rates_to_credit_flow_equation_ready": false,
+    "credit_flow_to_private_demand_and_investment_boundary_review": "model/dynamics/credit_flow_to_private_demand_and_investment_boundary_review_2026_09_21.json",
+    "credit_flow_to_private_demand_and_investment_boundary_status": "FINANCING_FLOW_PURPOSES_MULTIPLE_PRIVATE_DEMAND_AND_INVESTMENT_MAPPING_UNIDENTIFIED",
+    "credit_flow_to_private_demand_and_investment_equation_ready": false
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
