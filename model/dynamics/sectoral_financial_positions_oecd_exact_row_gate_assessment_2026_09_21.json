@@ -1,0 +1,74 @@
+{
+  "assessment_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "reference_mode": "sectoral_financial_positions",
+  "phase": "OECD Quarterly Non-Consolidated Financial Accounts — Exact RMD Aggregate Row Gate",
+  "contract": "model/dynamics/sectoral_financial_positions_oecd_exact_extraction_reconciliation_contract_2026_09_21.json",
+  "topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
+  "workflow": {
+    "run_id": 35590873931,
+    "run_attempt": 2,
+    "job_id": 106304893566,
+    "artifact_id": 10634456456,
+    "artifact_zip_sha256": "85c9ae9df0e94eea71e6748bcfb81244cb0a85cba023d7b31fdbd403e3ef0b7d"
+  },
+  "source_requests": {
+    "flow": {
+      "dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T620R_Q",
+      "structure_sha256": "871348831fa77a556bfe600861bb9e15a413ed9e8b06509c5d6ba08a0af5ff2f",
+      "selection_key": "Q.N.ROU.W.S1+S1M+S11+S12+S121+S13+S2.S1.N.A+L.F.F2+F3+F4+F5+F6+F7+F8.T+_Z.XDC._T.S.V.N.T0620._Z",
+      "data_http_status": 200,
+      "data_bytes": 3456922,
+      "raw_response_sha256": "06c23cfdcc405b2f1689b695392f4f99a9aaa1085e3b90a6254482eb13d0a616"
+    },
+    "stock": {
+      "dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T720R_Q",
+      "structure_sha256": "2663b7e8374c31540951669a5e9ac1494d361487aaafe41f3f80da879fb62bb9",
+      "selection_key": "Q.N.ROU.W.S1+S1M+S11+S12+S121+S13+S2.S1.N.A+L.LE.F2+F3+F4+F5+F6+F7+F8.T+_Z.XDC._T.S.V.N.T0720._Z",
+      "data_http_status": 200,
+      "data_bytes": 3532909,
+      "raw_response_sha256": "ca41b25cb31f02baeaa31d2b74444b3ea0e59cfd0f1cc974f5f92327a838f4d1"
+    }
+  },
+  "exact_row_gate": {
+    "periods": 49,
+    "period_start": "2014-Q1",
+    "period_end": "2026-Q1",
+    "expected_required_rows_per_measure": 4116,
+    "observed_unique_required_keys_per_measure": 4067,
+    "missing_required_rows_total": 98,
+    "duplicate_required_rows_total": 0,
+    "missing_pattern": {
+      "source_sector": "S1M",
+      "accounting_entry": "L",
+      "instrument": "F2",
+      "flow_missing_periods": 49,
+      "stock_missing_periods": 49,
+      "missing_every_period": true
+    },
+    "retained_missing_rows": "data/source_vintages/oecd-nonconsolidated-sectoral-financial-positions-row-gate-2026-09-21/missing_required_rows.csv"
+  },
+  "preregistered_stop_rule_applied": true,
+  "numeric_observation_value_review_performed": false,
+  "reconciliation_test_performed": false,
+  "verdict": "FAIL_EXACT_REQUIRED_ROW_COVERAGE_S1M_L_F2_MISSING_ALL_PERIODS_NO_VALUE_REVIEW_NO_PROMOTION",
+  "interpretation": [
+    "The post-2025 OECD non-consolidated public topology resolves the prior S121 sector-scope blocker for the aggregate reference-mode path.",
+    "The frozen exact-row gate nevertheless fails because total F2 liabilities for S1M are absent for every requested quarter in both the official transaction and stock tables.",
+    "The missing rows may not be converted to zero or NOT_APPLICABLE after observing the result. No numerical observations were inspected and no reconciliation was run.",
+    "This negative result closes the currently authorized aggregate public-access recovery path without changing historical ECB-QSA phases A-D or the prior OECD counterpart review."
+  ],
+  "scientific_effect": {
+    "aggregate_reference_mode_gate_pass": false,
+    "reference_mode_status": "PARTIAL_SERIES_AVAILABLE",
+    "readiness_count_change": 0,
+    "reference_modes_ready": 9,
+    "reference_modes_required": 10,
+    "accounting_reopen": false,
+    "accounting_readiness_change": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false
+  },
+  "future_reopen_condition": "Reopen only if a genuinely changed official source explicitly supplies the missing S1M F2 liability stock and financial-transaction boundary, or an independently preregistered official semantic/applicability source establishes an exact treatment before any new value gate. Absence in the current result is not itself authorization to set zero."
+}
