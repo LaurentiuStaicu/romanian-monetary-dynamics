@@ -36,15 +36,17 @@ def audit_execution_state():
     if not all(c["hard_rules"].values()):
         e.append("a preregistered hard rule was disabled")
     d=m["dynamic_core"]
-    if d["reference_mode_ready_count"]!=9 or d["reference_mode_required_count"]!=10:
-        e.append("execution recording must preserve 9/10 pending separate promotion")
+    if d["reference_mode_ready_count"]!=10 or d["reference_mode_required_count"]!=10:
+        e.append("current successor readiness must remain 10/10")
     mode=next(z for z in r["modes"] if z["id"]=="sectoral_financial_positions")
-    if mode["status"]!="PARTIAL_SERIES_AVAILABLE":
-        e.append("execution recording must preserve PARTIAL status pending separate promotion")
+    if mode["status"]!="OBSERVED_SERIES_AVAILABLE":
+        e.append("current successor sectoral mode must remain observed")
+    if d.get("reference_mode_post_terminal_promotion_assessment")!="model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json":
+        e.append("current promotion must remain attributable to the separate successor assessment")
     return e
 
 def main():
     errors=audit_execution_state()
     if errors: raise RuntimeError("ECB QFA 10m execution-state audit failed:\n- "+"\n- ".join(errors))
-    print(json.dumps({"status":"PASS","horizontal_tests":686,"strict_bound_exceedances":0,"max_abs_residual_million_ron":0.2,"promotion_assessment_authorized":True,"reference_modes_ready":"9/10"},indent=2))
+    print(json.dumps({"status":"PASS","horizontal_tests":686,"strict_bound_exceedances":0,"max_abs_residual_million_ron":0.2,"promotion_assessment_authorized":True,"reference_modes_ready":"10/10"},indent=2))
 if __name__=="__main__": main()

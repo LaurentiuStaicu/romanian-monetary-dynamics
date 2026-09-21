@@ -44,7 +44,7 @@ def audit_semantic_terminal():
     if mode["status"]!="OBSERVED_SERIES_AVAILABLE":
         e.append("current reference-mode registry must retain successor promotion")
     dc=m["dynamic_core"]
-    if dc["reference_mode_ready_count"]!=9 or dc["reference_mode_required_count"]!=10:
+    if dc["reference_mode_ready_count"]!=10 or dc["reference_mode_required_count"]!=10:
         e.append("current global reference-mode readiness must remain 10/10")
     if dc["sectoral_financial_positions_reference_mode_promotion_authorized"] is not False:
         e.append("model contract may not authorize promotion")

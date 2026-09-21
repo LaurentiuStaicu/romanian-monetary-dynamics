@@ -78,13 +78,12 @@ class SystemDynamicsConformityTests(unittest.TestCase):
                 "government_interest_burden",
                 "government_refinancing_need",
                 "government_effective_interest_rate",
+                "sectoral_financial_positions",
             },
         )
         self.assertEqual(
             set(readiness["blocking_modes"]),
-            {
-                "sectoral_financial_positions",
-            },
+            set(),
         )
 
     def test_qualitative_reference_exception_requires_explicit_basis(self) -> None:

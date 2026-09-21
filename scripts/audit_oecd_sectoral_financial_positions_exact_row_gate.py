@@ -75,7 +75,7 @@ def audit_oecd_exact_row_gate() -> list[str]:
     if mode["status"]!="OBSERVED_SERIES_AVAILABLE":
         e.append("current sectoral_financial_positions status must remain observed")
     dc=model["dynamic_core"]
-    if dc["reference_mode_ready_count"]!=9 or dc["reference_mode_required_count"]!=10:
+    if dc["reference_mode_ready_count"]!=10 or dc["reference_mode_required_count"]!=10:
         e.append("current reference-mode readiness must remain 10/10")
     if model["scientific_stage"].get("active_noncalibration_source_task") is not None:
         e.append("terminal source task must be closed")
