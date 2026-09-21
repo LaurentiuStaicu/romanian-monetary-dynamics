@@ -51,6 +51,7 @@ def audit_government_issuance_yield_boundary_preregistration(
         "issuance_to_supply_pressure",
         "primary_yield_to_sovereign_yield",
         "yield_to_interest_cost",
+        "interest_cost_to_financing_need",
     }
     bridge_ids = {item["id"] for item in prereg["required_bridges_before_any_closed_empirical_loop_claim"]}
     if bridge_ids != expected_bridges:
@@ -201,7 +202,7 @@ def main() -> None:
                 "status": "PASS",
                 "conceptual_topology": "CLOSED_CANDIDATE_LOOP",
                 "empirical_boundary": "OPEN_CHAIN_PENDING_EXPLICIT_BRIDGES",
-                "required_bridges": 4,
+                "required_bridges": 5,
                 "generic_issuance_node": "UNRESOLVED",
                 "feedback_activation_authorized": False,
                 "next_empirical_task": "bnr_instrument_specific_primary_market_yield_pilot_2025",
