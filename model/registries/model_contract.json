@@ -268,7 +268,11 @@
     "sectoral_financial_positions_oecd_decimal_arithmetic_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
     "sectoral_financial_positions_oecd_decimal_arithmetic_status": "CORRECTED_63_MACHINE_FLOAT_TO_47_EXACT_DECIMAL_VIOLATIONS_VERDICT_UNCHANGED",
     "sectoral_financial_positions_oecd_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json",
-    "sectoral_financial_positions_oecd_window_stability_status": "NO_CONTIGUOUS_40Q_WINDOW_PASSES_POST_BENCHMARK_FAILURE_PERSISTS"
+    "sectoral_financial_positions_oecd_window_stability_status": "NO_CONTIGUOUS_40Q_WINDOW_PASSES_POST_BENCHMARK_FAILURE_PERSISTS",
+    "sectoral_financial_positions_ecb_qfa_tolerance_authority": "model/dynamics/sectoral_financial_positions_ecb_qfa_tolerance_authority_assessment_2026_09_21.json",
+    "sectoral_financial_positions_ecb_qfa_tolerance_authority_status": "PASS_OFFICIAL_DOMAIN_SPECIFIC_TOLERANCE_TRIGGER",
+    "sectoral_financial_positions_ecb_qfa_official_tolerance_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_contract_2026_09_21.json",
+    "sectoral_financial_positions_ecb_qfa_official_tolerance_gate_status": "PREREGISTERED_PENDING_MANUAL_EXECUTION"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
@@ -333,8 +337,8 @@
       "id": "prospective_monetary_policy_event",
       "rule": "Check only the BNR policy decision. If unchanged, do not inspect MIR response values. If non-zero, the October-reference MIR response remains closed until its official 2026-12-02 release."
     },
-    "active_noncalibration_source_task": null,
-    "active_noncalibration_source_task_contract": null,
+    "active_noncalibration_source_task": "sectoral_financial_positions_ecb_qfa_official_tolerance_gate",
+    "active_noncalibration_source_task_contract": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_contract_2026_09_21.json",
     "calibration_cycle_open": false,
     "post_terminal_source_topology_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_21_bnr_financial_accounts_topology.json",
     "post_terminal_source_topology_trigger_status": "EXECUTED_TOPOLOGY_PASS_EXACT_ROW_GATE_FAIL_RETURNED_TO_BASELINE_HOLD",
