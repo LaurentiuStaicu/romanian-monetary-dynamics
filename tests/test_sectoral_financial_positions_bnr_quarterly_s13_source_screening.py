@@ -62,9 +62,9 @@ class SectoralFinancialPositionsBNRQuarterlyS13ScreeningTests(unittest.TestCase)
             "OFFICIAL_QUARTERLY_S13_FINANCIAL_ACCOUNTS_CONFIRMED_FREQUENCY_PASS_SECTOR_COUNTERPART_CONSOLIDATION_FAIL_NO_REOPEN",
         )
 
-    def test_reference_mode_remains_partial(self):
+    def test_current_mode_retains_historical_screening_after_successor_promotion(self):
         mode = next(x for x in self.refs["modes"] if x["id"] == "sectoral_financial_positions")
-        self.assertEqual(mode["status"], "PARTIAL_SERIES_AVAILABLE")
+        self.assertEqual(mode["status"], "OBSERVED_SERIES_AVAILABLE")
         self.assertEqual(
             mode["bnr_quarterly_s13_source_screening"],
             "model/dynamics/sectoral_financial_positions_bnr_quarterly_s13_source_screening.json",
