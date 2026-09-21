@@ -198,6 +198,9 @@ jobs:
       - name: Audit credit-flow to loan-stock accounting boundary
         run: python scripts/audit_credit_flow_to_loan_stock_boundary.py
 
+      - name: Audit loan-stock to debt-service and credit-risk boundary
+        run: python scripts/audit_loan_stock_to_debt_service_and_credit_risk_boundary.py
+
       - name: Audit government debt-stock to interest-cost accounting boundary
         run: python scripts/audit_government_debt_stock_to_interest_cost_boundary.py
 
