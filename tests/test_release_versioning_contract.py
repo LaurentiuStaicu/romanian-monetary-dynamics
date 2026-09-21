@@ -38,30 +38,29 @@ class ReleaseVersioningContractTests(unittest.TestCase):
         self.assertEqual(current,badge.group(1))
         self.assertEqual(current,parse_citation_field("version"))
 
-    def test_last_published_release_remains_v010_during_prepublication_gate(self):
+    def test_current_public_release_is_v020_after_publication(self):
         release=self.c["versioning_basis"]["current_public_release"]
-        self.assertEqual(release["version"],"0.1.0")
-        self.assertEqual(release["tag"],"v0.1.0")
+        self.assertEqual(release["version"],"0.2.0")
+        self.assertEqual(release["tag"],"v0.2.0")
+        self.assertEqual(release["release_date"],"2026-09-21")
+        self.assertEqual(release["release_target_commit"],"51114123c19471448356aee10e487994744233a0")
         self.assertTrue(release["immutable_historical_identity"])
-        changelog=(ROOT/"CHANGELOG.md").read_text(encoding="utf-8")
-        self.assertIn(f"## {release['version']} - {release['release_date']}",changelog)
-        notes=ROOT/"releases"/"v0.1.0.md"
-        self.assertTrue(notes.is_file())
-        self.assertIn("historical v0.1.0 release snapshot",notes.read_text(encoding="utf-8"))
-
-    def test_v020_release_preparation_is_complete(self):
-        basis=self.c["versioning_basis"]
-        prep=basis["release_preparation"]
-        self.assertEqual(prep["state"],"READY_FOR_PUBLICATION_AFTER_GREEN_MAIN_CI")
-        self.assertEqual(prep["candidate_version"],"0.2.0")
-        self.assertEqual(prep["candidate_tag"],"v0.2.0")
-        self.assertEqual(prep["intended_release_date"],"2026-09-21")
-        self.assertEqual(prep["release_notes"],"releases/v0.2.0.md")
         self.assertEqual(parse_citation_field("date-released"),"2026-09-21")
-        self.assertTrue((ROOT/prep["release_notes"]).is_file())
         changelog=(ROOT/"CHANGELOG.md").read_text(encoding="utf-8")
         self.assertIn("## 0.2.0 - 2026-09-21",changelog)
-        self.assertEqual(basis["next_public_release_candidate"],"0.2.0")
+        self.assertTrue((ROOT/"releases/v0.2.0.md").is_file())
+
+    def test_v020_release_preparation_is_finalized(self):
+        basis=self.c["versioning_basis"]
+        prep=basis["release_preparation"]
+        self.assertEqual(prep["state"],"PUBLISHED_AND_FINALIZED")
+        self.assertTrue(prep["publication_complete"])
+        self.assertEqual(prep["candidate_version"],"0.2.0")
+        self.assertEqual(prep["candidate_tag"],"v0.2.0")
+        self.assertEqual(prep["exact_release_commit"],"51114123c19471448356aee10e487994744233a0")
+        self.assertEqual(prep["release_notes"],"releases/v0.2.0.md")
+        self.assertEqual(basis["next_public_release_candidate"],"0.3.0")
+        self.assertTrue(basis["unreleased_changes_present"])
         self.assertFalse(basis["version_bump_required_now"])
 
     def test_atomic_repository_surface_set_is_complete(self):
@@ -84,15 +83,17 @@ class ReleaseVersioningContractTests(unittest.TestCase):
     def test_version_bump_has_no_scientific_activation_effect(self):
         self.assertTrue(all(self.c["scientific_boundary"].values()))
 
-    def test_model_contract_registers_gated_release_preparation(self):
+    def test_model_contract_registers_finalized_release_state(self):
         model=json.loads((ROOT/"model/registries/model_contract.json").read_text(encoding="utf-8"))
         g=model["repository_governance"]
-        self.assertEqual(g["current_public_release"],"0.1.0")
+        self.assertEqual(g["current_public_release"],"0.2.0")
         self.assertEqual(g["current_repository_version"],"0.2.0")
-        self.assertEqual(g["next_public_release_candidate"],"0.2.0")
-        self.assertEqual(g["release_preparation_state"],"READY_FOR_PUBLICATION_AFTER_GREEN_MAIN_CI")
+        self.assertEqual(g["next_public_release_candidate"],"0.3.0")
+        self.assertEqual(g["release_preparation_state"],"PUBLISHED_AND_FINALIZED")
         self.assertFalse(g["release_or_version_change_authorized"])
-        self.assertTrue(g["release_publication_authorized_by_release_readiness"])
+        self.assertFalse(g["release_publication_authorized_by_release_readiness"])
+        self.assertEqual(g["last_public_release_commit"],"51114123c19471448356aee10e487994744233a0")
+        self.assertEqual(g["last_public_release_tag"],"v0.2.0")
 
     def test_release_checklist_is_user_visible(self):
         release_doc=(ROOT/"releases/README.md").read_text(encoding="utf-8")

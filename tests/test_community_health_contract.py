@@ -140,7 +140,7 @@ class CommunityHealthContractTests(unittest.TestCase):
         )
         basis = release["versioning_basis"]
         self.assertEqual(basis["current_repository_version"], "0.2.0")
-        self.assertEqual(basis["current_public_release"]["version"], "0.1.0")
+        self.assertEqual(basis["current_public_release"]["version"], "0.2.0")
         self.assertFalse(basis["version_bump_required_now"])
         prep = basis["release_preparation"]
         self.assertEqual(

@@ -4,7 +4,9 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ## Unreleased
 
-_No unreleased changes yet._
+### Repository governance
+
+- finalized the post-publication v0.2.0 governance state: recorded the immutable GitHub release/tag identity, consumed the one-shot publication authorization, advanced the current public release to v0.2.0 and set v0.3.0 as the default next substantive milestone candidate without changing any scientific model state;
 
 ## 0.2.0 - 2026-09-21
 

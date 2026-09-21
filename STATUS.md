@@ -2,7 +2,7 @@
 
 ## Release status
 
-Romanian Monetary Dynamics (RMD) v0.1.0 is the initial public scientific-core baseline. The version identifies a frozen software/model artifact. It does not imply that the behavioural closure of the model is empirically validated or ready for policy forecasting.
+Romanian Monetary Dynamics (RMD) **v0.2.0** is the current public scientific-core release, published on 2026-09-21 from the exact Scientific-CI-green commit `51114123c19471448356aee10e487994744233a0`. The v0.1.0 release remains the immutable initial baseline. Artifact version and scientific maturity remain separate: v0.2.0 does not imply behavioural closure, causal identification, calibration, forecasting readiness or policy-simulation readiness.
 
 The **Validation Recovery / Empirical Basis Expansion** stage has completed its currently admissible scientific work and is now in **EVIDENCE_TRIGGERED_BASELINE_HOLD**. This is stage completion at the current evidence boundary, not model completion: RMD remains empirically incomplete, behavioural closure remains inactive, no new calibration/refit is authorized, and release/merge/version decisions remain separate human decisions. The terminal stage assessment is `model/registries/validation_recovery_stage_terminal_assessment.json`.
 

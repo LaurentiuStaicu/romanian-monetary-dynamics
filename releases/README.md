@@ -1,17 +1,19 @@
 # Release and versioning policy
 
-Romanian Monetary Dynamics (RMD) uses Semantic Versioning-compatible version identifiers for public scientific-core artifacts. The current public release is **v0.1.0**. The scientific maturity of the model is tracked separately from the software/artifact version: a new version does not by itself mean that behavioural mechanisms are validated, the model is calibrated, or behavioural closure is active.
+Romanian Monetary Dynamics (RMD) uses Semantic Versioning-compatible version identifiers for public scientific-core artifacts. The current public release is **v0.2.0**. The scientific maturity of the model is tracked separately from the software/artifact version: a new version does not by itself mean that behavioural mechanisms are validated, the model is calibrated, or behavioural closure is active.
 
 ## Current release state
 
-- Last already-published public release: **v0.1.0**
-- Prepared repository/package release candidate: **v0.2.0**
-- Intended v0.2.0 release date: **2026-09-21**
-- Publication gate: **exact main release commit must pass Scientific CI**
+- Current public release: **v0.2.0**
+- Release date: **2026-09-21**
+- Exact release commit: `51114123c19471448356aee10e487994744233a0`
 - Release notes: **releases/v0.2.0.md**
-- Publication authorization: **model/registries/release_publication_authorization.json**
+- Publication record: **model/registries/v0_2_0_release_publication_record_2026_09_21.json**
+- One-shot publication authorization: **consumed / inactive**
+- Default next substantive milestone candidate: **v0.3.0**
+- A narrowly scoped corrective release may use **v0.2.1** when appropriate.
 
-The published v0.1.0 tag and release remain historical identities and must not be moved or rewritten. The v0.2.0 tag/GitHub Release may be created only for the exact reviewed main commit that passes the publication gate.
+The published v0.1.0 and v0.2.0 tags/releases are historical identities and must not be moved or rewritten.
 
 ## Atomic version bump checklist
 
