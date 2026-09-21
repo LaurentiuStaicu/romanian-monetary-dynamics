@@ -12,7 +12,8 @@
     "sectoral_financial_positions_precision_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_precision_diagnostic_2026_09_21.json",
     "behavioural_reopen_registry": "model/calibration_validation/mechanism_reopen_conditions_registry.json",
     "accounting_reopen_registry": "model/accounting/reopen_conditions_registry.json",
-    "current_scientific_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD"
+    "current_scientific_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+    "reference_mode_readiness": "10_OF_10_OBSERVED_REFERENCE_MODES_READY"
   },
   "monitoring_rules": {
     "no_repeated_probe_without_trigger": true,
@@ -105,18 +106,22 @@
         "post_benchmark_2025_2026_failure_persists": true,
         "window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json"
       },
-      "action_without_new_evidence": "Do not rerun the semantic-adjusted OECD value gate, do not change the 0.1 million RON historical threshold, and do not shorten or shift the historical window after observing results.",
+      "action_without_new_evidence": "Aggregate sectoral_financial_positions reference recovery is complete. Do not rerun historical precision gates. Future counterpart-topology evidence remains relevant only to bilateral Accounting Spine completion.",
       "action_if_trigger": "Create a new preregistered precision/balancing assessment first. Only if that independent assessment passes may one new value/reconciliation gate be designed; historical failed gates remain immutable.",
       "trigger_satisfied_on": "2026-09-21",
       "trigger_evidence": "ECB QFA quality reports provide an independent EUR 10 million national internal-consistency threshold, explicitly acceptable in the 2013 report and retained as the material-discrepancy threshold in the 2024 report.",
-      "trigger_status": "SATISFIED_OFFICIAL_DOMAIN_SPECIFIC_TOLERANCE_GATE_PREREGISTERED",
-      "active_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_contract_2026_09_21.json"
+      "trigger_status": "EXECUTED_PASS_REFERENCE_MODE_PROMOTED",
+      "active_gate": null,
+      "completed_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_contract_2026_09_21.json",
+      "completion_gate_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_assessment_2026_09_21.json",
+      "completion_promotion_assessment": "model/dynamics/sectoral_financial_positions_reference_mode_promotion_assessment_2026_09_21.json",
+      "current_reference_mode_status": "OBSERVED_SERIES_AVAILABLE"
     }
   ],
   "current_disposition": {
-    "any_monitoring_gate_open_now": true,
+    "any_monitoring_gate_open_now": false,
     "active_calibration_cycle_open": false,
-    "active_source_task_open": true,
+    "active_source_task_open": false,
     "active_semantic_task_open": false,
     "active_precision_task_open": false,
     "response_values_authorized_for_inspection_now": false,
