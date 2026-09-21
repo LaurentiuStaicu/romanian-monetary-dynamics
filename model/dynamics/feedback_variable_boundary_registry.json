@@ -149,15 +149,19 @@
     {
       "id": "government_interest_cost",
       "current_boundary_class": "UNRESOLVED",
-      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "current_runtime_role": "OBSERVED_RELATED_TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED_INACTIVE",
       "exact_reference_mode_id": null,
-      "classification_basis": "Observed government_interest_burden and government_effective_interest_rate targets exist, but neither is definitionally identical to the generic government_interest_cost node. No semantic bridge is inferred.",
+      "classification_basis": "Observed government_effective_interest_rate and government_interest_burden targets remain distinct from the generic node. The preferred ECB 10-year RON sovereign-yield target is a marginal long-term market signal and cannot be mapped contemporaneously one-to-one into portfolio cost or interest expenditure; matched repricing/refixing principal and rates remain unavailable.",
       "related_reference_modes": [
-        "government_interest_burden",
-        "government_effective_interest_rate"
+        "government_effective_interest_rate",
+        "government_interest_burden"
       ],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
-      "current_feedback_activation_authorized": false
+      "current_feedback_activation_authorized": false,
+      "source_boundary_review": "model/dynamics/yield_to_interest_cost_boundary_review_2026_09_21.json",
+      "preferred_portfolio_cost_target": "government_effective_interest_rate",
+      "preferred_interest_expenditure_target": "government_interest_burden",
+      "yield_to_interest_cost_bridge_status": "REVIEWED_TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED"
     },
     {
       "id": "government_securities_supply_pressure",
