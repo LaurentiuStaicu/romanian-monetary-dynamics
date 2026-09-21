@@ -51,7 +51,11 @@
       "debt_issuance_to_stock_equation_ready": false,
       "government_debt_stock_to_interest_cost_boundary_review": "model/dynamics/government_debt_stock_to_interest_cost_boundary_review_2026_09_21.json",
       "debt_stock_to_interest_cost_status": "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL",
-      "debt_stock_to_interest_cost_equation_ready": false
+      "debt_stock_to_interest_cost_equation_ready": false,
+      "structural_terminal_assessment": "model/dynamics/government_refinancing_interest_loop_terminal_assessment_2026_09_21.json",
+      "structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_CURRENT_EVIDENCE_INSUFFICIENT_EVIDENCE_TRIGGERED_HOLD",
+      "operational_state": "EVIDENCE_TRIGGERED_HOLD",
+      "active_empirical_task": null
     },
     {
       "id": "government_issuance_yield_loop",
