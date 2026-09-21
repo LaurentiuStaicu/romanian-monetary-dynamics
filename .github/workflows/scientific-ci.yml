@@ -172,6 +172,38 @@ jobs:
           if-no-files-found: error
           retention-days: 90
 
+  manual-oecd-semantic-adjusted-reference-reconciliation:
+    if: ${{ github.event_name == 'pull_request' && github.head_ref == 'model/esa2010-s1m-f2-liability-semantic-gate-2026-09-21' && github.run_attempt > 1 }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out frozen semantic-gate branch
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify ESA2010 semantic preregistration
+        run: |
+          python scripts/audit_esa2010_s1m_f2_liability_semantic_gate.py
+          python -m unittest tests.test_oecd_sectoral_financial_positions_semantic_adjusted_gate -v
+
+      - name: Run semantic-adjusted OECD aggregate reference gate
+        env:
+          OECD_SEMANTIC_REFERENCE_OUT: oecd_semantic_reference_artifacts
+        run: python scripts/audit_oecd_sectoral_financial_positions_semantic_adjusted_gate.py
+
+      - name: Upload semantic-adjusted source/reconciliation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oecd-semantic-adjusted-reference-${{ github.sha }}
+          path: oecd_semantic_reference_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+
   verify-baseline:
     runs-on: ubuntu-latest
 
@@ -215,6 +247,12 @@ jobs:
 
       - name: Audit terminal OECD exact-row gate
         run: python scripts/audit_oecd_sectoral_financial_positions_exact_row_gate.py
+
+      - name: Audit ESA2010 S1M/F2 semantic preregistration
+        run: python scripts/audit_esa2010_s1m_f2_liability_semantic_gate.py
+
+      - name: Audit terminal semantic-adjusted OECD reconciliation state
+        run: python scripts/audit_oecd_sectoral_financial_positions_semantic_adjusted_terminal.py
 
       - name: Audit F3 empirical dynamic replay
         run: python scripts/audit_f3_empirical_replay.py

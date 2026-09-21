@@ -1,0 +1,23 @@
+{
+  "manifest_version": "0.1",
+  "retained_on": "2026-09-21",
+  "source_class": "OFFICIAL_NORMATIVE_STANDARD_SEMANTIC_EVIDENCE",
+  "institution": "Eurostat / European Union",
+  "title": "European system of accounts — ESA 2010",
+  "official_url": "https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF.pdf/44cd9d01-bc64-40e5-bd40-d17df0c69334?t=1414781932000",
+  "exact_paragraphs": [
+    "2.72",
+    "2.75",
+    "2.118",
+    "5.76",
+    "5.79",
+    "5.81",
+    "5.82",
+    "5.83"
+  ],
+  "raw_pdf_retained_in_repository": false,
+  "reason_raw_pdf_not_retained": "Large third-party normative publication; repository retains exact official URL, paragraph/page references and machine-checkable semantic adjudication rather than redistributing the publication.",
+  "semantic_assessment": "model/dynamics/sectoral_financial_positions_esa2010_s1m_f2_liability_semantic_assessment_2026_09_21.json",
+  "numeric_data_used": false,
+  "prior_oecd_obs_value_reviewed": false
+}

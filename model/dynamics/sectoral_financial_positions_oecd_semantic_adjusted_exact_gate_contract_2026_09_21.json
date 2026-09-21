@@ -1,0 +1,209 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-21",
+  "reference_mode": "sectoral_financial_positions",
+  "phase": "OECD non-consolidated aggregate reference mode — ESA2010 semantic-adjusted exact gate",
+  "semantic_assessment": "model/dynamics/sectoral_financial_positions_esa2010_s1m_f2_liability_semantic_assessment_2026_09_21.json",
+  "prior_exact_row_gate": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
+  "topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
+  "purpose": "Run one new aggregate exact-value/reconciliation gate after independently establishing S1M/L/F2 as structurally not applicable under ESA 2010. All other source rows, filters, mappings, periods and tolerances remain frozen from the failed exact-row gate.",
+  "source_boundary": {
+    "institution": "OECD",
+    "flow_dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T620R_Q",
+    "stock_dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T720R_Q",
+    "reference_area": "ROU",
+    "frequency": "Q",
+    "start_period": "2014-Q1",
+    "end_period": "2026-Q1",
+    "required_source_sectors": [
+      "S1M",
+      "S11",
+      "S12",
+      "S121",
+      "S13",
+      "S2"
+    ],
+    "diagnostic_source_sectors": [
+      "S1"
+    ],
+    "accounting_entries": [
+      "A",
+      "L"
+    ],
+    "instruments": [
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "instrument_maturity": {
+      "F2": "T",
+      "F3": "T",
+      "F4": "T",
+      "F5": "_Z",
+      "F6": "_Z",
+      "F7": "T",
+      "F8": "T"
+    },
+    "fixed_dimensions": {
+      "ADJUSTMENT": "N",
+      "COUNTERPART_AREA": "W",
+      "COUNTERPART_SECTOR": "S1",
+      "CONSOLIDATION": "N",
+      "UNIT_MEASURE": "XDC",
+      "UNIT_MULT": "6",
+      "CURRENCY_DENOM": "_T",
+      "VALUATION": "S",
+      "PRICE_BASE": "V",
+      "TRANSFORMATION": "N",
+      "DEBT_BREAKDOWN": "_Z"
+    },
+    "measure_dimensions": {
+      "flow": {
+        "TRANSACTION": "F",
+        "TABLE_IDENTIFIER": "T0620"
+      },
+      "stock": {
+        "TRANSACTION": "LE",
+        "TABLE_IDENTIFIER": "T0720"
+      }
+    }
+  },
+  "semantic_exception": {
+    "exact_key_pattern": {
+      "source_sector": "S1M",
+      "accounting_entry": "L",
+      "instrument": "F2"
+    },
+    "treatment": "STRUCTURAL_ZERO_BY_ESA2010_NORMATIVE_SEMANTICS",
+    "value_million_ron": 0,
+    "requires_source_row": false,
+    "may_override_present_nonzero_row": false,
+    "rule_if_provider_supplies_row": "If a future provider response supplies an explicit S1M/L/F2 row, stop as semantic/source-boundary conflict; do not silently prefer zero."
+  },
+  "sector_mapping": {
+    "H": {
+      "terms": [
+        [
+          "S1M",
+          1
+        ]
+      ]
+    },
+    "C": {
+      "terms": [
+        [
+          "S11",
+          1
+        ]
+      ]
+    },
+    "F": {
+      "terms": [
+        [
+          "S12",
+          1
+        ],
+        [
+          "S121",
+          -1
+        ]
+      ]
+    },
+    "G": {
+      "terms": [
+        [
+          "S13",
+          1
+        ]
+      ]
+    },
+    "BNR": {
+      "terms": [
+        [
+          "S121",
+          1
+        ]
+      ]
+    },
+    "X": {
+      "terms": [
+        [
+          "S2",
+          1
+        ]
+      ]
+    }
+  },
+  "exact_row_gate": {
+    "every_non_exception_required_row_must_be_present_exactly_once": true,
+    "semantic_exception_must_be_absent_in_provider_response": true,
+    "no_other_missing_rows": true,
+    "no_duplicate_rows": true,
+    "row_gate_precedes_obs_value_review": true,
+    "minimum_common_quarters": 40,
+    "required_2025_quarters": [
+      "2025-Q1",
+      "2025-Q2",
+      "2025-Q3",
+      "2025-Q4"
+    ]
+  },
+  "value_and_reconciliation_gate": {
+    "inspect_obs_value_only_after_row_gate_pass": true,
+    "finite_values_required": true,
+    "constructed_net": "assets - liabilities after instrument summation and semantic structural-zero insertion",
+    "stock_system_residual_tolerance_million_ron": 0.1,
+    "flow_system_residual_tolerance_million_ron": 0.1,
+    "identity": "For each common quarter, H+C+F+G+BNR+X net represented position/transaction must reconcile to zero within frozen tolerance.",
+    "source_diagnostics": [
+      "S1 minus S11+S12+S13+S1M",
+      "S1 plus S2"
+    ],
+    "diagnostics_may_not_rescue_failure": true
+  },
+  "promotion_rule": "Only a full PASS of row, finite-value, stock reconciliation and flow reconciliation gates over at least 40 common quarters including all 2025 quarters may authorize a separate explicit reference-mode promotion assessment. This contract itself cannot promote the mode.",
+  "failure_rule": "Any non-exception missing row, any duplicate, any explicit provider S1M/L/F2 row conflicting with the semantic-zero rule, any non-finite value, or any reconciliation breach leaves the mode partial and closes this semantic-adjusted path.",
+  "hard_rules": {
+    "no_missing_to_zero_except_preregistered_semantic_key": true,
+    "no_semantic_exception_expansion": true,
+    "no_filter_change_after_preregistration": true,
+    "no_sector_mapping_change_after_preregistration": true,
+    "no_tolerance_change_after_preregistration": true,
+    "no_interpolation": true,
+    "no_stock_difference_flow_proxy": true,
+    "no_residual_allocation": true,
+    "no_post_result_sector_dropping": true,
+    "no_bilateral_accounting_completion_claim": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true
+  },
+  "execution_policy": {
+    "live_execution_manual_only": true,
+    "exact_branch": "model/esa2010-s1m-f2-liability-semantic-gate-2026-09-21",
+    "manual_job": "manual-oecd-semantic-adjusted-reference-reconciliation",
+    "initial_pull_request_attempt_behavior": "SKIP",
+    "activation_condition": "pull_request on exact branch AND github.run_attempt > 1",
+    "scientific_effect_while_pending": "NONE"
+  },
+  "execution_result": {
+    "executed": true,
+    "result": "FAIL_FROZEN_RECONCILIATION_TOLERANCE_NO_PROMOTION",
+    "terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
+    "workflow_run_id": 35592244173,
+    "workflow_job_id": 106309246518,
+    "artifact_id": 10634064870,
+    "row_gate_pass": true,
+    "numeric_observation_value_review_performed": true,
+    "finite_value_gate_pass": true,
+    "reconciliation_test_performed": true,
+    "reconciliation_violation_count": 63,
+    "max_abs_flow_residual_million_ron": 0.5000000000075033,
+    "max_abs_stock_residual_million_ron": 0.5999999999476131,
+    "tolerance_relaxation_authorized": false
+  }
+}

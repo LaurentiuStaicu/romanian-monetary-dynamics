@@ -257,7 +257,12 @@
     "sectoral_financial_positions_oecd_topology_status": "PASS_PUBLIC_NONCONSOLIDATED_SECTOR_STOCK_FLOW_TOPOLOGY",
     "sectoral_financial_positions_oecd_exact_gate": "model/dynamics/sectoral_financial_positions_oecd_exact_extraction_reconciliation_contract_2026_09_21.json",
     "sectoral_financial_positions_oecd_exact_gate_status": "FAIL_EXACT_REQUIRED_ROW_COVERAGE_S1M_L_F2_MISSING_ALL_PERIODS",
-    "sectoral_financial_positions_oecd_exact_gate_assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json"
+    "sectoral_financial_positions_oecd_exact_gate_assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
+    "sectoral_financial_positions_esa2010_semantic_assessment": "model/dynamics/sectoral_financial_positions_esa2010_s1m_f2_liability_semantic_assessment_2026_09_21.json",
+    "sectoral_financial_positions_esa2010_semantic_status": "PASS_S1M_L_F2_STRUCTURALLY_NOT_APPLICABLE",
+    "sectoral_financial_positions_semantic_adjusted_gate": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_exact_gate_contract_2026_09_21.json",
+    "sectoral_financial_positions_semantic_adjusted_gate_status": "EXECUTED_FAIL_FROZEN_RECONCILIATION_TOLERANCE_NO_PROMOTION",
+    "sectoral_financial_positions_semantic_adjusted_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
@@ -330,7 +335,11 @@
     "post_terminal_source_topology_trigger_assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
     "active_noncalibration_source_subtask": null,
     "active_noncalibration_source_subtask_contract": null,
-    "post_terminal_source_topology_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json"
+    "post_terminal_source_topology_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
+    "post_terminal_semantic_reopen_task": null,
+    "post_terminal_semantic_reopen_contract": null,
+    "post_terminal_semantic_reopen_status": "EXECUTED_FAIL_RETURNED_TO_BASELINE_HOLD",
+    "post_terminal_semantic_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",

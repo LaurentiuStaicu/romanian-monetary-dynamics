@@ -80,6 +80,20 @@ The terminal assessment is `model/dynamics/sectoral_financial_positions_oecd_exa
 The source-topology task is therefore closed and RMD has returned to **EVIDENCE_TRIGGERED_BASELINE_HOLD**. The canonical state remains **9/10 reference modes ready**; `sectoral_financial_positions` remains `PARTIAL_SERIES_AVAILABLE`; F3 remains the only canonically complete stock-and-flow Accounting Spine instrument; calibration/refit, parameter estimation, feedback activation and behavioural closure remain closed. Reopening requires genuinely changed official evidence that supplies the missing exact boundary, or an independently preregistered official semantic/applicability basis established before a new value gate.
 
 
+
+### ESA 2010 semantic applicability gate for S1M / liabilities / F2 — 2026-09-21
+
+After the first OECD exact-row gate failed on the sole missing pattern `S1M / L / F2`, RMD did **not** convert that absence to zero. A separate normative-source review used ESA 2010 before any new value gate. ESA classifies currency issuance with monetary authorities, deposits with deposit-taking corporations (and in some cases central government as debtor), and overdrafts as loans rather than negative deposits. The assessment therefore classified `S1M / liabilities / F2` as structurally not applicable on the ESA 2010 boundary and preregistered one narrow structural-zero exception.
+
+The semantic-adjusted OECD gate was then executed without changing sectors, instruments, periods, mappings or tolerances. The row gate passed completely: there were no non-exception missing rows, no duplicates and no explicit provider `S1M/L/F2` rows conflicting with the semantic rule. Numerical observations were then reviewed and all selected values were finite.
+
+The final reconciliation gate **failed** at the frozen tolerance of **0.1 million RON**. Across 98 measure-quarter tests there were **63 violations**: 27 for financial transactions and 36 for stocks. The maximum absolute system residual was about **0.5 million RON for flows** and **0.6 million RON for stocks**. The same small scale appears in source-level diagnostics (`S1` versus resident components and `S1 + S2`), but no official quantitative dissemination-rounding tolerance had been preregistered that would authorize relaxing the threshold after seeing the result.
+
+The terminal assessment is `model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json`. The semantic applicability finding is retained, but the aggregate reference-mode path is closed again. `sectoral_financial_positions` remains `PARTIAL_SERIES_AVAILABLE`, the global readiness remains **9/10**, Accounting Spine readiness is unchanged, and no parameter estimation, feedback activation or behavioural closure is authorized.
+
+No immediate rerun is authorized. A future reopen requires materially changed official evidence affecting the public numerical precision/balancing boundary, or an independent official dissemination-precision rule established and preregistered **before** any future value gate. The observed 0.5–0.6 million RON residuals alone do not authorize a new tolerance.
+
+
 ### Government refinancing–interest loop structural closure — 2026-09-21
 
 The complete declared path of the `government_refinancing_interest_loop` has now received explicit structural/accounting boundary review. The qualitative reinforcing topology is retained, but the loop is **not quantitatively active**.
