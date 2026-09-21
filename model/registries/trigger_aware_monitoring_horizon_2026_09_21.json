@@ -105,8 +105,16 @@
         "post_benchmark_2025_2026_failure_persists": true,
         "window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json"
       },
-      "action_without_new_evidence": "Do not rerun the semantic-adjusted OECD value gate, do not change the 0.1 million RON historical threshold, and do not shorten or shift the historical window after observing results.",
-      "action_if_trigger": "Create a new preregistered precision/balancing assessment first. Only if that independent assessment passes may one new value/reconciliation gate be designed; historical failed gates remain immutable."
+      "action_without_new_evidence": "No further precision-recovery probing is required for reference-mode readiness. Historical 0.1 million RON gates remain immutable diagnostics; future source revisions are new-vintage maintenance, not prerequisites for the 10/10 reference-mode state.",
+      "action_if_trigger": "RESOLVED_2026_09_21",
+      "trigger_resolution": {
+        "status": "SATISFIED_AND_CLOSED_REFERENCE_MODE_PROMOTED",
+        "evidence": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_assessment_2026_09_21.json",
+        "gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_assessment_2026_09_21.json",
+        "promotion": "model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json",
+        "result": "Official ECB QFA EUR 10 million materiality benchmark found; instrument-level gate passed 0/2156 violations and sectoral_financial_positions was promoted to OBSERVED_SERIES_AVAILABLE.",
+        "further_monitoring_required": false
+      }
     }
   ],
   "current_disposition": {
