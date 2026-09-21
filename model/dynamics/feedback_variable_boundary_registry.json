@@ -121,14 +121,18 @@
       "financing_channel_materialisation_contract_status": "FROZEN_CUMULATIVE_YTD_ONLY_MONTHLY_DIFFERENCING_NOT_AUTHORIZED",
       "financing_channel_source_vintage_manifest": "data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21/source_vintage_manifest.json",
       "financing_channel_source_vintage_assessment": "model/dynamics/mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json",
-      "financing_channel_source_vintage_status": "PASS_FULL_2025_EXACT_CUMULATIVE_YTD_MONTHLY_DIFFERENCING_BLOCKED"
+      "financing_channel_source_vintage_status": "PASS_FULL_2025_EXACT_CUMULATIVE_YTD_MONTHLY_DIFFERENCING_BLOCKED",
+      "government_debt_issuance_to_debt_stock_boundary_review": "model/dynamics/government_debt_issuance_to_debt_stock_boundary_review_2026_09_21.json",
+      "debt_issuance_to_stock_status": "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED",
+      "matched_net_debt_transaction_stream_identified": false,
+      "gross_borrowing_to_debt_stock_one_to_one_authorized": false
     },
     {
       "id": "government_debt_stock",
       "current_boundary_class": "UNRESOLVED",
       "current_runtime_role": "OBSERVED_TARGET_AVAILABLE_INACTIVE_FEEDBACK_NODE",
       "exact_reference_mode_id": "government_debt_stock",
-      "classification_basis": "An observed Maastricht-debt reference target exists, but the feedback node's integrated endogenous stock boundary is not frozen and must not be conflated with market-valued holder-by-issuer Accounting Spine positions.",
+      "classification_basis": "An observed Maastricht-debt reference target exists, but the feedback node's integrated endogenous stock transition is not frozen. Gross borrowing is not net debt accumulation: a matched transition requires redemptions/principal repayments, consolidation and EDP stock-flow adjustments on the S13 nominal/face-value boundary.",
       "related_reference_modes": [
         "government_debt_stock"
       ],
@@ -141,7 +145,11 @@
           "scope": "GENERAL_GOVERNMENT_F3_HOLDER_COMPOSITION_AND_NET_INCURRANCE_2025",
           "effect": "PARTIAL_ONLY: market-valued ESA F3 liabilities are an instrument subset and are not the Maastricht nominal/face-value debt-stock reference target."
         }
-      ]
+      ],
+      "government_debt_issuance_to_debt_stock_boundary_review": "model/dynamics/government_debt_issuance_to_debt_stock_boundary_review_2026_09_21.json",
+      "debt_issuance_to_stock_status": "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED",
+      "exact_stock_transition_ready": false,
+      "endogenous_stock_boundary_frozen": false
     },
     {
       "id": "government_financing_need",
