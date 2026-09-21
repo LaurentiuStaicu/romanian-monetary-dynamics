@@ -66,8 +66,15 @@ def audit_f5_oecd_counterpart_reopen() -> list[str]:
         errors.append("F5 reopen registry does not register Stage 2 contract")
     if f5.get("selective_reopen_assessment") != ASSESSMENT:
         errors.append("F5 reopen registry does not register trigger assessment")
+    allowed_successor_states = {
+        "PREREGISTERED_STAGE2_PENDING_EXECUTION",
+        "STAGE2_EXECUTED_FAIL_SOURCE_AGGREGATE_RECONCILIATION_RETURNED_TO_HOLD",
+    }
+    if f5.get("selective_reopen_state") not in allowed_successor_states:
+        errors.append("F5 selective reopen successor state is invalid")
     if f5.get("selective_reopen_state") != "PREREGISTERED_STAGE2_PENDING_EXECUTION":
-        errors.append("F5 selective reopen state is stale")
+        if f5.get("selective_reopen_execution_assessment") != "model/accounting/f5_oecd_counterpart_stage2_execution_assessment_2026_09_21.json":
+            errors.append("F5 successor state lacks the Stage 2 execution assessment")
     if f5.get("reopen_trigger_satisfied") is not True:
         errors.append("F5 reopen trigger is not registered as satisfied")
 
