@@ -6,7 +6,10 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from scripts.generate_f4_partial_from_snapshot import DEFAULT_VINTAGE, load_vintage
+try:
+    from scripts.generate_f4_partial_from_snapshot import DEFAULT_VINTAGE, load_vintage
+except ModuleNotFoundError:
+    from generate_f4_partial_from_snapshot import DEFAULT_VINTAGE, load_vintage
 
 ROOT = Path(__file__).resolve().parents[1]
 SECTORS = ("H", "C", "F", "G", "X", "BNR")
