@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- reviewed `debt_service_and_credit_risk → credit_supply_capacity`: NPL/DSTI, prudential capital/funding states and BLS lending standards are related but non-identical dimensions; no scalar credit-supply-capacity measure, exogenous NPL shock or synthetic prudential index is promoted;
 - reviewed the `loan_stock → debt_service_and_credit_risk` boundary: outstanding credit is exposure scale, not debt-service burden or NPL state; aggregate NPL and narrower housing-loan DSTI evidence remain non-interchangeable, so the combined risk node stays unresolved and no proxy-based feedback equation is introduced;
 - reviewed the bank-credit `credit_flow → loan_stock` boundary on the exact ECB BSI private non-financial credit universe: published financial transactions are not stock first differences, non-transaction adjustments remain required, the loan-stock reference target is frozen to `credit_stock`, and no endogenous stock equation or feedback activation is introduced;
 - closed the current government issuance-yield candidate loop at the present evidence boundary: 0/5 links have exact integrated equations, all five nodes remain unresolved, the supply-source path remains trigger-gated with three official acts missing, the tested sovereign-yield form remains FAIL_BEFORE_HOLDOUT, both delays remain TBD, and the loop enters evidence-triggered hold with no active empirical task;
