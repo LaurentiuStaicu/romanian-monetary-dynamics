@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- reviewed `policy_rate → market_and_lending_rates`: the frozen household-housing pass-through remains target-specific and unvalidated, with no NFC form or generic market/outstanding-rate mapping; no target-specific form is promoted into the generic monetary-transmission link;
 - completed the structural review cycle for `bank_credit_balance_sheet_loop`: all four links now have explicit boundaries but 0/4 exact integrated equations are ready; supply-demand identification, debt-service/risk alignment, prudential population matching and both delay parameters remain blocked, so the loop enters evidence-triggered hold with no active empirical task;
 - reviewed `credit_supply_capacity → credit_flow`: realized ECB BSI credit transactions reflect both lending supply conditions and borrower demand, so credit flow is not a supply-only measure and no capacity-to-flow identity, inferred-demand shortcut or synthetic sector aggregation is admitted;
 - reviewed `debt_service_and_credit_risk → credit_supply_capacity`: NPL/DSTI, prudential capital/funding states and BLS lending standards are related but non-identical dimensions; no scalar credit-supply-capacity measure, exogenous NPL shock or synthetic prudential index is promoted;
