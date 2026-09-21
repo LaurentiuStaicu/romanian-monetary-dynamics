@@ -6,13 +6,13 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 H=ROOT/"model/registries/trigger_aware_monitoring_horizon_2026_09_21.json"
 M=ROOT/"model/registries/model_contract.json"
-B=ROOT/"model/registries/scientific_baseline_manifest.json"
+B=ROOT/"model/registries/scientific_baseline_manifest.json"\nS=ROOT/"model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_reference_closure.json"
 
 def audit_trigger_horizon_2026_09_21():
     e=[]
     h=json.loads(H.read_text(encoding="utf-8"))
     m=json.loads(M.read_text(encoding="utf-8"))
-    b=json.loads(B.read_text(encoding="utf-8"))
+    b=json.loads(B.read_text(encoding="utf-8"))\n    successor=json.loads(S.read_text(encoding="utf-8"))
     if h["supersedes"]!="model/registries/trigger_aware_monitoring_horizon_2026_09_20.json":
         e.append("monitoring-horizon lineage changed")
     if h["governing_state"]["current_scientific_state"]!="EVIDENCE_TRIGGERED_BASELINE_HOLD":
@@ -46,13 +46,19 @@ def audit_trigger_horizon_2026_09_21():
     if d["next_dated_check"]!={"date":"2026-10-08","id":"prospective_monetary_policy_event"}:
         e.append("next dated check changed")
     s=m["scientific_stage"]
-    if s.get("trigger_aware_monitoring_horizon")!="model/registries/trigger_aware_monitoring_horizon_2026_09_21.json":
-        e.append("model contract does not point to successor monitoring horizon")
+    current="model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_reference_closure.json"
+    predecessor="model/registries/trigger_aware_monitoring_horizon_2026_09_21.json"
+    if successor.get("supersedes")!=predecessor:
+        e.append("post-reference-closure horizon does not preserve 2026-09-21 predecessor")
+    if s.get("trigger_aware_monitoring_horizon")!=current:
+        e.append("model contract does not point to post-reference-closure horizon")
+    if s.get("previous_trigger_aware_monitoring_horizon")!=predecessor:
+        e.append("model contract does not preserve 2026-09-21 horizon as predecessor")
     bs=b["canonical_state"]["scientific_stage"]
-    if bs.get("trigger_aware_monitoring_horizon")!="model/registries/trigger_aware_monitoring_horizon_2026_09_21.json":
-        e.append("baseline manifest does not point to successor monitoring horizon")
-    if bs.get("previous_trigger_aware_monitoring_horizon")!="model/registries/trigger_aware_monitoring_horizon_2026_09_20.json":
-        e.append("baseline manifest does not preserve predecessor horizon")
+    if bs.get("trigger_aware_monitoring_horizon")!=current:
+        e.append("baseline manifest does not point to post-reference-closure horizon")
+    if bs.get("previous_trigger_aware_monitoring_horizon")!=predecessor:
+        e.append("baseline manifest does not preserve 2026-09-21 horizon as predecessor")
     if s["next_operational_state"]!="EVIDENCE_TRIGGERED_BASELINE_HOLD":
         e.append("model operational state changed")
     return e
@@ -66,7 +72,7 @@ def main():
         "monitoring_gate_open":False,
         "next_dated_check":"2026-10-08",
         "next_dated_check_id":"prospective_monetary_policy_event",
-        "precision_reopen_requires":"NEW_OFFICIAL_DOMAIN_SPECIFIC_PRECISION_EVIDENCE",
+        "historical_precision_reopen_requirement":"NEW_OFFICIAL_DOMAIN_SPECIFIC_PRECISION_EVIDENCE",
         "scientific_state":"EVIDENCE_TRIGGERED_BASELINE_HOLD"
     },indent=2))
 
