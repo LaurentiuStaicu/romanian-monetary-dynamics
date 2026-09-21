@@ -207,7 +207,7 @@ Retained historical source material is under [data/source_vintages/](data/source
 
 ### Release state
 
-Repository metadata is prepared for **v0.2.0**, the structural-review and reproducibility milestone. Publication is gated on Scientific CI passing on the exact main release commit; until the corresponding tag and GitHub Release exist, **v0.1.0** remains the last already-published historical release.
+The latest public scientific-core release is **v0.2.0 — Structural review and reproducibility milestone**, published from the exact Scientific-CI-green release commit. Main now contains post-release governance finalization beyond that immutable snapshot. The default next substantive milestone candidate is **v0.3.0**; a narrowly scoped corrective release may instead use **v0.2.1**.
 
 Version changes are governed atomically by [releases/README.md](releases/README.md) and [model/registries/release_versioning_contract.json](model/registries/release_versioning_contract.json).
 
