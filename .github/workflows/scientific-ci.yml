@@ -213,6 +213,9 @@ jobs:
       - name: Audit policy-rate to market-and-lending-rates boundary
         run: python scripts/audit_policy_rate_to_market_and_lending_rates_boundary.py
 
+      - name: Audit market-and-lending-rates to credit-flow boundary
+        run: python scripts/audit_market_and_lending_rates_to_credit_flow_boundary.py
+
       - name: Audit government debt-stock to interest-cost accounting boundary
         run: python scripts/audit_government_debt_stock_to_interest_cost_boundary.py
 
