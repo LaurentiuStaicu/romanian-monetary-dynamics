@@ -298,6 +298,9 @@ jobs:
       - name: Audit ECB QFA 10m horizontal-gate preregistration
         run: python scripts/audit_ecb_qfa_10m_horizontal_gate_preregistration.py
 
+      - name: Audit executed ECB QFA 10m horizontal gate
+        run: python scripts/audit_ecb_qfa_10m_horizontal_gate_execution.py
+
       - name: Audit successor trigger-aware monitoring horizon
         run: python scripts/audit_trigger_aware_monitoring_horizon_2026_09_21.py
 
