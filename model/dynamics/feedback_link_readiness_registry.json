@@ -35,7 +35,9 @@
       "equation_pointer": null,
       "current_activation_authorized": false,
       "reason": "Government financing need is met through multiple domestic, retail, external-market and official-sector channels. The retained BNR domestic primary-market issuance series is one observed channel only. No exact channel-allocation vector or shares are identified, so the generic financing-need to debt-issuance link is not equation-ready.",
-      "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json"
+      "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
+      "financing_channel_materialisation_contract": "model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json",
+      "monthly_differencing_authorized": false
     },
     {
       "link_key": "government_refinancing_interest_loop|government_debt_issuance|government_debt_stock",
@@ -187,7 +189,9 @@
       "current_activation_authorized": false,
       "reason": "Government financing need is met through multiple domestic, retail, external-market and official-sector channels. The retained BNR domestic primary-market issuance series is one observed channel only. No exact channel-allocation vector or shares are identified, so the generic financing-need to debt-issuance link is not equation-ready.",
       "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
-      "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json"
+      "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
+      "financing_channel_materialisation_contract": "model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json",
+      "monthly_differencing_authorized": false
     },
     {
       "link_key": "bank_credit_balance_sheet_loop|credit_flow|loan_stock",
