@@ -127,7 +127,12 @@
       "financing_need_to_debt_issuance_equation_ready": false,
       "financing_channel_source_vintage_assessment": "model/dynamics/mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json",
       "financing_channel_source_vintage_status": "PASS_FULL_2025_EXACT_CUMULATIVE_YTD_MONTHLY_DIFFERENCING_BLOCKED",
-      "financing_channel_monthly_differencing_authorized": false
+      "financing_channel_monthly_differencing_authorized": false,
+      "structural_terminal_assessment": "model/dynamics/government_issuance_yield_loop_terminal_assessment_2026_09_21.json",
+      "structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_SOURCE_AND_IDENTIFICATION_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
+      "operational_state": "EVIDENCE_TRIGGERED_HOLD",
+      "active_empirical_task": null,
+      "reopen_trigger_required": true
     },
     {
       "id": "bank_credit_balance_sheet_loop",

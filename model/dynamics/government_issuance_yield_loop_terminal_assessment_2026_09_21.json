@@ -1,0 +1,201 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "government_issuance_yield_loop_terminal_assessment",
+  "loop_id": "government_issuance_yield_loop",
+  "purpose": "Close the current structural/source-boundary review cycle for the government issuance-yield candidate loop after the financing, supply-pressure, yield-target, repricing and financing-need boundaries have been explicitly reviewed, and determine whether any further current-evidence task is admissible without synthetic measurement, post-result respecification or behavioural activation.",
+  "decision": "STRUCTURAL_REVIEW_COMPLETE_SOURCE_AND_IDENTIFICATION_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
+  "topology": {
+    "status": "CLOSED_CANDIDATE_LOOP",
+    "polarity_hypothesis": "reinforcing_candidate",
+    "qualitative_topology_retained": true,
+    "quantitatively_active": false,
+    "behavioural_closure_active": false
+  },
+  "path_link_state": [
+    {
+      "from": "government_debt_issuance",
+      "to": "government_securities_supply_pressure",
+      "status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "exact_integrated_equation_ready": false,
+      "evidence": [
+        "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
+        "model/dynamics/government_securities_supply_measurement_design_review_2026_09_20.json",
+        "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json"
+      ],
+      "blocker": "The supply-pressure umbrella remains multidimensional; no scalar pressure measure is selected and the exact full-year announced-RON reference-auction source remains incomplete for three required official acts."
+    },
+    {
+      "from": "government_securities_supply_pressure",
+      "to": "sovereign_yield",
+      "status": "TARGET_BOUNDARY_AVAILABLE_LINK_FORM_UNRESOLVED",
+      "exact_integrated_equation_ready": false,
+      "evidence": [
+        "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+        "model/calibration_validation/sovereign_yield_structural_selection_result.json"
+      ],
+      "blocker": "The preferred ECB long-term RON target boundary is explicit, but the supply-pressure input is unresolved and the preregistered sovereign-yield behavioural form failed before holdout."
+    },
+    {
+      "from": "sovereign_yield",
+      "to": "government_interest_cost",
+      "status": "TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED",
+      "exact_integrated_equation_ready": false,
+      "evidence": [
+        "model/dynamics/yield_to_interest_cost_boundary_review_2026_09_21.json",
+        "model/calibration_validation/government_repricing_ledger_assessment.json"
+      ],
+      "blocker": "Observed yield and cost targets exist, but matched repriced principal and matched old/new rates are unavailable."
+    },
+    {
+      "from": "government_interest_cost",
+      "to": "government_financing_need",
+      "status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
+      "exact_integrated_equation_ready": false,
+      "evidence": [
+        "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json"
+      ],
+      "blocker": "Accounting forms are known but no single matched canonical gross-financing-need boundary is selected."
+    },
+    {
+      "from": "government_financing_need",
+      "to": "government_debt_issuance",
+      "status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
+      "exact_integrated_equation_ready": false,
+      "evidence": [
+        "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
+        "model/dynamics/mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json"
+      ],
+      "blocker": "Government financing is multi-channel and no exact realized allocation vector is identified."
+    }
+  ],
+  "integrated_readiness": {
+    "path_link_count": 5,
+    "exact_integrated_link_forms_ready": 0,
+    "unresolved_boundary_nodes": [
+      "government_debt_issuance",
+      "government_securities_supply_pressure",
+      "sovereign_yield",
+      "government_interest_cost",
+      "government_financing_need"
+    ],
+    "activation_status": "BLOCKED",
+    "blockers": [
+      "EXACT_LINK_EQUATION_COVERAGE_INCOMPLETE",
+      "UNRESOLVED_FEEDBACK_BOUNDARY_NODES",
+      "DELAY_SPECIFICATION_NOT_ACTIVATION_READY",
+      "NO_ACTIVATED_EMPIRICAL_MECHANISM"
+    ],
+    "quantitative_activation_authorized": false
+  },
+  "activation_gate_snapshot": {
+    "source": "model/dynamics/feedback_activation_criteria_matrix.json",
+    "passed_criteria_count": 1,
+    "partial_criteria_count": 3,
+    "blocked_criteria_count": 9,
+    "not_assessable_criteria_count": 1,
+    "all_requirements_pass": false,
+    "quantitative_activation_authorized": false
+  },
+  "supply_source_state": {
+    "assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
+    "state": "EVIDENCE_TRIGGERED_HOLD",
+    "retained_required_source_count": 9,
+    "required_missing_source_count": 3,
+    "exact_final_month_count": 10,
+    "event_level_complete_final_month_count": 9,
+    "missing_source_ids": [
+      "mof_order_1221_august_2025",
+      "mof_order_1795_november_2025",
+      "mof_order_1998_december_2025_amendment"
+    ],
+    "canonical_reference_mode_promoted": false,
+    "active_polling": false
+  },
+  "behavioural_link_state": {
+    "mechanism_id": "sovereign_yield_spread_response",
+    "classification": "CANDIDATE",
+    "admitted_behavioural_form": false,
+    "tested_form": "fiscal_augmented_common_market_ar",
+    "structural_selection_result": "model/calibration_validation/sovereign_yield_structural_selection_result.json",
+    "selection_verdict": "FAIL_BEFORE_HOLDOUT",
+    "final_evaluation_opened": false,
+    "causal_claim_allowed": false,
+    "system_dynamics_activation": false,
+    "interpretation": "The failed tested form is frozen for this cycle. It cannot be rescued by post-result lag search, added issuance variables, alternative fiscal controls or final-holdout inspection."
+  },
+  "delay_state": [
+    {
+      "delay_id": "portfolio_reallocation_delay",
+      "current_tau": "TBD",
+      "evidence_status": "NO_MATCHED_DELAY_PARAMETER_EVIDENCE",
+      "scalar_tau_activation_ready": false
+    },
+    {
+      "delay_id": "debt_service_maturity_delay",
+      "current_tau": "TBD",
+      "evidence_status": "DISTRIBUTED_TIMING_EVIDENCE_SCALAR_TAU_NOT_IDENTIFIED",
+      "scalar_tau_activation_ready": false
+    }
+  ],
+  "no_further_current_evidence_task_findings": {
+    "repeat_missing_source_polling_scientifically_useful": false,
+    "synthetic_supply_pressure_scalar_authorized": false,
+    "post_hoc_primary_yield_aggregation_authorized": false,
+    "failed_sovereign_yield_form_refit_authorized": false,
+    "final_holdout_opening_authorized": false,
+    "aggregate_proxy_repricing_fit_authorized": false,
+    "residual_financing_channel_allocation_authorized": false,
+    "interpretation": "The currently identified source and structural paths have been exhausted without satisfying empirical closure. Further progress requires genuinely new official source material or a separately preregistered identification cycle rather than repeated unchanged-source probing or post-result model modification."
+  },
+  "reopen_triggers": [
+    {
+      "id": "missing_announced_supply_official_sources",
+      "requirement": "A stable exact official raw source becomes reproducibly available for OMF 1221/2025, OMF 1795/2025 or OMF 1998/2025, allowing only the affected source boundary to be rematerialised."
+    },
+    {
+      "id": "exact_supply_pressure_measurement_evidence",
+      "requirement": "Reproducible exact observations for a preregistered supply-pressure measurement design, including any required auction absorption, bid-to-cover, liquidity or capacity boundary, sufficient to define the causal input without a synthetic scalar."
+    },
+    {
+      "id": "new_sovereign_yield_identification_evidence",
+      "requirement": "Genuinely new measurement or identification evidence justifying a separately preregistered sovereign-yield structural-selection cycle; the failed 2026-09-19 form remains frozen."
+    },
+    {
+      "id": "matched_government_repricing_ledger",
+      "requirement": "Same-boundary opening principal, realized repriced/refinanced or reset principal, and matched old/new rates sufficient to identify yield-to-cost propagation."
+    },
+    {
+      "id": "matched_realized_financing_channel_allocation",
+      "requirement": "Official/reproducible time-aligned realized financing flows by material channel sufficient to identify allocation from financing need without residual or synthetic shares."
+    },
+    {
+      "id": "canonical_government_financing_need_boundary",
+      "requirement": "A matched documented GFN accounting boundary preserving deficit, interest, refinancing and stock-flow-adjustment semantics."
+    }
+  ],
+  "disposition": {
+    "structural_review_complete": true,
+    "current_operational_state": "EVIDENCE_TRIGGERED_HOLD",
+    "active_empirical_task": null,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "final_holdout_opening_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false,
+    "qualitative_topology_changed": false
+  },
+  "next_state": {
+    "id": "government_issuance_yield_loop_evidence_triggered_hold",
+    "authorization": "NO_ACTIVE_TASK_UNTIL_DECLARED_REOPEN_TRIGGER",
+    "reopen_trigger_required": true,
+    "may_poll_unchanged_sources": false,
+    "may_refit_failed_behavioural_form": false,
+    "may_open_final_holdout": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false,
+    "may_relax_existing_gates": false
+  }
+}

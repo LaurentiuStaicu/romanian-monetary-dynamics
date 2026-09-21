@@ -174,7 +174,12 @@
     "government_refinancing_interest_loop_terminal_assessment": "model/dynamics/government_refinancing_interest_loop_terminal_assessment_2026_09_21.json",
     "government_refinancing_interest_loop_structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_CURRENT_EVIDENCE_INSUFFICIENT_EVIDENCE_TRIGGERED_HOLD",
     "government_refinancing_interest_loop_operational_state": "EVIDENCE_TRIGGERED_HOLD",
-    "government_refinancing_interest_loop_active_empirical_task": null
+    "government_refinancing_interest_loop_active_empirical_task": null,
+    "government_issuance_yield_loop_terminal_assessment": "model/dynamics/government_issuance_yield_loop_terminal_assessment_2026_09_21.json",
+    "government_issuance_yield_loop_structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_SOURCE_AND_IDENTIFICATION_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
+    "government_issuance_yield_loop_operational_state": "EVIDENCE_TRIGGERED_HOLD",
+    "government_issuance_yield_loop_active_empirical_task": null,
+    "government_issuance_yield_loop_reopen_trigger_required": true
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
