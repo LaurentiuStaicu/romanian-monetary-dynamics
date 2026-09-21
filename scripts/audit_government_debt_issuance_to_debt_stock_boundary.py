@@ -152,16 +152,16 @@ def audit_government_debt_issuance_to_debt_stock_boundary(
     next_task = prereg["next_independent_bridge_task"]
     if next_task["id"] != NEXT_GATE:
         errors.append("preregistration next independent bridge changed")
-    if next_task["authorization"] != "STRUCTURAL_ACCOUNTING_SOURCE_BOUNDARY_REVIEW_ONLY":
-        errors.append("next independent bridge authorization changed")
+    if next_task["authorization"] != "STRUCTURAL_TERMINAL_ASSESSMENT_ONLY":
+        errors.append("next independent task authorization changed")
     for key in (
-        "may_map_debt_stock_level_one_to_one_to_interest_cost",
         "may_estimate_parameters",
         "may_activate_feedback",
         "may_change_behavioural_closure",
+        "may_relax_existing_gates",
     ):
         if next_task[key] is not False:
-            errors.append(f"next independent bridge may not authorize {key}")
+            errors.append(f"next independent task may not authorize {key}")
 
     dynamic = model_contract["dynamic_core"]
     if dynamic.get("government_debt_issuance_to_debt_stock_boundary_review") != REVIEW_PATH:
