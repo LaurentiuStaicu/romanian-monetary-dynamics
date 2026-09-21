@@ -1,0 +1,149 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "government_refinancing_interest_loop_terminal_assessment",
+  "loop_id": "government_refinancing_interest_loop",
+  "purpose": "Close the current structural/accounting review cycle for the government refinancing-interest candidate loop after every declared path link has an explicit boundary review, and determine whether any further task is scientifically admissible under the current evidence without synthetic closure, relaxed gates or unauthorized estimation.",
+  "decision": "STRUCTURAL_REVIEW_COMPLETE_CURRENT_EVIDENCE_INSUFFICIENT_EVIDENCE_TRIGGERED_HOLD",
+  "topology": {
+    "status": "CLOSED_CANDIDATE_LOOP",
+    "polarity_hypothesis": "reinforcing",
+    "qualitative_topology_retained": true,
+    "quantitatively_active": false,
+    "behavioural_closure_active": false
+  },
+  "link_boundary_reviews": [
+    {
+      "from": "government_financing_need",
+      "to": "government_debt_issuance",
+      "review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
+      "status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "Exact realized allocation across domestic interbank, retail, external securities and official-sector/loan channels is not identified."
+    },
+    {
+      "from": "government_debt_issuance",
+      "to": "government_debt_stock",
+      "review": "model/dynamics/government_debt_issuance_to_debt_stock_boundary_review_2026_09_21.json",
+      "status": "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "Gross borrowing is not the net Maastricht-debt transaction; matched redemptions/principal repayments and stock-flow adjustments are not available as an integrated stream."
+    },
+    {
+      "from": "government_debt_stock",
+      "to": "government_interest_cost",
+      "review": "model/dynamics/government_debt_stock_to_interest_cost_boundary_review_2026_09_21.json",
+      "status": "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL",
+      "exact_integrated_equation_ready": false,
+      "blocker": "The scale identity is known on a matched S13 apparent-cost boundary, but the generic interest-cost node is not canonically narrowed and the applicable rate is not endogenously identified."
+    },
+    {
+      "from": "government_interest_cost",
+      "to": "government_financing_need",
+      "review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
+      "status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
+      "exact_integrated_equation_ready": false,
+      "blocker": "The accounting composition is known, but no single matched canonical gross-financing-need boundary is frozen and interest double counting must remain prohibited."
+    }
+  ],
+  "integrated_readiness": {
+    "path_link_count": 4,
+    "exact_integrated_link_forms_ready": 0,
+    "unresolved_boundary_nodes": [
+      "government_financing_need",
+      "government_debt_issuance",
+      "government_debt_stock",
+      "government_interest_cost"
+    ],
+    "activation_status": "BLOCKED",
+    "blockers": [
+      "EXACT_LINK_EQUATION_COVERAGE_INCOMPLETE",
+      "UNRESOLVED_FEEDBACK_BOUNDARY_NODES",
+      "DELAY_SPECIFICATION_NOT_ACTIVATION_READY",
+      "NO_ACTIVATED_EMPIRICAL_MECHANISM"
+    ],
+    "quantitative_activation_authorized": false
+  },
+  "activation_gate_snapshot": {
+    "source": "model/dynamics/feedback_activation_criteria_matrix.json",
+    "passed_criteria_count": 1,
+    "partial_criteria_count": 6,
+    "blocked_criteria_count": 6,
+    "not_assessable_criteria_count": 1,
+    "all_requirements_pass": false,
+    "quantitative_activation_authorized": false
+  },
+  "delay_state": {
+    "delay_id": "debt_service_maturity_delay",
+    "evidence_status": "DISTRIBUTED_TIMING_EVIDENCE_SCALAR_TAU_NOT_IDENTIFIED",
+    "current_tau": "TBD",
+    "scalar_tau_activation_ready": false,
+    "interpretation": "Observed average maturity, average time to refixing and one-year shares describe a distribution and cannot be substituted for a causal scalar delay."
+  },
+  "mechanism_state": {
+    "government_refinancing_effective_rate": {
+      "classification": "DEFERRED",
+      "parameter_m_status": "UNIDENTIFIED_NO_DEFAULT",
+      "repricing_ledger_assessment": "model/calibration_validation/government_repricing_ledger_assessment.json",
+      "ledger_completeness_gate": "FAIL",
+      "parameter_identification_gate": "FAIL_BEFORE_ESTIMATION",
+      "estimation_run": false
+    },
+    "fiscal_primary_balance_reaction": {
+      "classification": "DEFERRED",
+      "admitted_behavioural_form": false,
+      "current_estimation_authorized": false
+    }
+  },
+  "no_further_current_evidence_task_findings": {
+    "repeat_same_source_searches_scientifically_useful": false,
+    "apparent_cost_materialisation_would_resolve_rate_endogeneity": false,
+    "aggregate_proxy_refit_would_resolve_repricing_identification": false,
+    "current_maturity_statistics_can_supply_scalar_tau": false,
+    "residual_or_synthetic_allocations_authorized": false,
+    "interpretation": "All currently identified structural source boundaries have been reviewed. Additional progress now requires genuinely new matched evidence or a separately authorized future identification cycle; repeating unchanged-source searches or fitting aggregate residuals would not close the loop scientifically."
+  },
+  "reopen_triggers": [
+    {
+      "id": "matched_realized_financing_channel_flows",
+      "requirement": "Official/reproducible time-aligned realized financing flows by material channel with stable currency/revision semantics sufficient to identify channel allocation without residual or synthetic shares."
+    },
+    {
+      "id": "matched_Maastricht_net_debt_transaction_bridge",
+      "requirement": "A same-boundary S13 nominal-value debt transition with net debt transactions/redemptions and relevant stock-flow adjustments sufficient to contract the stock accumulation equation."
+    },
+    {
+      "id": "matched_government_repricing_ledger",
+      "requirement": "Same-boundary opening outstanding principal, realized repriced/refinanced or reset principal, and matched old/new effective rates across the material government-debt portfolio."
+    },
+    {
+      "id": "canonical_government_financing_need_boundary",
+      "requirement": "A matched, documented GFN accounting boundary that preserves deficit, interest, principal refinancing and stock-flow-adjustment semantics without cross-framework mixing."
+    },
+    {
+      "id": "validated_fiscal_or_refinancing_mechanism_evidence",
+      "requirement": "A separately preregistered identification/validation cycle that passes the frozen behavioural and System Dynamics activation gates."
+    }
+  ],
+  "disposition": {
+    "structural_review_complete": true,
+    "current_operational_state": "EVIDENCE_TRIGGERED_HOLD",
+    "active_empirical_task": null,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false,
+    "qualitative_topology_changed": false
+  },
+  "next_state": {
+    "id": "government_refinancing_interest_loop_evidence_triggered_hold",
+    "authorization": "NO_ACTIVE_TASK_UNTIL_DECLARED_REOPEN_TRIGGER",
+    "reopen_trigger_required": true,
+    "may_poll_unchanged_sources": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false,
+    "may_relax_existing_gates": false
+  }
+}
