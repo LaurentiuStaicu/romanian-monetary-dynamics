@@ -42,7 +42,10 @@
       "interest_cost_to_financing_need_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
       "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
       "financing_channel_allocation_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
-      "financing_need_to_debt_issuance_equation_ready": false
+      "financing_need_to_debt_issuance_equation_ready": false,
+      "financing_channel_source_vintage_assessment": "model/dynamics/mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json",
+      "financing_channel_source_vintage_status": "PASS_FULL_2025_EXACT_CUMULATIVE_YTD_MONTHLY_DIFFERENCING_BLOCKED",
+      "financing_channel_monthly_differencing_authorized": false
     },
     {
       "id": "government_issuance_yield_loop",
@@ -111,7 +114,10 @@
       "interest_cost_to_financing_need_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
       "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
       "financing_channel_allocation_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
-      "financing_need_to_debt_issuance_equation_ready": false
+      "financing_need_to_debt_issuance_equation_ready": false,
+      "financing_channel_source_vintage_assessment": "model/dynamics/mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json",
+      "financing_channel_source_vintage_status": "PASS_FULL_2025_EXACT_CUMULATIVE_YTD_MONTHLY_DIFFERENCING_BLOCKED",
+      "financing_channel_monthly_differencing_authorized": false
     },
     {
       "id": "bank_credit_balance_sheet_loop",
