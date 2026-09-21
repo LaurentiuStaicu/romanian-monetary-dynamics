@@ -105,9 +105,9 @@
   "current_state": {
     "execution_authorized": true,
     "execution_completed": false,
-    "topology_pass": null,
+    "topology_pass": true,
     "aggregate_reference_mode_gate_pass": null,
-    "bilateral_accounting_reopen_gate_pass": null,
+    "bilateral_accounting_reopen_gate_pass": false,
     "reference_mode_promotion_authorized": false,
     "accounting_reopen_authorized": false
   },
@@ -132,6 +132,10 @@
     "script": "scripts/audit_oecd_sectoral_financial_positions_nonconsolidated_probe.py",
     "workflow": ".github/workflows/scientific-ci.yml#manual-oecd-nonconsolidated-topology-probe",
     "scope": "TOPOLOGY_AND_COUNTRY_COVERAGE_ONLY_NUMERIC_VALUES_NOT_REVIEWED",
-    "status": "PREREGISTERED_PENDING_MANUAL_EXECUTION"
+    "status": "EXECUTED_PASS_TOPOLOGY_EXACT_EXTRACTION_PREREGISTRATION_AUTHORIZED",
+    "topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
+    "artifact_id": 10633590243,
+    "artifact_zip_sha256": "4c845caa5d7edb6f936669e647760bf982057ce80c43c741a2a8f2a62ecfe148",
+    "next_gate": "model/dynamics/sectoral_financial_positions_oecd_exact_extraction_reconciliation_contract_2026_09_21.json"
   }
 }
