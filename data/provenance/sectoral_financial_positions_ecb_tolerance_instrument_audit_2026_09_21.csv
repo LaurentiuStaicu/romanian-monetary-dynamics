@@ -1,0 +1,15 @@
+measure,instrument,max_abs_residual_million_ron,ecb_official_threshold_eur_million,result
+flow,F2,0.2,10,PASS
+flow,F3,0.2,10,PASS
+flow,F4,0.2,10,PASS
+flow,F5,0.2,10,PASS
+flow,F6,0.1,10,PASS
+flow,F7,0.2,10,PASS
+flow,F8,0.2,10,PASS
+stock,F2,0.2,10,PASS
+stock,F3,0.2,10,PASS
+stock,F4,0.2,10,PASS
+stock,F5,0.2,10,PASS
+stock,F6,0.2,10,PASS
+stock,F7,0.2,10,PASS
+stock,F8,0.2,10,PASS

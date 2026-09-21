@@ -25,14 +25,17 @@ def audit_ecb_qfa_10m_preregistration():
         e.append("instrument boundary changed")
     if not all(c["hard_rules"].values()):
         e.append("a hard rule was disabled")
-    if m["dynamic_core"]["reference_mode_ready_count"]!=9 or m["dynamic_core"]["reference_mode_required_count"]!=10:
-        e.append("preregistration may not change readiness")
-    if m["dynamic_core"]["sectoral_financial_positions_reference_mode_status"]!="PARTIAL_SERIES_AVAILABLE":
-        e.append("preregistration may not promote sectoral mode")
+    d=m["dynamic_core"]
+    if d["reference_mode_ready_count"]!=10 or d["reference_mode_required_count"]!=10:
+        e.append("current successor readiness must remain 10/10")
+    if d["sectoral_financial_positions_reference_mode_status"]!="OBSERVED_SERIES_AVAILABLE":
+        e.append("current successor sectoral mode must remain observed")
+    if d.get("reference_mode_post_terminal_promotion_assessment")!="model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json":
+        e.append("current promotion must remain attributable to the separate successor assessment")
     return e
 
 def main():
     errors=audit_ecb_qfa_10m_preregistration()
     if errors: raise RuntimeError("ECB QFA 10m preregistration audit failed:\n- "+"\n- ".join(errors))
-    print(json.dumps({"status":"PASS","ecb_threshold_eur_million":10,"test_level":"PER_INSTRUMENT","strict_sufficient_bound_million_ron":10,"reference_modes_ready":"9/10"},indent=2))
+    print(json.dumps({"status":"PASS","ecb_threshold_eur_million":10,"test_level":"PER_INSTRUMENT","strict_sufficient_bound_million_ron":10,"reference_modes_ready":"10/10"},indent=2))
 if __name__=="__main__": main()

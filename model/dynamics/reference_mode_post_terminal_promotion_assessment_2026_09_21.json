@@ -1,0 +1,52 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "stage": "Reference-Mode Recovery — Post-terminal official-tolerance promotion",
+  "predecessor_terminal_assessment": "model/dynamics/reference_mode_recovery_terminal_assessment.json",
+  "official_tolerance_assessment": "model/dynamics/sectoral_financial_positions_ecb_official_tolerance_assessment_2026_09_21.json",
+  "observed_snapshot": "model/dynamics/sectoral_financial_positions_observed_snapshot_2026_09_21.json",
+  "purpose": "Create a successor scientific state after independent official ECB QFA internal-consistency evidence satisfies the previously declared precision/balancing reopen condition. Preserve historical 9/10 assessments as immutable provenance.",
+  "reference_modes_required": 10,
+  "reference_modes_ready_before": 9,
+  "reference_modes_ready_after": 10,
+  "promoted_mode": {
+    "id": "sectoral_financial_positions",
+    "old_status": "PARTIAL_SERIES_AVAILABLE",
+    "new_status": "OBSERVED_SERIES_AVAILABLE",
+    "time_resolution": "quarterly",
+    "role": "Observed aggregate sectoral-financial-position/transaction reference mode over the F2-F8 boundary; distinct from bilateral Accounting Spine materialization."
+  },
+  "gate_summary": {
+    "official_source_topology": "PASS",
+    "esa_semantic_applicability": "PASS",
+    "exact_row_completeness": "PASS_AFTER_PREREGISTERED_STRUCTURAL_ZERO",
+    "finite_values": "PASS",
+    "common_history": "PASS_49Q",
+    "all_2025_quarters": "PASS",
+    "ecb_official_internal_consistency_tolerance": "PASS_INSTRUMENT_BY_INSTRUMENT"
+  },
+  "promotion_effect": {
+    "reference_mode_closure_ready": true,
+    "aggregate_reference_mode_observability_complete": true,
+    "accounting_spine_is_complete": false,
+    "accounting_readiness_change": false,
+    "complete_stock_and_flow_instruments_remain": [
+      "F3"
+    ],
+    "canonical_full_2025_stock_flow_benchmark_ready": false,
+    "canonical_multi_instrument_stock_initialization_ready": false,
+    "validated_reference_behavioural_mechanisms_change": 0,
+    "calibration_cycle_open": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_active": false,
+    "complete_endogenous_system_dynamics_model": false
+  },
+  "stage_disposition": {
+    "reference_mode_recovery_status": "POST_TERMINAL_PROMOTION_COMPLETE_10_OF_10_REFERENCE_MODES_READY",
+    "historical_terminal_9_of_10_preserved": true,
+    "next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+    "active_empirical_task": null
+  },
+  "decision": "PROMOTE_SECTORAL_FINANCIAL_POSITIONS_REFERENCE_MODE_ONLY_10_OF_10_REFERENCE_MODES_READY"
+}

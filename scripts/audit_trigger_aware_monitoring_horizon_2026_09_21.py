@@ -46,13 +46,11 @@ def audit_trigger_horizon_2026_09_21():
     if d["next_dated_check"]!={"date":"2026-10-08","id":"prospective_monetary_policy_event"}:
         e.append("next dated check changed")
     s=m["scientific_stage"]
-    if s.get("trigger_aware_monitoring_horizon")!="model/registries/trigger_aware_monitoring_horizon_2026_09_21.json":
-        e.append("model contract does not point to successor monitoring horizon")
+    if s.get("previous_trigger_aware_monitoring_horizon")!="model/registries/trigger_aware_monitoring_horizon_2026_09_21.json":
+        e.append("model contract does not preserve 2026-09-21 horizon as predecessor")
     bs=b["canonical_state"]["scientific_stage"]
-    if bs.get("trigger_aware_monitoring_horizon")!="model/registries/trigger_aware_monitoring_horizon_2026_09_21.json":
-        e.append("baseline manifest does not point to successor monitoring horizon")
-    if bs.get("previous_trigger_aware_monitoring_horizon")!="model/registries/trigger_aware_monitoring_horizon_2026_09_20.json":
-        e.append("baseline manifest does not preserve predecessor horizon")
+    if bs.get("previous_trigger_aware_monitoring_horizon")!="model/registries/trigger_aware_monitoring_horizon_2026_09_21.json":
+        e.append("baseline manifest does not preserve 2026-09-21 horizon as predecessor")
     if s["next_operational_state"]!="EVIDENCE_TRIGGERED_BASELINE_HOLD":
         e.append("model operational state changed")
     return e
@@ -66,7 +64,7 @@ def main():
         "monitoring_gate_open":False,
         "next_dated_check":"2026-10-08",
         "next_dated_check_id":"prospective_monetary_policy_event",
-        "precision_reopen_requires":"NEW_OFFICIAL_DOMAIN_SPECIFIC_PRECISION_EVIDENCE",
+        "historical_precision_reopen_requirement":"NEW_OFFICIAL_DOMAIN_SPECIFIC_PRECISION_EVIDENCE",
         "scientific_state":"EVIDENCE_TRIGGERED_BASELINE_HOLD"
     },indent=2))
 

@@ -55,7 +55,7 @@ class SystemDynamicsConformityTests(unittest.TestCase):
             implied_loop_polarity(path)
 
 
-    def test_reference_mode_readiness_is_explicitly_blocked(self) -> None:
+    def test_reference_mode_readiness_is_ready_but_not_behavioural_closure(self) -> None:
         references = json.loads(
             (
                 ROOT / "model" / "dynamics" / "reference_modes.json"
@@ -65,7 +65,7 @@ class SystemDynamicsConformityTests(unittest.TestCase):
             references,
             REQUIRED_REFERENCE_MODES,
         )
-        self.assertEqual(readiness["status"], "BLOCKED")
+        self.assertEqual(readiness["status"], "READY")
         self.assertEqual(
             set(readiness["ready_modes"]),
             {
@@ -78,13 +78,12 @@ class SystemDynamicsConformityTests(unittest.TestCase):
                 "government_interest_burden",
                 "government_refinancing_need",
                 "government_effective_interest_rate",
+                "sectoral_financial_positions",
             },
         )
         self.assertEqual(
             set(readiness["blocking_modes"]),
-            {
-                "sectoral_financial_positions",
-            },
+            set(),
         )
 
     def test_qualitative_reference_exception_requires_explicit_basis(self) -> None:

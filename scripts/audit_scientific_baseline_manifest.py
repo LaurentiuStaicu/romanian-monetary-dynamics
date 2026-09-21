@@ -64,6 +64,9 @@ def main() -> None:
     reference_mode_terminal = load(
         "model/dynamics/reference_mode_recovery_terminal_assessment.json"
     )
+    reference_mode_successor = load(
+        "model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json"
+    )
     bnr_cnf_screening = load(
         "model/dynamics/sectoral_financial_positions_bnr_cnf_source_screening.json"
     )
@@ -121,8 +124,18 @@ def main() -> None:
     )
     check(
         model["dynamic_core"]["reference_mode_recovery_stage_status"]
-        == reference_mode_terminal["status"],
-        "Model contract reference-mode recovery stage status is stale",
+        == reference_mode_successor["stage_disposition"]["reference_mode_recovery_status"],
+        "Model contract successor reference-mode recovery stage status is stale",
+    )
+    check(
+        reference_mode_successor["reference_modes_ready_before"]
+        == reference_mode_terminal["ready_reference_modes"],
+        "Successor does not preserve the historical terminal ready count",
+    )
+    check(
+        reference_mode_successor["stage_disposition"]["historical_terminal_9_of_10_preserved"]
+        is True,
+        "Successor must explicitly preserve the historical 9/10 terminal state",
     )
     check(
         model["scientific_stage"]["terminal_assessment"]
@@ -202,8 +215,18 @@ def main() -> None:
     check(model["dynamic_core"]["reference_mode_ready_count"] == len(ready), "Model reference ready count disagrees with baseline")
     check(model["dynamic_core"]["reference_mode_required_count"] == len(REQUIRED_REFERENCE_MODES), "Model reference required count disagrees with baseline")
     check(
-        ref_state["recovery_stage_status"] == reference_mode_terminal["status"],
-        "Baseline reference-mode recovery stage status is stale",
+        ref_state["recovery_stage_status"]
+        == reference_mode_successor["stage_disposition"]["reference_mode_recovery_status"],
+        "Baseline successor reference-mode recovery stage status is stale",
+    )
+    check(
+        ref_state["ready_count"] == reference_mode_successor["reference_modes_ready_after"],
+        "Baseline successor reference-mode ready count is stale",
+    )
+    check(
+        ref_state["post_terminal_promotion_assessment"]
+        == "model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json",
+        "Baseline does not register the successor promotion assessment",
     )
     check(
         ref_state["recovery_substage_complete"]
@@ -220,17 +243,25 @@ def main() -> None:
         "Terminal assessment reference-mode required count is stale",
     )
     check(
-        reference_mode_terminal["ready_reference_modes"] == len(ready),
-        "Terminal assessment ready reference-mode count is stale",
+        reference_mode_terminal["ready_reference_modes"]
+        == reference_mode_successor["reference_modes_ready_before"],
+        "Historical terminal assessment ready reference-mode count is stale",
     )
     check(
-        reference_mode_terminal["blocker_count"] == len(blockers),
-        "Terminal assessment blocker count is stale",
+        reference_mode_terminal["blocker_count"]
+        == reference_mode_terminal["required_reference_modes"]
+        - reference_mode_successor["reference_modes_ready_before"],
+        "Historical terminal assessment blocker count is stale",
     )
     check(
         reference_mode_terminal["disposition"]["integrated_reference_mode_closure_ready"]
+        is False,
+        "Historical terminal assessment closure-readiness flag was rewritten",
+    )
+    check(
+        reference_mode_successor["promotion_effect"]["reference_mode_closure_ready"]
         is (not blockers),
-        "Terminal assessment closure-readiness flag is stale",
+        "Successor closure-readiness flag is stale",
     )
 
     sectoral_mode = by_id["sectoral_financial_positions"]
@@ -727,18 +758,26 @@ def main() -> None:
 
     terminal_refs = stage_terminal["terminal_state"]["reference_modes"]
     check(terminal_refs["required"] == ref_state["required_count"], "Terminal stage reference required count is stale")
-    check(terminal_refs["ready"] == ref_state["ready_count"], "Terminal stage reference ready count is stale")
     check(
-        terminal_refs["blocker"] in ref_state["blockers"],
-        "Terminal stage reference blocker is stale",
+        terminal_refs["ready"] == reference_mode_successor["reference_modes_ready_before"],
+        "Historical terminal stage reference ready count is stale",
     )
     check(
-        terminal_refs["integrated_closure_ready"] is ref_state["closure_ready"],
-        "Terminal stage reference closure flag is stale",
+        terminal_refs["blocker"] == reference_mode_successor["promoted_mode"]["id"],
+        "Historical terminal stage blocker is stale",
     )
     check(
-        terminal_refs["recovery_stage_status"] == ref_state["recovery_stage_status"],
-        "Terminal stage reference recovery status is stale",
+        terminal_refs["integrated_closure_ready"] is False,
+        "Historical terminal stage closure flag was rewritten",
+    )
+    check(
+        terminal_refs["recovery_stage_status"] == reference_mode_terminal["status"],
+        "Historical terminal stage reference recovery status is stale",
+    )
+    check(
+        ref_state["ready_count"] == reference_mode_successor["reference_modes_ready_after"]
+        and ref_state["closure_ready"] is True,
+        "Current successor reference-mode closure state is stale",
     )
     check(
         terminal_refs["active_unconditional_recovery_task_remains"] is False,

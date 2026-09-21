@@ -56,7 +56,7 @@
     <rect x="70" y="491" width="620" height="92" rx="8" fill="#ffffff" stroke="#707070" stroke-width="2"/>
     <text x="105" y="523" font-size="23" font-weight="700" fill="#333333">Observed evidence &amp; reference modes</text>
     <text x="105" y="554" font-size="18" fill="#707070">official / reproducible sources · retained vintages</text>
-    <text x="105" y="576" font-size="17" fill="#707070">9 / 10 required reference modes ready</text>
+    <text x="105" y="576" font-size="17" fill="#707070">10 / 10 required reference modes ready</text>
 
     <line x1="380" y1="583" x2="380" y2="619" stroke="#707070" stroke-width="2" marker-end="url(#arrow)"/>
     <text x="398" y="609" font-size="16" fill="#707070">informs; does not activate</text>

@@ -72,11 +72,11 @@ def audit_oecd_exact_row_gate() -> list[str]:
         e.append("terminal source path may not authorize promotion/reopen")
 
     mode=next(x for x in rm["modes"] if x["id"]=="sectoral_financial_positions")
-    if mode["status"]!="PARTIAL_SERIES_AVAILABLE":
-        e.append("sectoral_financial_positions may not be promoted")
+    if mode["status"]!="OBSERVED_SERIES_AVAILABLE":
+        e.append("current sectoral_financial_positions status must remain observed")
     dc=model["dynamic_core"]
-    if dc["reference_mode_ready_count"]!=9 or dc["reference_mode_required_count"]!=10:
-        e.append("reference-mode readiness must remain 9/10")
+    if dc["reference_mode_ready_count"]!=10 or dc["reference_mode_required_count"]!=10:
+        e.append("current reference-mode readiness must remain 10/10")
     if model["scientific_stage"].get("active_noncalibration_source_task") is not None:
         e.append("terminal source task must be closed")
     if model["scientific_stage"].get("next_operational_state")!="EVIDENCE_TRIGGERED_BASELINE_HOLD":
@@ -98,8 +98,8 @@ def main():
         "missing_pattern":"S1M/L/F2 for 49 quarters in flow and stock",
         "numeric_value_review":False,
         "reconciliation_run":False,
-        "reference_modes_ready":"9/10",
-        "sectoral_financial_positions":"PARTIAL_SERIES_AVAILABLE",
+        "reference_modes_ready":"10/10",
+        "sectoral_financial_positions":"OBSERVED_SERIES_AVAILABLE",
         "scientific_state":"EVIDENCE_TRIGGERED_BASELINE_HOLD",
     },indent=2))
 
