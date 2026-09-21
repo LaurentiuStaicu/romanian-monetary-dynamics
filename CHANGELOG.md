@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- preregistered an independent ESA 2010 semantic applicability gate for the sole OECD missing pattern `S1M/L/F2`: official instrument/sector definitions classify household/NPISH F2 liabilities as structurally not applicable while overdrafts belong to F4; one new aggregate reconciliation gate may therefore use a narrowly scoped normative structural zero, but readiness remains 9/10 and no value review or promotion is authorized before manual execution;
 - identified an official NBR/CMFB 2025 financial-accounts structural change and executed one preregistered public-access recovery pass: OECD non-consolidated quarterly stock/flow topology passed with S121 and F2-F8 coverage across 49 common quarters, but the frozen exact-row gate failed because `S1M/L/F2` is absent in all 49 quarters for both stock and flow; the gate stopped before `OBS_VALUE` review or reconciliation, so `sectoral_financial_positions` remains partial at 9/10 readiness and Accounting Spine/behavioural state is unchanged;
 
 ### Repository governance
