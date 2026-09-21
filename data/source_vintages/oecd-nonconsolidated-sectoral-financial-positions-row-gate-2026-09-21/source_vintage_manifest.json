@@ -1,0 +1,29 @@
+{
+  "manifest_version": "0.1",
+  "retained_on": "2026-09-21",
+  "source": "OECD SDMX public API",
+  "purpose": "Compact retained negative row-coverage evidence for the exact OECD non-consolidated aggregate sectoral-financial-position gate. Large raw provider responses remain identified by exact query/hash and workflow artifact; no OBS_VALUE was reviewed.",
+  "assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
+  "contract": "model/dynamics/sectoral_financial_positions_oecd_exact_extraction_reconciliation_contract_2026_09_21.json",
+  "missing_rows": "missing_required_rows.csv",
+  "missing_row_count": 98,
+  "missing_pattern": "S1M/L/F2 for all 49 quarters in both flow and stock",
+  "raw_provider_responses": [
+    {
+      "measure": "flow",
+      "sha256": "06c23cfdcc405b2f1689b695392f4f99a9aaa1085e3b90a6254482eb13d0a616",
+      "bytes": 3456922
+    },
+    {
+      "measure": "stock",
+      "sha256": "ca41b25cb31f02baeaa31d2b74444b3ea0e59cfd0f1cc974f5f92327a838f4d1",
+      "bytes": 3532909
+    }
+  ],
+  "workflow_artifact": {
+    "id": 10634456456,
+    "zip_sha256": "85c9ae9df0e94eea71e6748bcfb81244cb0a85cba023d7b31fdbd403e3ef0b7d"
+  },
+  "numeric_observation_value_review_performed": false,
+  "reconciliation_test_performed": false
+}
