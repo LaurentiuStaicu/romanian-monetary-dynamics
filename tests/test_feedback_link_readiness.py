@@ -105,6 +105,25 @@ class FeedbackLinkReadinessTests(unittest.TestCase):
         self.assertFalse(row["exact_integrated_equation_ready"])
         self.assertFalse(row["current_activation_authorized"])
 
+    def test_accounting_composition_status_is_registered_for_both_government_loops(self) -> None:
+        status = "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL"
+        self.assertIn(status, self.registry["readiness_status_vocabulary"])
+        rows = [
+            item
+            for item in self.registry["links"]
+            if item["from"] == "government_interest_cost"
+            and item["to"] == "government_financing_need"
+        ]
+        self.assertEqual(len(rows), 2)
+        for row in rows:
+            self.assertEqual(row["readiness_status"], status)
+            self.assertEqual(
+                row["causal_role"],
+                "ACCOUNTING_COMPOSITION_CONDITIONAL_ON_BOUNDARY",
+            )
+            self.assertFalse(row["exact_integrated_equation_ready"])
+            self.assertFalse(row["current_activation_authorized"])
+
     def test_exact_ready_requires_canonical_equation_pointer(self) -> None:
         mutated = copy.deepcopy(self.registry)
         row = mutated["links"][0]

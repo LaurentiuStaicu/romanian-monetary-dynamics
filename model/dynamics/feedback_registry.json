@@ -37,7 +37,9 @@
       "delay_candidates": [
         "debt_service_maturity_delay"
       ],
-      "topology_status": "CLOSED_CANDIDATE_LOOP"
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
+      "interest_cost_to_financing_need_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL"
     },
     {
       "id": "government_issuance_yield_loop",
@@ -84,7 +86,7 @@
       "empirical_boundary_status": "OPEN_CHAIN_PENDING_EXPLICIT_BRIDGES",
       "bnr_domestic_primary_market_narrowing_as_closed_loop_authorized": false,
       "quantitative_activation_authorized": false,
-      "empirical_boundary_interpretation": "The qualitative loop remains a closed candidate topology. Announced RON competitive supply has partial exact coverage and a preferred long-term RON sovereign-yield target exists, but market yields cannot be propagated directly into government interest cost without observed repricing/refinancing structure. Government interest cost remains unresolved and the loop is not equation-ready.",
+      "empirical_boundary_interpretation": "The qualitative loop remains a closed candidate topology. The supply, yield and interest-cost boundaries have been progressively clarified, but government financing need remains an unresolved accounting-composition boundary. Interest may not be added twice when headline deficit is used, and total financing need still requires a separate multi-channel allocation bridge before domestic primary issuance can be treated empirically.",
       "government_securities_supply_pressure_source_boundary_review": "model/dynamics/government_securities_supply_pressure_source_boundary_review_2026_09_20.json",
       "supply_pressure_empirical_boundary_status": "MULTIDIMENSIONAL_CANDIDATE_BOUNDARY_NO_SCALAR_PROMOTION",
       "supply_pressure_scalar_selected": false,
@@ -101,7 +103,9 @@
       "announced_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
       "announced_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_3_REQUIRED_SOURCES_REMAINING",
       "yield_to_interest_cost_boundary_review": "model/dynamics/yield_to_interest_cost_boundary_review_2026_09_21.json",
-      "yield_to_interest_cost_status": "REVIEWED_TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED"
+      "yield_to_interest_cost_status": "REVIEWED_TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED",
+      "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
+      "interest_cost_to_financing_need_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL"
     },
     {
       "id": "bank_credit_balance_sheet_loop",

@@ -1,0 +1,166 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "interest_cost_to_financing_need_boundary_review",
+  "purpose": "Determine whether government_interest_cost should enter government_financing_need as a separate causal addend or as an accounting component whose treatment depends on the exact gross-financing-need definition, while preventing double counting of interest, principal refinancing and stock-flow adjustments.",
+  "decision": "ACCOUNTING_COMPOSITION_FORM_KNOWN_CANONICAL_FINANCING_NEED_BOUNDARY_UNRESOLVED_DO_NOT_ADD_INTEREST_TWICE",
+  "official_definition_evidence": {
+    "european_commission_gfn": {
+      "institution": "European Commission",
+      "source_family": "Fiscal Sustainability Report / Debt Sustainability Monitor",
+      "definition": {
+        "headline_deficit_form": "GFN = headline deficit + debt redemptions + stock-flow adjustments",
+        "primary_deficit_form": "GFN = primary deficit + interest payments + debt redemptions + stock-flow adjustments"
+      },
+      "identity_relation": "headline deficit already contains interest payments; the two forms are equivalent only when all components share the same accounting boundary, period and sign convention.",
+      "sector_boundary": "general government",
+      "concept_role": "BROAD_GROSS_FINANCING_NEED_ACCOUNTING_FRAMEWORK"
+    },
+    "eurostat_fiscal_components": {
+      "primary_balance_boundary_review": "model/calibration_validation/fiscal_primary_balance_source_boundary_review.json",
+      "materialisation_contract": "model/calibration_validation/fiscal_primary_balance_materialisation_contract.json",
+      "overall_balance": "B9 net lending (+) / net borrowing (-)",
+      "interest_expenditure": "D41PAY positive interest expenditure",
+      "retained_identity": "primary_balance = B9 + D41PAY on matched S13/NSA/PC_GDP boundary",
+      "implication": "B9 already includes interest expenditure. D41PAY may be added to B9 to remove interest and recover primary balance, but D41PAY may not also be added to a headline-deficit financing-need form."
+    },
+    "ministry_refinancing_reference": {
+      "assessment": "model/dynamics/government_refinancing_need_reference_assessment.json",
+      "reference_mode": "government_refinancing_need",
+      "concept": "Annual Ministry principal repayment/refinancing component on the Ministry government-debt boundary.",
+      "role": "DEBT_REDEMPTION_OR_REFINANCING_CONTEXT_CANDIDATE",
+      "not_gross_financing_need": true,
+      "not_interest_cost": true,
+      "not_stock_flow_adjustment": true
+    },
+    "ministry_operational_examples": {
+      "source": "Romanian Ministry of Finance Government Debt Management Strategy 2024-2026, Table 8, as already retained in the refinancing-need assessment",
+      "examples_bn_RON": {
+        "2023_operative_execution": {
+          "budget_deficit": 90.6,
+          "government_debt_refinancing": 95.8,
+          "reported_gross_financing_need": 186.4
+        },
+        "2024_forecast": {
+          "budget_deficit": 85.9,
+          "government_debt_refinancing": 94.6,
+          "reported_gross_financing_need": 180.5
+        },
+        "2025_forecast": {
+          "budget_deficit": 89.9,
+          "government_debt_refinancing": 71.3,
+          "reported_gross_financing_need": 161.2
+        },
+        "2026_forecast": {
+          "budget_deficit": 85.6,
+          "government_debt_refinancing": 71.9,
+          "reported_gross_financing_need": 157.5
+        }
+      },
+      "boundary_limit": "This Ministry operational presentation is not silently equated to the Commission S13 GFN framework. The source mixes operative execution and forecasts and does not separately expose an SFA component in the retained examples."
+    }
+  },
+  "accounting_forms": {
+    "headline_deficit_form": {
+      "formula": "government_financing_need = headline_deficit + debt_redemptions + stock_flow_adjustments",
+      "interest_cost_explicit_separate_addend": false,
+      "reason": "Interest is already included in headline deficit.",
+      "double_counting_if_interest_added_again": true
+    },
+    "primary_deficit_form": {
+      "formula": "government_financing_need = primary_deficit + interest_expenditure + debt_redemptions + stock_flow_adjustments",
+      "interest_cost_explicit_separate_addend": true,
+      "reason": "Interest has been removed from the primary balance and must appear exactly once in the financing-need composition.",
+      "requires_matched_component_boundaries": true
+    },
+    "ministry_operational_form": {
+      "formula": "reported gross financing need = reported budget deficit + reported government-debt refinancing in the retained Table 8 examples",
+      "interest_cost_explicit_separate_addend": false,
+      "reason": "The budget-deficit component is treated as the reported headline deficit; adding interest again would double count it.",
+      "canonical_for_dynamic_core_now": false
+    }
+  },
+  "boundary_comparison": {
+    "eurostat_interest_expenditure_and_ministry_refinancing_same_sector_boundary": false,
+    "eurostat_interest_expenditure_and_ministry_refinancing_same_accounting_framework": false,
+    "quarterly_interest_and_annual_refinancing_same_frequency": false,
+    "ministry_refinancing_component_equals_all_commission_debt_redemptions": false,
+    "ministry_operational_gfn_equals_commission_gfn_by_identity_without_reconciliation": false,
+    "government_interest_cost_generic_node_equals_D41PAY_by_definition": false,
+    "government_financing_need_generic_node_has_canonical_boundary": false
+  },
+  "link_resolution": {
+    "link_id": "interest_cost_to_financing_need",
+    "from": "government_interest_cost",
+    "to": "government_financing_need",
+    "status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
+    "causal_role_after_review": "ACCOUNTING_COMPOSITION_CONDITIONAL_ON_FINANCING_NEED_DEFINITION",
+    "sign": "+",
+    "interpretation": "Higher interest expenditure increases gross financing needs when financing need is decomposed from primary deficit. If financing need is instead constructed from headline deficit, the same interest effect is already embedded in that deficit and must not be added again.",
+    "behavioural_equation_required": false,
+    "parameter_estimation_required": false,
+    "exact_integrated_identity_ready": false,
+    "reason_not_ready": "The accounting form is known but the Dynamic Core financing-need node has no canonical matched source boundary. Available interest and refinancing references differ in sector/accounting/frequency boundary, and the required stock-flow-adjustment treatment is not contracted.",
+    "double_counting_guard_active": true
+  },
+  "government_financing_need_node_effect": {
+    "current_boundary_class_after_review": "UNRESOLVED",
+    "current_runtime_role_after_review": "ACCOUNTING_COMPOSITION_CANDIDATE_BOUNDARY_UNRESOLVED_INACTIVE",
+    "exact_reference_mode_id_after_review": null,
+    "related_reference_modes": [
+      "government_interest_burden",
+      "government_refinancing_need"
+    ],
+    "canonical_gfn_definition_selected": false,
+    "reason_for_remaining_unresolved": "The broad Commission GFN identity is known, but RMD has not selected and materialised one matched canonical financing-need boundary. Eurostat interest expenditure and Ministry refinancing need cannot be combined silently across sector, accounting and frequency boundaries.",
+    "current_feedback_activation_authorized": false
+  },
+  "loop_effects": {
+    "government_issuance_yield_loop": {
+      "qualitative_topology_changed": false,
+      "interest_cost_to_financing_need_sign_retained": "+",
+      "link_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
+      "quantitatively_active": false
+    },
+    "government_refinancing_interest_loop": {
+      "qualitative_topology_changed": false,
+      "interest_cost_to_financing_need_sign_retained": "+",
+      "link_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
+      "quantitatively_active": false
+    }
+  },
+  "hard_rules": {
+    "no_interest_added_on_top_of_headline_deficit": true,
+    "no_mixing_B9_and_D41PAY_with_unmatched_adjustment_or_unit": true,
+    "no_ministry_refinancing_series_relabelled_full_GFN": true,
+    "no_ministry_refinancing_series_relabelled_all_S13_debt_redemptions": true,
+    "no_missing_stock_flow_adjustment_imputed_zero_for_canonical_GFN": true,
+    "no_operational_forecast_mixed_with_execution_as_observed_history": true,
+    "no_cross_boundary_identity_claim": true,
+    "no_behavioural_coefficient_for_accounting_composition": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "government_financing_need_node_resolved": false,
+    "government_interest_cost_node_resolved": false,
+    "canonical_GFN_reference_mode_promoted": false,
+    "exact_integrated_identity_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "financing_channel_allocation_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "task": "Review the bridge from government_financing_need to domestic_primary_market_government_securities_gross_issuance. Preserve the Ministry evidence that financing needs are met through multiple domestic, retail, external and official-sector channels. Do not map total financing need one-to-one to BNR domestic primary-market issuance and do not invent bilateral channel allocations.",
+    "may_construct_one_to_one_GFN_to_BNR_issuance": false,
+    "may_invent_channel_allocations": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}

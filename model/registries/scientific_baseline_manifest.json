@@ -57,7 +57,8 @@
     "mof_announced_RON_primary_reference_auction_partial_2025_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_partial_2025_assessment.json",
     "mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
     "primary_yield_to_sovereign_yield_boundary_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
-    "yield_to_interest_cost_boundary_review": "model/dynamics/yield_to_interest_cost_boundary_review_2026_09_21.json"
+    "yield_to_interest_cost_boundary_review": "model/dynamics/yield_to_interest_cost_boundary_review_2026_09_21.json",
+    "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json"
   },
   "canonical_state": {
     "accounting": {

@@ -285,8 +285,10 @@
   "announced_RON_primary_supply_reference_mode_contract": "model/dynamics/mof_announced_RON_primary_supply_reference_mode_contract_2026_09_20.json",
   "announced_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
   "next_independent_issuance_yield_task": {
-    "id": "interest_cost_to_financing_need_boundary_review",
-    "authorization": "STRUCTURAL_ACCOUNTING_BOUNDARY_REVIEW_ONLY",
+    "id": "financing_channel_allocation_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_construct_one_to_one_GFN_to_BNR_issuance": false,
+    "may_invent_channel_allocations": false,
     "may_estimate_parameters": false,
     "may_activate_feedback": false,
     "may_change_behavioural_closure": false
