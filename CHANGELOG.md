@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- reviewed `credit_flow → private_demand_and_investment`: aggregate NFC/household credit transactions finance multiple purposes, including working capital, refinancing and house purchase, so they cannot be relabelled as household consumption or NFC fixed investment without an observed purpose-allocation bridge;
 - reviewed `market_and_lending_rates → credit_flow`: MIR rates are price variables, MIR new-business volumes are agreement volumes, and the retained ECB BSI credit flow is a distinct realized net-transaction concept jointly shaped by supply and demand; no rate-to-flow identity or implicit elasticity is introduced;
 - reviewed `policy_rate → market_and_lending_rates`: the frozen household-housing pass-through remains target-specific and unvalidated, with no NFC form or generic market/outstanding-rate mapping; no target-specific form is promoted into the generic monetary-transmission link;
 - completed the structural review cycle for `bank_credit_balance_sheet_loop`: all four links now have explicit boundaries but 0/4 exact integrated equations are ready; supply-demand identification, debt-service/risk alignment, prudential population matching and both delay parameters remain blocked, so the loop enters evidence-triggered hold with no active empirical task;
