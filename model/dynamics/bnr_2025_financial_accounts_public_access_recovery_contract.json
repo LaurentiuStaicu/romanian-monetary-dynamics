@@ -125,5 +125,13 @@
     "no_parameter_estimation": true,
     "no_feedback_activation": true,
     "no_behavioural_closure_change": true
+  },
+  "active_probe": {
+    "id": "oecd_nonconsolidated_sectoral_financial_positions",
+    "contract": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_probe_contract_2026_09_21.json",
+    "script": "scripts/audit_oecd_sectoral_financial_positions_nonconsolidated_probe.py",
+    "workflow": ".github/workflows/scientific-ci.yml#manual-oecd-nonconsolidated-topology-probe",
+    "scope": "TOPOLOGY_AND_COUNTRY_COVERAGE_ONLY_NUMERIC_VALUES_NOT_REVIEWED",
+    "status": "PREREGISTERED_PENDING_MANUAL_EXECUTION"
   }
 }
