@@ -268,7 +268,7 @@ def audit_yield_to_interest_cost_boundary(
     ):
         if bridge.get(key) is not False:
             errors.append(f"preregistration may not authorize {key}")
-    if prereg["next_independent_bridge_task"]["id"] != "financing_channel_allocation_boundary_review":
+    if prereg["next_independent_bridge_task"]["id"] != "mof_realized_financing_channel_materialisation_contract":
         errors.append("preregistration next independent bridge changed")
 
     dynamic = model_contract["dynamic_core"]
@@ -282,7 +282,7 @@ def audit_yield_to_interest_cost_boundary(
         errors.append("model contract preferred portfolio-cost target changed")
     if dynamic.get("government_interest_cost_preferred_interest_expenditure_target") != "government_interest_burden":
         errors.append("model contract preferred interest-expenditure target changed")
-    if dynamic.get("government_issuance_yield_next_independent_task") != "financing_channel_allocation_boundary_review":
+    if dynamic.get("government_issuance_yield_next_independent_task") != "mof_realized_financing_channel_materialisation_contract":
         errors.append("model contract next independent task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
         errors.append("model contract may not activate issuance-yield feedback")

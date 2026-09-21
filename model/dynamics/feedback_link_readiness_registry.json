@@ -9,7 +9,8 @@
     "EXACT_INTEGRATED_LINK_FORM_READY",
     "TARGET_BOUNDARY_AVAILABLE_LINK_FORM_UNRESOLVED",
     "TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED",
-    "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL"
+    "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
+    "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED"
   ],
   "hard_rules": {
     "every_feedback_path_link_must_be_registered_exactly_once": true,
@@ -27,13 +28,14 @@
       "from": "government_financing_need",
       "to": "government_debt_issuance",
       "sign": "+",
-      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
-      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "causal_role": "FINANCING_CHANNEL_ALLOCATION_CONDITIONAL_ON_BOUNDARY",
+      "readiness_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
       "related_mechanisms": [],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+      "reason": "Government financing need is met through multiple domestic, retail, external-market and official-sector channels. The retained BNR domestic primary-market issuance series is one observed channel only. No exact channel-allocation vector or shares are identified, so the generic financing-need to debt-issuance link is not equation-ready.",
+      "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "government_refinancing_interest_loop|government_debt_issuance|government_debt_stock",
@@ -177,14 +179,15 @@
       "from": "government_financing_need",
       "to": "government_debt_issuance",
       "sign": "+",
-      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
-      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "causal_role": "FINANCING_CHANNEL_ALLOCATION_CONDITIONAL_ON_BOUNDARY",
+      "readiness_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
       "related_mechanisms": [],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The qualitative architecture asserts this direction, but the retained BNR domestic-primary-market issuance boundary is only one financing channel. Ministry financing evidence spans domestic interbank, retail and external/official-sector channels, so an explicit financing-channel allocation equation is required before exact-link readiness.",
-      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
+      "reason": "Government financing need is met through multiple domestic, retail, external-market and official-sector channels. The retained BNR domestic primary-market issuance series is one observed channel only. No exact channel-allocation vector or shares are identified, so the generic financing-need to debt-issuance link is not equation-ready.",
+      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
+      "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "bank_credit_balance_sheet_loop|credit_flow|loan_stock",

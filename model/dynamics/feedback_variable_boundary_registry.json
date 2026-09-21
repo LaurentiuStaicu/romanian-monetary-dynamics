@@ -91,9 +91,9 @@
     {
       "id": "government_debt_issuance",
       "current_boundary_class": "UNRESOLVED",
-      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "current_runtime_role": "MULTI_CHANNEL_FINANCING_AGGREGATE_BOUNDARY_UNRESOLVED_INACTIVE",
       "exact_reference_mode_id": null,
-      "classification_basis": "Official source screening and retained raw evidence identify at least two distinct financing boundaries. The BNR monthly domestic primary-market new/roll-over securities series is an exact observed boundary for that market only; Ministry financing evidence confirms gross financing need is allocated across domestic interbank, retail and external/official-sector channels. The BNR series therefore cannot silently replace the generic node used by both government feedback structures. The generic node remains unresolved.",
+      "classification_basis": "Official BNR and Ministry evidence confirms multiple financing channels. BNR domestic primary-market securities are one observed channel only and cannot replace the generic issuance node. Retail, external securities/private placements, RRF/EC and IFI/loan channels remain distinct; cash-buffer and liability-management operations require separate semantics.",
       "related_reference_modes": [],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
       "current_feedback_activation_authorized": false,
@@ -114,7 +114,9 @@
       ],
       "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
       "bnr_domestic_primary_market_boundary_can_replace_generic_node_in_both_government_loops": false,
-      "empirical_boundary_status": "UNRESOLVED_GENERIC_NODE_BNR_PARTIAL_BOUNDARY_ONLY"
+      "empirical_boundary_status": "UNRESOLVED_GENERIC_NODE_BNR_PARTIAL_BOUNDARY_ONLY",
+      "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
+      "financing_channel_allocation_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED"
     },
     {
       "id": "government_debt_stock",
@@ -150,7 +152,10 @@
       "current_feedback_activation_authorized": false,
       "source_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
       "interest_cost_to_financing_need_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
-      "canonical_GFN_definition_selected": false
+      "canonical_GFN_definition_selected": false,
+      "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
+      "financing_channel_allocation_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
+      "allocation_vector_identified": false
     },
     {
       "id": "government_interest_cost",

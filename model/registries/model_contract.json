@@ -126,8 +126,8 @@
     "mof_announced_RON_primary_reference_auction_supply_missing_required_source_count": 3,
     "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_assessment": "model/dynamics/mof_announced_RON_primary_reference_auction_missing_source_recovery_assessment_2026_09_20.json",
     "mof_announced_RON_primary_reference_auction_supply_missing_source_recovery_status": "EVIDENCE_TRIGGERED_HOLD_3_REQUIRED_SOURCES_REMAINING",
-    "government_issuance_yield_next_independent_task": "financing_channel_allocation_boundary_review",
-    "government_issuance_yield_next_independent_task_authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "government_issuance_yield_next_independent_task": "mof_realized_financing_channel_materialisation_contract",
+    "government_issuance_yield_next_independent_task_authorization": "DESCRIPTIVE_SOURCE_CONTRACT_ONLY",
     "mof_announced_RON_primary_reference_auction_supply_event_level_complete_final_months": [
       "2025-01",
       "2025-02",
@@ -151,7 +151,11 @@
     "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
     "interest_cost_to_financing_need_boundary_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
     "government_financing_need_canonical_boundary_selected": false,
-    "government_financing_need_canonical_reference_mode_promoted": false
+    "government_financing_need_canonical_reference_mode_promoted": false,
+    "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
+    "financing_channel_allocation_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
+    "government_financing_need_to_debt_issuance_equation_ready": false,
+    "government_financing_need_allocation_vector_identified": false
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
