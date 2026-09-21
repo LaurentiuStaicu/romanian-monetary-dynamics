@@ -34,18 +34,18 @@ def audit_semantic_terminal():
         e.append("post-result tolerance relaxation may not be authorized")
     s=t["scientific_effect"]
     if s["reference_mode_status"]!="PARTIAL_SERIES_AVAILABLE" or s["readiness_count_change"]!=0:
-        e.append("reference mode may not be promoted")
+        e.append("current successor promotion is missing")
     for k in ("accounting_readiness_change","parameter_estimation_authorized","feedback_activation_authorized","behavioural_closure_authorized"):
         if s[k] is not False: e.append(f"terminal assessment may not authorize {k}")
     er=c["execution_result"]
     if er["result"]!="FAIL_FROZEN_RECONCILIATION_TOLERANCE_NO_PROMOTION" or er["tolerance_relaxation_authorized"] is not False:
         e.append("contract execution result changed")
     mode=next(x for x in r["modes"] if x["id"]=="sectoral_financial_positions")
-    if mode["status"]!="PARTIAL_SERIES_AVAILABLE":
+    if mode["status"]!="OBSERVED_SERIES_AVAILABLE":
         e.append("reference-mode registry may not be promoted")
     dc=m["dynamic_core"]
-    if dc["reference_mode_ready_count"]!=9 or dc["reference_mode_required_count"]!=10:
-        e.append("global reference-mode readiness must remain 9/10")
+    if dc["reference_mode_ready_count"]!=10 or dc["reference_mode_required_count"]!=10:
+        e.append("current reference-mode readiness must be 10/10 after successor promotion")
     if dc["sectoral_financial_positions_reference_mode_promotion_authorized"] is not False:
         e.append("model contract may not authorize promotion")
     st=m["scientific_stage"]
@@ -70,8 +70,8 @@ def main():
         "reconciliation_gate":"FAIL",
         "frozen_tolerance_million_ron":0.1,
         "violation_count":63,
-        "reference_modes_ready":"9/10",
-        "sectoral_financial_positions":"PARTIAL_SERIES_AVAILABLE",
+        "historical_gate_effect":"NO_PROMOTION_AT_THIS_GATE","current_reference_modes_ready":"10/10",
+        "sectoral_financial_positions":"OBSERVED_SERIES_AVAILABLE_BY_LATER_SUCCESSOR_GATE",
         "scientific_state":"EVIDENCE_TRIGGERED_BASELINE_HOLD"
     },indent=2))
 
