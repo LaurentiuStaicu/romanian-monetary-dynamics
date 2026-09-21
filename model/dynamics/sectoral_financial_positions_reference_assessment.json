@@ -57,8 +57,8 @@
     "exploratory_f1_semantics_diagnostic": "REJECTS_RESIDENT_F1_LIABILITY_ZERO_NO_PROMOTION",
     "exploratory_f1_zero_refinement": "REJECTED_BY_PUBLISHED_QSA_SDR_LIABILITIES",
     "s1n_boundary_diagnostic": "EXECUTED_NEGATIVE_NO_REOPEN_EVIDENCE",
-    "external_source_screening": "EXTERNAL_COUNTERPART_PATH_EXHAUSTED_NO_REOPEN",
-    "further_external_counterpart_recovery": "FROZEN_UNTIL_NEW_SOURCE_OR_CHANGED_DATASET_TRIGGER"
+    "external_source_screening": "POST_2025_BNR_TOPOLOGY_TRIGGER_CONFIRMED_PUBLIC_ACCESS_PASS_OPEN",
+    "further_external_counterpart_recovery": "ACTIVE_ONE_FROZEN_BNR_2025_PUBLIC_ACCESS_TOPOLOGY_PASS"
   },
   "boundary_review": "model/dynamics/sectoral_financial_positions_boundary_review.json",
   "strict_source_gate_contract": "model/dynamics/sectoral_financial_positions_reference_contract.json",
@@ -134,5 +134,15 @@
   },
   "external_semantic_lineage_review_contract": "model/dynamics/sectoral_financial_positions_external_semantic_lineage_review_contract.json",
   "external_semantic_lineage_review_status": "EUROSTAT_FAIL_INSTRUMENT_SCOPE_OECD_FAIL_SECTOR_SCOPE",
-  "external_semantic_lineage_review_effect": "Both current official external counterpart candidates fail the frozen semantic boundary for different reasons; no historical extraction or readiness change is authorized."
+  "external_semantic_lineage_review_effect": "Both current official external counterpart candidates fail the frozen semantic boundary for different reasons; no historical extraction or readiness change is authorized.",
+  "bnr_2025_topology_reopen": {
+    "assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
+    "public_access_recovery_contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
+    "trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_21_bnr_financial_accounts_topology.json",
+    "status": "SOURCE_TOPOLOGY_PUBLIC_ACCESS_RECOVERY_OPEN_ONE_FROZEN_PASS",
+    "reference_mode_status": "PARTIAL_SERIES_AVAILABLE",
+    "readiness_count_change": 0,
+    "accounting_readiness_change": false,
+    "interpretation": "New official BNR/CMFB structural metadata satisfies the changed-topology/new-source monitoring trigger only for a preregistered public-access recovery pass. Internal who-to-whom compilation metadata is not a published value matrix and cannot promote the mode."
+  }
 }
