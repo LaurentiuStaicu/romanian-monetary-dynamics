@@ -1,3 +1,5 @@
+- Review the government gross-borrowing/issuance to Maastricht-debt-stock bridge: reject one-to-one accumulation, anchor the 2025 S13 stock change to Eurostat EDP Table 3 stock-flow reconciliation, keep matched net debt transactions unidentified, and preserve inactive feedback/behavioural closure.
+
 # Changelog
 
 All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) are recorded here.
