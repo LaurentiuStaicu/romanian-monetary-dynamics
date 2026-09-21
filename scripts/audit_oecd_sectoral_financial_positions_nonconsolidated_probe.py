@@ -100,8 +100,8 @@ def inspect_dimension_rows(data: bytes, dimension_order: list[str]) -> dict:
         if (row.get("REF_AREA") or "").strip() == "ROU":
             romania_identity_present = True
     return {
-        "header": header,
-        "data_row_count": row_count,
+        "csv_header": header,
+        "csv_data_row_count": row_count,
         "romania_identity_present": romania_identity_present,
         "dimension_code_sets": {k: sorted(v) for k, v in code_sets.items()},
         "numeric_observation_value_review_performed": False,
@@ -182,8 +182,8 @@ def main() -> None:
         data_error = None
         data_url = None
         summary = {
-            "header": [],
-            "data_row_count": 0,
+            "csv_header": [],
+            "csv_data_row_count": 0,
             "romania_identity_present": False,
             "dimension_code_sets": {},
             "numeric_observation_value_review_performed": False,
