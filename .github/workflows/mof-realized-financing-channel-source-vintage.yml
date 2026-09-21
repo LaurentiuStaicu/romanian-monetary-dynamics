@@ -1,0 +1,110 @@
+name: Ministry Realized Financing Channel Source Vintage Probe
+
+on:
+  push:
+    branches:
+      - source-vintage/mof-realized-financing-channels-2025-2026-09-21
+    paths:
+      - .github/workflows/mof-realized-financing-channel-source-vintage.yml
+      - model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json
+      - model/dynamics/mof_realized_financing_channel_source_vintage_probe_contract_2026_09_21.json
+      - scripts/probe_mof_realized_financing_channel_source_vintage.py
+      - tests/test_mof_realized_financing_channel_source_vintage_probe.py
+
+concurrency:
+  group: mof-realized-financing-channel-source-vintage
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  probe-and-retain:
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source-vintage branch
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install native PDF text extractor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+          pdftotext -v
+
+      - name: Verify offline probe logic and retained January-February anchors
+        run: |
+          python -m unittest \
+            tests.test_mof_realized_financing_channel_source_vintage_probe -v
+
+      - name: Probe official 2025 Ministry monthly reports
+        run: |
+          python scripts/probe_mof_realized_financing_channel_source_vintage.py \
+            --output mof_realized_financing_channel_source_probe_artifacts
+
+      - name: Retain or reverify source vintage
+        run: |
+          BRANCH="source-vintage/mof-realized-financing-channels-2025-2026-09-21"
+          DEST="data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21"
+
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+
+          if [ -e "$DEST" ]; then
+            python - <<'PY'
+          import json
+          from pathlib import Path
+
+          fresh_root = Path("mof_realized_financing_channel_source_probe_artifacts")
+          kept_root = Path("data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21")
+          fresh = json.loads((fresh_root / "source_vintage_manifest.json").read_text())
+          kept = json.loads((kept_root / "source_vintage_manifest.json").read_text())
+
+          fresh_by_period = {x["report_period"]: x for x in fresh["reports"]}
+          kept_by_period = {x["report_period"]: x for x in kept["reports"]}
+          if set(fresh_by_period) != set(kept_by_period):
+              raise SystemExit("report-period set changed")
+
+          for period in sorted(fresh_by_period):
+              f = fresh_by_period[period]
+              k = kept_by_period[period]
+              if f["source_available"] != k["source_available"]:
+                  raise SystemExit(f"{period}: source availability changed")
+              if f["source_available"]:
+                  if f["raw_sha256"] != k["raw_sha256"]:
+                      raise SystemExit(f"{period}: retained PDF SHA changed")
+                  if f["native_text_sha256"] != k["native_text_sha256"]:
+                      raise SystemExit(f"{period}: retained native-text SHA changed")
+                  if f["cumulative_ytd"] != k["cumulative_ytd"]:
+                      raise SystemExit(f"{period}: extracted cumulative-YTD values changed")
+
+          print("Retained realized-financing source vintage matches fresh exact probe.")
+          PY
+            exit 0
+          fi
+
+          mkdir -p "$DEST"
+          cp -a mof_realized_financing_channel_source_probe_artifacts/. "$DEST/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DEST"
+          git diff --cached --quiet && { echo "No retained source-vintage changes."; exit 1; }
+          git commit -m "data: retain Ministry realized-financing channel source vintage"
+          git push origin HEAD:"$BRANCH"
+
+      - name: Upload exact source-vintage probe
+        uses: actions/upload-artifact@v4
+        with:
+          name: mof-realized-financing-channel-source-vintage-${{ github.sha }}
+          path: mof_realized_financing_channel_source_probe_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
