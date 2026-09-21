@@ -204,6 +204,38 @@ jobs:
           if-no-files-found: error
           retention-days: 90
 
+  manual-ecb-qfa-materiality-reference-gate:
+    if: ${{ github.event_name == 'pull_request' && github.head_ref == 'model/ecb-qfa-10m-materiality-gate-2026-09-21' && github.run_attempt > 1 }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out frozen ECB-QFA-materiality branch
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify ECB QFA materiality preregistration
+        run: |
+          python scripts/audit_ecb_qfa_materiality_preregistration.py
+          python -m unittest tests.test_oecd_sectoral_financial_positions_ecb_qfa_materiality_gate -v
+
+      - name: Run ECB-QFA-materiality-aligned sectoral reference gate
+        env:
+          ECB_QFA_MATERIALITY_OUT: ecb_qfa_materiality_artifacts
+        run: python scripts/audit_oecd_sectoral_financial_positions_ecb_qfa_materiality_gate.py
+
+      - name: Upload ECB-QFA-materiality gate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecb-qfa-materiality-reference-${{ github.sha }}
+          path: ecb_qfa_materiality_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+
   verify-baseline:
     runs-on: ubuntu-latest
 
@@ -262,6 +294,9 @@ jobs:
 
       - name: Audit OECD reconciliation window stability
         run: python scripts/audit_oecd_sectoral_financial_positions_window_stability.py
+
+      - name: Audit ECB QFA materiality preregistration
+        run: python scripts/audit_ecb_qfa_materiality_preregistration.py
 
       - name: Audit successor trigger-aware monitoring horizon
         run: python scripts/audit_trigger_aware_monitoring_horizon_2026_09_21.py
