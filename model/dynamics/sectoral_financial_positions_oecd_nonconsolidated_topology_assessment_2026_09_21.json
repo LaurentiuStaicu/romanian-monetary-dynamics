@@ -1,0 +1,102 @@
+{
+  "assessment_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "reference_mode": "sectoral_financial_positions",
+  "phase": "OECD Quarterly Non-Consolidated Financial Accounts — Romania Topology/Coverage Review",
+  "probe_contract": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_probe_contract_2026_09_21.json",
+  "workflow_run_id": 35587769312,
+  "workflow_run_attempt": 2,
+  "job_id": 106295277767,
+  "artifact_id": 10633590243,
+  "artifact_zip_sha256": "4c845caa5d7edb6f936669e647760bf982057ce80c43c741a2a8f2a62ecfe148",
+  "numeric_observation_value_review_performed": false,
+  "results": {
+    "flows": {
+      "dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T620R_Q",
+      "structure_http_status": 200,
+      "structure_sha256": "871348831fa77a556bfe600861bb9e15a413ed9e8b06509c5d6ba08a0af5ff2f",
+      "raw_country_response_sha256": "c5d1d66a3340a79933162a66e6d8a58b7580b98ae2626a37f52dee951d9b3e5b",
+      "raw_country_response_bytes": 92515028,
+      "row_count": 124912,
+      "transaction_code": "F",
+      "topology_result": "PASS"
+    },
+    "stocks": {
+      "dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T720R_Q",
+      "structure_http_status": 200,
+      "structure_sha256": "2663b7e8374c31540951669a5e9ac1494d361487aaafe41f3f80da879fb62bb9",
+      "raw_country_response_sha256": "0b0917a15adf0228d2738475a237e9ab43f3a110c70d8b7b8dc7fa7adee4bd81",
+      "raw_country_response_bytes": 113046935,
+      "row_count": 149468,
+      "transaction_code": "LE",
+      "topology_result": "PASS"
+    }
+  },
+  "common_coverage": {
+    "quarters": 49,
+    "start": "2014-Q1",
+    "end": "2026-Q1",
+    "all_2025_quarters_present": true
+  },
+  "semantic_coverage": {
+    "required_reporting_sectors_present": [
+      "S11",
+      "S12",
+      "S121",
+      "S13"
+    ],
+    "household_sector": "S1M",
+    "rest_of_world_sector": "S2",
+    "required_instruments_present": [
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "accounting_entries_present": [
+      "A",
+      "L"
+    ],
+    "consolidation": "N",
+    "unit_measure": "XDC",
+    "unit_multiplier": "6",
+    "currency": "RON",
+    "total_currency_denomination": "_T",
+    "valuation": "S",
+    "price_base": "V",
+    "exact_total_maturity_rule": {
+      "F2": "T",
+      "F3": "T",
+      "F4": "T",
+      "F5": "_Z",
+      "F6": "_Z",
+      "F7": "T",
+      "F8": "T"
+    },
+    "noncounterpart_table_fixed_dimensions": {
+      "COUNTERPART_AREA": "W",
+      "COUNTERPART_SECTOR": "S1"
+    }
+  },
+  "topology_verdict": "PASS_PUBLIC_NONCONSOLIDATED_SECTOR_STOCK_FLOW_TOPOLOGY_AUTHORIZE_EXACT_EXTRACTION_RECONCILIATION_PREREGISTRATION_ONLY",
+  "interpretation": "The OECD non-consolidated quarterly tables expose the complete public sector/instrument/stock-flow topology required to test the narrower aggregate RMD sectoral-financial-position reference mode, including S121 separately. This removes the prior public-topology blocker for the aggregate gate but does not inspect numerical values, test reconciliation, promote the mode, or supply bilateral counterpart observations.",
+  "bilateral_accounting_boundary": {
+    "counterpart_information_observed_by_this_probe": false,
+    "accounting_spine_reopen_authorized": false,
+    "reason": "The non-consolidated T620R/T720R tables are sector aggregates. Their COUNTERPART_AREA/COUNTERPART_SECTOR dimensions are fixed aggregate selectors, not bilateral who-to-whom observations. The prior T625R/T725R counterpart screening remains the relevant bilateral public-source result and lacked S121."
+  },
+  "scientific_effect": {
+    "exact_extraction_reconciliation_preregistration_authorized": true,
+    "reference_mode_status": "PARTIAL_SERIES_AVAILABLE",
+    "readiness_count_change": 0,
+    "accounting_readiness_change": false,
+    "numeric_value_review_authorized_by_this_assessment": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false
+  },
+  "next_gate": "model/dynamics/sectoral_financial_positions_oecd_exact_extraction_reconciliation_contract_2026_09_21.json"
+}
