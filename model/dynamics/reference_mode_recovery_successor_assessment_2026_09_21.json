@@ -1,0 +1,29 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "reference_mode_recovery_successor_after_official_qfa_tolerance",
+  "predecessor_terminal_assessment": "model/dynamics/reference_mode_recovery_terminal_assessment.json",
+  "predecessor_status": "STAGE_COMPLETE_FROZEN_9_OF_10_UNDER_CURRENT_PUBLIC_EVIDENCE_BOUNDARY",
+  "trigger": "Independent ECB national-QFA internal-consistency threshold plus unchanged OECD aggregate stock/flow boundary.",
+  "promotion_assessment": "model/dynamics/sectoral_financial_positions_reference_mode_promotion_assessment_2026_09_21.json",
+  "current_state": {
+    "required_reference_modes": 10,
+    "ready_reference_modes": 10,
+    "blockers": [],
+    "closure_ready": true,
+    "operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD"
+  },
+  "meaning_of_closure_ready": "Observed-reference prerequisite is complete. No behavioural mechanism has thereby been estimated, validated or activated.",
+  "preserved_limits": {
+    "Accounting_Spine_full_benchmark_ready": false,
+    "canonical_complete_stock_and_flow_instruments": [
+      "F3"
+    ],
+    "validated_reference_behavioural_mechanisms": 0,
+    "quantitative_feedback_loops_active": 0,
+    "behavioural_closure_active": false,
+    "calibration_cycle_open": false,
+    "model_complete": false
+  },
+  "decision": "REFERENCE_MODE_RECOVERY_REOPEN_COMPLETE_10_OF_10_READY_BASELINE_HOLD_CONTINUES"
+}
