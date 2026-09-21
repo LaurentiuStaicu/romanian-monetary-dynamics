@@ -1,0 +1,78 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "refinancing_need_to_risk_premium_boundary_review",
+  "loop_id": "external_fx_refinancing_loop",
+  "purpose": "Determine whether generic refinancing need identifies a risk-premium response without importing the failed sovereign-yield candidate or collapsing public and private-sector risk pricing into one coefficient.",
+  "decision": "DO_NOT_MAP_REFINANCING_NEED_ONE_TO_ONE_TO_RISK_PREMIUM_KEEP_MULTI_DRIVER_AND_SECTOR_BOUNDARY_UNRESOLVED",
+  "retained_evidence": {
+    "external_fx_source_review": "model/calibration_validation/external_fx_refinancing_source_boundary_review.json",
+    "sovereign_yield_boundary": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+    "sovereign_yield_mechanism": "sovereign_yield_spread_response",
+    "sovereign_yield_status": "CANDIDATE",
+    "interpretation": "Sovereign yields and external refinancing conditions are related macro-financial evidence, but a sovereign spread is not a generic cross-sector risk premium and the tested sovereign-yield form does not supply this link."
+  },
+  "concept_boundary": {
+    "refinancing_need_alone_determines_risk_premium": false,
+    "sovereign_yield_equals_generic_external_risk_premium": false,
+    "government_risk_pricing_equals_bank_or_corporate_risk_pricing": false,
+    "domestic_primary_yield_equals_external_refinancing_spread": false,
+    "historical_association_equals_structural_coefficient": false
+  },
+  "structural_interpretation": {
+    "multi_driver_state": "Risk premia can reflect borrower/sovereign fundamentals, global risk appetite, external benchmark rates, liquidity, market depth, currency risk, institutional/regime factors and contemporaneous refinancing conditions.",
+    "identification_limit": "The marginal contribution of refinancing need is not separately identified on a common sector/instrument/currency/maturity boundary.",
+    "qualitative_positive_sign_retained_as_candidate": true,
+    "exact_integrated_equation_ready": false
+  },
+  "bridge_resolution": {
+    "from": "refinancing_need",
+    "to": "risk_premium",
+    "status": "MULTI_DRIVER_RISK_PREMIUM_REFINANCING_CONTRIBUTION_NOT_IDENTIFIED",
+    "causal_role": "MULTI_DRIVER_RISK_PRICING_CANDIDATE_CONTRIBUTION_NOT_IDENTIFIED",
+    "generic_risk_premium_measure_selected": false,
+    "sector_specific_mapping_selected": false,
+    "failed_or_candidate_sovereign_form_reuse_authorized": false,
+    "historical_coefficient_reuse_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effect": {
+    "refinancing_need": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "current_feedback_activation_authorized": false
+    },
+    "risk_premium": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "hard_rules": {
+    "no_refinancing_need_to_risk_premium_identity": true,
+    "no_sovereign_spread_as_generic_cross_sector_premium": true,
+    "no_public_private_risk_coefficient_pooling": true,
+    "no_failed_form_reuse": true,
+    "no_historical_coefficient_reuse": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "risk_premium_boundary_resolved": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "risk_premium_to_exchange_rate_pressure_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_map_risk_premium_directly_to_exchange_rate_change": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}
