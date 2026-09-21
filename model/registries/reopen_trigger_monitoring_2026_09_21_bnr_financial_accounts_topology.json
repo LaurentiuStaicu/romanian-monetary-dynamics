@@ -1,0 +1,74 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "stage": "Evidence-Triggered Baseline Hold — BNR 2025 Financial-Accounts Topology Trigger",
+  "status": "ONE_DECLARED_REOPEN_TRIGGER_SATISFIED_SOURCE_TOPOLOGY_RECOVERY_ONLY",
+  "purpose": "Record a newly identified official BNR/CMFB financial-accounts structural-metadata source that satisfies the changed-dataset-topology/new-official-source condition narrowly enough to reopen one public-access/source-topology recovery pass, while preserving all numerical, accounting, reference-mode and behavioural promotion gates.",
+  "governing_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json",
+  "governing_reference_mode": "model/dynamics/sectoral_financial_positions_reference_assessment.json",
+  "trigger_id": "accounting_reference_mode_counterpart_topology",
+  "evidence": {
+    "topology_reopen_assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
+    "source_url": "https://circabc.europa.eu/sd/a/89ddc57a-7e1d-436e-b217-bd266cfb23fd/23%20-%20RO%20-%20CMFB%20FA%20level%203.pdf",
+    "institution": "National Bank of Romania",
+    "reporting_framework": "CMFB level-3 national quality/structural-metadata report for financial accounts",
+    "update_date": "2025-09",
+    "newly_identified_clues": [
+      "The last major benchmark revision of national financial accounts was completed in April 2025.",
+      "A new financial-accounts IT system has been in place since mid-2025.",
+      "Quarterly data extend from 1995Q1 and annual data are compiled from quarterly data for all available series.",
+      "National financial accounts are prepared on a who-to-whom basis with sector, financial-instrument and counterpart dimensions used in compilation and consistency checks.",
+      "All sectors are disseminated quarterly and annually for stocks and flows, while regular OECD transmission of all financial-accounts datasets began in April 2025."
+    ]
+  },
+  "trigger_adjudication": {
+    "declared_condition": "Changed official ECB/Eurostat/BNR/OECD dataset topology or a new official source supplies evidence relevant to the frozen sector/instrument/frequency/counterpart boundary.",
+    "new_official_structural_metadata": true,
+    "changed_compilation_topology_clue": true,
+    "public_exact_value_boundary_proven": false,
+    "trigger_satisfied_for_source_topology_recovery": true,
+    "trigger_satisfied_for_reference_mode_promotion": false,
+    "trigger_satisfied_for_accounting_instrument_reopen": false,
+    "trigger_satisfied_for_parameter_estimation": false
+  },
+  "authorized_action": {
+    "id": "bnr_2025_financial_accounts_public_access_recovery",
+    "contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
+    "scope": "ONE_FROZEN_PUBLIC_ACCESS_TOPOLOGY_PASS",
+    "may_inspect_public_metadata_and_catalogue": true,
+    "may_preregister_exact_value_extraction_after_semantic_topology_pass": true,
+    "may_extract_values_before_topology_pass": false,
+    "may_infer_hidden_or_missing_dimensions": false,
+    "may_promote_reference_mode_without_separate_pass": false,
+    "may_change_accounting_readiness": false
+  },
+  "preserved_state": {
+    "sectoral_financial_positions_status": "PARTIAL_SERIES_AVAILABLE",
+    "reference_modes_ready": 9,
+    "reference_modes_required": 10,
+    "canonical_complete_stock_and_flow_instruments": [
+      "F3"
+    ],
+    "calibration_cycle_open": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "global_scientific_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD_WITH_ONE_SOURCE_TOPOLOGY_TASK"
+  },
+  "other_declared_triggers": {
+    "prospective_monetary_policy_event": "CLOSED_UNTIL_2026_10_08_EVENT",
+    "ameco_structural_primary_new_full_vintage": "CLOSED_UNTIL_NEW_FULL_RELEASE",
+    "bnr_bls_2025_q2_exact_source": "UNSATISFIED",
+    "government_repricing_ledger": "UNSATISFIED"
+  },
+  "decision": {
+    "reference_mode_recovery_source_task_open": true,
+    "accounting_instrument_reopened": false,
+    "reference_mode_promoted": false,
+    "readiness_count_change": 0,
+    "active_calibration_cycle_open": false,
+    "holdout_or_reserved_response_opening_authorized": false,
+    "estimation_or_refit_authorized": false,
+    "system_dynamics_feedback_activation_authorized": false,
+    "behavioural_closure_activation_authorized": false
+  }
+}
