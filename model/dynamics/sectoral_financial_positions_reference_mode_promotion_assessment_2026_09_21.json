@@ -1,0 +1,48 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "sectoral_financial_positions_reference_mode_promotion",
+  "reference_mode": "sectoral_financial_positions",
+  "prior_status": "PARTIAL_SERIES_AVAILABLE",
+  "candidate_status": "OBSERVED_SERIES_AVAILABLE",
+  "gate_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_assessment_2026_09_21.json",
+  "retained_vintage": "data/source_vintages/sectoral-financial-positions-ecb-qfa-tolerance-pass-2026-09-21/source_vintage_manifest.json",
+  "processed_series": "data/processed/sectoral_financial_positions_reference_oecd_2014Q1_2026Q1.csv.gz",
+  "criteria": {
+    "public_quarterly_stock_and_transaction_topology": true,
+    "S121_separately_observable": true,
+    "F2_through_F8_total_instrument_coverage": true,
+    "exact_semantic_treatment_for_S1M_L_F2": true,
+    "exact_nonexception_row_coverage": true,
+    "finite_values": true,
+    "common_history_quarters": 49,
+    "minimum_required_quarters": 40,
+    "all_2025_quarters": true,
+    "official_ECB_QFA_horizontal_consistency_gate": true,
+    "per_instrument_tests": 686,
+    "per_instrument_violations": 0,
+    "aggregate_tests": 98,
+    "aggregate_violations": 0,
+    "retained_processed_series": true,
+    "retained_provenance_and_hashes": true
+  },
+  "scope": {
+    "promoted_boundary": "Aggregate quarterly behaviour-over-time sectoral financial stocks and financial transactions for H,C,F,G,BNR,X across F2-F8.",
+    "canonical_bilateral_holder_by_issuer_accounting_boundary_promoted": false,
+    "Accounting_Spine_effect": "NONE; only F3 remains canonically complete stock+flow.",
+    "behavioural_equations_activated": false,
+    "parameter_estimation_authorized": false,
+    "calibration_cycle_opened": false,
+    "feedback_activation_authorized": false,
+    "model_completion_claim_allowed": false
+  },
+  "decision": "PROMOTE_AGGREGATE_SECTORAL_FINANCIAL_POSITIONS_TO_OBSERVED_SERIES_AVAILABLE",
+  "reference_mode_system_effect": {
+    "ready_count_before": 9,
+    "ready_count_after": 10,
+    "required_count": 10,
+    "reference_mode_closure_ready_after": true,
+    "interpretation": "All required reference modes now have observed series admissible for future integrated quantitative validation. This is a prerequisite state only; it is not validated behavioural closure."
+  },
+  "promotion_consumed": true
+}
