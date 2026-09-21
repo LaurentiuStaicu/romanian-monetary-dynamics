@@ -85,7 +85,9 @@
       "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
       "related_reference_modes": [],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
-      "current_feedback_activation_authorized": false
+      "current_feedback_activation_authorized": false,
+      "exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review": "model/dynamics/exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review_2026_09_21.json",
+      "exchange_rate_depreciation_to_fx_debt_service_burden_status": "FX_DEBT_SERVICE_TRANSLATION_CONDITIONAL_JOINT_CURRENCY_RESIDUAL_MATURITY_HEDGING_UNRESOLVED"
     },
     {
       "id": "exchange_rate_pressure",
@@ -95,7 +97,10 @@
       "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
       "related_reference_modes": [],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
-      "current_feedback_activation_authorized": false
+      "current_feedback_activation_authorized": false,
+      "risk_premium_to_exchange_rate_pressure_boundary_review": "model/dynamics/risk_premium_to_exchange_rate_pressure_boundary_review_2026_09_21.json",
+      "risk_premium_to_exchange_rate_pressure_status": "RISK_PREMIUM_AND_EXCHANGE_RATE_PRESSURE_SIMULTANEOUS_MANAGED_FLOAT_BOUNDARY_UNRESOLVED",
+      "open_chain_closing_link_authorized": false
     },
     {
       "id": "fx_debt_service_burden",
@@ -105,7 +110,11 @@
       "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
       "related_reference_modes": [],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
-      "current_feedback_activation_authorized": false
+      "current_feedback_activation_authorized": false,
+      "exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review": "model/dynamics/exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review_2026_09_21.json",
+      "exchange_rate_depreciation_to_fx_debt_service_burden_status": "FX_DEBT_SERVICE_TRANSLATION_CONDITIONAL_JOINT_CURRENCY_RESIDUAL_MATURITY_HEDGING_UNRESOLVED",
+      "fx_debt_service_burden_to_refinancing_need_boundary_review": "model/dynamics/fx_debt_service_burden_to_refinancing_need_boundary_review_2026_09_21.json",
+      "fx_debt_service_burden_to_refinancing_need_status": "DEBT_SERVICE_DUE_NOT_EQUAL_REFINANCING_NEED_SECTOR_LIQUIDITY_AND_BUFFER_BOUNDARY_UNRESOLVED"
     },
     {
       "id": "government_debt_issuance",
@@ -388,7 +397,11 @@
         "government_refinancing_need"
       ],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
-      "current_feedback_activation_authorized": false
+      "current_feedback_activation_authorized": false,
+      "fx_debt_service_burden_to_refinancing_need_boundary_review": "model/dynamics/fx_debt_service_burden_to_refinancing_need_boundary_review_2026_09_21.json",
+      "fx_debt_service_burden_to_refinancing_need_status": "DEBT_SERVICE_DUE_NOT_EQUAL_REFINANCING_NEED_SECTOR_LIQUIDITY_AND_BUFFER_BOUNDARY_UNRESOLVED",
+      "refinancing_need_to_risk_premium_boundary_review": "model/dynamics/refinancing_need_to_risk_premium_boundary_review_2026_09_21.json",
+      "refinancing_need_to_risk_premium_status": "MULTI_DRIVER_RISK_PREMIUM_REFINANCING_CONTRIBUTION_NOT_IDENTIFIED"
     },
     {
       "id": "risk_premium",
@@ -398,7 +411,11 @@
       "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
       "related_reference_modes": [],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
-      "current_feedback_activation_authorized": false
+      "current_feedback_activation_authorized": false,
+      "refinancing_need_to_risk_premium_boundary_review": "model/dynamics/refinancing_need_to_risk_premium_boundary_review_2026_09_21.json",
+      "refinancing_need_to_risk_premium_status": "MULTI_DRIVER_RISK_PREMIUM_REFINANCING_CONTRIBUTION_NOT_IDENTIFIED",
+      "risk_premium_to_exchange_rate_pressure_boundary_review": "model/dynamics/risk_premium_to_exchange_rate_pressure_boundary_review_2026_09_21.json",
+      "risk_premium_to_exchange_rate_pressure_status": "RISK_PREMIUM_AND_EXCHANGE_RATE_PRESSURE_SIMULTANEOUS_MANAGED_FLOAT_BOUNDARY_UNRESOLVED"
     },
     {
       "id": "sovereign_yield",
