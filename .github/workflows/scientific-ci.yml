@@ -284,6 +284,9 @@ jobs:
       - name: Audit F4 structural-zero successor execution
         run: python scripts/audit_f4_structural_zero_successor_execution.py
 
+      - name: Audit F4 BNR CNF 2025 stock trigger monitoring
+        run: python scripts/audit_f4_bnr_cnf_2025_stock_trigger_monitoring.py
+
       - name: Audit terminal Accounting Spine recovery state
         run: python scripts/audit_accounting_spine_recovery_terminal.py
 

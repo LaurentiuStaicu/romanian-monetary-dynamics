@@ -56,7 +56,12 @@
       "current_flow_nullity": 9,
       "current_flow_unique_cell_count": 15,
       "current_reopen_gate_open": false,
-      "successor_materialization_gate_state": "EXECUTED_PASS_RETURNED_TO_EVIDENCE_TRIGGERED_HOLD"
+      "successor_materialization_gate_state": "EXECUTED_PASS_RETURNED_TO_EVIDENCE_TRIGGERED_HOLD",
+      "priority_stock_reopen_monitoring": "model/accounting/f4_bnr_cnf_2025_stock_trigger_monitoring_2026_09_21.json",
+      "priority_stock_reopen_trigger_id": "BNR_CNF_2025_F4_CENTRAL_BANK_ASSET_COUNTERPART_STOCK_MATRIX",
+      "priority_stock_reopen_trigger_state": "MONITOR_PUBLICATION_NO_REOPEN",
+      "priority_stock_reopen_earliest_evidence_window": "after 2026-10-31",
+      "priority_stock_reopen_window_note": "Inferred from prior BNR CNF report data-availability cutoffs; not a guaranteed publication date."
     },
     "F5": {
       "current_status": "FROZEN_AT_PUBLIC_DATA_BOUNDARY",
