@@ -1,0 +1,37 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "phase": "Accounting Spine / post-terminal F4 structural-zero selective reopen",
+  "predecessor_terminal_assessment": "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json",
+  "trigger_assessment": "model/accounting/f4_bnr_zero_liability_structural_adjudication_2026_09_21.json",
+  "trigger": "Separately justified structural-zero adjudication for the BNR F4 zero-liability stock partition.",
+  "trigger_satisfied": true,
+  "current_state": {
+    "accounting_recovery_stage_status": "SELECTIVE_REOPEN_F4_STRUCTURAL_ZERO_MATERIALIZATION_PENDING",
+    "active_selective_reopen_instruments": [
+      "F4"
+    ],
+    "active_unconditional_accounting_recovery_task": "F4_STRUCTURAL_ZERO_SUCCESSOR_MATERIALIZATION_GATE",
+    "next_operational_state": "EXECUTE_F4_STRUCTURAL_ZERO_SUCCESSOR_MATERIALIZATION_GATE"
+  },
+  "authorized_next_gate": {
+    "id": "F4_STRUCTURAL_ZERO_SUCCESSOR_MATERIALIZATION_GATE",
+    "purpose": "Materialize only the ten stock cells newly proven exact by the structural-zero adjudication into a successor partial-F4 artifact.",
+    "may_rewrite_historical_f4_partial": false,
+    "may_change_flow": false,
+    "may_allocate_bnr_asset_row": false,
+    "may_change_canonical_benchmark": false,
+    "may_complete_f4": false
+  },
+  "scientific_effect": {
+    "canonical_complete_instruments_change": false,
+    "canonical_benchmark_ready_change": false,
+    "reference_mode_change": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "model_complete": false,
+    "version_bump_authorized": false
+  },
+  "decision": "PASS_POST_TERMINAL_F4_STRUCTURAL_ZERO_TRIGGER_SELECTIVE_REOPEN"
+}
