@@ -19,7 +19,7 @@ def audit_window_stability():
         e.append("post-benchmark failure count changed")
     if not all(v is False for v in a["safeguards"].values()):
         e.append("window diagnostic safeguard relaxed")
-    if m["dynamic_core"]["reference_mode_ready_count"]!=9:
+    if m["dynamic_core"]["reference_mode_ready_count"]!=10:
         e.append("reference readiness changed")
     if m["scientific_stage"]["next_operational_state"]!="EVIDENCE_TRIGGERED_BASELINE_HOLD":
         e.append("baseline hold changed")
@@ -28,5 +28,5 @@ def audit_window_stability():
 def main():
     errs=audit_window_stability()
     if errs: raise RuntimeError("Window stability diagnostic failed:\n- "+"\n- ".join(errs))
-    print(json.dumps({"status":"PASS","40q_windows_passing":0,"post_benchmark_measure_period_violations":5,"reference_modes_ready":"9/10"},indent=2))
+    print(json.dumps({"status":"PASS","40q_windows_passing":0,"post_benchmark_measure_period_violations":5,"reference_modes_ready":"10/10"},indent=2))
 if __name__=="__main__": main()
