@@ -82,18 +82,20 @@ class TriggerAwareMonitoringHorizonTests(unittest.TestCase):
         )
         self.assertIn("routine new quarterly data vintage", accounting["current_known_release_context"]["rule"])
 
-    def test_historical_horizon_is_preserved_as_predecessor(self) -> None:
+    def test_historical_horizon_is_preserved_in_successor_lineage(self) -> None:
         expected = "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json"
         self.assertEqual(self.h["frozen_on"], "2026-09-20")
+        h21 = load("model/registries/trigger_aware_monitoring_horizon_2026_09_21.json")
+        self.assertEqual(h21["supersedes"], expected)
         self.assertEqual(
             self.m["scientific_stage"]["previous_trigger_aware_monitoring_horizon"],
-            expected,
+            "model/registries/trigger_aware_monitoring_horizon_2026_09_21.json",
         )
         self.assertEqual(
             self.b["canonical_state"]["scientific_stage"][
                 "previous_trigger_aware_monitoring_horizon"
             ],
-            expected,
+            "model/registries/trigger_aware_monitoring_horizon_2026_09_21.json",
         )
         self.assertEqual(
             self.m["scientific_stage"]["next_dated_trigger_check"]["date"],
