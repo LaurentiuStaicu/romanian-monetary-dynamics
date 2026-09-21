@@ -66,6 +66,18 @@ The next dated check is **2026-10-08** and is limited to the BNR monetary-policy
 Fiscal AMECO monitoring is release-conditioned rather than polled: the next legitimate check occurs only after the Commission publishes the Autumn 2026 full forecast / corresponding AMECO release. The exact BNR BLS 2025-Q2 source, the government repricing ledger and the accounting/reference-mode counterpart boundaries are new-evidence-only triggers. Routine quarterly data releases without changed topology do not reopen frozen source paths.
 
 
+
+### BNR 2025 financial-accounts topology trigger — 2026-09-21
+
+A newly identified official NBR/CMFB structural-metadata report satisfies the frozen **changed dataset topology / new official source** trigger narrowly enough to reopen one source-access review for `sectoral_financial_positions`. The report records the April 2025 benchmark revision, a new financial-accounts IT system in place since mid-2025, quarterly history from 1995Q1, who-to-whom compilation, and sector/instrument/counterpart dimensions used in compilation and consistency checks.
+
+This is **not** a reference-mode promotion. The report documents the internal compilation architecture and source map, but it does not itself expose the exact public machine-readable numerical boundary required by RMD. In particular, the public availability of a separately observable S121 central-bank dimension and complete F2-F8 quarterly stocks plus financial transactions on the frozen RMD mapping has not been demonstrated.
+
+RMD therefore opens exactly one preregistered public-access/source-topology pass under `model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json`. The pass must identify and freeze a public provider/dataset/dimension boundary before any value extraction. Missing dimensions cannot be guessed, hidden endpoints cannot be reverse-engineered, stock differences cannot substitute for transactions, and no sector or instrument may be dropped after observing results.
+
+The canonical state remains **9/10 reference modes ready**. `sectoral_financial_positions` remains `PARTIAL_SERIES_AVAILABLE`; F3 remains the only canonically complete stock-and-flow Accounting Spine instrument; calibration/refit, feedback activation and behavioural closure remain closed.
+
+
 ### Government refinancing–interest loop structural closure — 2026-09-21
 
 The complete declared path of the `government_refinancing_interest_loop` has now received explicit structural/accounting boundary review. The qualitative reinforcing topology is retained, but the loop is **not quantitatively active**.
