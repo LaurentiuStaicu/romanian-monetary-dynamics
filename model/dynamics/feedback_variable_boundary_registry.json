@@ -139,12 +139,17 @@
     {
       "id": "government_financing_need",
       "current_boundary_class": "UNRESOLVED",
-      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
+      "current_runtime_role": "OBSERVED_COMPONENTS_AVAILABLE_INACTIVE_UMBRELLA_NODE",
       "exact_reference_mode_id": null,
-      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
-      "related_reference_modes": [],
+      "classification_basis": "Observed ESA interest expenditure and Ministry principal-refinancing reference modes expose important financing-need components, but they use different accounting, timing and population boundaries and do not constitute a canonical realized gross-financing-needs series. The node remains an unresolved financing-liquidity umbrella.",
+      "related_reference_modes": [
+        "government_refinancing_need",
+        "government_interest_burden"
+      ],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
-      "current_feedback_activation_authorized": false
+      "current_feedback_activation_authorized": false,
+      "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
+      "scalar_financing_need_selected": false
     },
     {
       "id": "government_interest_cost",
