@@ -1,13 +1,13 @@
 {
-  "authorization_version": "0.2",
+  "authorization_version": "0.3",
   "authorized_on": "2026-09-21",
-  "release_version": "0.2.0",
-  "tag": "v0.2.0",
-  "release_name": "v0.2.0 — Structural review and reproducibility milestone",
-  "release_notes_path": "releases/v0.2.0.md",
+  "release_version": "0.3.0",
+  "tag": "v0.3.0",
+  "release_name": "v0.3.0 — Reference-mode closure and Accounting Spine recovery boundary",
+  "release_notes_path": "releases/v0.3.0.md",
   "intended_release_date": "2026-09-21",
-  "publication_authorized": false,
-  "publication_trigger": "CONSUMED_GREEN_SCIENTIFIC_CI_ON_MAIN_RELEASE_COMMIT",
+  "publication_authorized": true,
+  "publication_trigger": "GREEN_SCIENTIFIC_CI_ON_MAIN_RELEASE_COMMIT",
   "target_commit_strategy": "SCIENTIFIC_CI_WORKFLOW_RUN_HEAD_SHA",
   "hard_rules": {
     "require_main_branch": true,
@@ -28,9 +28,6 @@
     "behavioural_closure_authorized": false,
     "model_completion_claim_authorized": false
   },
-  "publication_state": "PUBLISHED_AND_AUTHORIZATION_CONSUMED",
-  "exact_release_commit": "51114123c19471448356aee10e487994744233a0",
-  "published_at": "2026-09-21T09:40:42Z",
-  "publication_record": "model/registries/v0_2_0_release_publication_record_2026_09_21.json",
-  "trigger_consumed": true
+  "publication_state": "READY_FOR_PUBLICATION_AFTER_GREEN_MAIN_CI",
+  "trigger_consumed": false
 }
