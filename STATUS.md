@@ -144,6 +144,17 @@ No monitoring gate is open now. The successor registry preserves the existing da
 The next scheduled event check remains the **BNR monetary-policy decision on 2026-10-08**. Until then, repeated AMECO probing, BLS filename guessing, government-repricing proxy substitution, routine ECB-QSA vintage reruns and repeated OECD/Eurostat financial-account value probes do not count as scientific progress and remain prohibited without their declared triggers.
 
 
+### ECB official QFA internal-consistency tolerance gate — preregistered 2026-09-21
+
+A new official-domain trigger has been identified after the earlier dissemination-precision diagnostic. The ECB's QFA quality framework defines internal consistency to include aggregation, horizontal asset-liability, balancing-item and counterpart-sector checks. The 2013 QFA quality report explicitly states that discrepancies below **EUR 10 million** are acceptable in national data. The 2024 report continues to flag/correct internal discrepancies above EUR 10 million and evaluates Romania within the same all-EU validation framework.
+
+This threshold predates RMD and is not estimated from the residuals already observed. Historical RMD gates using 0.1 million RON remain immutable failures; they are not rewritten.
+
+One new gate is preregistered on the unchanged OECD non-consolidated boundary. It will use exact decimal arithmetic and test horizontal consistency separately for F2-F8 in every retained stock/flow quarter. The EUR 10 million threshold will be converted conservatively to RON using the **minimum positive daily ECB RON/EUR reference rate over 2014-01-01 through 2026-03-31**, producing a threshold floor no larger than the EUR-equivalent threshold for any retained date. Aggregate six-sector reconciliation is a secondary test.
+
+Before manual execution, `sectoral_financial_positions` remains `PARTIAL_SERIES_AVAILABLE`, readiness remains **9/10**, Accounting Spine readiness is unchanged, and no calibration, estimation, feedback activation or behavioural closure is authorized.
+
+
 ### Government refinancing–interest loop structural closure — 2026-09-21
 
 The complete declared path of the `government_refinancing_interest_loop` has now received explicit structural/accounting boundary review. The qualitative reinforcing topology is retained, but the loop is **not quantitatively active**.
