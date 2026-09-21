@@ -242,7 +242,12 @@
       "private_demand_and_investment_to_inflationary_pressure_equation_ready": false,
       "inflationary_pressure_to_policy_rate_boundary_review": "model/dynamics/inflationary_pressure_to_policy_rate_boundary_review_2026_09_21.json",
       "inflationary_pressure_to_policy_rate_status": "POLICY_RATE_OBSERVED_FORCING_REACTION_FUNCTION_MEASUREMENT_AND_IDENTIFICATION_BLOCKED",
-      "inflationary_pressure_to_policy_rate_equation_ready": false
+      "inflationary_pressure_to_policy_rate_equation_ready": false,
+      "structural_terminal_assessment": "model/dynamics/monetary_credit_transmission_loop_terminal_assessment_2026_09_21.json",
+      "structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_MEASUREMENT_AND_IDENTIFICATION_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
+      "operational_state": "EVIDENCE_TRIGGERED_HOLD",
+      "active_empirical_task": null,
+      "reopen_trigger_required": true
     },
     {
       "id": "external_fx_refinancing_loop",

@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- completed the structural review cycle for `monetary_credit_transmission_loop`: all five links now have explicit boundaries but 0/5 exact integrated equations are ready; the household pass-through remains target-specific and unvalidated, rate-to-credit and credit-to-expenditure mappings remain unidentified, HICP is not promoted to a core reference mode, the policy rate stays observed/exogenous, and the loop enters evidence-triggered hold with no active empirical task;
 - reviewed `inflationary_pressure → policy_rate`: the BNR inflation target and actual inflation are observed, but formation-date expectations, real-time activity-gap vintages and simultaneity/regime identification remain insufficient for a policy rule; the policy rate stays observed/exogenous and no Taylor-rule closure is introduced;
 - reviewed `private_demand_and_investment → inflationary_pressure`: observed HICP remains diagnostic evidence rather than a new Dynamic Core reference mode; inflation is multi-driver and the demand contribution is not identified, so no demand-to-inflation equation or core inflation extension is introduced;
 - reviewed `credit_flow → private_demand_and_investment`: aggregate NFC/household credit transactions finance multiple purposes, including working capital, refinancing and house purchase, so they cannot be relabelled as household consumption or NFC fixed investment without an observed purpose-allocation bridge;

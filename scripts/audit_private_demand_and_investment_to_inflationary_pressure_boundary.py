@@ -33,7 +33,7 @@ def audit_private_demand_to_inflation(review,fx_boundary,fx_selection,boundary,r
  if loop.get("private_demand_and_investment_to_inflationary_pressure_status")!=STATUS:e.append("loop status changed")
  d=model["dynamic_core"]
  if d.get("private_demand_and_investment_to_inflationary_pressure_boundary_review")!=REVIEW_PATH:e.append("model pointer missing")
- if d.get("monetary_credit_transmission_next_structural_task")!="monetary_credit_transmission_loop_terminal_assessment":e.append("next monetary task changed")
+ if d.get("monetary_credit_transmission_next_structural_task")!="monetary_credit_transmission_loop_evidence_triggered_hold":e.append("next monetary task changed")
  if baseline["authority"].get("private_demand_and_investment_to_inflationary_pressure_boundary_review")!=REVIEW_PATH:e.append("baseline authority missing")
  for k,v in review["hard_rules"].items():
   if v is not True:e.append(f"hard rule disabled: {k}")
@@ -41,5 +41,5 @@ def audit_private_demand_to_inflation(review,fx_boundary,fx_selection,boundary,r
 def main():
  errors=audit_private_demand_to_inflation(load(REVIEW_PATH),load("model/calibration_validation/fx_inflation_pass_through_source_boundary_review.json"),load("model/calibration_validation/fx_inflation_structural_selection_result.json"),load("model/dynamics/feedback_variable_boundary_registry.json"),load("model/dynamics/feedback_link_readiness_registry.json"),load("model/dynamics/feedback_registry.json"),load("model/dynamics/reference_modes.json"),load("model/registries/model_contract.json"),load("model/registries/scientific_baseline_manifest.json"))
  if errors:raise RuntimeError("Private-demand to inflation boundary audit failed:\n- "+"\n- ".join(errors))
- print(json.dumps({"status":"PASS","bridge_status":STATUS,"core_inflation_reference_mode_added":False,"exact_integrated_equation_ready":False,"feedback_activation_authorized":False,"next_gate":"monetary_credit_transmission_loop_terminal_assessment"},indent=2))
+ print(json.dumps({"status":"PASS","bridge_status":STATUS,"core_inflation_reference_mode_added":False,"exact_integrated_equation_ready":False,"feedback_activation_authorized":False,"next_gate":"monetary_credit_transmission_loop_evidence_triggered_hold"},indent=2))
 if __name__=="__main__":main()

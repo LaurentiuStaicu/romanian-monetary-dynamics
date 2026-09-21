@@ -225,6 +225,9 @@ jobs:
       - name: Audit inflationary-pressure to policy-rate boundary
         run: python scripts/audit_inflationary_pressure_to_policy_rate_boundary.py
 
+      - name: Audit monetary-credit transmission loop terminal state
+        run: python scripts/audit_monetary_credit_transmission_loop_terminal_assessment.py
+
       - name: Audit government debt-stock to interest-cost accounting boundary
         run: python scripts/audit_government_debt_stock_to_interest_cost_boundary.py
 
