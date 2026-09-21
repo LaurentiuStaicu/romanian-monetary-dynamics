@@ -34,7 +34,9 @@
       "frequency": "quarterly",
       "role": "PREFERRED_OBSERVED_INTEREST_EXPENDITURE_TARGET",
       "not_effective_interest_rate": true,
-      "not_marginal_sovereign_yield": true
+      "not_marginal_sovereign_yield": true,
+      "methodology_url": "https://ec.europa.eu/eurostat/cache/metadata/en/gov_10q_ggnfa_esms.htm",
+      "esa_accrual_methodology_url": "https://ec.europa.eu/eurostat/en/web/government-finance-statistics/methodology"
     },
     "eurostat_apparent_cost_diagnostic": {
       "institution": "Eurostat",
