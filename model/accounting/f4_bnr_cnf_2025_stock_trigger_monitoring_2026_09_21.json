@@ -1,0 +1,97 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "phase": "Accounting Spine / F4 BNR CNF annual-2025 stock trigger monitoring",
+  "instrument": "F4",
+  "purpose": "Separate a legitimate future stock-only F4 reopen trigger from the already exhausted quarterly/reference-mode source paths. The BNR annual National Financial Accounts counterpart matrix is semantically adequate for year-end stock counterpart allocation when it covers the target year, even though annual stock-only data remain inadequate for quarterly stock+transaction reference-mode recovery.",
+  "governing_current_state": {
+    "assessment": "model/accounting/f4_structural_zero_successor_materialization_assessment_2026_09_21.json",
+    "stock_rank": 31,
+    "stock_nullity": 4,
+    "stock_unique_cell_count": 25,
+    "flow_rank": 26,
+    "flow_nullity": 9,
+    "flow_unique_cell_count": 15,
+    "unresolved_stock_boundary": "BNR-holder F4 asset stock totals 6.1 million RON at 2025-Q4 but is not allocated across H/C/F/G/X."
+  },
+  "retained_bnr_cnf_evidence": {
+    "screening": "model/dynamics/sectoral_financial_positions_bnr_cnf_source_screening.json",
+    "screened_publication_title": "Conturile nationale financiare - Raport anual 2024",
+    "screened_counterpart_matrix_period": "2024",
+    "screened_matrix_measure": "closing stocks",
+    "unit": "million RON",
+    "consolidation": "non-consolidated",
+    "source_sector_codes_include_S121": true,
+    "AF4_visible": true,
+    "asset_liability_semantics_pass": true,
+    "sector_mapping_pass_for_2024_stock_matrix": true,
+    "prior_reference_mode_rejection_reason": "Annual single stock snapshot lacks the frozen quarterly stock+financial-transaction history.",
+    "interpretation": "That frequency rejection does not disqualify a same-year annual counterpart matrix from a stock-only F4 identification gate."
+  },
+  "publication_cadence_evidence": {
+    "report_2023": {
+      "official_or_indexed_source": "https://www.bnr.ro/files/d/Pubs_ro/cnf/CNF_2019-2023.pdf",
+      "data_available_cutoff": "end-October 2024"
+    },
+    "report_2024": {
+      "official_source": "https://www.bnr.ro/uploads/2024-cnf_documentpdf_545_1766149176.pdf",
+      "data_available_cutoff": "end-October 2025"
+    },
+    "inference": "The preceding reports use end-October of the following year as their stated data-availability cutoff. Therefore a 2025 counterpart report should not be presumed available before the corresponding 2026 evidence window; this is a monitoring inference, not a guaranteed publication date."
+  },
+  "current_public_review": {
+    "target_matrix": "BNR National Financial Accounts counterpart stocks, reference year 2025",
+    "target_reporting_sector": "S121 / Banca centrala",
+    "target_instrument": "AF4 / F4 loans",
+    "target_accounting_entry": "assets / claims",
+    "target_counterpart_dimension": [
+      "S11",
+      "S121",
+      "non-central-bank financial subsectors",
+      "S13",
+      "S14+S15",
+      "S2"
+    ],
+    "exact_2025_counterpart_matrix_identified_in_current_review": false,
+    "absence_is_not_proof_of_nonpublication": true,
+    "current_reopen_trigger_satisfied": false
+  },
+  "frozen_future_trigger": {
+    "id": "BNR_CNF_2025_F4_CENTRAL_BANK_ASSET_COUNTERPART_STOCK_MATRIX",
+    "trigger_satisfied_when": [
+      "An official BNR National Financial Accounts publication or machine-readable table exposes the year-end 2025 non-consolidated counterpart stock matrix.",
+      "The reporting/source sector S121 is separately identifiable.",
+      "AF4/F4 assets for S121 are broken down by counterpart sectors that map exactly to H, C, F, G, X and BNR or can be combined by exact additive identities.",
+      "The published counterpart values reconcile to the retained 2025-Q4 BNR total F4 asset stock within the frozen source-appropriate accounting tolerance.",
+      "No residual-share allocation, interpolation or missing-to-zero rule is required."
+    ],
+    "authorized_effect_if_pass": "REOPEN_F4_STOCK_ONLY_EXACT_COUNTERPART_MATERIALIZATION_GATE",
+    "flow_reopen_authorized": false,
+    "aggregate_reference_mode_reopen_authorized": false,
+    "canonical_F4_completion_automatic": false,
+    "calibration_or_behavioural_effect": false
+  },
+  "monitoring_policy": {
+    "current_state": "MONITOR_PUBLICATION_NO_REOPEN",
+    "earliest_evidence_window_for_recheck": "after 2026-10-31",
+    "date_semantics": "Evidence-window marker inferred from prior report data cutoffs, not a promised BNR publication date.",
+    "no_repeated_polling_before_new_publication_evidence": true,
+    "valid_new_evidence": [
+      "official BNR 2025 CNF report/page",
+      "official BNR machine-readable 2025 counterpart matrix",
+      "official BNR catalogue update explicitly exposing the 2025 S121×counterpart AF4 stock table"
+    ]
+  },
+  "scientific_effect": {
+    "F4_materialization_change": false,
+    "accounting_readiness_change": false,
+    "benchmark_change": false,
+    "flow_state_change": false,
+    "reference_mode_change": false,
+    "calibration_change": false,
+    "feedback_activation_change": false,
+    "behavioural_closure_change": false,
+    "version_change": false
+  },
+  "decision": "NO_REOPEN_MONITOR_BNR_CNF_2025_STOCK_COUNTERPART_PUBLICATION_TRIGGER"
+}
