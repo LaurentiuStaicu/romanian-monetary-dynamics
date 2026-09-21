@@ -149,16 +149,18 @@ def audit_bnr_2025_financial_accounts_topology_reopen(
         e.append("external screening may not promote reference mode")
 
     mode = next(x for x in reference_modes["modes"] if x["id"] == "sectoral_financial_positions")
-    if mode["status"] != "PARTIAL_SERIES_AVAILABLE":
-        e.append("reference-mode registry may not promote sectoral financial positions")
+    if mode["status"] != "OBSERVED_SERIES_AVAILABLE":
+        e.append("current reference-mode registry must retain successor promotion")
+    if mode.get("assessment") != "model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json":
+        e.append("current reference-mode registry lacks independent successor promotion evidence")
     if mode.get("bnr_2025_public_access_recovery_status") != "EXECUTED_TOPOLOGY_PASS_EXACT_ROW_GATE_FAIL_NO_PROMOTION":
         e.append("reference-mode registry recovery status changed")
 
     dc = model["dynamic_core"]
-    if dc["reference_mode_ready_count"] != 9 or dc["reference_mode_required_count"] != 10:
-        e.append("global reference-mode readiness must remain 9/10")
-    if dc["reference_mode_closure_ready"] is not False:
-        e.append("reference-mode closure may not become ready")
+    if dc["reference_mode_ready_count"] != 10 or dc["reference_mode_required_count"] != 10:
+        e.append("current global reference-mode readiness must remain 10/10")
+    if dc["reference_mode_closure_ready"] is not True:
+        e.append("current observational reference-mode closure must remain ready")
     if dc.get("sectoral_financial_positions_reference_mode_promotion_authorized") is not False:
         e.append("model contract may not authorize reference-mode promotion")
     if dc.get("sectoral_financial_positions_accounting_reopen_authorized") is not False:
@@ -212,8 +214,8 @@ def main() -> None:
         "status":"PASS",
         "trigger":"CHANGED_OFFICIAL_TOPOLOGY_SOURCE",
         "authorized_scope":"TOPOLOGY_PASS_EXACT_ROW_GATE_FAIL_PATH_CLOSED",
-        "reference_modes_ready":"9/10",
-        "sectoral_financial_positions":"PARTIAL_SERIES_AVAILABLE",
+        "reference_modes_ready":"10/10",
+        "sectoral_financial_positions":"OBSERVED_SERIES_AVAILABLE",
         "accounting_complete_stock_and_flow_instruments":["F3"],
         "reference_mode_promotion_authorized":False,
         "accounting_reopen_authorized":False,
