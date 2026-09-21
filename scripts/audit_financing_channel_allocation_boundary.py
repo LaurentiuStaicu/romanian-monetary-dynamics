@@ -215,7 +215,7 @@ def audit_financing_channel_allocation_boundary(
     ):
         if bridge[key] is not False:
             errors.append(f"preregistration may not authorize {key}")
-    if prereg["next_independent_bridge_task"]["id"] != "government_debt_issuance_to_debt_stock_boundary_review":
+    if prereg["next_independent_bridge_task"]["id"] != "government_debt_stock_to_interest_cost_boundary_review":
         errors.append("preregistration next independent bridge changed")
 
     dynamic = model_contract["dynamic_core"]
