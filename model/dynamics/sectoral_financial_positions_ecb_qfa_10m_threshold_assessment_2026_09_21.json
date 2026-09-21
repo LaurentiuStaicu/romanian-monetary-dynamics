@@ -1,0 +1,79 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "ecb_qfa_10m_horizontal_consistency_threshold",
+  "reference_mode": "sectoral_financial_positions",
+  "purpose": "Determine whether independent official ECB QFA quality documentation supplies the domain-specific quantitative internal-consistency threshold required by the 2026-09-21 trigger-aware monitoring horizon, without deriving a tolerance from previously observed RMD residuals.",
+  "official_evidence": [
+    {
+      "institution": "European Central Bank",
+      "title": "Euro Area Quarterly Financial Accounts — 2013 quality report",
+      "url": "https://www.ecb.europa.eu/pub/pdf/euroareafinancialaccounts/euroaareafinancialaccountsquarterlytreport2013en.pdf",
+      "section": "3.4.1 Internal consistency: horizontal consistency by financial instrument",
+      "evidence": "Internal consistency includes horizontal equality between the sum of financial assets and the sum of liabilities for each financial instrument. Footnote 11 states that discrepancies of less than EUR 10 million are considered acceptable in national data; larger discrepancies observed in some countries were generally corrected later.",
+      "threshold_eur_million": 10,
+      "threshold_semantics": "ACCEPTABLE_NATIONAL_DATA_INTERNAL_DISCREPANCY_BOUND"
+    },
+    {
+      "institution": "European Central Bank",
+      "title": "Euro area and national quarterly financial accounts — Quality report 2020",
+      "url": "https://www.ecb.europa.eu/pub/euroareafinancialaccounts/html/ecb.eaqfa202105~28a3958ad8.en.html",
+      "section": "6 Internal consistency",
+      "evidence": "The report preserves the same internal-consistency definition and states that internal discrepancies above EUR 10 million were observed in a few countries and generally corrected in later transmissions.",
+      "threshold_eur_million": 10,
+      "threshold_semantics": "CONTINUED_OPERATIONAL_FLAGGING_BOUND"
+    },
+    {
+      "institution": "European Central Bank",
+      "title": "Euro area and national quarterly financial accounts — Quality report 2022",
+      "url": "https://www.ecb.europa.eu/pub/euroareafinancialaccounts/html/ecb.eaqfa202305~1d44e20907.en.html",
+      "section": "6 Internal consistency",
+      "evidence": "The report again defines internal consistency as aggregation, horizontal, balancing-item and counterpart-sector consistency and flags internal discrepancies above EUR 10 million.",
+      "threshold_eur_million": 10,
+      "threshold_semantics": "CONTINUED_OPERATIONAL_FLAGGING_BOUND"
+    },
+    {
+      "institution": "European Central Bank",
+      "title": "Euro area and national quarterly financial accounts — Quality report 2024",
+      "url": "https://www.ecb.europa.eu/pub/euroareafinancialaccounts/html/ecb.eaqfa202506.en.html",
+      "section": "6 Internal consistency / Annex 1 Table A.1.2.1",
+      "evidence": "The report defines horizontal consistency as equality between sums of assets and liabilities for each financial instrument; footnote 18 states that internal discrepancies and unexplained negative stocks above EUR 10 million were observed in some 2023-2024 transmissions and generally corrected later. Annex 1 includes Romania with a 96% validation-rule consistency rate over Q4 2012-Q2 2024.",
+      "threshold_eur_million": 10,
+      "romania_in_scope": true,
+      "threshold_semantics": "CURRENT_QUALITY_REPORT_OPERATIONAL_FLAGGING_BOUND"
+    }
+  ],
+  "applicability": {
+    "target_family": "ECB QFA national-data internal consistency",
+    "relevant_validation_family": "horizontal consistency",
+    "relevant_identity": "For each financial instrument, sum of relevant sectors' financial assets/transactions equals sum of relevant sectors' liabilities/transactions.",
+    "applies_per_instrument": true,
+    "applies_to_stocks_and_transactions": true,
+    "aggregate_across_F2_F8_only_is_insufficient": true,
+    "romania_is_in_current_annex_validation_scope": true,
+    "threshold_selected_from_observed_rmd_residuals": false
+  },
+  "conservative_currency_bridge": {
+    "purpose": "Avoid choosing a post-hoc stock-vs-flow FX conversion convention when it is unnecessary.",
+    "official_ecb_fx_series": [
+      "EXR.Q.RON.EUR.SP00.A",
+      "EXR.Q.RON.EUR.SP00.E"
+    ],
+    "rule": "If every absolute per-instrument residual is below 10 million RON and official ECB RON-per-EUR rates are above 1 over the tested period, each residual is necessarily below the official EUR 10 million threshold. This is a stricter sufficient condition than the ECB threshold. If any residual reaches 10 million RON or more, do not infer pass/fail; stop and preregister an exact currency-conversion rule first.",
+    "strict_sufficient_bound_million_ron": 10,
+    "exact_eur_conversion_required_if_bound_exceeded": true
+  },
+  "decision": "PASS_OFFICIAL_DOMAIN_SPECIFIC_QFA_INTERNAL_CONSISTENCY_THRESHOLD_NEW_PER_INSTRUMENT_GATE_AUTHORIZED",
+  "scientific_effect": {
+    "new_live_gate_may_be_preregistered": true,
+    "historical_0_1_million_ron_gate_reinterpreted": false,
+    "historical_failed_assessments_rewritten": false,
+    "reference_mode_promoted": false,
+    "readiness_count_change": 0,
+    "accounting_readiness_change": false,
+    "bilateral_accounting_reopen": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false
+  }
+}
