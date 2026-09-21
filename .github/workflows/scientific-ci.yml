@@ -204,6 +204,36 @@ jobs:
           if-no-files-found: error
           retention-days: 90
 
+  manual-ecb-qfa-10m-reference-validation:
+    if: ${{ github.event_name == 'pull_request' && github.head_ref == 'model/ecb-qfa-10m-validation-gate-2026-09-21' && github.run_attempt > 1 }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out frozen ECB-QFA gate branch
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify official ECB-QFA validation preregistration
+        run: python -m unittest tests.test_sectoral_financial_positions_ecb_qfa_10m_gate -v
+
+      - name: Run ECB-QFA 10m per-instrument validation
+        env:
+          ECB_QFA_10M_OUT: ecb_qfa_10m_artifacts
+        run: python scripts/audit_sectoral_financial_positions_ecb_qfa_10m_gate.py
+
+      - name: Upload ECB-QFA validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecb-qfa-10m-validation-${{ github.sha }}
+          path: ecb_qfa_10m_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+
   verify-baseline:
     runs-on: ubuntu-latest
 
