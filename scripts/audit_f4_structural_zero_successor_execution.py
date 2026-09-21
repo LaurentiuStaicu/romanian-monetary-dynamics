@@ -3,10 +3,16 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from scripts.generate_f4_structural_zero_successor_from_snapshot import (
-    DEFAULT_VINTAGE,
-    build,
-)
+try:
+    from scripts.generate_f4_structural_zero_successor_from_snapshot import (
+        DEFAULT_VINTAGE,
+        build,
+    )
+except ModuleNotFoundError:
+    from generate_f4_structural_zero_successor_from_snapshot import (
+        DEFAULT_VINTAGE,
+        build,
+    )
 
 ROOT = Path(__file__).resolve().parents[1]
 EXECUTION = "model/accounting/f4_structural_zero_successor_materialization_assessment_2026_09_21.json"
