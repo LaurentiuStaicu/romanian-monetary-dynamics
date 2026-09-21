@@ -442,3 +442,13 @@ Because the contract requires every source-value/reconciliation gate to pass bef
 
 The observed discrepancies are retained as immutable negative gate evidence. They do not authorize a post-result tolerance relaxation, selective salvage of individually mirrored rows, residual allocation between F and BNR, or any missing-to-zero rule. F6 returns to **EVIDENCE_TRIGGERED_HOLD** pending changed official evidence or an independently justified source-specific reconciliation basis preregistered before a successor gate.
 
+### F7 OECD counterpart selective reopen — 2026-09-21
+
+A topology-only review of the retained OECD quarterly from-whom-to-whom artifact found a declared F7 reopen trigger. The source publishes exact **F7**, **F71** and **F72** rows by reporting and counterpart sector for Romania. The retained 2025 boundary contains the complete standard topology needed for a source-value gate: 30 stock rows per instrument/accounting entry at 2025-Q4 and 120 quarterly transaction rows per instrument/accounting entry over 2025-Q1..Q4.
+
+S121 remains absent. OECD S12 therefore remains only the exact aggregate **F + BNR** constraint; it may not be relabelled as RMD F or split by residual, shares, materiality or missing-to-zero assumptions. H, C and G retain the direct mappings S1M, S11 and S13; S2 is usable only through explicit asset/liability counterpart orientation.
+
+Before detailed observation values or rank outcomes are reviewed, Stage 2 is frozen in `model/accounting/f7_oecd_counterpart_reopen_contract_2026_09_21.json`. It requires extraction completeness, resident A/L mirror consistency, S1 aggregation consistency, the component identity **F7 = F71 + F72**, and only then exact rank/nullspace recomputation at the inherited 0.1 million RON accounting tolerance.
+
+This is a selective reopen only. F7 remains canonically incomplete at the predecessor stock rank 11/nullity 24 and flow rank 10/nullity 25 until Stage 2 executes. No benchmark cell, reference mode, calibration state, feedback structure, behavioural closure or version is changed by preregistration.
+
