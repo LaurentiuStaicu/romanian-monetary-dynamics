@@ -262,7 +262,9 @@
     "sectoral_financial_positions_esa2010_semantic_status": "PASS_S1M_L_F2_STRUCTURALLY_NOT_APPLICABLE",
     "sectoral_financial_positions_semantic_adjusted_gate": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_exact_gate_contract_2026_09_21.json",
     "sectoral_financial_positions_semantic_adjusted_gate_status": "EXECUTED_FAIL_FROZEN_RECONCILIATION_TOLERANCE_NO_PROMOTION",
-    "sectoral_financial_positions_semantic_adjusted_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json"
+    "sectoral_financial_positions_semantic_adjusted_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
+    "sectoral_financial_positions_oecd_precision_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_precision_diagnostic_2026_09_21.json",
+    "sectoral_financial_positions_oecd_precision_diagnostic_status": "NO_PRECISION_BASED_REOPEN_DECIMALS_ONLY_EXPLANATION_INSUFFICIENT"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
@@ -339,7 +341,9 @@
     "post_terminal_semantic_reopen_task": null,
     "post_terminal_semantic_reopen_contract": null,
     "post_terminal_semantic_reopen_status": "EXECUTED_FAIL_RETURNED_TO_BASELINE_HOLD",
-    "post_terminal_semantic_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json"
+    "post_terminal_semantic_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
+    "post_terminal_precision_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_precision_diagnostic_2026_09_21.json",
+    "post_terminal_precision_diagnostic_status": "EXECUTED_NEGATIVE_NO_REOPEN"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",
