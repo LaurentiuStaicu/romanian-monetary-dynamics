@@ -77,9 +77,9 @@ class RMDReadmeDesignContractTests(unittest.TestCase):
         self.assertIn("**F3 only**", self.public)
 
         refs = self.baseline["canonical_state"]["reference_modes"]
-        self.assertEqual(refs["ready_count"], 9)
+        self.assertEqual(refs["ready_count"], 10)
         self.assertEqual(refs["required_count"], 10)
-        self.assertIn("**9 / 10 ready**", self.public)
+        self.assertIn("**10 / 10 ready**", self.public)
 
         validated = self.baseline["canonical_state"]["empirical_validation"][
             "validated_reference_behavioural_mechanisms"
