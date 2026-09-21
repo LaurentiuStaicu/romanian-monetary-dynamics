@@ -61,9 +61,9 @@ class SectoralFinancialPositionsBNRCNFSourceScreeningTests(unittest.TestCase):
             "EUROSTAT_INSTRUMENT_SCOPE_FAIL_OECD_S121_SCOPE_FAIL_BNR_ANNUAL_FREQUENCY_TRANSACTION_HISTORY_FAIL_BNR_QUARTERLY_S13_SECTOR_COUNTERPART_CONSOLIDATION_FAIL",
         )
 
-    def test_reference_mode_remains_partial_and_points_to_screening(self):
+    def test_current_mode_retains_historical_screening_after_successor_promotion(self):
         mode = next(x for x in self.refs["modes"] if x["id"] == "sectoral_financial_positions")
-        self.assertEqual(mode["status"], "PARTIAL_SERIES_AVAILABLE")
+        self.assertEqual(mode["status"], "OBSERVED_SERIES_AVAILABLE")
         self.assertEqual(
             mode["bnr_cnf_source_screening"],
             "model/dynamics/sectoral_financial_positions_bnr_cnf_source_screening.json",
