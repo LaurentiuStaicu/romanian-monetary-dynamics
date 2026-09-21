@@ -84,7 +84,7 @@ This separation is central to RMD. An empirical mechanism being listed or tested
 
 `sectoral_financial_positions` is now observed at the aggregate quarterly reference-mode boundary after a separately evaluated official-consistency gate. This does **not** complete its bilateral holder-by-issuer Accounting Spine boundary: F3 remains the only canonically complete stock-and-flow instrument.
 
-The current Accounting Spine recovery cycle has also reached a terminal evidence boundary: F2, F4 and F5–F8 retain explicit incomplete/partial dispositions and reopen triggers, while no selective or unconditional accounting-recovery gate is currently open. This is a scientifically valid hold state, not Accounting Spine completion.
+The current Accounting Spine recovery cycle has also returned to a terminal evidence boundary. F4 now has a reproducible successor partial core with **25 exact stock cells and 15 exact flow cells** after a stock-only structural-zero adjudication of the BNR loan-liability column; ten stock cells remain non-unique because the BNR 6.1 million RON loan-asset row still lacks counterpart allocation evidence. F2 and F5–F8 retain their explicit incomplete/frozen dispositions, and no selective or unconditional accounting-recovery gate is currently open. This is a scientifically valid hold state, not Accounting Spine completion.
 
 For the exact current scientific boundary, including evidence gates and reopen conditions, see [STATUS.md](STATUS.md).
 
@@ -211,7 +211,7 @@ Retained historical source material is under [data/source_vintages/](data/source
 
 ### Release state
 
-The latest public scientific-core release is **v0.3.0 — Reference-mode closure and Accounting Spine recovery boundary milestone**, published from the exact Scientific-CI-green commit `33c11b7e10e7e837097da5b34a9251c7bedb3f2c`. Main contains post-publication governance finalization beyond that immutable snapshot. The default next substantive milestone candidate is **v0.4.0**; a narrowly scoped corrective release may instead use **v0.3.1**.
+The latest public scientific-core release is **v0.3.0 — Reference-mode closure and Accounting Spine recovery boundary milestone**, published from the exact Scientific-CI-green commit `33c11b7e10e7e837097da5b34a9251c7bedb3f2c`. Main contains post-publication scientific and governance progress beyond that immutable snapshot, including the F4 structural-zero successor partial recovery described above. The default next substantive milestone candidate is **v0.4.0**; a narrowly scoped corrective release may instead use **v0.3.1**.
 
 Version changes are governed atomically by [releases/README.md](releases/README.md) and [model/registries/release_versioning_contract.json](model/registries/release_versioning_contract.json).
 
