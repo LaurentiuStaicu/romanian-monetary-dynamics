@@ -1,0 +1,162 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-21",
+  "reference_mode": "sectoral_financial_positions",
+  "phase": "ECB-QFA-materiality-aligned OECD non-consolidated aggregate reference gate",
+  "materiality_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_assessment_2026_09_21.json",
+  "semantic_assessment": "model/dynamics/sectoral_financial_positions_esa2010_s1m_f2_liability_semantic_assessment_2026_09_21.json",
+  "prior_decimal_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
+  "purpose": "Execute one new gate using an independently sourced ECB QFA internal-consistency materiality benchmark. Preserve exact OECD row semantics and ESA2010 S1M/L/F2 structural zero; evaluate instrument-quarter identities with exact decimal arithmetic and quarter-specific ECB EUR/RON reference rates.",
+  "source_boundary": {
+    "oecd": {
+      "flow_dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T620R_Q",
+      "stock_dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T720R_Q",
+      "reference_area": "ROU",
+      "frequency": "Q",
+      "start_period": "2014-Q1",
+      "end_period": "2026-Q1",
+      "required_source_sectors": [
+        "S1M",
+        "S11",
+        "S12",
+        "S121",
+        "S13",
+        "S2"
+      ],
+      "diagnostic_source_sectors": [
+        "S1"
+      ],
+      "accounting_entries": [
+        "A",
+        "L"
+      ],
+      "instruments": [
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8"
+      ],
+      "instrument_maturity": {
+        "F2": "T",
+        "F3": "T",
+        "F4": "T",
+        "F5": "_Z",
+        "F6": "_Z",
+        "F7": "T",
+        "F8": "T"
+      },
+      "fixed_dimensions": {
+        "ADJUSTMENT": "N",
+        "COUNTERPART_AREA": "W",
+        "COUNTERPART_SECTOR": "S1",
+        "CONSOLIDATION": "N",
+        "UNIT_MEASURE": "XDC",
+        "UNIT_MULT": "6",
+        "CURRENCY_DENOM": "_T",
+        "VALUATION": "S",
+        "PRICE_BASE": "V",
+        "TRANSFORMATION": "N",
+        "DEBT_BREAKDOWN": "_Z"
+      },
+      "measure_dimensions": {
+        "flow": {
+          "TRANSACTION": "F",
+          "TABLE_IDENTIFIER": "T0620"
+        },
+        "stock": {
+          "TRANSACTION": "LE",
+          "TABLE_IDENTIFIER": "T0720"
+        }
+      }
+    },
+    "ecb_exchange_rate": {
+      "dataset": "EXR",
+      "series_key": "Q.RON.EUR.SP00.A",
+      "api_url": "https://data-api.ecb.europa.eu/service/data/EXR/Q.RON.EUR.SP00.A?startPeriod=2014-Q1&endPeriod=2026-Q1&format=csvdata",
+      "unit": "RON per EUR",
+      "frequency": "Q",
+      "required_period_match": "exact same 49 quarters as OECD gate"
+    }
+  },
+  "semantic_exception": {
+    "exact_key_pattern": {
+      "source_sector": "S1M",
+      "accounting_entry": "L",
+      "instrument": "F2"
+    },
+    "treatment": "STRUCTURAL_ZERO_BY_ESA2010_NORMATIVE_SEMANTICS",
+    "value_million_ron": "0",
+    "may_override_present_provider_row": false
+  },
+  "official_materiality_rule": {
+    "threshold_million_eur": "10",
+    "threshold_million_ron_by_quarter": "10 * ECB EXR.Q.RON.EUR.SP00.A observation for the same quarter",
+    "comparison": "absolute discrepancy < threshold",
+    "provenance": "ECB 2013 explicit acceptability rule, with EUR 10 million materiality continuity in 2020/2022/2024 QFA quality reports",
+    "threshold_selected_from_rmd_residuals": false
+  },
+  "row_gate": {
+    "every_nonexception_required_row_present_exactly_once": true,
+    "semantic_exception_absent_from_provider_response": true,
+    "no_duplicates": true,
+    "minimum_common_quarters": 40,
+    "required_2025_quarters": [
+      "2025-Q1",
+      "2025-Q2",
+      "2025-Q3",
+      "2025-Q4"
+    ],
+    "ecb_exchange_rate_present_for_every_common_quarter": true
+  },
+  "exact_decimal_gate": {
+    "numeric_type": "base-10 Decimal parsed directly from provider lexemes",
+    "identities_per_measure_period_instrument": [
+      {
+        "id": "rmd_horizontal_system",
+        "formula": "sum of H+C+F+G+BNR+X net for one F2-F8 instrument",
+        "required": true
+      },
+      {
+        "id": "s1_sector_aggregation",
+        "formula": "S1 net - (S11+S12+S13+S1M net) for one F2-F8 instrument",
+        "required": true
+      },
+      {
+        "id": "s1_plus_s2_horizontal",
+        "formula": "S1 net + S2 net for one F2-F8 instrument",
+        "required": true
+      }
+    ],
+    "aggregate_f2_f8_system_identity_also_reported": true,
+    "pass_rule": "Every required identity for every common quarter, measure and instrument must have an absolute EUR-equivalent discrepancy strictly below EUR 10 million. Aggregate F2-F8 identity is also required below the same benchmark.",
+    "diagnostics_may_not_be_dropped_after_result": true
+  },
+  "promotion_rule": "A complete PASS authorizes a separate explicit promotion assessment for sectoral_financial_positions only. It cannot promote Accounting Spine instruments, activate behaviour, authorize parameter estimation or alter any historical failed gate.",
+  "failure_rule": "Any source/FX access failure is INDETERMINATE. Any nonexception missing/duplicate row, semantic conflict, missing ECB exchange rate, nonfinite numeric value, or any required instrument-quarter identity at or above EUR 10 million is FAIL with no promotion.",
+  "hard_rules": {
+    "no_historical_gate_rewrite": true,
+    "no_threshold_change_after_execution": true,
+    "no_missing_to_zero_except_preregistered_semantic_key": true,
+    "no_semantic_exception_expansion": true,
+    "no_filter_change_after_preregistration": true,
+    "no_sector_mapping_change_after_preregistration": true,
+    "no_period_window_change": true,
+    "no_identity_dropping": true,
+    "no_residual_allocation": true,
+    "no_bilateral_accounting_completion_claim": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true
+  },
+  "execution_policy": {
+    "live_execution_manual_only": true,
+    "exact_branch": "model/ecb-qfa-10m-materiality-gate-2026-09-21",
+    "manual_job": "manual-ecb-qfa-materiality-reference-gate",
+    "initial_pull_request_attempt_behavior": "SKIP",
+    "activation_condition": "pull_request on exact branch AND github.run_attempt > 1",
+    "scientific_effect_while_pending": "NONE"
+  }
+}
