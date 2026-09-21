@@ -43,11 +43,11 @@
     "accounting_readiness_gate": "model/accounting/accounting_readiness_gate.json",
     "canonical_multi_instrument_stock_initialization_ready": false,
     "canonical_full_2025_stock_flow_benchmark_ready": false,
-    "reference_mode_closure_ready": false,
-    "reference_mode_ready_count": 9,
+    "reference_mode_closure_ready": true,
+    "reference_mode_ready_count": 10,
     "reference_mode_required_count": 10,
-    "reference_mode_recovery_terminal_assessment": "model/dynamics/reference_mode_recovery_terminal_assessment.json",
-    "reference_mode_recovery_stage_status": "STAGE_COMPLETE_FROZEN_9_OF_10_UNDER_CURRENT_PUBLIC_EVIDENCE_BOUNDARY",
+    "reference_mode_recovery_terminal_assessment": "model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json",
+    "reference_mode_recovery_stage_status": "REOPEN_COMPLETE_10_OF_10_OBSERVED_REFERENCE_MODES_READY",
     "reference_mode_recovery_next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
     "instrument_specific_empirical_replays": [
       {
@@ -250,7 +250,7 @@
     "sectoral_financial_positions_bnr_2025_topology_reopen_assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
     "sectoral_financial_positions_public_access_recovery_contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
     "sectoral_financial_positions_public_access_recovery_state": "EXECUTED_FAIL_RETURNED_TO_BASELINE_HOLD",
-    "sectoral_financial_positions_reference_mode_status": "PARTIAL_SERIES_AVAILABLE",
+    "sectoral_financial_positions_reference_mode_status": "OBSERVED_SERIES_AVAILABLE",
     "sectoral_financial_positions_reference_mode_promotion_authorized": false,
     "sectoral_financial_positions_accounting_reopen_authorized": false,
     "sectoral_financial_positions_oecd_topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
@@ -272,7 +272,13 @@
     "sectoral_financial_positions_ecb_qfa_tolerance_authority": "model/dynamics/sectoral_financial_positions_ecb_qfa_tolerance_authority_assessment_2026_09_21.json",
     "sectoral_financial_positions_ecb_qfa_tolerance_authority_status": "PASS_OFFICIAL_DOMAIN_SPECIFIC_TOLERANCE_TRIGGER",
     "sectoral_financial_positions_ecb_qfa_official_tolerance_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_contract_2026_09_21.json",
-    "sectoral_financial_positions_ecb_qfa_official_tolerance_gate_status": "PREREGISTERED_PENDING_MANUAL_EXECUTION"
+    "sectoral_financial_positions_ecb_qfa_official_tolerance_gate_status": "EXECUTED_PASS_PROMOTION_CONSUMED",
+    "reference_mode_recovery_pre_reopen_terminal_assessment": "model/dynamics/reference_mode_recovery_terminal_assessment.json",
+    "sectoral_financial_positions_reference_mode_promoted": true,
+    "sectoral_financial_positions_ecb_qfa_official_tolerance_gate_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_assessment_2026_09_21.json",
+    "sectoral_financial_positions_reference_mode_promotion_assessment": "model/dynamics/sectoral_financial_positions_reference_mode_promotion_assessment_2026_09_21.json",
+    "sectoral_financial_positions_retained_series": "data/processed/sectoral_financial_positions_reference_oecd_2014Q1_2026Q1.csv.gz",
+    "sectoral_financial_positions_retained_vintage": "data/source_vintages/sectoral-financial-positions-ecb-qfa-tolerance-pass-2026-09-21/source_vintage_manifest.json"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
@@ -337,8 +343,8 @@
       "id": "prospective_monetary_policy_event",
       "rule": "Check only the BNR policy decision. If unchanged, do not inspect MIR response values. If non-zero, the October-reference MIR response remains closed until its official 2026-12-02 release."
     },
-    "active_noncalibration_source_task": "sectoral_financial_positions_ecb_qfa_official_tolerance_gate",
-    "active_noncalibration_source_task_contract": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_contract_2026_09_21.json",
+    "active_noncalibration_source_task": null,
+    "active_noncalibration_source_task_contract": null,
     "calibration_cycle_open": false,
     "post_terminal_source_topology_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_21_bnr_financial_accounts_topology.json",
     "post_terminal_source_topology_trigger_status": "EXECUTED_TOPOLOGY_PASS_EXACT_ROW_GATE_FAIL_RETURNED_TO_BASELINE_HOLD",
@@ -353,11 +359,12 @@
     "post_terminal_precision_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_precision_diagnostic_2026_09_21.json",
     "post_terminal_precision_diagnostic_status": "EXECUTED_NEGATIVE_NO_REOPEN",
     "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_20.json",
-    "trigger_aware_monitoring_horizon_status": "NO_GATE_OPEN_NEXT_DATED_CHECK_2026_10_08",
+    "trigger_aware_monitoring_horizon_status": "NO_GATE_OPEN_REFERENCE_MODES_10_OF_10_NEXT_DATED_CHECK_2026_10_08",
     "post_terminal_decimal_arithmetic_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
     "post_terminal_decimal_arithmetic_correction_status": "EXECUTED_CORRECTION_ONLY_BASELINE_HOLD_UNCHANGED",
     "post_terminal_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json",
-    "post_terminal_window_stability_status": "EXECUTED_NEGATIVE_NO_REOPEN"
+    "post_terminal_window_stability_status": "EXECUTED_NEGATIVE_NO_REOPEN",
+    "reference_mode_reopen_completion_assessment": "model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",
