@@ -85,19 +85,26 @@ class F3BehaviorDiagnosticsTests(unittest.TestCase):
             )
         )
 
-    def test_reference_mode_remains_partial(self) -> None:
+    def test_reference_mode_is_now_promoted_by_independent_successor_gate(self) -> None:
         mode = next(
             item
             for item in self.reference_modes["modes"]
             if item["id"] == "sectoral_financial_positions"
         )
-        self.assertEqual(mode["status"], "PARTIAL_SERIES_AVAILABLE")
+        self.assertEqual(mode["status"], "OBSERVED_SERIES_AVAILABLE")
+        self.assertEqual(
+            mode["promotion_assessment"],
+            "model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json",
+        )
         self.assertEqual(
             self.model_contract["dynamic_core"]["reference_mode_ready_count"],
-            9,
+            10,
+        )
+        self.assertTrue(
+            self.model_contract["dynamic_core"]["reference_mode_closure_ready"]
         )
         self.assertFalse(
-            self.model_contract["dynamic_core"]["reference_mode_closure_ready"]
+            self.model_contract["dynamic_core"]["behavioural_closure_active"]
         )
 
     def test_pattern_labels_use_exact_rules_only(self) -> None:
@@ -127,16 +134,16 @@ class F3BehaviorDiagnosticsTests(unittest.TestCase):
         self.assertFalse(summary["behavioural_closure_active"])
         self.assertFalse(summary["feedback_activation_authorized"])
 
-    def test_manual_reference_mode_promotion_is_detected(self) -> None:
+    def test_missing_successor_promotion_is_detected(self) -> None:
         mutated = copy.deepcopy(self.reference_modes)
         mode = next(
             item
             for item in mutated["modes"]
             if item["id"] == "sectoral_financial_positions"
         )
-        mode["status"] = "OBSERVED_SERIES_AVAILABLE"
+        mode["status"] = "PARTIAL_SERIES_AVAILABLE"
         errors = self.audit(reference_modes=mutated)
-        self.assertTrue(any("must remain PARTIAL" in error for error in errors))
+        self.assertTrue(any("successor promotion" in error for error in errors))
 
     def test_manual_diagnostic_corruption_is_detected(self) -> None:
         mutated = copy.deepcopy(self.artifact)
