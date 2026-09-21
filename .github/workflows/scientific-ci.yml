@@ -180,6 +180,9 @@ jobs:
       - name: Audit sovereign-yield to government-interest-cost boundary
         run: python scripts/audit_yield_to_interest_cost_boundary.py
 
+      - name: Audit government-interest-cost to financing-need accounting boundary
+        run: python scripts/audit_interest_cost_to_financing_need_boundary.py
+
       - name: Audit government securities supply-pressure source boundary
         run: python scripts/audit_government_securities_supply_pressure_source_boundary.py
 
