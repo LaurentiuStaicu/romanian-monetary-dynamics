@@ -298,6 +298,9 @@ jobs:
       - name: Audit ECB QFA materiality preregistration
         run: python scripts/audit_ecb_qfa_materiality_preregistration.py
 
+      - name: Audit 10 of 10 reference-mode promotion
+        run: python scripts/audit_reference_mode_promotion_10_of_10.py
+
       - name: Audit successor trigger-aware monitoring horizon
         run: python scripts/audit_trigger_aware_monitoring_horizon_2026_09_21.py
 
