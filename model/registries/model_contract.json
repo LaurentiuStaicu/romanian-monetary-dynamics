@@ -269,6 +269,10 @@
     "sectoral_financial_positions_oecd_decimal_arithmetic_status": "CORRECTED_63_MACHINE_FLOAT_TO_47_EXACT_DECIMAL_VIOLATIONS_VERDICT_UNCHANGED",
     "sectoral_financial_positions_oecd_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json",
     "sectoral_financial_positions_oecd_window_stability_status": "NO_CONTIGUOUS_40Q_WINDOW_PASSES_POST_BENCHMARK_FAILURE_PERSISTS",
+    "sectoral_financial_positions_ecb_qfa_10m_threshold_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_threshold_assessment_2026_09_21.json",
+    "sectoral_financial_positions_ecb_qfa_10m_horizontal_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_contract_2026_09_21.json",
+    "sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_status": "EXECUTED_PASS_PROMOTION_ASSESSMENT_AUTHORIZED",
+    "sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_execution": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_execution_assessment_2026_09_21.json",
     "sectoral_financial_positions_official_tolerance_assessment": "model/dynamics/sectoral_financial_positions_ecb_official_tolerance_assessment_2026_09_21.json",
     "sectoral_financial_positions_observed_snapshot": "model/dynamics/sectoral_financial_positions_observed_snapshot_2026_09_21.json",
     "reference_mode_post_terminal_promotion_assessment": "model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json"
@@ -357,6 +361,10 @@
     "post_terminal_decimal_arithmetic_correction_status": "EXECUTED_CORRECTION_ONLY_BASELINE_HOLD_UNCHANGED",
     "post_terminal_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json",
     "post_terminal_window_stability_status": "EXECUTED_NEGATIVE_NO_REOPEN",
+    "post_terminal_official_threshold_reopen_task": "ecb_qfa_10m_per_instrument_horizontal_consistency_gate",
+    "post_terminal_official_threshold_reopen_contract": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_contract_2026_09_21.json",
+    "post_terminal_official_threshold_reopen_status": "EXECUTED_PASS_PROMOTION_ASSESSMENT_AUTHORIZED",
+    "post_terminal_official_threshold_execution_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_execution_assessment_2026_09_21.json",
     "reference_mode_post_terminal_promotion": "model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json",
     "reference_mode_observability_status": "COMPLETE_10_OF_10_OBSERVED_REFERENCE_MODES"
   },
