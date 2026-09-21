@@ -12,6 +12,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Repository governance
 
+- superseded the 2026-09-20 trigger-aware monitoring horizon with a dated 2026-09-21 successor after the OECD/ESA precision chain closed; no gate is currently open, the next dated check remains the 2026-10-08 BNR policy decision, and future sectoral-financial-position precision recovery now explicitly requires new domain-specific official precision/balancing evidence rather than residual-driven tolerance changes;
 - finalized the post-publication v0.2.0 governance state: recorded the immutable GitHub release/tag identity, consumed the one-shot publication authorization, advanced the current public release to v0.2.0 and set v0.3.0 as the default next substantive milestone candidate without changing any scientific model state;
 
 ## 0.2.0 - 2026-09-21
