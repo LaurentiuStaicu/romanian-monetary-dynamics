@@ -1,0 +1,112 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "credit_flow_to_private_demand_and_investment_boundary_review",
+  "loop_id": "monetary_credit_transmission_loop",
+  "purpose": "Determine whether the observed aggregate private non-financial credit transaction flow can be mapped directly into a combined private_demand_and_investment node without a purpose-, sector- and expenditure-boundary bridge.",
+  "decision": "DO_NOT_MAP_AGGREGATE_CREDIT_FLOW_ONE_TO_ONE_TO_PRIVATE_CONSUMPTION_OR_INVESTMENT_KEEP_FINANCING_PURPOSES_AND_EXPENDITURE_CONCEPTS_DISTINCT",
+  "official_source_evidence": {
+    "ecb_bls": {
+      "institution": "European Central Bank / Eurosystem",
+      "source": "Bank Lending Survey",
+      "finding": "Loan demand is reported separately by borrower and purpose. Corporate financing needs include fixed investment, inventories and working capital, debt refinancing/restructuring and other financing needs; household lending distinguishes house purchase from consumer credit and other lending.",
+      "implication": "Observed aggregate credit flow cannot be allocated one-to-one to current consumption or fixed investment."
+    },
+    "ecb_safe": {
+      "institution": "European Central Bank",
+      "source": "Survey on the Access to Finance of Enterprises",
+      "finding": "Firms report external financing used for multiple purposes, including inventories/working capital and fixed investment.",
+      "implication": "NFC borrowing is not definitionally equivalent to NFC gross fixed capital formation."
+    },
+    "eurostat_consumption": {
+      "institution": "Eurostat",
+      "source": "ESA national-accounts metadata",
+      "finding": "Household final consumption expenditure is expenditure on goods and services for direct satisfaction of needs or wants.",
+      "implication": "A financial loan transaction is a financing transaction, not household final consumption expenditure by definition."
+    },
+    "retained_rmd": {
+      "private_credit_reference": "model/dynamics/private_credit_reference_assessment.json",
+      "household_consumption_review": "model/calibration_validation/household_consumption_source_boundary_review.json",
+      "corporate_investment_review": "model/calibration_validation/corporate_investment_source_boundary_review.json",
+      "finding": "RMD retains aggregate S11 plus S14/S15 loan transactions but household consumption and NFC investment are distinct sectoral national-account targets with their own unresolved behavioural/source boundaries."
+    }
+  },
+  "concept_boundary": {
+    "aggregate_credit_flow_equals_household_consumption": false,
+    "aggregate_credit_flow_equals_NFC_investment": false,
+    "household_housing_credit_equals_household_final_consumption": false,
+    "NFC_credit_equals_fixed_investment": false,
+    "refinancing_credit_equals_new_private_demand": false,
+    "working_capital_credit_equals_fixed_investment": false,
+    "M_and_A_financing_equals_fixed_investment": false,
+    "credit_flow_purpose_allocation_observed": false
+  },
+  "structural_interpretation": {
+    "credit_flow_role": "Observed ECB BSI net financial transaction for domestic NFC plus household/NPISH loans.",
+    "private_demand_and_investment_role": "Qualitative umbrella combining household consumption/demand and corporate investment/expenditure concepts that are measured in national accounts rather than as loan transactions.",
+    "mapping_requirement": "Any quantitative credit-to-expenditure bridge requires an ex ante sector- and purpose-specific measurement contract that distinguishes house purchase, consumer credit, working capital, refinancing and fixed-investment finance, and aligns them to the chosen national-accounts expenditure target.",
+    "qualitative_positive_sign_retained_as_candidate": true,
+    "exact_integrated_equation_ready": false
+  },
+  "bridge_resolution": {
+    "from": "credit_flow",
+    "to": "private_demand_and_investment",
+    "status": "FINANCING_FLOW_PURPOSES_MULTIPLE_PRIVATE_DEMAND_AND_INVESTMENT_MAPPING_UNIDENTIFIED",
+    "causal_role": "BEHAVIOURAL_CANDIDATE_LINK_FINANCING_TO_EXPENDITURE_ALLOCATION_UNIDENTIFIED",
+    "direct_credit_to_consumption_mapping_authorized": false,
+    "direct_credit_to_investment_mapping_authorized": false,
+    "housing_credit_as_consumption_authorized": false,
+    "NFC_credit_as_GFCF_authorized": false,
+    "refinancing_as_new_demand_authorized": false,
+    "synthetic_purpose_allocation_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effect": {
+    "credit_flow": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id": "credit_flow",
+      "current_feedback_activation_authorized": false
+    },
+    "private_demand_and_investment": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id_after_review": null,
+      "component_target_families": [
+        "household final consumption expenditure",
+        "NFC gross fixed capital formation"
+      ],
+      "aggregate_combined_target_selected": false,
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "hard_rules": {
+    "no_credit_flow_equals_consumption": true,
+    "no_credit_flow_equals_investment": true,
+    "no_housing_credit_as_final_consumption": true,
+    "no_NFC_credit_as_GFCF_identity": true,
+    "no_refinancing_as_new_expenditure": true,
+    "no_synthetic_credit_purpose_shares": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "financing_to_expenditure_boundary_strengthened": true,
+    "private_demand_and_investment_node_resolved": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "private_demand_and_investment_to_inflationary_pressure_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_equate_private_demand_growth_with_inflation": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}
