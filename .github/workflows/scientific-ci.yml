@@ -213,6 +213,9 @@ jobs:
       - name: Audit BNR 2025 financial-accounts topology reopen
         run: python scripts/audit_bnr_2025_financial_accounts_topology_reopen.py
 
+      - name: Audit terminal OECD exact-row gate
+        run: python scripts/audit_oecd_sectoral_financial_positions_exact_row_gate.py
+
       - name: Audit F3 empirical dynamic replay
         run: python scripts/audit_f3_empirical_replay.py
 
