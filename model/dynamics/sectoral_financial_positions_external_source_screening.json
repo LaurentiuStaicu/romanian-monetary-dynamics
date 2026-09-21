@@ -251,10 +251,14 @@
     "assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
     "public_access_recovery_contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
     "trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_21_bnr_financial_accounts_topology.json",
-    "state": "ACTIVE_ONE_FROZEN_BNR_2025_PUBLIC_ACCESS_TOPOLOGY_PASS",
+    "state": "EXECUTED_TOPOLOGY_PASS_EXACT_ROW_GATE_FAIL_PATH_CLOSED",
     "historical_screening_reinterpreted": false,
     "reference_mode_status": "PARTIAL_SERIES_AVAILABLE",
     "readiness_count_change": 0,
-    "accounting_readiness_change": false
+    "accounting_readiness_change": false,
+    "topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
+    "exact_row_gate_assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
+    "compact_source_vintage": "data/source_vintages/oecd-nonconsolidated-sectoral-financial-positions-row-gate-2026-09-21/source_vintage_manifest.json",
+    "terminal_blocker": "OECD non-consolidated aggregate path has S121 and F2-F8 topology, but exact S1M liability F2 rows are absent for every quarter in both stocks and financial transactions."
   }
 }

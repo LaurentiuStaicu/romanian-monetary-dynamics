@@ -104,12 +104,13 @@
   ],
   "current_state": {
     "execution_authorized": true,
-    "execution_completed": false,
-    "topology_pass": null,
-    "aggregate_reference_mode_gate_pass": null,
-    "bilateral_accounting_reopen_gate_pass": null,
+    "execution_completed": true,
+    "topology_pass": true,
+    "aggregate_reference_mode_gate_pass": false,
+    "bilateral_accounting_reopen_gate_pass": false,
     "reference_mode_promotion_authorized": false,
-    "accounting_reopen_authorized": false
+    "accounting_reopen_authorized": false,
+    "terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json"
   },
   "hard_rules": {
     "one_frozen_pass_only": true,
@@ -125,5 +126,20 @@
     "no_parameter_estimation": true,
     "no_feedback_activation": true,
     "no_behavioural_closure_change": true
+  },
+  "active_probe": {
+    "id": "oecd_nonconsolidated_sectoral_financial_positions",
+    "contract": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_probe_contract_2026_09_21.json",
+    "script": "scripts/audit_oecd_sectoral_financial_positions_nonconsolidated_probe.py",
+    "workflow": ".github/workflows/scientific-ci.yml#manual-oecd-nonconsolidated-topology-probe",
+    "scope": "TOPOLOGY_AND_COUNTRY_COVERAGE_ONLY_NUMERIC_VALUES_NOT_REVIEWED",
+    "status": "EXECUTED_TOPOLOGY_PASS_EXACT_ROW_GATE_FAIL_PATH_CLOSED",
+    "topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
+    "artifact_id": 10633590243,
+    "artifact_zip_sha256": "4c845caa5d7edb6f936669e647760bf982057ce80c43c741a2a8f2a62ecfe148",
+    "next_gate": "model/dynamics/sectoral_financial_positions_oecd_exact_extraction_reconciliation_contract_2026_09_21.json",
+    "exact_row_gate_assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
+    "compact_source_vintage": "data/source_vintages/oecd-nonconsolidated-sectoral-financial-positions-row-gate-2026-09-21/source_vintage_manifest.json",
+    "terminal_blocker": "S1M/L/F2 absent in every 2014Q1-2026Q1 quarter for both flow and stock; post-result missing-to-zero or NOT_APPLICABLE treatment prohibited."
   }
 }

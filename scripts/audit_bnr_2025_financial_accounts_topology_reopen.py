@@ -72,15 +72,16 @@ def audit_bnr_2025_financial_accounts_topology_reopen(
     state = contract["current_state"]
     if state["execution_authorized"] is not True:
         e.append("one frozen source-topology pass must remain executable")
-    if state["execution_completed"] is not False:
-        e.append("public-access recovery may not be marked completed before execution")
-    for key in (
-        "topology_pass",
-        "aggregate_reference_mode_gate_pass",
-        "bilateral_accounting_reopen_gate_pass",
-    ):
-        if state[key] is not None:
-            e.append(f"unexecuted gate must remain null: {key}")
+    if state["execution_completed"] is not True:
+        e.append("public-access recovery must be terminal after exact row-gate execution")
+    if state["topology_pass"] is not True:
+        e.append("public topology gate must remain passed after retained OECD topology review")
+    if state["aggregate_reference_mode_gate_pass"] is not False:
+        e.append("aggregate exact reference-mode gate must remain failed after exact row coverage FAIL")
+    if state["bilateral_accounting_reopen_gate_pass"] is not False:
+        e.append("non-counterpart topology path must not reopen bilateral accounting")
+    if state.get("terminal_assessment") != "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json":
+        e.append("terminal exact-row assessment pointer changed")
     if state["reference_mode_promotion_authorized"] is not False:
         e.append("reference mode promotion may not be authorized")
     if state["accounting_reopen_authorized"] is not False:
@@ -150,7 +151,7 @@ def audit_bnr_2025_financial_accounts_topology_reopen(
     mode = next(x for x in reference_modes["modes"] if x["id"] == "sectoral_financial_positions")
     if mode["status"] != "PARTIAL_SERIES_AVAILABLE":
         e.append("reference-mode registry may not promote sectoral financial positions")
-    if mode.get("bnr_2025_public_access_recovery_status") != "ACTIVE_ONE_FROZEN_SOURCE_TOPOLOGY_PASS_NO_PROMOTION":
+    if mode.get("bnr_2025_public_access_recovery_status") != "EXECUTED_TOPOLOGY_PASS_EXACT_ROW_GATE_FAIL_NO_PROMOTION":
         e.append("reference-mode registry recovery status changed")
 
     dc = model["dynamic_core"]
@@ -170,8 +171,12 @@ def audit_bnr_2025_financial_accounts_topology_reopen(
         e.append("historical baseline monitoring pointer may not be rewritten")
     if stage.get("post_terminal_source_topology_trigger_monitoring") != M:
         e.append("model contract post-terminal source-topology monitoring pointer changed")
-    if stage.get("active_noncalibration_source_task") != "bnr_2025_financial_accounts_public_access_recovery":
-        e.append("active source-topology task pointer changed")
+    if stage.get("active_noncalibration_source_task") is not None:
+        e.append("terminal source-topology path must not remain active")
+    if stage.get("active_noncalibration_source_subtask") is not None:
+        e.append("terminal exact-source subtask must not remain active")
+    if stage.get("next_operational_state") != "EVIDENCE_TRIGGERED_BASELINE_HOLD":
+        e.append("terminal source path must return to baseline hold")
     if stage.get("calibration_cycle_open") is not False:
         e.append("source-topology recovery may not open calibration")
 
@@ -206,7 +211,7 @@ def main() -> None:
     print(json.dumps({
         "status":"PASS",
         "trigger":"CHANGED_OFFICIAL_TOPOLOGY_SOURCE",
-        "authorized_scope":"ONE_FROZEN_PUBLIC_ACCESS_TOPOLOGY_PASS",
+        "authorized_scope":"TOPOLOGY_PASS_EXACT_ROW_GATE_FAIL_PATH_CLOSED",
         "reference_modes_ready":"9/10",
         "sectoral_financial_positions":"PARTIAL_SERIES_AVAILABLE",
         "accounting_complete_stock_and_flow_instruments":["F3"],

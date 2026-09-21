@@ -6,7 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
-- identified an official NBR/CMFB 2025 financial-accounts structural-metadata change sufficient to reopen one preregistered public-access/source-topology pass for `sectoral_financial_positions`; the mode remains partial at 9/10 readiness, Accounting Spine readiness is unchanged, and metadata alone cannot authorize value extraction, promotion, estimation or feedback activation;
+- identified an official NBR/CMFB 2025 financial-accounts structural change and executed one preregistered public-access recovery pass: OECD non-consolidated quarterly stock/flow topology passed with S121 and F2-F8 coverage across 49 common quarters, but the frozen exact-row gate failed because `S1M/L/F2` is absent in all 49 quarters for both stock and flow; the gate stopped before `OBS_VALUE` review or reconciliation, so `sectoral_financial_positions` remains partial at 9/10 readiness and Accounting Spine/behavioural state is unchanged;
 
 ### Repository governance
 
