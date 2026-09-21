@@ -6,17 +6,20 @@ import io
 import json
 import math
 import os
+import sys
 import urllib.parse
 from collections import Counter, defaultdict
 from datetime import UTC, datetime
 from pathlib import Path
 
+ROOT=Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 from scripts.audit_oecd_sectoral_financial_positions_nonconsolidated_probe import (
     dimension_order_from_structure,
     fetch,
 )
-
-ROOT=Path(__file__).resolve().parents[1]
 CONTRACT=ROOT/"model/dynamics/sectoral_financial_positions_oecd_exact_extraction_reconciliation_contract_2026_09_21.json"
 TOPOLOGY=ROOT/"model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json"
 OUT=Path(os.environ.get("OECD_EXACT_REFERENCE_OUT","oecd_exact_reference_artifacts"))
