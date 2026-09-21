@@ -1,0 +1,115 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "phase": "Accounting Empirical Recovery / terminal boundary assessment",
+  "purpose": "Consolidate the current canonical Accounting Spine recovery state after instrument-specific recovery, selective reopen and source-boundary adjudications. This assessment does not declare the Accounting Spine complete; it declares that all currently admissible unconditional recovery tasks are resolved or frozen behind explicit evidence triggers.",
+  "canonical_readiness_gate": "model/accounting/accounting_readiness_gate.json",
+  "reopen_registry": "model/accounting/reopen_conditions_registry.json",
+  "terminal_state": {
+    "complete_instruments": [
+      "F3"
+    ],
+    "incomplete_instruments": [
+      "F2",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "canonical_multi_instrument_stock_initialization_ready": false,
+    "canonical_full_2025_stock_flow_benchmark_ready": false,
+    "active_selective_reopen_instruments": [],
+    "active_unconditional_accounting_recovery_task": null,
+    "next_operational_state": "EVIDENCE_TRIGGERED_ACCOUNTING_SPINE_HOLD"
+  },
+  "instrument_dispositions": {
+    "F2": {
+      "status": "INCOMPLETE",
+      "usable_recovery": "F2M component materialized",
+      "blocker": "F21/total-F2 bridge requires Direct-Investment currency-and-deposits subinstrument detail not disseminated in standard BPM6/Eurostat/BNR presentations.",
+      "terminal_evidence": [
+        "model/accounting/f21_bpm6_esa_concept_bridge_assessment.json",
+        "model/accounting/f2_direct_investment_instrument_dissemination_diagnostic_2026_09_21.json"
+      ],
+      "current_reopen_gate_open": false,
+      "reopen_class": "NEW_COUNTRY_SPECIFIC_SUPPLEMENTARY_DI_F2_OR_EXACT_BRIDGE"
+    },
+    "F4": {
+      "status": "PARTIAL_UNCONDITIONAL_CORE_ONLY",
+      "usable_recovery": "15 unconditional rank-unique stock cells and 15 unconditional rank-unique flow cells materialized in partial artifact",
+      "blocker": "Remaining ambiguity is concentrated in the F-versus-BNR holder split; the BNR 6.1 million RON F4 asset stock lacks official counterpart allocation.",
+      "terminal_evidence": [
+        "model/accounting/f4_exact_complement_rank_assessment.json",
+        "model/accounting/f4_partial_2025.json",
+        "model/accounting/f4_eurostat_bsi_bridge_diagnostic_2026_09_21.json"
+      ],
+      "current_reopen_gate_open": false,
+      "reopen_class": "NEW_OFFICIAL_COUNTERPART_CONSTRAINT_OR_SEPARATELY_JUSTIFIED_STRUCTURAL_ZERO"
+    },
+    "F5": {
+      "status": "FROZEN_AT_PUBLIC_DATA_BOUNDARY",
+      "usable_recovery": "component-aware exact rank evidence retained; no total-F51/F5 bilateral cell is unique",
+      "blocker": "Retained OECD F512/F519 counterpart source failed preregistered 0.1 million RON aggregate-consistency gate; Stage 2 stopped before rank.",
+      "terminal_evidence": [
+        "model/accounting/f5_component_aware_rank_assessment.json",
+        "model/accounting/f5_oecd_counterpart_stage2_execution_assessment_2026_09_21.json"
+      ],
+      "current_reopen_gate_open": false,
+      "reopen_class": "CHANGED_OFFICIAL_COUNTERPART_EVIDENCE_OR_PREREGISTERED_SOURCE_SPECIFIC_RECONCILIATION_BASIS"
+    },
+    "F6": {
+      "status": "FROZEN_AGGREGATE_ONLY_PUBLIC_DATA_BOUNDARY",
+      "usable_recovery": "aggregate exact-rank boundary retained; zero unconditional bilateral cells",
+      "blocker": "Retained OECD F6/F61-F66 source failed preregistered S1 aggregation and component-identity gates; Stage 2 stopped before rank.",
+      "terminal_evidence": [
+        "model/accounting/f6_aggregate_rank_assessment.json",
+        "model/accounting/f6_oecd_counterpart_stage2_execution_assessment_2026_09_21.json"
+      ],
+      "current_reopen_gate_open": false,
+      "reopen_class": "CHANGED_OFFICIAL_COUNTERPART_EVIDENCE_OR_PREREGISTERED_SOURCE_SPECIFIC_RECONCILIATION_BASIS"
+    },
+    "F7": {
+      "status": "FROZEN_AGGREGATE_ONLY_PUBLIC_DATA_BOUNDARY",
+      "usable_recovery": "aggregate exact-rank boundary retained; zero unconditional bilateral cells",
+      "blocker": "Retained OECD F7/F71/F72 source failed preregistered S1 aggregation and component-identity gates; Stage 2 stopped before rank.",
+      "terminal_evidence": [
+        "model/accounting/f7_aggregate_rank_assessment.json",
+        "model/accounting/f7_oecd_counterpart_stage2_execution_assessment_2026_09_21.json"
+      ],
+      "current_reopen_gate_open": false,
+      "reopen_class": "CHANGED_OFFICIAL_COUNTERPART_EVIDENCE_OR_PREREGISTERED_SOURCE_SPECIFIC_RECONCILIATION_BASIS"
+    },
+    "F8": {
+      "status": "FROZEN_AGGREGATE_ONLY_PUBLIC_DATA_BOUNDARY",
+      "usable_recovery": "aggregate exact-rank boundary retained; zero unconditional bilateral cells; conditional BNR zero-stock scenario remains unpromoted",
+      "blocker": "Retained OECD F8/F81/F89 source failed preregistered S1 aggregation and component-identity gates; Stage 2 stopped before rank.",
+      "terminal_evidence": [
+        "model/accounting/f8_aggregate_rank_assessment.json",
+        "model/accounting/f8_oecd_counterpart_stage2_execution_assessment_2026_09_21.json"
+      ],
+      "current_reopen_gate_open": false,
+      "reopen_class": "CHANGED_OFFICIAL_COUNTERPART_EVIDENCE_OR_PREREGISTERED_SOURCE_SPECIFIC_RECONCILIATION_BASIS"
+    }
+  },
+  "stage_completion_rule": {
+    "all_currently_admissible_unconditional_recovery_tasks_resolved_or_frozen": true,
+    "every_incomplete_instrument_has_explicit_reopen_trigger": true,
+    "no_current_selective_reopen_gate_open": true,
+    "no_synthetic_completion_authorized": true,
+    "no_repeated_live_probe_without_trigger": true
+  },
+  "scientific_nonclaims": {
+    "accounting_spine_complete": false,
+    "full_bilateral_multi_instrument_matrix_available": false,
+    "full_2025_stock_flow_benchmark_ready": false,
+    "parameter_estimation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "model_complete": false
+  },
+  "version_effect": {
+    "version_bump_authorized": false,
+    "rationale": "This terminal accounting-recovery boundary is a scientific-governance milestone, not canonical Accounting Spine completion. Versioning remains governed independently by model/registries/release_versioning_contract.json."
+  },
+  "decision": "ACCOUNTING_SPINE_RECOVERY_STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD"
+}

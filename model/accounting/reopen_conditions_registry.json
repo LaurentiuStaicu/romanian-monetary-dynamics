@@ -145,5 +145,10 @@
     "every_reopened_instrument_must_repass_accounting_readiness": true,
     "no_reopen_condition_may_authorize_synthetic_allocation": true,
     "behavioural_closure_may_not_override_frozen_accounting_boundaries": true
-  }
+  },
+  "accounting_recovery_stage_status": "STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD",
+  "accounting_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json",
+  "current_operational_state": "EVIDENCE_TRIGGERED_ACCOUNTING_SPINE_HOLD",
+  "active_selective_reopen_instruments": [],
+  "active_unconditional_accounting_recovery_task": null
 }

@@ -87,5 +87,8 @@
     "behavioural_closure_may_not_override_accounting_readiness": true
   },
   "interpretation": "The gate is an accounting-readiness classification, not a requirement to invent missing instruments. A scientifically valid frozen or partial recovery outcome remains valid; it simply does not count as a complete canonical bilateral matrix.",
-  "reopen_conditions_registry": "model/accounting/reopen_conditions_registry.json"
+  "reopen_conditions_registry": "model/accounting/reopen_conditions_registry.json",
+  "accounting_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json",
+  "accounting_recovery_stage_status": "STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD",
+  "next_operational_state": "EVIDENCE_TRIGGERED_ACCOUNTING_SPINE_HOLD"
 }

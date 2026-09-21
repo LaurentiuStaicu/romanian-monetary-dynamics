@@ -56,6 +56,9 @@ def main() -> None:
     reset = load("model/registries/reset_integrity_contract.json")
     accounting = load("model/accounting/accounting_readiness_gate.json")
     reopen = load("model/accounting/reopen_conditions_registry.json")
+    accounting_terminal = load(
+        "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json"
+    )
     sd = load("model/dynamics/system_dynamics_conformity_gate.json")
     refs = load("model/dynamics/reference_modes.json")
     sectoral_external_screening = load(
@@ -230,6 +233,45 @@ def main() -> None:
         set(reopen["current_incomplete_instruments"])
         == set(acc["incomplete_instruments"]),
         "Accounting reopen registry disagrees with scientific baseline",
+    )
+
+    check(
+        accounting["accounting_recovery_stage_status"]
+        == accounting_terminal["decision"].replace(
+            "ACCOUNTING_SPINE_RECOVERY_", ""
+        ),
+        "Accounting readiness terminal-stage status disagrees with terminal assessment",
+    )
+    check(
+        accounting["accounting_recovery_terminal_assessment"]
+        == "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json",
+        "Accounting readiness gate does not register terminal recovery assessment",
+    )
+    check(
+        reopen["accounting_recovery_stage_status"]
+        == accounting["accounting_recovery_stage_status"],
+        "Accounting reopen registry terminal-stage status is stale",
+    )
+    check(
+        reopen["accounting_recovery_terminal_assessment"]
+        == accounting["accounting_recovery_terminal_assessment"],
+        "Accounting reopen registry terminal assessment is stale",
+    )
+    check(
+        acc["recovery_stage_status"] == accounting["accounting_recovery_stage_status"],
+        "Scientific baseline accounting recovery-stage status is stale",
+    )
+    check(
+        acc["next_operational_state"] == accounting["next_operational_state"],
+        "Scientific baseline accounting next operational state is stale",
+    )
+    check(
+        acc["active_unconditional_recovery_task"] is None,
+        "Scientific baseline may not retain an unconditional accounting recovery task",
+    )
+    check(
+        accounting_terminal["terminal_state"]["active_selective_reopen_instruments"] == [],
+        "Terminal Accounting Spine recovery assessment retains an active selective reopen",
     )
 
     # Reference-mode state is derived from registry vocabulary/policy.
@@ -906,6 +948,12 @@ def main() -> None:
         "baseline_id": manifest["baseline_id"],
         "accounting_complete": acc["complete_stock_and_flow_instruments"],
         "accounting_incomplete": acc["incomplete_instruments"],
+        "accounting_recovery_stage_status": acc[
+            "recovery_stage_status"
+        ],
+        "accounting_next_operational_state": acc[
+            "next_operational_state"
+        ],
         "reference_modes_ready": ref_state["ready_count"],
         "reference_modes_required": ref_state["required_count"],
         "reference_mode_blockers": ref_state["blockers"],

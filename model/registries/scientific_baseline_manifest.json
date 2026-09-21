@@ -122,7 +122,8 @@
     "f7_oecd_counterpart_stage2_execution": "model/accounting/f7_oecd_counterpart_stage2_execution_assessment_2026_09_21.json",
     "f8_oecd_counterpart_reopen_contract": "model/accounting/f8_oecd_counterpart_reopen_contract_2026_09_21.json",
     "f8_oecd_counterpart_reopen_assessment": "model/accounting/f8_oecd_counterpart_reopen_assessment_2026_09_21.json",
-    "f8_oecd_counterpart_stage2_execution": "model/accounting/f8_oecd_counterpart_stage2_execution_assessment_2026_09_21.json"
+    "f8_oecd_counterpart_stage2_execution": "model/accounting/f8_oecd_counterpart_stage2_execution_assessment_2026_09_21.json",
+    "accounting_spine_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json"
   },
   "canonical_state": {
     "accounting": {
@@ -138,7 +139,10 @@
         "F8"
       ],
       "multi_instrument_stock_initialization_ready": false,
-      "full_2025_stock_flow_benchmark_ready": false
+      "full_2025_stock_flow_benchmark_ready": false,
+      "recovery_stage_status": "STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD",
+      "next_operational_state": "EVIDENCE_TRIGGERED_ACCOUNTING_SPINE_HOLD",
+      "active_unconditional_recovery_task": null
     },
     "reference_modes": {
       "required_count": 10,
