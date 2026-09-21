@@ -1,0 +1,64 @@
+{
+  "provenance_version": "0.1",
+  "retained_on": "2026-09-21",
+  "series": "data/processed/sectoral_financial_positions_net_reference_2014q1_2026q1.csv",
+  "sha256": "6a2eff31ee70a2a15ea95aafe3a1729d231a87128d2943a79476aa6b93424fc3",
+  "git_blob_sha1": "259d24768337b80405b9179ccb1065e2658cb7d5",
+  "rows": 294,
+  "quarters": 49,
+  "sectors": [
+    "H",
+    "C",
+    "F",
+    "G",
+    "BNR",
+    "X"
+  ],
+  "period_start": "2014-Q1",
+  "period_end": "2026-Q1",
+  "source_lineage": {
+    "oecd_flow_dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T620R_Q",
+    "oecd_stock_dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T720R_Q",
+    "raw_flow_sha256": "06c23cfdcc405b2f1689b695392f4f99a9aaa1085e3b90a6254482eb13d0a616",
+    "raw_stock_sha256": "ca41b25cb31f02baeaa31d2b74444b3ea0e59cfd0f1cc974f5f92327a838f4d1",
+    "retained_workflow_artifact_id": 10634064870,
+    "retained_workflow_artifact_zip_sha256": "18b0a611e018d12196cbdbcf980f17bc3211dc0c88269c96aa10f59076077310"
+  },
+  "construction": {
+    "instruments": [
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "mapping": {
+      "H": "S1M",
+      "C": "S11",
+      "F": "S12-S121",
+      "G": "S13",
+      "BNR": "S121",
+      "X": "S2"
+    },
+    "net_stock": "assets minus liabilities after F2-F8 summation",
+    "net_flow": "financial transactions assets minus liabilities after F2-F8 summation",
+    "semantic_exception": "S1M/L/F2 = structural zero under preregistered ESA2010 semantics",
+    "arithmetic": "exact decimal reconstruction from retained source-value lexemes"
+  },
+  "quality_and_acceptability": {
+    "strict_historical_rmd_tolerance_million_ron": "0.1",
+    "strict_historical_gate_result": "FAIL_RETAINED_AS_DIAGNOSTIC_LIMIT",
+    "exact_decimal_strict_violation_count": 47,
+    "official_acceptability_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_assessment_2026_09_21.json",
+    "official_acceptability_result": "PASS",
+    "conservative_materiality_threshold_million_ron": "10",
+    "max_abs_system_residual_million_ron": "0.6"
+  },
+  "scientific_role": "OBSERVED_BEHAVIOUR_OVER_TIME_REFERENCE_MODE_ONLY",
+  "bilateral_accounting_spine_artifact": false,
+  "model_output": false,
+  "fitted_series": false,
+  "imputed_series": false
+}
