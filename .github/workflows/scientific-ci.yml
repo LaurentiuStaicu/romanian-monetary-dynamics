@@ -277,6 +277,9 @@ jobs:
       - name: Audit F4 Eurostat-BSI exact-bridge diagnostic
         run: python scripts/audit_f4_eurostat_bsi_bridge_diagnostic.py
 
+      - name: Audit F2 Direct-Investment instrument-dissemination boundary
+        run: python scripts/audit_f2_direct_investment_instrument_dissemination.py
+
       - name: Audit F5 OECD counterpart selective reopen preregistration
         run: python scripts/audit_f5_oecd_counterpart_reopen.py
 

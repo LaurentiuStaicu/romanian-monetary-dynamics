@@ -482,3 +482,13 @@ Because every source-value/reconciliation gate must pass before a new OECD total
 
 The observed discrepancies are retained as immutable negative gate evidence. They do not authorize post-result tolerance relaxation, selective salvage of mirrored rows, F-versus-BNR residual splitting, missing-to-zero assumptions or promotion of the conditional BNR stock zeros. F8 returns to **EVIDENCE_TRIGGERED_HOLD** pending changed official evidence or an independently justified source-specific reconciliation basis preregistered before a successor gate.
 
+### F2 Direct-Investment instrument-dissemination boundary — 2026-09-21
+
+A standards-level source diagnostic was performed to determine whether further repetition of the standard BPM6/Eurostat/BNR/OECD search path can supply the missing **Direct-Investment currency-and-deposits (F2)** component required by the existing BPM6→ESA bridge.
+
+The result is negative for the **standard dissemination route**. BPM6 standard IIP/BOP presentation does not require Direct-Investment debt instruments to be disaggregated by specific instrument. Direct-Investment debt can conceptually include currency and deposits alongside loans, debt securities, trade credits and other debt instruments, but the standard presentation retains the aggregate debt-instruments category. Eurostat likewise describes Direct Investment through equity/reinvested earnings/debt instruments while explicitly instrumenting currency and deposits under Other Investment. The reviewed Romanian public IIP presentation follows the same boundary: Direct Investment is equity plus debt instruments; currency/deposits are separately shown under Other Investment.
+
+This explains, rather than repairs, the existing `FA__D__F2` non-dissemination finding. The broad Direct-Investment debt item remains **diagnostic only** and cannot substitute for F2. The residual gap to QSA total F2 remains unallocated and cannot be labelled as Direct-Investment F2 or F21.
+
+The standard BOP/IIP route is therefore marked **CLOSED_FOR_DI_F2_SUBINSTRUMENT**. F2M remains materialized; F21 and total F2 remain incomplete. A future reopen requires either a Romania-specific supplementary table/API/microdata product that explicitly identifies currency-and-deposits inside Direct-Investment debt for the required boundary, or an official exact bridge that identifies the same contribution without residual allocation or historical shares.
+

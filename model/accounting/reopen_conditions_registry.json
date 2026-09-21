@@ -23,8 +23,12 @@
         "broad Direct-Investment debt instruments (FA__D__FL)",
         "the residual gap between known functional components and QSA total F2",
         "historical proportions or allocation shares",
-        "missing-value-to-zero assumptions"
-      ]
+        "missing-value-to-zero assumptions",
+        "standard Direct-Investment debt-instruments aggregates without an instrument-specific currency-and-deposits split"
+      ],
+      "standard_dissemination_diagnostic": "model/accounting/f2_direct_investment_instrument_dissemination_diagnostic_2026_09_21.json",
+      "standard_bop_iip_route_state": "CLOSED_FOR_DI_F2_SUBINSTRUMENT",
+      "standard_bop_iip_route_reason": "BPM6 standard components do not require Direct-Investment debt to be broken down by instrument; Eurostat/BNR standard presentations retain aggregate DI debt while currency/deposits are separately instrumented under Other Investment. A country-specific supplementary DI-F2 source or equivalent exact bridge is required."
     },
     "F4": {
       "current_status": "PARTIAL_UNCONDITIONAL_CORE_ONLY",
