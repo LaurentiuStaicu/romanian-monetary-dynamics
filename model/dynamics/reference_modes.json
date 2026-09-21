@@ -122,7 +122,7 @@
       "source": "OECD quarterly non-consolidated financial accounts/balance sheets for Romania, mapped under ESA 2010 semantics and admitted by the official ECB QFA EUR 10 million internal-consistency materiality benchmark.",
       "time_resolution": "quarterly",
       "current_endogeneity": "OBSERVED_TARGET",
-      "assessment": "model/dynamics/sectoral_financial_positions_reference_assessment.json",
+      "assessment": "model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json",
       "boundary_review": "model/dynamics/sectoral_financial_positions_boundary_review.json",
       "strict_source_gate_assessment": "model/dynamics/sectoral_financial_positions_strict_gate_assessment.json",
       "aggregate_identity_assessment": "model/dynamics/sectoral_financial_positions_aggregate_identity_assessment.json",
@@ -190,7 +190,8 @@
       "ecb_qfa_materiality_gate_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_assessment_2026_09_21.json",
       "promotion_assessment": "model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json",
       "promotion_source_vintage": "data/source_vintages/oecd-ecb-qfa-materiality-reference-2026-09-21/source_vintage_manifest.json",
-      "aggregate_reference_boundary_status": "PASS_ECB_QFA_MATERIALITY_0_OF_2156_VIOLATIONS"
+      "aggregate_reference_boundary_status": "PASS_ECB_QFA_MATERIALITY_0_OF_2156_VIOLATIONS",
+      "historical_reference_assessment": "model/dynamics/sectoral_financial_positions_reference_assessment.json"
     }
   ],
   "closure_rule": "Integrated behavioural closure may not be declared validated until the reference modes required by each active loop have explicit observed targets or a documented reason why only qualitative/reference-pattern validation is possible.",
