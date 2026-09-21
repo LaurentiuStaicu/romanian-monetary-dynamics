@@ -257,6 +257,9 @@ jobs:
       - name: Audit OECD dissemination-precision diagnostic
         run: python scripts/audit_oecd_sectoral_financial_positions_precision_diagnostic.py
 
+      - name: Audit successor trigger-aware monitoring horizon
+        run: python scripts/audit_trigger_aware_monitoring_horizon_2026_09_21.py
+
       - name: Audit F3 empirical dynamic replay
         run: python scripts/audit_f3_empirical_replay.py
 
