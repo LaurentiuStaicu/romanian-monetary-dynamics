@@ -1,0 +1,85 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "reference_mode": "sectoral_financial_positions",
+  "predecessor_terminal_assessment": "model/dynamics/reference_mode_recovery_terminal_assessment.json",
+  "materiality_gate_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_assessment_2026_09_21.json",
+  "semantic_assessment": "model/dynamics/sectoral_financial_positions_esa2010_s1m_f2_liability_semantic_assessment_2026_09_21.json",
+  "topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
+  "exact_decimal_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
+  "retained_reference_series": {
+    "path": "data/processed/sectoral_financial_positions_net_reference_2014q1_2026q1.csv",
+    "sha256": "6a2eff31ee70a2a15ea95aafe3a1729d231a87128d2943a79476aa6b93424fc3",
+    "git_blob_sha1": "259d24768337b80405b9179ccb1065e2658cb7d5",
+    "data_rows": 294,
+    "quarters": 49,
+    "sectors": [
+      "H",
+      "C",
+      "F",
+      "G",
+      "BNR",
+      "X"
+    ],
+    "period_start": "2014-Q1",
+    "period_end": "2026-Q1",
+    "stock_measure": "net financial position, million RON",
+    "flow_measure": "net financial transaction, million RON per quarter",
+    "construction": "F2-F8 non-consolidated OECD source rows; H=S1M, C=S11, F=S12-S121, G=S13, BNR=S121, X=S2; S1M/L/F2 is a preregistered ESA2010 structural zero.",
+    "synthetic_or_fitted_values": false,
+    "behavioural_model_output": false
+  },
+  "promotion_criteria": {
+    "complete_required_sector_coverage": true,
+    "stock_and_financial_transaction_measures_present": true,
+    "minimum_common_quarters_40": true,
+    "all_2025_quarters_present": true,
+    "exact_source_provenance_retained": true,
+    "semantic_exception_preregistered": true,
+    "finite_values_pass": true,
+    "official_domain_specific_materiality_gate_pass": true,
+    "repository_series_retained": true
+  },
+  "boundary_definition": {
+    "promoted_boundary": "NARROW_AGGREGATE_BEHAVIOUR_OVER_TIME_REFERENCE_MODE",
+    "bilateral_holder_by_issuer_boundary_promoted": false,
+    "accounting_spine_boundary_changed": false,
+    "canonical_instrument_completion_changed": false,
+    "full_rmd_empirical_state_claim_allowed": false,
+    "historical_strict_reconciliation_failure_retained": true
+  },
+  "verdict": "PROMOTE_NARROW_AGGREGATE_SECTORAL_FINANCIAL_POSITIONS_TO_OBSERVED_SERIES_AVAILABLE",
+  "current_reference_mode_state": {
+    "old_status": "PARTIAL_SERIES_AVAILABLE",
+    "new_status": "OBSERVED_SERIES_AVAILABLE",
+    "required_reference_modes": 10,
+    "old_ready_count": 9,
+    "new_ready_count": 10,
+    "integrated_reference_mode_prerequisite": "PASS"
+  },
+  "non_effects": {
+    "canonical_complete_stock_and_flow_instruments": [
+      "F3"
+    ],
+    "canonical_multi_instrument_stock_initialization_ready": false,
+    "canonical_full_2025_stock_flow_benchmark_ready": false,
+    "accounting_readiness_change": false,
+    "full_rmd_empirical_state_claim_allowed": false,
+    "calibration_or_refit_authorized": false,
+    "holdout_opening_authorized": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "complete_endogenous_system_dynamics_model": false
+  },
+  "next_scientific_state": {
+    "reference_mode_recovery_complete": true,
+    "reference_mode_readiness": "10/10",
+    "reference_mode_blockers": [],
+    "behavioural_activation_prerequisites_still_blocked": true,
+    "quantitative_feedback_structures_activation_ready": 0,
+    "active_calibration_cycle_open": false,
+    "next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+    "rationale": "Reference-mode completeness removes one prerequisite blocker but does not supply causal equations, parameters, delays, identifiability or complete accounting initialization. Existing mechanism-specific evidence triggers remain governing."
+  }
+}
