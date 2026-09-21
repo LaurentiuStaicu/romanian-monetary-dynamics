@@ -1,0 +1,102 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "esa2010_s1m_f2_liability_semantic_applicability",
+  "reference_mode": "sectoral_financial_positions",
+  "purpose": "Determine, independently of the prior OECD missing-row result, whether ESA 2010 supplies an authoritative semantic treatment for the S1M / liabilities / F2 cell before any new numerical value gate is opened.",
+  "official_source": {
+    "institution": "Eurostat / European Union",
+    "title": "European system of accounts — ESA 2010",
+    "url": "https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF.pdf/44cd9d01-bc64-40e5-bd40-d17df0c69334?t=1414781932000",
+    "normative_role": "Canonical ESA 2010 institutional-sector and financial-instrument definitions used by European financial accounts.",
+    "exact_references": [
+      {
+        "paragraph": "5.76",
+        "page_label": 134,
+        "semantic_point": "Currency F.21 consists of notes and coins issued or authorised by monetary authorities."
+      },
+      {
+        "paragraph": "5.79",
+        "page_label": 135,
+        "semantic_point": "Deposits F.22/F.29 are standardised non-negotiable contracts offered by deposit-taking corporations and, in some cases, central government as debtors."
+      },
+      {
+        "paragraph": "5.81",
+        "page_label": 135,
+        "semantic_point": "Transferable deposits predominantly represent liabilities of resident deposit-taking corporations, in some cases central government, and non-resident institutional units."
+      },
+      {
+        "paragraph": "5.82",
+        "page_label": 135,
+        "semantic_point": "An overdraft beyond a deposit balance is classified as a loan, not as a negative deposit."
+      },
+      {
+        "paragraph": "5.83",
+        "page_label": 135,
+        "semantic_point": "All resident sectors and the rest of the world may hold transferable deposits; this establishes holder-side universality, not issuer-side universality."
+      },
+      {
+        "paragraph": "2.72",
+        "page_label": 38,
+        "semantic_point": "The central bank S.121 is a financial-corporation subsector whose principal functions include issuing currency."
+      },
+      {
+        "paragraph": "2.75",
+        "page_label": 39,
+        "semantic_point": "Deposit-taking corporations except the central bank are classified in S.122 and are defined by receiving deposits and/or close substitutes from institutional units."
+      },
+      {
+        "paragraph": "2.118",
+        "page_label": 45,
+        "semantic_point": "S.14 households are a distinct institutional sector; deposit-taking corporations are not classified in S.14."
+      }
+    ]
+  },
+  "independence_from_prior_result": {
+    "prior_missing_row_assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
+    "prior_result_used_to_infer_semantics": false,
+    "semantic_source_selected_from_normative_esa2010_definitions": true,
+    "no_numeric_observation_review_for_semantic_assessment": true,
+    "rule": "The applicability conclusion must stand from ESA definitions even if the OECD row had been present."
+  },
+  "adjudication": {
+    "instrument": "F2",
+    "sector": "S1M",
+    "accounting_entry": "L",
+    "currency_component_F21_liability_applicable_to_S1M": false,
+    "deposit_components_F22_F29_liability_applicable_to_S1M": false,
+    "overdraft_exception_creates_F2_liability": false,
+    "overdraft_classification": "F4 loan",
+    "conclusion": "STRUCTURALLY_NOT_APPLICABLE_ON_ESA2010_S1M_L_F2_BOUNDARY",
+    "permitted_reconstruction_treatment": "STRUCTURAL_ZERO_BY_NORMATIVE_SEMANTICS",
+    "treatment_is_missing_to_zero": false,
+    "treatment_is_imputation": false,
+    "treatment_is_residual_allocation": false,
+    "treatment_is_post_result_empirical_inference": false
+  },
+  "scope_limit": {
+    "applies_only_to": {
+      "source_sector": "S1M",
+      "accounting_entry": "L",
+      "instrument": "F2"
+    },
+    "may_not_generalize_to_other_missing_cells": true,
+    "may_not_change_sector_mapping": true,
+    "may_not_change_instrument_set": true,
+    "may_not_change_period_window": true,
+    "may_not_change_reconciliation_tolerance": true,
+    "may_not_change_bilateral_accounting_spine": true
+  },
+  "decision": "PASS_INDEPENDENT_ESA2010_SEMANTIC_APPLICABILITY_S1M_L_F2_STRUCTURAL_ZERO_AUTHORIZED_FOR_ONE_NEW_PREREGISTERED_AGGREGATE_GATE",
+  "scientific_effect": {
+    "new_value_gate_may_be_preregistered": true,
+    "prior_failed_gate_reinterpreted": false,
+    "prior_missing_rows_relabelled_as_observed": false,
+    "reference_mode_promoted": false,
+    "readiness_count_change": 0,
+    "accounting_readiness_change": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false
+  }
+}
