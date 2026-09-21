@@ -456,6 +456,7 @@ def main() -> None:
     feedback_link_readiness = load("model/dynamics/feedback_link_readiness_registry.json")
     delay_evidence = load("model/dynamics/delay_evidence_registry.json")
     activation_matrix = load("model/dynamics/feedback_activation_criteria_matrix.json")
+    numerical_integration = load("model/dynamics/numerical_integration_contract.json")
     units = load("model/dynamics/unit_registry.json")
     references = load("model/dynamics/reference_modes.json")
     gate = load("model/dynamics/system_dynamics_conformity_gate.json")
@@ -626,6 +627,42 @@ def main() -> None:
 
     structures = feedback["loops"]
     check(structures, "Feedback registry must contain the candidate feedback architecture")
+
+    numerical_integration_path = "model/dynamics/numerical_integration_contract.json"
+    check(
+        core["integration"]["numerical_integration_contract"] == numerical_integration_path,
+        "Core contract does not point to canonical numerical integration contract",
+    )
+    check(
+        gate["testing_gate"]["numerical_integration_contract"] == numerical_integration_path,
+        "SD gate does not point to canonical numerical integration contract",
+    )
+    check(
+        model["dynamic_core"]["numerical_integration_contract"] == numerical_integration_path,
+        "Model contract does not point to canonical numerical integration contract",
+    )
+    check(
+        numerical_integration["current_summary"]["stock_rate_partition_invariance"] == "PASS",
+        "Stock-rate partition invariance must pass",
+    )
+    check(
+        numerical_integration["current_summary"]["first_order_delay_reference_convergence"] == "PASS",
+        "First-order delay reference convergence must pass",
+    )
+    check(
+        numerical_integration["current_summary"]["default_dt_delay_adequacy"]
+        == "CONDITIONAL_ON_TAU_GREATER_THAN_0_75_YEARS",
+        "Default-dt delay adequacy state changed",
+    )
+    check(
+        numerical_integration["current_summary"]["integrated_model_numerical_robustness"]
+        == "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
+        "Integrated numerical robustness must remain unclaimed",
+    )
+    check(
+        numerical_integration["current_summary"]["model_activation_authorized"] is False,
+        "Numerical integration contract may not authorize model activation",
+    )
 
     activation_matrix_path = "model/dynamics/feedback_activation_criteria_matrix.json"
     check(

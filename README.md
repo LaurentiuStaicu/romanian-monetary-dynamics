@@ -147,7 +147,7 @@ python scripts/audit_scientific_baseline_manifest.py
 python scripts/verify_validation_recovery_provenance.py
 ~~~
 
-A successful run verifies the repository's declared accounting invariants, dimensional consistency, System Dynamics conformity boundary, cross-registry scientific state and retained provenance. It **does not** mean that the model has acquired behavioural closure, causal identification or policy-forecast validation.
+A successful run verifies the repository's declared accounting invariants, dimensional consistency, numerical-integration structural convergence, System Dynamics conformity boundary, cross-registry scientific state and retained provenance. It **does not** mean that the model has acquired behavioural closure, integrated numerical validation, causal identification or policy-forecast validation.
 
 The canonical CI workflow is [.github/workflows/scientific-ci.yml](.github/workflows/scientific-ci.yml).
 

@@ -142,6 +142,18 @@ The independent integrated blockers remain unchanged: only 9 of 10 required refe
 This terminal structural-review state changes neither the canonical modeling paradigm nor the public version.
 
 
+
+### Numerical integration convergence gate — 2026-09-21
+
+The Dynamic Core's numerical-integration discipline is now explicit and machine-checked in `model/dynamics/numerical_integration_contract.json`. The canonical reference integrator remains explicit Euler with `dt = 0.25 years` (quarterly).
+
+Two structural primitives are covered. Constant-rate financial-stock updates are partition-invariant over an equivalent one-year horizon. The normalized first-order delay reference case converges monotonically toward its analytic solution when `dt` is successively halved from 0.25 to 0.125, 0.0625 and 0.03125 years.
+
+For future active first-order delays, RMD retains the System Dynamics adequacy rule `dt/tau < 1/3`, consistent with Vensim time-step guidance. This is deliberately classified as a **conservative adequacy rule, not a mathematical Euler stability limit**. Under the current quarterly default, an active first-order delay therefore requires `tau > 0.75 years`; a shorter validated delay would require a smaller integration step. Every future active delay must also pass model-level time-step-halving sensitivity rather than relying on this ratio alone.
+
+All seven registered RMD delay candidates still have `tau = TBD`, zero are scalar-tau activation-ready and zero are active. Consequently the current result is **PASS for structural primitive convergence** but **NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE** for integrated-model numerical robustness. No delay parameter, behavioural mechanism, feedback structure, reference-mode state, Accounting Spine state, release or public version is changed by this gate.
+
+
 ## Canonical modeling paradigm
 
 **Romanian Monetary Dynamics (RMD) is an accounting-constrained, stock-flow-consistent dynamic model with a developing System Dynamics feedback architecture; behavioural closure remains inactive pending empirical identification and validation.**

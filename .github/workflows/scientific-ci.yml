@@ -276,6 +276,9 @@ jobs:
       - name: Recompute dimensional consistency independently
         run: python scripts/audit_dimensional_consistency.py
 
+      - name: Audit numerical integration convergence
+        run: python scripts/audit_numerical_integration.py
+
       - name: Audit behavioural dimensional consistency
         run: python scripts/audit_behavioural_dimensional_consistency.py
 

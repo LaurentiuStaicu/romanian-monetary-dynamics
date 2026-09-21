@@ -82,7 +82,8 @@
     "refinancing_need_to_risk_premium_boundary_review": "model/dynamics/refinancing_need_to_risk_premium_boundary_review_2026_09_21.json",
     "risk_premium_to_exchange_rate_pressure_boundary_review": "model/dynamics/risk_premium_to_exchange_rate_pressure_boundary_review_2026_09_21.json",
     "external_fx_refinancing_open_chain_terminal_assessment": "model/dynamics/external_fx_refinancing_open_chain_terminal_assessment_2026_09_21.json",
-    "feedback_architecture_structural_review_terminal_assessment": "model/dynamics/feedback_architecture_structural_review_terminal_assessment_2026_09_21.json"
+    "feedback_architecture_structural_review_terminal_assessment": "model/dynamics/feedback_architecture_structural_review_terminal_assessment_2026_09_21.json",
+    "numerical_integration_contract": "model/dynamics/numerical_integration_contract.json"
   },
   "canonical_state": {
     "accounting": {
