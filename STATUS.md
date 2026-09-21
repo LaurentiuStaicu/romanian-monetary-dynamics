@@ -78,6 +78,18 @@ The terminal structural assessment is `model/dynamics/government_refinancing_int
 
 This closure changes neither the canonical modeling paradigm nor the public version.
 
+### Government issuance–yield loop structural closure — 2026-09-21
+
+The current structural/source-boundary review cycle for the `government_issuance_yield_loop` is complete at the available evidence boundary. The qualitative reinforcing-candidate topology is retained, but the loop is **not quantitatively active**.
+
+All five path links remain non-ready as integrated equations. The financing-channel allocation vector is unidentified; the securities-supply-pressure node remains a multidimensional measurement umbrella with no scalar promotion; the full-year announced-RON reference-auction source remains incomplete for three required official acts; the preferred sovereign-yield target boundary is observed but its behavioural link is unresolved; the tested fiscal-augmented sovereign-yield form remains frozen at `FAIL_BEFORE_HOLDOUT`; the yield-to-interest-cost repricing transition is unidentified; and the gross-financing-need accounting boundary is not canonical.
+
+The integrated loop has **0/5 exact integrated link equations ready**, all five feedback nodes remain `UNRESOLVED`, and both `portfolio_reallocation_delay` and `debt_service_maturity_delay` remain `TBD`. The terminal assessment is `model/dynamics/government_issuance_yield_loop_terminal_assessment_2026_09_21.json`.
+
+Its operational state is **EVIDENCE_TRIGGERED_HOLD**. There is no active empirical task. Repeated polling of unchanged source paths, synthetic supply-pressure indices, post-hoc yield aggregation, refitting the failed sovereign-yield form, opening its untouched final evaluation, residual financing allocation, aggregate repricing proxies, feedback activation and behavioural closure remain unauthorized. Reopening requires one of the explicitly recorded new-source or new-identification triggers.
+
+This closure changes neither the canonical modeling paradigm nor the public version.
+
 ## Canonical modeling paradigm
 
 **Romanian Monetary Dynamics (RMD) is an accounting-constrained, stock-flow-consistent dynamic model with a developing System Dynamics feedback architecture; behavioural closure remains inactive pending empirical identification and validation.**
