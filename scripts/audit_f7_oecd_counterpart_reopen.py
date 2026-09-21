@@ -32,7 +32,10 @@ def audit_f7_oecd_counterpart_reopen()->list[str]:
     f7=reopen["instruments"]["F7"]
     if f7.get("selective_reopen_contract")!=CONTRACT: errors.append("F7 registry lacks Stage 2 contract")
     if f7.get("selective_reopen_assessment")!=ASSESSMENT: errors.append("F7 registry lacks topology assessment")
-    if f7.get("selective_reopen_state")!="PREREGISTERED_STAGE2_PENDING_EXECUTION": errors.append("F7 selective reopen state stale")
+    allowed={"PREREGISTERED_STAGE2_PENDING_EXECUTION","STAGE2_EXECUTED_FAIL_SOURCE_RECONCILIATION_RETURNED_TO_HOLD","STAGE2_EXECUTED_PASS_PENDING_MATERIALIZATION_DECISION"}
+    if f7.get("selective_reopen_state") not in allowed: errors.append("F7 selective reopen state invalid")
+    if f7.get("selective_reopen_state")!="PREREGISTERED_STAGE2_PENDING_EXECUTION":
+        if f7.get("selective_reopen_execution_assessment")!="model/accounting/f7_oecd_counterpart_stage2_execution_assessment_2026_09_21.json": errors.append("F7 successor state lacks execution assessment")
     if f7.get("reopen_trigger_satisfied") is not True: errors.append("F7 trigger not registered")
     if a["adjudication"]["accounting_readiness_change"] is not False or a["adjudication"]["F7_materialization_change"] is not False: errors.append("F7 topology reopen may not change readiness/materialization")
     return errors
@@ -40,6 +43,7 @@ def audit_f7_oecd_counterpart_reopen()->list[str]:
 def main():
     errors=audit_f7_oecd_counterpart_reopen()
     if errors: raise RuntimeError("F7 OECD counterpart reopen audit failed:\n- "+"\n- ".join(errors))
-    print(json.dumps({"status":"PASS","trigger":"OECD_F7_COUNTERPART_PUBLICATION","stage2":"PREREGISTERED_PENDING_EXECUTION","base_rank_stock":11,"base_rank_flow":10,"accounting_readiness_changed":False},indent=2))
+    state=load("model/accounting/reopen_conditions_registry.json")["instruments"]["F7"]["selective_reopen_state"]
+    print(json.dumps({"status":"PASS","trigger":"OECD_F7_COUNTERPART_PUBLICATION","stage2":state,"base_rank_stock":11,"base_rank_flow":10,"accounting_readiness_changed":False},indent=2))
 
 if __name__=="__main__": main()
