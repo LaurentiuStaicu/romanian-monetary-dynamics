@@ -238,6 +238,10 @@ def identity_checks(text: str, period: str) -> dict[str, bool]:
         "institution": (
             "ministry of finance" in f
             or "ministerul finantelor" in f
+            or (
+                "public debt according to national legislation" in f
+                and "a)mof" in f
+            )
         ),
         "actual_borrowing_section": "actual borrowing as of" in f,
         "total_reimbursable_financing": "total reimbursable financing" in f,
