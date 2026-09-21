@@ -5,9 +5,10 @@ ROOT=Path(__file__).resolve().parents[1]
 A=ROOT/"model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_assessment_2026_09_21.json"
 C=ROOT/"model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_contract_2026_09_21.json"
 M=ROOT/"model/registries/model_contract.json"
+G=ROOT/"model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_assessment_2026_09_21.json"
 
 def audit_ecb_materiality_preregistration():
-    e=[]; a=json.loads(A.read_text()); c=json.loads(C.read_text()); m=json.loads(M.read_text())
+    e=[]; a=json.loads(A.read_text()); c=json.loads(C.read_text()); m=json.loads(M.read_text()); g=json.loads(G.read_text())
     if a["decision"]!="PASS_OFFICIAL_ECB_QFA_10M_EUR_MATERIALITY_RULE_FOUND_AUTHORIZE_ONE_NEW_PREREGISTERED_INSTRUMENT_LEVEL_GATE":
         e.append("materiality assessment decision changed")
     j=a["adjudication"]
@@ -19,15 +20,19 @@ def audit_ecb_materiality_preregistration():
         e.append("contract threshold changed")
     if not all(c["hard_rules"].values()):
         e.append("a materiality-gate hard rule was disabled")
+    # Preregistration itself did not authorize promotion. The current registry may
+    # advance only through the separately retained executed gate + promotion.
+    if g["decision"]!="PASS_ECB_QFA_MATERIALITY_GATE_REFERENCE_MODE_PROMOTION_AUTHORIZED":
+        e.append("executed materiality gate successor decision changed")
     dc=m["dynamic_core"]
-    if dc["reference_mode_ready_count"]!=9 or dc["reference_mode_required_count"]!=10:
-        e.append("readiness must remain 9/10 before execution")
-    if dc["sectoral_financial_positions_reference_mode_status"]!="PARTIAL_SERIES_AVAILABLE":
-        e.append("reference mode must remain partial before execution")
+    if dc["reference_mode_ready_count"]!=10 or dc["reference_mode_required_count"]!=10:
+        e.append("current readiness must reflect the executed successor promotion at 10/10")
+    if dc["sectoral_financial_positions_reference_mode_status"]!="OBSERVED_SERIES_AVAILABLE":
+        e.append("current reference mode must reflect the executed successor promotion")
     return e
 
 def main():
     errors=audit_ecb_materiality_preregistration()
     if errors: raise RuntimeError("ECB QFA materiality preregistration audit failed:\n- "+"\n- ".join(errors))
-    print(json.dumps({"status":"PASS","official_threshold_million_eur":10,"reference_modes_ready":"9/10","live_gate":"PENDING"},indent=2))
+    print(json.dumps({"status":"PASS","official_threshold_million_eur":10,"preregistration_effect":"NO_IMMEDIATE_PROMOTION","current_reference_modes_ready":"10/10","executed_successor_gate":"PASS"},indent=2))
 if __name__=="__main__": main()
