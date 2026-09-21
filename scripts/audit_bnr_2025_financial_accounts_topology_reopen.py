@@ -74,13 +74,12 @@ def audit_bnr_2025_financial_accounts_topology_reopen(
         e.append("one frozen source-topology pass must remain executable")
     if state["execution_completed"] is not False:
         e.append("public-access recovery may not be marked completed before execution")
-    for key in (
-        "topology_pass",
-        "aggregate_reference_mode_gate_pass",
-        "bilateral_accounting_reopen_gate_pass",
-    ):
-        if state[key] is not None:
-            e.append(f"unexecuted gate must remain null: {key}")
+    if state["topology_pass"] is not True:
+        e.append("public topology gate must remain passed after retained OECD topology review")
+    if state["aggregate_reference_mode_gate_pass"] is not None:
+        e.append("aggregate exact reference-mode gate must remain unexecuted before exact gate review")
+    if state["bilateral_accounting_reopen_gate_pass"] is not False:
+        e.append("non-counterpart topology path must not reopen bilateral accounting")
     if state["reference_mode_promotion_authorized"] is not False:
         e.append("reference mode promotion may not be authorized")
     if state["accounting_reopen_authorized"] is not False:
@@ -206,7 +205,7 @@ def main() -> None:
     print(json.dumps({
         "status":"PASS",
         "trigger":"CHANGED_OFFICIAL_TOPOLOGY_SOURCE",
-        "authorized_scope":"ONE_FROZEN_PUBLIC_ACCESS_TOPOLOGY_PASS",
+        "authorized_scope":"TOPOLOGY_PASS_EXACT_AGGREGATE_GATE_PENDING",
         "reference_modes_ready":"9/10",
         "sectoral_financial_positions":"PARTIAL_SERIES_AVAILABLE",
         "accounting_complete_stock_and_flow_instruments":["F3"],
