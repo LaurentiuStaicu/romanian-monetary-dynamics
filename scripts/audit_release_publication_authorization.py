@@ -71,8 +71,10 @@ def audit_release_publication_authorization() -> list[str]:
     governance = model["repository_governance"]
     if governance.get("current_repository_version") != expected:
         errors.append("model governance repository version differs from authorization")
-    if governance.get("release_or_version_change_authorized") is not True:
-        errors.append("model governance does not authorize gated publication")
+    if governance.get("release_or_version_change_authorized") is not False:
+        errors.append("historical integration authority must not become release authority")
+    if governance.get("release_publication_authorized_by_release_readiness") is not True:
+        errors.append("dedicated release-readiness authority is missing")
     if governance.get("release_publication_authorization") != "model/registries/release_publication_authorization.json":
         errors.append("model governance lacks release-publication authorization pointer")
 
