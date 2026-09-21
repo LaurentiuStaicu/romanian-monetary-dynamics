@@ -13,7 +13,8 @@
     "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
     "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED",
     "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL",
-    "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED"
+    "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED",
+    "EXPOSURE_SCALE_OBSERVED_DEBT_SERVICE_AND_CREDIT_RISK_STATE_BOUNDARY_UNRECONCILED"
   ],
   "hard_rules": {
     "every_feedback_path_link_must_be_registered_exactly_once": true,
@@ -225,15 +226,16 @@
       "from": "loan_stock",
       "to": "debt_service_and_credit_risk",
       "sign": "+_candidate",
-      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
-      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK_BOUNDARY_UNRECONCILED",
+      "readiness_status": "EXPOSURE_SCALE_OBSERVED_DEBT_SERVICE_AND_CREDIT_RISK_STATE_BOUNDARY_UNRECONCILED",
       "related_mechanisms": [
         "credit_risk_npl_response"
       ],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+      "reason": "The observed loan stock is an exposure-scale state, not a borrower debt-service burden or a credit-risk outcome. Exact aggregate NPL evidence exists, and housing-loan DSTI evidence exists on a narrower portfolio, but no definitionally matched debt-service/risk state is frozen for the aggregate private non-financial loan-stock boundary.",
+      "loan_stock_to_debt_service_and_credit_risk_boundary_review": "model/dynamics/loan_stock_to_debt_service_and_credit_risk_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "bank_credit_balance_sheet_loop|debt_service_and_credit_risk|credit_supply_capacity",
