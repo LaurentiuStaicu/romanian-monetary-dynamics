@@ -118,12 +118,17 @@ def fetch_ecb_fx(series: str, start: str, end: str):
 
 def instrument_diagnostics(vals: dict, fx: dict, c: dict, measure: str) -> list[dict]:
     s=c["frozen_source"]; threshold=Decimal(c["official_validation_rule"]["threshold_eur_million"])
-    sectors=s["required_source_sectors"]; out=[]
+    mapping=c["sector_mapping"]; out=[]
     for p in quarter_range(s["start_period"],s["end_period"]):
         rate=fx[p]
         for instr in s["instruments"]:
-            assets=sum(vals[(p,sector,"A",instr)] for sector in sectors)
-            liabilities=sum(vals[(p,sector,"L",instr)] for sector in sectors)
+            rmd={}
+            for rid,spec in mapping.items():
+                assets=sum(Decimal(str(sign))*vals[(p,sector,"A",instr)] for sector,sign in spec["terms"])
+                liabilities=sum(Decimal(str(sign))*vals[(p,sector,"L",instr)] for sector,sign in spec["terms"])
+                rmd[rid]=(assets,liabilities)
+            assets=sum(x[0] for x in rmd.values())
+            liabilities=sum(x[1] for x in rmd.values())
             residual_ron=assets-liabilities
             residual_eur=residual_ron/rate
             out.append({
