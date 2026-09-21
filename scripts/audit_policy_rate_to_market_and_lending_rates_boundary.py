@@ -9,7 +9,7 @@ def audit_policy_rate_to_rates(review,validation,prospective,boundary,readiness,
  e=[]
  if review["decision"]!="DO_NOT_PROMOTE_HOUSEHOLD_HOUSING_PASS_THROUGH_TO_GENERIC_MARKET_AND_LENDING_RATES_KEEP_TARGET_SPECIFIC_CANDIDATE_ONLY":e.append("decision changed")
  if validation["mechanisms_tested"][0]["final_verdict"]!="CANDIDATE":e.append("household candidate verdict changed")
- if prospective["current_gate_status"]!="WAIT_FOR_NEW_POLICY_RATE_EVENT":e.append("prospective gate changed")
+ if prospective["identification_gate"]["status"]!="WAIT_FOR_NEW_POLICY_RATE_EVENT":e.append("prospective gate changed")
  b=review["bridge_resolution"]
  if b["status"]!=STATUS:e.append("status changed")
  for k in ("generic_rate_node_mapping_authorized","nfc_form_inference_authorized","market_rate_aggregation_authorized","outstanding_rate_substitution_authorized","exact_integrated_equation_ready","parameter_estimation_authorized","feedback_activation_authorized"):
@@ -22,7 +22,7 @@ def audit_policy_rate_to_rates(review,validation,prospective,boundary,readiness,
   if n.get("policy_rate_to_market_and_lending_rates_boundary_review")!=REVIEW_PATH:e.append(f"{n['id']}: review missing")
   if n.get("policy_rate_to_market_and_lending_rates_status")!=STATUS:e.append(f"{n['id']}: status changed")
  link=next(x for x in readiness["links"] if x["loop_id"]=="monetary_credit_transmission_loop" and x["from"]=="policy_rate")
- if link["readiness_status"]!=STATUS:e.append("link status changed")
+ if link["readiness_status"]!="PARTIAL_TARGET_SPECIFIC_FORM_NOT_INTEGRATED":e.append("canonical target-specific readiness status changed")\n if link.get("policy_rate_to_market_and_lending_rates_boundary_status")!=STATUS:e.append("link boundary-review status changed")
  if link["exact_integrated_equation_ready"] is not False or link["current_activation_authorized"] is not False:e.append("link may not activate")
  loop=next(x for x in feedback["loops"] if x["id"]=="monetary_credit_transmission_loop")
  if loop.get("policy_rate_to_market_and_lending_rates_boundary_review")!=REVIEW_PATH:e.append("loop pointer missing")
