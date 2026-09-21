@@ -120,7 +120,7 @@ The historical workflow and its artifact remain immutable. Recomputing the same 
 
 This is a correction to the violation **count**, not a tolerance change and not a new source run. The scientific verdict remains **FAIL** at the frozen 0.1 million RON threshold, because 47 mathematically genuine violations remain. Future summaries must use 47 as the corrected count while preserving 63 only as provenance of the historical machine-float execution.
 
-ECB quality documentation provides useful context but not a rescue rule: quarterly financial-account internal consistency covers sector/instrument aggregation, horizontal asset-liability equality, balancing items and counterpart-sector consistency, and Romania is reported at 96% validation-rule compliance over Q4 2012–Q2 2024. This shows that minor validation exceptions have existed historically, but it does not identify the 2025–2026 OECD residuals or authorize a looser threshold. citeturn750638view3turn829687view0
+ECB quality documentation provides useful context but not a rescue rule: quarterly financial-account internal consistency covers sector/instrument aggregation, horizontal asset-liability equality, balancing items and counterpart-sector consistency, and Romania is reported at 96% validation-rule compliance over Q4 2012–Q2 2024. This shows that minor validation exceptions have existed historically, but it does not identify the 2025–2026 OECD residuals or authorize a looser threshold.
 
 
 ### Trigger-aware monitoring horizon — successor frozen 2026-09-21
