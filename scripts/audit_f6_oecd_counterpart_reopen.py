@@ -50,6 +50,7 @@ def audit_f6_oecd_counterpart_reopen()->list[str]:
 def main():
     errors=audit_f6_oecd_counterpart_reopen()
     if errors: raise RuntimeError("F6 OECD counterpart reopen audit failed:\n- "+"\n- ".join(errors))
-    print(json.dumps({"status":"PASS","trigger":"OECD_F6_COUNTERPART_PUBLICATION","stage2":"PREREGISTERED_PENDING_EXECUTION","base_rank_stock":11,"base_rank_flow":11,"accounting_readiness_changed":False},indent=2))
+    state=load("model/accounting/reopen_conditions_registry.json")["instruments"]["F6"]["selective_reopen_state"]
+    print(json.dumps({"status":"PASS","trigger":"OECD_F6_COUNTERPART_PUBLICATION","stage2":state,"base_rank_stock":11,"base_rank_flow":11,"accounting_readiness_changed":False},indent=2))
 
 if __name__=="__main__": main()

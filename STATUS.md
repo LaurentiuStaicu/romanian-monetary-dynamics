@@ -432,3 +432,13 @@ Before any detailed Stage 2 value or rank result is reviewed, `model/accounting/
 
 This is a selective reopen only. F6 remains canonically incomplete until Stage 2 executes; no benchmark cell, reference mode, calibration state, feedback structure, behavioural closure or version is changed by preregistration.
 
+### F6 OECD counterpart Stage 2 terminal result — 2026-09-21
+
+The preregistered F6 Stage 2 gate was executed strictly from the retained OECD counterpart artifact. The required 2025 boundary contains **420 stock rows at 2025-Q4** and **1,680 transaction rows for 2025-Q1..Q4** across F6 and F61-F66, with no required duplicates, missing values or non-finite observations.
+
+The resident-group asset/liability mirror layer passes exactly: **112 stock checks and 112 annual-flow checks, zero violations, maximum residual 0.0 million RON**. The next two frozen source-reconciliation layers do not pass. At the **0.1 million RON** threshold, S1 aggregation fails in **7 of 154 stock checks** with a maximum absolute residual of **1.0 million RON**, and **13 of 154 annual-flow checks** with a maximum of **2.0 million RON**. The component identity **F6 = F61+F62+F63+F64+F65+F66** also fails: **4/60 stock**, **11/60 annual-flow**, and **32/240 quarterly-flow** checks exceed the same tolerance, with maximum residual 1.0 million RON.
+
+Because the contract requires every source-value/reconciliation gate to pass before any OECD total-F6 equation enters the exact rank system, Stage 2 stops **before rank recomputation**. F6 therefore remains at its predecessor **rank 11 / nullity 24** for stock and flow, with zero unconditional rank-unique bilateral cells and no materialization.
+
+The observed discrepancies are retained as immutable negative gate evidence. They do not authorize a post-result tolerance relaxation, selective salvage of individually mirrored rows, residual allocation between F and BNR, or any missing-to-zero rule. F6 returns to **EVIDENCE_TRIGGERED_HOLD** pending changed official evidence or an independently justified source-specific reconciliation basis preregistered before a successor gate.
+
