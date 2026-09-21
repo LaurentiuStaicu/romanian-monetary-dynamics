@@ -402,3 +402,13 @@ This empirical failure is also consistent with the official statistical boundary
 
 The diagnostic is retained in `model/accounting/f4_eurostat_bsi_bridge_diagnostic_2026_09_21.json`. It supplies **negative identification evidence only**: F4 remains at 15 unconditional rank-unique stock cells and 15 unconditional rank-unique flow cells; the BNR 6.1 million RON asset-counterpart allocation remains unresolved; no Accounting Spine cell, benchmark, reference mode, behavioural mechanism or feedback loop is changed.
 
+### F5 OECD counterpart selective reopen — 2026-09-21
+
+A retained-source topology review identified a declared F5 reopen trigger that had not previously been applied instrument-specifically. The existing OECD quarterly from-whom-to-whom stocks and flows artifact contains exact `F512` (unlisted shares) and `F519` (other equity) rows by reporting and counterpart sector for Romania. This satisfies the frozen F5 reopen condition requiring official bilateral/counterpart-sector publication for F512 and/or F519.
+
+The source still does **not** expose S121 separately. OECD S12 can therefore enter a future rank gate only as the exact aggregate **F + BNR** constraint; it may not be relabelled as RMD F or split by residual, shares or missing-to-zero assumptions. H, C and G retain the direct mappings S1M, S11 and S13, while S2 is usable only through explicit asset/liability counterpart orientation.
+
+Before detailed value residuals or rank outcomes are reviewed, Stage 2 is preregistered in `model/accounting/f5_oecd_counterpart_reopen_contract_2026_09_21.json`. It freezes the 2025-Q4 stock and 2025-Q1..Q4 transaction boundary, the existing 0.1 million RON accounting tolerance, A/L mirror and aggregate-consistency checks, exact rational rank recomputation, and the prohibition on post-result mapping/tolerance changes.
+
+This is a **selective reopen only**. F5 remains canonically incomplete, the previous rank-73/nullity-67 assessment remains historical truth until Stage 2 executes, no benchmark cell is materialized, and reference-mode readiness, calibration, feedback activation and behavioural closure are unchanged.
+
