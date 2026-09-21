@@ -1,0 +1,119 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "loan_stock_to_debt_service_and_credit_risk_boundary_review",
+  "loop_id": "bank_credit_balance_sheet_loop",
+  "purpose": "Determine whether the observed private non-financial loan stock can be mapped directly into the combined debt_service_and_credit_risk feedback node without conflating exposure scale, borrower payment burden and loan-performance state.",
+  "decision": "DO_NOT_MAP_LOAN_STOCK_ONE_TO_ONE_TO_DEBT_SERVICE_OR_CREDIT_RISK_KEEP_BURDEN_AND_ASSET_QUALITY_CONCEPTS_DISTINCT",
+  "official_source_evidence": {
+    "ecb_npl_definition": {
+      "institution": "European Central Bank",
+      "source": "Bank Lending Survey annex / supervisory banking statistics",
+      "concept": "NPL ratio is gross non-performing loans as a percentage of gross loans; credit-quality state is affected by recognition, cures, provisions/write-offs, sales and portfolio composition.",
+      "implication": "A larger loan stock is an exposure-scale measure, not itself an NPL state or default-incidence measure."
+    },
+    "bnr_borrower_burden": {
+      "institution": "National Bank of Romania",
+      "source_family": "Financial Stability Report / Bank Lending Survey",
+      "concept": "DSTI/LSTI measures debt service relative to borrower income for specified loan portfolios.",
+      "implication": "Debt-service burden requires payment-flow and income information and is not identified by the outstanding loan stock alone."
+    },
+    "retained_credit_risk_review": {
+      "review": "model/calibration_validation/credit_risk_npl_source_boundary_review.json",
+      "exact_aggregate_npl_target": "ECB CBD2 quarterly Romania NPL ratio",
+      "debt_service_boundary_status": "NO_EXACT_RECONCILED_ROMANIA_BORROWER_DEBT_SERVICE_SERIES_RETAINED",
+      "mortgage_DSTI_family_observed_but_non_equivalent": true,
+      "registered_mechanism_status": "DEFERRED"
+    },
+    "retained_loan_stock_reference": {
+      "assessment": "model/dynamics/private_credit_reference_assessment.json",
+      "snapshot": "model/dynamics/private_credit_reference_snapshot.json",
+      "reference_mode": "credit_stock",
+      "boundary": "Domestic NFCs plus households/NPISH loans from MFIs excluding the NCB, all currencies combined",
+      "role": "EXPOSURE_SCALE_REFERENCE"
+    }
+  },
+  "boundary_comparison": {
+    "loan_stock_equals_debt_service_burden": false,
+    "loan_stock_equals_credit_risk_state": false,
+    "loan_stock_equals_NPL_ratio": false,
+    "loan_stock_identifies_scheduled_principal_service": false,
+    "loan_stock_identifies_interest_service": false,
+    "loan_stock_identifies_borrower_income": false,
+    "loan_stock_identifies_default_recognition": false,
+    "loan_stock_identifies_cures_writeoffs_sales": false,
+    "household_housing_DSTI_matches_aggregate_private_nonfinancial_loan_stock": false,
+    "mortgage_NPL_matches_aggregate_private_nonfinancial_loan_stock": false
+  },
+  "structural_interpretation": {
+    "loan_stock_role": "Exposure scale / outstanding credit state on the frozen ECB BSI private non-financial boundary.",
+    "debt_service_role": "Payment burden requiring principal and interest service relative to an aligned borrower/resource boundary.",
+    "credit_risk_role": "Asset-quality/performance state requiring a frozen target such as NPL ratio or another preregistered risk concept.",
+    "combined_node_problem": "The current feedback node combines debt-service burden and credit-risk state into one qualitative umbrella. These are related but not definitionally identical and may not be collapsed into a scalar without a separately frozen measurement design.",
+    "qualitative_positive_sign_retained_as_candidate": true,
+    "exact_integrated_equation_ready": false
+  },
+  "bridge_resolution": {
+    "from": "loan_stock",
+    "to": "debt_service_and_credit_risk",
+    "status": "EXPOSURE_SCALE_OBSERVED_DEBT_SERVICE_AND_CREDIT_RISK_STATE_BOUNDARY_UNRECONCILED",
+    "causal_role": "BEHAVIOURAL_CANDIDATE_LINK_BOUNDARY_UNRECONCILED",
+    "direct_loan_stock_to_debt_service_mapping_authorized": false,
+    "direct_loan_stock_to_credit_risk_mapping_authorized": false,
+    "stock_times_lending_rate_as_debt_service_authorized": false,
+    "assumed_maturity_amortisation_authorized": false,
+    "household_DSTI_substitution_for_aggregate_risk_authorized": false,
+    "NPL_target_switch_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effect": {
+    "loan_stock": {
+      "exact_reference_mode_id": "credit_stock",
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "current_feedback_activation_authorized": false
+    },
+    "debt_service_and_credit_risk": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id_after_review": null,
+      "combined_umbrella_retained": true,
+      "debt_service_subcomponent_resolved": false,
+      "credit_risk_subcomponent_resolved": false,
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "hard_rules": {
+    "no_loan_stock_as_debt_service_proxy": true,
+    "no_loan_stock_as_NPL_proxy": true,
+    "no_stock_times_rate_plus_assumed_amortisation": true,
+    "no_DTI_as_DSTI_substitution": true,
+    "no_housing_DSTI_as_aggregate_private_credit_risk": true,
+    "no_post_fit_target_switch_to_mortgage_NPL": true,
+    "no_chart_digitisation_for_canonical_risk_series": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "loan_stock_risk_boundary_strengthened": true,
+    "combined_risk_node_resolved": false,
+    "exact_integrated_equation_ready": false,
+    "debt_service_series_created": false,
+    "credit_risk_target_promoted_to_reference_mode": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "debt_service_and_credit_risk_to_credit_supply_capacity_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_treat_NPL_or_DSTI_as_exogenous_supply_shock": false,
+    "may_equate_capital_ratio_with_credit_supply_capacity": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}
