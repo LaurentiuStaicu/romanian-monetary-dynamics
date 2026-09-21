@@ -6,7 +6,6 @@
   "predecessor_component_path": "model/accounting/f4_partial_2025.json",
   "structural_adjudication": "model/accounting/f4_bnr_zero_liability_structural_adjudication_2026_09_21.json",
   "materialization_contract": "model/accounting/f4_structural_zero_successor_materialization_contract_2026_09_21.json",
-  "preregistration_head_sha": "f8a78e984fed4300460fcaaafe5b2fcdcef41e68",
   "source_workflow_run_id": 35372609851,
   "source_workflow_artifact_id": 10558980689,
   "source_workflow_artifact_sha256": "a01922ed3662725dd5c73c95cd248bb97c8fc8a06404c9507e7cac4fc8e260aa",
