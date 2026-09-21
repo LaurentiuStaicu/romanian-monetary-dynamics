@@ -236,7 +236,10 @@
       "market_and_lending_rates_to_credit_flow_equation_ready": false,
       "credit_flow_to_private_demand_and_investment_boundary_review": "model/dynamics/credit_flow_to_private_demand_and_investment_boundary_review_2026_09_21.json",
       "credit_flow_to_private_demand_and_investment_status": "FINANCING_FLOW_PURPOSES_MULTIPLE_PRIVATE_DEMAND_AND_INVESTMENT_MAPPING_UNIDENTIFIED",
-      "credit_flow_to_private_demand_and_investment_equation_ready": false
+      "credit_flow_to_private_demand_and_investment_equation_ready": false,
+      "private_demand_and_investment_to_inflationary_pressure_boundary_review": "model/dynamics/private_demand_and_investment_to_inflationary_pressure_boundary_review_2026_09_21.json",
+      "private_demand_and_investment_to_inflationary_pressure_status": "MULTI_DRIVER_INFLATION_HICP_OBSERVABLE_DEMAND_CONTRIBUTION_NOT_IDENTIFIED",
+      "private_demand_and_investment_to_inflationary_pressure_equation_ready": false
     },
     {
       "id": "external_fx_refinancing_loop",
