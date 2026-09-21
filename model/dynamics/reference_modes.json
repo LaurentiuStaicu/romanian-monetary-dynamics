@@ -173,7 +173,11 @@
       "current_reopen_effect": "CLOSED_RETURNED_TO_EVIDENCE_TRIGGERED_BASELINE_HOLD",
       "oecd_nonconsolidated_topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
       "oecd_exact_row_gate_assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
-      "oecd_exact_row_gate_effect": "NO_PROMOTION; S1M/L/F2 absent in all 49 quarters for flow and stock, numeric values unreviewed."
+      "oecd_exact_row_gate_effect": "NO_PROMOTION; S1M/L/F2 absent in all 49 quarters for flow and stock, numeric values unreviewed.",
+      "esa2010_semantic_assessment": "model/dynamics/sectoral_financial_positions_esa2010_s1m_f2_liability_semantic_assessment_2026_09_21.json",
+      "oecd_semantic_adjusted_gate": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_exact_gate_contract_2026_09_21.json",
+      "oecd_semantic_adjusted_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
+      "oecd_semantic_adjusted_status": "ROW_GATE_PASS_VALUE_FINITE_RECONCILIATION_FAIL_AT_FROZEN_TOLERANCE_NO_PROMOTION"
     }
   ],
   "closure_rule": "Integrated behavioural closure may not be declared validated until the reference modes required by each active loop have explicit observed targets or a documented reason why only qualitative/reference-pattern validation is possible.",
