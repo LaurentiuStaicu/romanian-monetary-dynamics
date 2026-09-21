@@ -43,7 +43,9 @@
       "definition": "Annual accrual interest expenditure divided by average outstanding Maastricht debt.",
       "role": "EXTERNAL_DIAGNOSTIC_ONLY",
       "boundary_match_to_mof_direct_government_debt_portfolio": false,
-      "one_to_one_substitute_for_mof_portfolio_rate": false
+      "one_to_one_substitute_for_mof_portfolio_rate": false,
+      "source_url": "https://ec.europa.eu/eurostat/en/web/products-eurostat-news/w/ddn-20260608-1",
+      "source_dataset": "gov_10dd_acd"
     },
     "repricing_ledger": {
       "contract": "model/calibration_validation/government_repricing_ledger_contract.json",
