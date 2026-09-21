@@ -204,6 +204,36 @@ jobs:
           if-no-files-found: error
           retention-days: 90
 
+  manual-ecb-qfa-official-tolerance-gate:
+    if: ${{ github.event_name == 'pull_request' && github.head_ref == 'model/ecb-qfa-official-tolerance-reopen-2026-09-21' && github.run_attempt > 1 }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out frozen official-tolerance branch
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify official ECB QFA tolerance preregistration
+        run: python -m unittest tests.test_sectoral_financial_positions_ecb_qfa_official_tolerance_gate -v
+
+      - name: Run official ECB QFA tolerance reference-mode gate
+        env:
+          ECB_QFA_TOLERANCE_OUT: ecb_qfa_tolerance_artifacts
+        run: python scripts/audit_sectoral_financial_positions_ecb_qfa_official_tolerance_gate.py
+
+      - name: Upload official-tolerance gate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecb-qfa-official-tolerance-${{ github.sha }}
+          path: ecb_qfa_tolerance_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+
   verify-baseline:
     runs-on: ubuntu-latest
 
