@@ -1,0 +1,88 @@
+{
+  "snapshot_version": "0.2",
+  "created_on": "2026-09-21",
+  "reference_mode": "sectoral_financial_positions",
+  "status": "OBSERVED_SERIES_AVAILABLE",
+  "boundary": "Aggregate quarterly non-consolidated F2-F8 sectoral financial stocks and financial transactions for H,C,F,G,BNR,X. This is an observed behaviour-over-time reference boundary, not the bilateral Accounting Spine.",
+  "provider": "OECD official SDMX national financial accounts for Romania, sourced from national financial-accounts transmissions",
+  "source_dataflows": {
+    "flow": "OECD.SDD.NAD,DSD_NASEC20@DF_T620R_Q",
+    "stock": "OECD.SDD.NAD,DSD_NASEC20@DF_T720R_Q"
+  },
+  "construction_artifact": {
+    "id": 10634064870,
+    "zip_sha256": "18b0a611e018d12196cbdbcf980f17bc3211dc0c88269c96aa10f59076077310",
+    "role": "Retained exact source rows with preregistered ESA structural zero and constructed aggregate sectoral series."
+  },
+  "official_tolerance_validation_artifact": {
+    "id": 10646454834,
+    "zip_sha256": "0cf63d2293c4b2652c5b9345e76110827967cbb164067de868fa9576ad2c551e",
+    "workflow_run_id": 35617117194,
+    "job_id": 106391108980,
+    "gate_execution_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_execution_assessment_2026_09_21.json",
+    "exact_tests": 686,
+    "strict_bound_exceedances": 0,
+    "max_abs_residual_million_ron": "0.2"
+  },
+  "coverage": {
+    "frequency": "quarterly",
+    "start": "2014-Q1",
+    "end": "2026-Q1",
+    "common_quarters": 49,
+    "includes_all_2025_quarters": true,
+    "sectors": [
+      "H",
+      "C",
+      "F",
+      "G",
+      "BNR",
+      "X"
+    ],
+    "instruments": [
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "measures": [
+      "stock",
+      "flow"
+    ],
+    "outputs": [
+      "assets",
+      "liabilities",
+      "net_position"
+    ]
+  },
+  "construction": {
+    "H": "S1M",
+    "C": "S11",
+    "F": "S12-S121",
+    "G": "S13",
+    "BNR": "S121",
+    "X": "S2",
+    "net_position": "assets-liabilities",
+    "semantic_exception": "S1M/L/F2 structural zero from independent ESA 2010 assessment",
+    "stock_difference_as_flow": false
+  },
+  "quality": {
+    "official_threshold_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_threshold_assessment_2026_09_21.json",
+    "official_threshold_execution_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_execution_assessment_2026_09_21.json",
+    "official_ecb_national_qfa_acceptability_threshold_eur_million": "10",
+    "stricter_sufficient_bound_million_ron": "10",
+    "maximum_abs_instrument_level_horizontal_residual_million_ron": "0.2",
+    "instrument_level_consistency_gate": "PASS"
+  },
+  "scientific_scope": {
+    "reference_mode_observability": true,
+    "reference_mode_closure_contribution": true,
+    "bilateral_holder_by_issuer_observability": false,
+    "accounting_spine_completion": false,
+    "parameter_estimation": false,
+    "feedback_activation": false,
+    "behavioural_closure": false
+  }
+}
