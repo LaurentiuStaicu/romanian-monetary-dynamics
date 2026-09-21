@@ -110,6 +110,16 @@ The retained CSV happens to serialize observations with integers or one visible 
 The result remains `PARTIAL_SERIES_AVAILABLE` and **9/10 reference modes ready**. Reopening requires a domain-specific official financial-accounts rule that quantitatively defines dissemination precision/balancing tolerance, or a changed source whose public values satisfy the frozen identity.
 
 
+
+### Trigger-aware monitoring horizon — successor frozen 2026-09-21
+
+After the BNR/CMFB → OECD → ESA 2010 → dissemination-precision recovery chain returned to hold, the previous 2026-09-20 trigger horizon is preserved as an immutable historical snapshot and superseded operationally by `model/registries/trigger_aware_monitoring_horizon_2026_09_21.json`.
+
+No monitoring gate is open now. The successor registry preserves the existing dated/event-conditioned checks and adds one explicit precision-specific reopen condition for `sectoral_financial_positions`: only a **domain-specific official financial-accounts rule** that quantitatively defines dissemination precision, rounding, balancing tolerance or exact reconciliation semantics — or a changed public source whose exact values satisfy the frozen identity — may reopen that path. Generic SDMX `DECIMALS`, lexical CSV formatting and the already observed residual magnitudes cannot define a future tolerance.
+
+The next scheduled event check remains the **BNR monetary-policy decision on 2026-10-08**. Until then, repeated AMECO probing, BLS filename guessing, government-repricing proxy substitution, routine ECB-QSA vintage reruns and repeated OECD/Eurostat financial-account value probes do not count as scientific progress and remain prohibited without their declared triggers.
+
+
 ### Government refinancing–interest loop structural closure — 2026-09-21
 
 The complete declared path of the `government_refinancing_interest_loop` has now received explicit structural/accounting boundary review. The qualitative reinforcing topology is retained, but the loop is **not quantitatively active**.
