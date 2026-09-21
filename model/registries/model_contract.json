@@ -235,7 +235,14 @@
     "external_fx_refinancing_operational_state": "EVIDENCE_TRIGGERED_HOLD",
     "external_fx_refinancing_active_empirical_task": null,
     "external_fx_refinancing_next_structural_task": "external_fx_refinancing_open_chain_evidence_triggered_hold",
-    "external_fx_refinancing_closing_link_authorized": false
+    "external_fx_refinancing_closing_link_authorized": false,
+    "feedback_architecture_structural_review_terminal_assessment": "model/dynamics/feedback_architecture_structural_review_terminal_assessment_2026_09_21.json",
+    "feedback_architecture_structural_review_status": "ALL_REGISTERED_FEEDBACK_STRUCTURES_STRUCTURALLY_REVIEWED_EVIDENCE_TRIGGERED_HOLD",
+    "feedback_architecture_operational_state": "EVIDENCE_TRIGGERED_HOLD",
+    "feedback_architecture_active_structural_review_task": null,
+    "feedback_architecture_registered_structures": 5,
+    "feedback_architecture_exact_integrated_link_forms_ready": 0,
+    "feedback_architecture_activation_ready_structures": 0
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
