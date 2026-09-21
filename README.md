@@ -73,6 +73,7 @@ This separation is central to RMD. An empirical mechanism being listed or tested
 | Scientific dimension | Current state |
 | --- | --- |
 | Accounting / stock-flow core | **Partial pass** |
+| Accounting recovery stage | **Evidence-Triggered Accounting Spine Hold**; no active unconditional recovery task |
 | Canonically complete stock + flow instruments | **F3 only** |
 | Required reference modes | **10 / 10 ready** |
 | Validated reference behavioural mechanisms | **0** |
@@ -82,6 +83,8 @@ This separation is central to RMD. An empirical mechanism being listed or tested
 | Operational state | **Evidence-Triggered Baseline Hold** |
 
 `sectoral_financial_positions` is now observed at the aggregate quarterly reference-mode boundary after a separately evaluated official-consistency gate. This does **not** complete its bilateral holder-by-issuer Accounting Spine boundary: F3 remains the only canonically complete stock-and-flow instrument.
+
+The current Accounting Spine recovery cycle has also reached a terminal evidence boundary: F2, F4 and F5–F8 retain explicit incomplete/partial dispositions and reopen triggers, while no selective or unconditional accounting-recovery gate is currently open. This is a scientifically valid hold state, not Accounting Spine completion.
 
 For the exact current scientific boundary, including evidence gates and reopen conditions, see [STATUS.md](STATUS.md).
 
@@ -141,6 +144,7 @@ python -m pip install --no-deps dist/*.whl
 
 python -m unittest discover -s tests -v
 python scripts/audit_accounting_readiness.py
+python scripts/audit_accounting_spine_recovery_terminal.py
 python scripts/audit_dimensional_consistency.py
 python scripts/audit_system_dynamics_conformity.py
 python scripts/audit_scientific_baseline_manifest.py
