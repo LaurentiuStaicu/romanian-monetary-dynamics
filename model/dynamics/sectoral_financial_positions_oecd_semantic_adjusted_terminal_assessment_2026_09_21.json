@@ -1,0 +1,71 @@
+{
+  "assessment_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "reference_mode": "sectoral_financial_positions",
+  "phase": "ESA2010 semantic-adjusted OECD aggregate exact-value/reconciliation gate",
+  "semantic_assessment": "model/dynamics/sectoral_financial_positions_esa2010_s1m_f2_liability_semantic_assessment_2026_09_21.json",
+  "gate_contract": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_exact_gate_contract_2026_09_21.json",
+  "workflow": {
+    "run_id": 35592244173,
+    "run_attempt": 2,
+    "job_id": 106309246518,
+    "artifact_id": 10634064870,
+    "artifact_zip_sha256": "18b0a611e018d12196cbdbcf980f17bc3211dc0c88269c96aa10f59076077310"
+  },
+  "row_gate": {
+    "flow_missing_nonexception_rows": 0,
+    "stock_missing_nonexception_rows": 0,
+    "flow_duplicate_nonexception_rows": 0,
+    "stock_duplicate_nonexception_rows": 0,
+    "flow_semantic_exception_rows_present": 0,
+    "stock_semantic_exception_rows_present": 0,
+    "pass": true
+  },
+  "value_gate": {
+    "numeric_observation_value_review_performed": true,
+    "finite_value_gate_pass": true,
+    "semantic_structural_zero_applied_to": "S1M/L/F2 only",
+    "semantic_structural_zero_periods_per_measure": 49
+  },
+  "reconciliation_gate": {
+    "performed": true,
+    "frozen_tolerance_million_ron": 0.1,
+    "total_measure_period_tests": 98,
+    "violation_count": 63,
+    "flow_violation_count": 27,
+    "stock_violation_count": 36,
+    "max_abs_flow_residual_million_ron": 0.5000000000075033,
+    "max_abs_stock_residual_million_ron": 0.5999999999476131,
+    "max_abs_s1_minus_components_residual_million_ron": 0.6000000002095476,
+    "max_abs_s1_plus_s2_residual_million_ron": 0.5000000002328306
+  },
+  "official_consistency_context": {
+    "source": "BNR / CMFB financial-accounts quality report",
+    "url": "https://circabc.europa.eu/sd/a/89ddc57a-7e1d-436e-b217-bd266cfb23fd/23%20-%20RO%20-%20CMFB%20FA%20level%20%203.pdf",
+    "documented_internal_state": "Romanian national financial accounts are compiled who-to-whom in an integrated system and are reported as internally consistent with no asset/liability discrepancies by construction.",
+    "implication_for_this_gate": "The small public OECD aggregate residuals cannot be assumed to be structural model imbalances, but no official quantitative dissemination-rounding tolerance was preregistered or found that authorizes changing the frozen 0.1 million RON gate after observing results."
+  },
+  "precision_context": {
+    "sdmx_decimals_attribute_in_responses": "2",
+    "unit_multiplier": "6",
+    "unit_measure": "XDC",
+    "currency": "RON",
+    "observed_public_residuals_are_small": true,
+    "tolerance_relaxation_authorized": false,
+    "reason": "A post-result tolerance change would violate preregistration and would convert a diagnostic observation into a rescue rule."
+  },
+  "verdict": "FAIL_FROZEN_RECONCILIATION_TOLERANCE_NO_PROMOTION_SEMANTIC_PATH_CLOSED",
+  "scientific_effect": {
+    "semantic_applicability_assessment_retained": true,
+    "prior_exact_row_gate_reinterpreted": false,
+    "reference_mode_status": "PARTIAL_SERIES_AVAILABLE",
+    "readiness_count_change": 0,
+    "reference_modes_ready": 9,
+    "reference_modes_required": 10,
+    "accounting_readiness_change": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false
+  },
+  "future_reopen_condition": "No immediate rerun is authorized. Reopen only on materially changed official evidence that changes the public numerical precision/balancing boundary, or on an independent official dissemination-precision rule established and preregistered before any future value gate. The observed 0.5-0.6 million RON residuals alone do not authorize a new tolerance."
+}
