@@ -45,7 +45,10 @@
       "financing_need_to_debt_issuance_equation_ready": false,
       "financing_channel_source_vintage_assessment": "model/dynamics/mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json",
       "financing_channel_source_vintage_status": "PASS_FULL_2025_EXACT_CUMULATIVE_YTD_MONTHLY_DIFFERENCING_BLOCKED",
-      "financing_channel_monthly_differencing_authorized": false
+      "financing_channel_monthly_differencing_authorized": false,
+      "government_debt_issuance_to_debt_stock_boundary_review": "model/dynamics/government_debt_issuance_to_debt_stock_boundary_review_2026_09_21.json",
+      "debt_issuance_to_stock_status": "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED",
+      "debt_issuance_to_stock_equation_ready": false
     },
     {
       "id": "government_issuance_yield_loop",
