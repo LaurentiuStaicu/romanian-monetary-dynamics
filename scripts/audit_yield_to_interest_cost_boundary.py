@@ -184,7 +184,7 @@ def audit_yield_to_interest_cost_boundary(
     )
     if link.get("yield_to_interest_cost_boundary_review") != REVIEW_PATH:
         errors.append("yield-to-interest-cost link lacks review")
-    if link["readiness_status"] != "OBSERVED_TARGETS_AVAILABLE_REPRICING_BRIDGE_DEFERRED":
+    if link["readiness_status"] != "RELATED_MECHANISM_NOT_EXACT_LINK_FORM":
         errors.append("yield-to-interest-cost link readiness changed")
     if link.get("bridge_status") != STATUS:
         errors.append("yield-to-interest-cost registry bridge status changed")
