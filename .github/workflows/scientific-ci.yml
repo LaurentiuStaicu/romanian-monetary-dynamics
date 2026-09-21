@@ -254,6 +254,9 @@ jobs:
       - name: Audit terminal semantic-adjusted OECD reconciliation state
         run: python scripts/audit_oecd_sectoral_financial_positions_semantic_adjusted_terminal.py
 
+      - name: Audit OECD dissemination-precision diagnostic
+        run: python scripts/audit_oecd_sectoral_financial_positions_precision_diagnostic.py
+
       - name: Audit F3 empirical dynamic replay
         run: python scripts/audit_f3_empirical_replay.py
 
