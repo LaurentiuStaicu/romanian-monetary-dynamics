@@ -91,7 +91,8 @@ class ReleaseVersioningContractTests(unittest.TestCase):
         self.assertEqual(g["current_repository_version"],"0.2.0")
         self.assertEqual(g["next_public_release_candidate"],"0.2.0")
         self.assertEqual(g["release_preparation_state"],"READY_FOR_PUBLICATION_AFTER_GREEN_MAIN_CI")
-        self.assertFalse(g["release_or_version_change_authorized"])\n        self.assertTrue(g["release_publication_authorized_by_release_readiness"])
+        self.assertFalse(g["release_or_version_change_authorized"])
+        self.assertTrue(g["release_publication_authorized_by_release_readiness"])
 
     def test_release_checklist_is_user_visible(self):
         release_doc=(ROOT/"releases/README.md").read_text(encoding="utf-8")
