@@ -66,10 +66,15 @@ def audit_financing_channel_allocation_boundary(
     if retained["government_financing_need_equivalent"] is not False:
         errors.append("BNR primary issuance may not become government financing need")
 
-    if bnr["candidate_series"]["series_id"] != "domestic_primary_market_government_securities_gross_issuance":
+    if bnr["target_candidate_id"] != "domestic_primary_market_government_securities_gross_issuance":
         errors.append("BNR pilot candidate boundary changed")
-    if source_review["decision"] != "KEEP_GENERIC_NODE_UNRESOLVED_DO_NOT_AUTO_REPLACE_WITH_BNR_PILOT":
-        errors.append("government-debt issuance source-boundary decision changed")
+    if source_review["verdict"] != (
+        "SOURCE_FAMILIES_FOUND_GENERIC_NODE_SEMANTICALLY_OVERLOADED_"
+        "BOUNDARY_REMAINS_UNRESOLVED"
+    ):
+        errors.append("government-debt issuance source-boundary verdict changed")
+    if source_review["scientific_decision"]["current_boundary_class"] != "UNRESOLVED":
+        errors.append("government-debt issuance source boundary may not be resolved")
 
     channel_ids = {
         item["channel_id"]
