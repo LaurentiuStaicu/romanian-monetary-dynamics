@@ -124,6 +124,18 @@ ECB quality documentation provides useful context but not a rescue rule: quarter
 
 
 
+
+### ECB official QFA internal-consistency threshold reopen — 2026-09-21
+
+A new independent official validation rule has been identified after the stricter RMD reconciliation path returned to hold. The ECB's 2013 QFA quality report defines internal consistency through aggregation, horizontal assets-versus-liabilities, balancing-item and counterpart-sector rules and states explicitly that national-data discrepancies below EUR 10 million are acceptable. The 2024 quality report retains the same EUR 10 million significance boundary for internal discrepancies and assesses Romania under the same validation framework, with 96% of validation rules satisfied over Q4 2012-Q2 2024.
+
+This evidence satisfies the precision/balancing reopen condition because the EUR 10 million boundary predates the RMD residuals and was not selected from them. The historical RMD 0.1 million RON gate remains immutable and failed; it is not being rewritten or relaxed retrospectively.
+
+One new gate is preregistered. It must test every F2-F8 instrument separately for every one of the 49 common quarters and for both financial transactions and stocks: 686 exact horizontal-consistency tests. RON residuals must be converted to EUR using official ECB RON/EUR series, with quarterly average rates for flows and end-of-period rates for stocks, matching Eurostat's documented conversion convention.
+
+A PASS may authorize a separate reference-mode promotion assessment only. It cannot complete any Accounting Spine instrument, activate calibration or estimation, or change behavioural closure. Until the manual gate is executed, the canonical state remains `sectoral_financial_positions = PARTIAL_SERIES_AVAILABLE` and **9/10 reference modes ready**.
+
+
 ### OECD reconciliation window-stability diagnostic — 2026-09-21
 
 Using the exact-decimal correction and the already-retained artifact, RMD tested whether the reconciliation failure could be isolated to an older historical segment or removed by selecting a different contiguous 40-quarter window. No source was re-accessed and no value was changed.
