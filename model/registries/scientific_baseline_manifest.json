@@ -89,7 +89,9 @@
     "bnr_2025_financial_accounts_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_21_bnr_financial_accounts_topology.json",
     "oecd_nonconsolidated_sectoral_financial_positions_probe_contract": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_probe_contract_2026_09_21.json",
     "oecd_nonconsolidated_sectoral_financial_positions_topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
-    "oecd_exact_sectoral_financial_positions_gate": "model/dynamics/sectoral_financial_positions_oecd_exact_extraction_reconciliation_contract_2026_09_21.json"
+    "oecd_exact_sectoral_financial_positions_gate": "model/dynamics/sectoral_financial_positions_oecd_exact_extraction_reconciliation_contract_2026_09_21.json",
+    "oecd_exact_sectoral_financial_positions_row_gate_assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
+    "oecd_exact_sectoral_financial_positions_row_gate_source_vintage": "data/source_vintages/oecd-nonconsolidated-sectoral-financial-positions-row-gate-2026-09-21/source_vintage_manifest.json"
   },
   "canonical_state": {
     "accounting": {
