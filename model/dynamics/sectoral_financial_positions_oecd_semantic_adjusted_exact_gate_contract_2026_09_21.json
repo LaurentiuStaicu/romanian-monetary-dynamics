@@ -189,5 +189,21 @@
     "initial_pull_request_attempt_behavior": "SKIP",
     "activation_condition": "pull_request on exact branch AND github.run_attempt > 1",
     "scientific_effect_while_pending": "NONE"
+  },
+  "execution_result": {
+    "executed": true,
+    "result": "FAIL_FROZEN_RECONCILIATION_TOLERANCE_NO_PROMOTION",
+    "terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
+    "workflow_run_id": 35592244173,
+    "workflow_job_id": 106309246518,
+    "artifact_id": 10634064870,
+    "row_gate_pass": true,
+    "numeric_observation_value_review_performed": true,
+    "finite_value_gate_pass": true,
+    "reconciliation_test_performed": true,
+    "reconciliation_violation_count": 63,
+    "max_abs_flow_residual_million_ron": 0.5000000000075033,
+    "max_abs_stock_residual_million_ron": 0.5999999999476131,
+    "tolerance_relaxation_authorized": false
   }
 }
