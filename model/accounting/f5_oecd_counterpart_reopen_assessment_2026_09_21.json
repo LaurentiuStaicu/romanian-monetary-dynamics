@@ -1,0 +1,46 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "phase": "Accounting Spine / F5 OECD counterpart topology reopen assessment",
+  "instrument": "F5",
+  "contract": "model/accounting/f5_oecd_counterpart_reopen_contract_2026_09_21.json",
+  "retained_source_assessment": "model/dynamics/sectoral_financial_positions_oecd_counterpart_discovery_assessment.json",
+  "purpose": "Determine only whether the declared F5 new-counterpart-source reopen condition is satisfied. No Stage 2 observation values, residuals or rank results are adjudicated here.",
+  "topology_only_review": true,
+  "detailed_value_review_performed": false,
+  "rank_recomputation_performed": false,
+  "evidence": {
+    "exact_components_present_in_stocks_and_flows": [
+      "F512",
+      "F519"
+    ],
+    "reporting_sectors": [
+      "S1",
+      "S11",
+      "S12",
+      "S13",
+      "S1M"
+    ],
+    "counterpart_sectors": [
+      "S1",
+      "S11",
+      "S12",
+      "S13",
+      "S1M",
+      "S2"
+    ],
+    "S121_present": false,
+    "standard_2025_stock_rows_per_component_per_entry": 30,
+    "standard_2025_flow_rows_per_component_per_entry": 120
+  },
+  "adjudication": {
+    "declared_reopen_trigger_satisfied": true,
+    "reason": "The retained official OECD counterpart data publish F512 and F519 by reporting and counterpart sector, which is exactly one of the frozen F5 reopen conditions. Missing S121 prevents direct F-versus-BNR separation but does not erase the new F512/F519 equations available for H/C/G/X and S12 aggregate constraints.",
+    "stage2_authorized": true,
+    "stage2_contract": "model/accounting/f5_oecd_counterpart_reopen_contract_2026_09_21.json",
+    "accounting_readiness_change": false,
+    "F5_materialization_change": false,
+    "benchmark_change": false
+  },
+  "decision": "PASS_F5_REOPEN_TRIGGER_OECD_F512_F519_COUNTERPART_STAGE2_PREREGISTERED"
+}

@@ -55,7 +55,12 @@
         "F51 substitution for total F5 where F52 applies",
         "synthetic allocation of F512/F519",
         "a live refresh reproducing the same unresolved component topology"
-      ]
+      ],
+      "selective_reopen_contract": "model/accounting/f5_oecd_counterpart_reopen_contract_2026_09_21.json",
+      "selective_reopen_assessment": "model/accounting/f5_oecd_counterpart_reopen_assessment_2026_09_21.json",
+      "selective_reopen_state": "PREREGISTERED_STAGE2_PENDING_EXECUTION",
+      "reopen_trigger_satisfied": true,
+      "reopen_trigger_basis": "Retained OECD quarterly counterpart stocks/flows publish F512 and F519 by sector/counterpart; S121 remains absent, so only a preregistered rank-equation expansion is authorized."
     },
     "F6": {
       "current_status": "FROZEN_AGGREGATE_ONLY_PUBLIC_DATA_BOUNDARY",
