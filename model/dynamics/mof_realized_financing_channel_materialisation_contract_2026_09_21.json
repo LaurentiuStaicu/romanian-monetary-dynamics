@@ -1,0 +1,230 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-21",
+  "contract_id": "mof_realized_financing_channel_materialisation_contract",
+  "purpose": "Freeze the exact Ministry of Finance source boundary and admissible materialisation rules for realized government financing by channel before retaining additional 2025 monthly public-debt-report vintages. The contract authorizes exact cumulative-YTD descriptive extraction only; it does not authorize monthly differencing, residual allocation, synthetic channel shares or feedback activation.",
+  "governing_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
+  "existing_source_boundary_review": "model/dynamics/government_debt_issuance_source_boundary_review.json",
+  "existing_generic_materialisation_contract": "model/dynamics/government_debt_issuance_materialisation_contract.json",
+  "target": {
+    "target_id": "mof_realized_financing_channels_cumulative_ytd",
+    "scientific_role": "DESCRIPTIVE_MULTI_CHANNEL_FINANCING_VECTOR",
+    "canonical_government_debt_issuance_node": false,
+    "government_financing_need_equivalent": false,
+    "securities_only": false,
+    "frequency": "monthly_report_vintage_with_cumulative_year_to_date_values",
+    "provider_unit": "million_RON_equivalent_as_published_unless_source_field_explicitly_uses_native_currency"
+  },
+  "source_family": {
+    "institution": "Romanian Ministry of Finance",
+    "publication": "Monthly public debt report",
+    "section": "Actual borrowings in 2025 / by instrument, currency and market",
+    "source_type": "OFFICIAL_MONTHLY_PUBLIC_DEBT_REPORT",
+    "reporting_boundary": "central-government Ministry borrowing with local-government borrowing and cash-management instruments kept separately where published",
+    "known_exact_sources": [
+      {
+        "source_id": "mof_public_debt_report_january_2025",
+        "report_period": "2025-01",
+        "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport012025.pdf",
+        "role": "PILOT_SOURCE_AND_DEFINITION_ANCHOR"
+      },
+      {
+        "source_id": "mof_public_debt_report_february_2025",
+        "report_period": "2025-02",
+        "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport022025.pdf",
+        "role": "PILOT_SOURCE_AND_REVISION_CONVERSION_COMPARISON_ANCHOR"
+      }
+    ],
+    "source_discovery_rule": "Additional 2025 report URLs must be discovered or verified as exact official Ministry files. Do not infer a full-year URL set solely by filename pattern.",
+    "raw_retention_required": true,
+    "native_text_extraction_preferred": "pdftotext -layout",
+    "ocr_authorized": false,
+    "manual_chart_digitisation_authorized": false
+  },
+  "required_observables": [
+    {
+      "field_id": "report_cutoff_date",
+      "role": "VINTAGE_TIME",
+      "required": true
+    },
+    {
+      "field_id": "mof_t_bills_cumulative_ytd",
+      "source_label": "MoF T-Bills",
+      "channel_class": "DOMESTIC_MARKET_SECURITIES",
+      "required": true
+    },
+    {
+      "field_id": "retail_bonds_cumulative_ytd",
+      "source_label": "retail bonds",
+      "channel_class": "DOMESTIC_RETAIL_SECURITIES",
+      "required": true
+    },
+    {
+      "field_id": "ron_treasury_bonds_cumulative_ytd",
+      "source_label": "RON Treasury bonds",
+      "channel_class": "DOMESTIC_MARKET_SECURITIES",
+      "required": true,
+      "special_guard": "May include exchange operations. Retain source notes and do not equate the line mechanically with net-new cash financing."
+    },
+    {
+      "field_id": "eur_treasury_bonds_cumulative_ytd",
+      "source_label": "EUR-denominated Treasury bonds",
+      "channel_class": "DOMESTIC_MARKET_SECURITIES_FOREIGN_CURRENCY",
+      "required": true
+    },
+    {
+      "field_id": "eurobonds_cumulative_ytd",
+      "source_label": "Eurobonds",
+      "channel_class": "EXTERNAL_MARKET_SECURITIES",
+      "required": true
+    },
+    {
+      "field_id": "rrf_pnrr_loan_drawings_cumulative_ytd",
+      "source_label": "RRF/PNRR loan-component drawings",
+      "channel_class": "OFFICIAL_SECTOR_LOAN",
+      "required": true,
+      "securities_instrument": false
+    },
+    {
+      "field_id": "loans_cumulative_ytd",
+      "source_label": "loans",
+      "channel_class": "LOAN_FINANCING",
+      "required": true,
+      "securities_instrument": false
+    },
+    {
+      "field_id": "domestic_market_total_cumulative_ytd",
+      "source_label": "domestic market total",
+      "channel_class": "PROVIDER_PUBLISHED_SUBTOTAL",
+      "required": true
+    },
+    {
+      "field_id": "external_market_total_cumulative_ytd",
+      "source_label": "external market total",
+      "channel_class": "PROVIDER_PUBLISHED_SUBTOTAL",
+      "required": true
+    },
+    {
+      "field_id": "central_government_total_cumulative_ytd",
+      "source_label": "central government total",
+      "channel_class": "PROVIDER_PUBLISHED_TOTAL",
+      "required": true
+    },
+    {
+      "field_id": "local_government_borrowing_cumulative_ytd",
+      "channel_class": "SEPARATE_SECTOR_CONTEXT",
+      "required_if_published": true,
+      "may_enter_central_government_total": false
+    },
+    {
+      "field_id": "cash_management_instruments_cumulative_ytd",
+      "channel_class": "CASH_MANAGEMENT_CONTEXT",
+      "required_if_published": true,
+      "may_be_silently_merged_into_structural_financing_channels": false
+    }
+  ],
+  "pilot_exact_values": {
+    "2025-01": {
+      "unit": "million_RON_equivalent_as_published",
+      "mof_t_bills": 1307.7,
+      "retail_bonds": 2125.2,
+      "ron_treasury_bonds": 5926.4,
+      "eur_treasury_bonds": 0.0,
+      "eurobonds": 0.0,
+      "loans": 43.4,
+      "central_government_total": 9402.7
+    },
+    "2025-02": {
+      "unit": "million_RON_equivalent_as_published",
+      "mof_t_bills": 2427.7,
+      "retail_bonds": 11358.6,
+      "ron_treasury_bonds": 14870.5,
+      "eur_treasury_bonds": 0.0,
+      "eurobonds": 19903.0,
+      "loans": 2734.6,
+      "central_government_total": 51294.4
+    },
+    "role": "SOURCE_DEFINITION_ANCHORS_ONLY_NOT_MONTHLY_FLOW_SERIES"
+  },
+  "currency_and_conversion_contract": {
+    "provider_published_RON_equivalent_values_may_be_retained_exactly": true,
+    "provider_conversion_metadata_must_be_retained_per_vintage": true,
+    "same_conversion_convention_may_not_be_assumed_across_vintages": true,
+    "native_currency_fields_must_remain_separate_when_explicitly_published": true,
+    "cross_currency_reaggregation_by_RMD_authorized_now": false,
+    "exchange_rate_series_selected_by_this_contract": false,
+    "reason": "Foreign-currency borrowing can be represented in Ministry reports using stated forecast-average exchange-rate conventions. Exact published values are admissible as vintage observations, but month-to-month differences are not definitionally safe until conversion conventions are matched."
+  },
+  "revision_and_vintage_contract": {
+    "each_monthly_report_is_a_distinct_source_vintage": true,
+    "later_report_may_revise_prior_cumulative_values": true,
+    "later_vintage_may_not_silently_overwrite_earlier_vintage": true,
+    "revision_check_required_before_monthly_differencing": true,
+    "definition_check_required_before_monthly_differencing": true,
+    "reporting_cutoff_alignment_required_before_monthly_differencing": true,
+    "negative_difference_may_not_be_interpreted_as_negative_borrowing_without_revision_or_operation_review": true
+  },
+  "monthly_increment_gate": {
+    "monthly_differencing_authorized_now": false,
+    "requirements_before_any_difference": [
+      "current and previous report use the same instrument/channel definitions",
+      "current and previous report use a matched currency-conversion convention or exact native-currency values",
+      "revision status of prior cumulative values is reconciled",
+      "exchange operations included in Treasury-bond lines are identified and treated consistently",
+      "cash-management instruments are kept on their declared boundary",
+      "local-government borrowing remains outside central-government totals",
+      "both source vintages are retained with exact provenance"
+    ],
+    "difference_equation_if_all_future_gates_pass": "monthly_increment[channel,t] = cumulative_ytd[channel,t] - reconciled_cumulative_ytd[channel,t-1]",
+    "equation_status_now": "NOT_AUTHORIZED"
+  },
+  "channel_boundary_rules": {
+    "BNR_domestic_primary_market_series_is_separate": true,
+    "equality_with_BNR_is_not_a_validation_requirement": true,
+    "BNR_series_may_not_be_inferred_by_subtraction": true,
+    "securities_only_subset_must_exclude_loans_and_RRF_drawings": true,
+    "domestic_interbank_channel_may_not_absorb_retail_by_default": true,
+    "total_realized_borrowing_may_not_be_relabelled_government_financing_need": true,
+    "gross_financing_need_may_not_be_used_as_residual_reconciliation_target": true
+  },
+  "hard_rules": {
+    "no_monthly_differencing_in_this_contract": true,
+    "no_channel_residuals": true,
+    "no_synthetic_channel_shares": true,
+    "no_cross_currency_conversion_selected": true,
+    "no_exchange_operation_relabelled_net_new_cash_financing": true,
+    "no_RRF_or_loans_relabelled_securities": true,
+    "no_local_government_merged_into_central_government": true,
+    "no_cash_management_silent_merge": true,
+    "no_BNR_series_inferred_from_MoF_subtraction": true,
+    "no_generic_debt_issuance_node_promotion": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "source_contract_frozen": true,
+    "cumulative_ytd_materialisation_authorized_after_raw_source_retention": true,
+    "monthly_increment_materialisation_authorized": false,
+    "financing_channel_allocation_identified": false,
+    "government_debt_issuance_node_resolved": false,
+    "government_financing_need_node_resolved": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "mof_realized_financing_channel_source_vintage_probe",
+    "authorization": "OFFICIAL_SOURCE_RETENTION_AND_CUMULATIVE_YTD_EXTRACTION_ONLY",
+    "task": "Retain exact Ministry monthly public-debt-report source vintages and test reproducible extraction of provider-published cumulative-YTD financing-channel values and conversion/revision metadata. Do not compute monthly increments.",
+    "may_retain_raw_sources": true,
+    "may_extract_published_cumulative_ytd_values": true,
+    "may_difference_cumulative_values": false,
+    "may_infer_channel_residuals": false,
+    "may_estimate_allocation_shares": false,
+    "may_promote_generic_debt_issuance_node": false,
+    "may_activate_feedback": false
+  }
+}

@@ -215,7 +215,7 @@ def audit_financing_channel_allocation_boundary(
     ):
         if bridge[key] is not False:
             errors.append(f"preregistration may not authorize {key}")
-    if prereg["next_independent_bridge_task"]["id"] != "mof_realized_financing_channel_materialisation_contract":
+    if prereg["next_independent_bridge_task"]["id"] != "mof_realized_financing_channel_source_vintage_probe":
         errors.append("preregistration next independent bridge changed")
 
     dynamic = model_contract["dynamic_core"]
@@ -228,7 +228,7 @@ def audit_financing_channel_allocation_boundary(
     if dynamic.get("government_financing_need_allocation_vector_identified") is not False:
         errors.append("model contract may not identify allocation vector")
     if dynamic.get("government_issuance_yield_next_independent_task") != (
-        "mof_realized_financing_channel_materialisation_contract"
+        "mof_realized_financing_channel_source_vintage_probe"
     ):
         errors.append("model contract next independent task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
