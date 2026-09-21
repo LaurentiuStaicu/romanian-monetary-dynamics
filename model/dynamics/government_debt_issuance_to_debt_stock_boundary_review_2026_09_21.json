@@ -1,0 +1,178 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "government_debt_issuance_to_debt_stock_boundary_review",
+  "purpose": "Determine the admissible accounting/source bridge from generic multi-channel government gross borrowing/issuance to the observed government_debt_stock target without treating gross borrowing as net debt accumulation or collapsing redemptions, liability-management operations, valuation/currency effects and sector/instrument boundaries.",
+  "decision": "DO_NOT_MAP_GROSS_BORROWING_ONE_TO_ONE_TO_DEBT_STOCK_CHANGE_USE_MATCHED_NET_DEBT_TRANSACTIONS_PLUS_STOCK_FLOW_ADJUSTMENTS",
+  "official_definition_evidence": {
+    "eurostat_edp_notification_framework": {
+      "institution": "Eurostat",
+      "url": "https://ec.europa.eu/eurostat/web/government-finance-statistics/excessive-deficit-procedure/edp-notification-tables",
+      "finding": "EDP Tables 3 link general-government net lending/net borrowing to the change in government debt. The reconciling transactions and other effects are stock-flow adjustments.",
+      "role": "CANONICAL_DEBT_CHANGE_ACCOUNTING_CONTEXT"
+    },
+    "romania_april_2026_edp_table_3a_2025": {
+      "institution": "Eurostat / Romania EDP notification",
+      "url": "https://ec.europa.eu/eurostat/documents/1015035/23085083/RO-2026-04.pdf",
+      "sector": "S13 general government",
+      "unit": "million_RON",
+      "table": "3A",
+      "displayed_2025_components": {
+        "deficit_contribution_positive_table3_sign": 151063,
+        "net_acquisition_financial_assets": 36355,
+        "adjustments": -13499,
+        "statistical_discrepancies": -1403,
+        "change_in_consolidated_gross_debt": 172516
+      },
+      "displayed_component_identity": "151063 + 36355 - 13499 - 1403 = 172516",
+      "selected_adjustment_detail": {
+        "net_incurrence_other_accounts_payable": -7080,
+        "net_incurrence_other_non_debt_liabilities": 136,
+        "issuances_above_below_nominal_value": 1208,
+        "difference_interest_accrued_and_paid": -9283,
+        "redemptions_repurchases_above_below_nominal_value": -32,
+        "foreign_currency_appreciation_depreciation": 1553
+      },
+      "interpretation": "The observed annual debt-stock change is not gross issuance. It is reconciled through the EDP deficit/debt framework, including financial-asset transactions, liabilities outside Maastricht debt, face-value/accrual effects, foreign-exchange effects and discrepancies."
+    },
+    "romania_april_2026_edp_table_3b_2025": {
+      "institution": "Eurostat / Romania EDP notification",
+      "sector": "S1311 central government",
+      "unit": "million_RON",
+      "table": "3B",
+      "displayed_2025_components": {
+        "deficit_contribution_positive_table3_sign": 149060,
+        "net_acquisition_financial_assets": 37115,
+        "adjustments": -12849,
+        "statistical_discrepancies": -1830,
+        "change_in_consolidated_gross_debt": 171497
+      },
+      "displayed_rounded_component_sum": 171496,
+      "displayed_rounding_difference_to_reported_change": 1,
+      "central_government_contribution_to_general_government_debt": 1121457,
+      "central_government_gross_debt_level": 1138740,
+      "central_government_holdings_of_other_subsectors_debt": 17283,
+      "interpretation": "The central-government table additionally makes consolidation explicit. Even within government, gross debt and the contribution to consolidated S13 debt are not identical."
+    },
+    "retained_government_debt_stock_reference": {
+      "contract": "model/dynamics/government_debt_stock_reference_contract.json",
+      "assessment": "model/dynamics/government_debt_stock_reference_assessment.json",
+      "snapshot": "model/dynamics/government_debt_stock_reference_snapshot.json",
+      "source": "Eurostat gov_10q_ggdebt, RO, S13, GD, MIO_NAC",
+      "valuation": "nominal/face value",
+      "frequency": "quarterly",
+      "observed_2024_Q4_million_RON": 964807.9,
+      "observed_2025_Q4_million_RON": 1137323.7,
+      "observed_2025_change_million_RON": 172515.8,
+      "rounded_annual_change_million_RON": 172516,
+      "status": "OBSERVED_SERIES_AVAILABLE"
+    },
+    "retained_mof_realized_financing_boundary": {
+      "assessment": "model/dynamics/mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json",
+      "source_vintage": "data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21/source_vintage_manifest.json",
+      "december_2025_cumulative_ytd_central_government_total_million_RON_equivalent_as_published": 263766.5,
+      "interpretation": "This Ministry operational cumulative-YTD borrowing aggregate is valuable financing evidence but is not a matched S13 Maastricht-debt transaction measure and cannot be reconciled directly to the S13 debt-stock change.",
+      "direct_equality_or_residual_reconciliation_authorized": false
+    }
+  },
+  "accounting_boundary": {
+    "gross_borrowing_equals_change_in_Maastricht_debt": false,
+    "gross_issuance_equals_net_incurrence_of_debt_liabilities": false,
+    "redemptions_and_principal_repayments_required_for_netting": true,
+    "exchange_buyback_and_liability_management_operations_must_be_separate": true,
+    "loans_securities_and_currency_deposits_must_preserve_instrument_boundary": true,
+    "consolidation_across_general_government_subsectors_must_be_preserved": true,
+    "nominal_face_value_boundary_must_be_preserved": true,
+    "foreign_currency_valuation_effects_may_change_RON_debt_stock": true,
+    "issuance_and_redemption_above_below_par_may_affect_reconciliation": true,
+    "accrued_vs_paid_interest_adjustment_may_affect_reconciliation": true,
+    "other_changes_in_volume_or_classification_may_affect_reconciliation": true,
+    "statistical_discrepancy_must_not_be_forced_to_zero": true,
+    "sector_instrument_currency_frequency_and_valuation_must_match_before_identity": true
+  },
+  "admissible_stock_accumulation_form": {
+    "conceptual_form": "D_t = D_t-1 + matched net transactions in Maastricht-debt instruments + valuation/face-value/classification/other-volume adjustments, on a matched S13 nominal-value boundary",
+    "eurostat_edp_reconciliation_form": "Change in debt = deficit contribution + net acquisition of financial assets + debt/other adjustments + statistical discrepancies, using the published EDP Table 3 sign convention",
+    "gross_issuance_is_only_one_component_of_net_debt_transactions": true,
+    "exact_RMD_integrated_equation_ready": false,
+    "matched_net_debt_transaction_stream_identified": false,
+    "gross_issuance_to_stock_scalar_parameter_required": false,
+    "gross_issuance_to_stock_scalar_parameter_authorized": false
+  },
+  "bridge_resolution": {
+    "bridge_id": "government_debt_issuance_to_debt_stock",
+    "from": "government_debt_issuance",
+    "to": "government_debt_stock",
+    "status": "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED",
+    "causal_role": "STOCK_ACCUMULATION_ACCOUNTING_RELATION_CONDITIONAL_ON_MATCHED_BOUNDARY",
+    "resolution": "Retain the positive qualitative structural direction only as a ceteris-paribus relation. Do not integrate gross borrowing directly into the debt stock. A quantitative stock transition requires matched net debt transactions after redemptions/principal repayments plus the relevant EDP stock-flow adjustments and consolidation/valuation treatment.",
+    "one_to_one_gross_borrowing_to_stock_change_authorized": false,
+    "residual_redemptions_as_gross_borrowing_minus_stock_change_authorized": false,
+    "exchange_operations_as_net_new_debt_authorized": false,
+    "synthetic_redemption_schedule_authorized": false,
+    "synthetic_stock_flow_adjustment_authorized": false,
+    "parameter_estimation_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effects": {
+    "government_debt_issuance": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "generic_multi_channel_boundary_resolved": false,
+      "matched_net_debt_transaction_stream_identified": false,
+      "current_feedback_activation_authorized": false
+    },
+    "government_debt_stock": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "observed_reference_mode": "government_debt_stock",
+      "observed_target_available": true,
+      "endogenous_stock_boundary_frozen": false,
+      "exact_stock_transition_ready": false,
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "loop_effect": {
+    "loop_id": "government_refinancing_interest_loop",
+    "qualitative_topology_changed": false,
+    "link_sign_retained": "+",
+    "link_status": "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED",
+    "exact_integrated_equation_ready": false,
+    "quantitatively_active": false
+  },
+  "hard_rules": {
+    "no_gross_borrowing_equals_debt_stock_change": true,
+    "no_gross_issuance_equals_net_debt_transaction": true,
+    "no_residual_redemptions_from_unmatched_gross_borrowing_minus_delta_debt": true,
+    "no_exchange_or_buyback_operation_relabelled_net_new_debt": true,
+    "no_cross_sector_identity_between_MoF_operational_borrowing_and_S13_debt": true,
+    "no_cross_valuation_identity_between_market_value_F3_and_nominal_Maastricht_debt": true,
+    "no_cross_currency_aggregation_without_frozen_conversion": true,
+    "no_missing_stock_flow_adjustment_to_zero": true,
+    "no_synthetic_redemption_schedule": true,
+    "no_synthetic_stock_flow_adjustment": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "debt_issuance_to_stock_boundary_strengthened": true,
+    "government_debt_issuance_node_resolved": false,
+    "government_debt_stock_endogenous_node_resolved": false,
+    "exact_integrated_stock_equation_ready": false,
+    "matched_net_debt_transaction_stream_created": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "government_debt_stock_to_interest_cost_boundary_review",
+    "authorization": "STRUCTURAL_ACCOUNTING_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "task": "Review the link from the observed/unresolved government debt stock to government interest cost while preserving the distinction between Maastricht nominal debt, portfolio-average effective rates and Eurostat D41 interest expenditure. Do not infer a scalar cost from debt level alone.",
+    "may_map_debt_stock_level_one_to_one_to_interest_cost": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}

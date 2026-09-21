@@ -105,6 +105,26 @@ class FeedbackLinkReadinessTests(unittest.TestCase):
         self.assertFalse(row["exact_integrated_equation_ready"])
         self.assertFalse(row["current_activation_authorized"])
 
+    def test_debt_stock_accumulation_status_is_registered(self) -> None:
+        status = "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED"
+        self.assertIn(status, self.registry["readiness_status_vocabulary"])
+        row = next(
+            item
+            for item in self.registry["links"]
+            if item["link_key"]
+            == (
+                "government_refinancing_interest_loop|"
+                "government_debt_issuance|government_debt_stock"
+            )
+        )
+        self.assertEqual(row["readiness_status"], status)
+        self.assertEqual(
+            row["causal_role"],
+            "STOCK_ACCUMULATION_ACCOUNTING_RELATION_CONDITIONAL_ON_MATCHED_BOUNDARY",
+        )
+        self.assertFalse(row["exact_integrated_equation_ready"])
+        self.assertFalse(row["current_activation_authorized"])
+
     def test_accounting_composition_status_is_registered_for_both_government_loops(self) -> None:
         status = "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL"
         self.assertIn(status, self.registry["readiness_status_vocabulary"])

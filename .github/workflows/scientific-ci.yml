@@ -192,6 +192,9 @@ jobs:
       - name: Audit Ministry realized-financing full-year source vintage
         run: python scripts/audit_mof_realized_financing_channel_source_vintage_assessment.py
 
+      - name: Audit government debt issuance-to-stock accounting boundary
+        run: python scripts/audit_government_debt_issuance_to_debt_stock_boundary.py
+
       - name: Audit government securities supply-pressure source boundary
         run: python scripts/audit_government_securities_supply_pressure_source_boundary.py
 
