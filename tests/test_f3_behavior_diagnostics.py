@@ -85,18 +85,18 @@ class F3BehaviorDiagnosticsTests(unittest.TestCase):
             )
         )
 
-    def test_reference_mode_remains_partial(self) -> None:
+    def test_current_reference_mode_can_be_promoted_by_independent_successor_evidence(self) -> None:
         mode = next(
             item
             for item in self.reference_modes["modes"]
             if item["id"] == "sectoral_financial_positions"
         )
-        self.assertEqual(mode["status"], "PARTIAL_SERIES_AVAILABLE")
+        self.assertEqual(mode["status"], "OBSERVED_SERIES_AVAILABLE")
         self.assertEqual(
             self.model_contract["dynamic_core"]["reference_mode_ready_count"],
-            9,
+            10,
         )
-        self.assertFalse(
+        self.assertTrue(
             self.model_contract["dynamic_core"]["reference_mode_closure_ready"]
         )
 
@@ -127,16 +127,15 @@ class F3BehaviorDiagnosticsTests(unittest.TestCase):
         self.assertFalse(summary["behavioural_closure_active"])
         self.assertFalse(summary["feedback_activation_authorized"])
 
-    def test_manual_reference_mode_promotion_is_detected(self) -> None:
+    def test_current_successor_reference_mode_regression_is_detected(self) -> None:
         mutated = copy.deepcopy(self.reference_modes)
         mode = next(
-            item
-            for item in mutated["modes"]
+            item for item in mutated["modes"]
             if item["id"] == "sectoral_financial_positions"
         )
-        mode["status"] = "OBSERVED_SERIES_AVAILABLE"
+        mode["status"] = "PARTIAL_SERIES_AVAILABLE"
         errors = self.audit(reference_modes=mutated)
-        self.assertTrue(any("must remain PARTIAL" in error for error in errors))
+        self.assertTrue(any("successor OBSERVED_SERIES_AVAILABLE" in error for error in errors))
 
     def test_manual_diagnostic_corruption_is_detected(self) -> None:
         mutated = copy.deepcopy(self.artifact)
