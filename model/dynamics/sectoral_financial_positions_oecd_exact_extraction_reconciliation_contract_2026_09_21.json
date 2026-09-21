@@ -1,0 +1,187 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-21",
+  "reference_mode": "sectoral_financial_positions",
+  "phase": "OECD Quarterly Non-Consolidated Financial Accounts — Exact RMD Aggregate Extraction and Reconciliation",
+  "topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
+  "governing_reference_contract": "model/dynamics/sectoral_financial_positions_reference_contract.json",
+  "purpose": "After topology PASS and before inspecting OBS_VALUE, freeze exact OECD rows and the aggregate RMD construction/reconciliation test. The result may change only aggregate reference-mode observability; it cannot complete bilateral Accounting Spine instruments.",
+  "source": {
+    "institution": "OECD",
+    "reference_area": "ROU",
+    "frequency": "Q",
+    "start_period": "2014-Q1",
+    "end_period": "2026-Q1",
+    "flow_dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T620R_Q",
+    "stock_dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T720R_Q",
+    "fixed_dimensions": {
+      "ADJUSTMENT": "N",
+      "COUNTERPART_AREA": "W",
+      "COUNTERPART_SECTOR": "S1",
+      "CONSOLIDATION": "N",
+      "UNIT_MEASURE": "XDC",
+      "UNIT_MULT": "6",
+      "CURRENCY_DENOM": "_T",
+      "VALUATION": "S",
+      "PRICE_BASE": "V",
+      "TRANSFORMATION": "N",
+      "DEBT_BREAKDOWN": "_Z"
+    },
+    "measure_dimensions": {
+      "flow": {
+        "TRANSACTION": "F",
+        "TABLE_IDENTIFIER": "T0620"
+      },
+      "stock": {
+        "TRANSACTION": "LE",
+        "TABLE_IDENTIFIER": "T0720"
+      }
+    }
+  },
+  "sector_mapping": {
+    "H": {
+      "terms": [
+        [
+          "S1M",
+          1
+        ]
+      ]
+    },
+    "C": {
+      "terms": [
+        [
+          "S11",
+          1
+        ]
+      ]
+    },
+    "F": {
+      "terms": [
+        [
+          "S12",
+          1
+        ],
+        [
+          "S121",
+          -1
+        ]
+      ],
+      "rule": "Exact same-period S12 minus S121; no residual shares."
+    },
+    "G": {
+      "terms": [
+        [
+          "S13",
+          1
+        ]
+      ]
+    },
+    "BNR": {
+      "terms": [
+        [
+          "S121",
+          1
+        ]
+      ]
+    },
+    "X": {
+      "terms": [
+        [
+          "S2",
+          1
+        ]
+      ],
+      "rule": "Use the separately published Rest-of-the-world institutional-sector account directly; no W1 orientation proxy is needed on this OECD boundary."
+    }
+  },
+  "instrument_mapping": {
+    "F2": {
+      "INSTR_ASSET": "F2",
+      "MATURITY": "T"
+    },
+    "F3": {
+      "INSTR_ASSET": "F3",
+      "MATURITY": "T"
+    },
+    "F4": {
+      "INSTR_ASSET": "F4",
+      "MATURITY": "T"
+    },
+    "F5": {
+      "INSTR_ASSET": "F5",
+      "MATURITY": "_Z"
+    },
+    "F6": {
+      "INSTR_ASSET": "F6",
+      "MATURITY": "_Z"
+    },
+    "F7": {
+      "INSTR_ASSET": "F7",
+      "MATURITY": "T"
+    },
+    "F8": {
+      "INSTR_ASSET": "F8",
+      "MATURITY": "T"
+    }
+  },
+  "accounting_entries": [
+    "A",
+    "L"
+  ],
+  "construction": {
+    "per_source_sector_entry_measure": "For each exact period, source sector, A/L entry and stock/flow measure, represented value is the explicit sum of exact total F2+F3+F4+F5+F6+F7+F8 rows under the frozen dimension filters.",
+    "rmd_sector": "Apply the frozen signed sector mapping after instrument aggregation on the exact same period/entry/measure.",
+    "net_position_or_transaction": "assets - liabilities",
+    "no_stock_difference_flow_proxy": true
+  },
+  "validation_gates": {
+    "exactly_one_row_per_period_sector_entry_instrument_measure_after_filters": true,
+    "no_missing_required_rows": true,
+    "no_duplicate_exact_rows": true,
+    "finite_values_required": true,
+    "required_2025_quarters": [
+      "2025-Q1",
+      "2025-Q2",
+      "2025-Q3",
+      "2025-Q4"
+    ],
+    "minimum_common_quarters": 40,
+    "exact_common_period_set_required_between_stock_and_flow": true,
+    "represented_system_stock_reconciliation_tolerance_million_ron": 0.1,
+    "represented_system_flow_reconciliation_tolerance_million_ron": 0.1,
+    "represented_system_identity": "For every common period, sum H+C+F+G+BNR+X net represented positions (or transactions) must be within tolerance of zero.",
+    "source_sector_additivity_diagnostic": "Also report S1 versus S11+S12+S13+S1M and S1 versus -S2 net-position/transaction residuals without using either diagnostic to rescue a failed frozen RMD reconciliation."
+  },
+  "retained_outputs": {
+    "exact_filtered_source_rows_csv": true,
+    "constructed_reference_series_csv": true,
+    "reconciliation_diagnostics_csv": true,
+    "source_response_hashes": true,
+    "exact_filter_manifest": true,
+    "provider_request_urls": true
+  },
+  "promotion_rule": "Promote sectoral_financial_positions to OBSERVED_SERIES_AVAILABLE only if every exact-row, coverage, finite-value, stock-reconciliation and flow-reconciliation gate passes over at least 40 common quarters including all 2025 quarters, retained artifacts are committed with hashes, and an explicit promotion assessment changes only reference-mode observability.",
+  "failure_rule": "Any missing/duplicate exact row, incomplete required period, non-finite value, or reconciliation residual above 0.1 million RON leaves sectoral_financial_positions PARTIAL_SERIES_AVAILABLE. No tolerance change, sector dropping, missing-to-zero, alternative instrument aggregate, post-result source switch or residual allocation may rescue the gate.",
+  "hard_rules": {
+    "no_filter_change_after_value_review": true,
+    "no_sector_mapping_change_after_value_review": true,
+    "no_tolerance_change_after_value_review": true,
+    "no_missing_to_zero": true,
+    "no_interpolation": true,
+    "no_stock_difference_flow_proxy": true,
+    "no_residual_allocation": true,
+    "no_post_result_sector_dropping": true,
+    "no_bilateral_accounting_completion_claim": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true
+  },
+  "execution_policy": {
+    "live_execution_manual_only": true,
+    "exact_branch": "source-topology/oecd-nonconsolidated-sectoral-financial-positions-2026-09-21",
+    "manual_job": "manual-oecd-exact-reference-reconciliation",
+    "initial_pull_request_attempt_behavior": "SKIP",
+    "activation_condition": "pull_request on exact branch AND github.run_attempt > 1",
+    "run_only_after_topology_assessment_committed": true
+  }
+}
