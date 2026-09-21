@@ -1,5 +1,5 @@
 {
-  "manifest_version": "1.4",
+  "manifest_version": "1.5",
   "baseline_id": "scientific-integrity-2026-09-19",
   "purpose": "Single canonical cross-registry snapshot of RMD scientific maturity. Values in this manifest must agree with the authoritative accounting, dynamics, reference-mode, empirical-mechanism and validation registries; the manifest is not an independent source of scientific truth.",
   "authority": {
@@ -132,7 +132,9 @@
     "f4_structural_zero_successor_materialization_assessment": "model/accounting/f4_structural_zero_successor_materialization_assessment_2026_09_21.json",
     "f4_structural_zero_successor_partial": "model/accounting/f4_partial_structural_2025.json",
     "f4_structural_zero_successor_manifest": "model/accounting/f4_structural_zero_materialization_manifest_2026_09_21.json",
-    "f4_bnr_cnf_2025_stock_trigger_monitoring": "model/accounting/f4_bnr_cnf_2025_stock_trigger_monitoring_2026_09_21.json"
+    "f4_bnr_cnf_2025_stock_trigger_monitoring": "model/accounting/f4_bnr_cnf_2025_stock_trigger_monitoring_2026_09_21.json",
+    "mof_realized_financing_channel_source_vintage_probe_contract": "model/dynamics/mof_realized_financing_channel_source_vintage_probe_contract_2026_09_21.json",
+    "mof_realized_financing_channel_source_vintage_manifest": "data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21/source_vintage_manifest.json"
   },
   "canonical_state": {
     "accounting": {
