@@ -31,19 +31,32 @@
       "standard_bop_iip_route_reason": "BPM6 standard components do not require Direct-Investment debt to be broken down by instrument; Eurostat/BNR standard presentations retain aggregate DI debt while currency/deposits are separately instrumented under Other Investment. A country-specific supplementary DI-F2 source or equivalent exact bridge is required."
     },
     "F4": {
-      "current_status": "PARTIAL_UNCONDITIONAL_CORE_ONLY",
-      "governing_assessment": "model/accounting/f4_exact_complement_rank_assessment.json",
+      "current_status": "PARTIAL_STRUCTURAL_ZERO_CORE_MATERIALIZED",
+      "governing_assessment": "model/accounting/f4_structural_zero_successor_materialization_assessment_2026_09_21.json",
       "retained_vintage": "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18",
-      "frozen_boundary": "F4 has 15 unconditional rank-unique stock cells and 15 unconditional rank-unique flow cells; the remaining bilateral cells are non-unique. The stock ambiguity is concentrated in the F-versus-BNR holder split and the BNR 6.1 million RON asset counterpart allocation; flow remains rank 26/nullity 9. A retained Eurostat–ECB BSI bridge diagnostic also rejects cross-domain subtraction as an exact BNR allocation identity.",
-      "reopen_when": "A definitionally comparable official counterpart source or additional exact counterparty constraints make currently non-unique F4 coordinates invariant. For the stock BNR boundary, an official BNR/financial-accounts counterpart source for the 6.1 million RON asset stock, or a separately justified structural-zero adjudication, is required.",
+      "frozen_boundary": "F4 stock has 25 exact rank-unique cells after ESA 2010 structural adjudication and offline successor materialization of the zero BNR issuer column plus exact complements; flow remains at 15 exact rank-unique cells. Ten stock cells remain non-unique because the BNR-holder 6.1 million RON asset row lacks counterpart allocation; flow remains rank 26/nullity 9.",
+      "reopen_when": "For stock, an official BNR/financial-accounts counterpart source for the 6.1 million RON BNR F4 asset stock or additional exact constraints must resolve the four remaining allocation degrees of freedom. For flow, a definitionally comparable official counterpart source or additional exact constraints must reduce nullity 9.",
       "evidence_that_does_not_reopen": [
         "zero aggregate BNR transactions used as bilateral flow zeros",
         "allocation of the 6.1 million RON BNR asset row by shares",
-        "conditional BNR-zero stock cells promoted as unconditional",
         "a fresh live QSA response that reproduces the same coefficient topology",
         "subtracting ECB BSI MFIs-excluding-NCB loan series from Eurostat/financial-accounts MFI counterpart totals without a validated exact concept bridge"
       ],
-      "bridge_diagnostic": "model/accounting/f4_eurostat_bsi_bridge_diagnostic_2026_09_21.json"
+      "bridge_diagnostic": "model/accounting/f4_eurostat_bsi_bridge_diagnostic_2026_09_21.json",
+      "predecessor_rank_assessment": "model/accounting/f4_exact_complement_rank_assessment.json",
+      "structural_zero_adjudication": "model/accounting/f4_bnr_zero_liability_structural_adjudication_2026_09_21.json",
+      "successor_materialization_contract": "model/accounting/f4_structural_zero_successor_materialization_contract_2026_09_21.json",
+      "successor_materialization_assessment": "model/accounting/f4_structural_zero_successor_materialization_assessment_2026_09_21.json",
+      "successor_partial_artifact": "model/accounting/f4_partial_structural_2025.json",
+      "successor_partial_manifest": "model/accounting/f4_structural_zero_materialization_manifest_2026_09_21.json",
+      "current_stock_rank": 31,
+      "current_stock_nullity": 4,
+      "current_stock_unique_cell_count": 25,
+      "current_flow_rank": 26,
+      "current_flow_nullity": 9,
+      "current_flow_unique_cell_count": 15,
+      "current_reopen_gate_open": false,
+      "successor_materialization_gate_state": "EXECUTED_PASS_RETURNED_TO_EVIDENCE_TRIGGERED_HOLD"
     },
     "F5": {
       "current_status": "FROZEN_AT_PUBLIC_DATA_BOUNDARY",
@@ -147,8 +160,9 @@
     "behavioural_closure_may_not_override_frozen_accounting_boundaries": true
   },
   "accounting_recovery_stage_status": "STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD",
-  "accounting_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json",
+  "accounting_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_post_f4_structural_terminal_assessment_2026_09_21.json",
   "current_operational_state": "EVIDENCE_TRIGGERED_ACCOUNTING_SPINE_HOLD",
   "active_selective_reopen_instruments": [],
-  "active_unconditional_accounting_recovery_task": null
+  "active_unconditional_accounting_recovery_task": null,
+  "previous_accounting_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json"
 }

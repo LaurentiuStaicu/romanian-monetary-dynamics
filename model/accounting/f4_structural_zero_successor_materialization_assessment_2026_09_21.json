@@ -1,0 +1,96 @@
+{
+  "assessment_version": "0.1",
+  "executed_on": "2026-09-21",
+  "phase": "Accounting Spine / F4 structural-zero successor materialization execution",
+  "instrument": "F4",
+  "preregistration_head_sha": "f8a78e984fed4300460fcaaafe5b2fcdcef41e68",
+  "structural_adjudication": "model/accounting/f4_bnr_zero_liability_structural_adjudication_2026_09_21.json",
+  "materialization_contract": "model/accounting/f4_structural_zero_successor_materialization_contract_2026_09_21.json",
+  "retained_source_vintage": "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18",
+  "retained_source_workflow_artifact_id": 10558980689,
+  "retained_source_archive_sha256": "a01922ed3662725dd5c73c95cd248bb97c8fc8a06404c9507e7cac4fc8e260aa",
+  "predecessor_artifact": "model/accounting/f4_partial_2025.json",
+  "successor_artifact": "model/accounting/f4_partial_structural_2025.json",
+  "successor_manifest": "model/accounting/f4_structural_zero_materialization_manifest_2026_09_21.json",
+  "execution_mode": "OFFLINE_DETERMINISTIC_REGENERATION_FROM_RETAINED_SOURCE_VINTAGE",
+  "result": {
+    "stock_counts": {
+      "OBSERVED": 12,
+      "DERIVED": 13,
+      "UNRESOLVED": 10,
+      "NOT_APPLICABLE": 1
+    },
+    "flow_counts": {
+      "DERIVED": 15,
+      "UNRESOLVED": 20,
+      "NOT_APPLICABLE": 1
+    },
+    "stock_rank": 31,
+    "stock_nullity": 4,
+    "stock_unique_cell_count": 25,
+    "flow_rank": 26,
+    "flow_nullity": 9,
+    "flow_unique_cell_count": 15,
+    "newly_materialized_stock_cells": [
+      "H→F",
+      "H→BNR",
+      "C→F",
+      "C→BNR",
+      "F→BNR",
+      "G→F",
+      "G→BNR",
+      "X→F",
+      "X→BNR",
+      "BNR→BNR"
+    ],
+    "exact_structural_zero_stock_cells": [
+      "H→BNR",
+      "C→BNR",
+      "F→BNR",
+      "G→BNR",
+      "X→BNR",
+      "BNR→BNR"
+    ],
+    "remaining_stock_nonunique_cells": [
+      "F→H",
+      "F→C",
+      "F→F",
+      "F→G",
+      "F→X",
+      "BNR→H",
+      "BNR→C",
+      "BNR→F",
+      "BNR→G",
+      "BNR→X"
+    ],
+    "BNR_asset_counterpart_allocation_performed": false,
+    "historical_partial_artifact_rewritten": false,
+    "canonical_benchmark_2025_changed": false,
+    "complete_F4_matrix": false
+  },
+  "gate_adjudication": {
+    "preregistration_preceded_execution": true,
+    "retained_source_digest_pass": true,
+    "exact_stock_topology_pass": true,
+    "flow_unchanged_pass": true,
+    "no_BNR_asset_allocation_pass": true,
+    "historical_artifact_immutability_pass": true,
+    "canonical_benchmark_unchanged_pass": true
+  },
+  "scientific_effect": {
+    "F4_status": "PARTIAL_STRUCTURAL_ZERO_CORE_MATERIALIZED",
+    "Accounting_Spine_complete": false,
+    "full_2025_stock_flow_benchmark_ready": false,
+    "reference_mode_change": false,
+    "calibration_or_refit_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_change": false,
+    "version_change": false
+  },
+  "next_boundary": {
+    "state": "EVIDENCE_TRIGGERED_HOLD",
+    "stock": "An official BNR/financial-accounts counterpart source for the 6.1 million RON BNR F4 asset stock, or additional exact constraints, must resolve the four remaining stock allocation degrees of freedom.",
+    "flow": "A definitionally comparable official counterpart source or additional exact constraints must reduce flow nullity 9; aggregate zero transactions remain insufficient."
+  },
+  "decision": "PASS_F4_STRUCTURAL_ZERO_SUCCESSOR_PARTIAL_MATERIALIZATION_RETURN_TO_HOLD"
+}

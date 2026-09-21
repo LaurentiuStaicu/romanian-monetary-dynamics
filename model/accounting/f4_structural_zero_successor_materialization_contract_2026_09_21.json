@@ -1,0 +1,96 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-21",
+  "phase": "Accounting Spine / F4 structural-zero successor partial materialization",
+  "instrument": "F4",
+  "purpose": "Preregister deterministic offline materialization of the stock cells made exact by the BNR zero-liability structural adjudication while preserving the historical 15/15 partial F4 artifact and leaving all remaining F4 degrees of freedom unresolved.",
+  "adjudication": "model/accounting/f4_bnr_zero_liability_structural_adjudication_2026_09_21.json",
+  "predecessor_rank_assessment": "model/accounting/f4_exact_complement_rank_assessment.json",
+  "retained_source_vintage": "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18",
+  "historical_partial_artifact": "model/accounting/f4_partial_2025.json",
+  "historical_partial_manifest": "model/accounting/f4_partial_materialization_manifest.json",
+  "successor_artifact": "model/accounting/f4_partial_structural_2025.json",
+  "successor_manifest": "model/accounting/f4_structural_zero_materialization_manifest_2026_09_21.json",
+  "frozen_topology": {
+    "stock_unique_source": "Phase B identification_with_stock_BNR_zero",
+    "expected_stock_unique_cells": 25,
+    "expected_stock_rank": 31,
+    "expected_stock_nullity": 4,
+    "flow_unique_source": "Phase B identification_before_structural_zero",
+    "expected_flow_unique_cells": 15,
+    "expected_flow_rank": 26,
+    "expected_flow_nullity": 9,
+    "newly_exact_stock_cells": [
+      "H→F",
+      "H→BNR",
+      "C→F",
+      "C→BNR",
+      "F→BNR",
+      "G→F",
+      "G→BNR",
+      "X→F",
+      "X→BNR",
+      "BNR→BNR"
+    ],
+    "exact_structural_zero_stock_cells": [
+      "H→BNR",
+      "C→BNR",
+      "F→BNR",
+      "G→BNR",
+      "X→BNR",
+      "BNR→BNR"
+    ],
+    "remaining_stock_nonunique_cells": [
+      "F→H",
+      "F→C",
+      "F→F",
+      "F→G",
+      "F→X",
+      "BNR→H",
+      "BNR→C",
+      "BNR→F",
+      "BNR→G",
+      "BNR→X"
+    ],
+    "remaining_flow_nonunique_cell_count": 20
+  },
+  "materialization_rules": {
+    "existing_historical_materialized_cells": "Copy value, status and provenance byte-semantically from model/accounting/f4_partial_2025.json.",
+    "newly_exact_nonzero_stock_cells": "Use only retained Phase B explicit_derivation_candidates.stock entries with rank_uniqueness_confirmed=true; preserve the retained candidate value and method, rounded only at the existing artifact's 0.01 million RON presentation precision.",
+    "structural_zero_stock_cells": "Materialize as DERIVED value 0.0 only because the structural adjudication promotes the complete zero BNR issuer-stock partition; do not use missing-to-zero.",
+    "flow_cells": "Copy the historical 15-cell flow materialization unchanged; no zero-transaction bilateral promotion.",
+    "remaining_stock_cells": "UNRESOLVED with null value.",
+    "outside_boundary": "X→X remains NOT_APPLICABLE.",
+    "BNR_asset_row": "Do not allocate the 6.1 million RON aggregate asset stock across counterparties.",
+    "canonical_benchmark": "model/accounting/benchmark_2025.json must remain unchanged."
+  },
+  "expected_counts": {
+    "stock": {
+      "OBSERVED": 12,
+      "DERIVED": 13,
+      "UNRESOLVED": 10,
+      "NOT_APPLICABLE": 1
+    },
+    "flow": {
+      "DERIVED": 15,
+      "UNRESOLVED": 20,
+      "NOT_APPLICABLE": 1
+    }
+  },
+  "hard_rules": {
+    "offline_generation_only": true,
+    "retained_source_digest_must_match": true,
+    "historical_partial_artifact_must_not_be_rewritten": true,
+    "exact_new_stock_topology_must_match_adjudication": true,
+    "no_flow_structural_zero_promotion": true,
+    "no_BNR_asset_counterpart_allocation": true,
+    "no_missing_to_zero": true,
+    "no_synthetic_allocation": true,
+    "canonical_benchmark_2025_must_remain_unchanged": true,
+    "successor_partial_artifact_must_not_be_relabelled_complete_F4": true,
+    "behavioural_closure_may_change": false,
+    "version_change": false
+  },
+  "execution_rule": "Execution may occur only after this contract and the structural adjudication are committed together on the successor branch. The execution assessment must record that preregistration commit SHA and reproduce the successor artifact offline from the retained source vintage.",
+  "allowed_outcome": "MATERIALIZE_25_STOCK_15_FLOW_EXACT_PARTIAL_F4_RETURN_TO_EVIDENCE_TRIGGERED_HOLD"
+}

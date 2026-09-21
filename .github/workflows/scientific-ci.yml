@@ -275,11 +275,17 @@ jobs:
       - name: Audit canonical Accounting Spine readiness
         run: python scripts/audit_accounting_readiness.py
 
-      - name: Audit terminal Accounting Spine recovery state
-        run: python scripts/audit_accounting_spine_recovery_terminal.py
-
       - name: Audit F4 Eurostat-BSI exact-bridge diagnostic
         run: python scripts/audit_f4_eurostat_bsi_bridge_diagnostic.py
+
+      - name: Audit F4 structural-zero successor preregistration
+        run: python scripts/audit_f4_structural_zero_successor_preregistration.py
+
+      - name: Audit F4 structural-zero successor execution
+        run: python scripts/audit_f4_structural_zero_successor_execution.py
+
+      - name: Audit terminal Accounting Spine recovery state
+        run: python scripts/audit_accounting_spine_recovery_terminal.py
 
       - name: Audit F2 Direct-Investment instrument-dissemination boundary
         run: python scripts/audit_f2_direct_investment_instrument_dissemination.py
