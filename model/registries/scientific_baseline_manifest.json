@@ -67,7 +67,8 @@
     "government_refinancing_interest_loop_terminal_assessment": "model/dynamics/government_refinancing_interest_loop_terminal_assessment_2026_09_21.json",
     "government_issuance_yield_loop_terminal_assessment": "model/dynamics/government_issuance_yield_loop_terminal_assessment_2026_09_21.json",
     "credit_flow_to_loan_stock_boundary_review": "model/dynamics/credit_flow_to_loan_stock_boundary_review_2026_09_21.json",
-    "loan_stock_to_debt_service_and_credit_risk_boundary_review": "model/dynamics/loan_stock_to_debt_service_and_credit_risk_boundary_review_2026_09_21.json"
+    "loan_stock_to_debt_service_and_credit_risk_boundary_review": "model/dynamics/loan_stock_to_debt_service_and_credit_risk_boundary_review_2026_09_21.json",
+    "debt_service_and_credit_risk_to_credit_supply_capacity_boundary_review": "model/dynamics/debt_service_and_credit_risk_to_credit_supply_capacity_boundary_review_2026_09_21.json"
   },
   "canonical_state": {
     "accounting": {
