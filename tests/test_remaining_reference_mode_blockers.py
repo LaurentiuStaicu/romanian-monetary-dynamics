@@ -95,7 +95,7 @@ class RemainingReferenceModeBlockerTests(unittest.TestCase):
         )
         expected = accounting["current_expected_state"]
 
-        self.assertEqual(mode["status"], "PARTIAL_SERIES_AVAILABLE")
+        self.assertEqual(mode["status"], "OBSERVED_SERIES_AVAILABLE")
         self.assertEqual(
             assessment["verdict"],
             "BLOCKED_BY_CANONICAL_ACCOUNTING_READINESS",
@@ -285,7 +285,7 @@ class RemainingReferenceModeBlockerTests(unittest.TestCase):
             if item["id"] == "sectoral_financial_positions"
         )
 
-        self.assertEqual(mode["status"], "PARTIAL_SERIES_AVAILABLE")
+        self.assertEqual(mode["status"], "OBSERVED_SERIES_AVAILABLE")
         self.assertEqual(
             phase_a["verdict"],
             "STRICT_F2_F8_AGGREGATE_GATE_FAILED_NO_PROMOTION",
@@ -381,7 +381,7 @@ class RemainingReferenceModeBlockerTests(unittest.TestCase):
             if item["id"] == "sectoral_financial_positions"
         )
 
-        self.assertEqual(mode["status"], "PARTIAL_SERIES_AVAILABLE")
+        self.assertEqual(mode["status"], "OBSERVED_SERIES_AVAILABLE")
         self.assertEqual(
             mode["eurostat_counterpart_discovery_probe_status"],
             "EXECUTED_PASS_SEMANTIC_REVIEW_FAIL_INSTRUMENT_SCOPE",
@@ -438,7 +438,7 @@ class RemainingReferenceModeBlockerTests(unittest.TestCase):
             if item["id"] == "sectoral_financial_positions"
         )
 
-        self.assertEqual(mode["status"], "PARTIAL_SERIES_AVAILABLE")
+        self.assertEqual(mode["status"], "OBSERVED_SERIES_AVAILABLE")
         self.assertEqual(
             mode["external_source_screening"],
             "model/dynamics/sectoral_financial_positions_external_source_screening.json",
@@ -499,7 +499,7 @@ class RemainingReferenceModeBlockerTests(unittest.TestCase):
             if item["id"] == "sectoral_financial_positions"
         )
 
-        self.assertEqual(mode["status"], "PARTIAL_SERIES_AVAILABLE")
+        self.assertEqual(mode["status"], "OBSERVED_SERIES_AVAILABLE")
         self.assertEqual(
             historical["verdict"],
             "AGGREGATE_IDENTITY_GATE_FAILED_STRICT_STOCK_RECONCILIATION_NO_PROMOTION",
@@ -547,7 +547,7 @@ class RemainingReferenceModeBlockerTests(unittest.TestCase):
         expected = "model/dynamics/sectoral_financial_positions_ecb_quality_context.json"
         self.assertEqual(assessment["ecb_quality_context"], expected)
         self.assertEqual(mode["ecb_quality_context"], expected)
-        self.assertEqual(mode["status"], "PARTIAL_SERIES_AVAILABLE")
+        self.assertEqual(mode["status"], "OBSERVED_SERIES_AVAILABLE")
         self.assertEqual(
             context["disposition"]["sectoral_financial_positions_status"],
             "PARTIAL_SERIES_AVAILABLE",
@@ -574,7 +574,7 @@ class RemainingReferenceModeBlockerTests(unittest.TestCase):
             if item["id"] == "sectoral_financial_positions"
         )
 
-        self.assertEqual(mode["status"], "PARTIAL_SERIES_AVAILABLE")
+        self.assertEqual(mode["status"], "OBSERVED_SERIES_AVAILABLE")
         self.assertEqual(
             diagnostic["verdict"],
             "EXPLORATORY_DIAGNOSTIC_REJECTS_RESIDENT_F1_LIABILITY_ZERO_NO_PROMOTION",
