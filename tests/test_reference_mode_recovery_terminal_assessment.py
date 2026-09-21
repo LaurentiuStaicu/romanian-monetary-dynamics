@@ -38,7 +38,11 @@ class ReferenceModeRecoveryTerminalAssessmentTests(unittest.TestCase):
             "EUROSTAT_INSTRUMENT_SCOPE_FAIL_OECD_S121_SCOPE_FAIL_BNR_ANNUAL_FREQUENCY_TRANSACTION_HISTORY_FAIL_BNR_QUARTERLY_S13_SECTOR_COUNTERPART_CONSOLIDATION_FAIL",
         )
         mode = next(x for x in self.refs["modes"] if x["id"] == "sectoral_financial_positions")
-        self.assertEqual(mode["reference_mode_recovery_stage_status"], self.t["status"])
+        self.assertEqual(
+            mode["reference_mode_recovery_stage_status"],
+            "POST_TERMINAL_PROMOTION_COMPLETE_10_OF_10_REFERENCE_MODES_READY",
+        )
+        self.assertEqual(self.t["status"], "STAGE_COMPLETE_FROZEN_9_OF_10_UNDER_CURRENT_PUBLIC_EVIDENCE_BOUNDARY")
 
     def test_all_current_public_paths_have_terminal_classification(self):
         results = {x["id"]: x["result"] for x in self.t["completed_source_paths"]}
@@ -73,13 +77,19 @@ class ReferenceModeRecoveryTerminalAssessmentTests(unittest.TestCase):
         self.assertFalse(d["behavioural_closure_change"])
         self.assertEqual(d["next_operational_state"], "EVIDENCE_TRIGGERED_BASELINE_HOLD")
 
-    def test_baseline_manifest_registers_terminal_reference_stage(self):
+    def test_baseline_manifest_registers_successor_reference_closure(self):
         r = self.manifest["canonical_state"]["reference_modes"]
-        self.assertEqual(r["recovery_stage_status"], self.t["status"])
+        self.assertEqual(
+            r["recovery_stage_status"],
+            "POST_TERMINAL_PROMOTION_COMPLETE_10_OF_10_REFERENCE_MODES_READY",
+        )
         self.assertTrue(r["recovery_substage_complete"])
         self.assertEqual(r["next_operational_state"], "EVIDENCE_TRIGGERED_BASELINE_HOLD")
-        self.assertEqual(r["ready_count"], 9)
-        self.assertFalse(r["closure_ready"])
+        self.assertEqual(r["ready_count"], 10)
+        self.assertTrue(r["closure_ready"])
+        self.assertEqual(r["blockers"], [])
+        self.assertEqual(self.t["ready_reference_modes"], 9)
+        self.assertEqual(self.t["blocker_count"], 1)
 
 
 if __name__ == "__main__":
