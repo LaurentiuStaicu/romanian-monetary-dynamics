@@ -44,7 +44,9 @@
       "endogenous_supply_demand_mapping_ready": false,
       "market_and_lending_rates_to_credit_flow_boundary_review": "model/dynamics/market_and_lending_rates_to_credit_flow_boundary_review_2026_09_21.json",
       "market_and_lending_rates_to_credit_flow_status": "RATE_PRICE_AND_CREDIT_TRANSACTION_BOUNDARIES_DISTINCT_JOINT_DETERMINATION_UNRESOLVED",
-      "rate_to_flow_mapping_ready": false
+      "rate_to_flow_mapping_ready": false,
+      "credit_flow_to_private_demand_and_investment_boundary_review": "model/dynamics/credit_flow_to_private_demand_and_investment_boundary_review_2026_09_21.json",
+      "credit_flow_to_private_demand_and_investment_status": "FINANCING_FLOW_PURPOSES_MULTIPLE_PRIVATE_DEMAND_AND_INVESTMENT_MAPPING_UNIDENTIFIED"
     },
     {
       "id": "credit_supply_capacity",
@@ -357,10 +359,13 @@
       "current_boundary_class": "UNRESOLVED",
       "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
       "exact_reference_mode_id": null,
-      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "classification_basis": "The node is a qualitative umbrella over household final consumption/demand and NFC investment. Aggregate credit transactions have multiple financing purposes and no observed sector-purpose allocation maps them one-to-one to a single combined expenditure target.",
       "related_reference_modes": [],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
-      "current_feedback_activation_authorized": false
+      "current_feedback_activation_authorized": false,
+      "credit_flow_to_private_demand_and_investment_boundary_review": "model/dynamics/credit_flow_to_private_demand_and_investment_boundary_review_2026_09_21.json",
+      "credit_flow_to_private_demand_and_investment_status": "FINANCING_FLOW_PURPOSES_MULTIPLE_PRIVATE_DEMAND_AND_INVESTMENT_MAPPING_UNIDENTIFIED",
+      "aggregate_combined_target_selected": false
     },
     {
       "id": "refinancing_need",
