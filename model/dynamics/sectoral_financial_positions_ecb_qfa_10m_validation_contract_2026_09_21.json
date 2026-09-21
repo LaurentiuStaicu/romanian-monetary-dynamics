@@ -130,5 +130,60 @@
     "manual_job": "manual-ecb-qfa-10m-reference-validation",
     "initial_pull_request_attempt_behavior": "SKIP",
     "activation_condition": "pull_request on exact branch AND github.run_attempt > 1"
+  },
+  "sector_mapping": {
+    "H": {
+      "terms": [
+        [
+          "S1M",
+          1
+        ]
+      ]
+    },
+    "C": {
+      "terms": [
+        [
+          "S11",
+          1
+        ]
+      ]
+    },
+    "F": {
+      "terms": [
+        [
+          "S12",
+          1
+        ],
+        [
+          "S121",
+          -1
+        ]
+      ],
+      "rule": "Exact same-period S12 minus S121."
+    },
+    "G": {
+      "terms": [
+        [
+          "S13",
+          1
+        ]
+      ]
+    },
+    "BNR": {
+      "terms": [
+        [
+          "S121",
+          1
+        ]
+      ]
+    },
+    "X": {
+      "terms": [
+        [
+          "S2",
+          1
+        ]
+      ]
+    }
   }
 }
