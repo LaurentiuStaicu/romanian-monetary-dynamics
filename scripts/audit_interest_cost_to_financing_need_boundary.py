@@ -148,7 +148,7 @@ def audit_interest_cost_to_financing_need_boundary(
             if bridge[key] is not False:
                 errors.append(f"preregistration may not authorize {key}")
 
-    if prereg["next_independent_bridge_task"]["id"] != "government_refinancing_interest_loop_terminal_assessment":
+    if prereg["next_independent_bridge_task"]["id"] != "government_refinancing_interest_loop_evidence_triggered_hold":
         errors.append("preregistration next bridge changed")
 
     dynamic = model_contract["dynamic_core"]
@@ -158,7 +158,7 @@ def audit_interest_cost_to_financing_need_boundary(
         errors.append("model contract accounting status changed")
     if dynamic.get("government_financing_need_canonical_boundary_selected") is not False:
         errors.append("model contract may not select canonical GFN")
-    if dynamic.get("government_issuance_yield_next_independent_task") != "government_refinancing_interest_loop_terminal_assessment":
+    if dynamic.get("government_issuance_yield_next_independent_task") != "government_refinancing_interest_loop_evidence_triggered_hold":
         errors.append("model contract next task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
         errors.append("model contract may not activate feedback")
