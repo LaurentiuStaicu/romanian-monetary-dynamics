@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import io
 import json
+import os
 import urllib.request
 from decimal import Decimal, InvalidOperation
 from datetime import UTC, datetime
@@ -11,6 +13,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 CONTRACT=ROOT/"model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_contract_2026_09_21.json"
 DIAGNOSTICS=ROOT/"data/source_vintages/oecd-decimal-arithmetic-correction-2026-09-21/exact_decimal_reconciliation_diagnostics.csv"
+OUT=Path(os.environ.get("ECB_QFA_MATERIALITY_OUT","ecb_qfa_materiality_artifacts"))
 
 ECB_EXR_URL=(
     "https://data-api.ecb.europa.eu/service/data/EXR/"
@@ -119,8 +122,11 @@ def evaluate_materiality(fx: dict[str,Decimal], rows: list[dict], contract: dict
     }
 
 def main():
+    OUT.mkdir(parents=True,exist_ok=True)
     contract=json.loads(CONTRACT.read_text(encoding="utf-8"))
     data,status,error=fetch_ecb_fx()
+    if data:
+        (OUT/"ecb_exr_q_ron_eur_2014q1_2026q1.csv").write_bytes(data)
     rows=parse_diagnostics()
     audit={
         "audit_version":"0.1",
@@ -129,6 +135,8 @@ def main():
         "ecb_fx_url":ECB_EXR_URL,
         "ecb_fx_http_status":status,
         "ecb_fx_error":error,
+        "ecb_fx_bytes":len(data),
+        "ecb_fx_sha256":hashlib.sha256(data).hexdigest() if data else None,
         "oecd_values_reaccessed":False,
         "historical_0_1m_gate_rewritten":False,
         "reference_mode_promotion":False,
@@ -150,6 +158,9 @@ def main():
         else:
             audit["scientific_gate_result"]="FAIL"
             audit["disposition"]="ECB_QFA_OFFICIAL_MATERIALITY_ACCEPTABILITY_FAIL_NO_PROMOTION"
+    (OUT/"ecb_qfa_materiality_acceptability_gate.json").write_text(
+        json.dumps(audit,indent=2,ensure_ascii=False)+"\n",encoding="utf-8"
+    )
     print(json.dumps(audit,indent=2,ensure_ascii=False))
 
 if __name__=="__main__":
