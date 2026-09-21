@@ -177,7 +177,9 @@
       "esa2010_semantic_assessment": "model/dynamics/sectoral_financial_positions_esa2010_s1m_f2_liability_semantic_assessment_2026_09_21.json",
       "oecd_semantic_adjusted_gate": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_exact_gate_contract_2026_09_21.json",
       "oecd_semantic_adjusted_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
-      "oecd_semantic_adjusted_status": "ROW_GATE_PASS_VALUE_FINITE_RECONCILIATION_FAIL_AT_FROZEN_TOLERANCE_NO_PROMOTION"
+      "oecd_semantic_adjusted_status": "ROW_GATE_PASS_VALUE_FINITE_RECONCILIATION_FAIL_AT_FROZEN_TOLERANCE_NO_PROMOTION",
+      "oecd_precision_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_precision_diagnostic_2026_09_21.json",
+      "oecd_precision_diagnostic_status": "DECIMALS_ONLY_EXPLANATION_INSUFFICIENT_NO_REOPEN"
     }
   ],
   "closure_rule": "Integrated behavioural closure may not be declared validated until the reference modes required by each active loop have explicit observed targets or a documented reason why only qualitative/reference-pattern validation is possible.",
