@@ -472,3 +472,13 @@ Before detailed observation values or rank outcomes are reviewed, Stage 2 is fro
 
 This is a selective reopen only. F8 remains canonically incomplete at the predecessor rank 11/nullity 24 for both stock and flow until Stage 2 executes. No benchmark cell, reference mode, calibration state, feedback structure, behavioural closure or version is changed by preregistration.
 
+### F8 OECD counterpart Stage 2 terminal result — 2026-09-21
+
+The preregistered F8 Stage 2 gate was executed strictly from the retained OECD counterpart artifact. The required 2025 boundary contains **180 stock rows at 2025-Q4** and **720 transaction rows for 2025-Q1..Q4** across F8, F81 and F89, with no required duplicates, missing values or non-finite observations.
+
+The resident-group asset/liability mirror layer passes exactly: **48 stock checks and 48 annual-flow checks, zero violations, maximum residual 0.0 million RON**. The next two frozen source-reconciliation layers fail at **0.1 million RON**. S1 aggregation fails in **33 of 66 stock checks** with a maximum absolute residual of **1.0 million RON**, and **46 of 66 annual-flow checks** with a maximum of **4.0 million RON**. The component identity **F8 = F81 + F89** also fails: **24/60 stock**, **27/60 annual-flow**, and **47/240 quarterly-flow** checks exceed the threshold.
+
+Because every source-value/reconciliation gate must pass before a new OECD total-F8 equation enters the exact rank system, execution stops **before rank recomputation**. F8 therefore remains at its predecessor **rank 11 / nullity 24** for both stock and flow, with zero unconditional rank-unique bilateral cells. The historical stock-only BNR zero-liability scenario remains conditional and unpromoted.
+
+The observed discrepancies are retained as immutable negative gate evidence. They do not authorize post-result tolerance relaxation, selective salvage of mirrored rows, F-versus-BNR residual splitting, missing-to-zero assumptions or promotion of the conditional BNR stock zeros. F8 returns to **EVIDENCE_TRIGGERED_HOLD** pending changed official evidence or an independently justified source-specific reconciliation basis preregistered before a successor gate.
+
