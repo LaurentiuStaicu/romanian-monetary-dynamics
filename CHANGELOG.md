@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Repository governance
 
+- reopened F4 narrowly after an ESA-2010 structural adjudication of the retained zero BNR loan-liability stock: the non-consolidated stock partition now makes six holder→BNR cells exact zero and raises current F4 stock identification from rank 26/nullity 9 with 15 unique cells to rank 31/nullity 4 with 25 unique cells; flow remains rank 26/nullity 9 with 15 unique cells, the 6.1m RON BNR asset-row allocation remains unresolved, historical partial artifacts remain immutable, and only a successor stock-materialization gate is authorized;
 - finalized the immutable v0.3.0 publication state: verified the GitHub Release/tag on exact green commit `33c11b7e10e7e837097da5b34a9251c7bedb3f2c`, recorded release ID 393215575 and publication workflow success, consumed the one-shot authorization, advanced the current public release to v0.3.0, and set v0.4.0 as the default next substantive milestone candidate without changing scientific model state;
 
 ## 0.3.0 - 2026-09-21
