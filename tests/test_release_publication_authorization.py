@@ -9,15 +9,26 @@ from scripts.audit_release_publication_authorization import audit_release_public
 ROOT = Path(__file__).resolve().parents[1]
 
 class ReleasePublicationAuthorizationTests(unittest.TestCase):
-    def test_current_release_publication_authorization_passes(self):
+    def test_current_release_publication_state_passes(self):
         self.assertEqual(audit_release_publication_authorization(), [])
 
-    def test_authorized_release_notes_exist(self):
+    def test_v020_publication_is_recorded_and_authorization_consumed(self):
         auth=json.loads((ROOT/"model/registries/release_publication_authorization.json").read_text(encoding="utf-8"))
-        self.assertTrue((ROOT/auth["release_notes_path"]).is_file())
-        self.assertTrue(auth["publication_authorized"])
+        self.assertFalse(auth["publication_authorized"])
+        self.assertTrue(auth["trigger_consumed"])
+        self.assertEqual(auth["publication_state"],"PUBLISHED_AND_AUTHORIZATION_CONSUMED")
         self.assertEqual(auth["release_version"],"0.2.0")
         self.assertEqual(auth["tag"],"v0.2.0")
+        self.assertEqual(auth["exact_release_commit"],"51114123c19471448356aee10e487994744233a0")
+        self.assertTrue((ROOT/auth["publication_record"]).is_file())
+
+    def test_publication_record_matches_exact_release_commit(self):
+        auth=json.loads((ROOT/"model/registries/release_publication_authorization.json").read_text(encoding="utf-8"))
+        record=json.loads((ROOT/auth["publication_record"]).read_text(encoding="utf-8"))
+        self.assertEqual(record["release_target_commit"],auth["exact_release_commit"])
+        self.assertEqual(record["tag_target_commit"],auth["exact_release_commit"])
+        self.assertTrue(record["github_release_immutable"])
+        self.assertEqual(record["publication_workflow_conclusion"],"success")
 
     def test_release_has_no_scientific_activation_effect(self):
         auth=json.loads((ROOT/"model/registries/release_publication_authorization.json").read_text(encoding="utf-8"))
