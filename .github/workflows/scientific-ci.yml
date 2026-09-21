@@ -135,7 +135,7 @@ jobs:
           /tmp/rmd-clean/bin/python -m pip install --no-deps dist/*.whl
           (
             cd /tmp
-            /tmp/rmd-clean/bin/python -c "import romania_macro_financial_dynamics as rmd; assert rmd.__version__ == '0.1.0'"
+            /tmp/rmd-clean/bin/python -c "import romania_macro_financial_dynamics as rmd; assert rmd.__version__ == '0.2.0'"
           )
 
       - name: Install built wheel for repository tests
@@ -305,6 +305,9 @@ jobs:
 
       - name: Audit cross-registry scientific baseline manifest
         run: python scripts/audit_scientific_baseline_manifest.py
+
+      - name: Audit gated release-publication authorization
+        run: python scripts/audit_release_publication_authorization.py
 
       - name: Verify retained source-vintage provenance state offline
         run: python scripts/verify_validation_recovery_provenance.py

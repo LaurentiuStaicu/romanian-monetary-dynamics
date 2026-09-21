@@ -1,0 +1,99 @@
+name: Publish authorized release
+
+on:
+  workflow_run:
+    workflows:
+      - Scientific CI
+    types:
+      - completed
+
+permissions:
+  contents: write
+
+jobs:
+  publish-release:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out exact green main commit
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0
+
+      - name: Read publication authorization
+        id: auth
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          path = Path("model/registries/release_publication_authorization.json")
+          if not path.is_file():
+              print("authorized=false")
+              raise SystemExit(0)
+          auth = json.loads(path.read_text(encoding="utf-8"))
+          print("authorized=" + ("true" if auth.get("publication_authorized") is True else "false"))
+          if auth.get("publication_authorized") is True:
+              print("version=" + auth["release_version"])
+              print("tag=" + auth["tag"])
+              print("title=" + auth["release_name"])
+              print("notes=" + auth["release_notes_path"])
+          PY
+
+      - name: Set up Python 3.12
+        if: steps.auth.outputs.authorized == 'true'
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify release publication authorization
+        if: steps.auth.outputs.authorized == 'true'
+        run: python scripts/audit_release_publication_authorization.py
+
+      - name: Publish exact green commit
+        if: steps.auth.outputs.authorized == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.auth.outputs.tag }}
+          TITLE: ${{ steps.auth.outputs.title }}
+          NOTES: ${{ steps.auth.outputs.notes }}
+          RELEASE_SHA: ${{ github.event.workflow_run.head_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            git fetch --tags --force
+            TAG_SHA="$(git rev-list -n 1 "$TAG")"
+            if [[ "$TAG_SHA" != "$RELEASE_SHA" ]]; then
+              echo "Existing release/tag $TAG points to $TAG_SHA, expected $RELEASE_SHA" >&2
+              exit 1
+            fi
+            echo "Release $TAG already exists on the exact green commit; no mutation performed."
+            exit 0
+          fi
+
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" > /tmp/rmd-release-tag 2>/dev/null; then
+            git fetch --tags --force
+            TAG_SHA="$(git rev-list -n 1 "$TAG")"
+            if [[ "$TAG_SHA" != "$RELEASE_SHA" ]]; then
+              echo "Existing tag $TAG points to $TAG_SHA, expected $RELEASE_SHA; refusing to move it." >&2
+              exit 1
+            fi
+            gh release create "$TAG" --verify-tag --title "$TITLE" --notes-file "$NOTES"
+          else
+            gh release create "$TAG" --target "$RELEASE_SHA" --title "$TITLE" --notes-file "$NOTES"
+          fi
+
+          git fetch --tags --force
+          TAG_SHA="$(git rev-list -n 1 "$TAG")"
+          if [[ "$TAG_SHA" != "$RELEASE_SHA" ]]; then
+            echo "Published tag $TAG points to $TAG_SHA, expected $RELEASE_SHA" >&2
+            exit 1
+          fi
+          gh release view "$TAG" --json tagName,name,isDraft,isPrerelease,url

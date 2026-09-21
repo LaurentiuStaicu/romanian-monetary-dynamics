@@ -1,0 +1,31 @@
+{
+  "authorization_version": "0.1",
+  "authorized_on": "2026-09-21",
+  "release_version": "0.2.0",
+  "tag": "v0.2.0",
+  "release_name": "v0.2.0 — Structural review and reproducibility milestone",
+  "release_notes_path": "releases/v0.2.0.md",
+  "intended_release_date": "2026-09-21",
+  "publication_authorized": true,
+  "publication_trigger": "GREEN_SCIENTIFIC_CI_ON_MAIN_RELEASE_COMMIT",
+  "target_commit_strategy": "SCIENTIFIC_CI_WORKFLOW_RUN_HEAD_SHA",
+  "hard_rules": {
+    "require_main_branch": true,
+    "require_push_event_scientific_ci": true,
+    "require_scientific_ci_success": true,
+    "repository_version_must_equal_release_version": true,
+    "citation_version_must_equal_release_version": true,
+    "citation_release_date_must_equal_intended_release_date": true,
+    "release_notes_must_exist": true,
+    "existing_release_must_not_be_replaced": true,
+    "existing_tag_must_not_be_moved": true,
+    "target_tag_and_release_must_reference_same_commit": true
+  },
+  "scientific_effect": {
+    "parameter_estimation_authorized": false,
+    "holdout_opening_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "model_completion_claim_authorized": false
+  }
+}
