@@ -55,7 +55,7 @@ class SystemDynamicsConformityTests(unittest.TestCase):
             implied_loop_polarity(path)
 
 
-    def test_reference_mode_readiness_is_explicitly_blocked(self) -> None:
+    def test_reference_mode_readiness_is_ready_but_not_behavioural_closure(self) -> None:
         references = json.loads(
             (
                 ROOT / "model" / "dynamics" / "reference_modes.json"
@@ -65,7 +65,7 @@ class SystemDynamicsConformityTests(unittest.TestCase):
             references,
             REQUIRED_REFERENCE_MODES,
         )
-        self.assertEqual(readiness["status"], "BLOCKED")
+        self.assertEqual(readiness["status"], "READY")
         self.assertEqual(
             set(readiness["ready_modes"]),
             {
