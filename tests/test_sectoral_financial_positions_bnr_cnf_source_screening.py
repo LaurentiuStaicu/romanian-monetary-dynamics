@@ -63,7 +63,7 @@ class SectoralFinancialPositionsBNRCNFSourceScreeningTests(unittest.TestCase):
 
     def test_reference_mode_remains_partial_and_points_to_screening(self):
         mode = next(x for x in self.refs["modes"] if x["id"] == "sectoral_financial_positions")
-        self.assertEqual(mode["status"], "PARTIAL_SERIES_AVAILABLE")
+        self.assertEqual(mode["status"], "OBSERVED_SERIES_AVAILABLE")
         self.assertEqual(
             mode["bnr_cnf_source_screening"],
             "model/dynamics/sectoral_financial_positions_bnr_cnf_source_screening.json",
