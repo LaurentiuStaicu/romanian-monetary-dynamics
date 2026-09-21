@@ -1,0 +1,39 @@
+{
+  "manifest_version": "0.1",
+  "retained_on": "2026-09-21",
+  "source_class": "PROMOTED_AGGREGATE_REFERENCE_MODE_WITH_OFFICIAL_ECB_QFA_MATERIALITY_GATE",
+  "reference_mode": "sectoral_financial_positions",
+  "gate_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_assessment_2026_09_21.json",
+  "promotion_assessment": "model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json",
+  "retained_series": {
+    "path": "data/processed/sectoral_financial_positions_oecd_ecb_qfa_2014Q1_2026Q1.csv",
+    "git_blob_sha": "f1d845bcd757184d678a9b49a24587245abde9ba",
+    "data_rows": 588,
+    "header_rows": 1,
+    "quarters": 49,
+    "period_start": "2014-Q1",
+    "period_end": "2026-Q1",
+    "measures": 2,
+    "sectors": 6
+  },
+  "workflow_artifact": {
+    "id": 10642481970,
+    "zip_sha256": "c1cebd4cd7cc72bc8188b902ea12e92234de04b301971d8f193ef45b06bfae7a",
+    "retention_is_not_canonical_dependency": true
+  },
+  "raw_source_hashes": {
+    "oecd_flow": "06c23cfdcc405b2f1689b695392f4f99a9aaa1085e3b90a6254482eb13d0a616",
+    "oecd_stock": "ca41b25cb31f02baeaa31d2b74444b3ea0e59cfd0f1cc974f5f92327a838f4d1",
+    "ecb_fx": "40350e22d6b7cfa29205523ebacefc4e908d6a37df457948b6317b450971685a"
+  },
+  "gate_output_hashes": {
+    "audit_json": "4b7017223f4df916888d3d769d2da7ff01ac89264d4857cee42822a27e6a2b33",
+    "instrument_diagnostics": "9ac11656786688d3205cf9768a543340c7ce2f2042763802ca1d49ee1695107e",
+    "aggregate_diagnostics": "71b9271fade2821140f3854587f129212322aa50b5e8d55dfbedd94cbedaa70d"
+  },
+  "canonical_reproduction": {
+    "live_network_required_to_use_retained_reference_series": false,
+    "source_refresh_is_new_vintage_evidence": true,
+    "historical_gate_artifact_rewrite_prohibited": true
+  }
+}
