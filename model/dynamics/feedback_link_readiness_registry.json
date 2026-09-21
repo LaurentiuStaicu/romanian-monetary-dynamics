@@ -8,7 +8,8 @@
     "NO_REGISTERED_EXACT_LINK_FORM",
     "EXACT_INTEGRATED_LINK_FORM_READY",
     "TARGET_BOUNDARY_AVAILABLE_LINK_FORM_UNRESOLVED",
-    "TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED"
+    "TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED",
+    "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL"
   ],
   "hard_rules": {
     "every_feedback_path_link_must_be_registered_exactly_once": true,
@@ -70,13 +71,14 @@
       "from": "government_interest_cost",
       "to": "government_financing_need",
       "sign": "+",
-      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
-      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "causal_role": "ACCOUNTING_COMPOSITION_CONDITIONAL_ON_BOUNDARY",
+      "readiness_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
       "related_mechanisms": [],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+      "reason": "Gross financing need may be written using headline deficit, in which interest is already embedded, or using primary deficit plus interest explicitly. The accounting form is known, but RMD has not frozen one matched canonical financing-need boundary; Eurostat D41PAY and Ministry refinancing references cannot be combined silently across sector/accounting/frequency boundaries.",
+      "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "government_issuance_yield_loop|government_debt_issuance|government_securities_supply_pressure",
@@ -159,14 +161,15 @@
       "from": "government_interest_cost",
       "to": "government_financing_need",
       "sign": "+",
-      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
-      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "causal_role": "ACCOUNTING_COMPOSITION_CONDITIONAL_ON_BOUNDARY",
+      "readiness_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
       "related_mechanisms": [],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes.",
-      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
+      "reason": "Gross financing need may be written using headline deficit, in which interest is already embedded, or using primary deficit plus interest explicitly. The accounting form is known, but RMD has not frozen one matched canonical financing-need boundary; Eurostat D41PAY and Ministry refinancing references cannot be combined silently across sector/accounting/frequency boundaries.",
+      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
+      "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "government_issuance_yield_loop|government_financing_need|government_debt_issuance",
