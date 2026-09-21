@@ -5,7 +5,7 @@
 <h2 align="center">Romanian Monetary Dynamics (RMD)</h2>
 
 <p align="center">
-  <a href="https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/releases/latest"><img alt="Version: 0.1.0" src="https://img.shields.io/github/v/tag/LaurentiuStaicu/romanian-monetary-dynamics?sort=semver&style=flat-square&label=release&color=333333"></a>
+  <a href="https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/releases/latest"><img alt="Version: 0.2.0" src="https://img.shields.io/github/v/tag/LaurentiuStaicu/romanian-monetary-dynamics?sort=semver&style=flat-square&label=release&color=333333"></a>
   <a href="https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/actions/workflows/scientific-ci.yml"><img alt="Scientific CI" src="https://img.shields.io/github/actions/workflow/status/LaurentiuStaicu/romanian-monetary-dynamics/scientific-ci.yml?branch=main&event=push&style=flat-square&label=Scientific%20CI&color=707070"></a>
   <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-a0a0a0?style=flat-square"></a>
 </p>
@@ -207,7 +207,7 @@ Retained historical source material is under [data/source_vintages/](data/source
 
 ### Release state
 
-The latest public scientific-core release is **v0.1.0**. The main branch contains unreleased scientific-integrity, reproducibility and governance work. The next substantive public release candidate is **v0.2.0**, but development activity does not itself authorize a release or version bump.
+Repository metadata is prepared for **v0.2.0**, the structural-review and reproducibility milestone. Publication is gated on Scientific CI passing on the exact main release commit; until the corresponding tag and GitHub Release exist, **v0.1.0** remains the last already-published historical release.
 
 Version changes are governed atomically by [releases/README.md](releases/README.md) and [model/registries/release_versioning_contract.json](model/registries/release_versioning_contract.json).
 
