@@ -80,6 +80,20 @@ The terminal assessment is `model/dynamics/sectoral_financial_positions_oecd_exa
 The source-topology task is therefore closed and RMD has returned to **EVIDENCE_TRIGGERED_BASELINE_HOLD**. The canonical state remains **9/10 reference modes ready**; `sectoral_financial_positions` remains `PARTIAL_SERIES_AVAILABLE`; F3 remains the only canonically complete stock-and-flow Accounting Spine instrument; calibration/refit, parameter estimation, feedback activation and behavioural closure remain closed. Reopening requires genuinely changed official evidence that supplies the missing exact boundary, or an independently preregistered official semantic/applicability basis established before a new value gate.
 
 
+
+### ESA 2010 semantic applicability gate for S1M / liabilities / F2 — 2026-09-21
+
+After the OECD exact-row gate failed on the sole missing pattern `S1M / L / F2`, RMD did **not** convert that absence to zero. A separate normative-source review was opened under the terminal assessment's explicit reopen condition.
+
+ESA 2010 supplies an independent semantic basis. Currency (F.21) is issued or authorised by monetary authorities; deposits (F.22/F.29) are contracts offered by deposit-taking corporations and, in some cases, central government as debtors; deposit-taking corporations are classified in the financial-corporation sector; and an overdraft beyond a deposit balance is classified as a loan rather than as a negative deposit. ESA also distinguishes holder-side universality — all resident sectors may hold transferable deposits — from issuer-side applicability.
+
+The machine-readable assessment therefore classifies `S1M / liabilities / F2` as **STRUCTURALLY_NOT_APPLICABLE_ON_ESA2010_S1M_L_F2_BOUNDARY**. For one newly preregistered aggregate reference-mode gate only, the cell may contribute a structural zero by normative semantics. This is not missing-to-zero imputation, residual allocation or an inference from the earlier OECD absence.
+
+No numerical values have been inspected under this new gate. All other OECD filters, sectors, instruments, periods, mappings and the 0.1 million RON reconciliation tolerances remain frozen. If OECD supplies an explicit `S1M/L/F2` row in the new execution, the gate must stop as a semantic/source conflict rather than overriding the provider.
+
+The canonical model state remains **9/10 reference modes ready**, `sectoral_financial_positions` remains `PARTIAL_SERIES_AVAILABLE`, Accounting Spine readiness is unchanged, and no calibration, parameter estimation, feedback activation or behavioural closure is authorized while the semantic-adjusted live gate is pending.
+
+
 ### Government refinancing–interest loop structural closure — 2026-09-21
 
 The complete declared path of the `government_refinancing_interest_loop` has now received explicit structural/accounting boundary review. The qualitative reinforcing topology is retained, but the loop is **not quantitatively active**.
