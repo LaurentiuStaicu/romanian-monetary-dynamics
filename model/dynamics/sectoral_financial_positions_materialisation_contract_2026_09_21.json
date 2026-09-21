@@ -1,0 +1,102 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-21",
+  "reference_mode": "sectoral_financial_positions",
+  "authorization": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_terminal_assessment_2026_09_21.json",
+  "purpose": "Materialise exact observed quarterly H,C,F,G,BNR,X assets, liabilities and net positions/transactions on the validated OECD F2-F8 boundary.",
+  "exact_source": {
+    "flow_dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T620R_Q",
+    "stock_dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T720R_Q",
+    "expected_flow_sha256": "06c23cfdcc405b2f1689b695392f4f99a9aaa1085e3b90a6254482eb13d0a616",
+    "expected_stock_sha256": "ca41b25cb31f02baeaa31d2b74444b3ea0e59cfd0f1cc974f5f92327a838f4d1",
+    "period_start": "2014-Q1",
+    "period_end": "2026-Q1",
+    "common_quarters": 49
+  },
+  "sector_mapping": {
+    "H": [
+      [
+        "S1M",
+        1
+      ]
+    ],
+    "C": [
+      [
+        "S11",
+        1
+      ]
+    ],
+    "F": [
+      [
+        "S12",
+        1
+      ],
+      [
+        "S121",
+        -1
+      ]
+    ],
+    "G": [
+      [
+        "S13",
+        1
+      ]
+    ],
+    "BNR": [
+      [
+        "S121",
+        1
+      ]
+    ],
+    "X": [
+      [
+        "S2",
+        1
+      ]
+    ]
+  },
+  "instruments": [
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8"
+  ],
+  "semantic_exception": {
+    "source_sector": "S1M",
+    "accounting_entry": "L",
+    "instrument": "F2",
+    "value_million_ron": "0",
+    "authority": "model/dynamics/sectoral_financial_positions_esa2010_s1m_f2_liability_semantic_assessment_2026_09_21.json"
+  },
+  "outputs": {
+    "observed_reference_series": "data/processed/sectoral_financial_positions_oecd_2014Q1_2026Q1.csv",
+    "instrument_breakdown": "data/processed/sectoral_financial_positions_oecd_instrument_breakdown_2014Q1_2026Q1.csv",
+    "provenance": "data/provenance/sectoral_financial_positions_oecd_2014Q1_2026Q1.json"
+  },
+  "required_row_counts": {
+    "reference_series": 588,
+    "instrument_breakdown": 4116
+  },
+  "hard_rules": {
+    "exact_decimal_arithmetic": true,
+    "same_source_hashes_as_validated_gate": true,
+    "no_interpolation": true,
+    "no_period_dropping": true,
+    "no_missing_to_zero_except_preregistered_semantic_key": true,
+    "no_bilateral_allocation": true,
+    "no_accounting_spine_promotion": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true
+  },
+  "execution_policy": {
+    "manual_only": true,
+    "branch": "model/ecb-qfa-10m-validation-gate-2026-09-21",
+    "manual_job": "manual-sectoral-financial-positions-materialisation",
+    "initial_pull_request_attempt_behavior": "SKIP",
+    "activation_condition": "pull_request on exact branch AND github.run_attempt > 1"
+  }
+}
