@@ -102,6 +102,18 @@ The terminal assessment is `model/dynamics/bank_credit_balance_sheet_loop_termin
 
 This closure changes neither the canonical modeling paradigm nor the public version.
 
+### Monetary–credit transmission loop structural closure — 2026-09-21
+
+The complete declared path of the `monetary_credit_transmission_loop` has now received explicit structural/source-boundary review. The qualitative balancing-candidate topology is retained, but the loop is **not quantitatively active**.
+
+All five links remain non-integrated. The household-housing policy-rate pass-through is only a target-specific `CANDIDATE` and still awaits genuinely identifying prospective policy-rate variation; no generic market/lending-rate node or NFC form is inferred. Lending rates are price variables rather than credit-flow quantities; realized ECB BSI credit transactions reflect both supply and demand; aggregate credit cannot be allocated to consumption or investment without observed purpose-specific evidence; observed HICP does not identify a demand-pressure state and is not promoted to a Dynamic Core reference mode; and the BNR policy rate remains observed/exogenous because a real-time policy-reaction information set is not retained.
+
+The integrated loop therefore has **0/5 exact integrated link equations ready**, four feedback nodes remain `UNRESOLVED`, `policy_rate` remains `OBSERVED_FORCING`, and `monetary_transmission_delay` remains `TBD`. The activation gate remains blocked and no reference behavioural mechanism is validated.
+
+The terminal assessment is `model/dynamics/monetary_credit_transmission_loop_terminal_assessment_2026_09_21.json`. Its operational state is **EVIDENCE_TRIGGERED_HOLD**: there is no active empirical task, and no repeated unchanged-source polling, post-result respecification, synthetic credit-purpose allocation, inflation-core extension, Taylor-rule fit, parameter estimation, feedback activation or behavioural-closure change is authorized. Reopening requires one of the explicitly recorded event/source/identification triggers.
+
+This closure changes neither the canonical modeling paradigm nor the public version.
+
 ## Canonical modeling paradigm
 
 **Romanian Monetary Dynamics (RMD) is an accounting-constrained, stock-flow-consistent dynamic model with a developing System Dynamics feedback architecture; behavioural closure remains inactive pending empirical identification and validation.**
