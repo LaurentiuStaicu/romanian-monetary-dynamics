@@ -142,6 +142,36 @@ jobs:
           if-no-files-found: error
           retention-days: 90
 
+  manual-oecd-exact-reference-reconciliation:
+    if: ${{ github.event_name == 'pull_request' && github.head_ref == 'source-topology/oecd-nonconsolidated-sectoral-financial-positions-2026-09-21' && github.run_attempt > 1 }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out frozen source-topology branch
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify exact OECD extraction/reconciliation preregistration
+        run: python -m unittest tests.test_oecd_sectoral_financial_positions_exact_reconciliation -v
+
+      - name: Run exact OECD RMD aggregate row/reconciliation gate
+        env:
+          OECD_EXACT_REFERENCE_OUT: oecd_exact_reference_artifacts
+        run: python scripts/audit_oecd_sectoral_financial_positions_exact_reconciliation.py
+
+      - name: Upload exact source/reconciliation evidence only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oecd-exact-reference-reconciliation-${{ github.sha }}
+          path: oecd_exact_reference_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+
   verify-baseline:
     runs-on: ubuntu-latest
 
