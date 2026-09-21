@@ -10,7 +10,8 @@
     "TARGET_BOUNDARY_AVAILABLE_LINK_FORM_UNRESOLVED",
     "TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED",
     "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
-    "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED"
+    "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
+    "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED"
   ],
   "hard_rules": {
     "every_feedback_path_link_must_be_registered_exactly_once": true,
@@ -48,13 +49,14 @@
       "from": "government_debt_issuance",
       "to": "government_debt_stock",
       "sign": "+",
-      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
-      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "causal_role": "STOCK_ACCUMULATION_ACCOUNTING_RELATION_CONDITIONAL_ON_MATCHED_BOUNDARY",
+      "readiness_status": "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED",
       "related_mechanisms": [],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+      "reason": "Gross government borrowing is not the net transaction that accumulates Maastricht debt. Romania's 2025 EDP Table 3A reconciles the RON 172,516m S13 debt increase through the deficit contribution, net acquisition of financial assets, stock-flow adjustments and statistical discrepancies. RMD lacks a matched net debt-transaction stream after redemptions/principal repayments on the S13 nominal-value boundary, so no exact stock-transition equation is ready.",
+      "government_debt_issuance_to_debt_stock_boundary_review": "model/dynamics/government_debt_issuance_to_debt_stock_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "government_refinancing_interest_loop|government_debt_stock|government_interest_cost",
