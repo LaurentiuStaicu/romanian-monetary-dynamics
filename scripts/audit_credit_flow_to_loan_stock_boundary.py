@@ -70,7 +70,7 @@ def audit_credit_flow_to_loan_stock_boundary(
         errors.append("model contract review pointer missing")
     if d.get("credit_flow_to_loan_stock_boundary_status") != STATUS:
         errors.append("model contract boundary status changed")
-    if d.get("bank_credit_balance_sheet_next_structural_task") != "debt_service_and_credit_risk_to_credit_supply_capacity_boundary_review":
+    if d.get("bank_credit_balance_sheet_next_structural_task") != "credit_supply_capacity_to_credit_flow_boundary_review":
         errors.append("model contract next bank-credit task changed")
     if baseline["authority"].get("credit_flow_to_loan_stock_boundary_review") != REVIEW_PATH:
         errors.append("scientific baseline authority missing")
