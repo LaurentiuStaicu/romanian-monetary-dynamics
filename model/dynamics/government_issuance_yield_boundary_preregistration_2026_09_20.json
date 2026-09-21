@@ -142,14 +142,16 @@
   },
   "next_gate_after_materialisation": "Reconcile the exact RON auction-universe stock denominator before any supply-load ratio is computed. Submitted-bids and bid-to-cover monthly series remain blocked because the monthly report exposes them graphically without reproducible native-text month/series mapping.",
   "next_independent_bridge_task": {
-    "id": "financing_channel_allocation_boundary_review",
-    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
-    "may_construct_one_to_one_GFN_to_BNR_issuance": false,
-    "may_invent_channel_allocations": false,
-    "may_estimate_parameters": false,
-    "may_activate_feedback": false,
-    "may_change_behavioural_closure": false
+    "id": "mof_realized_financing_channel_materialisation_contract",
+    "authorization": "DESCRIPTIVE_SOURCE_CONTRACT_ONLY",
+    "may_difference_cumulative_values_now": false,
+    "may_infer_channel_residuals": false,
+    "may_estimate_allocation_shares": false,
+    "may_promote_generic_debt_issuance_node": false,
+    "may_activate_feedback": false
   },
   "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
-  "interest_cost_to_financing_need_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL"
+  "interest_cost_to_financing_need_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
+  "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
+  "financing_channel_allocation_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED"
 }
