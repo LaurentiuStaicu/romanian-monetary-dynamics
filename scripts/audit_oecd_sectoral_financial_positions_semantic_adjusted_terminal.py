@@ -41,11 +41,11 @@ def audit_semantic_terminal():
     if er["result"]!="FAIL_FROZEN_RECONCILIATION_TOLERANCE_NO_PROMOTION" or er["tolerance_relaxation_authorized"] is not False:
         e.append("contract execution result changed")
     mode=next(x for x in r["modes"] if x["id"]=="sectoral_financial_positions")
-    if mode["status"]!="PARTIAL_SERIES_AVAILABLE":
-        e.append("reference-mode registry may not be promoted")
+    if mode["status"]!="OBSERVED_SERIES_AVAILABLE":
+        e.append("current successor reference mode must be observed")
     dc=m["dynamic_core"]
-    if dc["reference_mode_ready_count"]!=9 or dc["reference_mode_required_count"]!=10:
-        e.append("global reference-mode readiness must remain 9/10")
+    if dc["reference_mode_ready_count"]!=10 or dc["reference_mode_required_count"]!=10:
+        e.append("current successor reference-mode readiness must be 10/10")
     if dc["sectoral_financial_positions_reference_mode_promotion_authorized"] is not False:
         e.append("model contract may not authorize promotion")
     st=m["scientific_stage"]
@@ -70,8 +70,8 @@ def main():
         "reconciliation_gate":"FAIL",
         "frozen_tolerance_million_ron":0.1,
         "violation_count":63,
-        "reference_modes_ready":"9/10",
-        "sectoral_financial_positions":"PARTIAL_SERIES_AVAILABLE",
+        "reference_modes_ready":"10/10",
+        "sectoral_financial_positions":"OBSERVED_SERIES_AVAILABLE",
         "scientific_state":"EVIDENCE_TRIGGERED_BASELINE_HOLD"
     },indent=2))
 
