@@ -144,15 +144,24 @@ No monitoring gate is open now. The successor registry preserves the existing da
 The next scheduled event check remains the **BNR monetary-policy decision on 2026-10-08**. Until then, repeated AMECO probing, BLS filename guessing, government-repricing proxy substitution, routine ECB-QSA vintage reruns and repeated OECD/Eurostat financial-account value probes do not count as scientific progress and remain prohibited without their declared triggers.
 
 
-### ECB official QFA internal-consistency tolerance gate — preregistered 2026-09-21
+### ECB official QFA internal-consistency tolerance gate and reference-mode promotion — 2026-09-21
 
-A new official-domain trigger has been identified after the earlier dissemination-precision diagnostic. The ECB's QFA quality framework defines internal consistency to include aggregation, horizontal asset-liability, balancing-item and counterpart-sector checks. The 2013 QFA quality report explicitly states that discrepancies below **EUR 10 million** are acceptable in national data. The 2024 report continues to flag/correct internal discrepancies above EUR 10 million and evaluates Romania within the same all-EU validation framework.
+The independent official-domain precision trigger has now been executed. ECB's QFA quality framework defines internal consistency across aggregation, horizontal asset-liability equality, balancing items and counterpart sectors; the 2013 quality report explicitly treats national discrepancies below **EUR 10 million** as acceptable, while the 2024 report retains EUR 10 million as the material internal-discrepancy threshold in the all-EU validation framework.
 
-This threshold predates RMD and is not estimated from the residuals already observed. Historical RMD gates using 0.1 million RON remain immutable failures; they are not rewritten.
+The threshold was preregistered before the new value run and was not fitted to RMD residuals. Historical RMD gates at 0.1 million RON remain immutable evidence of a stricter diagnostic boundary; they are not rewritten.
 
-One new gate is preregistered on the unchanged OECD non-consolidated boundary. It will use exact decimal arithmetic and test horizontal consistency separately for F2-F8 in every retained stock/flow quarter. The EUR 10 million threshold will be converted conservatively to RON using the **minimum positive daily ECB RON/EUR reference rate over 2014-01-01 through 2026-03-31**, producing a threshold floor no larger than the EUR-equivalent threshold for any retained date. Aggregate six-sector reconciliation is a secondary test.
+For Romania, the gate used the minimum positive daily ECB RON/EUR reference rate over the frozen 2014-01-01 to 2026-03-31 window: **4.383 RON/EUR on 2014-06-30**, giving a conservative threshold floor of **43.830 million RON**. The unchanged OECD non-consolidated boundary then passed all exact-decimal tests:
 
-Before manual execution, `sectoral_financial_positions` remains `PARTIAL_SERIES_AVAILABLE`, readiness remains **9/10**, Accounting Spine readiness is unchanged, and no calibration, estimation, feedback activation or behavioural closure is authorized.
+- **686/686** F2-F8 instrument × quarter × stock/flow horizontal-consistency tests passed; maximum absolute instrument residual: **0.2 million RON**;
+- **98/98** aggregate six-sector stock/flow tests passed; maximum absolute aggregate residual: **0.6 million RON**;
+- 49 common quarters are retained from 2014Q1 through 2026Q1, including all 2025 quarters;
+- row coverage and finite-value gates passed under the independently established ESA 2010 structural treatment of `S1M/L/F2`.
+
+The resulting exact-decimal aggregate reference series is retained as `data/processed/sectoral_financial_positions_reference_oecd_2014Q1_2026Q1.csv.gz` with 588 data rows and immutable hashes/provenance.
+
+A separate promotion assessment therefore changes `sectoral_financial_positions` from `PARTIAL_SERIES_AVAILABLE` to **`OBSERVED_SERIES_AVAILABLE`**. Required reference-mode readiness is now **10/10**, and `reference_mode_closure_ready=true`.
+
+This does **not** mean behavioural closure has been validated. It means only that every required reference mode now has an observed series admissible for future integrated quantitative validation. The bilateral holder-by-issuer Accounting Spine remains incomplete — F3 is still the only canonically complete stock+flow instrument — the calibration cycle remains closed, all quantitative feedback loops remain inactive, behavioural closure remains inactive, and no full-RMD empirical-state or model-completion claim is authorized. RMD returns to **EVIDENCE_TRIGGERED_BASELINE_HOLD** with the reference-mode prerequisite complete.
 
 
 ### Government refinancing–interest loop structural closure — 2026-09-21
