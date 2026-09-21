@@ -33,7 +33,7 @@ def audit_credit_supply_capacity_to_credit_flow_boundary(review,private_credit,a
     if loop["quantitatively_active"] is not False: errors.append("loop may not activate")
     d=model["dynamic_core"]
     if d.get("credit_supply_capacity_to_credit_flow_boundary_review")!=REVIEW_PATH: errors.append("model pointer missing")
-    if d.get("bank_credit_balance_sheet_next_structural_task")!="bank_credit_balance_sheet_loop_terminal_assessment": errors.append("next bank-credit task changed")
+    if d.get("bank_credit_balance_sheet_next_structural_task")!="bank_credit_balance_sheet_loop_evidence_triggered_hold": errors.append("next bank-credit task changed")
     if baseline["authority"].get("credit_supply_capacity_to_credit_flow_boundary_review")!=REVIEW_PATH: errors.append("baseline authority missing")
     for k,v in review["hard_rules"].items():
         if v is not True: errors.append(f"hard rule disabled: {k}")
@@ -42,5 +42,5 @@ def main():
     errors=audit_credit_supply_capacity_to_credit_flow_boundary(
         load(REVIEW_PATH),load("model/dynamics/private_credit_reference_assessment.json"),load("model/calibration_validation/aggregate_bank_credit_source_boundary_review.json"),load("model/dynamics/feedback_variable_boundary_registry.json"),load("model/dynamics/feedback_link_readiness_registry.json"),load("model/dynamics/feedback_registry.json"),load("model/registries/model_contract.json"),load("model/registries/scientific_baseline_manifest.json"))
     if errors: raise RuntimeError("Credit-supply-capacity to credit-flow boundary audit failed:\n- "+"\n- ".join(errors))
-    print(json.dumps({"status":"PASS","bridge_status":STATUS,"exact_integrated_equation_ready":False,"feedback_activation_authorized":False,"next_gate":"bank_credit_balance_sheet_loop_terminal_assessment"},indent=2))
+    print(json.dumps({"status":"PASS","bridge_status":STATUS,"exact_integrated_equation_ready":False,"feedback_activation_authorized":False,"next_gate":"bank_credit_balance_sheet_loop_evidence_triggered_hold"},indent=2))
 if __name__=="__main__": main()
