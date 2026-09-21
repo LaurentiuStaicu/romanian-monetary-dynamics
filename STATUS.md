@@ -136,15 +136,19 @@ No post-result window shortening, period dropping or tolerance change is authori
 
 
 
-### ECB QFA internal-consistency materiality reopen — 2026-09-21
+### ECB QFA materiality gate and reference-mode promotion — 2026-09-21
 
-A new independent official source satisfies the precision/balancing reopen condition. The ECB's 2013 QFA quality report explicitly states that discrepancies below EUR 10 million are considered acceptable in national data within its internal-consistency framework. Later QFA quality reports in 2020, 2022 and 2024 continue to use EUR 10 million as the materiality threshold above which internal discrepancies are reported and generally corrected. The 2024 report covers both euro-area and non-euro EU Member States and reports Romania at 96% of validation rules satisfied over Q4 2012-Q2 2024.
+An independent official ECB QFA quality benchmark resolved the final aggregate reference-mode blocker without rewriting any historical RMD gate. The ECB's QFA internal-consistency framework explicitly treated national-data discrepancies below EUR 10 million as acceptable in its 2013 quality report, and later ECB quality reports continued to use EUR 10 million as the materiality level for internal discrepancies that are highlighted and generally corrected. The 2024 report covers euro-area and non-euro EU Member States and reports Romania at 96% of validation rules satisfied over Q4 2012-Q2 2024.
 
-This evidence does **not** rewrite the historical RMD 0.1 million RON reconciliation gates or their FAIL results. It authorizes one new, separately preregistered reference-mode gate aligned to the official ECB QFA quality benchmark.
+RMD therefore executed one separately preregistered materiality-aligned gate. The threshold was fixed ex ante at EUR 10 million and converted quarter-by-quarter with the official ECB quarterly EUR/RON reference-rate series `EXR.Q.RON.EUR.SP00.A`. The gate used exact base-10 decimal arithmetic and tested, for every common quarter, stock/flow measure and F2-F8 instrument: the six-sector RMD horizontal system identity, S1 sector aggregation and S1+S2 horizontal consistency. The aggregate F2-F8 system identity was also checked.
 
-The new gate is intentionally instrument-level. For every common quarter, both stock and financial-transaction measures, and each F2-F8 instrument, it will test three exact-decimal identities: the six-sector RMD horizontal system identity, S1 sector aggregation, and S1+S2 horizontal consistency. It will also report the aggregate F2-F8 RMD identity. The fixed EUR 10 million benchmark is converted to the same-quarter RON boundary using the official ECB quarterly reference-rate series `EXR.Q.RON.EUR.SP00.A`.
+The result is **PASS**: 2,058 instrument-level identity tests plus 98 aggregate identity tests, **2,156 tests in total, with zero materiality violations**. The largest absolute discrepancy was approximately **EUR 0.136 million**, far below the fixed EUR 10 million ECB benchmark. Row completeness, semantic-conflict, finite-value and exchange-rate coverage gates all passed over 49 common quarters from 2014Q1 through 2026Q1, including all 2025 quarters.
 
-No numerical observation has yet been inspected under this new gate. `sectoral_financial_positions` remains `PARTIAL_SERIES_AVAILABLE`, readiness remains 9/10, Accounting Spine readiness is unchanged, and no parameter estimation, feedback activation or behavioural closure is authorized while the manual gate is pending.
+The promoted quarterly reference series is retained at `data/processed/sectoral_financial_positions_oecd_ecb_qfa_2014Q1_2026Q1.csv`, with 588 data rows covering H, C, F, G, BNR and X for stocks and financial transactions. Provenance is retained in `data/source_vintages/oecd-ecb-qfa-materiality-reference-2026-09-21/source_vintage_manifest.json`.
+
+`sectoral_financial_positions` is therefore promoted from `PARTIAL_SERIES_AVAILABLE` to **`OBSERVED_SERIES_AVAILABLE`**, and the required reference-mode set is now **10/10**. This completes the empirical reference-target layer only. It does **not** complete the bilateral holder-by-issuer Accounting Spine, whose only canonically complete stock-and-flow instrument remains F3; it does not open calibration/refit, estimate or validate behavioural mechanisms, activate feedback loops, establish forecasting or policy-simulation readiness, or activate behavioural closure. RMD remains in **EVIDENCE_TRIGGERED_BASELINE_HOLD**.
+
+The historical 9/10 recovery assessment and the historical 0.1 million RON failed gates remain immutable records of their respective preregistered tests. The successor promotion assessment is `model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json`.
 
 
 ### Trigger-aware monitoring horizon — successor frozen 2026-09-21
