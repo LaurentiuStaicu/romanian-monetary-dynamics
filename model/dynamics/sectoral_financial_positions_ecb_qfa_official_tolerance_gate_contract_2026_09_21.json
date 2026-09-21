@@ -200,5 +200,22 @@
     "initial_pull_request_attempt_behavior": "SKIP",
     "activation_condition": "pull_request on exact branch AND github.run_attempt > 1",
     "scientific_effect_while_pending": "NONE"
+  },
+  "execution_result": {
+    "executed": true,
+    "result": "PASS_OFFICIAL_ECB_QFA_TOLERANCE_GATE_PROMOTION_ASSESSMENT_AUTHORIZED",
+    "assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_assessment_2026_09_21.json",
+    "workflow_run_id": 35604655310,
+    "workflow_job_id": 106349131426,
+    "artifact_id": 10641532018,
+    "artifact_digest": "sha256:08904e5768fbf4953fcce1572c78d5c88ab54438516acabf0d335a279ce18fb8",
+    "conservative_threshold_floor_million_RON": "43.830",
+    "per_instrument_tests": 686,
+    "per_instrument_violations": 0,
+    "aggregate_tests": 98,
+    "aggregate_violations": 0,
+    "maximum_abs_per_instrument_residual_million_RON": "0.2",
+    "maximum_abs_aggregate_residual_million_RON": "0.6",
+    "promotion_assessment": "model/dynamics/sectoral_financial_positions_reference_mode_promotion_assessment_2026_09_21.json"
   }
 }
