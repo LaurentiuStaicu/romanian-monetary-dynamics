@@ -25,7 +25,24 @@
       "VALUATION": "S",
       "PRICE_BASE": "V",
       "TRANSFORMATION": "N",
-      "DEBT_BREAKDOWN": "_Z"
+      "DEBT_BREAKDOWN": "_Z",
+      "ACCOUNTING_ENTRY": [
+        "A",
+        "L"
+      ],
+      "INSTR_ASSET": [
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8"
+      ],
+      "MATURITY": [
+        "T",
+        "_Z"
+      ]
     },
     "measure_dimensions": {
       "flow": {
@@ -36,7 +53,17 @@
         "TRANSACTION": "LE",
         "TABLE_IDENTIFIER": "T0720"
       }
-    }
+    },
+    "query_sectors": [
+      "S1",
+      "S1M",
+      "S11",
+      "S12",
+      "S121",
+      "S13",
+      "S2"
+    ],
+    "diagnostic_sector": "S1"
   },
   "sector_mapping": {
     "H": {
@@ -150,7 +177,8 @@
     "represented_system_stock_reconciliation_tolerance_million_ron": 0.1,
     "represented_system_flow_reconciliation_tolerance_million_ron": 0.1,
     "represented_system_identity": "For every common period, sum H+C+F+G+BNR+X net represented positions (or transactions) must be within tolerance of zero.",
-    "source_sector_additivity_diagnostic": "Also report S1 versus S11+S12+S13+S1M and S1 versus -S2 net-position/transaction residuals without using either diagnostic to rescue a failed frozen RMD reconciliation."
+    "source_sector_additivity_diagnostic": "Also report S1 versus S11+S12+S13+S1M and S1 versus -S2 net-position/transaction residuals without using either diagnostic to rescue a failed frozen RMD reconciliation.",
+    "row_completeness_precedes_numeric_value_review": true
   },
   "retained_outputs": {
     "exact_filtered_source_rows_csv": true,
@@ -183,5 +211,14 @@
     "initial_pull_request_attempt_behavior": "SKIP",
     "activation_condition": "pull_request on exact branch AND github.run_attempt > 1",
     "run_only_after_topology_assessment_committed": true
-  }
+  },
+  "execution_sequence": [
+    "Fetch and hash current SDMX structures; require exact structure hashes retained by the topology PASS.",
+    "Query only the frozen Romania sectors/entries/instruments/maturities and fixed source dimensions.",
+    "Before reading OBS_VALUE, test exact-row uniqueness and completeness for every period × required source sector × A/L × F2-F8 using the instrument-specific maturity rule.",
+    "If exact-row completeness fails, stop with scientific FAIL and do not inspect OBS_VALUE or run reconciliation.",
+    "Only after exact-row completeness passes, parse finite OBS_VALUE values and construct the frozen RMD sectors.",
+    "Run stock and flow system reconciliation and source-sector diagnostics.",
+    "Retain targeted raw responses, hashes, exact filtered rows, constructed series and diagnostics."
+  ]
 }
