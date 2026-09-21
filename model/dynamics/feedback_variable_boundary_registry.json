@@ -118,7 +118,10 @@
       "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
       "financing_channel_allocation_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
       "financing_channel_materialisation_contract": "model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json",
-      "financing_channel_materialisation_contract_status": "FROZEN_CUMULATIVE_YTD_ONLY_MONTHLY_DIFFERENCING_NOT_AUTHORIZED"
+      "financing_channel_materialisation_contract_status": "FROZEN_CUMULATIVE_YTD_ONLY_MONTHLY_DIFFERENCING_NOT_AUTHORIZED",
+      "financing_channel_source_vintage_manifest": "data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21/source_vintage_manifest.json",
+      "financing_channel_source_vintage_assessment": "model/dynamics/mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json",
+      "financing_channel_source_vintage_status": "PASS_FULL_2025_EXACT_CUMULATIVE_YTD_MONTHLY_DIFFERENCING_BLOCKED"
     },
     {
       "id": "government_debt_stock",
@@ -159,7 +162,10 @@
       "financing_channel_allocation_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
       "allocation_vector_identified": false,
       "financing_channel_materialisation_contract": "model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json",
-      "financing_channel_materialisation_contract_status": "FROZEN_CUMULATIVE_YTD_ONLY_MONTHLY_DIFFERENCING_NOT_AUTHORIZED"
+      "financing_channel_materialisation_contract_status": "FROZEN_CUMULATIVE_YTD_ONLY_MONTHLY_DIFFERENCING_NOT_AUTHORIZED",
+      "financing_channel_source_vintage_manifest": "data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21/source_vintage_manifest.json",
+      "financing_channel_source_vintage_assessment": "model/dynamics/mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json",
+      "financing_channel_source_vintage_status": "PASS_FULL_2025_EXACT_CUMULATIVE_YTD_MONTHLY_DIFFERENCING_BLOCKED"
     },
     {
       "id": "government_interest_cost",
