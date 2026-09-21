@@ -135,6 +135,18 @@ The failure also persists after the 2025 benchmark revision and new BNR financia
 No post-result window shortening, period dropping or tolerance change is authorized. The mode remains `PARTIAL_SERIES_AVAILABLE` and 9/10 ready.
 
 
+
+### ECB QFA internal-consistency materiality reopen — 2026-09-21
+
+A new independent official source satisfies the precision/balancing reopen condition. The ECB's 2013 QFA quality report explicitly states that discrepancies below EUR 10 million are considered acceptable in national data within its internal-consistency framework. Later QFA quality reports in 2020, 2022 and 2024 continue to use EUR 10 million as the materiality threshold above which internal discrepancies are reported and generally corrected. The 2024 report covers both euro-area and non-euro EU Member States and reports Romania at 96% of validation rules satisfied over Q4 2012-Q2 2024.
+
+This evidence does **not** rewrite the historical RMD 0.1 million RON reconciliation gates or their FAIL results. It authorizes one new, separately preregistered reference-mode gate aligned to the official ECB QFA quality benchmark.
+
+The new gate is intentionally instrument-level. For every common quarter, both stock and financial-transaction measures, and each F2-F8 instrument, it will test three exact-decimal identities: the six-sector RMD horizontal system identity, S1 sector aggregation, and S1+S2 horizontal consistency. It will also report the aggregate F2-F8 RMD identity. The fixed EUR 10 million benchmark is converted to the same-quarter RON boundary using the official ECB quarterly reference-rate series `EXR.Q.RON.EUR.SP00.A`.
+
+No numerical observation has yet been inspected under this new gate. `sectoral_financial_positions` remains `PARTIAL_SERIES_AVAILABLE`, readiness remains 9/10, Accounting Spine readiness is unchanged, and no parameter estimation, feedback activation or behavioural closure is authorized while the manual gate is pending.
+
+
 ### Trigger-aware monitoring horizon — successor frozen 2026-09-21
 
 After the BNR/CMFB → OECD → ESA 2010 → dissemination-precision recovery chain returned to hold, the previous 2026-09-20 trigger horizon is preserved as an immutable historical snapshot and superseded operationally by `model/registries/trigger_aware_monitoring_horizon_2026_09_21.json`.
