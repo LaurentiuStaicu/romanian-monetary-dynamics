@@ -41,14 +41,18 @@ class Bnr2025FinancialAccountsTopologyReopenTests(unittest.TestCase):
         x["scientific_effect"]["reference_mode_readiness_count_change"]=1
         self.assertTrue(any("readiness" in e for e in self.audit(a=x)))
 
-    def test_public_access_topology_has_passed_but_exact_gate_is_pending(self):
+    def test_public_access_topology_passed_but_exact_row_gate_failed_terminally(self):
         s=self.c["current_state"]
-        self.assertFalse(s["execution_completed"])
+        self.assertTrue(s["execution_completed"])
         self.assertTrue(s["topology_pass"])
-        self.assertIsNone(s["aggregate_reference_mode_gate_pass"])
+        self.assertFalse(s["aggregate_reference_mode_gate_pass"])
         self.assertFalse(s["bilateral_accounting_reopen_gate_pass"])
         self.assertFalse(s["reference_mode_promotion_authorized"])
         self.assertFalse(s["accounting_reopen_authorized"])
+        self.assertEqual(
+            s["terminal_assessment"],
+            "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
+        )
 
     def test_s121_and_f2_f8_boundaries_are_frozen(self):
         t=self.c["frozen_target"]
