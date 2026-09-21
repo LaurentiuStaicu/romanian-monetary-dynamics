@@ -124,10 +124,12 @@ def audit_bnr_2025_financial_accounts_topology_reopen(
     if d["readiness_count_change"] != 0:
         e.append("monitoring may not change readiness count")
 
-    if reference_assessment["disposition"]["status"] != "PARTIAL_SERIES_AVAILABLE":
-        e.append("reference assessment no longer partial")
-    if reference_assessment["disposition"]["readiness_count_change"] != 0:
-        e.append("reference assessment readiness changed")
+    if reference_assessment["disposition"]["status"] != "OBSERVED_SERIES_AVAILABLE":
+        e.append("current successor reference assessment is not observed")
+    if reference_assessment["disposition"]["readiness_count_change"] != 1:
+        e.append("current successor reference assessment readiness change is not +1")
+    if reference_assessment.get("current_aggregate_reference_mode",{}).get("promotion_assessment") != "model/dynamics/sectoral_financial_positions_reference_mode_promotion_assessment_2026_09_21.json":
+        e.append("current successor promotion pointer changed")
     reopen = reference_assessment.get("bnr_2025_topology_reopen", {})
     if reopen.get("assessment") != A or reopen.get("public_access_recovery_contract") != C:
         e.append("reference assessment lacks topology-reopen authority pointers")
@@ -149,16 +151,16 @@ def audit_bnr_2025_financial_accounts_topology_reopen(
         e.append("external screening may not promote reference mode")
 
     mode = next(x for x in reference_modes["modes"] if x["id"] == "sectoral_financial_positions")
-    if mode["status"] != "PARTIAL_SERIES_AVAILABLE":
-        e.append("reference-mode registry may not promote sectoral financial positions")
-    if mode.get("bnr_2025_public_access_recovery_status") != "EXECUTED_TOPOLOGY_PASS_EXACT_ROW_GATE_FAIL_NO_PROMOTION":
-        e.append("reference-mode registry recovery status changed")
+    if mode["status"] != "OBSERVED_SERIES_AVAILABLE":
+        e.append("current reference-mode registry must reflect successor promotion")
+    if mode.get("promotion_assessment") != "model/dynamics/sectoral_financial_positions_reference_mode_promotion_assessment_2026_09_21.json":
+        e.append("current reference-mode promotion pointer changed")
 
     dc = model["dynamic_core"]
-    if dc["reference_mode_ready_count"] != 9 or dc["reference_mode_required_count"] != 10:
-        e.append("global reference-mode readiness must remain 9/10")
-    if dc["reference_mode_closure_ready"] is not False:
-        e.append("reference-mode closure may not become ready")
+    if dc["reference_mode_ready_count"] != 10 or dc["reference_mode_required_count"] != 10:
+        e.append("current successor reference-mode readiness must be 10/10")
+    if dc["reference_mode_closure_ready"] is not True:
+        e.append("current successor reference-mode closure prerequisite must be ready")
     if dc.get("sectoral_financial_positions_reference_mode_promotion_authorized") is not False:
         e.append("model contract may not authorize reference-mode promotion")
     if dc.get("sectoral_financial_positions_accounting_reopen_authorized") is not False:
@@ -171,10 +173,10 @@ def audit_bnr_2025_financial_accounts_topology_reopen(
         e.append("historical baseline monitoring pointer may not be rewritten")
     if stage.get("post_terminal_source_topology_trigger_monitoring") != M:
         e.append("model contract post-terminal source-topology monitoring pointer changed")
-    if stage.get("active_noncalibration_source_task") != "sectoral_financial_positions_ecb_qfa_official_tolerance_gate":
-        e.append("only the independent official-tolerance source task may be active")
-    if stage.get("active_noncalibration_source_task_contract") != "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_contract_2026_09_21.json":
-        e.append("official-tolerance active task contract pointer changed")
+    if stage.get("active_noncalibration_source_task") is not None:
+        e.append("successor promotion must close the official-tolerance source task")
+    if stage.get("active_noncalibration_source_task_contract") is not None:
+        e.append("successor promotion must clear the official-tolerance task contract")
     if stage.get("active_noncalibration_source_subtask") is not None:
         e.append("terminal exact-source subtask must remain closed")
     if stage.get("next_operational_state") != "EVIDENCE_TRIGGERED_BASELINE_HOLD":
@@ -214,8 +216,8 @@ def main() -> None:
         "status":"PASS",
         "trigger":"CHANGED_OFFICIAL_TOPOLOGY_SOURCE",
         "authorized_scope":"TOPOLOGY_PASS_EXACT_ROW_GATE_FAIL_PATH_CLOSED",
-        "reference_modes_ready":"9/10",
-        "sectoral_financial_positions":"PARTIAL_SERIES_AVAILABLE",
+        "reference_modes_ready":"10/10",
+        "sectoral_financial_positions":"OBSERVED_SERIES_AVAILABLE",
         "accounting_complete_stock_and_flow_instruments":["F3"],
         "reference_mode_promotion_authorized":False,
         "accounting_reopen_authorized":False,
