@@ -112,6 +112,36 @@ jobs:
           if-no-files-found: error
           retention-days: 90
 
+  manual-oecd-nonconsolidated-topology-probe:
+    if: ${{ github.event_name == 'pull_request' && github.head_ref == 'source-topology/oecd-nonconsolidated-sectoral-financial-positions-2026-09-21' && github.run_attempt > 1 }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out frozen source-topology branch
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify preregistered OECD non-consolidated topology contract
+        run: python -m unittest tests.test_oecd_sectoral_financial_positions_nonconsolidated_probe -v
+
+      - name: Probe OECD Romania non-consolidated topology only
+        env:
+          OECD_NONCONSOLIDATED_TOPOLOGY_OUT: oecd_nonconsolidated_topology_artifacts
+        run: python scripts/audit_oecd_sectoral_financial_positions_nonconsolidated_probe.py
+
+      - name: Upload topology/source-access evidence only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oecd-nonconsolidated-topology-probe-${{ github.sha }}
+          path: oecd_nonconsolidated_topology_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+
   verify-baseline:
     runs-on: ubuntu-latest
 
