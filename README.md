@@ -5,7 +5,7 @@
 <h2 align="center">Romanian Monetary Dynamics (RMD)</h2>
 
 <p align="center">
-  <a href="https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/releases/latest"><img alt="Version: 0.2.0" src="https://img.shields.io/github/v/tag/LaurentiuStaicu/romanian-monetary-dynamics?sort=semver&style=flat-square&label=release&color=333333"></a>
+  <a href="https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/releases/latest"><img alt="Version: 0.3.0" src="https://img.shields.io/github/v/tag/LaurentiuStaicu/romanian-monetary-dynamics?sort=semver&style=flat-square&label=release&color=333333"></a>
   <a href="https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/actions/workflows/scientific-ci.yml"><img alt="Scientific CI" src="https://img.shields.io/github/actions/workflow/status/LaurentiuStaicu/romanian-monetary-dynamics/scientific-ci.yml?branch=main&event=push&style=flat-square&label=Scientific%20CI&color=707070"></a>
   <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-a0a0a0?style=flat-square"></a>
 </p>
