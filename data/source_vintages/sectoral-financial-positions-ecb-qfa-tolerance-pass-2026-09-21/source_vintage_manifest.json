@@ -1,0 +1,61 @@
+{
+  "manifest_version": "0.1",
+  "retained_on": "2026-09-21",
+  "purpose": "Reproducibility manifest for the promoted aggregate sectoral_financial_positions reference series and its official ECB QFA tolerance gate.",
+  "gate_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_official_tolerance_gate_assessment_2026_09_21.json",
+  "workflow_artifact": {
+    "id": 10641532018,
+    "digest": "sha256:08904e5768fbf4953fcce1572c78d5c88ab54438516acabf0d335a279ce18fb8"
+  },
+  "provider_sources": {
+    "flow": {
+      "dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T620R_Q",
+      "sha256": "06c23cfdcc405b2f1689b695392f4f99a9aaa1085e3b90a6254482eb13d0a616"
+    },
+    "stock": {
+      "dataflow": "OECD.SDD.NAD,DSD_NASEC20@DF_T720R_Q",
+      "sha256": "ca41b25cb31f02baeaa31d2b74444b3ea0e59cfd0f1cc974f5f92327a838f4d1"
+    },
+    "fx": {
+      "series": "EXR.D.RON.EUR.SP00.A",
+      "sha256": "1ea39de18bba3fd2d8e5028ded7ab2aa3bc98be91edc1fc664fa6ba349e3483b"
+    }
+  },
+  "semantic_rule": {
+    "assessment": "model/dynamics/sectoral_financial_positions_esa2010_s1m_f2_liability_semantic_assessment_2026_09_21.json",
+    "exact_exception": "S1M/L/F2",
+    "treatment": "STRUCTURAL_ZERO_BY_ESA2010_NORMATIVE_SEMANTICS"
+  },
+  "processed_reference_series": {
+    "path": "data/processed/sectoral_financial_positions_reference_oecd_2014Q1_2026Q1.csv.gz",
+    "format": "gzip-compressed CSV",
+    "uncompressed_sha256": "0279091f83e4fff8e521b66235ca1116be05b0003e2be6d8860e6c1809fc952d",
+    "compressed_sha256": "3e1d45da7d23645eb29387182c8175fde69527ed438f60f32df009d4bb34d5ad",
+    "data_rows": 588,
+    "dimensions": {
+      "measures": [
+        "flow",
+        "stock"
+      ],
+      "quarters": 49,
+      "rmd_sectors": [
+        "H",
+        "C",
+        "F",
+        "G",
+        "BNR",
+        "X"
+      ]
+    },
+    "columns": [
+      "measure",
+      "time_period",
+      "rmd_sector",
+      "assets_million_ron",
+      "liabilities_million_ron",
+      "net_million_ron"
+    ],
+    "arithmetic": "Exact base-10 Decimal materialisation under the frozen sector mapping."
+  },
+  "boundary_limit": "This is an aggregate behaviour-over-time reference series. It is not a holder-by-issuer bilateral Accounting Spine materialisation and does not complete F2/F4/F5/F6/F7/F8 accounting readiness."
+}
