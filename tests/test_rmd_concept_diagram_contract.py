@@ -157,8 +157,8 @@ class RMDConceptDiagramContractTests(unittest.TestCase):
 
     def test_diagram_status_matches_canonical_state(self) -> None:
         refs = self.baseline["canonical_state"]["reference_modes"]
-        self.assertEqual((refs["ready_count"], refs["required_count"]), (9, 10))
-        self.assertIn("9 / 10 required reference modes ready", svg_text(LIGHT))
+        self.assertEqual((refs["ready_count"], refs["required_count"]), (10, 10))
+        self.assertIn("10 / 10 required reference modes ready", svg_text(LIGHT))
 
         active = self.baseline["canonical_state"]["empirical_validation"][
             "activated_mechanisms_count"
