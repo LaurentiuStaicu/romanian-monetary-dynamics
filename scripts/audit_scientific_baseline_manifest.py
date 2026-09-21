@@ -95,6 +95,18 @@ def main() -> None:
         "model/registries/validation_recovery_stage_terminal_assessment.json"
     )
     release = load("model/registries/release_versioning_contract.json")
+    mof_realized_contract = load(
+        "model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json"
+    )
+    mof_realized_probe = load(
+        "model/dynamics/mof_realized_financing_channel_source_vintage_probe_contract_2026_09_21.json"
+    )
+    mof_realized_assessment = load(
+        "model/dynamics/mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json"
+    )
+    mof_realized_vintage = load(
+        "data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21/source_vintage_manifest.json"
+    )
 
     # Authority paths must exist and the manifest must be registered centrally.
     for label, relative in manifest["authority"].items():
@@ -108,6 +120,54 @@ def main() -> None:
         reset["scientific_baseline_manifest"]
         == "model/registries/scientific_baseline_manifest.json",
         "Reset integrity contract does not register the scientific baseline manifest",
+    )
+
+    # The realized-financing evidence chain must remain fully connected:
+    # materialisation contract -> probe contract -> retained vintage -> assessment.
+    check(
+        mof_realized_probe["governing_contract"]
+        == "model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json",
+        "MoF realized-financing probe contract points to a stale governing contract",
+    )
+    check(
+        mof_realized_contract["next_gate"]["id"]
+        == mof_realized_probe["probe_id"],
+        "MoF realized-financing materialisation contract and probe ID disagree",
+    )
+    check(
+        mof_realized_vintage["probe_contract"]
+        == "model/dynamics/mof_realized_financing_channel_source_vintage_probe_contract_2026_09_21.json",
+        "MoF realized-financing retained vintage points to a stale probe contract",
+    )
+    check(
+        mof_realized_vintage["governing_contract"]
+        == "model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json",
+        "MoF realized-financing retained vintage points to a stale governing contract",
+    )
+    check(
+        mof_realized_assessment["probe_contract"]
+        == "model/dynamics/mof_realized_financing_channel_source_vintage_probe_contract_2026_09_21.json",
+        "MoF realized-financing assessment points to a stale probe contract",
+    )
+    check(
+        mof_realized_assessment["governing_contract"]
+        == "model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json",
+        "MoF realized-financing assessment points to a stale governing contract",
+    )
+    check(
+        mof_realized_assessment["source_vintage_manifest"]
+        == "data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21/source_vintage_manifest.json",
+        "MoF realized-financing assessment points to a stale retained vintage",
+    )
+    check(
+        manifest["authority"]["mof_realized_financing_channel_source_vintage_probe_contract"]
+        == mof_realized_assessment["probe_contract"],
+        "Scientific baseline does not register the MoF realized-financing probe contract",
+    )
+    check(
+        manifest["authority"]["mof_realized_financing_channel_source_vintage_manifest"]
+        == mof_realized_assessment["source_vintage_manifest"],
+        "Scientific baseline does not register the MoF realized-financing retained vintage",
     )
 
     # Release/version state is derived from the canonical release-versioning contract.
