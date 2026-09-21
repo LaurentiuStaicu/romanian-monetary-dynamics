@@ -268,7 +268,10 @@
     "sectoral_financial_positions_oecd_decimal_arithmetic_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
     "sectoral_financial_positions_oecd_decimal_arithmetic_status": "CORRECTED_63_MACHINE_FLOAT_TO_47_EXACT_DECIMAL_VIOLATIONS_VERDICT_UNCHANGED",
     "sectoral_financial_positions_oecd_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json",
-    "sectoral_financial_positions_oecd_window_stability_status": "NO_CONTIGUOUS_40Q_WINDOW_PASSES_POST_BENCHMARK_FAILURE_PERSISTS"
+    "sectoral_financial_positions_oecd_window_stability_status": "NO_CONTIGUOUS_40Q_WINDOW_PASSES_POST_BENCHMARK_FAILURE_PERSISTS",
+    "sectoral_financial_positions_ecb_qfa_10m_threshold_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_threshold_assessment_2026_09_21.json",
+    "sectoral_financial_positions_ecb_qfa_10m_horizontal_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_contract_2026_09_21.json",
+    "sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_status": "PREREGISTERED_PENDING_MANUAL_EXECUTION"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
@@ -302,7 +305,7 @@
     "name": "Validation Recovery / Empirical Basis Expansion",
     "terminal_assessment": "model/registries/validation_recovery_stage_terminal_assessment.json",
     "status": "STAGE_COMPLETE_EVIDENCE_TRIGGERED_BASELINE_HOLD",
-    "next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+    "next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD_WITH_ONE_OFFICIAL_THRESHOLD_TASK",
     "model_complete": false,
     "release_ready": false,
     "latest_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
@@ -353,7 +356,10 @@
     "post_terminal_decimal_arithmetic_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
     "post_terminal_decimal_arithmetic_correction_status": "EXECUTED_CORRECTION_ONLY_BASELINE_HOLD_UNCHANGED",
     "post_terminal_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json",
-    "post_terminal_window_stability_status": "EXECUTED_NEGATIVE_NO_REOPEN"
+    "post_terminal_window_stability_status": "EXECUTED_NEGATIVE_NO_REOPEN",
+    "post_terminal_official_threshold_reopen_task": "ecb_qfa_10m_per_instrument_horizontal_consistency_gate",
+    "post_terminal_official_threshold_reopen_contract": "model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_contract_2026_09_21.json",
+    "post_terminal_official_threshold_reopen_status": "PREREGISTERED_PENDING_MANUAL_EXECUTION"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",
