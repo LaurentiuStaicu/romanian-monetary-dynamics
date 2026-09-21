@@ -101,7 +101,9 @@
     "trigger_aware_monitoring_horizon_2026_09_21": "model/registries/trigger_aware_monitoring_horizon_2026_09_21.json",
     "oecd_sectoral_financial_positions_decimal_arithmetic_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
     "oecd_sectoral_financial_positions_decimal_arithmetic_correction_vintage": "data/source_vintages/oecd-decimal-arithmetic-correction-2026-09-21/source_vintage_manifest.json",
-    "oecd_sectoral_financial_positions_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json"
+    "oecd_sectoral_financial_positions_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json",
+    "ecb_qfa_sectoral_financial_positions_materiality_scope_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_scope_assessment_2026_09_21.json",
+    "ecb_qfa_sectoral_financial_positions_materiality_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_contract_2026_09_21.json"
   },
   "canonical_state": {
     "accounting": {
