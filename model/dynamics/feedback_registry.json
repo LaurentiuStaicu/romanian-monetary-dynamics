@@ -172,7 +172,10 @@
       "topology_status": "CLOSED_CANDIDATE_LOOP",
       "credit_flow_to_loan_stock_boundary_review": "model/dynamics/credit_flow_to_loan_stock_boundary_review_2026_09_21.json",
       "credit_flow_to_loan_stock_status": "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED",
-      "credit_flow_to_loan_stock_equation_ready": false
+      "credit_flow_to_loan_stock_equation_ready": false,
+      "loan_stock_to_debt_service_and_credit_risk_boundary_review": "model/dynamics/loan_stock_to_debt_service_and_credit_risk_boundary_review_2026_09_21.json",
+      "loan_stock_to_debt_service_and_credit_risk_status": "EXPOSURE_SCALE_OBSERVED_DEBT_SERVICE_AND_CREDIT_RISK_STATE_BOUNDARY_UNRECONCILED",
+      "loan_stock_to_debt_service_and_credit_risk_equation_ready": false
     },
     {
       "id": "monetary_credit_transmission_loop",
