@@ -1,0 +1,181 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "monetary_credit_transmission_loop_terminal_assessment",
+  "loop_id": "monetary_credit_transmission_loop",
+  "purpose": "Close the current structural/source-boundary review cycle for the monetary-credit transmission candidate loop after all five declared path links have explicit boundary reviews, without converting target-specific evidence into generic closure or adding an inflation extension to the Dynamic Core.",
+  "decision": "STRUCTURAL_REVIEW_COMPLETE_MEASUREMENT_AND_IDENTIFICATION_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
+  "topology": {
+    "status": "CLOSED_CANDIDATE_LOOP",
+    "polarity_hypothesis": "balancing_candidate",
+    "qualitative_topology_retained": true,
+    "quantitatively_active": false,
+    "behavioural_closure_active": false
+  },
+  "link_boundary_reviews": [
+    {
+      "from": "policy_rate",
+      "to": "market_and_lending_rates",
+      "review": "model/dynamics/policy_rate_to_market_and_lending_rates_boundary_review_2026_09_21.json",
+      "readiness_status": "PARTIAL_TARGET_SPECIFIC_FORM_NOT_INTEGRATED",
+      "boundary_status": "TARGET_SPECIFIC_PASS_THROUGH_CANDIDATE_AVAILABLE_GENERIC_RATE_NODE_UNRESOLVED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "The frozen household-housing delta-policy form is target-specific and unvalidated; no NFC form or generic market/outstanding-rate node mapping is selected."
+    },
+    {
+      "from": "market_and_lending_rates",
+      "to": "credit_flow",
+      "review": "model/dynamics/market_and_lending_rates_to_credit_flow_boundary_review_2026_09_21.json",
+      "readiness_status": "RATE_PRICE_AND_CREDIT_TRANSACTION_BOUNDARIES_DISTINCT_JOINT_DETERMINATION_UNRESOLVED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "Lending rates are prices while BSI credit_flow is a realized net transaction jointly determined by supply and demand."
+    },
+    {
+      "from": "credit_flow",
+      "to": "private_demand_and_investment",
+      "review": "model/dynamics/credit_flow_to_private_demand_and_investment_boundary_review_2026_09_21.json",
+      "readiness_status": "FINANCING_FLOW_PURPOSES_MULTIPLE_PRIVATE_DEMAND_AND_INVESTMENT_MAPPING_UNIDENTIFIED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "Credit finances multiple purposes; no observed sector-purpose allocation maps aggregate credit transactions into consumption and NFC investment."
+    },
+    {
+      "from": "private_demand_and_investment",
+      "to": "inflationary_pressure",
+      "review": "model/dynamics/private_demand_and_investment_to_inflationary_pressure_boundary_review_2026_09_21.json",
+      "readiness_status": "MULTI_DRIVER_INFLATION_HICP_OBSERVABLE_DEMAND_CONTRIBUTION_NOT_IDENTIFIED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "HICP is observable but inflation is multi-driver; the demand contribution and an exact inflationary-pressure state are not identified."
+    },
+    {
+      "from": "inflationary_pressure",
+      "to": "policy_rate",
+      "review": "model/dynamics/inflationary_pressure_to_policy_rate_boundary_review_2026_09_21.json",
+      "readiness_status": "POLICY_RATE_OBSERVED_FORCING_REACTION_FUNCTION_MEASUREMENT_AND_IDENTIFICATION_BLOCKED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "The policy rate remains observed/exogenous because formation-date expectations, real-time activity-gap vintages and simultaneity/regime identification are incomplete."
+    }
+  ],
+  "integrated_readiness": {
+    "path_link_count": 5,
+    "exact_integrated_link_forms_ready": 0,
+    "unresolved_boundary_nodes": [
+      "market_and_lending_rates",
+      "credit_flow",
+      "private_demand_and_investment",
+      "inflationary_pressure"
+    ],
+    "observed_forcing_nodes": [
+      "policy_rate"
+    ],
+    "activation_status": "BLOCKED",
+    "blockers": [
+      "EXACT_LINK_EQUATION_COVERAGE_INCOMPLETE",
+      "UNRESOLVED_FEEDBACK_BOUNDARY_NODES",
+      "DELAY_SPECIFICATION_NOT_ACTIVATION_READY",
+      "NO_ACTIVATED_EMPIRICAL_MECHANISM"
+    ],
+    "quantitative_activation_authorized": false
+  },
+  "activation_gate_snapshot": {
+    "source": "model/dynamics/feedback_activation_criteria_matrix.json",
+    "passed_criteria_count": 1,
+    "partial_criteria_count": 6,
+    "blocked_criteria_count": 6,
+    "not_assessable_criteria_count": 1,
+    "all_requirements_pass": false,
+    "quantitative_activation_authorized": false
+  },
+  "delay_state": {
+    "delay_id": "monetary_transmission_delay",
+    "current_tau": "TBD",
+    "evidence_status": "GENERAL_TIMING_EVIDENCE_SCALAR_TAU_NOT_IDENTIFIED",
+    "scalar_tau_activation_ready": false
+  },
+  "mechanism_state": {
+    "monetary_policy_lending_rate_pass_through": {
+      "classification": "CANDIDATE",
+      "implementation_scope": "HOUSEHOLD_HOUSING_TARGET_SPECIFIC_ONLY",
+      "prospective_identification_gate": "WAIT_FOR_NEW_POLICY_RATE_EVENT",
+      "validated": false,
+      "generic_feedback_link_implemented": false
+    },
+    "monetary_policy_reaction_function": {
+      "classification": "DEFERRED",
+      "observed_policy_rate_remains_exogenous": true,
+      "estimation_or_refit_allowed": false,
+      "policy_rule_activation": false
+    }
+  },
+  "adjacent_empirical_boundaries": {
+    "household_consumption_response": "CANDIDATE_SOURCE_BOUNDARY_INCOMPLETE",
+    "corporate_investment_response": "TESTED_FORM_FAILED_BEFORE_HOLDOUT",
+    "aggregate_bank_credit_response": "CANDIDATE_SUPPLY_DEMAND_IDENTIFICATION_UNRESOLVED",
+    "exchange_rate_pass_through_to_inflation": "TESTED_FORM_FAILED_BEFORE_HOLDOUT",
+    "interpretation": "Related mechanisms do not supply missing exact link equations for this loop and may not be combined into an integrated closure."
+  },
+  "no_further_current_evidence_task_findings": {
+    "respecify_household_pass_through_before_identifying_policy_event_authorized": false,
+    "infer_NFC_pass_through_from_household_candidate_authorized": false,
+    "infer_rate_elasticity_from_aggregate_credit_flow_authorized": false,
+    "synthesize_credit_purpose_allocation_authorized": false,
+    "promote_HICP_to_core_inflation_reference_mode_authorized": false,
+    "reuse_failed_FX_inflation_form_authorized": false,
+    "estimate_policy_reaction_rule_without_real_time_information_set_authorized": false,
+    "infer_scalar_monetary_transmission_tau_authorized": false,
+    "repeat_closed_reaction_function_source_searches_without_new_official_clue_authorized": false,
+    "interpretation": "The structural review is exhausted at the current evidence boundary. Further progress requires a declared new event/source/identification trigger rather than proxy completion, post-result respecification or repeated unchanged-source searches."
+  },
+  "reopen_triggers": [
+    {
+      "id": "prospective_nonzero_BNR_policy_event_and_MIR_response",
+      "requirement": "An actually observed non-zero BNR policy-rate decision followed by the corresponding prospectively reserved household-housing MIR response observation under the frozen confirmation contract."
+    },
+    {
+      "id": "new_preregistered_NFC_pass_through_cycle",
+      "requirement": "A separately preregistered NFC lending-rate pass-through cycle with target, form family, selection window and untouched evaluation gate frozen before outcomes."
+    },
+    {
+      "id": "sector_purpose_credit_to_expenditure_bridge",
+      "requirement": "Observed sector- and purpose-specific financing evidence sufficient to map credit transactions to a selected household-consumption or NFC-investment target without synthetic shares."
+    },
+    {
+      "id": "new_multi_driver_inflation_identification_cycle",
+      "requirement": "A separately preregistered inflation-pressure design that distinguishes demand contribution from supply/external-price/tax/administered-price/expectation channels; observed HICP alone is insufficient."
+    },
+    {
+      "id": "real_time_policy_reaction_information_set",
+      "requirement": "Machine-readable formation-date quantitative inflation expectations and real-time BNR activity-gap vintages with information cutoffs/revisions, followed by a frozen regime/intervention and simultaneity identification design."
+    },
+    {
+      "id": "target_matched_monetary_transmission_delay_evidence",
+      "requirement": "Evidence identifying a scalar delay parameter on the exact RMD mechanism/target boundary rather than a survey cadence, generic literature lag or cross-country adjustment speed."
+    }
+  ],
+  "disposition": {
+    "structural_review_complete": true,
+    "current_operational_state": "EVIDENCE_TRIGGERED_HOLD",
+    "active_empirical_task": null,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "final_holdout_opening_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "core_inflation_reference_mode_extension_authorized": false,
+    "public_version_change_authorized": false,
+    "qualitative_topology_changed": false
+  },
+  "next_state": {
+    "id": "monetary_credit_transmission_loop_evidence_triggered_hold",
+    "authorization": "NO_ACTIVE_TASK_UNTIL_DECLARED_REOPEN_TRIGGER",
+    "reopen_trigger_required": true,
+    "may_poll_unchanged_sources": false,
+    "may_respecify_frozen_candidates": false,
+    "may_open_unopened_holdouts": false,
+    "may_estimate_parameters": false,
+    "may_endogenize_policy_rate": false,
+    "may_add_core_inflation_reference_mode": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false,
+    "may_relax_existing_gates": false
+  }
+}
