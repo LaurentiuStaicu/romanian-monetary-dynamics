@@ -306,7 +306,7 @@ jobs:
       - name: Audit cross-registry scientific baseline manifest
         run: python scripts/audit_scientific_baseline_manifest.py
 
-      - name: Audit gated release-publication authorization
+      - name: Audit release publication state
         run: python scripts/audit_release_publication_authorization.py
 
       - name: Verify retained source-vintage provenance state offline
