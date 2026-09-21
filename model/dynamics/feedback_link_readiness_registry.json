@@ -141,15 +141,16 @@
       "to": "government_interest_cost",
       "sign": "+",
       "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
-      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "readiness_status": "TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED",
       "related_mechanisms": [
         "government_refinancing_effective_rate"
       ],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "A related refinancing/effective-rate mechanism exists, but a new-issue yield is not contemporaneously equal to interest cost on the outstanding debt stock. Maturity, refinancing and re-fixing propagation must be specified and validated.",
-      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json"
+      "reason": "The ECB 10-year RON sovereign yield is an observed marginal long-term market target, while Ministry portfolio-average interest rate and Eurostat D41PAY are distinct observed cost targets. Public data do not identify matched repriced principal and old/new rates needed to propagate the market yield through the debt stock.",
+      "structural_preregistration": "model/dynamics/government_issuance_yield_boundary_preregistration_2026_09_20.json",
+      "yield_to_interest_cost_boundary_review": "model/dynamics/yield_to_interest_cost_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "government_issuance_yield_loop|government_interest_cost|government_financing_need",
