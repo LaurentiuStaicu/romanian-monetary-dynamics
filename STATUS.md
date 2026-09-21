@@ -492,3 +492,13 @@ This explains, rather than repairs, the existing `FA__D__F2` non-dissemination f
 
 The standard BOP/IIP route is therefore marked **CLOSED_FOR_DI_F2_SUBINSTRUMENT**. F2M remains materialized; F21 and total F2 remain incomplete. A future reopen requires either a Romania-specific supplementary table/API/microdata product that explicitly identifies currency-and-deposits inside Direct-Investment debt for the required boundary, or an official exact bridge that identifies the same contribution without residual allocation or historical shares.
 
+### Scientific baseline manifest release-state synchronization — 2026-09-21
+
+A cross-registry audit found a governance drift in `model/registries/scientific_baseline_manifest.json`: its embedded release-versioning summary still stated public/repository version **0.1.0** with **0.2.0** as the next candidate, while the canonical release contract correctly recorded the already-published immutable **v0.2.0** release and **v0.3.0** as the next substantive candidate.
+
+The scientific conclusions were not stale: Accounting Spine readiness, 10/10 aggregate reference-mode readiness, inactive behavioural closure and closed calibration state remained correct. The defect was narrower but important for traceability: `audit_scientific_baseline_manifest.py` did not load or compare the release-versioning contract, so CI could remain green while the baseline release summary drifted.
+
+Manifest version **1.2** now records public/repository version **0.2.0**, unreleased changes present, `version_bump_required_now = false`, and next candidate **0.3.0**. It also registers the current F2/F4/F5/F6/F7/F8 Accounting Spine boundary assessments as explicit authorities. The cross-registry audit and a focused invariant test now bind these baseline release fields to `model/registries/release_versioning_contract.json`.
+
+This synchronization does **not** authorize a version bump. The canonical release contract remains authoritative and continues to state that no immediate bump is required.
+
