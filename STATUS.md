@@ -135,6 +135,20 @@ The failure also persists after the 2025 benchmark revision and new BNR financia
 No post-result window shortening, period dropping or tolerance change is authorized. The mode remains `PARTIAL_SERIES_AVAILABLE` and 9/10 ready.
 
 
+
+### ECB QFA official internal-consistency threshold reopen — 2026-09-21
+
+A new official domain-specific trigger has been identified after the dissemination-precision hold. The ECB's 2013 QFA quality report defines horizontal consistency as equality between total assets and liabilities **for each financial instrument** and states that discrepancies below EUR 10 million are acceptable in national data. ECB quality reports for 2020, 2022 and 2024 continue to use EUR 10 million as the operational level above which internal discrepancies are reported and generally corrected. The 2024 annex includes Romania in the national validation-rule assessment.
+
+This is materially different from the earlier generic SDMX `DECIMALS` evidence: it is a QFA-specific quantitative internal-consistency rule and therefore satisfies the declared precision/balancing reopen condition.
+
+A new gate is preregistered under `model/dynamics/sectoral_financial_positions_ecb_qfa_10m_horizontal_gate_contract_2026_09_21.json`. It does **not** reuse the prior aggregate F2-F8 residual test. Instead, stocks and financial transactions must satisfy horizontal consistency separately for each of F2, F3, F4, F5, F6, F7 and F8 over the frozen 2014Q1–2026Q1 boundary, using exact decimal arithmetic and the already-established ESA 2010 structural-zero rule for S1M/L/F2.
+
+The first-stage currency test is deliberately stricter than the ECB threshold: every per-instrument residual must be below 10 million RON, while official ECB RON-per-EUR quarterly rates must remain above 1. If that strict sufficient condition fails for any cell, the result is indeterminate and an exact EUR-conversion convention must be preregistered before further interpretation.
+
+No value has yet been inspected under this new gate. The canonical state remains 9/10 with `sectoral_financial_positions = PARTIAL_SERIES_AVAILABLE`; Accounting Spine and behavioural closure are unchanged.
+
+
 ### Trigger-aware monitoring horizon — successor frozen 2026-09-21
 
 After the BNR/CMFB → OECD → ESA 2010 → dissemination-precision recovery chain returned to hold, the previous 2026-09-20 trigger horizon is preserved as an immutable historical snapshot and superseded operationally by `model/registries/trigger_aware_monitoring_horizon_2026_09_21.json`.
