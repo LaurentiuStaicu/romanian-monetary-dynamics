@@ -50,9 +50,10 @@
       "may_count_as_complete_F2": false
     },
     {
-      "scope": "F4 unconditional rank-unique partial core only",
-      "path": "model/accounting/f4_partial_2025.json",
-      "may_count_as_complete_F4": false
+      "scope": "F4 structural-zero rank-unique successor partial core only",
+      "path": "model/accounting/f4_partial_structural_2025.json",
+      "may_count_as_complete_F4": false,
+      "predecessor_path": "model/accounting/f4_partial_2025.json"
     },
     {
       "scope": "F5 component/control evidence",
@@ -88,7 +89,8 @@
   },
   "interpretation": "The gate is an accounting-readiness classification, not a requirement to invent missing instruments. A scientifically valid frozen or partial recovery outcome remains valid; it simply does not count as a complete canonical bilateral matrix.",
   "reopen_conditions_registry": "model/accounting/reopen_conditions_registry.json",
-  "accounting_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json",
+  "accounting_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_post_f4_structural_terminal_assessment_2026_09_21.json",
   "accounting_recovery_stage_status": "STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD",
-  "next_operational_state": "EVIDENCE_TRIGGERED_ACCOUNTING_SPINE_HOLD"
+  "next_operational_state": "EVIDENCE_TRIGGERED_ACCOUNTING_SPINE_HOLD",
+  "previous_accounting_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json"
 }
