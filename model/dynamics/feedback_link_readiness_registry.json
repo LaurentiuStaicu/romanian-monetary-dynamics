@@ -20,7 +20,8 @@
     "RATE_PRICE_AND_CREDIT_TRANSACTION_BOUNDARIES_DISTINCT_JOINT_DETERMINATION_UNRESOLVED",
     "FINANCING_FLOW_PURPOSES_MULTIPLE_PRIVATE_DEMAND_AND_INVESTMENT_MAPPING_UNIDENTIFIED",
     "MULTI_DRIVER_INFLATION_HICP_OBSERVABLE_DEMAND_CONTRIBUTION_NOT_IDENTIFIED",
-    "POLICY_RATE_OBSERVED_FORCING_REACTION_FUNCTION_MEASUREMENT_AND_IDENTIFICATION_BLOCKED"
+    "POLICY_RATE_OBSERVED_FORCING_REACTION_FUNCTION_MEASUREMENT_AND_IDENTIFICATION_BLOCKED",
+    "FX_DIRECTION_KNOWN_CURRENCY_PAYMENT_AND_HEDGING_EXPOSURE_NOT_IDENTIFIED"
   ],
   "hard_rules": {
     "every_feedback_path_link_must_be_registered_exactly_once": true,
@@ -370,15 +371,16 @@
       "from": "exchange_rate_depreciation",
       "to": "fx_debt_service_burden",
       "sign": "+_candidate",
-      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
-      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "causal_role": "FX_TRANSLATION_EFFECT_CONDITIONAL_ON_CURRENCY_PAYMENT_AND_HEDGING_BOUNDARY",
+      "readiness_status": "FX_DIRECTION_KNOWN_CURRENCY_PAYMENT_AND_HEDGING_EXPOSURE_NOT_IDENTIFIED",
       "related_mechanisms": [
         "external_fx_refinancing_feedback"
       ],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+      "reason": "The sign of a domestic-currency burden from depreciation is conceptually clear for unhedged scheduled foreign-currency payments, but current RMD evidence lacks the joint currency-denomination, residual-maturity/payment-schedule and hedging boundary needed to quantify the link.",
+      "exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review": "model/dynamics/exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "external_fx_refinancing_loop|fx_debt_service_burden|refinancing_need",
