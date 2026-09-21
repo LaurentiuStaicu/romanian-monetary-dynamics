@@ -60,7 +60,7 @@ class GovernmentIssuanceYieldBoundaryPreregistrationTests(unittest.TestCase):
             self.prereg["scientific_effect"]["conceptual_loop_topology_changed"]
         )
 
-    def test_four_bridges_are_required_before_empirical_closure(self) -> None:
+    def test_five_bridges_are_required_before_empirical_closure(self) -> None:
         ids = {
             item["id"]
             for item in self.prereg[
@@ -74,6 +74,7 @@ class GovernmentIssuanceYieldBoundaryPreregistrationTests(unittest.TestCase):
                 "issuance_to_supply_pressure",
                 "primary_yield_to_sovereign_yield",
                 "yield_to_interest_cost",
+                "interest_cost_to_financing_need",
             },
         )
 
