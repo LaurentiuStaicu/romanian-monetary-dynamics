@@ -1,0 +1,85 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "oecd_financial_accounts_dissemination_precision_diagnostic",
+  "reference_mode": "sectoral_financial_positions",
+  "purpose": "Test whether the declared public SDMX precision metadata alone can account for the small residuals observed in the terminal semantic-adjusted OECD reconciliation, without changing the frozen 0.1 million RON gate or opening a new value run.",
+  "evidence": {
+    "official_sdmx_decimals_definition": {
+      "source": "SDMX Guidelines / Cross-domain concept DECIMALS",
+      "url": "https://sdmx.org/wp-content/uploads/SDMX_Glossary_Version_2_0_October_2018.htm",
+      "definition": "Number of digits of an observation to the right of a decimal point."
+    },
+    "official_sdmx_national_accounts_dsd_guideline": {
+      "source": "SDMX National Accounts DSD Guidelines",
+      "url": "https://sdmx.org/wp-content/uploads/2013/09/SDMX-NA_DSD-Guidelines.pdf",
+      "semantic_point": "DECIMALS provides the number of decimal digits used in the data; UNIT_MULT supplies the magnitude multiplier."
+    },
+    "official_bnr_internal_consistency": {
+      "source": "NBR / CMFB Level 3 national financial-accounts quality report",
+      "url": "https://circabc.europa.eu/sd/a/89ddc57a-7e1d-436e-b217-bd266cfb23fd/23%20-%20RO%20-%20CMFB%20FA%20level%20%203.pdf",
+      "semantic_point": "Romanian quarterly financial accounts are built who-to-whom and have no asset/liability discrepancies by construction; no quantitative reliability measure is supplied at national level."
+    },
+    "retained_oecd_response_metadata": {
+      "source_vintage": "data/source_vintages/oecd-semantic-adjusted-sectoral-financial-positions-2026-09-21/source_vintage_manifest.json",
+      "decimals": 2,
+      "unit_mult": 6,
+      "unit_measure": "XDC",
+      "currency": "RON",
+      "declared_last_decimal_quantum_million_ron": 0.01,
+      "lexical_obs_value_format_seen": "integer or one visible decimal in retained CSV; trailing zeros may be omitted by serialization",
+      "lexical_format_used_as_normative_precision_rule": false
+    }
+  },
+  "conservative_declared_precision_test": {
+    "assumption": "For diagnostic purposes only, allow up to one full declared last-decimal quantum per disseminated observation. This is more conservative than round-to-nearest and does not assume an OECD rounding mode.",
+    "quantum_million_ron": 0.01,
+    "system_identity": {
+      "algebra": "H+C+F+G+BNR+X collapses to S1M+S11+S12+S13+S2 because F=S12-S121 and BNR=S121 cancel exactly.",
+      "gross_observation_terms": 70,
+      "preregistered_structural_zero_terms": 1,
+      "disseminated_observation_terms": 69,
+      "conservative_bound_million_ron": 0.69,
+      "observed_max_abs_flow_residual_million_ron": 0.5000000000075033,
+      "observed_max_abs_stock_residual_million_ron": 0.5999999999476131,
+      "result": "WITHIN_ONE_ULP_PER_OBSERVATION_ENVELOPE"
+    },
+    "resident_additivity_diagnostic": {
+      "identity": "S1 - (S11+S12+S13+S1M)",
+      "disseminated_observation_terms": 69,
+      "conservative_bound_million_ron": 0.69,
+      "observed_max_abs_residual_million_ron": 0.6000000002095476,
+      "result": "WITHIN_ONE_ULP_PER_OBSERVATION_ENVELOPE"
+    },
+    "external_balance_diagnostic": {
+      "identity": "S1 + S2",
+      "disseminated_observation_terms": 28,
+      "conservative_bound_million_ron": 0.28,
+      "observed_max_abs_residual_million_ron": 0.5000000002328306,
+      "result": "EXCEEDS_DECLARED_DECIMALS_ONE_ULP_ENVELOPE"
+    }
+  },
+  "adjudication": {
+    "declared_decimals_metadata_sufficient_to_explain_all_public_residuals": false,
+    "system_residuals_alone_would_fit_conservative_envelope": true,
+    "source_level_s1_plus_s2_diagnostic_falsifies_decimals_only_explanation": true,
+    "actual_csv_lexical_one_decimal_can_be_promoted_to_official_precision_rule": false,
+    "post_result_tolerance_change_authorized": false,
+    "new_value_gate_authorized": false,
+    "reference_mode_promotion_authorized": false,
+    "reason": "The official DECIMALS=2 metadata does not provide an adequate independent precision explanation for all public-accounting diagnostics. A coarser lexical display cannot be substituted for an official dissemination precision/rounding rule after observing the residuals."
+  },
+  "decision": "NO_PRECISION_BASED_REOPEN_DECIMALS_ONLY_EXPLANATION_INSUFFICIENT_BASELINE_HOLD_CONTINUES",
+  "scientific_effect": {
+    "reference_mode_status": "PARTIAL_SERIES_AVAILABLE",
+    "readiness_count_change": 0,
+    "accounting_readiness_change": false,
+    "prior_terminal_reconciliation_reinterpreted": false,
+    "new_tolerance_authorized": false,
+    "new_live_execution_authorized": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false
+  },
+  "future_reopen_condition": "Require an official domain-specific financial-accounts dissemination rule that quantitatively defines the precision/rounding or balancing tolerance of the published OECD/ECB/BNR values, or a changed public source whose exact values satisfy the frozen accounting identity. Generic DECIMALS metadata or lexical formatting alone is insufficient."
+}

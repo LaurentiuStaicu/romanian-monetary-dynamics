@@ -96,7 +96,8 @@
     "esa2010_financial_instrument_semantic_source_manifest": "data/source_vintages/esa2010-financial-instrument-semantics-2026-09-21/source_vintage_manifest.json",
     "oecd_semantic_adjusted_sectoral_financial_positions_gate": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_exact_gate_contract_2026_09_21.json",
     "oecd_semantic_adjusted_sectoral_financial_positions_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
-    "oecd_semantic_adjusted_sectoral_financial_positions_source_vintage": "data/source_vintages/oecd-semantic-adjusted-sectoral-financial-positions-2026-09-21/source_vintage_manifest.json"
+    "oecd_semantic_adjusted_sectoral_financial_positions_source_vintage": "data/source_vintages/oecd-semantic-adjusted-sectoral-financial-positions-2026-09-21/source_vintage_manifest.json",
+    "oecd_sectoral_financial_positions_precision_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_precision_diagnostic_2026_09_21.json"
   },
   "canonical_state": {
     "accounting": {
