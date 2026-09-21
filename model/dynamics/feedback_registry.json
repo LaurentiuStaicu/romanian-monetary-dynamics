@@ -169,7 +169,10 @@
         "credit_risk_recognition_delay",
         "credit_supply_adjustment_delay"
       ],
-      "topology_status": "CLOSED_CANDIDATE_LOOP"
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "credit_flow_to_loan_stock_boundary_review": "model/dynamics/credit_flow_to_loan_stock_boundary_review_2026_09_21.json",
+      "credit_flow_to_loan_stock_status": "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED",
+      "credit_flow_to_loan_stock_equation_ready": false
     },
     {
       "id": "monetary_credit_transmission_loop",
