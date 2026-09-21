@@ -204,6 +204,38 @@ jobs:
           if-no-files-found: error
           retention-days: 90
 
+  manual-ecb-qfa-10m-horizontal-consistency-gate:
+    if: ${{ github.event_name == 'pull_request' && github.head_ref == 'model/ecb-qfa-10m-horizontal-consistency-gate-2026-09-21' && github.run_attempt > 1 }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out frozen ECB-threshold branch
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify official ECB threshold preregistration
+        run: |
+          python scripts/audit_ecb_qfa_10m_horizontal_gate_preregistration.py
+          python -m unittest tests.test_ecb_qfa_10m_horizontal_consistency_gate -v
+
+      - name: Run per-instrument ECB-QFA-threshold horizontal gate
+        env:
+          ECB_QFA_10M_GATE_OUT: ecb_qfa_10m_gate_artifacts
+        run: python scripts/audit_ecb_qfa_10m_horizontal_consistency_gate.py
+
+      - name: Upload ECB-threshold horizontal-consistency evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecb-qfa-10m-horizontal-gate-${{ github.sha }}
+          path: ecb_qfa_10m_gate_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+
   verify-baseline:
     runs-on: ubuntu-latest
 
