@@ -1,0 +1,125 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "credit_flow_to_loan_stock_boundary_review",
+  "loop_id": "bank_credit_balance_sheet_loop",
+  "purpose": "Determine whether the observed ECB BSI private non-financial credit-flow reference can be integrated one-to-one into the loan-stock feedback node, while preserving the exact stock/transaction distinction and non-transaction adjustments.",
+  "decision": "DO_NOT_SET_LOAN_STOCK_CHANGE_EQUAL_TO_CREDIT_FLOW_USE_MATCHED_BSI_STOCK_TRANSACTION_RECONCILIATION_WITH_NON_TRANSACTION_ADJUSTMENTS",
+  "official_definition_evidence": {
+    "ecb_mfi_balance_sheet_methodology": {
+      "institution": "European Central Bank / ESCB",
+      "source": "Manual on MFI balance sheet statistics; ECB Data Portal BSI methodology",
+      "finding": "ECB MFI financial transactions are derived by adjusting changes in end-of-period outstanding amounts for non-transaction factors, including reclassifications, exchange-rate changes, price revaluations and loan write-offs/write-downs.",
+      "implication": "The BSI transaction flow is not the first difference of the loan stock, and stock accumulation requires the non-transaction adjustment term."
+    },
+    "retained_private_credit_reference": {
+      "contract": "model/dynamics/private_credit_reference_contract.json",
+      "assessment": "model/dynamics/private_credit_reference_assessment.json",
+      "snapshot": "model/dynamics/private_credit_reference_snapshot.json",
+      "boundary": "Romania; MFIs excluding the NCB; loans to domestic NFCs S11 plus households/NPISH S14/S15; all currencies combined; monthly; millions of euro",
+      "credit_stock_reference": "credit_stock",
+      "credit_flow_reference": "credit_flow",
+      "same_boundary_stock_and_transaction": true,
+      "stock_is_end_period_outstanding": true,
+      "flow_is_ecb_financial_transaction": true,
+      "flow_is_stock_first_difference": false
+    }
+  },
+  "retained_2025_diagnostics": {
+    "unit": "Millions of Euro",
+    "examples": [
+      {
+        "transition": "2025-01_to_2025-02",
+        "stock_change": 333.2449799196613,
+        "ecb_financial_transaction_2025_02": 2807.491975482576,
+        "implied_non_transaction_change": -2474.246995562915
+      },
+      {
+        "transition": "2025-04_to_2025-05",
+        "stock_change": -93.41019413620234,
+        "ecb_financial_transaction_2025_05": 974.8102302313637,
+        "implied_non_transaction_change": -1068.220424367566
+      },
+      {
+        "transition": "2025-11_to_2025-12",
+        "stock_change": -201.9206556492867,
+        "ecb_financial_transaction_2025_12": 278.5813749401402,
+        "implied_non_transaction_change": -480.5020305894269
+      }
+    ],
+    "interpretation": "Observed same-boundary stock changes differ materially from the published ECB financial transactions. The implied residual is retained here only as a diagnostic demonstration of the stock/transaction distinction; it is not decomposed, modelled or promoted as an endogenous series."
+  },
+  "admissible_accounting_form": {
+    "conceptual_form": "LoanStock_t = LoanStock_t-1 + CreditTransaction_t + NonTransactionAdjustment_t",
+    "credit_transaction_is_observed": true,
+    "non_transaction_adjustment_components_include": [
+      "reclassifications and other statistical adjustments",
+      "exchange-rate adjustments",
+      "price revaluations where applicable",
+      "loan write-offs/write-downs"
+    ],
+    "exact_future_endogenous_stock_equation_ready": false,
+    "reason": "RMD retains the matched stock and transaction targets, but it has not frozen a reproducible component-level non-transaction-adjustment state/process for the integrated dynamic loop."
+  },
+  "node_boundary_effect": {
+    "credit_flow": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id": "credit_flow",
+      "exact_observed_boundary_available": true,
+      "current_feedback_activation_authorized": false
+    },
+    "loan_stock": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id_after_review": "credit_stock",
+      "exact_observed_boundary_available": true,
+      "generic_node_narrowed_to_private_nonfinancial_BSI_boundary_for_reference_validation": true,
+      "endogenous_stock_transition_ready": false,
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "bridge_resolution": {
+    "from": "credit_flow",
+    "to": "loan_stock",
+    "status": "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED",
+    "causal_role": "STOCK_TRANSACTION_ACCOUNTING_RELATION_CONDITIONAL_ON_NON_TRANSACTION_ADJUSTMENTS",
+    "qualitative_sign_retained": "+",
+    "stock_change_equals_credit_flow_authorized": false,
+    "omit_non_transaction_adjustment_authorized": false,
+    "use_stock_first_difference_as_credit_flow_authorized": false,
+    "infer_causal_adjustment_decomposition_from_residual_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "hard_rules": {
+    "no_delta_stock_equals_financial_transaction": true,
+    "no_stock_first_difference_as_flow_proxy": true,
+    "no_missing_non_transaction_adjustment_to_zero": true,
+    "no_residual_decomposition_without_source_evidence": true,
+    "no_gross_new_lending_relabeling": true,
+    "no_sector_boundary_expansion": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "stock_flow_reference_boundary_strengthened": true,
+    "loan_stock_reference_mapping_frozen_to_credit_stock": true,
+    "exact_integrated_equation_ready": false,
+    "non_transaction_adjustment_process_identified": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "loan_stock_to_debt_service_and_credit_risk_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_use_loan_stock_as_debt_service_proxy": false,
+    "may_use_household_housing_DSTI_as_aggregate_credit_risk_burden": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}
