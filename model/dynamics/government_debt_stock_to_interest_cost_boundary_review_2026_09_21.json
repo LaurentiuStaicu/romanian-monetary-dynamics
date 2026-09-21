@@ -1,0 +1,167 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "government_debt_stock_to_interest_cost_boundary_review",
+  "purpose": "Determine the admissible structural/accounting relation from the observed Maastricht government-debt stock to the generic government_interest_cost node without treating the debt level as sufficient to determine either the portfolio effective interest rate or accrued interest expenditure.",
+  "decision": "DO_NOT_MAP_DEBT_STOCK_LEVEL_ONE_TO_ONE_TO_GOVERNMENT_INTEREST_COST_RETAIN_CONDITIONAL_ACCOUNTING_SCALE_FORM_ONLY_ON_MATCHED_RATE_AND_DEBT_BOUNDARY",
+  "official_definition_evidence": {
+    "eurostat_structure_of_government_debt_metadata": {
+      "institution": "Eurostat",
+      "dataset_family": "gov_10dd_sgd",
+      "url": "https://ec.europa.eu/eurostat/cache/metadata/en/gov_10dd_sgd_esms.htm",
+      "findings": [
+        "Maastricht debt is consolidated S13 gross debt at nominal/face value in AF.2, AF.3 and AF.4.",
+        "The apparent cost of debt is published as accrued interest expenditure as a percentage of average debt over the year.",
+        "The apparent-cost collection covers general government and central government and is distinct from the year-end debt stock itself."
+      ],
+      "role": "MATCHED_DEBT_RATE_ACCOUNTING_BOUNDARY"
+    },
+    "eurostat_apparent_cost_2025_context": {
+      "institution": "Eurostat",
+      "dataset": "gov_10dd_acd",
+      "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20260608-1",
+      "geo": "RO",
+      "sector": "S13 general government",
+      "year": 2025,
+      "apparent_cost_pct": 5.2,
+      "prior_year_2024_pct": 4.9,
+      "definition": "Annual accrued interest expenditure divided by the average outstanding Maastricht debt for the same year.",
+      "role": "EXTERNAL_SAME_BOUNDARY_RATE_DIAGNOSTIC_ONLY",
+      "canonical_RMD_reference_mode_created": false
+    },
+    "retained_government_debt_stock": {
+      "assessment": "model/dynamics/government_debt_stock_reference_assessment.json",
+      "snapshot": "model/dynamics/government_debt_stock_reference_snapshot.json",
+      "concept": "Quarterly S13 consolidated gross Maastricht debt at nominal/face value.",
+      "2025_Q4_million_RON": 1137323.7,
+      "status": "OBSERVED_SERIES_AVAILABLE"
+    },
+    "retained_government_interest_burden": {
+      "assessment": "model/dynamics/government_interest_burden_reference_assessment.json",
+      "snapshot": "model/dynamics/government_interest_burden_reference_snapshot.json",
+      "concept": "Quarterly S13 ESA D41PAY accrued interest expenditure.",
+      "2025_quarters_million_RON": {
+        "Q1": 12327.2,
+        "Q2": 13176.7,
+        "Q3": 14704.1,
+        "Q4": 14303.3
+      },
+      "2025_annual_sum_million_RON": 54511.3,
+      "status": "OBSERVED_SERIES_AVAILABLE"
+    },
+    "retained_ministry_effective_interest_rate": {
+      "assessment": "model/dynamics/government_effective_interest_rate_reference_assessment.json",
+      "concept": "Ministry year-end average interest rate of the government public-debt portfolio, based on the Ministry source definition.",
+      "last_observed_year": 2023,
+      "last_observed_pct": 4.2,
+      "role": "OBSERVED_PORTFOLIO_COST_TARGET_DISTINCT_FROM_EUROSTAT_APPARENT_COST",
+      "status": "OBSERVED_SERIES_AVAILABLE"
+    }
+  },
+  "boundary_comparison": {
+    "debt_stock_level_and_interest_expenditure_same_concept": false,
+    "debt_stock_level_and_effective_interest_rate_same_concept": false,
+    "ministry_effective_rate_and_eurostat_apparent_cost_same_measure": false,
+    "eurostat_D41_and_ministry_portfolio_rate_same_measure": false,
+    "year_end_debt_stock_is_the_published_apparent_cost_denominator": false,
+    "current_market_yield_is_the_apparent_cost_rate": false,
+    "debt_stock_level_alone_determines_interest_expenditure": false,
+    "debt_stock_level_alone_determines_portfolio_rate": false,
+    "same_S13_accrual_boundary_exists_for_debt_and_D41": true
+  },
+  "accounting_scale_form": {
+    "matched_S13_form": "D41_annual = apparent_cost_rate * average_Maastricht_debt_over_year",
+    "status": "DEFINITIONAL_RATIO_AVAILABLE_AS_BOUNDARY_DIAGNOSTIC",
+    "interpretation": "The debt stock supplies a scale term only when paired with a matched annual apparent-cost rate and the provider's average-debt convention. The identity does not make the rate endogenous and does not make year-end debt a substitute for average debt.",
+    "current_RMD_exact_integrated_equation_ready": false,
+    "exact_average_debt_denominator_materialised_in_RMD": false,
+    "eurostat_apparent_cost_series_materialised_as_RMD_reference_mode": false,
+    "generic_interest_cost_node_narrowed_to_D41": false,
+    "portfolio_rate_endogenized": false
+  },
+  "causal_interpretation": {
+    "qualitative_sign_retained": "+",
+    "sign_scope": "CETERIS_PARIBUS_ONLY_ON_MATCHED_INTEREST_RATE_AND_DEBT_BOUNDARY",
+    "explanation": "Holding the applicable average cost and boundary fixed, a larger average debt base scales accrued interest expenditure upward. The observed debt level does not by itself identify the applicable rate, maturity/refixing structure or accrued expenditure.",
+    "behavioural_equation_required_for_scale_identity": false,
+    "behavioural_rate_equation_identified": false
+  },
+  "bridge_resolution": {
+    "bridge_id": "government_debt_stock_to_interest_cost",
+    "from": "government_debt_stock",
+    "to": "government_interest_cost",
+    "status": "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL",
+    "causal_role": "ACCOUNTING_SCALE_CONDITIONAL_ON_RATE_AND_DEBT_BOUNDARY",
+    "resolution": "Retain the positive qualitative link as a conditional accounting scale relation. Eurostat provides a same-boundary apparent-cost concept for S13 Maastricht debt and accrued interest, but RMD must not substitute year-end debt for average debt, Ministry portfolio rate for Eurostat apparent cost, or a current market yield for the applicable portfolio rate. The generic interest-cost node remains unresolved.",
+    "direct_debt_level_to_interest_cost_mapping_authorized": false,
+    "year_end_debt_times_rate_identity_authorized": false,
+    "ministry_effective_rate_times_S13_debt_identity_authorized": false,
+    "current_market_yield_times_debt_identity_authorized": false,
+    "synthetic_average_debt_authorized": false,
+    "synthetic_interest_rate_authorized": false,
+    "parameter_estimation_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effects": {
+    "government_debt_stock": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id": "government_debt_stock",
+      "observed_target_available": true,
+      "current_feedback_activation_authorized": false
+    },
+    "government_interest_cost": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "related_observed_targets": [
+        "government_effective_interest_rate",
+        "government_interest_burden"
+      ],
+      "eurostat_apparent_cost_role": "EXTERNAL_SAME_BOUNDARY_DIAGNOSTIC_ONLY",
+      "canonical_target_selected": false,
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "loop_effect": {
+    "loop_id": "government_refinancing_interest_loop",
+    "qualitative_topology_changed": false,
+    "debt_stock_to_interest_cost_sign_retained": "+",
+    "debt_stock_to_interest_cost_status": "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL",
+    "exact_integrated_equation_ready": false,
+    "quantitatively_active": false
+  },
+  "hard_rules": {
+    "no_debt_level_equals_interest_cost": true,
+    "no_year_end_debt_substituted_for_average_debt": true,
+    "no_ministry_effective_rate_equals_eurostat_apparent_cost": true,
+    "no_current_market_yield_equals_apparent_cost": true,
+    "no_cross_boundary_rate_times_stock_identity": true,
+    "no_PC_GDP_interest_burden_as_interest_rate": true,
+    "no_synthetic_average_debt": true,
+    "no_synthetic_interest_rate": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "debt_stock_to_interest_cost_boundary_strengthened": true,
+    "government_debt_stock_node_resolved": false,
+    "government_interest_cost_node_resolved": false,
+    "eurostat_apparent_cost_reference_mode_added": false,
+    "exact_integrated_equation_ready": false,
+    "rate_endogeneity_identified": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "government_refinancing_interest_loop_terminal_assessment",
+    "authorization": "STRUCTURAL_TERMINAL_ASSESSMENT_ONLY",
+    "task": "Assess the complete government refinancing–interest candidate loop after all four structural/accounting links have explicit boundary reviews. Summarize remaining blockers and decide whether any further current-evidence task is scientifically admissible without estimation, synthetic closure or source-boundary relaxation.",
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false,
+    "may_relax_existing_gates": false
+  }
+}

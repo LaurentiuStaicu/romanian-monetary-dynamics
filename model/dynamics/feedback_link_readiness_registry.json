@@ -11,7 +11,8 @@
     "TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED",
     "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
     "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
-    "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED"
+    "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED",
+    "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL"
   ],
   "hard_rules": {
     "every_feedback_path_link_must_be_registered_exactly_once": true,
@@ -64,15 +65,16 @@
       "from": "government_debt_stock",
       "to": "government_interest_cost",
       "sign": "+",
-      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
-      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
+      "causal_role": "ACCOUNTING_SCALE_CONDITIONAL_ON_RATE_AND_DEBT_BOUNDARY",
+      "readiness_status": "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL",
       "related_mechanisms": [
         "government_refinancing_effective_rate"
       ],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "One or more registered mechanisms are scientifically related to this causal relation, but their current variables, population, target, functional form, or validation state do not constitute an exact integrated equation for this feedback link."
+      "reason": "Eurostat defines apparent cost as annual accrued interest expenditure divided by average Maastricht debt, confirming a same-boundary scale relation. But year-end debt is not the average-debt denominator, the Ministry portfolio rate is not Eurostat apparent cost, and debt level alone does not identify the applicable rate. The generic interest-cost node therefore remains unresolved and no exact integrated equation is ready.",
+      "government_debt_stock_to_interest_cost_boundary_review": "model/dynamics/government_debt_stock_to_interest_cost_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "government_refinancing_interest_loop|government_interest_cost|government_financing_need",

@@ -149,7 +149,9 @@
       "government_debt_issuance_to_debt_stock_boundary_review": "model/dynamics/government_debt_issuance_to_debt_stock_boundary_review_2026_09_21.json",
       "debt_issuance_to_stock_status": "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED",
       "exact_stock_transition_ready": false,
-      "endogenous_stock_boundary_frozen": false
+      "endogenous_stock_boundary_frozen": false,
+      "government_debt_stock_to_interest_cost_boundary_review": "model/dynamics/government_debt_stock_to_interest_cost_boundary_review_2026_09_21.json",
+      "debt_stock_to_interest_cost_status": "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL"
     },
     {
       "id": "government_financing_need",
@@ -180,7 +182,7 @@
       "current_boundary_class": "UNRESOLVED",
       "current_runtime_role": "OBSERVED_RELATED_TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED_INACTIVE",
       "exact_reference_mode_id": null,
-      "classification_basis": "Observed government_effective_interest_rate and government_interest_burden targets remain distinct from the generic node. The preferred ECB 10-year RON sovereign-yield target is a marginal long-term market signal and cannot be mapped contemporaneously one-to-one into portfolio cost or interest expenditure; matched repricing/refixing principal and rates remain unavailable.",
+      "classification_basis": "Observed government_effective_interest_rate and government_interest_burden remain distinct targets. Eurostat also publishes apparent cost of Maastricht debt as accrued annual interest over average annual debt, which confirms a conditional accounting scale relation but does not make debt level alone sufficient to determine either the applicable rate or interest expenditure. The generic node remains unresolved.",
       "related_reference_modes": [
         "government_effective_interest_rate",
         "government_interest_burden"
@@ -190,7 +192,11 @@
       "source_boundary_review": "model/dynamics/yield_to_interest_cost_boundary_review_2026_09_21.json",
       "preferred_portfolio_cost_target": "government_effective_interest_rate",
       "preferred_interest_expenditure_target": "government_interest_burden",
-      "yield_to_interest_cost_bridge_status": "REVIEWED_TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED"
+      "yield_to_interest_cost_bridge_status": "REVIEWED_TARGETS_AVAILABLE_REPRICING_TRANSITION_UNIDENTIFIED",
+      "government_debt_stock_to_interest_cost_boundary_review": "model/dynamics/government_debt_stock_to_interest_cost_boundary_review_2026_09_21.json",
+      "debt_stock_to_interest_cost_status": "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL",
+      "eurostat_apparent_cost_role": "EXTERNAL_SAME_BOUNDARY_DIAGNOSTIC_ONLY",
+      "canonical_target_selected": false
     },
     {
       "id": "government_securities_supply_pressure",
