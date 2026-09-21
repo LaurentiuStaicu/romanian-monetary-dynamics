@@ -123,6 +123,18 @@ This is a correction to the violation **count**, not a tolerance change and not 
 ECB quality documentation provides useful context but not a rescue rule: quarterly financial-account internal consistency covers sector/instrument aggregation, horizontal asset-liability equality, balancing items and counterpart-sector consistency, and Romania is reported at 96% validation-rule compliance over Q4 2012–Q2 2024. This shows that minor validation exceptions have existed historically, but it does not identify the 2025–2026 OECD residuals or authorize a looser threshold.
 
 
+
+### OECD reconciliation window-stability diagnostic — 2026-09-21
+
+Using the exact-decimal correction and the already-retained artifact, RMD tested whether the reconciliation failure could be isolated to an older historical segment or removed by selecting a different contiguous 40-quarter window. No source was re-accessed and no value was changed.
+
+There are exactly ten possible contiguous 40-quarter windows within the retained 49-quarter span from 2014Q1 through 2026Q1. **None passes.** Every window contains 39–41 exact measure-quarter violations and 31–34 quarters with at least one failed stock/flow identity. Therefore the minimum-history requirement cannot be rescued by shifting the start or end quarter after seeing the result.
+
+The failure also persists after the 2025 benchmark revision and new BNR financial-accounts IT system. Across 2025Q1–2026Q1, five of ten stock/flow tests still fail the exact 0.1 million RON threshold, affecting four of five quarters. This rules out the interpretation that the public-boundary discrepancy is confined to legacy pre-benchmark observations.
+
+No post-result window shortening, period dropping or tolerance change is authorized. The mode remains `PARTIAL_SERIES_AVAILABLE` and 9/10 ready.
+
+
 ### Trigger-aware monitoring horizon — successor frozen 2026-09-21
 
 After the BNR/CMFB → OECD → ESA 2010 → dissemination-precision recovery chain returned to hold, the previous 2026-09-20 trigger horizon is preserved as an immutable historical snapshot and superseded operationally by `model/registries/trigger_aware_monitoring_horizon_2026_09_21.json`.

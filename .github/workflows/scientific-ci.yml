@@ -260,6 +260,9 @@ jobs:
       - name: Audit exact-decimal OECD reconciliation correction
         run: python scripts/audit_oecd_sectoral_financial_positions_decimal_arithmetic_correction.py
 
+      - name: Audit OECD reconciliation window stability
+        run: python scripts/audit_oecd_sectoral_financial_positions_window_stability.py
+
       - name: Audit successor trigger-aware monitoring horizon
         run: python scripts/audit_trigger_aware_monitoring_horizon_2026_09_21.py
 
