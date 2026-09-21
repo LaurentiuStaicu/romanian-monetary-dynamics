@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import json
+from decimal import Decimal
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -60,8 +61,8 @@ def audit_reference_mode_promotion_10_of_10():
     if len(periods)!=49 or min(periods)!="2014-Q1" or max(periods)!="2026-Q1":
         e.append("promoted series period coverage changed")
     for row in rows:
-        a=float(row["assets_million_ron"]); l=float(row["liabilities_million_ron"]); n=float(row["net_million_ron"])
-        if abs((a-l)-n)>1e-9:
+        a=Decimal(row["assets_million_ron"]); l=Decimal(row["liabilities_million_ron"]); n=Decimal(row["net_million_ron"])
+        if (a-l)!=n:
             e.append("retained promoted series contains an assets-liabilities-net arithmetic mismatch")
             break
 
