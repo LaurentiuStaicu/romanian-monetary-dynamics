@@ -1,0 +1,180 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "yield_to_interest_cost_boundary_review",
+  "purpose": "Decide whether the preferred observed long-term sovereign-yield boundary can be mapped one-to-one or contemporaneously to the generic government_interest_cost feedback node, while preserving the distinct Ministry portfolio-cost and Eurostat interest-expenditure reference modes and the frozen repricing-ledger constraints.",
+  "decision": "DO_NOT_MAP_CONTEMPORANEOUS_SOVEREIGN_YIELD_ONE_TO_ONE_TO_GOVERNMENT_INTEREST_COST_KEEP_PORTFOLIO_RATE_AND_INTEREST_EXPENDITURE_TARGETS_DISTINCT_REPRICING_BRIDGE_DEFERRED",
+  "official_source_evidence": {
+    "sovereign_yield_target": {
+      "institution": "European Central Bank / ESCB",
+      "source_review": "model/dynamics/primary_yield_to_sovereign_yield_boundary_review_2026_09_20.json",
+      "series_key": "IRS.M.RO.L.L40.CI.0000.RON.N.Z",
+      "concept": "Representative Romanian-leu central-government long-term government-bond yield near ten-year residual maturity.",
+      "role": "OBSERVED_LONG_TERM_MARKET_CONDITION_TARGET",
+      "direct_effective_portfolio_cost_equivalent": false
+    },
+    "mof_portfolio_effective_rate": {
+      "institution": "Romanian Ministry of Finance",
+      "contract": "model/dynamics/government_effective_interest_rate_reference_contract.json",
+      "assessment": "model/dynamics/government_effective_interest_rate_reference_assessment.json",
+      "series": "data/processed/government_debt_average_interest_rate_mof_2014_2023.csv",
+      "concept": "Year-end average interest rate of the direct government-debt portfolio, using the Ministry source definition.",
+      "frequency": "annual_year_end",
+      "role": "PREFERRED_OBSERVED_PORTFOLIO_RATE_TARGET",
+      "not_marginal_sovereign_yield": true,
+      "not_same_year_realized_cash_interest_rate": true
+    },
+    "eurostat_interest_expenditure": {
+      "institution": "Eurostat",
+      "contract": "model/dynamics/government_interest_burden_reference_contract.json",
+      "assessment": "model/dynamics/government_interest_burden_reference_assessment.json",
+      "dataset": "gov_10q_ggnfa",
+      "series_boundary": "RO / S13 / D41PAY / NSA",
+      "concept": "ESA general-government interest expenditure on an accrual basis.",
+      "frequency": "quarterly",
+      "role": "PREFERRED_OBSERVED_INTEREST_EXPENDITURE_TARGET",
+      "not_effective_interest_rate": true,
+      "not_marginal_sovereign_yield": true
+    },
+    "eurostat_apparent_cost_diagnostic": {
+      "institution": "Eurostat",
+      "source": "Government debt structure / apparent cost dataset gov_10dd_acd",
+      "observed_2025_romania_pct": 5.2,
+      "definition": "Annual accrual interest expenditure divided by average outstanding Maastricht debt.",
+      "role": "EXTERNAL_DIAGNOSTIC_ONLY",
+      "boundary_match_to_mof_direct_government_debt_portfolio": false,
+      "one_to_one_substitute_for_mof_portfolio_rate": false
+    },
+    "repricing_ledger": {
+      "contract": "model/calibration_validation/government_repricing_ledger_contract.json",
+      "assessment": "model/calibration_validation/government_repricing_ledger_assessment.json",
+      "mechanism": "government_refinancing_effective_rate",
+      "current_status": "DEFERRED",
+      "gate_1_ledger_completeness": "FAIL",
+      "gate_4_parameter_identification": "FAIL_BEFORE_ESTIMATION",
+      "observed_opening_principal_rows": 0,
+      "observed_realized_repriced_principal_rows": 0,
+      "matched_old_new_rate_rows": 0,
+      "implication": "The public ledger does not identify the stock share repriced/refinanced in each period or the matched old/new rates needed for a defensible propagation equation."
+    }
+  },
+  "boundary_comparison": {
+    "sovereign_yield_vs_mof_portfolio_rate": {
+      "same_concept": false,
+      "same_maturity_boundary": false,
+      "same_instrument_mix": false,
+      "same_currency_mix": false,
+      "same_weighting_basis": false,
+      "same_information_timing": false,
+      "one_to_one_mapping_supported": false
+    },
+    "sovereign_yield_vs_eurostat_D41": {
+      "same_dimension": false,
+      "yield_unit": "percent_per_annum",
+      "D41_unit": "currency_flow_or_percent_GDP",
+      "one_to_one_mapping_supported": false
+    },
+    "mof_portfolio_rate_vs_eurostat_apparent_cost": {
+      "same_population_boundary": false,
+      "same_interest_definition": false,
+      "diagnostic_comparison_allowed": true,
+      "substitution_supported": false
+    }
+  },
+  "propagation_architecture": {
+    "qualitative_chain": [
+      "sovereign_yield",
+      "matched_marginal_or_reset_rates_on_actual_repriced_principal",
+      "government_effective_interest_rate",
+      "government_interest_burden"
+    ],
+    "direct_sovereign_yield_to_government_interest_cost_equation_authorized": false,
+    "required_repricing_information": [
+      "opening outstanding principal on the matched portfolio boundary",
+      "principal actually matured/refinanced or contractually refixed during the period",
+      "old effective rate on that exact principal",
+      "new issuance or reset rate on that exact principal",
+      "currency and fixed/floating structure",
+      "maturity/reset timing"
+    ],
+    "ecb_10y_may_substitute_for_matched_new_or_reset_rate": false,
+    "average_maturity_may_substitute_for_repricing_share": false,
+    "average_time_to_refixing_may_substitute_for_repricing_share": false,
+    "maturity_share_may_substitute_for_refixing_share": false,
+    "scalar_first_order_delay_tau_identified": false
+  },
+  "government_interest_cost_node_resolution": {
+    "current_boundary_class_after_review": "UNRESOLVED",
+    "interpretation": "government_interest_cost remains a qualitative umbrella spanning a portfolio-rate state and an interest-expenditure flow. Existing observed targets are useful but definitionally distinct and are not collapsed into one scalar node.",
+    "related_observed_targets": [
+      {
+        "id": "government_effective_interest_rate",
+        "role": "PORTFOLIO_RATE_TARGET",
+        "status": "OBSERVED_SERIES_AVAILABLE"
+      },
+      {
+        "id": "government_interest_burden",
+        "role": "INTEREST_EXPENDITURE_TARGET",
+        "status": "OBSERVED_SERIES_AVAILABLE"
+      }
+    ],
+    "exact_reference_mode_id_after_review": null,
+    "scalar_interest_cost_selected": false,
+    "current_feedback_activation_authorized": false
+  },
+  "yield_to_interest_cost_link_resolution": {
+    "bridge_id": "yield_to_interest_cost",
+    "from": "sovereign_yield",
+    "to": "government_interest_cost",
+    "status": "REVIEWED_NO_CONTEMPORANEOUS_ONE_TO_ONE_MAPPING_REPRICING_BRIDGE_DEFERRED",
+    "exact_integrated_equation_ready": false,
+    "estimation_authorized": false,
+    "current_activation_authorized": false,
+    "related_mechanism": "government_refinancing_effective_rate",
+    "mechanism_status_after_review": "UNCHANGED_DEFERRED",
+    "reason": "The observed sovereign-yield target measures current long-term market conditions, while interest cost on the outstanding stock is inherited from past issuance, contractual coupons, floating-rate resets, maturity and refinancing events. The currently retained public ledger does not identify the matched repricing transition."
+  },
+  "delay_effect": {
+    "delay_id": "debt_service_maturity_delay",
+    "current_tau": "TBD",
+    "active": false,
+    "evidence_status": "DISTRIBUTED_TIMING_EVIDENCE_SCALAR_TAU_NOT_IDENTIFIED",
+    "interpretation": "Portfolio maturity and re-fixing distributions support delayed propagation but cannot be collapsed into a first-order scalar delay without a matched transition model."
+  },
+  "empirical_chain_effect": {
+    "reviewed_candidate_chain": [
+      "government_financing_need",
+      "domestic_primary_market_government_securities_gross_issuance",
+      "government_securities_supply_pressure",
+      "sovereign_yield",
+      "government_interest_cost",
+      "government_financing_need"
+    ],
+    "qualitative_feedback_topology_changed": false,
+    "empirical_link_closed": false,
+    "interpretation": "The qualitative loop is retained. The sovereign-yield to interest-cost leg remains an unresolved stock-repricing bridge rather than a contemporaneous pass-through equation."
+  },
+  "hard_rules": {
+    "no_contemporaneous_sovereign_yield_equals_effective_interest_rate": true,
+    "no_ecb_10y_as_matched_repricing_rate": true,
+    "no_average_maturity_as_delay_tau": true,
+    "no_average_refixing_time_as_delay_tau": true,
+    "no_maturity_share_as_repricing_share": true,
+    "no_apparent_cost_substitution_for_mof_portfolio_rate": true,
+    "no_D41_relabelled_effective_interest_rate": true,
+    "no_repricing_parameter_estimation": true,
+    "no_synthetic_allocation": true,
+    "no_reference_mode_promotion_by_this_review": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "next_gate": {
+    "id": "interest_cost_to_financing_need_boundary_review",
+    "authorization": "STRUCTURAL_ACCOUNTING_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "task": "Review how the unresolved government_interest_cost umbrella maps into government_financing_need, distinguishing ESA accrual interest expenditure, cash debt-service outflows, budget deficit financing and gross refinancing requirements. Do not assume D41PAY is a cash financing-flow identity.",
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}
