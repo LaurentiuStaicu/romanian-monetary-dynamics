@@ -1,0 +1,112 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "credit_supply_capacity_to_credit_flow_boundary_review",
+  "loop_id": "bank_credit_balance_sheet_loop",
+  "purpose": "Determine whether the unresolved credit_supply_capacity node can be mapped directly into the observed ECB BSI credit-flow reference mode without conflating bank supply conditions, borrower demand and realized financial transactions.",
+  "decision": "DO_NOT_MAP_CREDIT_SUPPLY_CAPACITY_ONE_TO_ONE_TO_REALIZED_CREDIT_FLOW_KEEP_SUPPLY_AND_DEMAND_SEPARATE_IN_ANY_FUTURE_IDENTIFICATION",
+  "official_source_evidence": {
+    "ecb_bls": {
+      "institution": "European Central Bank / Eurosystem",
+      "source": "Bank Lending Survey methodology and releases",
+      "finding": "The BLS complements loan statistics with separate information on loan supply and loan demand. Credit standards measure banks' approval policies; loan demand is independently surveyed.",
+      "interpretation": "Realized loan developments reflect interactions between supply conditions and financing demand, so a realized transaction flow does not identify a supply-capacity state by itself."
+    },
+    "ecb_bls_forecasting_evidence": {
+      "institution": "European Central Bank",
+      "source": "Economic Bulletin analysis of BLS information and future loan developments",
+      "finding": "Credit standards and loan demand each provide information for actual loan growth, and combining supply and demand information can improve forecasts.",
+      "role": "JOINT_DETERMINATION_CONTEXT_NOT_CAUSAL_IDENTIFICATION"
+    },
+    "retained_credit_flow_reference": {
+      "assessment": "model/dynamics/private_credit_reference_assessment.json",
+      "snapshot": "model/dynamics/private_credit_reference_snapshot.json",
+      "reference_mode": "credit_flow",
+      "concept": "ECB BSI financial transactions for domestic NFC and household/NPISH loans, MFIs excluding the NCB, all currencies combined.",
+      "not_gross_new_lending": true,
+      "not_supply_only_measure": true
+    },
+    "retained_aggregate_credit_review": {
+      "review": "model/calibration_validation/aggregate_bank_credit_source_boundary_review.json",
+      "finding": "The current aggregate reduced form mixes credit demand and credit supply; realized BLS credit standards and loan demand must remain separate observables.",
+      "aggregate_single_equation_calibration_open": false
+    }
+  },
+  "boundary_comparison": {
+    "credit_supply_capacity_equals_credit_flow": false,
+    "BLS_credit_standards_equals_credit_flow": false,
+    "BLS_loan_demand_equals_credit_flow": false,
+    "realized_credit_flow_is_supply_only": false,
+    "realized_credit_flow_identifies_exogenous_supply_shock": false,
+    "credit_growth_identifies_loan_demand": false,
+    "credit_flow_is_gross_new_lending": false,
+    "sector_specific_supply_demand_signals_may_be_synthetically_averaged": false
+  },
+  "structural_interpretation": {
+    "credit_supply_capacity_role": "Unresolved supply-side umbrella over standards, risk tolerance, prudential/funding constraints and willingness/ability to lend.",
+    "credit_flow_role": "Observed realized financial transaction on the ECB BSI private non-financial loan boundary.",
+    "demand_role": "Borrower financing demand is a separate determinant of realized lending and must not be inferred from the realized flow alone.",
+    "future_identification_requirement": "Any quantitative supply-to-flow equation requires a preregistered sector-specific design with separate realized supply-condition and demand observables, matched lending-rate/activity controls and an untouched evaluation/identification gate.",
+    "qualitative_positive_sign_retained_as_candidate": true,
+    "exact_integrated_equation_ready": false
+  },
+  "bridge_resolution": {
+    "from": "credit_supply_capacity",
+    "to": "credit_flow",
+    "status": "SUPPLY_CONDITION_AND_DEMAND_OBSERVABLES_AVAILABLE_REALIZED_CREDIT_FLOW_JOINTLY_DETERMINED",
+    "causal_role": "BEHAVIOURAL_CANDIDATE_LINK_JOINT_SUPPLY_DEMAND_OUTCOME",
+    "capacity_equals_realized_flow_authorized": false,
+    "BLS_standards_equals_realized_flow_authorized": false,
+    "infer_demand_from_credit_flow_authorized": false,
+    "supply_only_interpretation_of_credit_flow_authorized": false,
+    "synthetic_sector_aggregation_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effect": {
+    "credit_supply_capacity": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id_after_review": null,
+      "scalar_capacity_measure_selected": false,
+      "current_feedback_activation_authorized": false
+    },
+    "credit_flow": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id": "credit_flow",
+      "observed_transaction_target_available": true,
+      "endogenous_supply_demand_mapping_ready": false,
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "hard_rules": {
+    "no_capacity_equals_realized_credit_flow": true,
+    "no_credit_flow_as_supply_only_measure": true,
+    "no_credit_flow_as_loan_demand_proxy": true,
+    "no_BLS_standards_as_realized_flow_identity": true,
+    "no_BLS_demand_as_realized_flow_identity": true,
+    "no_synthetic_NFC_household_BLS_aggregation": true,
+    "no_gross_new_lending_relabeling": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "supply_to_flow_boundary_strengthened": true,
+    "exact_integrated_equation_ready": false,
+    "supply_capacity_node_resolved": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "bank_credit_balance_sheet_loop_terminal_assessment",
+    "authorization": "STRUCTURAL_TERMINAL_ASSESSMENT_ONLY",
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false,
+    "may_relax_existing_gates": false
+  }
+}

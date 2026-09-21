@@ -31,14 +31,17 @@
       "current_boundary_class": "UNRESOLVED",
       "current_runtime_role": "OBSERVED_TARGET_AVAILABLE_INACTIVE_FEEDBACK_NODE",
       "exact_reference_mode_id": "credit_flow",
-      "classification_basis": "An exact observed credit_flow reference target exists, but observed-target status does not establish whether the integrated feedback node will ultimately be endogenous, exogenous or imposed during a specific partial-model experiment.",
+      "classification_basis": "An exact ECB BSI financial-transaction reference target exists, but realized credit flow is jointly determined by lending supply conditions and borrower demand. Observability does not resolve the endogenous supply-demand mapping.",
       "related_reference_modes": [
         "credit_flow"
       ],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
       "current_feedback_activation_authorized": false,
       "credit_flow_to_loan_stock_boundary_review": "model/dynamics/credit_flow_to_loan_stock_boundary_review_2026_09_21.json",
-      "credit_flow_to_loan_stock_status": "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED"
+      "credit_flow_to_loan_stock_status": "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED",
+      "credit_supply_capacity_to_credit_flow_boundary_review": "model/dynamics/credit_supply_capacity_to_credit_flow_boundary_review_2026_09_21.json",
+      "credit_supply_capacity_to_credit_flow_status": "SUPPLY_CONDITION_AND_DEMAND_OBSERVABLES_AVAILABLE_REALIZED_CREDIT_FLOW_JOINTLY_DETERMINED",
+      "endogenous_supply_demand_mapping_ready": false
     },
     {
       "id": "credit_supply_capacity",
@@ -51,7 +54,9 @@
       "current_feedback_activation_authorized": false,
       "debt_service_and_credit_risk_to_credit_supply_capacity_boundary_review": "model/dynamics/debt_service_and_credit_risk_to_credit_supply_capacity_boundary_review_2026_09_21.json",
       "debt_service_and_credit_risk_to_credit_supply_capacity_status": "RISK_AND_PRUDENTIAL_STATE_OBSERVED_CREDIT_SUPPLY_CAPACITY_SCALAR_NOT_IDENTIFIED",
-      "scalar_capacity_measure_selected": false
+      "scalar_capacity_measure_selected": false,
+      "credit_supply_capacity_to_credit_flow_boundary_review": "model/dynamics/credit_supply_capacity_to_credit_flow_boundary_review_2026_09_21.json",
+      "credit_supply_capacity_to_credit_flow_status": "SUPPLY_CONDITION_AND_DEMAND_OBSERVABLES_AVAILABLE_REALIZED_CREDIT_FLOW_JOINTLY_DETERMINED"
     },
     {
       "id": "debt_service_and_credit_risk",
