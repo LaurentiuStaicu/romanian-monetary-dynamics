@@ -64,7 +64,7 @@ class SectoralFinancialPositionsBNRQuarterlyS13ScreeningTests(unittest.TestCase)
 
     def test_reference_mode_remains_partial(self):
         mode = next(x for x in self.refs["modes"] if x["id"] == "sectoral_financial_positions")
-        self.assertEqual(mode["status"], "PARTIAL_SERIES_AVAILABLE")
+        self.assertEqual(mode["status"], "OBSERVED_SERIES_AVAILABLE")
         self.assertEqual(
             mode["bnr_quarterly_s13_source_screening"],
             "model/dynamics/sectoral_financial_positions_bnr_quarterly_s13_source_screening.json",
