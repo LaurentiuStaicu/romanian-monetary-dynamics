@@ -33,6 +33,20 @@ class EcbQfa10mGateTests(unittest.TestCase):
         )
         self.assertEqual(Decimal(self.c["semantic_exception"]["value_million_ron"]),Decimal("0"))
 
+    def test_sector_mapping_cancels_s121_between_f_and_bnr(self):
+        m=self.c["sector_mapping"]
+        self.assertEqual(m["F"]["terms"],[["S12",1],["S121",-1]])
+        self.assertEqual(m["BNR"]["terms"],[["S121",1]])
+        coeff={}
+        for spec in m.values():
+            for sector,sign in spec["terms"]:
+                coeff[sector]=coeff.get(sector,0)+sign
+        self.assertEqual(coeff["S121"],0)
+        self.assertEqual(
+            {k:v for k,v in coeff.items() if v!=0},
+            {"S1M":1,"S11":1,"S12":1,"S13":1,"S2":1},
+        )
+
     def test_historical_gate_is_not_rewritten(self):
         self.assertTrue(self.c["hard_rules"]["no_rewrite_of_historical_0_1_million_ron_gate"])
         self.assertTrue(self.c["hard_rules"]["no_threshold_selected_from_observed_residuals"])
