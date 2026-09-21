@@ -43,11 +43,11 @@
     "accounting_readiness_gate": "model/accounting/accounting_readiness_gate.json",
     "canonical_multi_instrument_stock_initialization_ready": false,
     "canonical_full_2025_stock_flow_benchmark_ready": false,
-    "reference_mode_closure_ready": false,
-    "reference_mode_ready_count": 9,
+    "reference_mode_closure_ready": true,
+    "reference_mode_ready_count": 10,
     "reference_mode_required_count": 10,
     "reference_mode_recovery_terminal_assessment": "model/dynamics/reference_mode_recovery_terminal_assessment.json",
-    "reference_mode_recovery_stage_status": "STAGE_COMPLETE_FROZEN_9_OF_10_UNDER_CURRENT_PUBLIC_EVIDENCE_BOUNDARY",
+    "reference_mode_recovery_stage_status": "SUCCESSOR_REFERENCE_MODE_SET_COMPLETE_10_OF_10",
     "reference_mode_recovery_next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
     "instrument_specific_empirical_replays": [
       {
@@ -250,7 +250,7 @@
     "sectoral_financial_positions_bnr_2025_topology_reopen_assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
     "sectoral_financial_positions_public_access_recovery_contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
     "sectoral_financial_positions_public_access_recovery_state": "EXECUTED_FAIL_RETURNED_TO_BASELINE_HOLD",
-    "sectoral_financial_positions_reference_mode_status": "PARTIAL_SERIES_AVAILABLE",
+    "sectoral_financial_positions_reference_mode_status": "OBSERVED_SERIES_AVAILABLE",
     "sectoral_financial_positions_reference_mode_promotion_authorized": false,
     "sectoral_financial_positions_accounting_reopen_authorized": false,
     "sectoral_financial_positions_oecd_topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
@@ -272,7 +272,10 @@
     "sectoral_financial_positions_ecb_qfa_materiality_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_assessment_2026_09_21.json",
     "sectoral_financial_positions_ecb_qfa_materiality_assessment_status": "PASS_OFFICIAL_10M_EUR_RULE_FOUND",
     "sectoral_financial_positions_ecb_qfa_materiality_gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_contract_2026_09_21.json",
-    "sectoral_financial_positions_ecb_qfa_materiality_gate_status": "PREREGISTERED_PENDING_MANUAL_EXECUTION"
+    "sectoral_financial_positions_ecb_qfa_materiality_gate_status": "EXECUTED_PASS_PROMOTION_COMPLETED",
+    "sectoral_financial_positions_ecb_qfa_materiality_gate_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_assessment_2026_09_21.json",
+    "sectoral_financial_positions_reference_series": "data/processed/sectoral_financial_positions_oecd_ecb_qfa_2014Q1_2026Q1.csv",
+    "reference_mode_recovery_successor_assessment": "model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
@@ -358,9 +361,11 @@
     "post_terminal_decimal_arithmetic_correction_status": "EXECUTED_CORRECTION_ONLY_BASELINE_HOLD_UNCHANGED",
     "post_terminal_window_stability_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_window_stability_diagnostic_2026_09_21.json",
     "post_terminal_window_stability_status": "EXECUTED_NEGATIVE_NO_REOPEN",
-    "post_terminal_ecb_qfa_materiality_task": "ecb_qfa_10m_materiality_instrument_level_reference_gate",
-    "post_terminal_ecb_qfa_materiality_contract": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_contract_2026_09_21.json",
-    "post_terminal_ecb_qfa_materiality_status": "PREREGISTERED_PENDING_MANUAL_EXECUTION"
+    "post_terminal_ecb_qfa_materiality_task": null,
+    "post_terminal_ecb_qfa_materiality_contract": null,
+    "post_terminal_ecb_qfa_materiality_status": "EXECUTED_PASS_REFERENCE_MODE_PROMOTED",
+    "post_terminal_ecb_qfa_materiality_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_assessment_2026_09_21.json",
+    "reference_mode_recovery_successor_assessment": "model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",
