@@ -249,13 +249,15 @@
     "integrated_model_numerical_robustness": "NOT_RUN_BEHAVIOURAL_CLOSURE_INACTIVE",
     "sectoral_financial_positions_bnr_2025_topology_reopen_assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
     "sectoral_financial_positions_public_access_recovery_contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
-    "sectoral_financial_positions_public_access_recovery_state": "ACTIVE_ONE_FROZEN_SOURCE_TOPOLOGY_PASS",
+    "sectoral_financial_positions_public_access_recovery_state": "EXECUTED_FAIL_RETURNED_TO_BASELINE_HOLD",
     "sectoral_financial_positions_reference_mode_status": "PARTIAL_SERIES_AVAILABLE",
     "sectoral_financial_positions_reference_mode_promotion_authorized": false,
     "sectoral_financial_positions_accounting_reopen_authorized": false,
     "sectoral_financial_positions_oecd_topology_assessment": "model/dynamics/sectoral_financial_positions_oecd_nonconsolidated_topology_assessment_2026_09_21.json",
     "sectoral_financial_positions_oecd_topology_status": "PASS_PUBLIC_NONCONSOLIDATED_SECTOR_STOCK_FLOW_TOPOLOGY",
-    "sectoral_financial_positions_oecd_exact_gate": "model/dynamics/sectoral_financial_positions_oecd_exact_extraction_reconciliation_contract_2026_09_21.json"
+    "sectoral_financial_positions_oecd_exact_gate": "model/dynamics/sectoral_financial_positions_oecd_exact_extraction_reconciliation_contract_2026_09_21.json",
+    "sectoral_financial_positions_oecd_exact_gate_status": "FAIL_EXACT_REQUIRED_ROW_COVERAGE_S1M_L_F2_MISSING_ALL_PERIODS",
+    "sectoral_financial_positions_oecd_exact_gate_assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
@@ -320,14 +322,15 @@
       "id": "prospective_monetary_policy_event",
       "rule": "Check only the BNR policy decision. If unchanged, do not inspect MIR response values. If non-zero, the October-reference MIR response remains closed until its official 2026-12-02 release."
     },
-    "active_noncalibration_source_task": "bnr_2025_financial_accounts_public_access_recovery",
-    "active_noncalibration_source_task_contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
+    "active_noncalibration_source_task": null,
+    "active_noncalibration_source_task_contract": null,
     "calibration_cycle_open": false,
     "post_terminal_source_topology_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_21_bnr_financial_accounts_topology.json",
-    "post_terminal_source_topology_trigger_status": "ONE_DECLARED_REOPEN_TRIGGER_SATISFIED_SOURCE_TOPOLOGY_RECOVERY_ONLY",
+    "post_terminal_source_topology_trigger_status": "EXECUTED_TOPOLOGY_PASS_EXACT_ROW_GATE_FAIL_RETURNED_TO_BASELINE_HOLD",
     "post_terminal_source_topology_trigger_assessment": "model/dynamics/bnr_2025_financial_accounts_topology_reopen_assessment_2026_09_21.json",
-    "active_noncalibration_source_subtask": "oecd_exact_sectoral_financial_positions_row_and_reconciliation_gate",
-    "active_noncalibration_source_subtask_contract": "model/dynamics/sectoral_financial_positions_oecd_exact_extraction_reconciliation_contract_2026_09_21.json"
+    "active_noncalibration_source_subtask": null,
+    "active_noncalibration_source_subtask_contract": null,
+    "post_terminal_source_topology_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",
