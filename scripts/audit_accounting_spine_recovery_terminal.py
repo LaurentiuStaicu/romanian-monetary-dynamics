@@ -4,15 +4,15 @@ import json
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
-ASSESSMENT="model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json"
 
 def load(path:str)->dict:
     return json.loads((ROOT/path).read_text(encoding="utf-8"))
 
 def audit_accounting_spine_recovery_terminal()->list[str]:
     errors=[]
-    a=load(ASSESSMENT)
     readiness=load("model/accounting/accounting_readiness_gate.json")
+    assessment_path=readiness["accounting_recovery_terminal_assessment"]
+    a=load(assessment_path)
     reopen=load("model/accounting/reopen_conditions_registry.json")
 
     if a["decision"]!="ACCOUNTING_SPINE_RECOVERY_STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD":
@@ -83,9 +83,9 @@ def audit_accounting_spine_recovery_terminal()->list[str]:
 
     if reopen.get("accounting_recovery_stage_status")!="STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD":
         errors.append("reopen registry lacks terminal accounting recovery stage status")
-    if reopen.get("accounting_recovery_terminal_assessment")!=ASSESSMENT:
+    if reopen.get("accounting_recovery_terminal_assessment")!=assessment_path:
         errors.append("reopen registry does not register terminal assessment")
-    if readiness.get("accounting_recovery_terminal_assessment")!=ASSESSMENT:
+    if readiness.get("accounting_recovery_terminal_assessment")!=assessment_path:
         errors.append("readiness gate does not register terminal assessment")
     return errors
 
