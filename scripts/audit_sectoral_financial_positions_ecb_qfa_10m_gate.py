@@ -97,7 +97,8 @@ def parse_values(rows: list[dict], c: dict) -> dict:
     return vals
 
 def fetch_ecb_fx(series: str, start: str, end: str):
-    url=f"{ECB_API}/EXR/{series}?"+urllib.parse.urlencode({"startPeriod":start,"endPeriod":end,"format":"csvdata"})
+    key=series.removeprefix("EXR.")
+    url=f"{ECB_API}/EXR/{key}?"+urllib.parse.urlencode({"startPeriod":start,"endPeriod":end,"format":"csvdata"})
     req=urllib.request.Request(url,headers={"User-Agent":"romanian-monetary-dynamics/0.2.0","Accept":"text/csv,*/*"})
     try:
         with urllib.request.urlopen(req,timeout=90) as response:
@@ -157,14 +158,32 @@ def main():
         structure_id=refs[measure].split(",",1)[1]
         structure_url=f"https://sdmx.oecd.org/public/rest/dataflow/OECD.SDD.NAD/{structure_id}/?references=all"
         sb,sh,ss,se=fetch(structure_url,accept="application/vnd.sdmx.structure+xml,application/xml,text/xml,*/*")
-        if ss!=200 or se or sha256(sb)!=expected_structure[measure]:
-            blockers.append(f"{measure}:structure_changed_or_unavailable"); continue
-        order=dimension_order_from_structure(sb); key=build_selection_key(order,source_selection(c,measure))
+        if ss!=200 or se or not sb:
+            blockers.append(f"{measure}:structure_unavailable"); continue
+        current_structure_sha=sha256(sb)
+        try:
+            order=dimension_order_from_structure(sb)
+        except Exception:
+            blockers.append(f"{measure}:structure_unparseable"); continue
+        required_dims=set(source_selection(c,measure))
+        if not required_dims.issubset(set(order)):
+            blockers.append(f"{measure}:required_dimensions_missing"); continue
+        key=build_selection_key(order,source_selection(c,measure))
         q=urllib.parse.urlencode({"startPeriod":c["frozen_source"]["start_period"],"endPeriod":c["frozen_source"]["end_period"],"dimensionAtObservation":"AllDimensions","format":"csvfilewithlabels"})
         url=f"https://sdmx.oecd.org/public/rest/data/{refs[measure]},/{key}?{q}"
         db,dh,ds,de=fetch(url,accept="text/csv,application/vnd.sdmx.data+csv,*/*")
         digest=sha256(db) if db else None
-        requests.append({"measure":measure,"data_url":url,"http_status":ds,"sha256":digest,"expected_sha256":expected_raw[measure]})
+        requests.append({
+            "measure":measure,
+            "structure_url":structure_url,
+            "current_structure_sha256":current_structure_sha,
+            "historical_structure_sha256":expected_structure[measure],
+            "dimension_order":order,
+            "data_url":url,
+            "http_status":ds,
+            "sha256":digest,
+            "expected_sha256":expected_raw[measure]
+        })
         if ds!=200 or de or digest!=expected_raw[measure]:
             blockers.append(f"{measure}:source_vintage_changed_or_unavailable"); continue
         raw[measure]=db; rows[measure]=filter_rows(db,c)
