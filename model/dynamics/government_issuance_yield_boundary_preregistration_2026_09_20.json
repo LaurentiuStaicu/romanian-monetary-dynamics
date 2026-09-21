@@ -96,7 +96,18 @@
       "id": "yield_to_interest_cost",
       "from": "sovereign_yield",
       "to": "government_interest_cost",
-      "requirement": "Specify debt-stock propagation through maturity, refinancing and re-fixing structure; a new-issue yield is not contemporaneously equal to the interest cost on the outstanding debt stock."
+      "requirement": "Specify debt-stock propagation through maturity, refinancing and re-fixing structure; a new-issue yield is not contemporaneously equal to the interest cost on the outstanding debt stock.",
+      "status": "REVIEWED_NO_CONTEMPORANEOUS_ONE_TO_ONE_MAPPING_REPRICING_BRIDGE_DEFERRED",
+      "boundary_review": "model/dynamics/yield_to_interest_cost_boundary_review_2026_09_21.json",
+      "resolution": "Do not map the preferred ECB 10-year RON sovereign yield contemporaneously or one-to-one to government_interest_cost. Preserve government_effective_interest_rate as the observed portfolio-rate target and government_interest_burden as the observed ESA interest-expenditure target. The actual propagation requires matched repricing/refinancing principal and rates, which remain unavailable.",
+      "related_reference_modes": [
+        "government_effective_interest_rate",
+        "government_interest_burden"
+      ],
+      "required_for_empirical_chain_after_review": true,
+      "exact_integrated_equation_ready": false,
+      "parameter_estimation_authorized": false,
+      "feedback_activation_authorized": false
     }
   ],
   "scientific_effect": {
@@ -120,8 +131,8 @@
   },
   "next_gate_after_materialisation": "Reconcile the exact RON auction-universe stock denominator before any supply-load ratio is computed. Submitted-bids and bid-to-cover monthly series remain blocked because the monthly report exposes them graphically without reproducible native-text month/series mapping.",
   "next_independent_bridge_task": {
-    "id": "yield_to_interest_cost_boundary_review",
-    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "id": "interest_cost_to_financing_need_boundary_review",
+    "authorization": "STRUCTURAL_ACCOUNTING_SOURCE_BOUNDARY_REVIEW_ONLY",
     "may_estimate_parameters": false,
     "may_activate_feedback": false,
     "may_change_behavioural_closure": false
