@@ -1,0 +1,58 @@
+{
+  "assessment_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "reference_mode": "sectoral_financial_positions",
+  "phase": "ECB QFA official internal-consistency materiality acceptability gate",
+  "scope_assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_scope_assessment_2026_09_21.json",
+  "contract": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_contract_2026_09_21.json",
+  "workflow": {
+    "run_id": 35598269833,
+    "run_attempt": 2,
+    "job_id": 106328420951,
+    "artifact_id": 10638010999,
+    "artifact_zip_sha256": "ed2a0391f43d8d830abd4cccf0926d99bca497a4b251ffa34e164f95a4dc7f55"
+  },
+  "fx_evidence": {
+    "series": "ECB EXR.Q.RON.EUR.SP00.A",
+    "requested_period": "2014-Q1..2026-Q1",
+    "required_quarters": 49,
+    "observed_quarters": 49,
+    "response_bytes": 3116,
+    "response_sha256": "7d68701757bc408d990fde13a6d4aacc5ec432b28518f74ffcb1b87bf647e7c6",
+    "minimum_ron_per_eur": "4.4146136363636",
+    "maximum_ron_per_eur": "5.093939682539683",
+    "quarters_at_or_below_one": 0,
+    "sufficiency_condition_pass": true
+  },
+  "retained_internal_consistency_diagnostics": {
+    "rows": 98,
+    "missing_rows": 0,
+    "duplicate_rows": 0,
+    "conservative_threshold_million_ron": "10",
+    "official_ecb_threshold_eur_million": 10,
+    "max_abs_system_residual_million_ron": "0.6",
+    "max_abs_resident_additivity_residual_million_ron": "0.6",
+    "max_abs_external_balance_residual_million_ron": "0.5",
+    "materiality_violations": 0,
+    "pass": true
+  },
+  "verdict": "PASS_ECB_QFA_OFFICIAL_MATERIALITY_ACCEPTABILITY_NARROW_AGGREGATE_REFERENCE_MODE",
+  "interpretation": "The retained non-consolidated aggregate sector stock/financial-transaction series satisfy a deliberately stricter local-currency sufficient condition than the official ECB QFA EUR 10 million national-data internal-consistency materiality rule. This supports use as a narrow aggregate behaviour-over-time reference mode. It does not erase the historical strict 0.1 million RON reconciliation failure and does not establish a bilateral holder-by-issuer Accounting Spine.",
+  "preserved_historical_limits": {
+    "historical_0_1m_strict_gate": "FAIL",
+    "historical_exact_decimal_violations": 47,
+    "accounting_spine_reopen": false,
+    "bilateral_completion_claim": false,
+    "source_values_reaccessed_for_this_gate": false
+  },
+  "scientific_effect": {
+    "promotion_assessment_authorized": true,
+    "direct_promotion_by_this_assessment": false,
+    "accounting_readiness_change": false,
+    "canonical_multi_instrument_initialization_change": false,
+    "parameter_estimation_authorized": false,
+    "calibration_cycle_opened": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false
+  }
+}
