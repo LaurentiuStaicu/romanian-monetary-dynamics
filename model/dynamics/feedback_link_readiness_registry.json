@@ -287,9 +287,11 @@
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The frozen household-housing delta-policy candidate now has an exact executable implementation, but it remains target-specific: it does not define the generic market_and_lending_rates node, no NFC form is selected, and the holdout contained no identifying policy-rate variation. The integrated causal link therefore remains not ready.",
+      "reason": "A frozen household-housing delta-policy candidate exists, but it is not validated, the holdout had no policy-rate movement, no NFC form is selected, and no market/outstanding-rate mapping defines the generic node.",
       "target_specific_implementation_pointer": "household_housing_delta_policy_rate",
-      "target_specific_scope": "HOUSEHOLD_HOUSING_ONLY"
+      "target_specific_scope": "HOUSEHOLD_HOUSING_ONLY",
+      "policy_rate_to_market_and_lending_rates_boundary_review": "model/dynamics/policy_rate_to_market_and_lending_rates_boundary_review_2026_09_21.json",
+      "policy_rate_to_market_and_lending_rates_boundary_status": "TARGET_SPECIFIC_PASS_THROUGH_CANDIDATE_AVAILABLE_GENERIC_RATE_NODE_UNRESOLVED"
     },
     {
       "link_key": "monetary_credit_transmission_loop|market_and_lending_rates|credit_flow",

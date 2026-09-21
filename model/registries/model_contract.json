@@ -196,7 +196,11 @@
     "bank_credit_balance_sheet_loop_terminal_assessment": "model/dynamics/bank_credit_balance_sheet_loop_terminal_assessment_2026_09_21.json",
     "bank_credit_balance_sheet_loop_structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_IDENTIFICATION_AND_MEASUREMENT_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
     "bank_credit_balance_sheet_loop_operational_state": "EVIDENCE_TRIGGERED_HOLD",
-    "bank_credit_balance_sheet_loop_active_empirical_task": null
+    "bank_credit_balance_sheet_loop_active_empirical_task": null,
+    "policy_rate_to_market_and_lending_rates_boundary_review": "model/dynamics/policy_rate_to_market_and_lending_rates_boundary_review_2026_09_21.json",
+    "policy_rate_to_market_and_lending_rates_boundary_status": "TARGET_SPECIFIC_PASS_THROUGH_CANDIDATE_AVAILABLE_GENERIC_RATE_NODE_UNRESOLVED",
+    "policy_rate_to_market_and_lending_rates_equation_ready": false,
+    "monetary_credit_transmission_next_structural_task": "market_and_lending_rates_to_credit_flow_boundary_review"
   },
   "empirical_dynamics": {
     "contract": "model/empirical_dynamics/contract.json",
