@@ -323,7 +323,7 @@
     "pull_request_must_remain_draft": false,
     "human_review_decision_required": false,
     "automatic_merge_authorized": false,
-    "release_or_version_change_authorized": false,
+    "release_or_version_change_authorized": true,
     "review_ready_assessment": "model/registries/scientific_baseline_review_ready_assessment.json",
     "merge_decision_required": false,
     "merge_authorization_assessment": "model/registries/scientific_baseline_merge_authorization.json",
@@ -333,6 +333,10 @@
     "release_versioning_contract": "model/registries/release_versioning_contract.json",
     "current_public_release": "0.1.0",
     "next_public_release_candidate": "0.2.0",
-    "version_bump_required_now": false
+    "version_bump_required_now": false,
+    "current_repository_version": "0.2.0",
+    "release_preparation_state": "READY_FOR_PUBLICATION_AFTER_GREEN_MAIN_CI",
+    "release_readiness_assessment": "model/registries/v0_2_0_release_readiness_assessment_2026_09_21.json",
+    "release_publication_authorization": "model/registries/release_publication_authorization.json"
   }
 }
