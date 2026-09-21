@@ -1,0 +1,73 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "phase": "Accounting Spine / F4 Eurostat-BSI exact-bridge diagnostic",
+  "instrument": "F4",
+  "purpose": "Test whether retained Eurostat quarterly-financial-accounts MFI counterpart totals can be combined with retained ECB BSI MFIs-excluding-the-NCB loan series to isolate an exact BNR counterpart contribution. This is a diagnostic only and cannot materialize F4 cells.",
+  "formal_materialization_gate": false,
+  "source_lineage": {
+    "eurostat": {
+      "dataset": "nasq_10_f_cp",
+      "retained_assessment": "model/dynamics/sectoral_financial_positions_eurostat_counterpart_discovery_assessment.json",
+      "retained_workflow_artifact_id": 10586785016,
+      "retained_raw_sha256": "547c9e65c60900aa259ba547efb60faedbaa22e8d8a66e1caed6cbd2cbd189ae",
+      "boundary": "MIO_EUR; F4; reporting sector S121_S122_S123; counterpart S11 or S14_S15; ASS; STK at 2025-Q4 or TRN summed over 2025-Q1..Q4"
+    },
+    "ecb_bsi": {
+      "retained_snapshot": "model/dynamics/private_credit_reference_snapshot.json",
+      "retained_workflow_artifact_id": 10573686121,
+      "boundary": "Millions of euro; MFIs excluding the NCB; loans; domestic NFC or households/NPISH; December 2025 stock or ECB financial transactions summed over 2025"
+    },
+    "f4_rank_boundary": "model/accounting/f4_exact_complement_rank_assessment.json"
+  },
+  "tested_bridge": {
+    "hypothesis": "Eurostat financial-accounts MFI F4 counterpart amount minus ECB BSI MFIs-excluding-NCB loan amount equals the BNR F4 counterpart amount.",
+    "exact_identity_required": true,
+    "no_missing_to_zero": true,
+    "no_residual_allocation": true,
+    "cases": {
+      "nfc_stock_2025_q4": {
+        "eurostat_mfi_f4_mio_eur": "42648.7",
+        "bsi_mfis_ex_ncb_loans_mio_eur": "42341.64901960784",
+        "residual_mio_eur": "307.05098039216"
+      },
+      "households_npish_stock_2025_q4": {
+        "eurostat_mfi_f4_mio_eur": "40542.7",
+        "bsi_mfis_ex_ncb_loans_mio_eur": "40297.96470588236",
+        "residual_mio_eur": "244.73529411764"
+      },
+      "nfc_transactions_2025": {
+        "eurostat_mfi_f4_mio_eur": "2594.5",
+        "bsi_mfis_ex_ncb_financial_transactions_mio_eur": "3994.58516763823719",
+        "residual_mio_eur": "-1400.08516763823719"
+      },
+      "households_npish_transactions_2025": {
+        "eurostat_mfi_f4_mio_eur": "3739.7",
+        "bsi_mfis_ex_ncb_financial_transactions_mio_eur": "5299.86913375546717",
+        "residual_mio_eur": "-1560.16913375546717"
+      }
+    }
+  },
+  "methodological_adjudication": {
+    "ecb_quality_report": "https://www.ecb.europa.eu/pub/euroareafinancialaccounts/html/ecb.eaqfa202305~1d44e20907.en.html",
+    "eurostat_financial_accounts_metadata": "https://ec.europa.eu/eurostat/cache/metadata/en/nasq_10_f_esms.htm",
+    "finding": "ECB documentation explicitly identifies conceptual differences between MFI loans in financial accounts and BSI, including accrued-interest treatment, write-down/reclassification effects and government-sector rerouting. Eurostat financial accounts follow ESA 2010 and are a distinct financial-accounts statistical framework. Therefore cross-domain subtraction is not an exact accounting identity.",
+    "exact_concept_bridge_validated": false
+  },
+  "accounting_effect": {
+    "new_rank_equations_authorized": false,
+    "bnr_counterpart_allocation_authorized": false,
+    "f4_reopen_trigger_satisfied": false,
+    "f4_materialization_change": false,
+    "canonical_benchmark_change": false,
+    "unconditional_unique_stock_cells_remain": 15,
+    "unconditional_unique_flow_cells_remain": 15,
+    "complete_f4_matrix": false
+  },
+  "system_effect": {
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_change": false
+  },
+  "decision": "NO_REOPEN_BSI_FINANCIAL_ACCOUNTS_CONCEPT_BRIDGE_NOT_EXACT"
+}

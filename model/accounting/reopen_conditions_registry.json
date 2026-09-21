@@ -30,14 +30,16 @@
       "current_status": "PARTIAL_UNCONDITIONAL_CORE_ONLY",
       "governing_assessment": "model/accounting/f4_exact_complement_rank_assessment.json",
       "retained_vintage": "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18",
-      "frozen_boundary": "F4 has 15 unconditional rank-unique stock cells and 15 unconditional rank-unique flow cells; the remaining bilateral cells are non-unique. The stock ambiguity is concentrated in the F-versus-BNR holder split and the BNR 6.1 million RON asset counterpart allocation; flow remains rank 26/nullity 9.",
+      "frozen_boundary": "F4 has 15 unconditional rank-unique stock cells and 15 unconditional rank-unique flow cells; the remaining bilateral cells are non-unique. The stock ambiguity is concentrated in the F-versus-BNR holder split and the BNR 6.1 million RON asset counterpart allocation; flow remains rank 26/nullity 9. A retained Eurostat–ECB BSI bridge diagnostic also rejects cross-domain subtraction as an exact BNR allocation identity.",
       "reopen_when": "A definitionally comparable official counterpart source or additional exact counterparty constraints make currently non-unique F4 coordinates invariant. For the stock BNR boundary, an official BNR/financial-accounts counterpart source for the 6.1 million RON asset stock, or a separately justified structural-zero adjudication, is required.",
       "evidence_that_does_not_reopen": [
         "zero aggregate BNR transactions used as bilateral flow zeros",
         "allocation of the 6.1 million RON BNR asset row by shares",
         "conditional BNR-zero stock cells promoted as unconditional",
-        "a fresh live QSA response that reproduces the same coefficient topology"
-      ]
+        "a fresh live QSA response that reproduces the same coefficient topology",
+        "subtracting ECB BSI MFIs-excluding-NCB loan series from Eurostat/financial-accounts MFI counterpart totals without a validated exact concept bridge"
+      ],
+      "bridge_diagnostic": "model/accounting/f4_eurostat_bsi_bridge_diagnostic_2026_09_21.json"
     },
     "F5": {
       "current_status": "FROZEN_AT_PUBLIC_DATA_BOUNDARY",
