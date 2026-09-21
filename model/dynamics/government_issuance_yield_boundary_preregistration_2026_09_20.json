@@ -108,6 +108,22 @@
       "exact_integrated_equation_ready": false,
       "parameter_estimation_authorized": false,
       "feedback_activation_authorized": false
+    },
+    {
+      "id": "interest_cost_to_financing_need",
+      "from": "government_interest_cost",
+      "to": "government_financing_need",
+      "requirement": "Contract a same-boundary financing-needs decomposition that distinguishes accrual interest expenditure, cash interest service, principal amortization/refinancing, fiscal balance and other financing adjustments. Do not relabel D41PAY, the Ministry refinancing component or debt issuance as gross financing need.",
+      "status": "REVIEWED_POSITIVE_STRUCTURAL_DIRECTION_GFN_DECOMPOSITION_VALID_EXACT_INTEGRATED_CASH_ACCOUNTING_BOUNDARY_UNRESOLVED",
+      "boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
+      "related_reference_modes": [
+        "government_interest_burden",
+        "government_refinancing_need"
+      ],
+      "exact_integrated_equation_ready": false,
+      "accounting_identity_ready": false,
+      "parameter_estimation_authorized": false,
+      "feedback_activation_authorized": false
     }
   ],
   "scientific_effect": {
@@ -131,8 +147,9 @@
   },
   "next_gate_after_materialisation": "Reconcile the exact RON auction-universe stock denominator before any supply-load ratio is computed. Submitted-bids and bid-to-cover monthly series remain blocked because the monthly report exposes them graphically without reproducible native-text month/series mapping.",
   "next_independent_bridge_task": {
-    "id": "interest_cost_to_financing_need_boundary_review",
-    "authorization": "STRUCTURAL_ACCOUNTING_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "id": "financing_channel_allocation_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_construct_one_to_one_financing_need_to_bnr_issuance_mapping": false,
     "may_estimate_parameters": false,
     "may_activate_feedback": false,
     "may_change_behavioural_closure": false
