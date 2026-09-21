@@ -73,7 +73,7 @@ This separation is central to RMD. An empirical mechanism being listed or tested
 | Scientific dimension | Current state |
 | --- | --- |
 | Accounting / stock-flow core | **Partial pass** |
-| Accounting recovery stage | **Evidence-Triggered Accounting Spine Hold**; no active unconditional recovery task |
+| Accounting recovery stage | **Selective F4 reopen**; structural-zero successor materialization gate pending |
 | Canonically complete stock + flow instruments | **F3 only** |
 | Required reference modes | **10 / 10 ready** |
 | Validated reference behavioural mechanisms | **0** |
@@ -84,7 +84,7 @@ This separation is central to RMD. An empirical mechanism being listed or tested
 
 `sectoral_financial_positions` is now observed at the aggregate quarterly reference-mode boundary after a separately evaluated official-consistency gate. This does **not** complete its bilateral holder-by-issuer Accounting Spine boundary: F3 remains the only canonically complete stock-and-flow instrument.
 
-The current Accounting Spine recovery cycle has also reached a terminal evidence boundary: F2, F4 and F5–F8 retain explicit incomplete/partial dispositions and reopen triggers, while no selective or unconditional accounting-recovery gate is currently open. This is a scientifically valid hold state, not Accounting Spine completion.
+The v0.3.0 Accounting Spine recovery checkpoint remains the historical terminal evidence boundary. On current `main`, F4 has reopened narrowly after an ESA-2010 structural-zero adjudication proved the BNR zero-liability **stock** column exact; a successor materialization gate is pending for the newly exact stock cells. F2 and F5–F8 remain frozen behind their declared triggers. This does not complete F4 or the Accounting Spine.
 
 For the exact current scientific boundary, including evidence gates and reopen conditions, see [STATUS.md](STATUS.md).
 
