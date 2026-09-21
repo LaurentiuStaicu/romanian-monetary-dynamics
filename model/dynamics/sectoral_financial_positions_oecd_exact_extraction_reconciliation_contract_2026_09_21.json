@@ -63,7 +63,18 @@
       "S13",
       "S2"
     ],
-    "diagnostic_sector": "S1"
+    "diagnostic_sector": "S1",
+    "required_mapping_source_sectors": [
+      "S1M",
+      "S11",
+      "S12",
+      "S121",
+      "S13",
+      "S2"
+    ],
+    "diagnostic_source_sectors": [
+      "S1"
+    ]
   },
   "sector_mapping": {
     "H": {
