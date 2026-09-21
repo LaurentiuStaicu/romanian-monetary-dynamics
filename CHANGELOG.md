@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Scientific integrity and reproducibility
 
+- closed the current government refinancing-interest candidate loop as structurally reviewed but quantitatively blocked: all four links now have explicit boundary decisions, 0/4 have exact integrated equations, all four nodes remain unresolved, the maturity delay and repricing share remain unidentified, and the loop enters evidence-triggered hold with no active empirical task;
 - reviewed the government-debt-stock to interest-cost link as a conditional accounting scale relation: Eurostat apparent cost confirms the matched S13 accrued-interest/average-Maastricht-debt boundary, while year-end debt, Ministry portfolio rate and current market yields remain non-substitutable; no new reference mode, parameter, equation activation or behavioural closure is introduced;
 - Review the government gross-borrowing/issuance to Maastricht-debt-stock bridge: reject one-to-one accumulation, anchor the 2025 S13 stock change to Eurostat EDP Table 3 stock-flow reconciliation, keep matched net debt transactions unidentified, and preserve inactive feedback/behavioural closure.
 - retained all twelve 2025 Ministry monthly public-debt reports and extracted exact provider-published cumulative-YTD financing channels; changing FX-conversion regimes, exchange-operation semantics and non-monotone published lines block month-to-month differencing, so no monthly realized-financing flow series or channel allocation is promoted;
