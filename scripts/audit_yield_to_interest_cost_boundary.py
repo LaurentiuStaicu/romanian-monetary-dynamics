@@ -209,8 +209,8 @@ def audit_yield_to_interest_cost_boundary(
         errors.append("preregistration may not authorize repricing estimation")
     if bridge.get("feedback_activation_authorized") is not False:
         errors.append("preregistration may not activate yield-to-interest-cost bridge")
-    if prereg["next_independent_bridge_task"]["id"] != "interest_cost_to_financing_need_boundary_review":
-        errors.append("preregistration next independent bridge changed")
+    if prereg["next_independent_bridge_task"]["id"] != "financing_channel_allocation_boundary_review":
+        errors.append("preregistration current next independent bridge changed")
 
     dynamic = model_contract["dynamic_core"]
     if dynamic.get("yield_to_interest_cost_boundary_review") != REVIEW_PATH:
@@ -232,9 +232,9 @@ def audit_yield_to_interest_cost_boundary(
     if dynamic.get("government_interest_cost_scalar_selected") is not False:
         errors.append("model contract may not select scalar interest cost")
     if dynamic.get("government_issuance_yield_next_independent_task") != (
-        "interest_cost_to_financing_need_boundary_review"
+        "financing_channel_allocation_boundary_review"
     ):
-        errors.append("model contract next independent task changed")
+        errors.append("model contract current next independent task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
         errors.append("model contract may not activate issuance-yield feedback")
 
