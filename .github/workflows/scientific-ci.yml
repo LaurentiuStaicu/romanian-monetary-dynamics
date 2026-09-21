@@ -274,6 +274,9 @@ jobs:
       - name: Audit canonical Accounting Spine readiness
         run: python scripts/audit_accounting_readiness.py
 
+      - name: Audit F4 Eurostat-BSI exact-bridge diagnostic
+        run: python scripts/audit_f4_eurostat_bsi_bridge_diagnostic.py
+
       - name: Audit BNR 2025 financial-accounts topology reopen
         run: python scripts/audit_bnr_2025_financial_accounts_topology_reopen.py
 
