@@ -211,7 +211,7 @@ Retained historical source material is under [data/source_vintages/](data/source
 
 ### Release state
 
-The latest public scientific-core release is **v0.2.0 — Structural review and reproducibility milestone**, published from the exact Scientific-CI-green release commit. Main now contains post-release governance finalization beyond that immutable snapshot. The default next substantive milestone candidate is **v0.3.0**; a narrowly scoped corrective release may instead use **v0.2.1**.
+The latest public scientific-core release is **v0.3.0 — Reference-mode closure and Accounting Spine recovery boundary milestone**, published from the exact Scientific-CI-green commit `33c11b7e10e7e837097da5b34a9251c7bedb3f2c`. Main contains post-publication governance finalization beyond that immutable snapshot. The default next substantive milestone candidate is **v0.4.0**; a narrowly scoped corrective release may instead use **v0.3.1**.
 
 Version changes are governed atomically by [releases/README.md](releases/README.md) and [model/registries/release_versioning_contract.json](model/registries/release_versioning_contract.json).
 
