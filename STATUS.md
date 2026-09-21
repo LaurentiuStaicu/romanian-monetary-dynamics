@@ -128,6 +128,20 @@ The terminal assessment is `model/dynamics/external_fx_refinancing_open_chain_te
 This closure changes neither the canonical modeling paradigm nor the public version.
 
 
+
+### Feedback architecture structural-review terminal state — 2026-09-21
+
+All five structures declared in the feedback registry have now completed explicit link-level structural/source-boundary review. Four remain `CLOSED_CANDIDATE_LOOP` topologies and the external FX-refinancing structure remains an `OPEN_CHAIN`. Every structure is on **EVIDENCE_TRIGGERED_HOLD** with no active empirical structural-review task.
+
+Across the architecture there are **22 registered feedback links, 0 exact integrated link equations ready, 0 activation-ready structures, 0 active quantitative feedback structures and 0 validated reference behavioural mechanisms**. All seven declared delay candidates remain inactive and no scalar `tau` is activation-ready. Structural-review completion therefore records the current evidence boundary; it does **not** mean that the behavioural model is closed, calibrated, validated, forecast-ready or complete.
+
+The aggregate terminal assessment is `model/dynamics/feedback_architecture_structural_review_terminal_assessment_2026_09_21.json`. It is now part of the System Dynamics conformity gate and Scientific CI. Reopening is structure-specific and requires the corresponding declared evidence/identification trigger; one structure cannot borrow an equation, parameter, delay or empirical result from another merely to achieve closure.
+
+The independent integrated blockers remain unchanged: only 9 of 10 required reference modes are ready, `sectoral_financial_positions` remains the reference-mode blocker, canonical multi-instrument stock initialization is not ready, and a full 2025 canonical stock-flow benchmark is not ready.
+
+This terminal structural-review state changes neither the canonical modeling paradigm nor the public version.
+
+
 ## Canonical modeling paradigm
 
 **Romanian Monetary Dynamics (RMD) is an accounting-constrained, stock-flow-consistent dynamic model with a developing System Dynamics feedback architecture; behavioural closure remains inactive pending empirical identification and validation.**
