@@ -301,10 +301,14 @@
       "current_boundary_class": "UNRESOLVED",
       "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
       "exact_reference_mode_id": null,
-      "classification_basis": "This feedback node is part of qualitative candidate topology, but its exact integrated observable, equation and endogenous/exogenous role have not passed the activation gate. No role is inferred from topology alone.",
+      "classification_basis": "Inflationary pressure remains a qualitative multi-driver node. Romania HICP is observed in a separate empirical evidence path, but HICP does not identify demand pressure and is not promoted to a Dynamic Core reference mode.",
       "related_reference_modes": [],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
-      "current_feedback_activation_authorized": false
+      "current_feedback_activation_authorized": false,
+      "private_demand_and_investment_to_inflationary_pressure_boundary_review": "model/dynamics/private_demand_and_investment_to_inflationary_pressure_boundary_review_2026_09_21.json",
+      "private_demand_and_investment_to_inflationary_pressure_status": "MULTI_DRIVER_INFLATION_HICP_OBSERVABLE_DEMAND_CONTRIBUTION_NOT_IDENTIFIED",
+      "observed_inflation_diagnostic_available": true,
+      "core_reference_mode_promotion_authorized": false
     },
     {
       "id": "loan_stock",
@@ -365,7 +369,9 @@
       "current_feedback_activation_authorized": false,
       "credit_flow_to_private_demand_and_investment_boundary_review": "model/dynamics/credit_flow_to_private_demand_and_investment_boundary_review_2026_09_21.json",
       "credit_flow_to_private_demand_and_investment_status": "FINANCING_FLOW_PURPOSES_MULTIPLE_PRIVATE_DEMAND_AND_INVESTMENT_MAPPING_UNIDENTIFIED",
-      "aggregate_combined_target_selected": false
+      "aggregate_combined_target_selected": false,
+      "private_demand_and_investment_to_inflationary_pressure_boundary_review": "model/dynamics/private_demand_and_investment_to_inflationary_pressure_boundary_review_2026_09_21.json",
+      "private_demand_and_investment_to_inflationary_pressure_status": "MULTI_DRIVER_INFLATION_HICP_OBSERVABLE_DEMAND_CONTRIBUTION_NOT_IDENTIFIED"
     },
     {
       "id": "refinancing_need",
