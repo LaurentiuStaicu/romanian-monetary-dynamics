@@ -1,0 +1,33 @@
+{
+  "manifest_version": "0.1",
+  "retained_on": "2026-09-21",
+  "source": "OECD SDMX public API",
+  "purpose": "Retain compact provenance for the ESA2010 semantic-adjusted sectoral-financial-position gate.",
+  "assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
+  "semantic_assessment": "model/dynamics/sectoral_financial_positions_esa2010_s1m_f2_liability_semantic_assessment_2026_09_21.json",
+  "workflow_artifact": {
+    "id": 10634064870,
+    "zip_sha256": "18b0a611e018d12196cbdbcf980f17bc3211dc0c88269c96aa10f59076077310"
+  },
+  "raw_responses": [
+    {
+      "measure": "flow",
+      "sha256": "06c23cfdcc405b2f1689b695392f4f99a9aaa1085e3b90a6254482eb13d0a616",
+      "bytes": 3456922
+    },
+    {
+      "measure": "stock",
+      "sha256": "ca41b25cb31f02baeaa31d2b74444b3ea0e59cfd0f1cc974f5f92327a838f4d1",
+      "bytes": 3532909
+    }
+  ],
+  "row_gate_pass": true,
+  "numeric_observation_value_review_performed": true,
+  "finite_value_gate_pass": true,
+  "reconciliation_test_performed": true,
+  "reconciliation_violation_count": 63,
+  "max_abs_flow_residual_million_ron": 0.5000000000075033,
+  "max_abs_stock_residual_million_ron": 0.5999999999476131,
+  "frozen_tolerance_million_ron": 0.1,
+  "reference_mode_promoted": false
+}
