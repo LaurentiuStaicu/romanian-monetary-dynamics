@@ -227,7 +227,10 @@
       "delay_candidates": [
         "monetary_transmission_delay"
       ],
-      "topology_status": "CLOSED_CANDIDATE_LOOP"
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "policy_rate_to_market_and_lending_rates_boundary_review": "model/dynamics/policy_rate_to_market_and_lending_rates_boundary_review_2026_09_21.json",
+      "policy_rate_to_market_and_lending_rates_status": "TARGET_SPECIFIC_PASS_THROUGH_CANDIDATE_AVAILABLE_GENERIC_RATE_NODE_UNRESOLVED",
+      "policy_rate_to_market_and_lending_rates_equation_ready": false
     },
     {
       "id": "external_fx_refinancing_loop",
