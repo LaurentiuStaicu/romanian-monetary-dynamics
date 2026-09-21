@@ -1,0 +1,152 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-21",
+  "phase": "Accounting Spine / F6 selective reopen — OECD counterpart Stage 2",
+  "instrument": "F6",
+  "purpose": "Preregister a retained-source value/reconciliation and exact-rank gate after the official OECD quarterly from-whom-to-whom artifact was found to satisfy the declared F6 reopen condition by publishing total F6 and F61-F66 by reporting/counterpart sector for Romania. Presence alone cannot materialize cells.",
+  "predecessor": {
+    "aggregate_rank_assessment": "model/accounting/f6_aggregate_rank_assessment.json",
+    "coverage_assessment": "model/accounting/f6_insurance_pensions_coverage_assessment.json",
+    "reopen_registry": "model/accounting/reopen_conditions_registry.json"
+  },
+  "source": {
+    "institution": "OECD",
+    "stocks_dataflow": "OECD.SDD.NAD:DSD_NASEC20@DF_T725R_Q",
+    "flows_dataflow": "OECD.SDD.NAD:DSD_NASEC20@DF_T625R_Q",
+    "retained_discovery_assessment": "model/dynamics/sectoral_financial_positions_oecd_counterpart_discovery_assessment.json",
+    "retained_workflow_artifact_id": 10586683826,
+    "stocks_raw_sha256": "039d910150ece7d264284ffc8dfb713e99d255cb17bd366b66decfa214c4ae5f",
+    "flows_raw_sha256": "7585836c1b3b181fa233fbc21243813498911215b5ac9b28e7073da17e52629a",
+    "lineage": "OECD-ECB quarterly financial-accounts collection; this is counterpart-topology evidence, not statistically independent measurement."
+  },
+  "topology_trigger": {
+    "declared_reopen_condition": "A definitionally comparable official source provides bilateral F6, bilateral F6 components, or additional exact counterparty constraints sufficient to reduce the unconditional nullspace.",
+    "exact_total_present": "F6",
+    "exact_components_present": [
+      "F61",
+      "F62",
+      "F63",
+      "F64",
+      "F65",
+      "F66"
+    ],
+    "reporting_sectors_present": [
+      "S1",
+      "S11",
+      "S12",
+      "S13",
+      "S1M"
+    ],
+    "counterpart_sectors_present": [
+      "S1",
+      "S11",
+      "S12",
+      "S13",
+      "S1M",
+      "S2"
+    ],
+    "central_bank_sector_S121_present": false,
+    "stock_2025_q4_rows_per_instrument_per_accounting_entry": 30,
+    "flow_2025_q1_q4_rows_per_instrument_per_accounting_entry": 120,
+    "trigger_satisfied": true,
+    "effect": "AUTHORIZE_STAGE2_RETAINED_SOURCE_VALUE_RECONCILIATION_AND_RANK_GATE_ONLY"
+  },
+  "frozen_mapping": {
+    "H": "S1M",
+    "C": "S11",
+    "G": "S13",
+    "X": "S2 only through explicit asset/liability orientation",
+    "S12": "F + BNR aggregate only",
+    "forbidden": [
+      "S12 may not be relabelled as RMD F.",
+      "S12 may not be split into F and BNR by residual, shares, component patterns, historical proportions or missing-to-zero assumptions.",
+      "Absence of S121 may not be interpreted as BNR=0."
+    ]
+  },
+  "stage2_gate": {
+    "source_rows": {
+      "stock_period": "2025-Q4",
+      "stock_transaction_code": "LE",
+      "flow_periods": [
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4"
+      ],
+      "flow_transaction_code": "F",
+      "instruments": [
+        "F6",
+        "F61",
+        "F62",
+        "F63",
+        "F64",
+        "F65",
+        "F66"
+      ],
+      "required_consolidation": "N",
+      "required_unit_measure": "XDC",
+      "required_unit_mult": 6,
+      "required_currency": "RON",
+      "required_currency_denomination": "_T",
+      "required_valuation": "S",
+      "required_price_base": "V",
+      "required_transformation": "N",
+      "required_accounting_entries": [
+        "A",
+        "L"
+      ],
+      "missing_row_to_zero": false,
+      "duplicate_required_row_allowed": false,
+      "finite_required_values": true
+    },
+    "reconciliation": {
+      "tolerance_million_RON": "0.1",
+      "tolerance_basis": "Inherited canonical Accounting Spine/F6 accounting tolerance, frozen before Stage 2 detailed value review.",
+      "asset_liability_mirror_check": true,
+      "source_S1_aggregate_consistency_check": true,
+      "component_identity_check": "F6 = F61+F62+F63+F64+F65+F66 where all required source rows are present.",
+      "all_checks_must_pass_before_equation_admission": true,
+      "failure_effect": "NO_NEW_OECD_F6_EQUATIONS_ADMITTED"
+    },
+    "equation_admission": {
+      "direct_total_F6_resident_sectors": [
+        "H",
+        "C",
+        "G"
+      ],
+      "direct_external_sector": "X",
+      "aggregate_financial_sector_equations": "S12 total-F6 rows may enter only as exact F+BNR sum equations.",
+      "component_rows_role": "validation/control unless a later separately justified component-aware rank gate is required; Stage 2 direct rank expansion is based on total F6 counterpart equations.",
+      "use_observed_zero_rows_as_observed_equations": true,
+      "infer_unobserved_zero_rows": false,
+      "rhs_required_before_rank_admission": true
+    },
+    "rank_recomputation": {
+      "variables": 35,
+      "predecessor_rank_stock": 11,
+      "predecessor_nullity_stock": 24,
+      "predecessor_rank_flow": 11,
+      "predecessor_nullity_flow": 24,
+      "recompute_exact_nullspace": true,
+      "promotion_rule": "A bilateral total-F6 cell may be promoted only if its coordinate is invariant over every exact nullspace basis vector after all admitted source equations pass the value/reconciliation gate."
+    }
+  },
+  "hard_rules": {
+    "no_live_refetch_required": true,
+    "no_BNR_residual_allocation": true,
+    "no_missing_to_zero": true,
+    "no_issuer_applicability_zero_invention": true,
+    "no_post_result_mapping_change": true,
+    "no_post_result_tolerance_change": true,
+    "no_reference_mode_change": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_version_change": true
+  },
+  "allowed_outcomes": [
+    "SOURCE_GATE_FAIL_NO_RANK_CHANGE",
+    "SOURCE_GATE_PASS_RANK_IMPROVES_NO_BILATERAL_F6_CELL_UNIQUE",
+    "SOURCE_GATE_PASS_PARTIAL_F6_IDENTIFICATION_REQUIRES_SEPARATE_MATERIALIZATION_GATE"
+  ]
+}

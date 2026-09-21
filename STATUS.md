@@ -422,3 +422,13 @@ Because the contract required all source value/reconciliation gates to pass befo
 
 The failed 0.1 million RON gate is immutable provenance. Its observed 1–3 million RON residuals do not authorize a post-result tolerance relaxation or partial salvage of individually mirrored rows. F5 returns to **EVIDENCE_TRIGGERED_HOLD** pending changed official evidence or an independently justified source-specific precision/reconciliation basis preregistered before any successor value gate.
 
+### F6 OECD counterpart selective reopen — 2026-09-21
+
+A retained-source topology review has satisfied the frozen F6 reopen condition. The existing OECD quarterly from-whom-to-whom stocks and flows artifact contains total `F6` plus `F61`–`F66` by reporting and counterpart sector for Romania. The previous F6 boundary had only aggregate equations and rank 11/nullity 24 with zero unique bilateral cells, so this is genuinely new identification topology rather than a repeat of the old source probe.
+
+S121 is still absent. OECD S12 therefore remains only an exact **F + BNR** aggregate constraint; it may not be relabelled as RMD F or split by residual, shares, component patterns or missing-to-zero assumptions. H, C and G retain S1M, S11 and S13 mappings; S2 is usable only through explicit asset/liability orientation.
+
+Before any detailed Stage 2 value or rank result is reviewed, `model/accounting/f6_oecd_counterpart_reopen_contract_2026_09_21.json` freezes the 2025-Q4 stock and 2025-Q1..Q4 transaction boundary, the existing 0.1 million RON tolerance, A/L mirror checks, S1 resident-aggregation checks, the source identity `F6=F61+F62+F63+F64+F65+F66`, and exact rational rank recomputation. All source gates must pass before any new OECD total-F6 equation may enter the rank system.
+
+This is a selective reopen only. F6 remains canonically incomplete until Stage 2 executes; no benchmark cell, reference mode, calibration state, feedback structure, behavioural closure or version is changed by preregistration.
+
