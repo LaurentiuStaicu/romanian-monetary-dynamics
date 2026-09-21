@@ -77,8 +77,8 @@ def audit_oecd_exact_row_gate() -> list[str]:
     dc=model["dynamic_core"]
     if dc["reference_mode_ready_count"]!=9 or dc["reference_mode_required_count"]!=10:
         e.append("reference-mode readiness must remain 9/10")
-    if model["scientific_stage"].get("active_noncalibration_source_task") is not None:
-        e.append("terminal source task must be closed")
+    if model["scientific_stage"].get("active_noncalibration_source_task") != "sectoral_financial_positions_ecb_qfa_official_tolerance_gate":
+        e.append("historical terminal row gate permits only the independent official-tolerance task")
     if model["scientific_stage"].get("next_operational_state")!="EVIDENCE_TRIGGERED_BASELINE_HOLD":
         e.append("terminal source path must return to baseline hold")
     if acc["current_expected_state"]["canonical_complete_stock_and_flow_instruments"]!=["F3"]:
