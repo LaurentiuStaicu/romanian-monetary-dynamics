@@ -219,6 +219,9 @@ jobs:
       - name: Audit credit-flow to private-demand and investment boundary
         run: python scripts/audit_credit_flow_to_private_demand_and_investment_boundary.py
 
+      - name: Audit private-demand and investment to inflationary-pressure boundary
+        run: python scripts/audit_private_demand_and_investment_to_inflationary_pressure_boundary.py
+
       - name: Audit government debt-stock to interest-cost accounting boundary
         run: python scripts/audit_government_debt_stock_to_interest_cost_boundary.py
 
