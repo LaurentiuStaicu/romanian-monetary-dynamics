@@ -1,0 +1,76 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "ecb_qfa_official_internal_consistency_tolerance_authority",
+  "reference_mode": "sectoral_financial_positions",
+  "purpose": "Determine whether an independent, domain-specific official QFA quality rule exists that can legitimately replace the earlier ad hoc 0.1 million RON reconciliation threshold in a new preregistered aggregate reference-mode gate, without rewriting any historical failed gate.",
+  "official_evidence": [
+    {
+      "institution": "European Central Bank",
+      "title": "Euro area quarterly financial accounts — 2013 quality report",
+      "publication_date": "2014-04",
+      "url": "https://www.ecb.europa.eu/pub/pdf/euroareafinancialaccounts/euroaareafinancialaccountsquarterlytreport2013en.pdf",
+      "section": "3.4.1 Internal consistency: horizontal consistency by financial instrument",
+      "exact_scope": [
+        "Internal consistency covers aggregation consistency, horizontal consistency, balancing-item consistency and counterpart-sector consistency.",
+        "Horizontal consistency is equality between the sum of financial assets and the sum of liabilities across relevant sectors.",
+        "Discrepancies of less than EUR 10 million are considered acceptable in national data."
+      ],
+      "normative_threshold_eur_million": 10
+    },
+    {
+      "institution": "European Central Bank",
+      "title": "Euro area and national quarterly financial accounts — Quality report 2024",
+      "publication_date": "2025-06",
+      "url": "https://www.ecb.europa.eu/pub/euroareafinancialaccounts/html/ecb.eaqfa202506.en.html",
+      "exact_scope": [
+        "Internal consistency continues to cover aggregation, horizontal, balancing-item and counterpart-sector consistency.",
+        "Internal discrepancies and unexplained negative stocks above EUR 10 million were observed in some 2023/2024 transmissions and generally corrected later.",
+        "The report evaluates all EU Member States; Romania is explicitly included among non-euro countries and has a 96% validation-rule consistency rate for Q4 2012 to Q2 2024."
+      ],
+      "contemporary_threshold_continuity_eur_million": 10
+    },
+    {
+      "institution": "European Central Bank",
+      "title": "ECB Data Portal API — Exchange Rates (EXR)",
+      "url": "https://data-api.ecb.europa.eu/service/data/EXR/D.RON.EUR.SP00.A",
+      "role": "Official RON per EUR daily reference-rate series used only to convert the ECB EUR-denominated quality threshold into a conservative RON lower bound."
+    }
+  ],
+  "independence_from_rmd_residuals": {
+    "threshold_predates_rmd_gate": true,
+    "threshold_selected_from_official_qfa_quality_rule": true,
+    "threshold_not_estimated_from_observed_residuals": true,
+    "historical_0_1_million_ron_gates_rewritten": false,
+    "historical_failures_remain_immutable": true
+  },
+  "applicability": {
+    "data_domain": "National quarterly financial accounts",
+    "consistency_family": "Internal consistency / horizontal consistency",
+    "country_scope_includes_romania": true,
+    "non_euro_status_blocks_application": false,
+    "reason": "The 2024 ECB QFA quality report applies validation indicators to all EU Member States, including Romania in the non-euro group, and continues to use the EUR 10 million internal-discrepancy threshold in the same report.",
+    "rmd_test_alignment": "The new gate tests exact per-instrument asset-minus-liability horizontal consistency across the represented Romanian sectors plus rest of world. Aggregate six-sector reconciliation is retained as a secondary stricter diagnostic."
+  },
+  "conversion_rule": {
+    "source_series": "EXR.D.RON.EUR.SP00.A",
+    "source_semantics": "Romanian leu per euro, daily ECB reference rate",
+    "source_window_start": "2014-01-01",
+    "source_window_end": "2026-03-31",
+    "method": "Use the minimum positive daily RON-per-EUR reference rate over the full frozen source window. Multiply by EUR 10 million. This produces one conservative RON threshold floor that is no larger than the EUR 10 million equivalent for any retained date.",
+    "threshold_eur_million": 10,
+    "no_fx_parameter_estimation": true
+  },
+  "decision": "PASS_INDEPENDENT_OFFICIAL_ECB_QFA_TOLERANCE_TRIGGER_NEW_PREREGISTERED_GATE_AUTHORIZED",
+  "scientific_effect": {
+    "new_official_tolerance_gate_may_be_preregistered": true,
+    "previous_failed_gates_reinterpreted": false,
+    "reference_mode_promoted": false,
+    "readiness_count_change": 0,
+    "accounting_readiness_change": false,
+    "calibration_cycle_opened": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false
+  }
+}
