@@ -63,5 +63,18 @@
     "initial_pull_request_attempt_behavior": "SKIP",
     "activation_condition": "pull_request on frozen branch AND github.run_attempt > 1",
     "live_access_scope": "ECB EXR quarterly RON/EUR series only; OECD values are not re-accessed."
+  },
+  "execution_result": {
+    "executed": true,
+    "result": "PASS_ECB_QFA_OFFICIAL_MATERIALITY_ACCEPTABILITY",
+    "assessment": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_assessment_2026_09_21.json",
+    "workflow_run_id": 35598269833,
+    "workflow_job_id": 106328420951,
+    "artifact_id": 10638010999,
+    "artifact_zip_sha256": "ed2a0391f43d8d830abd4cccf0926d99bca497a4b251ffa34e164f95a4dc7f55",
+    "ecb_fx_sha256": "7d68701757bc408d990fde13a6d4aacc5ec432b28518f74ffcb1b87bf647e7c6",
+    "materiality_violations": 0,
+    "promotion_assessment_authorized": true,
+    "direct_accounting_effect": false
   }
 }
