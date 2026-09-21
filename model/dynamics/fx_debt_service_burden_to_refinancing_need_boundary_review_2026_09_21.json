@@ -1,0 +1,72 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "fx_debt_service_burden_to_refinancing_need_boundary_review",
+  "loop_id": "external_fx_refinancing_loop",
+  "purpose": "Determine whether foreign-currency debt-service obligations can be mapped one-to-one into a generic refinancing-need node across government, banks and non-financial/private sectors.",
+  "decision": "DO_NOT_EQUATE_FX_DEBT_SERVICE_DUE_WITH_REFINANCING_NEED_KEEP_SECTOR_LIQUIDITY_AND_BUFFER_BOUNDARY_UNRESOLVED",
+  "source_and_accounting_boundary": {
+    "external_fx_source_review": "model/calibration_validation/external_fx_refinancing_source_boundary_review.json",
+    "government_financing_boundary": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
+    "interpretation": "Debt service due is a contractual payment obligation. Refinancing need depends additionally on principal falling due, available cash/liquidity buffers, internally generated cash flow, asset sales, rollover choices and alternative financing channels. The government financing-need concept cannot be silently generalized to banks or private borrowers."
+  },
+  "concept_boundary": {
+    "debt_service_due_equals_refinancing_need": false,
+    "interest_payment_equals_refinancing_need": false,
+    "principal_due_equals_refinancing_need": false,
+    "government_gross_financing_need_equals_generic_cross_sector_refinancing_need": false,
+    "gross_external_debt_stock_change_equals_refinancing_flow": false
+  },
+  "bridge_resolution": {
+    "from": "fx_debt_service_burden",
+    "to": "refinancing_need",
+    "status": "DEBT_SERVICE_DUE_NOT_EQUAL_REFINANCING_NEED_SECTOR_LIQUIDITY_AND_BUFFER_BOUNDARY_UNRESOLVED",
+    "causal_role": "LIQUIDITY_AND_ROLLOVER_CANDIDATE_BOUNDARY_SECTOR_SPECIFIC_AND_UNRESOLVED",
+    "sector_specific_liquidity_bridge_identified": false,
+    "cash_buffer_treatment_identified": false,
+    "rollover_share_identified": false,
+    "alternative_financing_channels_identified": false,
+    "cross_sector_generic_equation_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effect": {
+    "fx_debt_service_burden": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "current_feedback_activation_authorized": false
+    },
+    "refinancing_need": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "hard_rules": {
+    "no_debt_service_to_refinancing_identity": true,
+    "no_government_to_private_sector_boundary_substitution": true,
+    "no_principal_due_to_rollover_share_assumption": true,
+    "no_zero_cash_buffer_assumption": true,
+    "no_stock_change_as_refinancing_flow": true,
+    "no_cross_sector_synthetic_aggregation": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "generic_refinancing_need_resolved": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "refinancing_need_to_risk_premium_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_reuse_sovereign_yield_equation": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}
