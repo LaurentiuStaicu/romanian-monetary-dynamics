@@ -4,6 +4,10 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ## Unreleased
 
+_No unreleased changes yet._
+
+## 0.2.0 - 2026-09-21
+
 ### Scientific integrity and reproducibility
 
 - formalized and independently audited numerical-integration convergence for Dynamic Core primitives: constant-rate stock updates are partition-invariant, a first-order Euler delay converges under repeated time-step halving, and the System Dynamics adequacy rule remains `dt/tau < 1/3`; with the default quarterly `dt=0.25` this means a future active first-order delay must have `tau > 0.75 years` or use a smaller time step, while integrated-model numerical robustness remains explicitly unclaimed because behavioural closure is inactive;
@@ -80,7 +84,6 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 - prepared the professional RMD first-page implementation with compact suite-consistent header, canonical scientific-status panel, responsive concept diagram, reproduction path, provenance rules, repository map and reader routing; publication remains review-gated;
 - added an atomic release/versioning contract and release checklist;
 - future version changes must synchronize package metadata, README badge, citation metadata, changelog, release contract, Git tag and GitHub Release.
-
 
 ## 0.1.0 - 2026-09-18
 
