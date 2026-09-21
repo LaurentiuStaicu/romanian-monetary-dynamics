@@ -144,6 +144,7 @@ python -m pip install --no-deps dist/*.whl
 
 python -m unittest discover -s tests -v
 python scripts/audit_accounting_readiness.py
+python scripts/audit_f4_structural_zero_successor_execution.py
 python scripts/audit_accounting_spine_recovery_terminal.py
 python scripts/audit_dimensional_consistency.py
 python scripts/audit_system_dynamics_conformity.py
