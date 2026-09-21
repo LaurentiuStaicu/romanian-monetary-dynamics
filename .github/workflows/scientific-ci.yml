@@ -278,6 +278,12 @@ jobs:
       - name: Audit terminal Accounting Spine recovery state
         run: python scripts/audit_accounting_spine_recovery_terminal.py
 
+      - name: Audit F4 BNR zero-liability structural adjudication
+        run: python scripts/audit_f4_bnr_zero_liability_structural_adjudication.py
+
+      - name: Audit post-terminal F4 structural selective reopen
+        run: python scripts/audit_accounting_spine_f4_structural_reopen.py
+
       - name: Audit F4 Eurostat-BSI exact-bridge diagnostic
         run: python scripts/audit_f4_eurostat_bsi_bridge_diagnostic.py
 
