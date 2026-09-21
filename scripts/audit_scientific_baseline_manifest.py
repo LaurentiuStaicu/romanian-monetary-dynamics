@@ -59,6 +59,9 @@ def main() -> None:
     accounting_terminal = load(
         "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json"
     )
+    accounting_f4_successor = load(
+        "model/accounting/accounting_spine_recovery_f4_structural_reopen_assessment_2026_09_21.json"
+    )
     sd = load("model/dynamics/system_dynamics_conformity_gate.json")
     refs = load("model/dynamics/reference_modes.json")
     sectoral_external_screening = load(
@@ -266,44 +269,94 @@ def main() -> None:
         "Accounting reopen registry disagrees with scientific baseline",
     )
 
-    check(
-        accounting["accounting_recovery_stage_status"]
-        == accounting_terminal["decision"].replace(
-            "ACCOUNTING_SPINE_RECOVERY_", ""
-        ),
-        "Accounting readiness terminal-stage status disagrees with terminal assessment",
-    )
+    # Historical Accounting Spine terminal checkpoint remains immutable; current
+    # state may be a separately registered successor reopen.
     check(
         accounting["accounting_recovery_terminal_assessment"]
         == "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json",
-        "Accounting readiness gate does not register terminal recovery assessment",
-    )
-    check(
-        reopen["accounting_recovery_stage_status"]
-        == accounting["accounting_recovery_stage_status"],
-        "Accounting reopen registry terminal-stage status is stale",
+        "Accounting readiness gate lost the historical terminal recovery assessment",
     )
     check(
         reopen["accounting_recovery_terminal_assessment"]
         == accounting["accounting_recovery_terminal_assessment"],
-        "Accounting reopen registry terminal assessment is stale",
+        "Accounting reopen registry lost the historical terminal assessment",
     )
     check(
-        acc["recovery_stage_status"] == accounting["accounting_recovery_stage_status"],
+        accounting_terminal["terminal_state"]["active_selective_reopen_instruments"] == [],
+        "Historical terminal Accounting Spine checkpoint was rewritten",
+    )
+
+    current_accounting_stage = accounting["accounting_recovery_stage_status"]
+    check(
+        reopen["accounting_recovery_stage_status"] == current_accounting_stage,
+        "Accounting reopen registry current stage is stale",
+    )
+    check(
+        acc["recovery_stage_status"] == current_accounting_stage,
         "Scientific baseline accounting recovery-stage status is stale",
     )
     check(
         acc["next_operational_state"] == accounting["next_operational_state"],
         "Scientific baseline accounting next operational state is stale",
     )
-    check(
-        acc["active_unconditional_recovery_task"] is None,
-        "Scientific baseline may not retain an unconditional accounting recovery task",
-    )
-    check(
-        accounting_terminal["terminal_state"]["active_selective_reopen_instruments"] == [],
-        "Terminal Accounting Spine recovery assessment retains an active selective reopen",
-    )
+
+    if current_accounting_stage == "STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD":
+        check(
+            acc["active_unconditional_recovery_task"] is None,
+            "Terminal Accounting Spine hold may not retain an active task",
+        )
+        check(
+            acc.get("active_selective_reopen_instruments", []) == [],
+            "Terminal Accounting Spine hold may not retain an active selective reopen",
+        )
+    elif current_accounting_stage == "SELECTIVE_REOPEN_F4_STRUCTURAL_ZERO_MATERIALIZATION_PENDING":
+        successor_path = (
+            "model/accounting/"
+            "accounting_spine_recovery_f4_structural_reopen_assessment_2026_09_21.json"
+        )
+        check(
+            accounting.get("accounting_recovery_successor_reopen_assessment")
+            == successor_path,
+            "Accounting readiness gate lacks the F4 successor reopen assessment",
+        )
+        check(
+            reopen.get("accounting_recovery_successor_reopen_assessment")
+            == successor_path,
+            "Accounting reopen registry lacks the F4 successor reopen assessment",
+        )
+        check(
+            accounting_f4_successor["predecessor_terminal_assessment"]
+            == accounting["accounting_recovery_terminal_assessment"],
+            "F4 successor reopen does not preserve the historical terminal predecessor",
+        )
+        check(
+            accounting_f4_successor["decision"]
+            == "PASS_POST_TERMINAL_F4_STRUCTURAL_ZERO_TRIGGER_SELECTIVE_REOPEN",
+            "F4 successor reopen decision is stale",
+        )
+        expected_task = accounting_f4_successor["current_state"][
+            "active_unconditional_accounting_recovery_task"
+        ]
+        check(
+            acc["active_unconditional_recovery_task"] == expected_task,
+            "Scientific baseline F4 successor task is stale",
+        )
+        check(
+            reopen["active_unconditional_accounting_recovery_task"] == expected_task,
+            "Accounting reopen registry F4 successor task is stale",
+        )
+        check(
+            acc.get("active_selective_reopen_instruments") == ["F4"],
+            "Scientific baseline must register F4 as the sole accounting selective reopen",
+        )
+        check(
+            reopen.get("active_selective_reopen_instruments") == ["F4"],
+            "Accounting reopen registry must register F4 as the sole selective reopen",
+        )
+    else:
+        raise RuntimeError(
+            f"Unsupported current Accounting Spine recovery stage: {current_accounting_stage}"
+        )
 
     # Reference-mode state is derived from registry vocabulary/policy.
     by_id = {item["id"]: item for item in refs["modes"]}
