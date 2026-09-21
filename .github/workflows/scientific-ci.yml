@@ -251,6 +251,9 @@ jobs:
       - name: Audit ESA2010 S1M/F2 semantic preregistration
         run: python scripts/audit_esa2010_s1m_f2_liability_semantic_gate.py
 
+      - name: Audit terminal semantic-adjusted OECD reconciliation state
+        run: python scripts/audit_oecd_sectoral_financial_positions_semantic_adjusted_terminal.py
+
       - name: Audit F3 empirical dynamic replay
         run: python scripts/audit_f3_empirical_replay.py
 
