@@ -63,7 +63,8 @@
     "mof_realized_financing_channel_materialisation_contract": "model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json",
     "mof_realized_financing_channel_source_vintage_assessment": "model/dynamics/mof_realized_financing_channel_source_vintage_assessment_2026_09_21.json",
     "government_debt_issuance_to_debt_stock_boundary_review": "model/dynamics/government_debt_issuance_to_debt_stock_boundary_review_2026_09_21.json",
-    "government_debt_stock_to_interest_cost_boundary_review": "model/dynamics/government_debt_stock_to_interest_cost_boundary_review_2026_09_21.json"
+    "government_debt_stock_to_interest_cost_boundary_review": "model/dynamics/government_debt_stock_to_interest_cost_boundary_review_2026_09_21.json",
+    "government_refinancing_interest_loop_terminal_assessment": "model/dynamics/government_refinancing_interest_loop_terminal_assessment_2026_09_21.json"
   },
   "canonical_state": {
     "accounting": {
