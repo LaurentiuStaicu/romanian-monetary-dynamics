@@ -524,3 +524,13 @@ The one-shot publication authorization is consumed and inactive. The canonical c
 
 Publication changes no scientific maturity state: F3 remains the only canonically complete stock-and-flow Accounting Spine instrument, the Accounting Spine recovery stage remains on evidence-triggered hold, all ten aggregate reference modes remain observed, validated behavioural mechanisms remain zero, quantitative feedback activation remains zero, calibration/refit remains closed and behavioural closure remains inactive.
 
+### F4 post-v0.3.0 structural-zero selective reopen — 2026-09-21
+
+After the v0.3.0 terminal Accounting Spine checkpoint, the declared F4 structural-zero trigger was satisfied by an ESA 2010 methodological adjudication of the retained BNR loan-liability stock.
+
+The retained QSA series for **S121 / F4 / liabilities / closing balance / non-consolidated / W0** is exactly zero throughout 2025. ESA 2010 requires loan stocks to be recorded at nominal value for both creditor and debtor, requires the non-consolidated balance sheet to retain all positions including intra-sector liabilities, and defines the from-whom-to-whom balance sheet as a creditor-sector partition of liabilities. Therefore the six bilateral **holder→BNR stock** positions are exact zero. The argument is stock-only: net financial transactions may offset within F4, so zero aggregate BNR F4 transactions do not imply bilateral flow zeros.
+
+The exact predecessor algebra already computed the consequence of this condition. Current F4 stock identification is now **rank 31 / nullity 4 / 25 exact rank-unique cells**, while flow remains **rank 26 / nullity 9 / 15 unique cells**. The remaining stock ambiguity is the **6.1 million RON BNR asset row** across H/C/F/G/X and the paired F-holder cells through the exact S12=F+BNR identity.
+
+This adjudication does not rewrite the historical `f4_partial_2025.json` artifact and does not itself materialize the ten newly exact stock cells. Accounting recovery is selectively reopened only for `F4_STRUCTURAL_ZERO_SUCCESSOR_MATERIALIZATION_GATE`. No flow change, BNR asset allocation, canonical benchmark change, behavioural activation, calibration/refit or version bump is authorized.
+
