@@ -1,0 +1,77 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "ecb_qfa_internal_consistency_10m_materiality",
+  "reference_mode": "sectoral_financial_positions",
+  "purpose": "Determine whether an independent official ECB quarterly-financial-accounts quality benchmark supplies the domain-specific quantitative reconciliation rule required by the 2026-09-21 trigger-aware monitoring horizon, without rewriting any historical 0.1 million RON gate.",
+  "official_evidence": [
+    {
+      "institution": "European Central Bank",
+      "source": "Euro area quarterly financial accounts — 2013 quality report",
+      "url": "https://www.ecb.europa.eu/pub/pdf/other/euroaareafinancialaccountsquarterlytreport2013en.pdf",
+      "section": "Internal consistency",
+      "evidence": "The report defines aggregation, horizontal, balancing-item and counterpart-sector consistency and states that discrepancies below EUR 10 million are considered acceptable in national data.",
+      "role": "EXPLICIT_ACCEPTABILITY_BENCHMARK"
+    },
+    {
+      "institution": "European Central Bank",
+      "source": "Euro area and national quarterly financial accounts — Quality report 2020",
+      "url": "https://www.ecb.europa.eu/pub/euroareafinancialaccounts/html/ecb.eaqfa202105~28a3958ad8.en.html",
+      "section": "Internal consistency",
+      "evidence": "Internal discrepancies above EUR 10 million were observed for a few countries and generally corrected in later transmissions.",
+      "role": "CONTINUITY_OF_10M_MATERIALITY_BENCHMARK"
+    },
+    {
+      "institution": "European Central Bank",
+      "source": "Euro area and national quarterly financial accounts — Quality report 2022",
+      "url": "https://www.ecb.europa.eu/pub/pdf/euroareafinancialaccounts/ecb.eaqfa202305~1d44e20907.en.pdf",
+      "section": "Internal consistency",
+      "evidence": "Internal discrepancies and unexplained negative stocks above EUR 10 million were observed in a few countries in 2022 and generally corrected later.",
+      "role": "CONTINUITY_OF_10M_MATERIALITY_BENCHMARK"
+    },
+    {
+      "institution": "European Central Bank",
+      "source": "Euro area and national quarterly financial accounts — Quality report 2024",
+      "url": "https://www.ecb.europa.eu/pub/euroareafinancialaccounts/html/ecb.eaqfa202506.en.html",
+      "section": "Internal consistency / Annex 1",
+      "evidence": "The report covers euro-area and non-euro EU countries, reports Romania at 96% of validation rules satisfied for Q4 2012-Q2 2024, and notes that internal discrepancies and unexplained negative stocks above EUR 10 million observed in 2023-2024 were generally corrected later.",
+      "role": "CURRENT_SCOPE_CONFIRMATION_INCLUDING_ROMANIA"
+    }
+  ],
+  "official_exchange_rate_source": {
+    "institution": "European Central Bank",
+    "dataset": "EXR",
+    "series": "EXR.Q.RON.EUR.SP00.A",
+    "title": "Romanian leu/Euro ECB reference exchange rate, Quarterly",
+    "api_url": "https://data-api.ecb.europa.eu/service/data/EXR/Q.RON.EUR.SP00.A?startPeriod=2014-Q1&endPeriod=2026-Q1&format=csvdata",
+    "unit": "RON per EUR",
+    "frequency": "quarterly",
+    "collection": "average of observations through period",
+    "purpose": "Convert the fixed EUR 10 million ECB QFA materiality benchmark into a quarter-specific million-RON threshold without choosing a threshold from observed RMD residuals."
+  },
+  "scope_mapping": {
+    "ecb_internal_consistency_elements": [
+      "aggregation consistency",
+      "horizontal consistency",
+      "balancing item consistency",
+      "counterpart sector consistency"
+    ],
+    "rmd_gate_alignment": "The aggregate sectoral-financial-position gate tests accounting identities on the same public QFA-style sector/instrument stock-flow boundary. The new gate applies the ECB materiality benchmark at the instrument-quarter level rather than only to the F2-F8 aggregate.",
+    "does_not_apply_to": "Bilateral Accounting Spine completion, behavioural closure, parameter identification or causal validation.",
+    "threshold_interpretation": "ECB_QFA_QUALITY_REPORT_MATERIALITY_BENCHMARK_NOT_A_LEGAL_ACCOUNTING_IDENTITY_REDEFINITION"
+  },
+  "adjudication": {
+    "domain_specific_official_quantitative_rule_found": true,
+    "rule_value_million_eur": 10,
+    "rule_is_independent_of_observed_rmd_residuals": true,
+    "applies_to_romania_quality_assessment_context": true,
+    "historical_0_1_million_ron_gate_rewritten": false,
+    "new_gate_preregistration_authorized": true,
+    "immediate_reference_mode_promotion_authorized": false,
+    "accounting_spine_reopen_authorized": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false
+  },
+  "decision": "PASS_OFFICIAL_ECB_QFA_10M_EUR_MATERIALITY_RULE_FOUND_AUTHORIZE_ONE_NEW_PREREGISTERED_INSTRUMENT_LEVEL_GATE"
+}
