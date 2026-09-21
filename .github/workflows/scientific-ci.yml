@@ -223,7 +223,18 @@ jobs:
           python -m unittest tests.test_ecb_qfa_materiality_acceptability_gate -v
 
       - name: Run ECB QFA official-materiality acceptability gate
+        env:
+          ECB_QFA_MATERIALITY_OUT: ecb_qfa_materiality_artifacts
         run: python scripts/audit_ecb_qfa_materiality_acceptability_gate.py
+
+      - name: Upload ECB QFA materiality evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecb-qfa-materiality-acceptability-${{ github.sha }}
+          path: ecb_qfa_materiality_artifacts/
+          if-no-files-found: error
+          retention-days: 90
 
   verify-baseline:
     runs-on: ubuntu-latest
