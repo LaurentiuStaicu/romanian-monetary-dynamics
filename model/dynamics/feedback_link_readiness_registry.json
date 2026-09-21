@@ -12,7 +12,8 @@
     "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
     "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
     "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED",
-    "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL"
+    "ACCOUNTING_SCALE_FORM_KNOWN_RATE_BOUNDARY_NOT_CANONICAL",
+    "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED"
   ],
   "hard_rules": {
     "every_feedback_path_link_must_be_registered_exactly_once": true,
@@ -209,13 +210,14 @@
       "from": "credit_flow",
       "to": "loan_stock",
       "sign": "+",
-      "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
-      "readiness_status": "STRUCTURAL_RELATION_NOT_CONTRACTED_AS_INTEGRATED_EQUATION",
+      "causal_role": "STOCK_TRANSACTION_ACCOUNTING_RELATION_CONDITIONAL_ON_NON_TRANSACTION_ADJUSTMENTS",
+      "readiness_status": "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED",
       "related_mechanisms": [],
       "exact_integrated_equation_ready": false,
       "equation_pointer": null,
       "current_activation_authorized": false,
-      "reason": "The qualitative architecture asserts this structural direction, but no canonical integrated equation/identity has yet been contracted for this exact pair of feedback nodes."
+      "reason": "The matched ECB BSI credit-flow series is a financial-transaction measure, not the first difference of the loan stock. Stock accumulation also requires non-transaction adjustments such as reclassifications, exchange-rate effects and loan write-offs/write-downs. Those adjustment components are not contracted as an integrated dynamic process.",
+      "credit_flow_to_loan_stock_boundary_review": "model/dynamics/credit_flow_to_loan_stock_boundary_review_2026_09_21.json"
     },
     {
       "link_key": "bank_credit_balance_sheet_loop|loan_stock|debt_service_and_credit_risk",

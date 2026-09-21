@@ -36,7 +36,9 @@
         "credit_flow"
       ],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
-      "current_feedback_activation_authorized": false
+      "current_feedback_activation_authorized": false,
+      "credit_flow_to_loan_stock_boundary_review": "model/dynamics/credit_flow_to_loan_stock_boundary_review_2026_09_21.json",
+      "credit_flow_to_loan_stock_status": "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED"
     },
     {
       "id": "credit_supply_capacity",
@@ -290,14 +292,17 @@
     {
       "id": "loan_stock",
       "current_boundary_class": "UNRESOLVED",
-      "current_runtime_role": "INACTIVE_CANDIDATE_NODE",
-      "exact_reference_mode_id": null,
-      "classification_basis": "The feedback node is a generic loan-stock concept. The observed credit_stock reference mode is related but its exact mapping to this loop node has not been frozen.",
+      "current_runtime_role": "OBSERVED_TARGET_AVAILABLE_INACTIVE_FEEDBACK_NODE",
+      "exact_reference_mode_id": "credit_stock",
+      "classification_basis": "The loop node is frozen to the observed ECB BSI private non-financial credit-stock boundary for reference validation. Its endogenous stock transition remains unresolved because published financial transactions do not equal stock changes and the required non-transaction adjustment process is not integrated.",
       "related_reference_modes": [
         "credit_stock"
       ],
       "future_candidate_role": "ENDOGENOUS_CANDIDATE_IF_ALL_ACTIVATION_GATES_PASS",
-      "current_feedback_activation_authorized": false
+      "current_feedback_activation_authorized": false,
+      "credit_flow_to_loan_stock_boundary_review": "model/dynamics/credit_flow_to_loan_stock_boundary_review_2026_09_21.json",
+      "credit_flow_to_loan_stock_status": "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED",
+      "endogenous_stock_transition_ready": false
     },
     {
       "id": "market_and_lending_rates",
