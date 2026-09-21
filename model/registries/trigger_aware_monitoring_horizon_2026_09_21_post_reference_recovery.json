@@ -1,0 +1,129 @@
+{
+  "registry_version": "0.3",
+  "frozen_on": "2026-09-21",
+  "supersedes": "model/registries/trigger_aware_monitoring_horizon_2026_09_21.json",
+  "purpose": "Post-reference-recovery trigger-aware monitoring horizon after the ECB QFA official-materiality gate promoted the narrow aggregate sectoral-financial-position reference mode to observed status. Reference-mode monitoring is closed; remaining horizons govern independent behavioural/source triggers only.",
+  "governing_state": {
+    "model_contract": "model/registries/model_contract.json",
+    "canonical_baseline_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
+    "post_terminal_source_topology_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_21_bnr_financial_accounts_topology.json",
+    "sectoral_financial_positions_terminal_row_gate": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
+    "sectoral_financial_positions_semantic_terminal": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
+    "sectoral_financial_positions_precision_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_precision_diagnostic_2026_09_21.json",
+    "behavioural_reopen_registry": "model/calibration_validation/mechanism_reopen_conditions_registry.json",
+    "accounting_reopen_registry": "model/accounting/reopen_conditions_registry.json",
+    "current_scientific_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+    "reference_mode_recovery_completion": "model/dynamics/reference_mode_recovery_completion_assessment_2026_09_21.json"
+  },
+  "monitoring_rules": {
+    "no_repeated_probe_without_trigger": true,
+    "no_response_peeking_before_event_and_release_gate": true,
+    "no_provider_polling_counts_as_scientific_progress": true,
+    "source_nonconfirmation_is_not_source_absence": true,
+    "changed_dataset_release_is_not_automatically_changed_topology": true,
+    "event_or_release_only_opens_the_declared_next_gate": true,
+    "no_estimation_refit_model_selection_or_holdout_opening_from_monitoring_alone": true,
+    "no_tolerance_relaxation_from_observed_residuals": true,
+    "lexical_formatting_is_not_a_precision_rule": true,
+    "generic_sdmx_decimals_metadata_alone_does_not_reopen_sectoral_financial_positions": true,
+    "no_post_result_period_window_switch": true,
+    "completed_reference_mode_must_not_be_reprobed_without_new_boundary_change": true
+  },
+  "horizons": [
+    {
+      "id": "prospective_monetary_policy_event",
+      "mechanism_id": "monetary_policy_lending_rate_pass_through",
+      "next_check_type": "DATE_SCHEDULED_EVENT_CHECK",
+      "next_check_date": "2026-10-08",
+      "source_class": "BNR monetary-policy decision",
+      "trigger": "Actually observed non-zero BNR policy-rate change in the reserved prospective window.",
+      "action_if_no_trigger": "Record unchanged-rate event only; do not inspect MIR response values and return to baseline hold.",
+      "action_if_trigger": "Open Stage 1 driver-side diagnostic only. Preserve frozen candidate and beta. Do not inspect same-month MIR response before official release.",
+      "downstream_release_gate": {
+        "reference_month_if_event_occurs_on_2026_10_08": "2026-10",
+        "earliest_official_MIR_release_date": "2026-12-02",
+        "source": "ECB MIR release calendar",
+        "rule": "The October-reference MIR response may be inspected only on or after 2026-12-02 and only if October contains a non-zero policy-rate event."
+      }
+    },
+    {
+      "id": "ameco_structural_primary_new_full_vintage",
+      "mechanism_id": "fiscal_primary_balance_reaction",
+      "next_check_type": "RELEASE_CONDITIONED_CHECK",
+      "next_check_condition": "European Commission publishes the Autumn 2026 full macroeconomic forecast / corresponding AMECO full release.",
+      "current_latest_full_release": "2026-06-03",
+      "current_latest_full_release_label": "Spring 2026 Economic Forecast",
+      "trigger": "A genuinely new full AMECO vintage materially changes the admissible real-time UBLGBPS structural-primary history or supplies new identification-relevant evidence.",
+      "action_if_release_occurs": "Archive and adjudicate the new vintage under a new preregistered source cycle before any modelling decision.",
+      "action_before_release": "No repeated AMECO probing; remain in baseline hold."
+    },
+    {
+      "id": "bnr_bls_2025_q2_exact_source",
+      "mechanism_id": "aggregate_bank_credit_response",
+      "next_check_type": "NEW_OFFICIAL_EVIDENCE_ONLY",
+      "trigger": "BNR exposes the exact official 2025-Q2 BLS workbook endpoint or an exact machine-readable time-series/catalog target with matching realised-round semantics.",
+      "action_without_new_evidence": "Do not repeat filename/timestamp guessing, indexed search loops or rounded-report substitution.",
+      "action_if_trigger": "Reopen source materialisation only; retain exact bytes and semantics before any credit-equation work."
+    },
+    {
+      "id": "government_repricing_ledger",
+      "mechanism_id": "government_refinancing_effective_rate",
+      "next_check_type": "NEW_OFFICIAL_EVIDENCE_ONLY",
+      "trigger": "An official or reproducible source supplies same-boundary opening principal, realised repriced/refinanced principal and matched old/new effective rates across material debt blocks.",
+      "action_without_new_evidence": "Do not reinterpret marginal maturity/refixing indicators as a matched repricing ledger.",
+      "action_if_trigger": "Repass the frozen ledger completeness and identification gates only."
+    },
+    {
+      "id": "accounting_reference_mode_counterpart_topology",
+      "mechanism_id": null,
+      "next_check_type": "CHANGED_DATASET_TOPOLOGY_OR_NEW_SOURCE_ONLY",
+      "trigger": "A changed official ECB/Eurostat/BNR/OECD dataset topology or genuinely new official source supplies the frozen RMD bilateral/counterparty boundary, including required sectors, instruments, quarterly stocks and financial transactions.",
+      "current_known_release_context": {
+        "ECB_QSA_next_data_release": "2026-10-02",
+        "rule": "A routine new quarterly data vintage alone is not a reopen trigger. Check only for demonstrable topology/coverage change, not merely new observations."
+      },
+      "latest_adjudicated_chain": {
+        "bnr_2025_topology_trigger": "PASS_SOURCE_TOPOLOGY_REVIEW_ONLY",
+        "oecd_nonconsolidated_topology": "PASS_AGGREGATE_SECTOR_STOCK_FLOW_TOPOLOGY",
+        "exact_row_gate": "FAIL_S1M_L_F2_MISSING_ALL_PERIODS",
+        "esa2010_semantic_applicability": "PASS_NARROW_STRUCTURAL_ZERO_FOR_S1M_L_F2",
+        "semantic_adjusted_reconciliation": "FAIL_FROZEN_0_1_MILLION_RON_TOLERANCE",
+        "precision_diagnostic": "NO_REOPEN_GENERIC_DECIMALS_ONLY_EXPLANATION_INSUFFICIENT"
+      },
+      "action_without_topology_change": "Do not rerun exhausted historical source probes.",
+      "action_if_trigger": "Preregister a new source-topology recovery pass and repass only the affected Accounting Spine/reference-mode gates."
+    }
+  ],
+  "current_disposition": {
+    "any_monitoring_gate_open_now": false,
+    "active_calibration_cycle_open": false,
+    "active_source_task_open": false,
+    "active_semantic_task_open": false,
+    "active_precision_task_open": false,
+    "response_values_authorized_for_inspection_now": false,
+    "estimation_or_refit_authorized": false,
+    "model_selection_authorized": false,
+    "target_family_switch_authorized": false,
+    "holdout_opening_authorized": false,
+    "system_dynamics_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "reference_mode_promotion_authorized": false,
+    "next_dated_check": {
+      "date": "2026-10-08",
+      "id": "prospective_monetary_policy_event"
+    },
+    "reference_mode_recovery_complete": true,
+    "reference_modes_ready": "10/10"
+  },
+  "resolved_horizons": [
+    {
+      "id": "sectoral_financial_positions_public_precision_rule",
+      "resolved_on": "2026-09-21",
+      "trigger_evidence": "ECB QFA official EUR 10 million national internal-consistency materiality rule",
+      "gate": "model/dynamics/sectoral_financial_positions_ecb_qfa_materiality_gate_assessment_2026_09_21.json",
+      "promotion": "model/dynamics/sectoral_financial_positions_reference_promotion_assessment_2026_09_21.json",
+      "result": "RESOLVED_PROMOTED_NARROW_AGGREGATE_REFERENCE_MODE_TO_OBSERVED_SERIES_AVAILABLE",
+      "future_rule": "Do not rerun this recovery chain unless the promoted aggregate boundary itself materially changes or is superseded by a higher-quality official source. Bilateral Accounting Spine recovery remains a separate accounting problem."
+    }
+  ]
+}
