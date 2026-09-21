@@ -201,5 +201,17 @@
     "current_activated_mechanisms": [],
     "validated_reference_behavioural_mechanisms": 0,
     "rule": "ACTIVATED is only an admission to a currently open calibration/validation cycle. When that cycle closes, the frozen validation disposition governs current mechanism status. A stale pre-recovery ACTIVATED or central_feedback label may not survive a CANDIDATE or DEFERRED disposition and may never activate a System Dynamics feedback loop by itself."
+  },
+  "feedback_structural_review_terminal_state": {
+    "assessment": "model/dynamics/feedback_architecture_structural_review_terminal_assessment_2026_09_21.json",
+    "status": "ALL_REGISTERED_FEEDBACK_STRUCTURES_STRUCTURALLY_REVIEWED_EVIDENCE_TRIGGERED_HOLD",
+    "registered_structures": 5,
+    "terminal_assessments_present": 5,
+    "all_structures_on_evidence_triggered_hold": true,
+    "active_structural_review_tasks": 0,
+    "registered_feedback_links": 22,
+    "exact_integrated_link_forms_ready": 0,
+    "quantitative_activation_ready_structures": 0,
+    "rule": "Completing link-level structural review for every registered structure freezes the current evidence boundary; it does not supply equations, identify parameters, resolve delays, close open chains, activate feedback or authorize behavioural closure."
   }
 }
