@@ -285,7 +285,7 @@ def audit_mof_realized_financing_channel_source_vintage_assessment(
     if bridge.get("allocation_vector_identified") is not False:
         errors.append("preregistration may not identify allocation vector")
     if prereg["next_independent_bridge_task"]["id"] != (
-        "government_debt_stock_to_interest_cost_boundary_review"
+        "government_refinancing_interest_loop_terminal_assessment"
     ):
         errors.append("preregistration next independent bridge changed")
 
@@ -301,7 +301,7 @@ def audit_mof_realized_financing_channel_source_vintage_assessment(
     if dynamic.get("mof_realized_financing_channel_monthly_differencing_authorized") is not False:
         errors.append("model contract may not authorize monthly differencing")
     if dynamic.get("government_issuance_yield_next_independent_task") != (
-        "government_debt_stock_to_interest_cost_boundary_review"
+        "government_refinancing_interest_loop_terminal_assessment"
     ):
         errors.append("model contract next independent task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
