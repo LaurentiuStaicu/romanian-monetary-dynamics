@@ -70,17 +70,17 @@ def audit_f3_behavior_diagnostics(
         for item in reference_modes["modes"]
         if item["id"] == "sectoral_financial_positions"
     )
-    if mode["status"] != "PARTIAL_SERIES_AVAILABLE":
-        errors.append(
-            "sectoral_financial_positions must remain PARTIAL_SERIES_AVAILABLE"
-        )
+    if mode["status"] != "OBSERVED_SERIES_AVAILABLE":
+        errors.append("current successor promotion of sectoral_financial_positions is missing")
+    if mode.get("promotion_assessment") != "model/dynamics/reference_mode_recovery_successor_assessment_2026_09_21.json":
+        errors.append("current sectoral reference mode lacks successor promotion lineage")
     dynamic = model_contract["dynamic_core"]
-    if dynamic["reference_mode_ready_count"] != 9:
-        errors.append("reference-mode ready count must remain 9")
+    if dynamic["reference_mode_ready_count"] != 10:
+        errors.append("current reference-mode ready count must be 10")
     if dynamic["reference_mode_required_count"] != 10:
         errors.append("reference-mode required count must remain 10")
-    if dynamic["reference_mode_closure_ready"] is not False:
-        errors.append("reference-mode closure may not be promoted by F3 diagnostics")
+    if dynamic["reference_mode_closure_ready"] is not True:
+        errors.append("current reference-target prerequisite must be ready")
     if dynamic["full_RMD_empirical_state_claim_allowed"] is not False:
         errors.append("model contract may not claim full-RMD empirical readiness")
 
