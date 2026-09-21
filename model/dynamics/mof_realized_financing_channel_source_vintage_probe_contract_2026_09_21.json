@@ -1,0 +1,130 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-21",
+  "probe_id": "mof_realized_financing_channel_source_vintage_probe",
+  "governing_contract": "model/dynamics/mof_realized_financing_channel_materialisation_contract_2026_09_21.json",
+  "purpose": "Retain or reference exact official Ministry monthly public-debt-report vintages for 2025 and verify native-text extractability of provider-published cumulative-YTD realized-financing channels. No monthly differencing is performed.",
+  "source_strategy": {
+    "existing_retained_sources": [
+      {
+        "report_period": "2025-01",
+        "source_id": "mof_public_debt_report_january_2025",
+        "raw_path": "data/source_vintages/mof-supply-pressure-probe-vintage-2026-09-20/raw/mof_public_debt_report_january_2025.pdf",
+        "native_text_path": "data/source_vintages/mof-supply-pressure-probe-vintage-2026-09-20/native_text/mof_public_debt_report_january_2025.txt",
+        "role": "REUSE_EXISTING_EXACT_RETAINED_SOURCE"
+      },
+      {
+        "report_period": "2025-02",
+        "source_id": "mof_public_debt_report_february_2025",
+        "raw_path": "data/source_vintages/mof-supply-pressure-probe-vintage-2026-09-20/raw/mof_public_debt_report_february_2025.pdf",
+        "native_text_path": "data/source_vintages/mof-supply-pressure-probe-vintage-2026-09-20/native_text/mof_public_debt_report_february_2025.txt",
+        "role": "REUSE_EXISTING_EXACT_RETAINED_SOURCE"
+      }
+    ],
+    "official_url_candidates": [
+      {
+        "report_period": "2025-03",
+        "source_id": "mof_public_debt_report_03_2025",
+        "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport032025.pdf",
+        "discovery_basis": "OFFICIAL_MF_FILENAME_PATTERN_PROBE_REQUIRES_PDF_AND_INTERNAL_IDENTITY_PASS"
+      },
+      {
+        "report_period": "2025-04",
+        "source_id": "mof_public_debt_report_04_2025",
+        "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport042025.pdf",
+        "discovery_basis": "OFFICIAL_MF_FILENAME_PATTERN_PROBE_REQUIRES_PDF_AND_INTERNAL_IDENTITY_PASS"
+      },
+      {
+        "report_period": "2025-05",
+        "source_id": "mof_public_debt_report_05_2025",
+        "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport052025.pdf",
+        "discovery_basis": "OFFICIAL_MF_FILENAME_PATTERN_PROBE_REQUIRES_PDF_AND_INTERNAL_IDENTITY_PASS"
+      },
+      {
+        "report_period": "2025-06",
+        "source_id": "mof_public_debt_report_06_2025",
+        "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport062025.pdf",
+        "discovery_basis": "OFFICIAL_MF_FILENAME_PATTERN_PROBE_REQUIRES_PDF_AND_INTERNAL_IDENTITY_PASS"
+      },
+      {
+        "report_period": "2025-07",
+        "source_id": "mof_public_debt_report_07_2025",
+        "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport072025.pdf",
+        "discovery_basis": "OFFICIAL_MF_FILENAME_PATTERN_PROBE_REQUIRES_PDF_AND_INTERNAL_IDENTITY_PASS"
+      },
+      {
+        "report_period": "2025-08",
+        "source_id": "mof_public_debt_report_08_2025",
+        "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport082025.pdf",
+        "discovery_basis": "OFFICIAL_MF_FILENAME_PATTERN_PROBE_REQUIRES_PDF_AND_INTERNAL_IDENTITY_PASS"
+      },
+      {
+        "report_period": "2025-09",
+        "source_id": "mof_public_debt_report_09_2025",
+        "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport092025.pdf",
+        "discovery_basis": "OFFICIAL_MF_FILENAME_PATTERN_PROBE_REQUIRES_PDF_AND_INTERNAL_IDENTITY_PASS"
+      },
+      {
+        "report_period": "2025-10",
+        "source_id": "mof_public_debt_report_10_2025",
+        "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport102025.pdf",
+        "discovery_basis": "OFFICIAL_MF_FILENAME_PATTERN_PROBE_REQUIRES_PDF_AND_INTERNAL_IDENTITY_PASS"
+      },
+      {
+        "report_period": "2025-11",
+        "source_id": "mof_public_debt_report_11_2025",
+        "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport112025.pdf",
+        "discovery_basis": "OFFICIAL_MF_FILENAME_PATTERN_PROBE_REQUIRES_PDF_AND_INTERNAL_IDENTITY_PASS"
+      },
+      {
+        "report_period": "2025-12",
+        "source_id": "mof_public_debt_report_12_2025",
+        "url": "https://mfinante.gov.ro/static/10/Mfp/buletin/executii/Publicdebtreport122025.pdf",
+        "discovery_basis": "OFFICIAL_MF_FILENAME_PATTERN_PROBE_REQUIRES_PDF_AND_INTERNAL_IDENTITY_PASS"
+      }
+    ],
+    "pattern_candidate_is_not_source_until_identity_passes": true,
+    "search_engine_index_not_required_for_acceptance": true,
+    "non_official_domain_authorized": false
+  },
+  "identity_contract": {
+    "pdf_magic_required": true,
+    "native_text_required": true,
+    "required_text_anchors": [
+      "MONTHLY REPORT",
+      "Actual borrowing",
+      "Total reimbursable financing",
+      "MoF T-Bills",
+      "Retail bonds",
+      "T-Bonds",
+      "By Instrument"
+    ],
+    "period_specific_month_and_year_required": true,
+    "institution_anchor_required": true,
+    "exact_section_semantics_required": true,
+    "fail_closed_on_wrong_month_or_wrong_document": true
+  },
+  "extraction_scope": {
+    "raw_pdf_retention": true,
+    "native_text_retention": true,
+    "provider_published_cumulative_ytd_extraction": true,
+    "provider_fx_conversion_note_extraction": true,
+    "revision_comparison_metadata": true,
+    "monthly_increment_computation": false,
+    "channel_residual_computation": false,
+    "allocation_share_estimation": false
+  },
+  "scientific_guards": {
+    "monthly_differencing_authorized": false,
+    "cross_currency_reaggregation_by_RMD_authorized": false,
+    "synthetic_channel_shares_authorized": false,
+    "generic_debt_issuance_node_promotion_authorized": false,
+    "government_financing_need_node_resolution_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_change_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "pass_effect": "A retained report vintage may support exact provider-published cumulative-YTD channel extraction and revision/conversion review only.",
+  "partial_pass_effect": "Retain exact successful months, mark failed months unavailable, and do not interpolate or infer missing report vintages.",
+  "fail_effect": "No scientific state change; do not substitute third-party copies or search-engine snippets."
+}
