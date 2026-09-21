@@ -51,10 +51,10 @@ def audit_decimal_correction():
     if t["reconciliation_gate"]["violation_count"]!=63:
         e.append("historical terminal assessment must remain immutable")
     mode=next(x for x in r["modes"] if x["id"]=="sectoral_financial_positions")
-    if mode["status"]!="PARTIAL_SERIES_AVAILABLE":
-        e.append("reference mode may not be promoted")
-    if m["dynamic_core"]["reference_mode_ready_count"]!=9 or m["dynamic_core"]["reference_mode_required_count"]!=10:
-        e.append("global reference-mode readiness must remain 9/10")
+    if mode["status"]!="OBSERVED_SERIES_AVAILABLE":
+        e.append("current successor reference mode must be observed")
+    if m["dynamic_core"]["reference_mode_ready_count"]!=10 or m["dynamic_core"]["reference_mode_required_count"]!=10:
+        e.append("current successor reference-mode readiness must be 10/10")
     if m["scientific_stage"]["next_operational_state"]!="EVIDENCE_TRIGGERED_BASELINE_HOLD":
         e.append("baseline hold changed")
     return e
@@ -71,7 +71,7 @@ def main():
         "stock_violations":26,
         "boundary_false_positives_corrected":16,
         "verdict":"FAIL_UNCHANGED",
-        "reference_modes_ready":"9/10",
+        "reference_modes_ready":"10/10",
         "scientific_state":"EVIDENCE_TRIGGERED_BASELINE_HOLD"
     },indent=2))
 
