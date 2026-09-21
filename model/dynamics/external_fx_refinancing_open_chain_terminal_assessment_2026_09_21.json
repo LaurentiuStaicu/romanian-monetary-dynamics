@@ -1,0 +1,171 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "external_fx_refinancing_open_chain_terminal_assessment",
+  "loop_id": "external_fx_refinancing_loop",
+  "purpose": "Close the current structural/source-boundary review cycle for the external FX-refinancing candidate chain without inventing a pressure-to-depreciation closing link or converting marginal currency/maturity evidence into a joint exposure equation.",
+  "decision": "STRUCTURAL_REVIEW_COMPLETE_OPEN_CHAIN_MEASUREMENT_AND_IDENTIFICATION_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
+  "topology": {
+    "status": "OPEN_CHAIN",
+    "polarity_hypothesis": "not_applicable_until_closed",
+    "qualitative_topology_retained": true,
+    "closing_link_inferred": false,
+    "quantitatively_active": false,
+    "behavioural_closure_active": false
+  },
+  "link_boundary_reviews": [
+    {
+      "from": "exchange_rate_depreciation",
+      "to": "fx_debt_service_burden",
+      "review": "model/dynamics/exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review_2026_09_21.json",
+      "readiness_status": "FX_DEBT_SERVICE_TRANSLATION_CONDITIONAL_JOINT_CURRENCY_RESIDUAL_MATURITY_HEDGING_UNRESOLVED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "The required joint sector × debt-currency denomination × residual-maturity/debt-service schedule × hedging exposure is not observed."
+    },
+    {
+      "from": "fx_debt_service_burden",
+      "to": "refinancing_need",
+      "review": "model/dynamics/fx_debt_service_burden_to_refinancing_need_boundary_review_2026_09_21.json",
+      "readiness_status": "DEBT_SERVICE_DUE_NOT_EQUAL_REFINANCING_NEED_SECTOR_LIQUIDITY_AND_BUFFER_BOUNDARY_UNRESOLVED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "Contractual debt service due is not identical to refinancing need; liquidity buffers, cash flow, rollover decisions and financing alternatives are sector-specific and unresolved."
+    },
+    {
+      "from": "refinancing_need",
+      "to": "risk_premium",
+      "review": "model/dynamics/refinancing_need_to_risk_premium_boundary_review_2026_09_21.json",
+      "readiness_status": "MULTI_DRIVER_RISK_PREMIUM_REFINANCING_CONTRIBUTION_NOT_IDENTIFIED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "Risk premia are multi-driver and sector/instrument specific; the marginal refinancing-need contribution is not identified."
+    },
+    {
+      "from": "risk_premium",
+      "to": "exchange_rate_pressure",
+      "review": "model/dynamics/risk_premium_to_exchange_rate_pressure_boundary_review_2026_09_21.json",
+      "readiness_status": "RISK_PREMIUM_AND_EXCHANGE_RATE_PRESSURE_SIMULTANEOUS_MANAGED_FLOAT_BOUNDARY_UNRESOLVED",
+      "exact_integrated_equation_ready": false,
+      "blocker": "Managed-float intervention, global risk, external rates, capital flows and simultaneity prevent a one-to-one mapping; exchange-rate pressure has no exact selected measure."
+    }
+  ],
+  "integrated_readiness": {
+    "path_link_count": 4,
+    "exact_integrated_link_forms_ready": 0,
+    "unresolved_boundary_nodes": [
+      "exchange_rate_depreciation",
+      "fx_debt_service_burden",
+      "refinancing_need",
+      "risk_premium",
+      "exchange_rate_pressure"
+    ],
+    "topology_blocker": "OPEN_CHAIN_NOT_CLOSED",
+    "activation_status": "BLOCKED",
+    "blockers": [
+      "EXACT_LINK_EQUATION_COVERAGE_INCOMPLETE",
+      "UNRESOLVED_FEEDBACK_BOUNDARY_NODES",
+      "DELAY_SPECIFICATION_NOT_ACTIVATION_READY",
+      "NO_ACTIVATED_EMPIRICAL_MECHANISM",
+      "OPEN_CHAIN_NOT_CLOSED"
+    ],
+    "quantitative_activation_authorized": false
+  },
+  "activation_gate_snapshot": {
+    "source": "model/dynamics/feedback_activation_criteria_matrix.json",
+    "passed_criteria_count": 0,
+    "partial_criteria_count": 3,
+    "blocked_criteria_count": 10,
+    "not_assessable_criteria_count": 1,
+    "all_requirements_pass": false,
+    "quantitative_activation_authorized": false
+  },
+  "delay_state": [
+    {
+      "delay_id": "refinancing_maturity_delay",
+      "current_tau": "TBD",
+      "evidence_status": "DISTRIBUTED_TIMING_EVIDENCE_SCALAR_TAU_NOT_IDENTIFIED",
+      "scalar_tau_activation_ready": false
+    },
+    {
+      "delay_id": "fx_pass_through_delay",
+      "current_tau": "TBD",
+      "evidence_status": "DISTRIBUTED_TIMING_EVIDENCE_SCALAR_TAU_NOT_IDENTIFIED",
+      "scalar_tau_activation_ready": false
+    }
+  ],
+  "mechanism_state": {
+    "external_fx_refinancing_feedback": {
+      "classification": "DEFERRED",
+      "implementation": null,
+      "validated": false,
+      "estimation_or_refit_allowed": false,
+      "generic_feedback_link_implemented": false
+    }
+  },
+  "retained_source_boundary": {
+    "source": "model/calibration_validation/external_fx_refinancing_source_boundary_review.json",
+    "verdict": "SECTOR_ORIGINAL_MATURITY_AND_PARTIAL_AGGREGATE_CURRENCY_RISK_MARGINS_OBSERVED_JOINT_CURRENCY_RESIDUAL_MATURITY_HEDGING_UNRESOLVED",
+    "exact_joint_exposure_identified": false
+  },
+  "no_further_current_evidence_task_findings": {
+    "infer_currency_denomination_from_reporting_unit_authorized": false,
+    "substitute_original_for_residual_maturity_authorized": false,
+    "assume_zero_hedging_authorized": false,
+    "equate_debt_service_with_refinancing_need_authorized": false,
+    "reuse_sovereign_spread_as_generic_risk_premium_authorized": false,
+    "infer_exchange_rate_pressure_measure_authorized": false,
+    "infer_pressure_to_depreciation_closing_link_authorized": false,
+    "infer_scalar_delays_authorized": false,
+    "repeat_unchanged_joint_exposure_source_searches_without_new_official_clue_authorized": false,
+    "interpretation": "The current structural review is exhausted at the retained evidence boundary. Further progress requires a genuinely new joint exposure, sector-liquidity, risk-pricing, exchange-rate-pressure or closing-path identification trigger."
+  },
+  "reopen_triggers": [
+    {
+      "id": "joint_sector_currency_residual_maturity_debt_service_evidence",
+      "requirement": "Observed debt exposure jointly classified by sector, actual debt currency denomination and residual maturity/debt-service schedule on a common boundary."
+    },
+    {
+      "id": "matched_hedging_or_natural_hedge_evidence",
+      "requirement": "Observed or defensibly bounded hedging/natural-hedge positions matched to the relevant foreign-currency debt-service exposure."
+    },
+    {
+      "id": "sector_specific_liquidity_and_refinancing_bridge",
+      "requirement": "Observed cash/liquidity buffers, contractual principal/interest due and financing/rollover flows sufficient to distinguish debt service due from refinancing need for a selected sector."
+    },
+    {
+      "id": "preregistered_risk_premium_identification_cycle",
+      "requirement": "A separately preregistered sector/instrument-specific risk-premium design controlling for external benchmark rates, global risk/liquidity and relevant fundamentals."
+    },
+    {
+      "id": "exchange_rate_pressure_measurement_and_managed_float_identification",
+      "requirement": "A selected observable exchange-rate-pressure measure plus a frozen identification treatment for intervention, capital flows, external rates and simultaneous risk pricing."
+    },
+    {
+      "id": "evidence_supported_closing_path",
+      "requirement": "If a closed FX-refinancing feedback is proposed, the missing closing causal link must be explicitly defined, measured and validated; topology alone cannot supply it."
+    }
+  ],
+  "disposition": {
+    "structural_review_complete": true,
+    "current_operational_state": "EVIDENCE_TRIGGERED_HOLD",
+    "active_empirical_task": null,
+    "open_chain_remains_open": true,
+    "closing_link_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false,
+    "qualitative_topology_changed": false
+  },
+  "next_state": {
+    "id": "external_fx_refinancing_open_chain_evidence_triggered_hold",
+    "authorization": "NO_ACTIVE_TASK_UNTIL_DECLARED_REOPEN_TRIGGER",
+    "reopen_trigger_required": true,
+    "may_poll_unchanged_sources": false,
+    "may_infer_joint_exposure": false,
+    "may_infer_closing_link": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false,
+    "may_relax_existing_gates": false
+  }
+}
