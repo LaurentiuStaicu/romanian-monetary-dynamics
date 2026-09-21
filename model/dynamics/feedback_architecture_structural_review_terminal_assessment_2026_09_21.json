@@ -1,0 +1,115 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "feedback_architecture_structural_review_terminal_assessment",
+  "purpose": "Record the cross-structure terminal state after every feedback-registry path has received explicit link-level structural/source-boundary review, without interpreting structural review completion as quantitative activation, behavioural closure or model completion.",
+  "decision": "ALL_REGISTERED_FEEDBACK_STRUCTURES_STRUCTURALLY_REVIEWED_EVIDENCE_TRIGGERED_HOLD",
+  "registry_snapshot": {
+    "feedback_registry": "model/dynamics/feedback_registry.json",
+    "registered_structures": 5,
+    "closed_candidate_loops": 4,
+    "open_candidate_chains": 1,
+    "registered_feedback_links": 22,
+    "exact_integrated_link_forms_ready": 0,
+    "feedback_structures_with_all_links_exact_ready": 0,
+    "quantitatively_active_feedback_structures": 0,
+    "behavioural_closure_active": false
+  },
+  "structure_terminal_states": [
+    {
+      "id": "government_refinancing_interest_loop",
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "terminal_assessment": "model/dynamics/government_refinancing_interest_loop_terminal_assessment_2026_09_21.json",
+      "structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_CURRENT_EVIDENCE_INSUFFICIENT_EVIDENCE_TRIGGERED_HOLD",
+      "operational_state": "EVIDENCE_TRIGGERED_HOLD",
+      "active_empirical_task": null
+    },
+    {
+      "id": "government_issuance_yield_loop",
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "terminal_assessment": "model/dynamics/government_issuance_yield_loop_terminal_assessment_2026_09_21.json",
+      "structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_SOURCE_AND_IDENTIFICATION_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
+      "operational_state": "EVIDENCE_TRIGGERED_HOLD",
+      "active_empirical_task": null
+    },
+    {
+      "id": "bank_credit_balance_sheet_loop",
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "terminal_assessment": "model/dynamics/bank_credit_balance_sheet_loop_terminal_assessment_2026_09_21.json",
+      "structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_IDENTIFICATION_AND_MEASUREMENT_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
+      "operational_state": "EVIDENCE_TRIGGERED_HOLD",
+      "active_empirical_task": null
+    },
+    {
+      "id": "monetary_credit_transmission_loop",
+      "topology_status": "CLOSED_CANDIDATE_LOOP",
+      "terminal_assessment": "model/dynamics/monetary_credit_transmission_loop_terminal_assessment_2026_09_21.json",
+      "structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_MEASUREMENT_AND_IDENTIFICATION_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
+      "operational_state": "EVIDENCE_TRIGGERED_HOLD",
+      "active_empirical_task": null
+    },
+    {
+      "id": "external_fx_refinancing_loop",
+      "topology_status": "OPEN_CHAIN",
+      "terminal_assessment": "model/dynamics/external_fx_refinancing_open_chain_terminal_assessment_2026_09_21.json",
+      "structural_review_status": "STRUCTURAL_REVIEW_COMPLETE_OPEN_CHAIN_MEASUREMENT_AND_IDENTIFICATION_BLOCKED_EVIDENCE_TRIGGERED_HOLD",
+      "operational_state": "EVIDENCE_TRIGGERED_HOLD",
+      "active_empirical_task": null
+    }
+  ],
+  "activation_state": {
+    "activation_criteria_matrix": "model/dynamics/feedback_activation_criteria_matrix.json",
+    "structures_blocked": 5,
+    "structures_activation_ready": 0,
+    "quantitative_activation_authorized": false,
+    "exact_integrated_link_forms_ready": 0,
+    "registered_delay_candidates": 7,
+    "scalar_tau_activation_ready": 0,
+    "active_delay_candidates": 0,
+    "validated_reference_behavioural_mechanisms": 0
+  },
+  "remaining_integrated_blockers": {
+    "reference_modes_ready": 9,
+    "reference_modes_required": 10,
+    "reference_mode_blocker": "sectoral_financial_positions",
+    "canonical_multi_instrument_stock_initialization_ready": false,
+    "canonical_full_2025_stock_flow_benchmark_ready": false,
+    "interpretation": "Structural review completion does not remove the independent accounting/reference-mode blockers or supply missing behavioural identification."
+  },
+  "cross_structure_hard_rules": {
+    "no_topology_to_equation_promotion": true,
+    "no_related_mechanism_to_exact_link_promotion": true,
+    "no_cross_structure_equation_borrowing": true,
+    "no_unresolved_node_to_endogenous_promotion": true,
+    "no_scalar_delay_inference": true,
+    "no_open_chain_closure_inference": true,
+    "no_parameter_estimation_from_structural_review_completion": true,
+    "no_feedback_activation_from_structural_review_completion": true,
+    "no_behavioural_closure_from_structural_review_completion": true,
+    "no_release_or_version_change_from_structural_review_completion": true
+  },
+  "disposition": {
+    "all_registered_structures_have_terminal_assessments": true,
+    "all_registered_structures_on_evidence_triggered_hold": true,
+    "active_structural_review_task": null,
+    "exact_integrated_link_forms_ready": 0,
+    "feedback_structures_activation_ready": 0,
+    "quantitative_feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "model_complete": false,
+    "release_ready": false,
+    "public_version_change_authorized": false
+  },
+  "next_state": {
+    "id": "feedback_architecture_evidence_triggered_hold",
+    "authorization": "NO_ACTIVE_FEEDBACK_ARCHITECTURE_TASK_UNTIL_DECLARED_STRUCTURE_SPECIFIC_REOPEN_TRIGGER",
+    "reopen_is_structure_specific": true,
+    "may_poll_unchanged_sources": false,
+    "may_relax_link_gates": false,
+    "may_infer_missing_equations": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false,
+    "may_treat_structural_review_as_model_completion": false
+  }
+}

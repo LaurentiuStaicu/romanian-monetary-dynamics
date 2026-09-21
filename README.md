@@ -89,6 +89,8 @@ For the exact current scientific boundary, including evidence gates and reopen c
 
 RMD currently retains four topologically closed candidate feedback loops and one open candidate chain. **None is quantitatively active.**
 
+All five registered structures have completed their current link-level structural review and are on **Evidence-Triggered Hold**; this review completion does not imply that any behavioural equation or feedback loop has passed activation gates.
+
 | Candidate structure | Topology | Current scientific state |
 | --- | --- | --- |
 | Government refinancing–interest | Closed candidate loop | Behavioural candidate; inactive |
