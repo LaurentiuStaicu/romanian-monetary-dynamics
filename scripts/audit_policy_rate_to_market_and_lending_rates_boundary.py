@@ -29,7 +29,7 @@ def audit_policy_rate_to_rates(review,validation,prospective,boundary,readiness,
  if loop.get("policy_rate_to_market_and_lending_rates_boundary_review")!=REVIEW_PATH:e.append("loop pointer missing")
  d=model["dynamic_core"]
  if d.get("policy_rate_to_market_and_lending_rates_boundary_review")!=REVIEW_PATH:e.append("model pointer missing")
- if d.get("monetary_credit_transmission_next_structural_task")!="monetary_credit_transmission_loop_terminal_assessment":e.append("next task changed")
+ if d.get("monetary_credit_transmission_next_structural_task")!="monetary_credit_transmission_loop_evidence_triggered_hold":e.append("next task changed")
  if baseline["authority"].get("policy_rate_to_market_and_lending_rates_boundary_review")!=REVIEW_PATH:e.append("baseline authority missing")
  for k,v in review["hard_rules"].items():
   if v is not True:e.append(f"hard rule disabled: {k}")
@@ -37,5 +37,5 @@ def audit_policy_rate_to_rates(review,validation,prospective,boundary,readiness,
 def main():
  errors=audit_policy_rate_to_rates(load(REVIEW_PATH),load("model/calibration_validation/validation_recovery_disposition.json"),load("model/calibration_validation/prospective_monetary_confirmation_status.json"),load("model/dynamics/feedback_variable_boundary_registry.json"),load("model/dynamics/feedback_link_readiness_registry.json"),load("model/dynamics/feedback_registry.json"),load("model/registries/model_contract.json"),load("model/registries/scientific_baseline_manifest.json"))
  if errors:raise RuntimeError("Policy-rate to rates boundary audit failed:\n- "+"\n- ".join(errors))
- print(json.dumps({"status":"PASS","bridge_status":STATUS,"generic_rate_node_resolved":False,"exact_integrated_equation_ready":False,"feedback_activation_authorized":False,"next_gate":"monetary_credit_transmission_loop_terminal_assessment"},indent=2))
+ print(json.dumps({"status":"PASS","bridge_status":STATUS,"generic_rate_node_resolved":False,"exact_integrated_equation_ready":False,"feedback_activation_authorized":False,"next_gate":"monetary_credit_transmission_loop_evidence_triggered_hold"},indent=2))
 if __name__=="__main__":main()
