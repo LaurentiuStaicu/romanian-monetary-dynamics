@@ -94,6 +94,22 @@ The terminal assessment is `model/dynamics/sectoral_financial_positions_oecd_sem
 No immediate rerun is authorized. A future reopen requires materially changed official evidence affecting the public numerical precision/balancing boundary, or an independent official dissemination-precision rule established and preregistered **before** any future value gate. The observed 0.5–0.6 million RON residuals alone do not authorize a new tolerance.
 
 
+
+### OECD dissemination-precision diagnostic — 2026-09-21
+
+After the semantic-adjusted OECD reconciliation failed at the frozen 0.1 million RON threshold, RMD performed a **non-reopening precision diagnostic** rather than increasing the tolerance.
+
+Official SDMX metadata define `DECIMALS` as the number of decimal digits used for observations, while `UNIT_MULT` supplies the magnitude. The retained Romania OECD responses report `DECIMALS=2`, `UNIT_MULT=6`, national currency RON. As a deliberately conservative diagnostic, RMD therefore allowed one full declared last-decimal quantum per disseminated observation: 0.01 million RON, without assuming round-to-nearest.
+
+For the six-sector RMD system identity, F=S12-S121 and BNR=S121 cancel exactly, leaving S1M+S11+S12+S13+S2. Across F2-F8 assets/liabilities this produces 70 primitive terms, minus the separately established S1M/L/F2 structural zero, or 69 disseminated observations. The corresponding one-ULP envelope is 0.69 million RON, which is large enough to contain the observed 0.5 million flow and 0.6 million stock system residuals.
+
+However, the independent source diagnostic `S1 + S2` contains only 28 disseminated observations, so the same conservative declared-precision envelope is 0.28 million RON. Its observed residual reaches about 0.5 million RON. Therefore the public discrepancies cannot be explained **solely** by the declared SDMX `DECIMALS=2` metadata.
+
+The retained CSV happens to serialize observations with integers or one visible decimal, but that lexical representation is not an official domain-specific rounding/precision rule and cannot be promoted after the result into a new tolerance. No new value run, tolerance change or reference-mode promotion is authorized.
+
+The result remains `PARTIAL_SERIES_AVAILABLE` and **9/10 reference modes ready**. Reopening requires a domain-specific official financial-accounts rule that quantitatively defines dissemination precision/balancing tolerance, or a changed source whose public values satisfy the frozen identity.
+
+
 ### Government refinancing–interest loop structural closure — 2026-09-21
 
 The complete declared path of the `government_refinancing_interest_loop` has now received explicit structural/accounting boundary review. The qualitative reinforcing topology is retained, but the loop is **not quantitatively active**.
