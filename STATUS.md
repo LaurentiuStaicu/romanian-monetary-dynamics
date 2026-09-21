@@ -412,3 +412,13 @@ Before detailed value residuals or rank outcomes are reviewed, Stage 2 is prereg
 
 This is a **selective reopen only**. F5 remains canonically incomplete, the previous rank-73/nullity-67 assessment remains historical truth until Stage 2 executes, no benchmark cell is materialized, and reference-mode readiness, calibration, feedback activation and behavioural closure are unchanged.
 
+### F5 OECD counterpart Stage 2 terminal result — 2026-09-21
+
+The preregistered F5 OECD counterpart gate has now been executed against the retained artifact, without live refetch. The exact 2025 extraction contains **120 stock rows** at 2025-Q4 and **480 quarterly transaction rows** for 2025-Q1..Q4 across F512/F519, with no required duplicates, missing values or non-finite observations.
+
+The first reconciliation layer passes: for the 32 resident-group A/L mirror checks per measure, stock and annual-flow residuals are exactly zero. The second, preregistered source-aggregate layer fails at the frozen **0.1 million RON** tolerance. For stocks, **16 of 44** S1 aggregation checks violate the threshold, with a maximum absolute residual of **1.0 million RON**. For annual 2025 flows, **24 of 44** checks violate it, with a maximum absolute residual of **3.0 million RON**.
+
+Because the contract required all source value/reconciliation gates to pass before any OECD equation entered the exact component system, execution stops **before rank recomputation**. The existing F5 result therefore remains unchanged: rank 73 / nullity 67 for both stock and flow, zero unconditional F51 total cells, zero unconditional F5 total cells, and no materialisation.
+
+The failed 0.1 million RON gate is immutable provenance. Its observed 1–3 million RON residuals do not authorize a post-result tolerance relaxation or partial salvage of individually mirrored rows. F5 returns to **EVIDENCE_TRIGGERED_HOLD** pending changed official evidence or an independently justified source-specific precision/reconciliation basis preregistered before any successor value gate.
+
