@@ -1,0 +1,205 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "financing_channel_allocation_boundary_review",
+  "purpose": "Determine whether generic government_financing_need can be mapped one-to-one into the retained BNR domestic-primary-market government-securities issuance boundary, and define the empirically admissible financing-channel architecture without inventing channel shares, residual allocations or cross-currency conversions.",
+  "decision": "DO_NOT_MAP_TOTAL_GOVERNMENT_FINANCING_NEED_ONE_TO_ONE_TO_BNR_DOMESTIC_PRIMARY_ISSUANCE_USE_MULTI_CHANNEL_FINANCING_VECTOR_ALLOCATION_NOT_IDENTIFIED",
+  "official_source_evidence": {
+    "ministry_investor_presentation_march_2025": {
+      "institution": "Romanian Ministry of Finance",
+      "url": "https://www.mfinante.gov.ro/static/10/Mfp/buget/sitebuget/InvestorPresentationMarch2025.pdf",
+      "finding": "Government financing needs and redemption structure are broader than one domestic-security channel and include domestic and foreign debt components.",
+      "role": "FINANCING_BOUNDARY_CONTEXT"
+    },
+    "ministry_indicative_financing_programme_2025": {
+      "institution": "Romanian Ministry of Finance",
+      "url": "https://www.mfinante.gov.ro/static/10/Mfp/emisiuni/Programindicativ2025en_26022025.pdf",
+      "explicit_channels": [
+        "domestic interbank government-securities issuance",
+        "domestic EUR-denominated government securities subject to demand",
+        "international-market Eurobonds including private placements",
+        "European Commission RRF loan disbursement",
+        "international-financial-institution loans"
+      ],
+      "liquidity_and_liability_management_context": [
+        "foreign-currency buffer / pre-financing",
+        "buybacks and exchange transactions"
+      ],
+      "interpretation": "The Ministry plans financing over multiple market, currency and official-sector channels. Quarterly domestic interbank issuance is only one component."
+    },
+    "ministry_2024_realized_financing_example": {
+      "source": "Romania Investor Presentation, December 2024",
+      "finding": "2024 financing was raised through domestic government securities/private placements/retail bonds and external bonds/private placements, IFI loans and RRF-related financing, with pre-financing and exchange operations also reported as financing/liability-management context.",
+      "role": "REALIZED_MULTI_CHANNEL_EXISTENCE_EVIDENCE"
+    },
+    "retained_mof_2025_actual_borrowing_boundary": {
+      "review": "model/dynamics/government_debt_issuance_source_boundary_review.json",
+      "source_family": "Monthly public-debt report — Actual borrowings in 2025 / by instrument, currency and market",
+      "observed_channels": [
+        "MoF T-Bills",
+        "retail bonds",
+        "RON Treasury bonds",
+        "EUR-denominated Treasury bonds",
+        "Eurobonds",
+        "RRF/PNRR loan-component drawings",
+        "loans",
+        "domestic-market total",
+        "external-market total"
+      ],
+      "reporting_form": "monthly report with cumulative year-to-date actual borrowing values",
+      "strength": "Direct official evidence that realized central-government borrowing is multi-channel.",
+      "limits": [
+        "cumulative year-to-date rather than frozen monthly flows",
+        "foreign-currency conversion conventions require review before differencing",
+        "RON Treasury-bond line may include exchange operations",
+        "loans and RRF drawings are not securities issuance"
+      ]
+    },
+    "retained_bnr_domestic_primary_boundary": {
+      "pilot": "model/dynamics/government_debt_issuance_bnr_pilot_2025.json",
+      "candidate_id": "domestic_primary_market_government_securities_gross_issuance",
+      "source": "BNR Monthly Bulletin table 12.2",
+      "scope": "Domestic primary-market government securities, new and roll-over issues, with native RON/EUR instrument columns retained.",
+      "full_2025_RON_total_million": 98905.8,
+      "full_2025_EUR_total_million": 1856.1,
+      "total_government_borrowing_equivalent": false,
+      "government_financing_need_equivalent": false
+    }
+  },
+  "channel_architecture": {
+    "market_financing_channels": [
+      {
+        "channel_id": "domestic_interbank_government_securities",
+        "best_current_observed_boundary": "BNR domestic primary-market new and roll-over issues",
+        "status": "FULL_2025_SOURCE_PILOT_AVAILABLE_NOT_GENERIC_NODE"
+      },
+      {
+        "channel_id": "domestic_retail_government_securities",
+        "best_current_observed_boundary": "Ministry actual-borrowing retail-bond line",
+        "status": "SOURCE_FAMILY_IDENTIFIED_CUMULATIVE_YTD"
+      },
+      {
+        "channel_id": "domestic_other_or_private_placements",
+        "best_current_observed_boundary": "Ministry financing-plan / investor-presentation evidence",
+        "status": "CONCEPT_IDENTIFIED_EXACT_MONTHLY_REALIZED_SERIES_NOT_FROZEN"
+      },
+      {
+        "channel_id": "external_market_securities_and_private_placements",
+        "best_current_observed_boundary": "Ministry Eurobond / external-market borrowing lines",
+        "status": "SOURCE_FAMILY_IDENTIFIED_CUMULATIVE_YTD"
+      }
+    ],
+    "official_sector_and_loan_channels": [
+      {
+        "channel_id": "RRF_or_EC_loan_disbursements",
+        "best_current_observed_boundary": "Ministry RRF/PNRR borrowing line / financing programme",
+        "status": "SOURCE_FAMILY_IDENTIFIED"
+      },
+      {
+        "channel_id": "IFI_and_other_loans",
+        "best_current_observed_boundary": "Ministry loans / IFI financing evidence",
+        "status": "SOURCE_FAMILY_IDENTIFIED"
+      }
+    ],
+    "liquidity_and_liability_management_context": [
+      {
+        "channel_id": "cash_buffer_or_prefinancing",
+        "role": "LIQUIDITY_SOURCE_OR_TIMING_ADJUSTMENT_NOT_ISSUANCE_CHANNEL_BY_DEFAULT"
+      },
+      {
+        "channel_id": "exchange_buyback_or_liability_management_operations",
+        "role": "LIABILITY_MANAGEMENT_CONTEXT_NOT_AUTOMATIC_NET_NEW_CASH_FINANCING"
+      }
+    ]
+  },
+  "boundary_comparison": {
+    "government_financing_need_equals_BNR_domestic_primary_issuance": false,
+    "BNR_domestic_primary_issuance_covers_retail": false,
+    "BNR_domestic_primary_issuance_covers_external_Eurobonds": false,
+    "BNR_domestic_primary_issuance_covers_RRF_or_IFI_loans": false,
+    "all_financing_channels_share_same_currency": false,
+    "all_financing_channels_share_same_instrument_type": false,
+    "all_financing_channels_are_observed_at_same_frequency": false,
+    "all_financing_channels_have_frozen_monthly_realized_source_vintages": false,
+    "residual_channel_can_be_inferred_as_GFN_minus_BNR_issuance": false
+  },
+  "allocation_bridge_resolution": {
+    "bridge_id": "financing_channel_allocation",
+    "from": "government_financing_need",
+    "to": "domestic_primary_market_government_securities_gross_issuance",
+    "status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
+    "resolution": "Retain BNR domestic primary-market issuance as one observed financing channel only. Represent the broader financing boundary as a multi-channel vector. Do not infer the BNR share from total financing need, do not use a residual allocation, and do not create channel weights until exact source boundaries and time-aligned realized flows are retained.",
+    "one_to_one_mapping_authorized": false,
+    "residual_allocation_authorized": false,
+    "synthetic_channel_shares_authorized": false,
+    "cross_currency_aggregation_without_frozen_conversion_authorized": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "government_debt_issuance_node_effect": {
+    "current_boundary_class_after_review": "UNRESOLVED",
+    "current_runtime_role_after_review": "MULTI_CHANNEL_FINANCING_AGGREGATE_BOUNDARY_UNRESOLVED_INACTIVE",
+    "exact_reference_mode_id_after_review": null,
+    "related_observed_candidates": [
+      "domestic_primary_market_government_securities_gross_issuance",
+      "government_total_realized_borrowing_or_securities_funding"
+    ],
+    "BNR_boundary_can_replace_generic_node": false,
+    "current_feedback_activation_authorized": false
+  },
+  "government_financing_need_node_effect": {
+    "current_boundary_class_after_review": "UNRESOLVED",
+    "canonical_boundary_selected": false,
+    "allocation_vector_identified": false,
+    "current_feedback_activation_authorized": false
+  },
+  "loop_effects": {
+    "government_issuance_yield_loop": {
+      "qualitative_topology_changed": false,
+      "financing_need_to_debt_issuance_sign_retained": "+",
+      "link_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
+      "quantitatively_active": false
+    },
+    "government_refinancing_interest_loop": {
+      "qualitative_topology_changed": false,
+      "financing_need_to_debt_issuance_sign_retained": "+",
+      "link_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
+      "quantitatively_active": false
+    }
+  },
+  "hard_rules": {
+    "no_GFN_equals_BNR_domestic_primary_issuance": true,
+    "no_residual_channel_as_GFN_minus_BNR_issuance": true,
+    "no_synthetic_channel_shares": true,
+    "no_cross_currency_sum_without_frozen_conversion": true,
+    "no_retail_silently_added_to_BNR_boundary": true,
+    "no_external_borrowing_silently_added_to_BNR_boundary": true,
+    "no_RRF_or_loans_relabelled_securities_issuance": true,
+    "no_prefinancing_relabelled_current_period_financing_need": true,
+    "no_exchange_operation_relabelled_net_new_cash_financing_without_source_semantics": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "government_financing_need_node_resolved": false,
+    "government_debt_issuance_node_resolved": false,
+    "financing_channel_allocation_identified": false,
+    "canonical_reference_mode_promoted": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "mof_realized_financing_channel_materialisation_contract",
+    "authorization": "DESCRIPTIVE_SOURCE_CONTRACT_ONLY",
+    "task": "Freeze a Ministry actual-borrowing source contract for realized financing by instrument and market, preserving cumulative-YTD reporting, native-currency boundaries, revision rules, exchange-operation semantics and non-securities loan/RRF channels. Do not difference cumulative values into monthly flows until conversion and definition consistency gates pass.",
+    "may_difference_cumulative_values_now": false,
+    "may_infer_channel_residuals": false,
+    "may_estimate_allocation_shares": false,
+    "may_promote_generic_debt_issuance_node": false,
+    "may_activate_feedback": false
+  }
+}
