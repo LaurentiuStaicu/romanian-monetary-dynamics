@@ -160,10 +160,9 @@
   },
   "next_gate_after_materialisation": "Reconcile the exact RON auction-universe stock denominator before any supply-load ratio is computed. Submitted-bids and bid-to-cover monthly series remain blocked because the monthly report exposes them graphically without reproducible native-text month/series mapping.",
   "next_independent_bridge_task": {
-    "id": "government_debt_issuance_to_debt_stock_boundary_review",
+    "id": "government_debt_stock_to_interest_cost_boundary_review",
     "authorization": "STRUCTURAL_ACCOUNTING_SOURCE_BOUNDARY_REVIEW_ONLY",
-    "may_map_gross_borrowing_one_to_one_to_debt_stock_change": false,
-    "may_treat_exchange_operations_as_net_new_debt": false,
+    "may_map_debt_stock_level_one_to_one_to_interest_cost": false,
     "may_estimate_parameters": false,
     "may_activate_feedback": false,
     "may_change_behavioural_closure": false
@@ -171,5 +170,7 @@
   "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
   "interest_cost_to_financing_need_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
   "financing_channel_allocation_boundary_review": "model/dynamics/financing_channel_allocation_boundary_review_2026_09_21.json",
-  "financing_channel_allocation_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED"
+  "financing_channel_allocation_status": "MULTI_CHANNEL_STRUCTURE_CONFIRMED_ALLOCATION_VECTOR_NOT_IDENTIFIED",
+  "government_debt_issuance_to_debt_stock_boundary_review": "model/dynamics/government_debt_issuance_to_debt_stock_boundary_review_2026_09_21.json",
+  "government_debt_issuance_to_debt_stock_boundary_status": "STOCK_ACCUMULATION_FORM_KNOWN_NET_DEBT_TRANSACTION_BOUNDARY_NOT_IDENTIFIED"
 }
