@@ -1,0 +1,81 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "risk_premium_to_exchange_rate_pressure_boundary_review",
+  "loop_id": "external_fx_refinancing_loop",
+  "purpose": "Determine whether a generic risk-premium node can be mapped to an exact exchange-rate-pressure equation under Romania's managed-float regime and whether the open chain can be closed by inferring exchange-rate pressure as depreciation.",
+  "decision": "DO_NOT_MAP_GENERIC_RISK_PREMIUM_ONE_TO_ONE_TO_EXCHANGE_RATE_PRESSURE_AND_DO_NOT_INFER_A_CLOSING_LINK",
+  "retained_evidence": {
+    "external_fx_source_review": "model/calibration_validation/external_fx_refinancing_source_boundary_review.json",
+    "mechanism_registry": "model/empirical_dynamics/mechanism_registry.json",
+    "regime_context": "Romania operates a managed-float exchange-rate regime; intervention, global risk, external rates and capital-flow conditions can affect observed exchange-rate dynamics.",
+    "direct_policy_fx_shortcut_status": "REJECTED"
+  },
+  "concept_boundary": {
+    "risk_premium_equals_exchange_rate_pressure": false,
+    "exchange_rate_pressure_equals_observed_depreciation": false,
+    "sovereign_spread_equals_generic_fx_risk_premium": false,
+    "managed_float_equals_free_float_market_clearing": false,
+    "qualitative_chain_terminus_implies_closing_causal_link": false
+  },
+  "structural_interpretation": {
+    "simultaneity": "Risk premia, capital flows, intervention conditions, global risk and exchange-rate expectations can be jointly determined; a contemporaneous one-way coefficient is not identified by the retained evidence.",
+    "terminus_status": "exchange_rate_pressure remains an unresolved qualitative terminus. It is not relabelled as exchange_rate_depreciation and no pressure-to-depreciation closing link is added.",
+    "qualitative_positive_sign_retained_as_candidate": true,
+    "exact_integrated_equation_ready": false
+  },
+  "bridge_resolution": {
+    "from": "risk_premium",
+    "to": "exchange_rate_pressure",
+    "status": "RISK_PREMIUM_AND_EXCHANGE_RATE_PRESSURE_SIMULTANEOUS_MANAGED_FLOAT_BOUNDARY_UNRESOLVED",
+    "causal_role": "MANAGED_FLOAT_AND_SIMULTANEITY_CANDIDATE_BOUNDARY_UNRESOLVED",
+    "exact_exchange_rate_pressure_measure_selected": false,
+    "generic_risk_premium_measure_selected": false,
+    "managed_float_intervention_treatment_identified": false,
+    "contemporaneous_one_way_mapping_authorized": false,
+    "closing_link_to_exchange_rate_depreciation_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effect": {
+    "risk_premium": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "current_feedback_activation_authorized": false
+    },
+    "exchange_rate_pressure": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "current_runtime_role_after_review": "INACTIVE_OPEN_CHAIN_TERMINUS",
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "hard_rules": {
+    "no_risk_premium_to_fx_identity": true,
+    "no_sovereign_spread_as_generic_fx_premium": true,
+    "no_free_float_assumption": true,
+    "no_ignored_intervention_channel": true,
+    "no_pressure_to_depreciation_substitution": true,
+    "no_inferred_closing_link": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "exchange_rate_pressure_boundary_resolved": false,
+    "open_chain_closed": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "external_fx_refinancing_open_chain_terminal_assessment",
+    "authorization": "STRUCTURAL_TERMINAL_ASSESSMENT_ONLY",
+    "may_infer_closing_link": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_change_behavioural_closure": false
+  }
+}
