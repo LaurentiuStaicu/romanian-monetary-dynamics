@@ -62,7 +62,7 @@ The figure is intentionally **not** a causal-loop diagram and **not** the comple
 | Layer | Role | Current boundary |
 | --- | --- | --- |
 | **Accounting Spine** | Defines sector/instrument positions, transactions and conservation identities | Hard constraint; canonical multi-instrument completion remains partial |
-| **Observed evidence & reference modes** | Supplies behaviour-over-time targets and official empirical evidence | 9 of 10 required reference modes are ready |
+| **Observed evidence & reference modes** | Supplies behaviour-over-time targets and official empirical evidence | 10 of 10 required reference modes are ready |
 | **Candidate dynamics** | Defines possible behavioural responses, delays and feedback paths | Candidate architecture only; no quantitative feedback activation |
 | **Validation & activation gates** | Determines whether a mechanism may enter calibration, validation or the integrated reference model | No active calibration/refit cycle; behavioural closure inactive |
 
@@ -74,14 +74,14 @@ This separation is central to RMD. An empirical mechanism being listed or tested
 | --- | --- |
 | Accounting / stock-flow core | **Partial pass** |
 | Canonically complete stock + flow instruments | **F3 only** |
-| Required reference modes | **9 / 10 ready** |
+| Required reference modes | **10 / 10 ready** |
 | Validated reference behavioural mechanisms | **0** |
 | Quantitatively active feedback loops | **0** |
 | Behavioural closure | **Inactive** |
 | Calibration / refit cycle | **Closed** |
 | Operational state | **Evidence-Triggered Baseline Hold** |
 
-The remaining reference-mode blocker is sectoral_financial_positions. Current public-source recovery is frozen until a declared new-source or changed-dataset trigger is satisfied.
+All 10 required reference modes now have observed targets. The final sectoral_financial_positions mode was promoted on the retained OECD non-consolidated stock/flow boundary after an exact-decimal gate passed the official ECB QFA EUR 10 million internal-consistency materiality benchmark. This completes the reference-target layer only; Accounting Spine and behavioural closure remain incomplete.
 
 For the exact current scientific boundary, including evidence gates and reopen conditions, see [STATUS.md](STATUS.md).
 
@@ -108,7 +108,7 @@ The exact paths, link signs, delay candidates and activation requirements are in
 - an explicit institutional-sector and financial-instrument accounting boundary;
 - machine-checkable accounting, dimensional and System Dynamics conformity gates;
 - retained official/reproducible source vintages and provenance;
-- nine observed reference modes ready for the current quantitative closure gate;
+- ten observed reference modes ready for the current quantitative reference-target prerequisite;
 - preregistered empirical selection/validation artifacts for tested mechanisms;
 - reproducible scientific-baseline verification through CI and local audit scripts.
 
