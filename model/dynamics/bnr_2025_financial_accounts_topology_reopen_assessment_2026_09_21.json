@@ -1,0 +1,124 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "bnr_2025_financial_accounts_topology_reopen_assessment",
+  "reference_mode": "sectoral_financial_positions",
+  "purpose": "Determine whether newly identified official BNR/CMFB structural metadata constitutes a declared changed-topology/new-official-source trigger sufficient to reopen only public-access/source-topology recovery for the frozen sectoral-financial-positions boundary.",
+  "source": {
+    "institution": "National Bank of Romania",
+    "host": "CMFB / Eurostat CIRCABC",
+    "title": "Level 3 national report on quality of statistics underlying the MIP indicators — Financial accounts statistics — Romania",
+    "reference_year": 2024,
+    "update_date": "2025-09",
+    "url": "https://circabc.europa.eu/sd/a/89ddc57a-7e1d-436e-b217-bd266cfb23fd/23%20-%20RO%20-%20CMFB%20FA%20level%203.pdf",
+    "source_class": "OFFICIAL_STRUCTURAL_METADATA_AND_DATA_SOURCE_MAP",
+    "retained_raw_vintage": null,
+    "raw_hash": null
+  },
+  "newly_identified_official_evidence": {
+    "benchmark_revision": {
+      "last_major_financial_accounts_benchmark_revision_completed": "2025-04",
+      "public_summary_confirmed_by_report": true
+    },
+    "compilation_system": {
+      "new_it_system_in_place_since": "mid-2025",
+      "quarterly_backdata_start": "1995Q1",
+      "annual_data_compiled_from_quarterly_for_all_available_series": true,
+      "granularity_defined_for_institutional_sectors_and_financial_instruments": true,
+      "counterpart_sector_dimension_in_internal_checks": true
+    },
+    "accounting_topology": {
+      "quarterly_and_annual_non_consolidated_accounts": true,
+      "who_to_whom_compilation": true,
+      "stock_transaction_revaluation_other_volume_consistency": true,
+      "internal_balancing_by_assets_liabilities_instrument_and_counterpart": true
+    },
+    "dissemination_and_transmission": {
+      "all_sectors_disseminated_quarterly_and_annual_for_stocks_and_flows": true,
+      "quarterly_to_ecb_t_plus_days": 97,
+      "oecd_all_financial_accounts_datasets_regular_transmission_since": "2025-04",
+      "oecd_named_tables": [
+        "7HH",
+        "7II"
+      ],
+      "ofi_granular_dataset_to_ecb_since": "2022Q1",
+      "ofi_backdata_start": "2007Q1"
+    },
+    "annex_data_source_map": {
+      "year": 2025,
+      "sector_columns": [
+        "S11",
+        "S12K",
+        "S124",
+        "S12O",
+        "S128",
+        "S129",
+        "S13",
+        "S14+S15",
+        "S2"
+      ],
+      "instrument_rows": [
+        "F11",
+        "F12",
+        "F21",
+        "F22",
+        "F29",
+        "F3",
+        "F4",
+        "F511",
+        "F512",
+        "F519",
+        "F52",
+        "F61",
+        "F62",
+        "F63-F65",
+        "F66",
+        "F7",
+        "F81",
+        "F89"
+      ],
+      "assets_and_liabilities_present": true,
+      "interpretation": "The official map documents a broad instrument-by-sector compilation system and counterpart-based source hierarchy, but it is a metadata map rather than the required published bilateral value matrix."
+    }
+  },
+  "trigger_evaluation": {
+    "governing_trigger_id": "accounting_reference_mode_counterpart_topology",
+    "trigger_text": "A changed official ECB/Eurostat/BNR/OECD dataset topology or new official source supplies the frozen RMD bilateral/counterparty boundary, including required sectors, instruments, quarterly stocks and financial transactions.",
+    "changed_official_topology_clue_confirmed": true,
+    "new_official_source_confirmed": true,
+    "exact_public_machine_readable_value_boundary_confirmed": false,
+    "exact_s121_separate_public_counterpart_dimension_confirmed": false,
+    "complete_f2_f8_public_counterpart_value_matrix_confirmed": false,
+    "trigger_scope_authorized": "SOURCE_TOPOLOGY_AND_PUBLIC_ACCESS_RECOVERY_ONLY",
+    "reference_mode_reopen_authorized": false,
+    "accounting_instrument_reopen_authorized": false
+  },
+  "critical_limitations": [
+    "The report documents internal compilation topology and dissemination scope but does not itself publish the required bilateral numerical observations.",
+    "The annex sector map uses an MFI aggregate column (S12K) rather than demonstrating a public S121 central-bank column on the exact RMD counterpart boundary.",
+    "The report does not identify a stable machine-readable BNR endpoint exposing sector x counterpart x instrument x stock/transaction values.",
+    "Existing Eurostat counterpart dissemination previously failed full F2-F8 scope and existing OECD counterpart dissemination previously failed the S121 sector requirement; those frozen results are not reinterpreted.",
+    "Documentation that internal who-to-whom data exist is not equivalent to public observability."
+  ],
+  "decision": "NEW_OFFICIAL_TOPOLOGY_EVIDENCE_CONFIRMED_PUBLIC_ACCESS_RECOVERY_REOPENED_REFERENCE_MODE_UNCHANGED",
+  "scientific_effect": {
+    "source_discovery_reopened": true,
+    "historical_phase_a_d_reinterpreted": false,
+    "reference_mode_status_after_review": "PARTIAL_SERIES_AVAILABLE",
+    "reference_mode_readiness_count_change": 0,
+    "accounting_readiness_change": false,
+    "canonical_instrument_completion_change": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "version_change_authorized": false
+  },
+  "next_gate": {
+    "contract": "model/dynamics/bnr_2025_financial_accounts_public_access_recovery_contract.json",
+    "authorization": "ONE_FROZEN_PUBLIC_ACCESS_TOPOLOGY_PASS",
+    "no_value_inference": true,
+    "no_hidden_endpoint_guessing": true,
+    "raw_retention_required_before_any_promotion": true,
+    "exact_semantic_gate_required_before_any_reference_mode_change": true
+  }
+}
