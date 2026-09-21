@@ -285,7 +285,10 @@
         "fx_pass_through_delay"
       ],
       "topology_status": "OPEN_CHAIN",
-      "activation_blocker": "The retained path ends at exchange_rate_pressure rather than returning to exchange_rate_depreciation. No closing causal link is inferred merely to create a loop; closure requires explicit evidence and specification."
+      "activation_blocker": "The retained path ends at exchange_rate_pressure rather than returning to exchange_rate_depreciation. No closing causal link is inferred merely to create a loop; closure requires explicit evidence and specification.",
+      "exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review": "model/dynamics/exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review_2026_09_21.json",
+      "exchange_rate_depreciation_to_fx_debt_service_burden_status": "FX_DIRECTION_KNOWN_CURRENCY_PAYMENT_AND_HEDGING_EXPOSURE_NOT_IDENTIFIED",
+      "exchange_rate_depreciation_to_fx_debt_service_burden_equation_ready": false
     }
   ],
   "delay_candidates": [
