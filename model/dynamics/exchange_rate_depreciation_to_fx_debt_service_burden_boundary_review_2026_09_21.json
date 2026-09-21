@@ -1,0 +1,99 @@
+{
+  "review_version": "0.1",
+  "reviewed_on": "2026-09-21",
+  "gate_id": "exchange_rate_depreciation_to_fx_debt_service_burden_boundary_review",
+  "loop_id": "external_fx_refinancing_loop",
+  "purpose": "Determine whether an observed exchange-rate depreciation can be mapped directly into an FX debt-service burden on Romania's external liabilities without knowing currency denomination, scheduled payments and hedging exposure on the same sector/instrument boundary.",
+  "decision": "DO_NOT_APPLY_EXCHANGE_RATE_MOVE_TO_AGGREGATE_EXTERNAL_DEBT_REQUIRE_CURRENCY_SPECIFIC_PAYMENT_SCHEDULE_AND_HEDGING_BOUNDARY",
+  "official_source_evidence": {
+    "imf_external_debt_guide": {
+      "institution": "International Monetary Fund",
+      "finding": "External vulnerability analysis separately requires currency of denomination, remaining-maturity/debt-service schedules and financial-derivative positions. Original maturity is not remaining maturity.",
+      "implication": "A reporting-currency debt stock or original-maturity bucket is insufficient to identify the FX-sensitive payment burden."
+    },
+    "retained_rmd_source_review": {
+      "source": "model/calibration_validation/external_fx_refinancing_source_boundary_review.json",
+      "verdict": "SECTOR_ORIGINAL_MATURITY_AND_PARTIAL_AGGREGATE_CURRENCY_RISK_MARGINS_OBSERVED_JOINT_CURRENCY_RESIDUAL_MATURITY_HEDGING_UNRESOLVED",
+      "currency_denomination_joint_sector": false,
+      "residual_maturity_schedule": false,
+      "hedging_positions": false
+    },
+    "retained_exchange_rate_source": {
+      "source": "model/calibration_validation/fx_inflation_pass_through_source_boundary_review.json",
+      "series_key": "EXR.M.RON.EUR.SP00.A",
+      "concept": "Monthly average RON per EUR reference exchange rate",
+      "role": "OBSERVED_FX_DIAGNOSTIC_NOT_GENERIC_ALL_CURRENCY_EXPOSURE"
+    }
+  },
+  "concept_boundary": {
+    "reporting_currency_equals_debt_currency": false,
+    "original_maturity_equals_payment_schedule": false,
+    "gross_external_debt_equals_unhedged_fx_exposure": false,
+    "EUR_RON_move_prices_all_foreign_currency_debt": false,
+    "exchange_rate_move_alone_identifies_debt_service_burden": false
+  },
+  "structural_interpretation": {
+    "exchange_rate_depreciation_role": "Observed or candidate currency-specific FX movement; the retained RON/EUR series is one exact diagnostic driver, not a complete currency vector for all liabilities.",
+    "fx_debt_service_burden_role": "Domestic-resource value of scheduled foreign-currency principal and interest payments after the relevant currency mix and hedging treatment are defined.",
+    "admissible_conceptual_form": "FX-sensitive debt-service burden depends on currency-specific scheduled principal and interest payments translated at relevant exchange rates, net of explicitly measured hedge treatment.",
+    "qualitative_positive_sign_retained_as_candidate": true,
+    "exact_integrated_equation_ready": false
+  },
+  "bridge_resolution": {
+    "from": "exchange_rate_depreciation",
+    "to": "fx_debt_service_burden",
+    "status": "FX_DIRECTION_KNOWN_CURRENCY_PAYMENT_AND_HEDGING_EXPOSURE_NOT_IDENTIFIED",
+    "causal_role": "FX_TRANSLATION_EFFECT_CONDITIONAL_ON_CURRENCY_PAYMENT_AND_HEDGING_BOUNDARY",
+    "aggregate_external_debt_revaluation_as_service_burden_authorized": false,
+    "reporting_unit_as_denomination_authorized": false,
+    "original_maturity_as_residual_schedule_authorized": false,
+    "zero_hedging_assumption_authorized": false,
+    "EUR_only_mapping_to_all_FX_debt_authorized": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false
+  },
+  "node_effect": {
+    "exchange_rate_depreciation": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id_after_review": null,
+      "observed_RON_EUR_diagnostic_available": true,
+      "current_feedback_activation_authorized": false
+    },
+    "fx_debt_service_burden": {
+      "current_boundary_class_after_review": "UNRESOLVED",
+      "exact_reference_mode_id_after_review": null,
+      "currency_payment_hedging_boundary_ready": false,
+      "current_feedback_activation_authorized": false
+    }
+  },
+  "hard_rules": {
+    "no_reporting_unit_as_debt_currency": true,
+    "no_original_maturity_as_payment_schedule": true,
+    "no_zero_hedging_assumption": true,
+    "no_all_external_debt_FX_revaluation": true,
+    "no_single_EUR_move_for_all_currency_liabilities": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_inferred_closing_link": true,
+    "no_public_version_change": true
+  },
+  "scientific_effect": {
+    "fx_translation_boundary_strengthened": true,
+    "fx_debt_service_node_resolved": false,
+    "exact_integrated_equation_ready": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "open_chain_status_changed": false,
+    "public_version_change_authorized": false
+  },
+  "next_gate": {
+    "id": "fx_debt_service_burden_to_refinancing_need_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_equate_debt_service_with_refinancing_need": false,
+    "may_estimate_parameters": false,
+    "may_activate_feedback": false,
+    "may_close_chain": false
+  }
+}
