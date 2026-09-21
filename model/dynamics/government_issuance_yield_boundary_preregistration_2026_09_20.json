@@ -105,6 +105,20 @@
       "synthetic_lag_distribution_authorized": false,
       "parameter_estimation_authorized": false,
       "feedback_activation_authorized": false
+    },
+    {
+      "id": "interest_cost_to_financing_need",
+      "from": "government_interest_cost",
+      "to": "government_financing_need",
+      "requirement": "Select a matched gross-financing-need accounting boundary and prevent double counting of interest. Headline-deficit forms already include interest; primary-deficit forms require interest exactly once. Do not combine unmatched Eurostat interest expenditure and Ministry refinancing components as an identity.",
+      "status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL",
+      "boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
+      "behavioural_equation_required": false,
+      "parameter_estimation_required": false,
+      "exact_integrated_identity_ready": false,
+      "direct_addition_to_headline_deficit_authorized": false,
+      "cross_boundary_identity_authorized": false,
+      "feedback_activation_authorized": false
     }
   ],
   "scientific_effect": {
@@ -128,10 +142,14 @@
   },
   "next_gate_after_materialisation": "Reconcile the exact RON auction-universe stock denominator before any supply-load ratio is computed. Submitted-bids and bid-to-cover monthly series remain blocked because the monthly report exposes them graphically without reproducible native-text month/series mapping.",
   "next_independent_bridge_task": {
-    "id": "interest_cost_to_financing_need_boundary_review",
-    "authorization": "STRUCTURAL_ACCOUNTING_BOUNDARY_REVIEW_ONLY",
+    "id": "financing_channel_allocation_boundary_review",
+    "authorization": "STRUCTURAL_SOURCE_BOUNDARY_REVIEW_ONLY",
+    "may_construct_one_to_one_GFN_to_BNR_issuance": false,
+    "may_invent_channel_allocations": false,
     "may_estimate_parameters": false,
     "may_activate_feedback": false,
     "may_change_behavioural_closure": false
-  }
+  },
+  "interest_cost_to_financing_need_boundary_review": "model/dynamics/interest_cost_to_financing_need_boundary_review_2026_09_21.json",
+  "interest_cost_to_financing_need_status": "ACCOUNTING_COMPOSITION_FORM_KNOWN_BOUNDARY_NOT_CANONICAL"
 }
