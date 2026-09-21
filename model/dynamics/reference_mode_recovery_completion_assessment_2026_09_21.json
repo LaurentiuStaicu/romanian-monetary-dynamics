@@ -1,0 +1,38 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "stage": "Reference-Mode Recovery",
+  "predecessor_assessment": "model/dynamics/reference_mode_recovery_terminal_assessment.json",
+  "predecessor_status": "STAGE_COMPLETE_FROZEN_9_OF_10_UNDER_CURRENT_PUBLIC_EVIDENCE_BOUNDARY",
+  "trigger_chain": [
+    "BNR/CMFB 2025 changed financial-accounts topology",
+    "OECD non-consolidated aggregate stock/transaction topology",
+    "ESA2010 S1M/L/F2 semantic applicability",
+    "ECB QFA official internal-consistency materiality rule"
+  ],
+  "promotion_assessment": "model/dynamics/sectoral_financial_positions_reference_promotion_assessment_2026_09_21.json",
+  "status": "STAGE_COMPLETE_10_OF_10_OBSERVED_REFERENCE_MODES",
+  "required_reference_modes": 10,
+  "ready_reference_modes": 10,
+  "blocker_count": 0,
+  "recovered_mode": {
+    "id": "sectoral_financial_positions",
+    "status": "OBSERVED_SERIES_AVAILABLE",
+    "boundary": "NARROW_AGGREGATE_BEHAVIOUR_OVER_TIME_REFERENCE_MODE",
+    "retained_series": "data/processed/sectoral_financial_positions_net_reference_2014q1_2026q1.csv",
+    "bilateral_accounting_spine_completed": false
+  },
+  "disposition": {
+    "reference_mode_recovery_substage_complete": true,
+    "reference_mode_readiness": "10/10",
+    "integrated_reference_mode_prerequisite_ready": true,
+    "accounting_readiness_change": false,
+    "active_calibration_cycle_open": false,
+    "validated_reference_behavioural_mechanisms_change": 0,
+    "system_dynamics_activation": false,
+    "behavioural_closure_change": false,
+    "complete_endogenous_system_dynamics_model": false,
+    "next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD"
+  },
+  "interpretation": "All ten required behaviour-over-time reference modes now have observed-series status under explicit evidence contracts. This completes the reference-mode prerequisite only. The accounting spine remains incomplete beyond F3 and every registered quantitative feedback structure remains blocked by its own equation/parameter/identifiability/delay/validation gates."
+}
