@@ -1,0 +1,83 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-21",
+  "assessment_id": "oecd_semantic_adjusted_decimal_arithmetic_correction",
+  "reference_mode": "sectoral_financial_positions",
+  "purpose": "Correct a numerical implementation artifact in the already-failed semantic-adjusted OECD reconciliation by recomputing the retained observations with exact base-10 Decimal arithmetic. Preserve the historical workflow execution and frozen 0.1 million RON tolerance; do not rerun or reacquire source values.",
+  "historical_execution": {
+    "terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
+    "workflow_artifact_id": 10634064870,
+    "workflow_artifact_zip_sha256": "18b0a611e018d12196cbdbcf980f17bc3211dc0c88269c96aa10f59076077310",
+    "implementation_numeric_type": "binary floating point",
+    "recorded_violation_count": 63,
+    "recorded_flow_violation_count": 27,
+    "recorded_stock_violation_count": 36,
+    "verdict": "FAIL_FROZEN_RECONCILIATION_TOLERANCE_NO_PROMOTION_SEMANTIC_PATH_CLOSED",
+    "historical_execution_rewritten": false
+  },
+  "exact_decimal_reaudit": {
+    "source": "Retained exact_filtered_source_rows_with_semantic_zero.csv from the historical workflow artifact; no provider request performed.",
+    "arithmetic": "Parse each retained value lexeme as an exact base-10 Decimal, sum F2-F8 by sector/entry, apply the frozen sector mapping and semantic S1M/L/F2=0 rule, and compare |residual| > Decimal('0.1').",
+    "tolerance_million_ron": "0.1",
+    "total_measure_period_tests": 98,
+    "exact_violation_count": 47,
+    "exact_flow_violation_count": 21,
+    "exact_stock_violation_count": 26,
+    "exact_nonviolation_count": 51,
+    "exact_boundary_abs_residual_equal_0_1_count": 28,
+    "legacy_float_boundary_rows_misclassified_as_violations": 16,
+    "legacy_float_boundary_rows_not_misclassified": 12,
+    "max_abs_flow_residual_million_ron": "0.5",
+    "max_abs_stock_residual_million_ron": "0.6",
+    "max_abs_s1_minus_components_residual_million_ron": "0.6",
+    "max_abs_s1_plus_s2_residual_million_ron": "0.5",
+    "compact_false_positive_evidence": "data/source_vintages/oecd-decimal-arithmetic-correction-2026-09-21/legacy_float_boundary_false_positives.csv",
+    "compact_false_positive_evidence_sha256": "bb92d8d90c5b7fc77a53dc03869267711b86e8eaf1c60be361047960da4649ed"
+  },
+  "numerical_bug_classification": {
+    "class": "BINARY_FLOAT_THRESHOLD_BOUNDARY_MISCLASSIFICATION",
+    "scientific_scope": "violation count only",
+    "root_cause": "Some exact decimal residuals equal to ±0.1 million RON were represented as binary floats infinitesimally above the frozen threshold and therefore classified as violations by abs(residual) > 0.1.",
+    "tolerance_changed": false,
+    "source_values_changed": false,
+    "sector_mapping_changed": false,
+    "semantic_exception_changed": false,
+    "gate_verdict_changed": false
+  },
+  "official_validation_context": {
+    "ecb_guideline": {
+      "source": "Guideline ECB/2013/24, Annex II",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX%3A32013O0024",
+      "point": "NCBs are instructed to implement accounting-identity/sign validation rules before transmitting quarterly financial-account data to the ECB."
+    },
+    "ecb_quality_report_2024": {
+      "source": "Euro area and national quarterly financial accounts – Quality report 2024",
+      "url": "https://www.ecb.europa.eu/pub/euroareafinancialaccounts/html/ecb.eaqfa202506.en.html",
+      "romania_validation_consistency_rate_percent": 96,
+      "period": "Q4 2012 to Q2 2024",
+      "internal_consistency_families": [
+        "sector/instrument aggregation consistency",
+        "horizontal assets-liabilities consistency",
+        "balancing-item consistency",
+        "counterpart-sector consistency"
+      ],
+      "interpretation": "The ECB reports minor historical validation exceptions for Romania. This contextualises why public disseminated data cannot simply be assumed mathematically exact, but it does not identify the specific 2025-2026 residuals or authorize any tolerance change."
+    }
+  },
+  "corrected_scientific_interpretation": {
+    "historical_machine_count_to_preserve_for_provenance": 63,
+    "mathematically_correct_violation_count": 47,
+    "corrected_count_should_be_used_in_future_summaries": true,
+    "terminal_verdict": "FAIL_FROZEN_RECONCILIATION_TOLERANCE_NO_PROMOTION",
+    "reference_mode_status": "PARTIAL_SERIES_AVAILABLE",
+    "readiness_count_change": 0,
+    "new_tolerance_authorized": false,
+    "new_live_execution_authorized": false,
+    "reference_mode_promotion_authorized": false,
+    "accounting_readiness_change": false,
+    "parameter_estimation_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false
+  },
+  "decision": "CORRECT_NUMERICAL_VIOLATION_COUNT_63_TO_47_VERDICT_UNCHANGED_BASELINE_HOLD_CONTINUES"
+}
