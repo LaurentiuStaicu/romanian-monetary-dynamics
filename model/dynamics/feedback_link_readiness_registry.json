@@ -141,7 +141,7 @@
       "to": "government_interest_cost",
       "sign": "+",
       "causal_role": "QUALITATIVE_STRUCTURAL_RELATION",
-      "readiness_status": "OBSERVED_TARGETS_AVAILABLE_REPRICING_BRIDGE_DEFERRED",
+      "readiness_status": "RELATED_MECHANISM_NOT_EXACT_LINK_FORM",
       "related_mechanisms": [
         "government_refinancing_effective_rate"
       ],
