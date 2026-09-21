@@ -16,8 +16,7 @@
     "STOCK_TRANSACTION_RECONCILIATION_FORM_KNOWN_NON_TRANSACTION_ADJUSTMENTS_REQUIRED",
     "EXPOSURE_SCALE_OBSERVED_DEBT_SERVICE_AND_CREDIT_RISK_STATE_BOUNDARY_UNRECONCILED",
     "RISK_AND_PRUDENTIAL_STATE_OBSERVED_CREDIT_SUPPLY_CAPACITY_SCALAR_NOT_IDENTIFIED",
-    "SUPPLY_CONDITION_AND_DEMAND_OBSERVABLES_AVAILABLE_REALIZED_CREDIT_FLOW_JOINTLY_DETERMINED",
-    "TARGET_SPECIFIC_PASS_THROUGH_CANDIDATE_AVAILABLE_GENERIC_RATE_NODE_UNRESOLVED"
+    "SUPPLY_CONDITION_AND_DEMAND_OBSERVABLES_AVAILABLE_REALIZED_CREDIT_FLOW_JOINTLY_DETERMINED"
   ],
   "hard_rules": {
     "every_feedback_path_link_must_be_registered_exactly_once": true,
@@ -280,8 +279,8 @@
       "from": "policy_rate",
       "to": "market_and_lending_rates",
       "sign": "+_candidate",
-      "causal_role": "TARGET_SPECIFIC_BEHAVIOURAL_CANDIDATE_NOT_GENERIC_LINK",
-      "readiness_status": "TARGET_SPECIFIC_PASS_THROUGH_CANDIDATE_AVAILABLE_GENERIC_RATE_NODE_UNRESOLVED",
+      "causal_role": "BEHAVIOURAL_CANDIDATE_LINK",
+      "readiness_status": "PARTIAL_TARGET_SPECIFIC_FORM_NOT_INTEGRATED",
       "related_mechanisms": [
         "monetary_policy_lending_rate_pass_through"
       ],
@@ -291,7 +290,8 @@
       "reason": "A frozen household-housing delta-policy candidate exists, but it is not validated, the holdout had no policy-rate movement, no NFC form is selected, and no market/outstanding-rate mapping defines the generic node.",
       "target_specific_implementation_pointer": "household_housing_delta_policy_rate",
       "target_specific_scope": "HOUSEHOLD_HOUSING_ONLY",
-      "policy_rate_to_market_and_lending_rates_boundary_review": "model/dynamics/policy_rate_to_market_and_lending_rates_boundary_review_2026_09_21.json"
+      "policy_rate_to_market_and_lending_rates_boundary_review": "model/dynamics/policy_rate_to_market_and_lending_rates_boundary_review_2026_09_21.json",
+      "policy_rate_to_market_and_lending_rates_boundary_status": "TARGET_SPECIFIC_PASS_THROUGH_CANDIDATE_AVAILABLE_GENERIC_RATE_NODE_UNRESOLVED"
     },
     {
       "link_key": "monetary_credit_transmission_loop|market_and_lending_rates|credit_flow",
