@@ -89,6 +89,7 @@
   "interpretation": "The gate is an accounting-readiness classification, not a requirement to invent missing instruments. A scientifically valid frozen or partial recovery outcome remains valid; it simply does not count as a complete canonical bilateral matrix.",
   "reopen_conditions_registry": "model/accounting/reopen_conditions_registry.json",
   "accounting_recovery_terminal_assessment": "model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json",
-  "accounting_recovery_stage_status": "STAGE_COMPLETE_EVIDENCE_TRIGGERED_HOLD",
-  "next_operational_state": "EVIDENCE_TRIGGERED_ACCOUNTING_SPINE_HOLD"
+  "accounting_recovery_stage_status": "SELECTIVE_REOPEN_F4_STRUCTURAL_ZERO_MATERIALIZATION_PENDING",
+  "next_operational_state": "EXECUTE_F4_STRUCTURAL_ZERO_SUCCESSOR_MATERIALIZATION_GATE",
+  "accounting_recovery_successor_reopen_assessment": "model/accounting/accounting_spine_recovery_f4_structural_reopen_assessment_2026_09_21.json"
 }
