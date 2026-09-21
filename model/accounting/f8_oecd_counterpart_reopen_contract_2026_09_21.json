@@ -1,0 +1,149 @@
+{
+  "contract_version": "0.1",
+  "frozen_on": "2026-09-21",
+  "phase": "Accounting Spine / F8 selective reopen — OECD counterpart Stage 2",
+  "instrument": "F8",
+  "purpose": "Preregister a retained-source value/reconciliation and exact-rank gate after the official OECD quarterly from-whom-to-whom artifact was found to satisfy the declared F8 reopen condition by publishing total F8 and components F81/F89 by reporting/counterpart sector for Romania.",
+  "predecessor": {
+    "aggregate_rank_assessment": "model/accounting/f8_aggregate_rank_assessment.json",
+    "component_bridge_assessment": "model/accounting/f8_bilateral_component_bridge_assessment.json",
+    "coverage_assessment": "model/accounting/f8_other_accounts_coverage_assessment.json",
+    "reopen_registry": "model/accounting/reopen_conditions_registry.json"
+  },
+  "source": {
+    "institution": "OECD",
+    "stocks_dataflow": "OECD.SDD.NAD:DSD_NASEC20@DF_T725R_Q",
+    "flows_dataflow": "OECD.SDD.NAD:DSD_NASEC20@DF_T625R_Q",
+    "retained_discovery_assessment": "model/dynamics/sectoral_financial_positions_oecd_counterpart_discovery_assessment.json",
+    "retained_workflow_artifact_id": 10586683826,
+    "stocks_raw_sha256": "039d910150ece7d264284ffc8dfb713e99d255cb17bd366b66decfa214c4ae5f",
+    "flows_raw_sha256": "7585836c1b3b181fa233fbc21243813498911215b5ac9b28e7073da17e52629a",
+    "lineage": "OECD-ECB quarterly financial-accounts collection; counterpart-topology evidence, not independent measurement."
+  },
+  "topology_trigger": {
+    "declared_reopen_condition": "A definitionally comparable official source provides bilateral F8, bilateral F81/F89, or additional exact counterparty constraints sufficient to reduce the unconditional nullspace.",
+    "exact_total_present": "F8",
+    "exact_components_present": [
+      "F81",
+      "F89"
+    ],
+    "reporting_sectors_present": [
+      "S1",
+      "S11",
+      "S12",
+      "S13",
+      "S1M"
+    ],
+    "counterpart_sectors_present": [
+      "S1",
+      "S11",
+      "S12",
+      "S13",
+      "S1M",
+      "S2"
+    ],
+    "central_bank_sector_S121_present": false,
+    "stock_2025_q4_rows_per_instrument_per_accounting_entry": 30,
+    "flow_2025_q1_q4_rows_per_instrument_per_accounting_entry": 120,
+    "observed_maturity_code": "T",
+    "trigger_satisfied": true,
+    "effect": "AUTHORIZE_STAGE2_RETAINED_SOURCE_VALUE_RECONCILIATION_AND_RANK_GATE_ONLY"
+  },
+  "frozen_mapping": {
+    "H": "S1M",
+    "C": "S11",
+    "G": "S13",
+    "X": "S2 only through explicit asset/liability orientation",
+    "S12": "F + BNR aggregate only",
+    "forbidden": [
+      "S12 may not be relabelled as RMD F.",
+      "S12 may not be split into F and BNR by residual, shares, component patterns, historical proportions or missing-to-zero assumptions.",
+      "Absence of S121 may not be interpreted as BNR=0.",
+      "The historical conditional BNR zero-liability stock scenario may not be promoted by this topology reopen."
+    ]
+  },
+  "stage2_gate": {
+    "source_rows": {
+      "stock_period": "2025-Q4",
+      "stock_transaction_code": "LE",
+      "flow_periods": [
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4"
+      ],
+      "flow_transaction_code": "F",
+      "instruments": [
+        "F8",
+        "F81",
+        "F89"
+      ],
+      "required_maturity": "T",
+      "required_consolidation": "N",
+      "required_unit_measure": "XDC",
+      "required_unit_mult": 6,
+      "required_currency": "RON",
+      "required_currency_denomination": "_T",
+      "required_valuation": "S",
+      "required_price_base": "V",
+      "required_transformation": "N",
+      "required_accounting_entries": [
+        "A",
+        "L"
+      ],
+      "missing_row_to_zero": false,
+      "duplicate_required_row_allowed": false,
+      "finite_required_values": true
+    },
+    "reconciliation": {
+      "tolerance_million_RON": "0.1",
+      "tolerance_basis": "Inherited canonical Accounting Spine/F8 accounting tolerance, frozen before Stage 2 detailed value review.",
+      "asset_liability_mirror_check": true,
+      "source_S1_aggregate_consistency_check": true,
+      "component_identity_check": "F8 = F81 + F89 where all required source rows are present.",
+      "all_checks_must_pass_before_equation_admission": true,
+      "failure_effect": "NO_NEW_OECD_F8_EQUATIONS_ADMITTED"
+    },
+    "equation_admission": {
+      "direct_total_F8_resident_sectors": [
+        "H",
+        "C",
+        "G"
+      ],
+      "direct_external_sector": "X",
+      "aggregate_financial_sector_equations": "S12 total-F8 rows may enter only as exact F+BNR sum equations.",
+      "component_rows_role": "validation/control unless a later separately justified component-aware rank gate is required.",
+      "use_observed_zero_rows_as_observed_equations": true,
+      "infer_unobserved_zero_rows": false,
+      "conditional_BNR_zero_stock_scenario_promotable": false,
+      "rhs_required_before_rank_admission": true
+    },
+    "rank_recomputation": {
+      "variables": 35,
+      "predecessor_rank_stock": 11,
+      "predecessor_nullity_stock": 24,
+      "predecessor_rank_flow": 11,
+      "predecessor_nullity_flow": 24,
+      "recompute_exact_nullspace": true,
+      "promotion_rule": "A bilateral total-F8 cell may be promoted only if its coordinate is invariant over every exact nullspace basis vector after all admitted source equations pass the value/reconciliation gate."
+    }
+  },
+  "hard_rules": {
+    "no_live_refetch_required": true,
+    "no_BNR_residual_allocation": true,
+    "no_missing_to_zero": true,
+    "no_conditional_BNR_zero_promotion": true,
+    "no_post_result_mapping_change": true,
+    "no_post_result_tolerance_change": true,
+    "no_reference_mode_change": true,
+    "no_parameter_estimation": true,
+    "no_feedback_activation": true,
+    "no_behavioural_closure_change": true,
+    "no_version_change": true
+  },
+  "allowed_outcomes": [
+    "SOURCE_GATE_FAIL_NO_RANK_CHANGE",
+    "SOURCE_GATE_PASS_RANK_IMPROVES_NO_BILATERAL_F8_CELL_UNIQUE",
+    "SOURCE_GATE_PASS_PARTIAL_F8_IDENTIFICATION_REQUIRES_SEPARATE_MATERIALIZATION_GATE"
+  ]
+}

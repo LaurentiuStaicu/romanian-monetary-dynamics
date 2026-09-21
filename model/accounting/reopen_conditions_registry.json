@@ -120,7 +120,12 @@
         "conditional BNR stock zeros promoted as unconditional",
         "aggregate F8=F81+F89 identities without counterpart structure",
         "a live refresh reproducing rank 11/nullity 24"
-      ]
+      ],
+      "selective_reopen_contract": "model/accounting/f8_oecd_counterpart_reopen_contract_2026_09_21.json",
+      "selective_reopen_assessment": "model/accounting/f8_oecd_counterpart_reopen_assessment_2026_09_21.json",
+      "selective_reopen_state": "PREREGISTERED_STAGE2_PENDING_EXECUTION",
+      "reopen_trigger_satisfied": true,
+      "reopen_trigger_basis": "Retained OECD quarterly counterpart stocks/flows publish total F8 and F81/F89 by reporting/counterpart sector; S121 remains absent, so F-versus-BNR stays unresolved and historical conditional BNR-zero stock cells remain unpromoted."
     }
   },
   "governance": {

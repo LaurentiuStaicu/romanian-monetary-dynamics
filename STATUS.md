@@ -462,3 +462,13 @@ Because every source-value/reconciliation gate must pass before a new OECD total
 
 The observed discrepancies are retained as immutable negative gate evidence. They do not authorize post-result tolerance relaxation, selective salvage of mirrored rows, materiality allocation, F-versus-BNR residual splitting or missing-to-zero assumptions. F7 returns to **EVIDENCE_TRIGGERED_HOLD** pending changed official evidence or an independently justified source-specific reconciliation basis preregistered before a successor gate.
 
+### F8 OECD counterpart selective reopen — 2026-09-21
+
+A topology-only review of the retained OECD quarterly from-whom-to-whom artifact found a declared F8 reopen trigger. The source publishes exact **F8**, **F81** and **F89** rows by reporting and counterpart sector for Romania. The retained 2025 boundary contains **180 stock rows at 2025-Q4** and **720 quarterly transaction rows over 2025-Q1..Q4** across the three instrument codes, before any observation values are reviewed.
+
+S121 remains absent. OECD S12 therefore remains only the exact aggregate **F + BNR** constraint; it may not be relabelled as RMD F or split by residual, shares, component patterns or missing-to-zero assumptions. The historical stock-only BNR zero-liability scenario remains conditional and unpromoted.
+
+Before detailed observation values or rank outcomes are reviewed, Stage 2 is frozen in `model/accounting/f8_oecd_counterpart_reopen_contract_2026_09_21.json`. It requires extraction completeness, resident A/L mirror consistency, S1 aggregation consistency, the component identity **F8 = F81 + F89**, and only then exact rank/nullspace recomputation at the inherited 0.1 million RON accounting tolerance.
+
+This is a selective reopen only. F8 remains canonically incomplete at the predecessor rank 11/nullity 24 for both stock and flow until Stage 2 executes. No benchmark cell, reference mode, calibration state, feedback structure, behavioural closure or version is changed by preregistration.
+
