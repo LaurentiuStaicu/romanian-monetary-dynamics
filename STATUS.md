@@ -516,3 +516,11 @@ No selective accounting reopen gate is currently open and no unconditional accou
 
 The terminal state is recorded in `model/accounting/accounting_spine_recovery_terminal_assessment_2026_09_21.json`, linked from the readiness gate, reopen registry and scientific baseline, and enforced by Scientific CI. It does not authorize synthetic completion, behavioural closure, parameter estimation, or a version bump.
 
+### Public release v0.3.0 finalized — 2026-09-21
+
+RMD **v0.3.0 — Reference-mode closure and Accounting Spine recovery boundary** was published from the exact green Scientific CI commit `33c11b7e10e7e837097da5b34a9251c7bedb3f2c`. The GitHub Release and tag `v0.3.0` resolve to that same commit; release ID **393215575** was published at **2026-09-21T18:57:45Z** and is immutable.
+
+The one-shot publication authorization is consumed and inactive. The canonical current public and repository versions are now **0.3.0**; **v0.4.0** is the default next substantive 0.x milestone candidate, while **v0.3.1** remains available for a genuinely narrow corrective release.
+
+Publication changes no scientific maturity state: F3 remains the only canonically complete stock-and-flow Accounting Spine instrument, the Accounting Spine recovery stage remains on evidence-triggered hold, all ten aggregate reference modes remain observed, validated behavioural mechanisms remain zero, quantitative feedback activation remains zero, calibration/refit remains closed and behavioural closure remains inactive.
+

@@ -1,0 +1,28 @@
+{
+  "record_version": "0.1",
+  "recorded_on": "2026-09-21",
+  "release_version": "0.3.0",
+  "tag": "v0.3.0",
+  "release_name": "v0.3.0 — Reference-mode closure and Accounting Spine recovery boundary",
+  "release_target_commit": "33c11b7e10e7e837097da5b34a9251c7bedb3f2c",
+  "tag_target_commit": "33c11b7e10e7e837097da5b34a9251c7bedb3f2c",
+  "release_id": 393215575,
+  "release_url": "https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/releases/tag/v0.3.0",
+  "published_at": "2026-09-21T18:57:45Z",
+  "publication_workflow_run_id": 35641755584,
+  "publication_workflow_conclusion": "success",
+  "scientific_ci_release_commit_run_id": 35641684652,
+  "scientific_ci_release_commit_conclusion": "success",
+  "github_release_immutable": true,
+  "release_draft": false,
+  "release_prerelease": false,
+  "authorization_consumed_by_publication": true,
+  "historical_release_mutation": false,
+  "scientific_effect": {
+    "parameter_estimation_authorized": false,
+    "holdout_opening_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "model_completion_claim_authorized": false
+  }
+}

@@ -6,24 +6,24 @@
     "scheme": "Semantic Versioning 2.0.0 compatible",
     "development_series": "0.x.y",
     "current_public_release": {
-      "version": "0.2.0",
-      "tag": "v0.2.0",
-      "release_name": "v0.2.0 — Structural review and reproducibility milestone",
+      "version": "0.3.0",
+      "tag": "v0.3.0",
+      "release_name": "v0.3.0 — Reference-mode closure and Accounting Spine recovery boundary",
       "release_date": "2026-09-21",
-      "release_target_commit": "51114123c19471448356aee10e487994744233a0",
-      "release_id": 392838630,
-      "release_url": "https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/releases/tag/v0.2.0",
+      "release_target_commit": "33c11b7e10e7e837097da5b34a9251c7bedb3f2c",
+      "release_id": 393215575,
+      "release_url": "https://github.com/LaurentiuStaicu/romanian-monetary-dynamics/releases/tag/v0.3.0",
       "immutable_historical_identity": true,
-      "publication_record": "model/registries/v0_2_0_release_publication_record_2026_09_21.json"
+      "publication_record": "model/registries/v0_3_0_release_publication_record_2026_09_21.json"
     },
     "current_repository_version": "0.3.0",
-    "unreleased_changes_present": false,
+    "unreleased_changes_present": true,
     "version_bump_required_now": false,
-    "rationale": "The post-v0.2.0 work has reached a coherent v0.3.0 release milestone: aggregate reference-mode observability is 10/10 and the Accounting Spine recovery cycle has a terminal evidence-triggered hold with explicit reopen conditions for every incomplete instrument. The repository metadata are advanced atomically to 0.3.0 for release preparation; the current public release remains the immutable v0.2.0 snapshot until the exact green main commit is tagged and published.",
-    "next_public_release_candidate": "0.3.0",
-    "next_candidate_rationale": "v0.3.0 is the active substantive release candidate. After successful publication and post-publish verification, the default next substantive 0.x milestone should advance to v0.4.0; a corrective patch may use v0.3.1 when appropriate.",
+    "rationale": "v0.3.0 was published from the exact green main release commit after completing the 10/10 aggregate reference-mode milestone and terminal Accounting Spine recovery hold. Main now contains only post-publication governance finalization beyond that immutable snapshot; no immediate new version is required.",
+    "next_public_release_candidate": "0.4.0",
+    "next_candidate_rationale": "The default next substantive 0.x scientific-core milestone is 0.4.0. A narrowly scoped corrective release may instead use 0.3.1 when that classification is accurate.",
     "release_preparation": {
-      "state": "READY_FOR_PUBLICATION_AFTER_GREEN_MAIN_CI",
+      "state": "PUBLISHED_AND_FINALIZED",
       "candidate_version": "0.3.0",
       "candidate_tag": "v0.3.0",
       "intended_release_date": "2026-09-21",
@@ -31,8 +31,12 @@
       "release_notes": "releases/v0.3.0.md",
       "readiness_assessment": "model/registries/v0_3_0_release_readiness_assessment_2026_09_21.json",
       "publication_authorization": "model/registries/release_publication_authorization.json",
+      "publication_record": "model/registries/v0_3_0_release_publication_record_2026_09_21.json",
+      "exact_release_commit": "33c11b7e10e7e837097da5b34a9251c7bedb3f2c",
+      "published_at": "2026-09-21T18:57:45Z",
+      "release_id": 393215575,
       "public_release_identity_advances_only_after_tag_and_github_release_exist": true,
-      "publication_complete": false
+      "publication_complete": true
     }
   },
   "atomic_repository_surfaces": [
