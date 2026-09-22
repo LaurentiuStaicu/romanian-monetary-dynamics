@@ -1,7 +1,11 @@
 name: Sectoral Financial Positions Eurostat Counterpart Discovery Probe
 
-# Live Eurostat acquisition is new source-access evidence only.
-# It is manual and cannot alter the retained scientific baseline by itself.
+# TRIGGER-CONDITIONED HISTORICAL DISCOVERY REPLAY.
+# The retained Eurostat source boundary is exhausted under the current canonical
+# horizon. Manual reruns against unchanged topology are reproducibility only,
+# not new scientific progress. Treat live acquisition as current work only
+# after the accounting_counterpart_topology trigger is satisfied and a new
+# source-topology pass is preregistered.
 on:
   workflow_dispatch:
 
