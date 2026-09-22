@@ -533,6 +533,9 @@ jobs:
       - name: Audit release publication state
         run: python scripts/audit_release_publication_authorization.py
 
+      - name: Audit GitHub Actions write-permission boundary
+        run: python scripts/audit_actions_write_permission_boundary.py
+
       - name: Audit repository-wide source-vintage inventory coverage
         run: python scripts/audit_source_vintage_inventory.py
 
