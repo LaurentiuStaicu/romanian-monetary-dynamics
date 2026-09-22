@@ -225,16 +225,16 @@
     {
       "path": "data/processed/monetary_pass_through_bnr_2024_2025.csv",
       "git_blob_sha1": "275493d8dd773848f964ca74477bdbe08fc194f6",
-      "provenance_class": "SIDECAR_JSON",
+      "provenance_class": "LEGACY_RECONCILED_BY_SUCCESSOR",
       "provenance_sidecar": "data/provenance/monetary_pass_through_bnr_2024_2025.json",
       "required_columns": [
         "data_role"
       ],
       "authorities": [
-        "model/calibration_validation/validation_recovery_disposition.json"
+        "model/calibration_validation/monetary_pass_through_legacy_processed_dataset_assessment_2026_09_22.json"
       ],
-      "role": "Frozen BNR policy/lending-rate dataset used in the time-respecting monetary pass-through validation cycle.",
-      "scientific_boundary": "Observed sample and holdout roles are frozen; this dataset does not establish causal transmission or behavioural closure."
+      "role": "Retained 13-month pre-recovery monetary pass-through diagnostic; superseded as a current validation input by the pinned Validation Recovery repository inputs under data/raw/validation_recovery.",
+      "scientific_boundary": "Historical diagnostic evidence only. Its total-NFC/total-household targets and 2024-01..2025-01 role split are not the current Validation Recovery household-housing/NFC-up-to-1y inputs or holdout boundary."
     }
   ]
 }
