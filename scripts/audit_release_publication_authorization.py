@@ -29,6 +29,7 @@ def audit_release_publication_authorization() -> list[str]:
     citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+    status_text = (ROOT / "STATUS.md").read_text(encoding="utf-8")
 
     expected = auth["release_version"]
     if auth["tag"] != f"v{expected}":
@@ -45,6 +46,22 @@ def audit_release_publication_authorization() -> list[str]:
         errors.append("README version badge alt text differs from release state")
     if f"## {expected} - {auth['intended_release_date']}" not in changelog:
         errors.append("CHANGELOG lacks release heading/date")
+
+    status_release = re.search(
+        r"^Romanian Monetary Dynamics \(RMD\) \*\*v([^*]+)\*\* is the current public scientific-core release, published on (\d{4}-\d{2}-\d{2}) from the exact Scientific-CI-green commit \x60([0-9a-f]{40})\x60\.",
+        status_text,
+        re.MULTILINE,
+    )
+    if status_release is None:
+        errors.append("STATUS lacks canonical current-public-release sentence")
+    else:
+        status_version, status_date, status_commit = status_release.groups()
+        if status_version != expected:
+            errors.append("STATUS current public release differs from release state")
+        if status_date != auth["intended_release_date"]:
+            errors.append("STATUS current public release date differs from release state")
+        if status_commit != auth.get("exact_release_commit"):
+            errors.append("STATUS current public release commit differs from release state")
 
     notes = ROOT / auth["release_notes_path"]
     if not notes.is_file():
