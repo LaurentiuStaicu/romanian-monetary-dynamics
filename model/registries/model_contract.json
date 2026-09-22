@@ -237,6 +237,7 @@
     "external_fx_refinancing_next_structural_task": "external_fx_refinancing_open_chain_evidence_triggered_hold",
     "external_fx_refinancing_closing_link_authorized": false,
     "feedback_architecture_structural_review_terminal_assessment": "model/dynamics/feedback_architecture_structural_review_terminal_assessment_2026_09_21.json",
+    "feedback_architecture_current_assessment": "model/dynamics/feedback_architecture_post_reference_closure_assessment_2026_09_22.json",
     "feedback_architecture_structural_review_status": "ALL_REGISTERED_FEEDBACK_STRUCTURES_STRUCTURALLY_REVIEWED_EVIDENCE_TRIGGERED_HOLD",
     "feedback_architecture_operational_state": "EVIDENCE_TRIGGERED_HOLD",
     "feedback_architecture_active_structural_review_task": null,
