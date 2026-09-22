@@ -622,3 +622,11 @@ The gate requires the directory file set to remain exact, detects byte or schema
 
 This closes a narrower reproducibility gap but does **not** change the historical raw-source classification. The original BIS transport envelope remains unrecovered with its legacy SHA-256, so the complete historical provider raw vintage is still not claimed as exactly reproducible. Pinning the normalized repository inputs does not authorize live refetch, model respecification, holdout reopening, calibration, feedback activation, behavioural closure or a version change.
 
+### Professional landing-page governance synchronization — 2026-09-22
+
+The professional README design contract has been advanced from its original proposal state to the repository's actual successor state. Contract v1.0 correctly recorded that the design itself did not authorize publication; however, its `implementation_status` and approval prose remained stale after the reviewed landing page was subsequently implemented on `main`.
+
+Contract v1.1 now records the exact implementation commit `159dcfb06b36fa510ffc8e09822b4cf7031b65a3` (**Implement professional RMD repository landing page**, 2026-09-20), identifies `README.md` as the public surface, retains `.github/RMD_README_PREVIEW.md` as review history, and states that current-state landing-page consistency is CI-governed.
+
+The historical fact that the original contract did not itself authorize publication is preserved. This synchronization changes no visible landing-page design, scientific state, data, release version, calibration authorization, feedback activation or behavioural closure.
+
