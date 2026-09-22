@@ -694,3 +694,11 @@ A complete Actions sweep has now been converted into an executable least-privile
 The permitted write boundary is deliberately narrow: the three full-2025 MoF recovery workflows that may retain exact newly verified evidence/materialisation after a declared trigger, plus the release publisher's downstream `publish-release` job. The MoF paths must remain manual-only and evidence-declared; the publisher must remain read-only by default with write permission confined to the authorization-gated publication job.
 
 All other GitHub Actions workflows are expected to be read-only with respect to repository contents. This gate changes governance only; it does not alter scientific evidence, the Accounting Spine, reference modes, model equations, calibration/validation state, behavioural closure or public **v0.3.0**.
+
+### Explicit GitHub Actions permission declarations — 2026-09-22
+
+The repository-wide Actions permission gate now requires every workflow to declare a top-level `permissions:` policy explicitly. The current workflow surface already satisfies this requirement, so the change does not alter any existing token capability; it prevents future workflows from silently inheriting repository or organization defaults.
+
+The exact write-capable allowlist remains unchanged: three evidence-triggered/manual MoF recovery workflows plus the authorization-gated release publisher job. All other workflows remain outside the write boundary.
+
+This is repository-governance hardening only and does not alter the scientific model or public **v0.3.0** release state.
