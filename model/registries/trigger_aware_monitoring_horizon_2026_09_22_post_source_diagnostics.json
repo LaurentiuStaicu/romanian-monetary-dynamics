@@ -1,0 +1,183 @@
+{
+  "registry_version": "0.5",
+  "frozen_on": "2026-09-22",
+  "supersedes": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json",
+  "purpose": "Successor monitoring horizon after two genuinely new post-terminal source clues were adjudicated without reopening their gates: an opaque official-domain BNR XLSX endpoint for the missing 2025-Q2 BLS round, and official MoF May-2025 exchange-operation old-to-new ISIN topology for the deferred government repricing mechanism. All prior triggers, event dates, evidence windows and hard monitoring rules remain unchanged; reference-mode observability remains 10/10 and no calibration, Accounting Spine, feedback or behavioural gate is opened.",
+  "governing_state": {
+    "model_contract": "model/registries/model_contract.json",
+    "canonical_baseline_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
+    "post_terminal_source_topology_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_21_bnr_financial_accounts_topology.json",
+    "sectoral_financial_positions_terminal_row_gate": "model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json",
+    "sectoral_financial_positions_semantic_terminal": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
+    "sectoral_financial_positions_precision_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_precision_diagnostic_2026_09_21.json",
+    "behavioural_reopen_registry": "model/calibration_validation/mechanism_reopen_conditions_registry.json",
+    "accounting_reopen_registry": "model/accounting/reopen_conditions_registry.json",
+    "current_scientific_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+    "reference_mode_post_terminal_promotion": "model/dynamics/reference_mode_post_terminal_promotion_assessment_2026_09_21.json",
+    "reference_mode_readiness": "10/10",
+    "f4_current_terminal_assessment": "model/accounting/accounting_spine_recovery_post_f4_structural_terminal_assessment_2026_09_21.json",
+    "f4_stock_trigger_monitoring": "model/accounting/f4_bnr_cnf_2025_stock_trigger_monitoring_2026_09_21.json",
+    "f4_ras_nonreopen_diagnostic": "model/accounting/f4_ras_reserve_template_nonreopen_diagnostic_2026_09_22.json",
+    "bnr_bls_2025q2_latest_post_terminal_review": "model/calibration_validation/bnr_bls_2025q2_post_terminal_indexed_endpoint_review_2026_09_22.json",
+    "bnr_bls_2025q2_latest_post_terminal_status": "NEW_OFFICIAL_INDEXED_XLSX_ENDPOINT_SEMANTICS_UNRESOLVED_NO_REOPEN",
+    "government_repricing_latest_exchange_topology_review": "model/calibration_validation/government_repricing_exchange_topology_post_terminal_assessment_2026_09_22.json",
+    "government_repricing_latest_exchange_topology_status": "NEW_OFFICIAL_EXCHANGE_TOPOLOGY_RESULT_UNRESOLVED_NO_REOPEN"
+  },
+  "monitoring_rules": {
+    "no_repeated_probe_without_trigger": true,
+    "no_response_peeking_before_event_and_release_gate": true,
+    "no_provider_polling_counts_as_scientific_progress": true,
+    "source_nonconfirmation_is_not_source_absence": true,
+    "changed_dataset_release_is_not_automatically_changed_topology": true,
+    "event_or_release_only_opens_the_declared_next_gate": true,
+    "no_estimation_refit_model_selection_or_holdout_opening_from_monitoring_alone": true,
+    "no_tolerance_relaxation_from_observed_residuals": true,
+    "lexical_formatting_is_not_a_precision_rule": true,
+    "generic_sdmx_decimals_metadata_alone_does_not_reopen_sectoral_financial_positions": true,
+    "no_post_result_period_window_switch": true,
+    "reference_mode_observability_is_complete": true,
+    "reference_mode_completion_does_not_imply_accounting_completion": true,
+    "reference_mode_completion_does_not_imply_behavioural_closure": true,
+    "no_f4_cnf_2025_polling_before_evidence_window": true,
+    "f4_cnf_2025_stock_trigger_does_not_reopen_flow": true,
+    "f4_cnf_2025_stock_trigger_does_not_reopen_reference_modes": true,
+    "official_domain_or_file_extension_alone_is_not_source_identity": true,
+    "event_topology_alone_is_not_matched_repricing_ledger": true,
+    "post_terminal_no_reopen_adjudication_blocks_same_clue_repetition": true
+  },
+  "horizons": [
+    {
+      "id": "prospective_monetary_policy_event",
+      "mechanism_id": "monetary_policy_lending_rate_pass_through",
+      "next_check_type": "DATE_SCHEDULED_EVENT_CHECK",
+      "next_check_date": "2026-10-08",
+      "source_class": "BNR monetary-policy decision",
+      "trigger": "Actually observed non-zero BNR policy-rate change in the reserved prospective window.",
+      "action_if_no_trigger": "Record unchanged-rate event only; do not inspect MIR response values and return to baseline hold.",
+      "action_if_trigger": "Open Stage 1 driver-side diagnostic only. Preserve frozen candidate and beta. Do not inspect same-month MIR response before official release.",
+      "downstream_release_gate": {
+        "reference_month_if_event_occurs_on_2026_10_08": "2026-10",
+        "earliest_official_MIR_release_date": "2026-12-02",
+        "source": "ECB MIR release calendar",
+        "rule": "The October-reference MIR response may be inspected only on or after 2026-12-02 and only if October contains a non-zero policy-rate event."
+      }
+    },
+    {
+      "id": "ameco_structural_primary_new_full_vintage",
+      "mechanism_id": "fiscal_primary_balance_reaction",
+      "next_check_type": "RELEASE_CONDITIONED_CHECK",
+      "next_check_condition": "European Commission publishes the Autumn 2026 full macroeconomic forecast / corresponding AMECO full release.",
+      "current_latest_full_release": "2026-06-03",
+      "current_latest_full_release_label": "Spring 2026 Economic Forecast",
+      "trigger": "A genuinely new full AMECO vintage materially changes the admissible real-time UBLGBPS structural-primary history or supplies new identification-relevant evidence.",
+      "action_if_release_occurs": "Archive and adjudicate the new vintage under a new preregistered source cycle before any modelling decision.",
+      "action_before_release": "No repeated AMECO probing; remain in baseline hold."
+    },
+    {
+      "id": "bnr_bls_2025_q2_exact_source",
+      "mechanism_id": "aggregate_bank_credit_response",
+      "next_check_type": "NEW_OFFICIAL_EVIDENCE_ONLY",
+      "trigger": "BNR exposes the exact official 2025-Q2 BLS workbook endpoint or an exact machine-readable time-series/catalog target with matching realised-round semantics.",
+      "action_without_new_evidence": "Do not repeat filename/timestamp guessing, indexed search loops or rounded-report substitution.",
+      "action_if_trigger": "Reopen source materialisation only; retain exact bytes and semantics before any credit-equation work.",
+      "latest_adjudication": {
+        "assessment": "model/calibration_validation/bnr_bls_2025q2_post_terminal_indexed_endpoint_review_2026_09_22.json",
+        "new_evidence": "EXACT_BNR_DOMAIN_XLSX_URL_INDEXED_WITHOUT_REPRODUCIBLE_SEMANTIC_BINDING",
+        "status": "NEW_OFFICIAL_INDEXED_XLSX_ENDPOINT_SEMANTICS_UNRESOLVED_NO_REOPEN",
+        "trigger_satisfied": false,
+        "canonical_panel_state": "11/12 exact observed rounds; 2025-Q2 remains missing",
+        "repeated_same_clue_search_authorized": false
+      }
+    },
+    {
+      "id": "government_repricing_ledger",
+      "mechanism_id": "government_refinancing_effective_rate",
+      "next_check_type": "NEW_OFFICIAL_EVIDENCE_ONLY",
+      "trigger": "An official or reproducible source supplies same-boundary opening principal, realised repriced/refinanced principal and matched old/new effective rates across material debt blocks.",
+      "action_without_new_evidence": "Do not reinterpret marginal maturity/refixing indicators as a matched repricing ledger.",
+      "action_if_trigger": "Repass the frozen ledger completeness and identification gates only.",
+      "latest_adjudication": {
+        "assessment": "model/calibration_validation/government_repricing_exchange_topology_post_terminal_assessment_2026_09_22.json",
+        "new_evidence": "OFFICIAL_MOF_MAY_2025_EXCHANGE_OLD_TO_NEW_ISIN_TOPOLOGY",
+        "status": "NEW_OFFICIAL_EXCHANGE_TOPOLOGY_RESULT_UNRESOLVED_NO_REOPEN",
+        "trigger_satisfied": false,
+        "gate_1_ledger_completeness": "FAIL_UNCHANGED",
+        "canonical_ledger_mutation_authorized": false,
+        "repeated_same_prospect_search_authorized": false
+      }
+    },
+    {
+      "id": "accounting_counterpart_topology",
+      "mechanism_id": null,
+      "next_check_type": "CHANGED_DATASET_TOPOLOGY_OR_NEW_SOURCE_ONLY",
+      "trigger": "A changed official ECB/Eurostat/BNR/OECD dataset topology or genuinely new official source supplies the frozen bilateral holder-by-issuer Accounting Spine boundary, including required sectors, instruments, quarterly stocks and financial transactions.",
+      "current_known_release_context": {
+        "ECB_QSA_next_data_release": "2026-10-02",
+        "rule": "Routine new quarterly vintages do not reopen the bilateral Accounting Spine. Aggregate reference-mode observability is already complete."
+      },
+      "latest_adjudicated_chain": {
+        "bnr_2025_topology_trigger": "PASS_SOURCE_TOPOLOGY_REVIEW_ONLY",
+        "oecd_nonconsolidated_topology": "PASS_AGGREGATE_SECTOR_STOCK_FLOW_TOPOLOGY",
+        "exact_row_gate": "FAIL_S1M_L_F2_MISSING_ALL_PERIODS",
+        "esa2010_semantic_applicability": "PASS_NARROW_STRUCTURAL_ZERO_FOR_S1M_L_F2",
+        "semantic_adjusted_reconciliation": "FAIL_FROZEN_0_1_MILLION_RON_TOLERANCE",
+        "precision_diagnostic": "NO_REOPEN_GENERIC_DECIMALS_ONLY_EXPLANATION_INSUFFICIENT",
+        "aggregate_reference_mode_promotion": "PASS_10_OF_10_REFERENCE_MODES_READY"
+      },
+      "action_without_topology_change": "Do not rerun exhausted historical source probes.",
+      "action_if_trigger": "Preregister a new bilateral Accounting Spine source-topology pass only; aggregate reference-mode readiness remains separately complete."
+    },
+    {
+      "id": "f4_bnr_cnf_2025_stock_counterpart_matrix",
+      "mechanism_id": null,
+      "instrument": "F4",
+      "next_check_type": "EVIDENCE_WINDOW_CONDITIONED_OFFICIAL_PUBLICATION_CHECK",
+      "earliest_evidence_window": "after 2026-10-31",
+      "source_class": "BNR National Financial Accounts annual counterpart stock publication / machine-readable counterpart table",
+      "trigger": "An official 2025 year-end non-consolidated S121×counterpart AF4/F4 asset-stock matrix becomes available with exact counterpart sectors sufficient to allocate the retained 6.1 million RON BNR F4 asset stock without residual shares, interpolation or missing-to-zero assumptions.",
+      "current_state": "MONITOR_PUBLICATION_NO_REOPEN",
+      "current_reopen_gate_open": false,
+      "action_before_evidence_window": "Do not poll repeatedly or infer a publication date from prior-year cadence. Remain on Accounting Spine evidence-triggered hold.",
+      "action_if_no_new_official_evidence_after_window": "Record nonconfirmation only; do not treat it as source absence and do not reopen F4.",
+      "action_if_trigger": "Preregister and open F4 stock-only exact counterpart materialization gate. Flow, aggregate reference-mode readiness, calibration, feedback activation and behavioural closure remain unchanged unless separately authorized.",
+      "governing_monitoring_assessment": "model/accounting/f4_bnr_cnf_2025_stock_trigger_monitoring_2026_09_21.json",
+      "nonreopen_routes": [
+        "ECB RAS reserve-template F4 series with S1Q counterpart aggregation, foreign-currency-only scope and nominal valuation",
+        "ECB BSI subtraction from financial-accounts MFI F4 without an exact concept bridge",
+        "routine QSA refresh with unchanged counterpart topology"
+      ]
+    }
+  ],
+  "current_disposition": {
+    "any_monitoring_gate_open_now": false,
+    "active_calibration_cycle_open": false,
+    "active_source_task_open": false,
+    "active_semantic_task_open": false,
+    "active_precision_task_open": false,
+    "response_values_authorized_for_inspection_now": false,
+    "estimation_or_refit_authorized": false,
+    "model_selection_authorized": false,
+    "target_family_switch_authorized": false,
+    "holdout_opening_authorized": false,
+    "system_dynamics_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "reference_mode_promotion_authorized": false,
+    "next_dated_check": {
+      "date": "2026-10-08",
+      "id": "prospective_monetary_policy_event"
+    },
+    "reference_mode_observability_ready": "10/10",
+    "reference_mode_closure_ready": true,
+    "accounting_spine_completion_authorized": false,
+    "next_accounting_evidence_window": {
+      "after": "2026-10-31",
+      "id": "f4_bnr_cnf_2025_stock_counterpart_matrix"
+    },
+    "f4_stock_reopen_gate_open": false,
+    "f4_flow_reopen_authorized": false,
+    "f4_reference_mode_reopen_authorized": false,
+    "new_official_source_clues_adjudicated_without_reopen": true,
+    "bnr_bls_2025q2_trigger_satisfied": false,
+    "government_repricing_trigger_satisfied": false
+  }
+}
