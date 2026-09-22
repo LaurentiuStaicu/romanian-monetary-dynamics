@@ -1,5 +1,6 @@
 {
   "dataset_id": "monetary_pass_through_bnr_2024_2025",
+  "processed_artifact": "data/processed/monetary_pass_through_bnr_2024_2025.csv",
   "frozen_at": "2026-09-17",
   "purpose": "Practical-identifiability and time-respecting validation diagnostic for the monetary-policy to lending-rate partial-adjustment mechanism.",
   "source": {
