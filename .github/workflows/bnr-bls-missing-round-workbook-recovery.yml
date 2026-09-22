@@ -1,8 +1,13 @@
 name: BNR BLS Missing-Round Workbook Recovery
 
-# Live BNR source acquisition is manual-only. A successful response creates
-# new source evidence only; it cannot mutate the canonical BLS panel or open
-# estimation without a separate promotion/extraction review.
+# CURRENT ROLE: HISTORICAL PREREGISTERED-CANDIDATE REPLAY UNTIL A NEW
+# OFFICIAL 2025-Q2 EXACT-SOURCE TRIGGER IS SATISFIED.
+# Manual execution before that trigger may only reproduce frozen historical
+# candidate-access evidence; an unchanged rerun is not scientific progress.
+# After a trigger, the recovery contract must first be updated with the exact
+# semantically bound 2025-Q2 target before this workflow is used for acquisition.
+# It cannot mutate the canonical BLS panel or open estimation without a separate
+# promotion/extraction review.
 on:
   workflow_dispatch:
 

@@ -64,5 +64,22 @@
     "opaque_url_semantic_inference_authorized": false,
     "rounded_report_substitution_authorized": false
   },
-  "decision": "NO_REOPEN_OPAQUE_OFFICIAL_INDEXED_XLSX_ENDPOINT_NOT_SEMANTICALLY_IDENTIFIED"
+  "decision": "NO_REOPEN_OPAQUE_OFFICIAL_INDEXED_XLSX_ENDPOINT_NOT_SEMANTICALLY_IDENTIFIED",
+  "workflow_execution_boundary": {
+    "may2025_identity_probe_workflow": ".github/workflows/bnr-bls-may2025-xlsx-probe.yml",
+    "missing_round_recovery_workflow": ".github/workflows/bnr-bls-missing-round-workbook-recovery.yml",
+    "missing_round_recovery_contract": "model/calibration_validation/bnr_bls_missing_round_workbook_recovery_contract.json",
+    "may2025_identity_probe_current_role": "HISTORICAL_MAY_2025_IDENTITY_REPROBE_ONLY",
+    "missing_round_recovery_current_role": "HISTORICAL_PREREGISTERED_CANDIDATE_REPLAY_ONLY_UNTIL_NEW_OFFICIAL_2025Q2_TRIGGER",
+    "current_2025q2_candidate_count": 0,
+    "manual_rerun_without_trigger_counts_as_scientific_progress": false,
+    "manual_rerun_without_trigger_authorized_as_current_source_task": false,
+    "workflow_rerun_may_mutate_canonical_panel": false,
+    "future_2025q2_acquisition_prerequisites": [
+      "new official evidence satisfies the exact-source semantic trigger",
+      "the recovery contract is updated with the exact semantically bound 2025-Q2 machine-readable target",
+      "exact bytes, signature, schema and round identity are retained before numeric extraction"
+    ],
+    "rationale": "The currently executable workflows are retained for reproducibility and for reuse only after a genuine reopen trigger. The May-2025 identity probe is historical. The missing-round recovery contract contains no 2025-Q2 URL candidate, so rerunning it today cannot execute the current trigger and must not be counted as new scientific evidence."
+  }
 }
