@@ -1,7 +1,9 @@
 name: BNR BLS May 2025 XLSX Identity Probe
 
-# Exact 2025-06-13 source vintage is retained after review.
-# Future provider refreshes are manual evidence for new vintages only.
+# HISTORICAL MAY-2025 XLSX IDENTITY RE-PROBE ONLY.
+# The exact 2025-06-13 source vintage is retained after review. A rerun checks
+# only the same frozen candidate URLs; it is not a new BLS vintage and does not
+# satisfy the still-closed 2025-Q2 exact-source reopen trigger.
 on:
   workflow_dispatch:
 
