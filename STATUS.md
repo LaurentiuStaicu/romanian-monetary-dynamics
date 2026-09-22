@@ -561,3 +561,13 @@ The chain is now explicit and machine-checked as:
 
 The baseline manifest is advanced to **1.5** and cross-registry CI now verifies that all four links agree. This is a provenance/governance repair only: the retained cumulative-YTD financing vector, the block on monthly differencing, the inactive feedback state, calibration closure and public version **0.3.0** are unchanged.
 
+### F4 ECB reserve-template (RAS) non-reopen diagnostic — 2026-09-22
+
+A newly surfaced ECB Data Portal series was screened because it exposes Romania's central bank (S121) with instrument F4. The candidate is the International Reserves (RAS) series `RAS.M.N.RO.W0.S121.S1Q.LE.A.FA.RT.F4.T.RON.X1.N.N.ALL`.
+
+The shared `S121` and `F4` labels are **not sufficient for an exact Accounting Spine bridge**. The candidate belongs to the reserve-template domain, is monthly, covers foreign-currency assets only (`X1`), uses nominal valuation, and aggregates the counterpart to `S1Q` (“other sectors than MFIs”). Canonical F4 is governed by quarterly QSA/ESA financial accounts, all currencies, standard valuation, and the unresolved stock problem requires the 6.1 million RON BNR-holder row to be split exactly across H/C/F/G/X.
+
+The RAS series therefore supplies neither the required counterpart granularity nor a validated definitionally identical total from which a residual allocation could be made. It also does not solve the F4 transaction nullspace.
+
+The result is **NO_REOPEN**. F4 remains stock rank 31/nullity 4 with 25 exact cells and flow rank 26/nullity 9 with 15 exact cells. The existing BNR CNF 2025 counterpart-stock publication trigger remains the priority stock-specific reopen path, with no repeated polling before new publication evidence.
+
