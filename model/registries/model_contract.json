@@ -405,6 +405,8 @@
     "last_public_release_commit": "33c11b7e10e7e837097da5b34a9251c7bedb3f2c",
     "last_public_release_tag": "v0.3.0",
     "last_public_release_date": "2026-09-21",
-    "source_vintage_inventory_registry": "data/provenance/source_vintage_inventory_registry.json"
+    "source_vintage_inventory_registry": "data/provenance/source_vintage_inventory_registry.json",
+    "processed_data_inventory_registry": "data/provenance/processed_data_inventory_registry.json",
+    "validation_recovery_vintage_status": "data/provenance/validation_recovery_vintage_status.json"
   }
 }
