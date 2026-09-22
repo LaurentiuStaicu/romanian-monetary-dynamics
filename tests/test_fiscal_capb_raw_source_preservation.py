@@ -136,6 +136,30 @@ class FiscalCapbRawSourcePreservationTests(unittest.TestCase):
             "EVIDENCE_TRIGGERED_BASELINE_HOLD",
         )
 
+    def test_completed_creator_is_retired_to_read_only_verification(self) -> None:
+        old = ROOT / ".github/workflows/fiscal-capb-raw-source-preservation.yml"
+        current = ROOT / ".github/workflows/verify-fiscal-capb-raw-source-vintage.yml"
+        self.assertFalse(old.exists())
+        self.assertTrue(current.is_file())
+        text = current.read_text(encoding="utf-8")
+        self.assertIn("workflow_dispatch:", text)
+        self.assertIn("contents: read", text)
+        self.assertNotIn("contents: write", text)
+        self.assertNotIn("git push", text)
+        self.assertNotIn("actions/download-artifact", text)
+        self.assertIn(
+            "source-vintage/fiscal-capb-raw-2026-09-20",
+            text,
+        )
+        self.assertIn(
+            "efb1f3ae5b025176645d45276b684efe65aa4174",
+            text,
+        )
+        self.assertIn(
+            "4fa2f672efe7d3381a5abd4eff15e5e37b0801fa",
+            text,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
