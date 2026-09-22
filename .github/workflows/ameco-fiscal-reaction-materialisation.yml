@@ -1,8 +1,12 @@
 name: AMECO Fiscal Reaction Annual Source Materialisation
 
-# Live provider refresh/materialisation is manual-only. The reviewed
-# 2026-09-19 actual-only source vintage is retained immutably in-repository;
-# any future manual run is evidence for a new vintage and cannot overwrite it.
+# HISTORICAL SPRING-2026 RE-MATERIALISATION ONLY.
+# This manual workflow is bound to the frozen Spring-2026 legacy-ZIP
+# materialisation contract. The reviewed 2026-09-19 actual-only source vintage
+# is retained immutably in-repository. Re-running this workflow is not evidence
+# for an Autumn-2026 vintage. The future Redisstat source cycle requires a
+# separate preregistered contract/workflow after the release exists and the
+# provider dataset identity has been verified.
 on:
   workflow_dispatch:
 

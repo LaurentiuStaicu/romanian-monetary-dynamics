@@ -153,6 +153,29 @@ def audit_ameco_source_access_migration_readiness() -> list[str]:
         if fiscal["action_before_release"] != "No repeated AMECO probing; remain in baseline hold.":
             errors.append("AMECO pre-release no-probing rule changed")
 
+    workflow_boundary = a.get("legacy_workflow_execution_boundary", {})
+    if workflow_boundary.get("current_role") != "HISTORICAL_SPRING_2026_REPROBE_AND_REMATERIALISATION_ONLY":
+        errors.append("AMECO legacy workflow role changed")
+    for key in (
+        "legacy_workflows_may_execute_future_autumn_2026_cycle",
+        "legacy_zip_contracts_may_be_relabelled_as_redisstat_contracts",
+        "rerun_of_legacy_workflow_counts_as_new_vintage",
+        "future_workflow_creation_authorized_now",
+    ):
+        if workflow_boundary.get(key) is not False:
+            errors.append(f"unsafe AMECO workflow-boundary rule enabled: {key}")
+    if workflow_boundary.get("future_autumn_execution_path_status") != "NOT_YET_CREATED_BY_DESIGN":
+        errors.append("AMECO future execution-path status changed")
+    prerequisites = workflow_boundary.get("future_execution_prerequisites", [])
+    for token in (
+        "Autumn 2026 full AMECO release exists",
+        "official provider Redisstat dataset code is identified from provider metadata",
+        "UBLGBPS semantics are verified in provider structural metadata",
+        "a new preregistered source-cycle contract is committed",
+    ):
+        if token not in prerequisites:
+            errors.append(f"AMECO future execution prerequisite missing: {token}")
+
     adjudication = a["trigger_adjudication"]
     for key in (
         "autumn_2026_release_trigger_satisfied",

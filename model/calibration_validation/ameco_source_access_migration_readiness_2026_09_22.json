@@ -103,5 +103,25 @@
     ],
     "redisstat_dataset_code_discovery_method": "Obtain the code from official Redisstat browser/dataflow/catalogue metadata by matching provider title/structure, then verify the frozen UBLGBPS target in provider structural metadata. Do not derive the code from AMECO chapter numbering, ameco17, or third-party mirrors.",
     "current_discovery_status": "OFFICIAL_NO_GUESS_DISCOVERY_ENDPOINTS_IDENTIFIED_DATASET_IDENTITY_NOT_YET_RETAINED"
+  },
+  "legacy_workflow_execution_boundary": {
+    "source_probe_workflow": ".github/workflows/ameco-fiscal-reaction-source-probe.yml",
+    "materialisation_workflow": ".github/workflows/ameco-fiscal-reaction-materialisation.yml",
+    "source_probe_contract": "model/calibration_validation/fiscal_reaction_ameco_source_probe_contract.json",
+    "materialisation_contract": "model/calibration_validation/fiscal_reaction_ameco_materialisation_contract.json",
+    "current_role": "HISTORICAL_SPRING_2026_REPROBE_AND_REMATERIALISATION_ONLY",
+    "legacy_workflows_may_execute_future_autumn_2026_cycle": false,
+    "legacy_zip_contracts_may_be_relabelled_as_redisstat_contracts": false,
+    "rerun_of_legacy_workflow_counts_as_new_vintage": false,
+    "future_autumn_execution_path_status": "NOT_YET_CREATED_BY_DESIGN",
+    "future_workflow_creation_authorized_now": false,
+    "future_execution_prerequisites": [
+      "Autumn 2026 full AMECO release exists",
+      "official provider Redisstat dataset code is identified from provider metadata",
+      "UBLGBPS semantics are verified in provider structural metadata",
+      "a new preregistered source-cycle contract is committed",
+      "the new workflow/script is bound only to that new contract and cannot overwrite retained historical evidence"
+    ],
+    "rationale": "The retained probe/materialisation workflows are executable reproductions of a frozen Spring-2026 legacy-ZIP contract. Treating a later rerun as a new vintage would mislabel old-source retrieval as Autumn-2026 evidence. The future Redisstat executor is intentionally deferred until the release and provider dataset identity exist."
   }
 }

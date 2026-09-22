@@ -71,6 +71,30 @@ class AmecoSourceAccessMigrationReadinessTests(unittest.TestCase):
         )
         self.assertIn("/explore/all/AMECO", official["redisstat_browser_ameco_root"])
 
+    def test_legacy_ameco_workflows_are_not_future_autumn_execution_path(self) -> None:
+        a = json.loads((ROOT / ASSESSMENT_PATH).read_text(encoding="utf-8"))
+        boundary = a["legacy_workflow_execution_boundary"]
+        self.assertEqual(
+            boundary["current_role"],
+            "HISTORICAL_SPRING_2026_REPROBE_AND_REMATERIALISATION_ONLY",
+        )
+        self.assertFalse(boundary["legacy_workflows_may_execute_future_autumn_2026_cycle"])
+        self.assertFalse(boundary["legacy_zip_contracts_may_be_relabelled_as_redisstat_contracts"])
+        self.assertFalse(boundary["rerun_of_legacy_workflow_counts_as_new_vintage"])
+        self.assertFalse(boundary["future_workflow_creation_authorized_now"])
+        self.assertEqual(
+            boundary["future_autumn_execution_path_status"],
+            "NOT_YET_CREATED_BY_DESIGN",
+        )
+
+        probe = (ROOT / boundary["source_probe_workflow"]).read_text(encoding="utf-8")
+        materialise = (ROOT / boundary["materialisation_workflow"]).read_text(encoding="utf-8")
+        self.assertIn("HISTORICAL SPRING-2026 RE-PROBE ONLY", probe)
+        self.assertIn("not the execution", probe.lower())
+        self.assertIn("HISTORICAL SPRING-2026 RE-MATERIALISATION ONLY", materialise)
+        self.assertIn("not evidence", materialise.lower())
+        self.assertIn("future Redisstat source cycle", materialise)
+
     def test_redisstat_discovery_endpoints_do_not_resolve_identity_by_inference(self) -> None:
         a = json.loads((ROOT / ASSESSMENT_PATH).read_text(encoding="utf-8"))
         semantic = a["semantic_migration_anchor"]
