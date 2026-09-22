@@ -278,6 +278,9 @@ jobs:
       - name: Audit F4 Eurostat-BSI exact-bridge diagnostic
         run: python scripts/audit_f4_eurostat_bsi_bridge_diagnostic.py
 
+      - name: Audit F4 ECB RAS reserve-template non-reopen boundary
+        run: python scripts/audit_f4_ras_reserve_template_nonreopen.py
+
       - name: Audit F4 structural-zero successor preregistration
         run: python scripts/audit_f4_structural_zero_successor_preregistration.py
 
