@@ -35,16 +35,29 @@ class RMDReadmeDesignContractTests(unittest.TestCase):
             ROOT / "model" / "registries" / "release_versioning_contract.json"
         )
 
-    def test_contract_marks_public_implementation_as_proposed_not_merged(self) -> None:
-        self.assertEqual(self.contract["contract_version"], "1.0")
+    def test_contract_records_public_readme_as_implemented_and_ci_governed(self) -> None:
+        self.assertEqual(self.contract["contract_version"], "1.1")
         self.assertEqual(
             self.contract["implementation_status"],
-            "PUBLIC_README_IMPLEMENTATION_PROPOSED_NOT_MERGED",
+            "PUBLIC_README_IMPLEMENTED_ON_MAIN_CI_GOVERNED",
         )
         boundary = self.contract["approval_boundary"]
-        self.assertTrue(boundary["public_readme_replacement_proposed"])
+        self.assertFalse(boundary["public_readme_replacement_proposed"])
+        self.assertTrue(boundary["public_readme_replacement_implemented"])
         self.assertFalse(boundary["public_readme_replacement_authorized_by_this_contract"])
+        self.assertEqual(
+            boundary["public_readme_implementation_commit"],
+            "159dcfb06b36fa510ffc8e09822b4cf7031b65a3",
+        )
+        record = self.contract["implementation_record"]
+        self.assertEqual(record["public_surface"], "README.md")
+        self.assertTrue(record["preview_retained_as_review_history"])
+        self.assertEqual(
+            record["ci_governance_test"],
+            "tests/test_readme_design_contract.py",
+        )
         self.assertTrue(PREVIEW.is_file())
+        self.assertTrue(PUBLIC.is_file())
 
     def test_suite_visual_shell_is_compact_and_consistent(self) -> None:
         visual = self.contract["suite_consistency"]["shared_visual_tokens"]
