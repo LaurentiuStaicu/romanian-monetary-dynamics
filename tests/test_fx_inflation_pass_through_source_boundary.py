@@ -132,5 +132,29 @@ class FxInflationPassThroughSourceBoundaryTests(unittest.TestCase):
         )
 
 
+    def test_legacy_ecoicop_v1_probe_is_not_a_current_execution_path(self) -> None:
+        legacy_probe = ROOT / "scripts" / "audit_fx_hicp_source_structure.py"
+        current_probe = (
+            ROOT / "scripts" / "audit_fx_hicp_current_source_structure.py"
+        )
+        workflow = (
+            ROOT / ".github" / "workflows" / "fx-hicp-source-structure-probe.yml"
+        ).read_text(encoding="utf-8")
+
+        self.assertFalse(
+            legacy_probe.exists(),
+            "Archived prc_hicp_midx/ECOICOP-v1 must not remain executable "
+            "as a current source probe",
+        )
+        self.assertTrue(current_probe.exists())
+        self.assertIn(
+            "scripts/audit_fx_hicp_current_source_structure.py",
+            workflow,
+        )
+        self.assertNotIn("audit_fx_hicp_source_structure.py", workflow)
+        self.assertIn("prc_hicp_minr", current_probe.read_text(encoding="utf-8"))
+        self.assertNotIn("prc_hicp_midx", current_probe.read_text(encoding="utf-8"))
+
+
 if __name__ == "__main__":
     unittest.main()
