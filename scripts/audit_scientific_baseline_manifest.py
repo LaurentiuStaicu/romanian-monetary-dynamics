@@ -370,6 +370,11 @@ def main() -> None:
         "Scientific baseline does not register post-source-diagnostics monitoring horizon",
     )
     check(
+        manifest["authority"]["trigger_aware_monitoring_horizon_post_ameco_access_protocol"]
+        == "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_ameco_access_protocol.json",
+        "Scientific baseline does not register post-AMECO-access monitoring horizon",
+    )
+    check(
         state["scientific_stage"]["latest_reopen_trigger_monitoring_superseded_for"]
         == model["scientific_stage"]["latest_reopen_trigger_monitoring_superseded_for"],
         "Scientific baseline and model contract disagree on superseded scope of latest general reopen-trigger monitoring",

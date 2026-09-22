@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class TriggerAwareMonitoringHorizonPostSourceDiagnosticsTests(unittest.TestCase):
-    def test_current_successor_horizon_passes(self) -> None:
+    def test_post_source_diagnostics_predecessor_remains_valid(self) -> None:
         self.assertEqual(
             audit_trigger_aware_monitoring_horizon_post_source_diagnostics(),
             [],
@@ -40,7 +40,7 @@ class TriggerAwareMonitoringHorizonPostSourceDiagnosticsTests(unittest.TestCase)
         )
         self.assertFalse(h["current_disposition"]["any_monitoring_gate_open_now"])
 
-    def test_status_distinguishes_initial_horizon_from_current_successor(self) -> None:
+    def test_status_preserves_horizon_lineage_through_current_successor(self) -> None:
         status = (ROOT / "STATUS.md").read_text(encoding="utf-8")
         self.assertIn(
             "### Initial trigger-aware monitoring horizon — 2026-09-20 (historical predecessor)",
@@ -52,6 +52,10 @@ class TriggerAwareMonitoringHorizonPostSourceDiagnosticsTests(unittest.TestCase)
         )
         self.assertIn(
             "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_source_diagnostics.json",
+            status,
+        )
+        self.assertIn(
+            "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_ameco_access_protocol.json",
             status,
         )
 
