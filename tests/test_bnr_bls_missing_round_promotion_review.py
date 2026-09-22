@@ -15,7 +15,7 @@ WORKFLOW_PATH = (
     ROOT
     / ".github"
     / "workflows"
-    / "promote-bnr-bls-missing-round-vintage.yml"
+    / "verify-bnr-bls-missing-round-vintages.yml"
 )
 
 
@@ -73,19 +73,28 @@ class BNRBLSMissingRoundPromotionReviewTests(unittest.TestCase):
                 "OLE2_CFBF_D0CF11E0A1B11AE1",
             )
 
-    def test_workflow_cannot_silently_refetch_or_mutate_panel(self) -> None:
-        self.assertIn(
-            "promote-bnr-bls-missing-round-vintage",
-            self.workflow,
+    def test_completed_workflow_surface_is_read_only_verification(self) -> None:
+        self.assertFalse(
+            (ROOT / ".github/workflows/promote-bnr-bls-missing-round-vintage.yml").exists()
         )
-        self.assertIn("actions/artifacts/10587121563/zip", self.workflow)
-        self.assertIn(
-            self.review["source_artifact_zip_sha256"],
-            self.workflow,
+        self.assertFalse(
+            (
+                ROOT
+                / ".github/workflows/promote-bnr-bls-missing-round-cell-extraction-vintage.yml"
+            ).exists()
         )
+        self.assertIn("workflow_dispatch:", self.workflow)
+        self.assertIn("contents: read", self.workflow)
+        self.assertNotIn("contents: write", self.workflow)
+        self.assertNotIn("pull_request:", self.workflow)
+        self.assertNotIn("git push", self.workflow)
         self.assertNotIn("www.bnr.ro", self.workflow)
         self.assertNotIn("data/processed/bnr_bls_realised_rounds.csv", self.workflow)
-        self.assertIn('test ! -e "$dest"', self.workflow)
+        self.assertIn(self.review["destination"], self.workflow)
+        self.assertIn(
+            "model/calibration_validation/bnr_bls_missing_round_promotion_review.json",
+            self.workflow,
+        )
 
     def test_next_gate_is_semantic_coordinate_verification(self) -> None:
         next_gate = " ".join(self.review["required_next_gate_after_retention"])
