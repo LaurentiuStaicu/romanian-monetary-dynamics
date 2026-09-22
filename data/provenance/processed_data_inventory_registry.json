@@ -1,7 +1,7 @@
 {
   "registry_version": "0.1",
   "frozen_on": "2026-09-22",
-  "purpose": "Repository-wide coverage registry for every canonical CSV under data/processed. It binds each processed artifact to immutable repository content identity, a declared provenance class and existing semantic/provenance authorities, without upgrading the scientific status of any dataset.",
+  "purpose": "Repository-wide coverage registry for every CSV under data/processed. It binds each processed artifact to immutable repository content identity, a declared provenance class and existing semantic/provenance authorities, while preserving explicit distinctions between canonical/current, partial/diagnostic and legacy reconciled artifacts.",
   "processed_root": "data/processed",
   "file_count": 13,
   "rules": {

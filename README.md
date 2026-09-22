@@ -179,16 +179,16 @@ Core data-integrity rules include:
 - **missing / TBD is not zero;**
 - **partial or component evidence is not canonical completion;**
 - **aggregate evidence is not a bilateral allocation;**
-- **every retained source-vintage directory and every canonical processed CSV must have an explicit repository provenance/inventory anchor;**
+- **every retained source-evidence directory and every CSV under `data/processed` must have an explicit repository provenance/inventory anchor;**
 - **every declared processed-data provenance sidecar must explicitly bind the exact processed CSV it describes;**
 - **provider or access failure is not negative scientific evidence;**
 - **missing bilateral positions are never invented merely to close a matrix.**
 
-Retained historical source material is under [data/source_vintages/](data/source_vintages/); processed scientific series are under [data/processed/](data/processed/); provenance contracts and retained evidence are linked from the model registries.
+Retained historical source material is under [data/source_vintages/](data/source_vintages/); current processed scientific series, partial diagnostics and explicitly reconciled legacy processed artifacts are under [data/processed/](data/processed/); provenance contracts and retained evidence are linked from the model registries.
 
 Repository-wide vintage coverage is machine-checked through [data/provenance/source_vintage_inventory_registry.json](data/provenance/source_vintage_inventory_registry.json). Every top-level source-evidence directory must have a declared hash-backed manifest, audit, explicitly classified normative-semantic manifest or review-copy provenance anchor; this coverage rule does **not** upgrade non-retained or review-only evidence into exact source-vintage reproducibility.
 
-Repository-wide processed-data coverage is machine-checked through [data/provenance/processed_data_inventory_registry.json](data/provenance/processed_data_inventory_registry.json). Canonical processed CSV bytes are pinned, required provenance/schema columns and authorities are checked, and any declared provenance sidecar must identify the exact processed artifact it governs.
+Repository-wide processed-data coverage is machine-checked through [data/provenance/processed_data_inventory_registry.json](data/provenance/processed_data_inventory_registry.json). Every processed CSV is pinned by repository identity and classified by provenance role; required provenance/schema columns and authorities are checked, and any declared provenance sidecar must identify the exact processed artifact it governs. Inventory coverage does not imply that every processed artifact is canonical or current.
 
 ### Repository map
 
@@ -200,7 +200,7 @@ Repository-wide processed-data coverage is machine-checked through [data/provena
 | [model/calibration_validation/](model/calibration_validation/) | Measurement, selection, holdout, source-readiness and validation artifacts |
 | [model/registries/](model/registries/) | Canonical cross-cutting model, scientific-stage and release-governance state |
 | [data/source_vintages/](data/source_vintages/) | Retained source evidence used for reproducibility |
-| [data/processed/](data/processed/) | Model-ready processed empirical series |
+| [data/processed/](data/processed/) | Processed empirical series, partial diagnostics and retained legacy artifacts, with status governed by the provenance inventory |
 | [scripts/](scripts/) | Reproduction, audit, materialisation and validation scripts |
 | [tests/](tests/) | Scientific invariant and regression tests |
 | [releases/](releases/) | Frozen release notes and versioning policy |
