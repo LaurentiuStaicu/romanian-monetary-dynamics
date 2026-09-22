@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HORIZON = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_counterpart_workflow_boundary.json"
 PREDECESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_ameco_access_protocol.json"
+SUCCESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
 
 def load(path: str) -> dict:
     return json.loads((ROOT / path).read_text(encoding="utf-8"))
@@ -103,21 +104,24 @@ def audit_trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary() 
         if d.get(key) is not False:
             errors.append(f"successor unexpectedly authorizes {key}")
 
-    if model["scientific_stage"]["trigger_aware_monitoring_horizon"] != HORIZON:
-        errors.append("model contract does not point to counterpart-workflow successor")
-    if model["scientific_stage"]["immediate_previous_trigger_aware_monitoring_horizon"] != PREDECESSOR:
-        errors.append("model contract immediate predecessor changed")
+    successor = load(SUCCESSOR)
+    if successor["supersedes"] != HORIZON:
+        errors.append("counterpart-workflow horizon is not preserved as successor predecessor")
+    if model["scientific_stage"]["trigger_aware_monitoring_horizon"] != SUCCESSOR:
+        errors.append("model contract current horizon does not point to MoF-recovery successor")
+    if model["scientific_stage"]["immediate_previous_trigger_aware_monitoring_horizon"] != HORIZON:
+        errors.append("model contract does not preserve counterpart-workflow horizon as immediate predecessor")
     state = baseline["canonical_state"]["scientific_stage"]
-    if state["trigger_aware_monitoring_horizon"] != HORIZON:
-        errors.append("baseline canonical state does not point to counterpart-workflow successor")
-    if state["immediate_previous_trigger_aware_monitoring_horizon"] != PREDECESSOR:
-        errors.append("baseline immediate predecessor changed")
-    if baseline["authority"].get("trigger_aware_monitoring_horizon") != HORIZON:
+    if state["trigger_aware_monitoring_horizon"] != SUCCESSOR:
+        errors.append("baseline canonical state does not point to MoF-recovery successor")
+    if state["immediate_previous_trigger_aware_monitoring_horizon"] != HORIZON:
+        errors.append("baseline does not preserve counterpart-workflow horizon as immediate predecessor")
+    if baseline["authority"].get("trigger_aware_monitoring_horizon") != SUCCESSOR:
         errors.append("baseline generic monitoring authority is stale")
     if baseline["authority"].get("trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary") != HORIZON:
-        errors.append("baseline does not retain counterpart-workflow successor authority")
-    if baseline.get("manifest_version") != "1.11":
-        errors.append("scientific baseline manifest version did not advance to 1.11")
+        errors.append("baseline no longer retains counterpart-workflow horizon as dated authority")
+    if baseline.get("manifest_version") != "1.12":
+        errors.append("scientific baseline manifest version did not advance to 1.12")
 
     return errors
 
