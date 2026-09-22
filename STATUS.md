@@ -702,3 +702,10 @@ The repository-wide Actions permission gate now requires every workflow to decla
 The exact write-capable allowlist remains unchanged: three evidence-triggered/manual MoF recovery workflows plus the authorization-gated release publisher job. All other workflows remain outside the write boundary.
 
 This is repository-governance hardening only and does not alter the scientific model or public **v0.3.0** release state.
+
+### HICP current-source execution boundary hardening — 2026-09-22
+
+A repository-wide audit-script execution inventory found one unreferenced executable source probe, `scripts/audit_fx_hicp_source_structure.py`, for the former Eurostat `prc_hicp_midx` / ECOICOP-v1 boundary. The canonical FX-inflation source review already classifies that dataset as archived/discontinued for current 2026 data and explicitly forbids silently splicing it into the current source boundary. The retained reviewed source vintage and manual refresh workflow use `prc_hicp_minr` / ECOICOP-v2 with the frozen `I25 / TOTAL / RO` boundary.
+
+The legacy executable probe is therefore retired from the current repository surface. A new repository-wide execution-coverage gate requires every `scripts/audit_*.py` file to be referenced by at least one workflow and every workflow audit reference to resolve to an existing script; source-specific regression coverage also requires the current HICP workflow to invoke only `audit_fx_hicp_current_source_structure.py`. Historical evidence remains recoverable from Git history; no retained source bytes, normalized observations, transformation, parameter, mechanism classification, calibration/validation state, feedback activation, behavioural closure or public **v0.3.0** state changes.
+
