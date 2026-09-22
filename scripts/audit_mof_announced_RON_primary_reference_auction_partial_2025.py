@@ -313,7 +313,7 @@ def audit_partial_announced_supply(
     if dynamic["mof_announced_RON_primary_reference_auction_supply_exact_final_months"] != EXPECTED_MONTHS:
         errors.append("model contract exact month set changed")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery"
+        "government_issuance_yield_loop_evidence_triggered_hold"
     ):
         errors.append("model contract next task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
