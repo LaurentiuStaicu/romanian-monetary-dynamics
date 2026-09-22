@@ -14,11 +14,13 @@
     "external_review_copy_requires_explicit_reproducibility_classification": true,
     "registry_does_not_upgrade_reproducibility_classification": true,
     "historical_files_are_not_rewritten_to_manifests": true,
-    "live_refetch_is_not_authorized_by_inventory_coverage": true
+    "live_refetch_is_not_authorized_by_inventory_coverage": true,
+    "local_review_anchor_does_not_imply_exact_reproducibility": true
   },
   "allowed_anchor_types": [
     "LOCAL_MANIFEST",
     "LOCAL_AUDIT_ANCHOR",
+    "LOCAL_REVIEW_ANCHOR",
     "EXTERNAL_REVIEW_COPY_ANCHOR"
   ],
   "entries": [
@@ -84,9 +86,9 @@
     },
     {
       "directory": "data/source_vintages/corporate-investment-financing-rate-screening-vintage-2026-09-19",
-      "anchor_type": "LOCAL_AUDIT_ANCHOR",
+      "anchor_type": "LOCAL_REVIEW_ANCHOR",
       "anchor": "data/source_vintages/corporate-investment-financing-rate-screening-vintage-2026-09-19/corporate_investment_financing_rate_source_screening.json",
-      "reason": "Local screening audit records source-series identities and retained evidence hashes for the financing-rate candidates."
+      "reason": "Local screening review records exact provider series identities, semantic scope and continuity metrics for the retained CSV review copies, but does not carry a local raw-byte SHA-256 manifest. Inventory registration does not upgrade this directory to exact source-vintage reproducibility."
     },
     {
       "directory": "data/source_vintages/corporate-investment-measurement-panel-vintage-2026-09-19",
