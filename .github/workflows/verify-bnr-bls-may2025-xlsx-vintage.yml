@@ -35,10 +35,8 @@ jobs:
 
           root = Path("data/source_vintages/bnr-bls-may2025-xlsx-vintage-2026-09-19")
           review = json.loads(
-              Path(
-                  "model/calibration_validation/"
-                  "bnr_bls_may2025_xlsx_promotion_review.json"
-              ).read_text(encoding="utf-8")
+              Path("model/calibration_validation/bnr_bls_may2025_xlsx_promotion_review.json")
+              .read_text(encoding="utf-8")
           )
 
           actual = {
