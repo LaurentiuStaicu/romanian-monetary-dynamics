@@ -150,6 +150,7 @@ python scripts/audit_dimensional_consistency.py
 python scripts/audit_system_dynamics_conformity.py
 python scripts/audit_scientific_baseline_manifest.py
 python scripts/audit_source_vintage_inventory.py
+python scripts/audit_processed_data_inventory.py
 python scripts/verify_validation_recovery_provenance.py
 ~~~
 
@@ -178,6 +179,7 @@ Core data-integrity rules include:
 - **missing / TBD is not zero;**
 - **partial or component evidence is not canonical completion;**
 - **aggregate evidence is not a bilateral allocation;**
+- **every retained source-vintage directory and every canonical processed CSV must have an explicit repository provenance/inventory anchor;**
 - **provider or access failure is not negative scientific evidence;**
 - **missing bilateral positions are never invented merely to close a matrix.**
 

@@ -604,3 +604,13 @@ Second, the main README local-reproduction command block predated the new reposi
 
 These are documentation/governance consistency repairs only. The current public version remains **v0.3.0**, `version_bump_required_now` remains false, Accounting Spine recovery remains on evidence-triggered hold, calibration/refit remains closed, quantitative feedback activation remains zero and behavioural closure remains inactive.
 
+### Processed-data provenance inventory coverage — 2026-09-22
+
+The repository now has a dedicated provenance inventory for the **13 canonical CSV artifacts under `data/processed`**. This complements the existing source-vintage directory inventory; it does not replace the dataset-specific contracts, assessments or provenance sidecars.
+
+Each processed artifact is registered with its current Git blob identity, minimum provenance-bearing schema columns, a declared provenance class, and the existing semantic/provenance authorities that govern its scientific use. Where a processed series is derived from a retained source vintage, the corresponding local manifest is also registered. Historical predecessor inputs remain allowed only where a successor authority explicitly reconciles and preserves their role.
+
+Scientific CI now verifies exact processed-directory coverage, pinned content identity, required provenance columns, authority existence and declared source-vintage anchors. A new processed CSV cannot silently enter the scientific repository without a provenance classification, and an existing processed file cannot change bytes without an intentional inventory update.
+
+This gate is **governance only**. It does not upgrade source quality, reopen any empirical gate, authorize refetch, estimation, calibration, feedback activation, behavioural closure or a version change.
+
