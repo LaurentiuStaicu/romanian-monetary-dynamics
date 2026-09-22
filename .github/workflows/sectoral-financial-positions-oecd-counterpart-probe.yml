@@ -1,7 +1,11 @@
 name: Sectoral Financial Positions OECD Counterpart Discovery Probe
 
-# Live OECD acquisition is new source evidence only. It is deliberately
-# manual and cannot alter the retained scientific baseline by itself.
+# TRIGGER-CONDITIONED HISTORICAL DISCOVERY REPLAY.
+# The retained OECD source boundary is exhausted under the current canonical
+# horizon. Manual reruns against unchanged topology are reproducibility only,
+# not new scientific progress. Treat live acquisition as current work only
+# after the accounting_counterpart_topology trigger is satisfied and a new
+# source-topology pass is preregistered.
 on:
   workflow_dispatch:
 
