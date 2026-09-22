@@ -61,6 +61,29 @@ class AmecoSourceAccessMigrationReadinessTests(unittest.TestCase):
         self.assertTrue(official["bulk_and_api_documentation"].startswith("https://"))
         self.assertTrue(official["redisstat_catalogue_wadl"].startswith("https://"))
         self.assertTrue(official["redisstat_sdmx_2_1_wadl"].startswith("https://"))
+        self.assertEqual(
+            official["redisstat_dataflow_catalogue_endpoint"],
+            "https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/sdmx/2.1/dataflow/ECFIN/all/latest?detail=allstubs",
+        )
+        self.assertEqual(
+            official["redisstat_catalogue_toc_txt_endpoint"],
+            "https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/catalogue/toc/txt?lang=en",
+        )
+        self.assertIn("/explore/all/AMECO", official["redisstat_browser_ameco_root"])
+
+    def test_redisstat_discovery_endpoints_do_not_resolve_identity_by_inference(self) -> None:
+        a = json.loads((ROOT / ASSESSMENT_PATH).read_text(encoding="utf-8"))
+        semantic = a["semantic_migration_anchor"]
+        protocol = a["future_release_discovery_protocol"]
+        self.assertFalse(semantic["redisstat_dataset_code_identified"])
+        self.assertIsNone(semantic["redisstat_dataset_code"])
+        self.assertEqual(
+            semantic["current_discovery_status"],
+            "OFFICIAL_NO_GUESS_DISCOVERY_ENDPOINTS_IDENTIFIED_DATASET_IDENTITY_NOT_YET_RETAINED",
+        )
+        self.assertFalse(protocol["redisstat_dataset_code_may_be_derived_from_legacy_chapter_number"])
+        self.assertFalse(protocol["redisstat_dataset_code_may_be_derived_from_legacy_zip_name"])
+        self.assertFalse(protocol["redisstat_dataset_code_may_be_adopted_from_third_party_mirror"])
 
 
 if __name__ == "__main__":
