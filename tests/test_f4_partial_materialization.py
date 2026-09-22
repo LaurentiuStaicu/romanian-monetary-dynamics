@@ -71,6 +71,17 @@ class F4PartialMaterializationTests(unittest.TestCase):
         self.assertFalse(manifest["behavioural_closure_changed"])
         self.assertFalse(manifest["BNR_asset_counterpart_allocation_performed"])
 
+    def test_current_workflow_is_read_only_reproduction(self):
+        path = ROOT / ".github/workflows/f4-partial-materialization-audit.yml"
+        text = path.read_text(encoding="utf-8")
+        self.assertIn("contents: read", text)
+        self.assertNotIn("contents: write", text)
+        self.assertNotIn("git push", text)
+        self.assertNotIn("actions/artifacts/10558980689/zip", text)
+        self.assertNotIn("Retain exact Phase B artifact and generate partial F4 if absent", text)
+        self.assertIn("Verify immutable source vintage offline", text)
+        self.assertIn("Require deterministic semantic reproduction", text)
+
 
 if __name__ == "__main__":
     unittest.main()
