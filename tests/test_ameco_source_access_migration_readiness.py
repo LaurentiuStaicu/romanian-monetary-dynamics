@@ -95,6 +95,36 @@ class AmecoSourceAccessMigrationReadinessTests(unittest.TestCase):
         self.assertIn("not evidence", materialise.lower())
         self.assertIn("future Redisstat source cycle", materialise)
 
+        self.assertEqual(
+            boundary["additional_historical_archive_workflow_role"],
+            "HISTORICAL_FIXED_VINTAGE_ARCHIVE_REPROBE_AND_REMATERIALISATION_ONLY",
+        )
+        self.assertFalse(
+            boundary["historical_archive_workflows_may_execute_future_autumn_2026_cycle"]
+        )
+        self.assertFalse(
+            boundary["historical_archive_workflow_rerun_counts_as_new_vintage"]
+        )
+        self.assertFalse(
+            boundary["historical_archive_workflows_may_extend_release_list_without_new_contract"]
+        )
+
+        historical_probe = (
+            ROOT / boundary["historical_archive_reprobe_workflow"]
+        ).read_text(encoding="utf-8")
+        historical_materialise = (
+            ROOT / boundary["historical_multivintage_rematerialisation_workflow"]
+        ).read_text(encoding="utf-8")
+        self.assertIn("HISTORICAL PRE-2022 ARCHIVE RE-PROBE ONLY", historical_probe)
+        self.assertIn("not a new AMECO", historical_probe)
+        self.assertIn("not a future Redisstat execution path", historical_probe)
+        self.assertIn(
+            "HISTORICAL 2022-SPRING-2026 ARCHIVE RE-MATERIALISATION ONLY",
+            historical_materialise,
+        )
+        self.assertIn("not a new AMECO", historical_materialise)
+        self.assertIn("future Autumn-2026 Redisstat source cycle", historical_materialise)
+
     def test_redisstat_discovery_endpoints_do_not_resolve_identity_by_inference(self) -> None:
         a = json.loads((ROOT / ASSESSMENT_PATH).read_text(encoding="utf-8"))
         semantic = a["semantic_migration_anchor"]
