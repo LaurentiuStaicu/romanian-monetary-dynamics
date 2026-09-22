@@ -21,6 +21,17 @@ class ProvenanceIntegrityTerminalAssessmentTests(unittest.TestCase):
         self.assertIn(command, readme)
         self.assertIn(command, ci)
 
+    def test_status_records_terminal_provenance_handoff(self) -> None:
+        status = (ROOT / "STATUS.md").read_text(encoding="utf-8")
+        self.assertIn(
+            "model/registries/provenance_integrity_terminal_assessment_2026_09_22.json",
+            status,
+        )
+        self.assertIn(
+            "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json",
+            status,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
