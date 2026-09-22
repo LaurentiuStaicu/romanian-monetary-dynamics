@@ -278,7 +278,10 @@
         "after": "2026-10-31",
         "id": "f4_bnr_cnf_2025_stock_counterpart_matrix"
       },
-      "immediate_previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json"
+      "immediate_previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json",
+      "latest_reopen_trigger_monitoring_superseded_for": [
+        "sectoral_financial_positions"
+      ]
     },
     "release_versioning": {
       "current_public_release": "0.3.0",
