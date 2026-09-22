@@ -1,0 +1,60 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-22",
+  "assessment_id": "monetary_pass_through_legacy_processed_dataset_reconciliation",
+  "purpose": "Reconcile the historical 13-month processed monetary pass-through diagnostic with the later Validation Recovery input boundary without deleting or rewriting historical evidence.",
+  "historical_artifact": {
+    "path": "data/processed/monetary_pass_through_bnr_2024_2025.csv",
+    "provenance_sidecar": "data/provenance/monetary_pass_through_bnr_2024_2025.json",
+    "frozen_at": "2026-09-17",
+    "period_start": "2024-01",
+    "period_end": "2025-01",
+    "observation_count": 13,
+    "target_definitions": [
+      "total new RON lending rate to non-financial corporations",
+      "total new RON lending rate to households/NPISH"
+    ],
+    "original_role": "Practical-identifiability and time-respecting diagnostic retained from the pre-recovery monetary pass-through work."
+  },
+  "successor_validation_boundary": {
+    "contract": "model/calibration_validation/validation_recovery_contract.json",
+    "input_identity_registry": "data/provenance/validation_recovery_vintage_status.json",
+    "selection_runner": "scripts/run_validation_recovery_selection.py",
+    "holdout_runner": "scripts/run_validation_recovery_holdout.py",
+    "canonical_input_root": "data/raw/validation_recovery",
+    "canonical_policy_input": "data/raw/validation_recovery/policy_rate_bis_monthly.csv",
+    "canonical_household_target": "data/raw/validation_recovery/household_housing_mir_monthly.csv",
+    "canonical_nfc_target": "data/raw/validation_recovery/nfc_upto1y_mir_monthly.csv",
+    "selection_targets": [
+      "household_housing_new_lending_rate_pct",
+      "nfc_new_lending_rate_upto1y_pct"
+    ],
+    "calibration_window": "2017-08..2022-12",
+    "structural_selection_window": "2023-01..2025-01",
+    "final_evaluation_window": "2025-02..2025-11",
+    "repository_input_identity_pinned": true
+  },
+  "reconciliation": {
+    "current_validation_recovery_consumes_historical_processed_artifact": false,
+    "target_definitions_are_identical": false,
+    "time_windows_are_identical": false,
+    "historical_data_roles_may_be_reused_as_current_validation_roles": false,
+    "historical_artifact_may_be_deleted": false,
+    "historical_artifact_values_changed": false,
+    "historical_provenance_rewritten": false,
+    "classification": "RETAINED_LEGACY_PRE_RECOVERY_DIAGNOSTIC_NOT_CURRENT_VALIDATION_INPUT",
+    "processed_inventory_class": "LEGACY_RECONCILED_BY_SUCCESSOR"
+  },
+  "decision": "PASS_RECLASSIFY_HISTORICAL_PROCESSED_MONETARY_DATASET_AS_LEGACY_RECONCILED_BY_SUCCESSOR",
+  "scientific_effect": {
+    "validation_recovery_results_changed": false,
+    "mechanism_classification_changed": false,
+    "reference_mode_changed": false,
+    "accounting_state_changed": false,
+    "calibration_or_refit_authorized": false,
+    "holdout_reopening_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "version_bump_required": false
+  }
+}
