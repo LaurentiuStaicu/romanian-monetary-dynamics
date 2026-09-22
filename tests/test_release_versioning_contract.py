@@ -51,6 +51,22 @@ class ReleaseVersioningContractTests(unittest.TestCase):
         self.assertIn("## 0.3.0 - 2026-09-21",changelog)
         self.assertTrue((ROOT/"releases/v0.3.0.md").is_file())
 
+    def test_unreleased_rationale_covers_current_post_v030_change_classes(self):
+        basis=self.c["versioning_basis"]
+        rationale=basis["rationale"]
+        for token in (
+            "still-incomplete F4 boundary",
+            "repository-governance and provenance hardening",
+            "post-terminal evidence adjudication and monitoring-governance refinement",
+            "BNR BLS 2025-Q2",
+            "Ministry of Finance exchange-operation topology",
+            "NO_REOPEN",
+        ):
+            self.assertIn(token,rationale)
+        self.assertTrue(basis["unreleased_changes_present"])
+        self.assertFalse(basis["version_bump_required_now"])
+        self.assertEqual(basis["next_public_release_candidate"],"0.4.0")
+
     def test_v030_release_preparation_is_finalized(self):
         basis=self.c["versioning_basis"]
         prep=basis["release_preparation"]
