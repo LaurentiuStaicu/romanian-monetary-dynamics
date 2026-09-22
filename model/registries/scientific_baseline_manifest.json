@@ -17,6 +17,8 @@
     "mechanism_source_readiness": "model/calibration_validation/mechanism_source_readiness.json",
     "sectoral_financial_positions_external_source_screening": "model/dynamics/sectoral_financial_positions_external_source_screening.json",
     "mechanism_reopen_conditions": "model/calibration_validation/mechanism_reopen_conditions_registry.json",
+    "bnr_bls_2025q2_source_discovery_terminal_assessment": "model/calibration_validation/bnr_bls_2025q2_source_discovery_terminal_assessment.json",
+    "bnr_bls_2025q2_latest_post_terminal_review": "model/calibration_validation/bnr_bls_2025q2_post_terminal_indexed_endpoint_review_2026_09_22.json",
     "reference_mode_recovery_terminal_assessment": "model/dynamics/reference_mode_recovery_terminal_assessment.json",
     "sectoral_financial_positions_bnr_cnf_source_screening": "model/dynamics/sectoral_financial_positions_bnr_cnf_source_screening.json",
     "validation_recovery_stage_terminal_assessment": "model/registries/validation_recovery_stage_terminal_assessment.json",
