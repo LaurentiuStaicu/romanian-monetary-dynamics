@@ -164,7 +164,7 @@ def audit_mof_supply_pressure_probe_assessment(
 
     dynamic = model_contract["dynamic_core"]
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery"
+        "government_issuance_yield_loop_evidence_triggered_hold"
     ):
         errors.append("model contract next task changed")
 

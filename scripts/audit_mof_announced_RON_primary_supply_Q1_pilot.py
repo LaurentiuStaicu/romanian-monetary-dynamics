@@ -303,7 +303,7 @@ def audit_announced_supply_q1_pilot(
     ):
         errors.append("model contract Q1 pilot status changed")
     if dynamic["next_government_issuance_yield_empirical_task"] != (
-        "mof_announced_RON_primary_reference_auction_full_2025_missing_source_recovery"
+        "government_issuance_yield_loop_evidence_triggered_hold"
     ):
         errors.append("model contract next task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:

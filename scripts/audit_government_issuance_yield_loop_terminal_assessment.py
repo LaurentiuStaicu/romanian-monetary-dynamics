@@ -253,6 +253,8 @@ def audit_government_issuance_yield_loop_terminal_assessment(
         errors.append("model contract issuance-yield operational state changed")
     if dynamic.get("government_issuance_yield_loop_active_empirical_task") is not None:
         errors.append("model contract may not expose an active issuance-yield task")
+    if dynamic.get("next_government_issuance_yield_empirical_task") != "government_issuance_yield_loop_evidence_triggered_hold":
+        errors.append("model contract government issuance-yield next-task pointer is stale")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
         errors.append("model contract may not activate issuance-yield feedback")
     if dynamic["behavioural_closure_active"] is not False:
