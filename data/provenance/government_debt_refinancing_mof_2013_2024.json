@@ -1,5 +1,6 @@
 {
   "provenance_version": "0.2",
+  "processed_artifact": "data/processed/government_debt_refinancing_mof_2013_2024.csv",
   "retrieved_or_verified_date": "2026-09-19",
   "variable": "government_refinancing_need",
   "contract": "model/dynamics/government_refinancing_need_promotion_contract.json",

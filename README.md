@@ -180,12 +180,15 @@ Core data-integrity rules include:
 - **partial or component evidence is not canonical completion;**
 - **aggregate evidence is not a bilateral allocation;**
 - **every retained source-vintage directory and every canonical processed CSV must have an explicit repository provenance/inventory anchor;**
+- **every declared processed-data provenance sidecar must explicitly bind the exact processed CSV it describes;**
 - **provider or access failure is not negative scientific evidence;**
 - **missing bilateral positions are never invented merely to close a matrix.**
 
 Retained historical source material is under [data/source_vintages/](data/source_vintages/); processed scientific series are under [data/processed/](data/processed/); provenance contracts and retained evidence are linked from the model registries.
 
 Repository-wide vintage coverage is machine-checked through [data/provenance/source_vintage_inventory_registry.json](data/provenance/source_vintage_inventory_registry.json). Every top-level retained vintage must have a declared manifest, audit or explicitly classified review-copy provenance anchor; this coverage rule does **not** upgrade a review copy into exact source-vintage reproducibility.
+
+Repository-wide processed-data coverage is machine-checked through [data/provenance/processed_data_inventory_registry.json](data/provenance/processed_data_inventory_registry.json). Canonical processed CSV bytes are pinned, required provenance/schema columns and authorities are checked, and any declared provenance sidecar must identify the exact processed artifact it governs.
 
 ### Repository map
 

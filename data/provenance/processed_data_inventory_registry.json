@@ -11,6 +11,7 @@
     "required_provenance_columns_must_exist": true,
     "every_authority_path_must_exist": true,
     "sidecar_provenance_must_be_explicit_when_declared": true,
+    "declared_sidecar_must_bind_exact_processed_artifact": true,
     "assessment_embedded_entries_must_be_referenced_by_an_authority": true,
     "source_vintage_anchors_must_exist_when_declared": true,
     "historical_legacy_inputs_may_remain_if_successor_reconciliation_is_explicit": true,

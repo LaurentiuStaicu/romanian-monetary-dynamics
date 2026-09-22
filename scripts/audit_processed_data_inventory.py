@@ -21,6 +21,9 @@ def audit_processed_data_inventory() -> list[str]:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
     entries = registry["entries"]
     allowed = set(registry["allowed_provenance_classes"])
+    rules = registry.get("rules", {})
+    if rules.get("declared_sidecar_must_bind_exact_processed_artifact") is not True:
+        errors.append("processed-data inventory sidecar-binding rule is not enabled")
 
     actual = sorted(
         str(path.relative_to(ROOT))
@@ -77,21 +80,24 @@ def audit_processed_data_inventory() -> list[str]:
             authority_texts.append(authority.read_text(encoding="utf-8", errors="replace"))
 
         sidecar = entry.get("provenance_sidecar")
-        if provenance_class == "SIDECAR_JSON":
-            if not sidecar:
-                errors.append(f"{entry['path']}: SIDECAR_JSON entry lacks provenance_sidecar")
+        if provenance_class == "SIDECAR_JSON" and not sidecar:
+            errors.append(f"{entry['path']}: SIDECAR_JSON entry lacks provenance_sidecar")
+        if sidecar:
+            sidecar_path = ROOT / sidecar
+            if not sidecar_path.is_file():
+                errors.append(f"{entry['path']}: provenance sidecar missing: {sidecar}")
             else:
-                sidecar_path = ROOT / sidecar
-                if not sidecar_path.is_file():
-                    errors.append(f"{entry['path']}: provenance sidecar missing: {sidecar}")
+                try:
+                    payload = json.loads(sidecar_path.read_text(encoding="utf-8"))
+                except json.JSONDecodeError:
+                    errors.append(f"{entry['path']}: provenance sidecar is not valid JSON")
                 else:
-                    try:
-                        payload = json.loads(sidecar_path.read_text(encoding="utf-8"))
-                    except json.JSONDecodeError:
-                        errors.append(f"{entry['path']}: provenance sidecar is not valid JSON")
-                    else:
-                        if not payload:
-                            errors.append(f"{entry['path']}: provenance sidecar is empty")
+                    if not payload:
+                        errors.append(f"{entry['path']}: provenance sidecar is empty")
+                    if payload.get("processed_artifact") != entry["path"]:
+                        errors.append(
+                            f"{entry['path']}: provenance sidecar does not bind the exact processed artifact"
+                        )
 
         if provenance_class in {"ASSESSMENT_EMBEDDED", "ASSESSMENT_PLUS_SOURCE_VINTAGE", "LEGACY_RECONCILED_BY_SUCCESSOR"}:
             combined = "\n".join(authority_texts)

@@ -1,5 +1,6 @@
 {
   "provenance_version": "0.1",
+  "processed_artifact": "data/processed/government_repricing_ledger.csv",
   "retrieved_or_verified_date": "2026-09-17",
   "principle": "Record only source-observed instrument terms, issue sizes/announced amounts and published portfolio references. Do not infer outstanding principal, refinancing linkage, contractual refixing or matched old/new rates when the source does not provide them.",
   "sources": [
