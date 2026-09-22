@@ -68,6 +68,14 @@ class GovernmentIssuanceYieldLoopTerminalAssessmentTests(unittest.TestCase):
         )
         self.assertIsNone(self.assessment["disposition"]["active_empirical_task"])
 
+    def test_model_contract_next_task_pointer_is_terminal_hold(self) -> None:
+        dynamic = self.model_contract["dynamic_core"]
+        self.assertEqual(
+            dynamic["next_government_issuance_yield_empirical_task"],
+            "government_issuance_yield_loop_evidence_triggered_hold",
+        )
+        self.assertIsNone(dynamic["government_issuance_yield_loop_active_empirical_task"])
+
     def test_failed_yield_form_remains_frozen_before_holdout(self) -> None:
         state = self.assessment["behavioural_link_state"]
         self.assertEqual(state["selection_verdict"], "FAIL_BEFORE_HOLDOUT")
