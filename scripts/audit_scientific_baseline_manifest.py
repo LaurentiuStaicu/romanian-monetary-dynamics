@@ -364,6 +364,16 @@ def main() -> None:
         == "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_source_diagnostics.json",
         "Scientific baseline does not register post-source-diagnostics monitoring horizon",
     )
+    check(
+        state["scientific_stage"]["latest_reopen_trigger_monitoring_superseded_for"]
+        == model["scientific_stage"]["latest_reopen_trigger_monitoring_superseded_for"],
+        "Scientific baseline and model contract disagree on superseded scope of latest general reopen-trigger monitoring",
+    )
+    check(
+        model["scientific_stage"]["latest_reopen_trigger_monitoring_superseded_for"]
+        == ["sectoral_financial_positions"],
+        "Latest general reopen-trigger monitoring must be superseded only for sectoral_financial_positions by the later BNR topology trigger",
+    )
 
     # Accounting state is derived from the canonical accounting gate.
     expected = accounting["current_expected_state"]
