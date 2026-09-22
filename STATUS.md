@@ -38,7 +38,7 @@ This transition changes repository review state only. No accounting classificati
 
 A subsequent human continuation decision authorized the reviewed stack #48–#52 for bottom-up merge into `main`, recorded in `model/registries/scientific_baseline_merge_authorization.json`. That integration is now **complete**. PRs #48–#52 were merged sequentially into `main`, PR #47 was closed as superseded rather than merged directly, and the resulting `main` head passed post-merge Scientific CI. The terminal repository assessment is `model/registries/scientific_baseline_integration_terminal_assessment.json`.
 
-The current repository-governance state is **INTEGRATION_COMPLETE** while the scientific operational state remains **EVIDENCE_TRIGGERED_BASELINE_HOLD**. Integration did not complete missing accounting instruments, promote the 10th reference mode, validate a behavioural mechanism, open calibration/refit, activate System Dynamics feedback or behavioural closure, create a release/tag, or change the version.
+At that integration checkpoint, the repository-governance state had reached **INTEGRATION_COMPLETE** while the scientific operational state remained **EVIDENCE_TRIGGERED_BASELINE_HOLD**. The integration itself did not complete missing accounting instruments, promote the then-missing 10th reference mode, validate a behavioural mechanism, open calibration/refit, activate System Dynamics feedback or behavioural closure, create a release/tag, or change the version. Later reference-mode work subsequently promoted aggregate observability to 10/10 under a separate preregistered gate; that successor state is recorded in the current handoff and does not reinterpret this historical integration checkpoint.
 
 ### Reopen-trigger monitoring — 2026-09-19
 
