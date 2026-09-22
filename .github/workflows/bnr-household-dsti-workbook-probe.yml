@@ -1,7 +1,10 @@
 name: BNR Household DSTI Workbook Access Probe
 
 # Historical source acquisition is retained immutably in-repository.
-# Any future provider refresh is manual evidence for a new vintage only.
+# Manual reruns of the same frozen workbook URLs are reproduction/source-access
+# checks only. An unchanged rerun is not a new vintage and does not reopen the
+# household-consumption mechanism; genuinely new provider evidence must satisfy
+# the declared population-alignment/target reopen conditions before new work.
 on:
   workflow_dispatch:
 
