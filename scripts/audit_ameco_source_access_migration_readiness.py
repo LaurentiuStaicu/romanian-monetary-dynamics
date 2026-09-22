@@ -72,6 +72,29 @@ def audit_ameco_source_access_migration_readiness() -> list[str]:
         if hist[key] is not False:
             errors.append(f"unsafe AMECO historical-source rule enabled: {key}")
 
+    semantic = a["semantic_migration_anchor"]
+    if semantic["target_variable_code"] != "UBLGBPS":
+        errors.append("AMECO migration target code changed")
+    if semantic["retained_romania_series_key"] != "ROM.1.0.319.0.UBLGBPS":
+        errors.append("AMECO retained Romania UBLGBPS series key changed")
+    if semantic["official_current_release_category"] != "Cyclical Adjustment of Public Finance Variables":
+        errors.append("AMECO current-release semantic category changed")
+    if semantic["official_current_release_category_url"] != "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco17.zip":
+        errors.append("AMECO current-release category URL changed")
+    if semantic["redisstat_dataset_code_identified"] is not False or semantic["redisstat_dataset_code"] is not None:
+        errors.append("Redisstat dataset code may not be fabricated before official identification")
+    if semantic["redisstat_series_key_identified"] is not False or semantic["redisstat_series_key"] is not None:
+        errors.append("Redisstat series key may not be fabricated before official identification")
+    for key in (
+        "chapter_number_may_be_assumed_to_equal_redisstat_dataset_code",
+        "historical_ameco17_filename_may_be_assumed_to_equal_redisstat_dataset_code",
+        "third_party_mirror_code_may_define_official_redisstat_identity",
+    ):
+        if semantic[key] is not False:
+            errors.append(f"unsafe AMECO Redisstat identity inference enabled: {key}")
+    if "{DATASET_CODE}" not in semantic["redisstat_api_rule"]:
+        errors.append("AMECO Redisstat API dataset-code discovery rule changed")
+
     protocol = a["future_release_discovery_protocol"]
     if len(protocol["allowed_discovery_surfaces"]) < 5:
         errors.append("AMECO future discovery surfaces are incomplete")
