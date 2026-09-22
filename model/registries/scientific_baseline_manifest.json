@@ -264,11 +264,12 @@
         "date": "2026-10-08",
         "id": "prospective_monetary_policy_event"
       },
-      "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_reference_closure.json",
+      "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21.json",
       "next_accounting_evidence_window_check": {
         "after": "2026-10-31",
         "id": "f4_bnr_cnf_2025_stock_counterpart_matrix"
-      }
+      },
+      "immediate_previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_reference_closure.json"
     },
     "release_versioning": {
       "current_public_release": "0.3.0",
