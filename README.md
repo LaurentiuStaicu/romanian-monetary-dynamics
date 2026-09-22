@@ -191,8 +191,6 @@ Repository-wide vintage coverage is machine-checked through [data/provenance/sou
 
 Repository-wide processed-data coverage is machine-checked through [data/provenance/processed_data_inventory_registry.json](data/provenance/processed_data_inventory_registry.json). Every processed CSV is pinned by repository identity and classified by provenance role; required provenance/schema columns and authorities are checked, and any declared provenance sidecar must identify the exact processed artifact it governs. Inventory coverage does not imply that every processed artifact is canonical or current.
 
-The current repository-wide provenance-hardening stage is closed at its present scope by [model/registries/provenance_integrity_terminal_assessment_2026_09_22.json](model/registries/provenance_integrity_terminal_assessment_2026_09_22.json). Reopening requires a declared trigger such as a new/changed processed artifact, source-vintage surface, validation-recovery input boundary or a demonstrated provenance invariant failure; repeated no-trigger re-auditing is not treated as scientific progress.
-
 ### Repository map
 
 | Path | Purpose |
