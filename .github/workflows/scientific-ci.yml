@@ -440,6 +440,9 @@ jobs:
       - name: Audit complete feedback-architecture structural terminal state
         run: python scripts/audit_feedback_architecture_structural_review_terminal_assessment.py
 
+      - name: Audit feedback architecture after reference-mode closure
+        run: python scripts/audit_feedback_architecture_post_reference_closure.py
+
       - name: Audit government debt-stock to interest-cost accounting boundary
         run: python scripts/audit_government_debt_stock_to_interest_cost_boundary.py
 
