@@ -103,7 +103,7 @@ def audit_government_repricing_exchange_topology_post_terminal() -> list[str]:
     if any((row.get("new_or_marginal_rate_pct") or "").strip() for row in rows):
         errors.append("canonical repricing ledger now contains new/marginal rates without a reviewed successor")
 
-    required_fields = set(contract["ledger_schema"]["required_fields"])
+    required_fields = set(contract["scientific_boundary"]["required_dimensions"])
     for name in (
         "opening_outstanding_principal",
         "principal_repriced",
