@@ -323,7 +323,9 @@
     "active_autonomous_empirical_task": null,
     "latest_reopen_trigger_assessment": "model/registries/fiscal_capb_reopen_assessment_2026_09_19.json",
     "latest_reopen_trigger_assessment_status": "FISCAL_PRIMARY_BALANCE_REOPEN_TRIGGER_SATISFIED_PREREGISTRATION_ONLY",
-    "latest_reopen_trigger_monitoring_superseded_for": [],
+    "latest_reopen_trigger_monitoring_superseded_for": [
+      "sectoral_financial_positions"
+    ],
     "selective_reopen_active": false,
     "selective_reopen_mechanism": null,
     "selective_reopen_scope": null,

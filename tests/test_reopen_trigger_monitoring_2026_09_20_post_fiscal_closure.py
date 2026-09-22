@@ -67,6 +67,10 @@ class PostFiscalClosureTriggerMonitoringTests(unittest.TestCase):
             stage["previous_reopen_trigger_monitoring"],
             "model/registries/reopen_trigger_monitoring_2026_09_19.json",
         )
+        self.assertEqual(
+            stage["latest_reopen_trigger_monitoring_superseded_for"],
+            ["sectoral_financial_positions"],
+        )
         self.assertFalse(stage["selective_reopen_active"])
         self.assertIsNone(stage["active_manual_empirical_gate"])
 
@@ -75,6 +79,10 @@ class PostFiscalClosureTriggerMonitoringTests(unittest.TestCase):
         self.assertEqual(
             baseline["latest_reopen_trigger_monitoring_status"],
             self.a["status"],
+        )
+        self.assertEqual(
+            baseline["latest_reopen_trigger_monitoring_superseded_for"],
+            ["sectoral_financial_positions"],
         )
 
     def test_prospective_policy_driver_check_advances_without_peeking(self) -> None:
