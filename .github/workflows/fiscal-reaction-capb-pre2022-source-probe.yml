@@ -1,7 +1,10 @@
 name: Fiscal Reaction CAPB Pre-2022 Source Structure Probe
 
-# Live AMECO archive acquisition is manual-only. Provider/network failures are
-# indeterminate and must never be converted into target absence.
+# HISTORICAL PRE-2022 ARCHIVE RE-PROBE ONLY.
+# This manual workflow is bound to a frozen historical archive contract. A
+# rerun may reproduce historical source-access evidence but is not a new AMECO
+# vintage and is not a future Redisstat execution path. Provider/network
+# failures remain indeterminate and must never be converted into target absence.
 on:
   workflow_dispatch:
 
@@ -23,7 +26,7 @@ jobs:
       - name: Verify frozen pre-2022 CAPB probe contract
         run: python -m unittest tests.test_fiscal_reaction_capb_pre2022_source_probe -v
 
-      - name: Run live pre-2022 CAPB source-structure probe
+      - name: Re-probe historical pre-2022 CAPB source structure
         env:
           FISCAL_CAPB_PRE2022_PROBE_OUT: fiscal_capb_pre2022_probe_artifacts
         run: python scripts/audit_fiscal_capb_pre2022_source_probe.py
