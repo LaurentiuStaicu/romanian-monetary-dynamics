@@ -40,6 +40,21 @@ class TriggerAwareMonitoringHorizonPostSourceDiagnosticsTests(unittest.TestCase)
         )
         self.assertFalse(h["current_disposition"]["any_monitoring_gate_open_now"])
 
+    def test_status_distinguishes_initial_horizon_from_current_successor(self) -> None:
+        status = (ROOT / "STATUS.md").read_text(encoding="utf-8")
+        self.assertIn(
+            "### Initial trigger-aware monitoring horizon — 2026-09-20 (historical predecessor)",
+            status,
+        )
+        self.assertIn(
+            "RMD initially registered `model/registries/trigger_aware_monitoring_horizon_2026_09_20.json`",
+            status,
+        )
+        self.assertIn(
+            "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_source_diagnostics.json",
+            status,
+        )
+
     def test_post_f4_horizon_remains_immutable_predecessor(self) -> None:
         predecessor = json.loads((ROOT / PREDECESSOR).read_text(encoding="utf-8"))
         self.assertEqual(predecessor["registry_version"], "0.4")
