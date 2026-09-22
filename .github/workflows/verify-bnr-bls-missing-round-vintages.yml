@@ -1,0 +1,84 @@
+name: Verify Retained BNR BLS Missing-Round Vintages
+
+# The one-shot workbook and cell-extraction promotion stages completed in 2026-09.
+# Their write-capable PR event workflows are intentionally retired from the current
+# workflow surface. This manual workflow is read-only and verifies the two retained
+# source vintages against their frozen promotion reviews and the repository-wide
+# source-vintage inventory.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-retained-bnr-bls-missing-round-vintages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify frozen promotion reviews
+        run: |
+          python -m unittest tests.test_bnr_bls_missing_round_promotion_review -v
+          python -m unittest tests.test_bnr_bls_missing_round_cell_extraction_promotion_review -v
+
+      - name: Verify retained file sets, hashes, signatures and manifests
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          checks = [
+              (
+                  Path("model/calibration_validation/bnr_bls_missing_round_promotion_review.json"),
+                  Path("data/source_vintages/bnr-bls-missing-round-recovery-vintage-2026-09-19"),
+              ),
+              (
+                  Path("model/calibration_validation/bnr_bls_missing_round_cell_extraction_promotion_review.json"),
+                  Path("data/source_vintages/bnr-bls-missing-round-cell-extraction-vintage-2026-09-19"),
+              ),
+          ]
+
+          for review_path, root in checks:
+              review_bytes = review_path.read_bytes()
+              review = json.loads(review_bytes.decode("utf-8"))
+              expected_files = {item["path"]: item for item in review["expected_files"]}
+              expected_names = set(expected_files) | {"source_vintage_manifest.json"}
+              actual_names = {
+                  str(path.relative_to(root))
+                  for path in root.rglob("*")
+                  if path.is_file()
+              }
+              if actual_names != expected_names:
+                  raise SystemExit(
+                      f"{root}: retained file set mismatch: "
+                      f"missing={expected_names-actual_names}, extra={actual_names-expected_names}"
+                  )
+
+              manifest = root / "source_vintage_manifest.json"
+              if manifest.read_bytes() != review_bytes:
+                  raise SystemExit(f"{root}: source_vintage_manifest.json differs from frozen review")
+
+              for name, item in expected_files.items():
+                  data = (root / name).read_bytes()
+                  if len(data) != item["bytes"]:
+                      raise SystemExit(f"{root}: byte-count mismatch: {name}")
+                  if hashlib.sha256(data).hexdigest() != item["sha256"]:
+                      raise SystemExit(f"{root}: SHA-256 mismatch: {name}")
+                  signature = item.get("signature")
+                  if signature == "OLE2_CFBF_D0CF11E0A1B11AE1":
+                      if not data.startswith(bytes.fromhex("D0CF11E0A1B11AE1")):
+                          raise SystemExit(f"{root}: not OLE2 XLS: {name}")
+                  elif signature == "JSON" or name.endswith(".json"):
+                      json.loads(data.decode("utf-8"))
+          PY
+
+      - name: Verify repository-wide source-vintage inventory
+        run: python scripts/audit_source_vintage_inventory.py
