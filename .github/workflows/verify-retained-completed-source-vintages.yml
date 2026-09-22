@@ -2,7 +2,7 @@ name: Verify Retained Completed Source-Vintage Stages
 
 # Historical source-vintage acquisition/materialisation stages listed below are
 # complete and retained in-repository. Their former branch-push workflows with
-# contents: write are retired from the current workflow surface. This manual
+# write-capable branch-push paths are retired from the current workflow surface. This manual
 # workflow is read-only and reproduces the canonical offline assessments.
 on:
   workflow_dispatch:
