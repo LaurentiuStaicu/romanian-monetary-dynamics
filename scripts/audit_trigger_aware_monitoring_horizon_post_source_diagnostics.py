@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HORIZON = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_source_diagnostics.json"
 PREDECESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json"
 SUCCESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_ameco_access_protocol.json"
+CURRENT = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_counterpart_workflow_boundary.json"
 BLS_REVIEW = "model/calibration_validation/bnr_bls_2025q2_post_terminal_indexed_endpoint_review_2026_09_22.json"
 GOV_REPRICING_REVIEW = "model/calibration_validation/government_repricing_exchange_topology_post_terminal_assessment_2026_09_22.json"
 
@@ -136,18 +137,23 @@ def audit_trigger_aware_monitoring_horizon_post_source_diagnostics() -> list[str
     ms = model["scientific_stage"]
     bs = baseline["canonical_state"]["scientific_stage"]
     successor = load(SUCCESSOR)
+    current = load(CURRENT)
     if successor["supersedes"] != HORIZON:
-        errors.append("post-source-diagnostics horizon is not preserved as successor predecessor")
-    if ms["trigger_aware_monitoring_horizon"] != SUCCESSOR:
-        errors.append("model contract current horizon does not point to post-AMECO-access successor")
-    if bs["trigger_aware_monitoring_horizon"] != SUCCESSOR:
-        errors.append("baseline current horizon does not point to post-AMECO-access successor")
+        errors.append("post-source-diagnostics horizon is not preserved as post-AMECO predecessor")
+    if current["supersedes"] != SUCCESSOR:
+        errors.append("post-AMECO horizon is not preserved as current successor predecessor")
+    if ms["trigger_aware_monitoring_horizon"] != CURRENT:
+        errors.append("model contract current horizon does not point to counterpart-workflow successor")
+    if bs["trigger_aware_monitoring_horizon"] != CURRENT:
+        errors.append("baseline current horizon does not point to counterpart-workflow successor")
     if baseline["authority"].get("trigger_aware_monitoring_horizon_post_source_diagnostics") != HORIZON:
         errors.append("baseline no longer preserves post-source-diagnostics horizon as dated authority")
-    if ms.get("immediate_previous_trigger_aware_monitoring_horizon") != HORIZON:
-        errors.append("model contract does not preserve post-source-diagnostics horizon as immediate predecessor")
-    if bs.get("immediate_previous_trigger_aware_monitoring_horizon") != HORIZON:
-        errors.append("baseline does not preserve post-source-diagnostics horizon as immediate predecessor")
+    if baseline["authority"].get("trigger_aware_monitoring_horizon_post_ameco_access_protocol") != SUCCESSOR:
+        errors.append("baseline no longer preserves post-AMECO horizon as dated authority")
+    if ms.get("immediate_previous_trigger_aware_monitoring_horizon") != SUCCESSOR:
+        errors.append("model contract does not preserve post-AMECO horizon as immediate predecessor")
+    if bs.get("immediate_previous_trigger_aware_monitoring_horizon") != SUCCESSOR:
+        errors.append("baseline does not preserve post-AMECO horizon as immediate predecessor")
 
     if model["calibration_validation"]["bnr_bls_2025q2_latest_post_terminal_review"] != BLS_REVIEW:
         errors.append("model contract BLS review pointer changed")

@@ -1116,7 +1116,19 @@ def main() -> None:
     # Live-source refreshes are not canonical reproduction prerequisites.
     source_state = state["source_reproduction"]
     check(source_state["canonical_reproduction_requires_live_network"] is False, "Baseline may not require live network for canonical reproduction")
-    check(source_state["live_refreshes_are_new_vintage_evidence"] is True, "Baseline must treat live refresh as new-vintage evidence")
+    check(source_state["live_refreshes_are_new_vintage_evidence"] is False, "Baseline may not treat every live refresh as new-vintage evidence")
+    check(
+        source_state["live_refreshes_may_be_new_vintage_evidence_when_triggered_and_identity_changes"] is True,
+        "Baseline must preserve trigger-conditioned new-vintage evidence",
+    )
+    check(
+        source_state["unchanged_manual_rerun_is_reproduction_not_new_vintage"] is True,
+        "Baseline must classify unchanged manual reruns as reproduction rather than new-vintage evidence",
+    )
+    check(
+        source_state["live_refresh_requires_declared_reopen_or_new_vintage_condition"] is True,
+        "Baseline live refresh must require a declared reopen or new-vintage condition",
+    )
     check(source_state["live_refresh_workflows_manual_only"] is True, "Baseline requires manual-only live refresh workflows")
     for relative in LIVE_MANUAL_WORKFLOWS:
         text = (ROOT / relative).read_text(encoding="utf-8")
