@@ -521,6 +521,9 @@ jobs:
       - name: Audit repository-wide processed-data inventory coverage
         run: python scripts/audit_processed_data_inventory.py
 
+      - name: Audit terminal provenance-integrity state
+        run: python scripts/audit_provenance_integrity_terminal_assessment.py
+
       - name: Verify retained source-vintage provenance state offline
         run: python scripts/verify_validation_recovery_provenance.py
 
