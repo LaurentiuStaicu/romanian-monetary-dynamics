@@ -20,7 +20,10 @@
     "archive_page": "https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database/ameco-archive_en",
     "bulk_and_api_documentation": "https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database/bulk-downloads-and-api-access_en",
     "redisstat_catalogue_wadl": "https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/catalogue/catalogue.wadl",
-    "redisstat_sdmx_2_1_wadl": "https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/sdmx/2.1/sdmx-rest.wadl"
+    "redisstat_sdmx_2_1_wadl": "https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/sdmx/2.1/sdmx-rest.wadl",
+    "redisstat_dataflow_catalogue_endpoint": "https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/sdmx/2.1/dataflow/ECFIN/all/latest?detail=allstubs",
+    "redisstat_catalogue_toc_txt_endpoint": "https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/catalogue/toc/txt?lang=en",
+    "redisstat_browser_ameco_root": "https://webgate.ec.europa.eu/ecfin/redisstat/databrowser/explore/all/AMECO?display=card&lang=en&sort=category"
   },
   "historical_provenance_boundary": {
     "spring_2026_source_url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco17.zip",
@@ -51,7 +54,16 @@
     "legacy_chapter_url_template_reuse_authorized": false,
     "silent_fallback_to_old_interface_authorized": false,
     "current_latest_release_repolling_before_autumn_release_authorized": false,
-    "future_value_inspection_authorized_now": false
+    "future_value_inspection_authorized_now": false,
+    "dataset_identity_discovery_order": [
+      "Use the official ECFIN Redisstat AMECO browser or the official ECFIN SDMX all-dataflows catalogue to identify the dataset code from provider metadata.",
+      "Cross-check the candidate dataset title/structure against the official Redisstat Catalogue TOC and dataflow/DSD metadata.",
+      "Verify that the provider metadata contains the frozen UBLGBPS semantic target before constructing any data query.",
+      "Only after dataset and target identity are provider-verified may a reproducible data query or bulk payload be retained."
+    ],
+    "redisstat_dataset_code_may_be_derived_from_legacy_chapter_number": false,
+    "redisstat_dataset_code_may_be_derived_from_legacy_zip_name": false,
+    "redisstat_dataset_code_may_be_adopted_from_third_party_mirror": false
   },
   "trigger_adjudication": {
     "autumn_2026_release_trigger_satisfied": false,
@@ -83,6 +95,13 @@
     "chapter_number_may_be_assumed_to_equal_redisstat_dataset_code": false,
     "historical_ameco17_filename_may_be_assumed_to_equal_redisstat_dataset_code": false,
     "third_party_mirror_code_may_define_official_redisstat_identity": false,
-    "future_discovery_requirement": "At or after the next full AMECO release, identify the official Redisstat dataset code from the official browser/catalogue/API metadata itself, then verify the UBLGBPS semantic target before constructing or retaining any query."
+    "future_discovery_requirement": "At or after the next full AMECO release, identify the official Redisstat dataset code from the official browser/catalogue/API metadata itself, then verify the UBLGBPS semantic target before constructing or retaining any query.",
+    "official_dataset_discovery_metadata": [
+      "https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/sdmx/2.1/dataflow/ECFIN/all/latest?detail=allstubs",
+      "https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/catalogue/toc/txt?lang=en",
+      "https://webgate.ec.europa.eu/ecfin/redisstat/databrowser/explore/all/AMECO?display=card&lang=en&sort=category"
+    ],
+    "redisstat_dataset_code_discovery_method": "Obtain the code from official Redisstat browser/dataflow/catalogue metadata by matching provider title/structure, then verify the frozen UBLGBPS target in provider structural metadata. Do not derive the code from AMECO chapter numbering, ameco17, or third-party mirrors.",
+    "current_discovery_status": "OFFICIAL_NO_GUESS_DISCOVERY_ENDPOINTS_IDENTIFIED_DATASET_IDENTITY_NOT_YET_RETAINED"
   }
 }
