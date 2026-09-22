@@ -1,0 +1,68 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-22",
+  "mechanism_id": "aggregate_bank_credit_response",
+  "stage": "BNR BLS 2025-Q2 Post-Terminal Indexed Endpoint Review",
+  "predecessor_terminal_assessment": "model/calibration_validation/bnr_bls_2025q2_source_discovery_terminal_assessment.json",
+  "purpose": "Adjudicate a newly surfaced exact official-domain XLSX URL after the 2025-Q2 BLS source-discovery stage closed, without inferring workbook identity from an opaque path, guessing filenames, extracting values, or reopening calibration.",
+  "target_semantics": {
+    "publication_title": "Bank Lending Survey, August 2025",
+    "realised_quarter": "2025-Q2",
+    "canonical_panel": "data/processed/bnr_bls_realised_rounds.csv",
+    "expected_rounds": 12,
+    "observed_rounds": 11,
+    "missing_round": "2025-Q2"
+  },
+  "newly_observed_public_evidence": {
+    "exact_url": "https://www.bnr.ro/uploads/editor/1843119253.xlsx",
+    "official_domain": true,
+    "discovery_surface": "public web index",
+    "indexed_as_xlsx": true,
+    "public_fetch_observation": "REQUEST_REJECTED",
+    "semantic_title_exposed": false,
+    "publication_context_exposed": false,
+    "realised_round_exposed": false,
+    "workbook_bytes_retrieved": false,
+    "content_hash_available": false,
+    "xlsx_signature_verified": false,
+    "workbook_sheet_structure_verified": false,
+    "round_date_verified": false,
+    "six_preregistered_observables_verified": false
+  },
+  "semantic_adjudication": {
+    "official_domain_plus_xlsx_extension_is_sufficient_identity": false,
+    "opaque_editor_path_is_sufficient_identity": false,
+    "exact_2025q2_bls_workbook_identity_established": false,
+    "definitionally_equivalent_machine_readable_target_established": false,
+    "trigger_condition_satisfied": false,
+    "finding": "The exact BNR-domain XLSX URL is genuinely new indexed evidence, but the public index exposes no semantic binding to the August 2025 BLS publication or realised 2025-Q2 round, and the endpoint cannot currently be retrieved reproducibly for byte/schema/round verification. The endpoint therefore cannot be promoted as the missing canonical workbook."
+  },
+  "comparator_context": {
+    "semantically_named_official_bnr_bls_workbook_indexed": "https://www.bnr.ro/uploads/2025-12-09sondajblst3-noiembrie2025_xls_547_1765281659.xls",
+    "role": "Diagnostic comparator only: public indexing can expose BLS workbook URLs with semantically informative publication naming. It does not identify the opaque editor endpoint and is not a substitute for the missing 2025-Q2 source."
+  },
+  "disposition": {
+    "status": "NEW_OFFICIAL_INDEXED_XLSX_ENDPOINT_SEMANTICS_UNRESOLVED_NO_REOPEN",
+    "active_source_materialisation_task": null,
+    "source_byte_acquisition_authorized": false,
+    "numeric_extraction_authorized": false,
+    "canonical_panel_mutation_authorized": false,
+    "canonical_panel_remains_11_of_12": true,
+    "missing_round_remains": "2025-Q2",
+    "parameter_estimation_authorized": false,
+    "model_selection_authorized": false,
+    "lag_selection_authorized": false,
+    "holdout_opening_authorized": false,
+    "bank_credit_feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "model_effect": false
+  },
+  "reopen_rule": {
+    "required_new_evidence": "A public official BNR page/archive/search result or reproducibly retrievable official file must bind an exact machine-readable target to the August 2025 BLS / realised 2025-Q2 semantics, after which bytes and schema are retained and reviewed before any numeric extraction.",
+    "repeated_search_of_same_opaque_url_is_progress": false,
+    "filename_or_timestamp_guessing_authorized": false,
+    "opaque_url_semantic_inference_authorized": false,
+    "rounded_report_substitution_authorized": false
+  },
+  "decision": "NO_REOPEN_OPAQUE_OFFICIAL_INDEXED_XLSX_ENDPOINT_NOT_SEMANTICALLY_IDENTIFIED"
+}
