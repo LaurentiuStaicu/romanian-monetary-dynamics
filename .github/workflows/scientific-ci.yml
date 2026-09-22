@@ -356,6 +356,9 @@ jobs:
       - name: Audit post-F4 trigger-aware monitoring horizon
         run: python scripts/audit_trigger_aware_monitoring_horizon_2026_09_22.py
 
+      - name: Audit post-source-diagnostics trigger-aware monitoring horizon
+        run: python scripts/audit_trigger_aware_monitoring_horizon_post_source_diagnostics.py
+
       - name: Audit F3 empirical dynamic replay
         run: python scripts/audit_f3_empirical_replay.py
 
