@@ -1,7 +1,7 @@
 {
-  "contract_version": "1.0",
+  "contract_version": "1.1",
   "frozen_on": "2026-09-20",
-  "implementation_status": "PUBLIC_README_IMPLEMENTATION_PROPOSED_NOT_MERGED",
+  "implementation_status": "PUBLIC_README_IMPLEMENTED_ON_MAIN_CI_GOVERNED",
   "purpose": "Define the professional first-page information architecture, visual shell, scientific-boundary rules and machine-checkable status sources for the Romanian Monetary Dynamics repository, while preserving suite consistency with AtM, EWD and CBD without forcing paradigm uniformity.",
   "evidence_basis": [
     {
@@ -247,9 +247,12 @@
   "approval_boundary": {
     "public_readme_replacement_authorized_by_this_contract": false,
     "visual_concept_diagram_creation_authorized_by_this_contract": false,
-    "reason": "The professional landing page is implemented on a review branch with promoted public assets and CI checks, but publication on main remains gated by review of the complete rendered page.",
-    "public_readme_replacement_proposed": true,
-    "public_readme_implementation_branch": "docs/professional-rmd-landing-page-2026-09-20"
+    "reason": "The v1.0 contract itself did not authorize publication. The professional README was subsequently reviewed and implemented on main at commit 159dcfb06b36fa510ffc8e09822b4cf7031b65a3; the public surface is now governed by CI consistency tests.",
+    "public_readme_replacement_proposed": false,
+    "public_readme_replacement_implemented": true,
+    "public_readme_implementation_commit": "159dcfb06b36fa510ffc8e09822b4cf7031b65a3",
+    "public_readme_implementation_branch": "docs/professional-rmd-landing-page-2026-09-20",
+    "preview_retained_as_review_history": true
   },
   "benchmark_repository_patterns": [
     {
@@ -346,5 +349,16 @@
         "Does it avoid implying behavioural closure or validated forecasting?"
       ]
     }
+  },
+  "implementation_state_updated_on": "2026-09-22",
+  "implementation_record": {
+    "implementation_commit": "159dcfb06b36fa510ffc8e09822b4cf7031b65a3",
+    "implementation_commit_date": "2026-09-20",
+    "implementation_commit_message": "Implement professional RMD repository landing page",
+    "public_surface": "README.md",
+    "preview_retained_as_review_history": true,
+    "preview_path": ".github/RMD_README_PREVIEW.md",
+    "ci_governance_test": "tests/test_readme_design_contract.py",
+    "interpretation": "The v1.0 contract froze the proposed design and approval boundary before publication. A later reviewed repository action implemented the professional landing page on main; v1.1 records that successor state without rewriting the original proposal history."
   }
 }
