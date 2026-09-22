@@ -27,11 +27,36 @@ class ReleasePublicationWorkflowTests(unittest.TestCase):
         self.assertNotIn("git tag -f",text)
         self.assertNotIn("git push -f",text)
 
-    def test_workflow_requires_contents_write_only_for_publication(self):
+    def test_workflow_scopes_write_permission_to_authorized_publish_job(self):
         text=WORKFLOW.read_text(encoding="utf-8")
-        self.assertIn("permissions:",text)
-        self.assertIn("contents: write",text)
-        self.assertIn("audit_release_publication_authorization.py",text)
+        header, jobs = text.split("jobs:", 1)
+        check, publish = jobs.split("  publish-release:", 1)
+
+        self.assertIn("permissions:", header)
+        self.assertIn("contents: read", header)
+        self.assertNotIn("contents: write", header)
+
+        self.assertIn("  check-authorization:", jobs)
+        self.assertNotIn("contents: write", check)
+        self.assertIn("authorized: ${{ steps.auth.outputs.authorized }}", check)
+
+        self.assertIn("needs: check-authorization", publish)
+        self.assertIn(
+            "if: needs.check-authorization.outputs.authorized == 'true'",
+            publish,
+        )
+        self.assertIn("permissions:", publish)
+        self.assertIn("contents: write", publish)
+        self.assertIn("audit_release_publication_authorization.py", publish)
+
+    def test_authorization_metadata_flows_from_read_job_to_publish_job(self):
+        text=WORKFLOW.read_text(encoding="utf-8")
+        for key in ("tag", "title", "notes"):
+            self.assertIn(f"{key}: ${{{{ steps.auth.outputs.{key} }}}}", text)
+            self.assertIn(
+                f"${{{{ needs.check-authorization.outputs.{key} }}}}",
+                text,
+            )
 
 if __name__=="__main__":
     unittest.main()
