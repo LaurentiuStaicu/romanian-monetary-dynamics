@@ -51,6 +51,19 @@ class ProcessedDataInventoryTests(unittest.TestCase):
         )
         self.assertFalse(assessment["scientific_effect"]["validation_recovery_results_changed"])
 
+    def test_inventory_scope_does_not_imply_every_processed_artifact_is_canonical(self) -> None:
+        registry = json.loads(
+            (ROOT / "data/provenance/processed_data_inventory_registry.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertNotIn("every canonical CSV", registry["purpose"])
+        legacy = [
+            item for item in registry["entries"]
+            if item["provenance_class"] == "LEGACY_RECONCILED_BY_SUCCESSOR"
+        ]
+        self.assertEqual(len(legacy), 3)
+
     def test_processed_inventory_gate_is_exposed_in_local_reproduction_and_ci(self) -> None:
         command = "python scripts/audit_processed_data_inventory.py"
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
