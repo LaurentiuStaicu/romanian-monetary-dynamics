@@ -1,18 +1,33 @@
 name: Promote Recovered Ministry 2025 Official PDFs
 
-on:
-  push:
-    branches:
-      - recovery/mof-announced-ron-primary-reference-auction-missing-sources-2026-09-20
-    paths:
-      - .github/workflows/mof-announced-ron-primary-reference-auction-recovered-official-pdfs.yml
-      - scripts/promote_mof_announced_RON_primary_reference_auction_recovered_official_pdfs.py
-      - scripts/probe_mof_announced_RON_primary_reference_auction_missing_official_pdfs.py
-      - tests/test_mof_announced_RON_primary_reference_auction_recovered_official_pdfs.py
-      - tests/test_mof_announced_RON_primary_reference_auction_missing_official_pdfs.py
-      - model/dynamics/mof_announced_RON_primary_reference_auction_full_2025_source_vintage_contract.json
-  workflow_dispatch:
+run-name: "MoF full-2025 recovery / ${{ inputs.trigger_condition }} / ${{ inputs.evidence_reference }}"
 
+# EVIDENCE-TRIGGERED MANUAL RECOVERY ONLY.
+# The canonical recovery assessment has active_polling=false and three unresolved
+# official acts. Do not dispatch against unchanged endpoints or as routine polling.
+# A run must declare which frozen reopen condition is satisfied by genuinely new
+# official evidence. Manual execution without such evidence is reproduction/probing,
+# not scientific progress.
+on:
+  workflow_dispatch:
+    inputs:
+      trigger_condition:
+        description: "Frozen reopen condition satisfied by genuinely new official evidence"
+        required: true
+        type: choice
+        options:
+          - stable_official_pdf_or_file_transport
+          - portal_transport_becomes_reproducible
+          - verifiable_official_raw_file_supplied
+      evidence_reference:
+        description: "Reference for the new official evidence (URL, PR, issue, commit, or retained artifact)"
+        required: true
+        type: string
+      evidence_verified:
+        description: "Confirm the referenced evidence is new and satisfies the selected reopen condition"
+        required: true
+        type: boolean
+        default: false
 concurrency:
   group: mof-recovered-official-pdf-promotion
   cancel-in-progress: true
@@ -22,13 +37,14 @@ permissions:
 
 jobs:
   promote:
-    if: ${{ github.actor != 'github-actions[bot]' }}
+    if: ${{ inputs.evidence_verified == true && github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out recovery branch
         uses: actions/checkout@v7
         with:
+          ref: recovery/mof-announced-ron-primary-reference-auction-missing-sources-2026-09-20
           fetch-depth: 0
 
       - name: Set up Python 3.12
