@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 import unittest
+from pathlib import Path
 
 from scripts.audit_provenance_integrity_terminal_assessment import (
     audit_provenance_integrity_terminal,
 )
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 class ProvenanceIntegrityTerminalAssessmentTests(unittest.TestCase):
