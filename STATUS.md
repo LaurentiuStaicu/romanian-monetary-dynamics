@@ -678,3 +678,11 @@ The original F4 Phase-B artifact and source vintage were already retained on 202
 Accordingly, the `F4 Partial Materialization Audit` no longer carries a PR bootstrap/write path. Its `GITHUB_TOKEN` is read-only; the historical Actions artifact is not refetched and the workflow performs no `git push`. It still verifies the immutable source vintage, runs the historical partial-F4 tests, regenerates the partial artifact offline and requires semantic equivalence to the retained files.
 
 This is least-privilege/reproducibility hardening only. The current F4 scientific state remains `PARTIAL_STRUCTURAL_ZERO_CORE_MATERIALIZED` on evidence-triggered hold; the Accounting Spine, reference modes, public **v0.3.0** release and behavioural closure are unchanged.
+
+### Release publisher least-privilege boundary — 2026-09-22
+
+The release publication workflow now separates authorization inspection from publication. A green `main` Scientific CI run first enters a read-only job that checks the exact green commit's checked-in `release_publication_authorization.json`. Only when that file explicitly has `publication_authorized=true` can a second job run with job-scoped `contents: write` and publish the exact green commit.
+
+The current v0.3.0 publication authorization remains consumed (`publication_authorized=false`, `PUBLISHED_AND_AUTHORIZATION_CONSUMED`), so ordinary post-v0.3.0 green CI runs perform only the read-only check and cannot enter the write-capable publisher job. Published v0.3.0 identity/tag/commit remain immutable.
+
+This changes repository execution privilege only. It does not authorize a version bump, release v0.4.0, model calibration, estimation, holdout opening, feedback activation or behavioural closure.
