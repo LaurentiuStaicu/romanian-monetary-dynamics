@@ -334,6 +334,16 @@ def main() -> None:
         model["scientific_stage"]["release_ready"] is False,
         "Terminal recovery stage may not claim release readiness",
     )
+    check(
+        manifest["authority"]["trigger_aware_monitoring_horizon"]
+        == model["scientific_stage"]["trigger_aware_monitoring_horizon"],
+        "Baseline generic monitoring-horizon authority is stale relative to model contract",
+    )
+    check(
+        manifest["authority"]["trigger_aware_monitoring_horizon"]
+        == state["scientific_stage"]["trigger_aware_monitoring_horizon"],
+        "Baseline generic monitoring-horizon authority is stale relative to canonical state",
+    )
 
     # Accounting state is derived from the canonical accounting gate.
     expected = accounting["current_expected_state"]
