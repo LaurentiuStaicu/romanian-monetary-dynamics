@@ -1,0 +1,71 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-22",
+  "mechanism_id": "fiscal_primary_balance_reaction",
+  "stage": "AMECO Source-Access Migration Readiness",
+  "purpose": "Protect the future Autumn 2026 AMECO release-conditioned source cycle from the announced retirement of the old AMECO Online interface, without guessing a future release URL, refetching retained historical vintages, inspecting future values, or reopening the deferred fiscal mechanism.",
+  "governing_trigger_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_source_diagnostics.json",
+  "retained_historical_contract": "model/calibration_validation/fiscal_reaction_capb_realtime_vintage_contract.json",
+  "retained_raw_source_assessment": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json",
+  "official_current_state": {
+    "latest_full_release_date": "2026-06-03",
+    "latest_full_release_label": "Spring 2026 Economic Forecast",
+    "autumn_2026_full_forecast_expected_month": "2026-11",
+    "autumn_2026_exact_release_date_published": false,
+    "future_autumn_2026_exact_download_url_known": false,
+    "old_ameco_online_retirement_announced": true,
+    "old_interface_retirement_boundary": "before Autumn 2026 forecast release",
+    "new_interface": "ECFIN Redisstat",
+    "current_release_download_page": "https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database/download-annual-data-set-macro-economic-database-ameco_en",
+    "archive_page": "https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database/ameco-archive_en",
+    "bulk_and_api_documentation": "https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database/bulk-downloads-and-api-access_en",
+    "redisstat_catalogue_wadl": "https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/catalogue/catalogue.wadl",
+    "redisstat_sdmx_2_1_wadl": "https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/sdmx/2.1/sdmx-rest.wadl"
+  },
+  "historical_provenance_boundary": {
+    "spring_2026_source_url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco17.zip",
+    "spring_2026_source_url_role": "IMMUTABLE_HISTORICAL_PROVENANCE_ONLY",
+    "historical_release_urls_may_be_rewritten": false,
+    "retained_source_bytes_may_be_refetched_to_replace_repository_bytes": false,
+    "legacy_url_pattern_may_be_used_to_guess_autumn_2026_url": false
+  },
+  "future_release_discovery_protocol": {
+    "prerequisite": "European Commission publishes the Autumn 2026 full macroeconomic forecast / corresponding AMECO full release.",
+    "allowed_discovery_surfaces": [
+      "official AMECO database page current-release links",
+      "official AMECO current-release zipped-file page",
+      "official AMECO Archive once the vintage is published there",
+      "official ECFIN Redisstat catalogue/browser",
+      "official ECFIN Redisstat Bulk Download Facility",
+      "official ECFIN Redisstat SDMX API"
+    ],
+    "required_before_value_extraction": [
+      "identify the exact official Autumn 2026 release/vintage",
+      "identify the exact official machine-readable source target without filename or UUID guessing",
+      "retain exact provider bytes or exact reproducible API response",
+      "record provider URL/query, response identity, byte size and SHA-256 where byte payload applies",
+      "verify the exact UBLGBPS structural-primary target semantics and release label/date",
+      "create a new preregistered source-cycle contract before any modelling decision"
+    ],
+    "source_url_guessing_authorized": false,
+    "legacy_chapter_url_template_reuse_authorized": false,
+    "silent_fallback_to_old_interface_authorized": false,
+    "current_latest_release_repolling_before_autumn_release_authorized": false,
+    "future_value_inspection_authorized_now": false
+  },
+  "trigger_adjudication": {
+    "autumn_2026_release_trigger_satisfied": false,
+    "source_materialisation_reopen_active": false,
+    "exact_future_release_url_known": false,
+    "exact_future_release_bytes_known": false,
+    "fiscal_mechanism_classification": "DEFERRED",
+    "calibration_cycle_open": false,
+    "parameter_estimation_authorized": false,
+    "model_selection_authorized": false,
+    "holdout_opening_authorized": false,
+    "behavioural_closure_authorized": false,
+    "system_dynamics_activation_authorized": false,
+    "model_effect": false
+  },
+  "decision": "AMECO_ACCESS_MIGRATION_READY_FUTURE_RELEASE_NOT_YET_AVAILABLE_NO_REOPEN"
+}
