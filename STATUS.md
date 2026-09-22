@@ -95,7 +95,7 @@ The separately preregistered exact-row gate was then executed **before any numer
 
 The terminal assessment is `model/dynamics/sectoral_financial_positions_oecd_exact_row_gate_assessment_2026_09_21.json`, with compact retained missing-key evidence under `data/source_vintages/oecd-nonconsolidated-sectoral-financial-positions-row-gate-2026-09-21/`.
 
-The source-topology task is therefore closed and RMD has returned to **EVIDENCE_TRIGGERED_BASELINE_HOLD**. The canonical state remains **9/10 reference modes ready**; `sectoral_financial_positions` remains `PARTIAL_SERIES_AVAILABLE`; F3 remains the only canonically complete stock-and-flow Accounting Spine instrument; calibration/refit, parameter estimation, feedback activation and behavioural closure remain closed. Reopening requires genuinely changed official evidence that supplies the missing exact boundary, or an independently preregistered official semantic/applicability basis established before a new value gate.
+The source-topology task was therefore closed and RMD returned to **EVIDENCE_TRIGGERED_BASELINE_HOLD**. At that source-topology checkpoint, the canonical state remained **9/10 reference modes ready** and `sectoral_financial_positions` remained `PARTIAL_SERIES_AVAILABLE`; F3 was still the only canonically complete stock-and-flow Accounting Spine instrument, while calibration/refit, parameter estimation, feedback activation and behavioural closure remained closed. The later post-terminal promotion to 10/10 is recorded separately and does not rewrite this checkpoint. Reopening requires genuinely changed official evidence that supplies the missing exact boundary, or an independently preregistered official semantic/applicability basis established before a new value gate.
 
 
 
@@ -107,7 +107,7 @@ The semantic-adjusted OECD gate was then executed without changing sectors, inst
 
 The final reconciliation gate **failed** at the frozen tolerance of **0.1 million RON**. Across 98 measure-quarter tests there were **63 violations**: 27 for financial transactions and 36 for stocks. The maximum absolute system residual was about **0.5 million RON for flows** and **0.6 million RON for stocks**. The same small scale appears in source-level diagnostics (`S1` versus resident components and `S1 + S2`), but no official quantitative dissemination-rounding tolerance had been preregistered that would authorize relaxing the threshold after seeing the result.
 
-The terminal assessment is `model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json`. The semantic applicability finding is retained, but the aggregate reference-mode path is closed again. `sectoral_financial_positions` remains `PARTIAL_SERIES_AVAILABLE`, the global readiness remains **9/10**, Accounting Spine readiness is unchanged, and no parameter estimation, feedback activation or behavioural closure is authorized.
+The terminal assessment is `model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json`. The semantic applicability finding is retained, but the aggregate reference-mode path closed again at that checkpoint. `sectoral_financial_positions` remained `PARTIAL_SERIES_AVAILABLE` and global readiness remained **9/10** at that semantic-adjusted terminal checkpoint; Accounting Spine readiness was unchanged, and no parameter estimation, feedback activation or behavioural closure was authorized. The later 10/10 successor remains separate.
 
 No immediate rerun is authorized. A future reopen requires materially changed official evidence affecting the public numerical precision/balancing boundary, or an independent official dissemination-precision rule established and preregistered **before** any future value gate. The observed 0.5–0.6 million RON residuals alone do not authorize a new tolerance.
 
@@ -125,7 +125,7 @@ However, the independent source diagnostic `S1 + S2` contains only 28 disseminat
 
 The retained CSV happens to serialize observations with integers or one visible decimal, but that lexical representation is not an official domain-specific rounding/precision rule and cannot be promoted after the result into a new tolerance. No new value run, tolerance change or reference-mode promotion is authorized.
 
-The result remains `PARTIAL_SERIES_AVAILABLE` and **9/10 reference modes ready**. Reopening requires a domain-specific official financial-accounts rule that quantitatively defines dissemination precision/balancing tolerance, or a changed source whose public values satisfy the frozen identity.
+At that dissemination-precision diagnostic checkpoint, the result remained `PARTIAL_SERIES_AVAILABLE` and **9/10 reference modes ready**. Reopening required a domain-specific official financial-accounts rule that quantitatively defines dissemination precision/balancing tolerance, or a changed source whose public values satisfied the frozen identity. The later official ECB rule and separate promotion are recorded in subsequent sections.
 
 
 
@@ -150,7 +150,7 @@ There are exactly ten possible contiguous 40-quarter windows within the retained
 
 The failure also persists after the 2025 benchmark revision and new BNR financial-accounts IT system. Across 2025Q1–2026Q1, five of ten stock/flow tests still fail the exact 0.1 million RON threshold, affecting four of five quarters. This rules out the interpretation that the public-boundary discrepancy is confined to legacy pre-benchmark observations.
 
-No post-result window shortening, period dropping or tolerance change is authorized. The mode remains `PARTIAL_SERIES_AVAILABLE` and 9/10 ready.
+No post-result window shortening, period dropping or tolerance change was authorized. At that window-stability checkpoint, the mode remained `PARTIAL_SERIES_AVAILABLE` and the global reference-mode state remained 9/10. The later official-tolerance successor is recorded below.
 
 
 
@@ -164,7 +164,7 @@ A new gate is preregistered under `model/dynamics/sectoral_financial_positions_e
 
 The first-stage currency test is deliberately stricter than the ECB threshold: every per-instrument residual must be below 10 million RON, while official ECB RON-per-EUR quarterly rates must remain above 1. If that strict sufficient condition fails for any cell, the result is indeterminate and an exact EUR-conversion convention must be preregistered before further interpretation.
 
-No value has yet been inspected under this new gate. The canonical state remains 9/10 with `sectoral_financial_positions = PARTIAL_SERIES_AVAILABLE`; Accounting Spine and behavioural closure are unchanged.
+At this preregistered pre-execution checkpoint, no value had yet been inspected under the new gate. The canonical state therefore still stood at 9/10 with `sectoral_financial_positions = PARTIAL_SERIES_AVAILABLE`; Accounting Spine and behavioural closure were unchanged. The gate execution and later promotion are recorded separately below.
 
 
 ### Trigger-aware monitoring horizon — successor frozen 2026-09-21
