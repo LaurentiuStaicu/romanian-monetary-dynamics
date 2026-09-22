@@ -42,8 +42,14 @@ def audit_actions_write_permission_boundary() -> list[str]:
     for path in workflow_paths():
         relative = path.relative_to(ROOT).as_posix()
         text = path.read_text(encoding="utf-8")
+        lines = text.splitlines()
 
-        if any(WRITE_ALL_RE.match(line) for line in text.splitlines()):
+        if not any(line.startswith("permissions:") for line in lines):
+            errors.append(
+                f"{relative}: workflow must declare top-level permissions explicitly"
+            )
+
+        if any(WRITE_ALL_RE.match(line) for line in lines):
             errors.append(f"{relative}: permissions: write-all is forbidden")
 
         occurrences = write_occurrences(text)
@@ -156,6 +162,7 @@ def main() -> None:
             {
                 "status": "PASS",
                 "workflow_count": len(workflow_paths()),
+                "explicit_permissions_required": True,
                 "write_capable_workflow_count": len(discovered),
                 "write_capable_workflows": discovered,
                 "policy": "EXACT_ALLOWLIST_LEAST_PRIVILEGE",
