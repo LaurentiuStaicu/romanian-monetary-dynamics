@@ -362,6 +362,9 @@ jobs:
       - name: Audit post-AMECO-access trigger-aware monitoring horizon
         run: python scripts/audit_trigger_aware_monitoring_horizon_post_ameco_access_protocol.py
 
+      - name: Audit post-counterpart-workflow trigger-aware monitoring horizon
+        run: python scripts/audit_trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary.py
+
       - name: Audit F3 empirical dynamic replay
         run: python scripts/audit_f3_empirical_replay.py
 
