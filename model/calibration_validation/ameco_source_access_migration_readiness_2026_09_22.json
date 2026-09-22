@@ -67,5 +67,22 @@
     "system_dynamics_activation_authorized": false,
     "model_effect": false
   },
-  "decision": "AMECO_ACCESS_MIGRATION_READY_FUTURE_RELEASE_NOT_YET_AVAILABLE_NO_REOPEN"
+  "decision": "AMECO_ACCESS_MIGRATION_READY_FUTURE_RELEASE_NOT_YET_AVAILABLE_NO_REOPEN",
+  "semantic_migration_anchor": {
+    "target_variable_code": "UBLGBPS",
+    "retained_romania_series_key": "ROM.1.0.319.0.UBLGBPS",
+    "target_semantics": "Structural balance of general government excluding interest; adjustment based on potential GDP; excessive deficit procedure; percentage of potential GDP at current prices.",
+    "official_current_release_category": "Cyclical Adjustment of Public Finance Variables",
+    "official_current_release_category_url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco17.zip",
+    "category_link_basis": "The official 3 June 2026 AMECO current-release download page links the Cyclical Adjustment of Public Finance Variables category to ameco17.zip.",
+    "redisstat_api_rule": "The official ECFIN Redisstat API documentation requires /data/{DATASET_CODE} and states that DATASET_CODE must be obtained from the Redisstat browser next to the dataset title.",
+    "redisstat_dataset_code_identified": false,
+    "redisstat_dataset_code": null,
+    "redisstat_series_key_identified": false,
+    "redisstat_series_key": null,
+    "chapter_number_may_be_assumed_to_equal_redisstat_dataset_code": false,
+    "historical_ameco17_filename_may_be_assumed_to_equal_redisstat_dataset_code": false,
+    "third_party_mirror_code_may_define_official_redisstat_identity": false,
+    "future_discovery_requirement": "At or after the next full AMECO release, identify the official Redisstat dataset code from the official browser/catalogue/API metadata itself, then verify the UBLGBPS semantic target before constructing or retaining any query."
+  }
 }

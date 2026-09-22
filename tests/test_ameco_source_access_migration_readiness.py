@@ -33,6 +33,27 @@ class AmecoSourceAccessMigrationReadinessTests(unittest.TestCase):
             a["historical_provenance_boundary"]["legacy_url_pattern_may_be_used_to_guess_autumn_2026_url"]
         )
 
+    def test_redisstat_identity_is_semantically_anchored_but_not_guessed(self) -> None:
+        a = json.loads((ROOT / ASSESSMENT_PATH).read_text(encoding="utf-8"))
+        semantic = a["semantic_migration_anchor"]
+        self.assertEqual(semantic["target_variable_code"], "UBLGBPS")
+        self.assertEqual(
+            semantic["retained_romania_series_key"],
+            "ROM.1.0.319.0.UBLGBPS",
+        )
+        self.assertEqual(
+            semantic["official_current_release_category"],
+            "Cyclical Adjustment of Public Finance Variables",
+        )
+        self.assertFalse(semantic["redisstat_dataset_code_identified"])
+        self.assertIsNone(semantic["redisstat_dataset_code"])
+        self.assertFalse(
+            semantic["chapter_number_may_be_assumed_to_equal_redisstat_dataset_code"]
+        )
+        self.assertFalse(
+            semantic["historical_ameco17_filename_may_be_assumed_to_equal_redisstat_dataset_code"]
+        )
+
     def test_new_official_access_paths_are_registered(self) -> None:
         a = json.loads((ROOT / ASSESSMENT_PATH).read_text(encoding="utf-8"))
         official = a["official_current_state"]
