@@ -48,6 +48,9 @@ def audit_ameco_source_access_migration_readiness() -> list[str]:
         "bulk_and_api_documentation",
         "redisstat_catalogue_wadl",
         "redisstat_sdmx_2_1_wadl",
+        "redisstat_dataflow_catalogue_endpoint",
+        "redisstat_catalogue_toc_txt_endpoint",
+        "redisstat_browser_ameco_root",
     ):
         value = official.get(key)
         if not isinstance(value, str) or not value.startswith("https://"):
@@ -94,10 +97,32 @@ def audit_ameco_source_access_migration_readiness() -> list[str]:
             errors.append(f"unsafe AMECO Redisstat identity inference enabled: {key}")
     if "{DATASET_CODE}" not in semantic["redisstat_api_rule"]:
         errors.append("AMECO Redisstat API dataset-code discovery rule changed")
+    expected_discovery = {
+        "https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/sdmx/2.1/dataflow/ECFIN/all/latest?detail=allstubs",
+        "https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/catalogue/toc/txt?lang=en",
+        "https://webgate.ec.europa.eu/ecfin/redisstat/databrowser/explore/all/AMECO?display=card&lang=en&sort=category",
+    }
+    if set(semantic.get("official_dataset_discovery_metadata", [])) != expected_discovery:
+        errors.append("AMECO official Redisstat dataset-discovery metadata set changed")
+    if semantic.get("current_discovery_status") != "OFFICIAL_NO_GUESS_DISCOVERY_ENDPOINTS_IDENTIFIED_DATASET_IDENTITY_NOT_YET_RETAINED":
+        errors.append("AMECO Redisstat current discovery status changed")
+    method = semantic.get("redisstat_dataset_code_discovery_method", "")
+    for token in ("official Redisstat", "UBLGBPS", "Do not derive"):
+        if token not in method:
+            errors.append(f"AMECO Redisstat discovery method lost safeguard: {token}")
 
     protocol = a["future_release_discovery_protocol"]
     if len(protocol["allowed_discovery_surfaces"]) < 5:
         errors.append("AMECO future discovery surfaces are incomplete")
+    if len(protocol.get("dataset_identity_discovery_order", [])) != 4:
+        errors.append("AMECO Redisstat dataset-identity discovery order is incomplete")
+    for key in (
+        "redisstat_dataset_code_may_be_derived_from_legacy_chapter_number",
+        "redisstat_dataset_code_may_be_derived_from_legacy_zip_name",
+        "redisstat_dataset_code_may_be_adopted_from_third_party_mirror",
+    ):
+        if protocol.get(key) is not False:
+            errors.append(f"unsafe Redisstat dataset-code discovery rule enabled: {key}")
     required = protocol["required_before_value_extraction"]
     for token in (
         "identify the exact official Autumn 2026 release/vintage",
