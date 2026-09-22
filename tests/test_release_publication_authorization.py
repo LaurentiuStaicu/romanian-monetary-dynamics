@@ -45,6 +45,14 @@ class ReleasePublicationAuthorizationTests(unittest.TestCase):
             status.split("## Release status",1)[1].split("\n\n",2)[1],
         )
 
+    def test_release_index_matches_current_v030_publication(self):
+        release_index=(ROOT/"releases"/"README.md").read_text(encoding="utf-8")
+        auth=json.loads((ROOT/"model/registries/release_publication_authorization.json").read_text(encoding="utf-8"))
+        self.assertIn("The current public release is **v0.3.0**.",release_index)
+        self.assertIn("- Current public release: **v0.3.0**",release_index)
+        self.assertIn("- Release date: **2026-09-21**",release_index)
+        self.assertIn(auth["exact_release_commit"],release_index)
+
     def test_release_has_no_scientific_activation_effect(self):
         auth=json.loads((ROOT/"model/registries/release_publication_authorization.json").read_text(encoding="utf-8"))
         self.assertTrue(all(v is False for v in auth["scientific_effect"].values()))
