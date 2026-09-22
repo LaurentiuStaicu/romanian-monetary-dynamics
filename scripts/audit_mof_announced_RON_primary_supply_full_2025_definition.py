@@ -247,7 +247,9 @@ def audit_full_2025_definition(
         errors.append("model contract legacy Q1 status changed")
     if dynamic["government_securities_supply_first_reference_mode_priority"] != NEW_ID:
         errors.append("model contract full-year reference-mode priority changed")
-    if dynamic["next_government_issuance_yield_empirical_task"] != CURRENT_TASK:
+    if dynamic["next_government_issuance_yield_empirical_task"] != (
+        "government_issuance_yield_loop_evidence_triggered_hold"
+    ):
         errors.append("model contract next task changed")
     if dynamic["government_issuance_yield_feedback_activation_authorized"] is not False:
         errors.append("definition review may not authorize issuance-yield feedback")
