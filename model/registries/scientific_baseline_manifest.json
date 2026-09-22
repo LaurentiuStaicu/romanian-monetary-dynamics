@@ -220,8 +220,11 @@
     },
     "source_reproduction": {
       "canonical_reproduction_requires_live_network": false,
-      "live_refreshes_are_new_vintage_evidence": true,
-      "live_refresh_workflows_manual_only": true
+      "live_refreshes_are_new_vintage_evidence": false,
+      "live_refresh_workflows_manual_only": true,
+      "live_refreshes_may_be_new_vintage_evidence_when_triggered_and_identity_changes": true,
+      "unchanged_manual_rerun_is_reproduction_not_new_vintage": true,
+      "live_refresh_requires_declared_reopen_or_new_vintage_condition": true
     },
     "mechanism_readiness": {
       "non_rejected_mechanism_count": 11,
