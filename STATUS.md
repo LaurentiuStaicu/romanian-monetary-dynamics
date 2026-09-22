@@ -670,3 +670,11 @@ Trigger-aware monitoring horizon **0.8** now makes the existing recovery assessm
 The read-only missing-PDF probe keeps `contents: read`. The three workflows that may need to retain exact newly verified bytes or rematerialise an affected month keep `contents: write`, but only behind the manual evidence declaration. An unchanged provider response, routine rerun or repeated endpoint probe is not a trigger and does not count as scientific progress.
 
 Scientific baseline manifest **1.12** points to this successor while preserving the 0.7 counterpart-workflow horizon as its immediate predecessor. The public RMD release remains **v0.3.0**; no Accounting Spine value, model equation, reference-mode promotion, parameter estimation, feedback activation or behavioural closure changed.
+
+### Historical F4 partial workflow reduced to read-only reproduction — 2026-09-22
+
+The original F4 Phase-B artifact and source vintage were already retained on 2026-09-18, and the later structural-zero successor materialization explicitly uses deterministic offline regeneration from that retained vintage while preserving the historical 15-stock/15-flow partial artifact unchanged.
+
+Accordingly, the `F4 Partial Materialization Audit` no longer carries a PR bootstrap/write path. Its `GITHUB_TOKEN` is read-only; the historical Actions artifact is not refetched and the workflow performs no `git push`. It still verifies the immutable source vintage, runs the historical partial-F4 tests, regenerates the partial artifact offline and requires semantic equivalence to the retained files.
+
+This is least-privilege/reproducibility hardening only. The current F4 scientific state remains `PARTIAL_STRUCTURAL_ZERO_CORE_MATERIALIZED` on evidence-triggered hold; the Accounting Spine, reference modes, public **v0.3.0** release and behavioural closure are unchanged.
