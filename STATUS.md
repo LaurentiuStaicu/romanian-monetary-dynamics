@@ -583,7 +583,7 @@ The result is **NO_REOPEN**. F4 remains stock rank 31/nullity 4 with 25 exact ce
 
 ### Post-F4 trigger-aware monitoring horizon — 2026-09-22
 
-The central trigger-aware monitoring horizon has been advanced without reopening any scientific gate. The previous post-reference-closure horizon is retained immutably as the predecessor; the current successor is `model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json`.
+The central trigger-aware monitoring horizon was first advanced on 22 September without reopening any scientific gate. The previous post-reference-closure horizon is retained immutably as the predecessor of that first same-day successor, `model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json`.
 
 A further same-day successor, `model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_source_diagnostics.json`, now records two genuinely new official-source clues that were adjudicated after that post-F4 snapshot without satisfying their reopen conditions: the opaque indexed BNR XLSX for BLS 2025-Q2 and the MoF May-2025 exchange-operation topology for government repricing. The post-F4 horizon remains immutable as the immediate predecessor. No monitoring gate is open; the next dated event remains the **BNR decision on 2026-10-08**, the routine ECB QSA release on **2026-10-02** does not itself reopen the Accounting Spine, the October MIR response remains closed until **2026-12-02** if and only if October contains a non-zero policy-rate event, and the F4 CNF stock check remains time-gated until **after 2026-10-31**.
 
