@@ -172,6 +172,11 @@ def main() -> None:
         "Scientific baseline and model contract disagree on latest government repricing exchange-topology review",
     )
     check(
+        manifest["authority"]["ameco_source_access_migration_readiness"]
+        == model["calibration_validation"]["ameco_source_access_migration_readiness"],
+        "Scientific baseline and model contract disagree on AMECO source-access migration readiness",
+    )
+    check(
         reset["scientific_baseline_manifest"]
         == "model/registries/scientific_baseline_manifest.json",
         "Reset integrity contract does not register the scientific baseline manifest",

@@ -83,6 +83,8 @@ The next dated check is **2026-10-08** and is limited to the BNR monetary-policy
 
 Fiscal AMECO monitoring is release-conditioned rather than polled: the next legitimate check occurs only after the Commission publishes the Autumn 2026 full forecast / corresponding AMECO release. The exact BNR BLS 2025-Q2 source, the government repricing ledger and the accounting/reference-mode counterpart boundaries are new-evidence-only triggers. Routine quarterly data releases without changed topology do not reopen frozen source paths.
 
+AMECO source access has also been migration-hardened ahead of that release. The Commission states that the old AMECO Online interface will be decommissioned before the Autumn 2026 forecast and that current AMECO dissemination is available through the new ECFIN Redisstat interface, current-release zipped files, the AMECO Archive, Bulk Download and official SDMX APIs. RMD therefore treats the retained Spring 2026 legacy chapter URL as immutable historical provenance only, not as a template for a future Autumn URL. After the Autumn 2026 full release appears, source discovery must begin from those official current surfaces; the exact machine-readable target and provider URL/query must be identified and frozen before bytes or values are admitted. The readiness assessment is `model/calibration_validation/ameco_source_access_migration_readiness_2026_09_22.json`. This access migration does not satisfy the fiscal reopen trigger and does not authorize current polling or value inspection.
+
 
 
 ### BNR 2025 financial-accounts topology trigger — 2026-09-21

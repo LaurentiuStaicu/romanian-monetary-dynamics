@@ -306,6 +306,8 @@
     "prospective_monetary_confirmation_contract": "model/calibration_validation/prospective_monetary_confirmation_contract.json",
     "mechanism_source_readiness": "model/calibration_validation/mechanism_source_readiness.json",
     "mechanism_reopen_conditions_registry": "model/calibration_validation/mechanism_reopen_conditions_registry.json",
+    "ameco_source_access_migration_readiness": "model/calibration_validation/ameco_source_access_migration_readiness_2026_09_22.json",
+    "ameco_source_access_migration_status": "AMECO_ACCESS_MIGRATION_READY_FUTURE_RELEASE_NOT_YET_AVAILABLE_NO_REOPEN",
     "bnr_bls_2025q2_source_discovery_terminal_assessment": "model/calibration_validation/bnr_bls_2025q2_source_discovery_terminal_assessment.json",
     "bnr_bls_2025q2_latest_post_terminal_review": "model/calibration_validation/bnr_bls_2025q2_post_terminal_indexed_endpoint_review_2026_09_22.json",
     "bnr_bls_2025q2_latest_post_terminal_review_status": "NEW_OFFICIAL_INDEXED_XLSX_ENDPOINT_SEMANTICS_UNRESOLVED_NO_REOPEN"
