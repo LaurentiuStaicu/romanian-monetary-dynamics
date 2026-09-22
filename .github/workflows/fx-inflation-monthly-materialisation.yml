@@ -1,8 +1,12 @@
 name: FX Inflation Monthly Source Materialisation
 
 # Live provider refresh/materialisation is manual-only. The reviewed
-# 2026-09-19 level-only source vintage is retained immutably in-repository;
-# any future run is evidence for a new vintage and cannot overwrite it.
+# 2026-09-19 level-only source vintage is retained immutably in-repository.
+# A future run may provide candidate new-vintage evidence only if provider
+# identity/bytes or the retained observation vintage materially change; an
+# unchanged rerun is reproduction only. No rerun reopens the failed FX
+# pass-through mechanism without its separately declared measurement or
+# identification trigger.
 on:
   workflow_dispatch:
 
