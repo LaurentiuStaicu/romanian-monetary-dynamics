@@ -26,6 +26,7 @@ class PostTerminalReferenceModePromotionTests(unittest.TestCase):
             "At that dissemination-precision diagnostic checkpoint",
             "At that window-stability checkpoint",
             "At this preregistered pre-execution checkpoint",
+            "At that immediate post-execution checkpoint",
         ):
             self.assertIn(marker, status)
         for stale in (
@@ -33,6 +34,7 @@ class PostTerminalReferenceModePromotionTests(unittest.TestCase):
             "The result remains `PARTIAL_SERIES_AVAILABLE` and **9/10 reference modes ready**",
             "The mode remains `PARTIAL_SERIES_AVAILABLE` and 9/10 ready",
             "The canonical state remains 9/10 with `sectoral_financial_positions = PARTIAL_SERIES_AVAILABLE`",
+            "The canonical state therefore remains 9/10 and `PARTIAL_SERIES_AVAILABLE` until that separate promotion assessment passes.",
         ):
             self.assertNotIn(stale, status)
 
