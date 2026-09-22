@@ -1,0 +1,130 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-22",
+  "mechanism_id": "government_refinancing_effective_rate",
+  "stage": "Government Repricing Ledger Post-Terminal Liability-Management Exchange Topology Review",
+  "predecessor_ledger_assessment": "model/calibration_validation/government_repricing_ledger_assessment.json",
+  "contract": "model/calibration_validation/government_repricing_ledger_contract.json",
+  "purpose": "Adjudicate newly identified official Ministry of Finance exchange-operation topology as a possible government repricing-ledger source path, without treating ex-ante prospect terms, old-side price quotations, coupons, issue sizes, or secondary reporting as realized matched repricing evidence.",
+  "new_official_evidence": {
+    "may_2025_exchange_prospect": {
+      "url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/OMF817mai2025.pdf",
+      "source_class": "OFFICIAL_MOF_PROSPECT",
+      "operation_dates": [
+        "2025-05-21",
+        "2025-05-28"
+      ],
+      "old_to_new_topology": [
+        {
+          "operation_date": "2025-05-21",
+          "old_isins": [
+            {
+              "isin": "RODD24CXRK47",
+              "maturity": "2025-07-28",
+              "coupon_pct": 3.65
+            },
+            {
+              "isin": "ROJ0LNOCKHR8",
+              "maturity": "2025-11-25",
+              "coupon_pct": 3.5
+            }
+          ],
+          "new_isin": {
+            "isin": "ROXL7LT7QZ66",
+            "maturity": "2030-04-29",
+            "coupon_pct": 8,
+            "indicative_nominal_million_ron": 200
+          }
+        },
+        {
+          "operation_date": "2025-05-28",
+          "old_isins": [
+            {
+              "isin": "RO7EKTXSRHD6",
+              "maturity": "2026-01-28",
+              "coupon_pct": 6.3
+            },
+            {
+              "isin": "ROHRVN7NLNO2",
+              "maturity": "2026-04-22",
+              "coupon_pct": 4.85
+            }
+          ],
+          "new_isin": {
+            "isin": "RODFIUK7ZV55",
+            "maturity": "2035-04-25",
+            "coupon_pct": 6.75,
+            "indicative_nominal_million_ron": 200
+          }
+        }
+      ],
+      "result_publication_rule": "Article 9 requires exchange-operation results to be established on auction day and made public.",
+      "proceeds_semantics": "Article 13 states that amounts received from exchange operations are used for deficit financing and public-debt refinancing."
+    },
+    "may_21_old_side_price_announcement": {
+      "url": "https://mfinante.gov.ro/static/10/Mfp/trezorerie/PretpreschimbareEX21mai2025.pdf",
+      "source_class": "OFFICIAL_MOF_PRE_AUCTION_PRICE_ANNOUNCEMENT",
+      "observed_old_side_net_prices_pct": {
+        "RODD24CXRK47": 99.329,
+        "ROJ0LNOCKHR8": 98.095
+      },
+      "limitation": "Old-side net price quotations are not realized accepted principal, opening outstanding principal, or a matched old effective-rate observation."
+    }
+  },
+  "secondary_locator_only": {
+    "url": "https://www.dcbusiness.ro/dobanzile-urca-din-nou-ce-inseamna-pentru-ratele-tale-la-banca_676202.html",
+    "reported_values": {
+      "new_2030_operation_nominal_million_ron": 502.3,
+      "reported_yield_pct": 7.55
+    },
+    "canonical_evidence": false,
+    "reason": "The numerical claim was not reproduced in an official indexed result document during the current review and therefore may be used only as a locator clue, not as ledger evidence."
+  },
+  "source_discovery_result": {
+    "official_realized_exchange_result_identified_reproducibly": false,
+    "official_realized_accepted_old_principal_by_isin_identified": false,
+    "official_realized_new_principal_identified": false,
+    "same_date_opening_outstanding_principal_by_old_isin_identified": false,
+    "matched_old_effective_rate_identified": false,
+    "matched_new_or_reset_effective_rate_identified": false,
+    "topology_old_to_new_observed": true,
+    "official_result_publication_obligation_observed": true,
+    "current_indexed_public_surface_result": "OFFICIAL_EXCHANGE_TOPOLOGY_IDENTIFIED_REALIZED_RESULT_DOCUMENT_UNRESOLVED"
+  },
+  "contract_adjudication": {
+    "exchange_prospect_satisfies_matched_event_topology_only": true,
+    "exchange_prospect_satisfies_gate_1_ledger_completeness": false,
+    "price_announcement_satisfies_realized_principal": false,
+    "coupon_is_effective_rate": false,
+    "indicative_new_nominal_is_realized_principal": false,
+    "secondary_reported_nominal_or_yield_may_enter_ledger": false,
+    "opening_principal_coverage_pct": null,
+    "repricing_event_principal_coverage_pct": null,
+    "gate_1_status": "FAIL_UNCHANGED",
+    "gate_2_status": "NOT_OPENED",
+    "gate_3_status": "NOT_OPENED",
+    "gate_4_status": "FAIL_BEFORE_ESTIMATION",
+    "candidate_eligibility": false,
+    "validated_eligibility": false
+  },
+  "current_disposition": {
+    "status": "NEW_OFFICIAL_EXCHANGE_TOPOLOGY_RESULT_UNRESOLVED_NO_REOPEN",
+    "canonical_government_repricing_ledger_mutation_authorized": false,
+    "source_materialisation_task_active": false,
+    "parameter_estimation_authorized": false,
+    "calibration_or_refit_authorized": false,
+    "holdout_opening_authorized": false,
+    "government_refinancing_interest_feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "model_effect": false
+  },
+  "next_reopen_trigger": {
+    "requirement": "An official/reproducible exchange-operation result must provide realized accepted principal at the event level and be linkable to same-boundary opening outstanding principal plus matched old/new or reset effective-rate observations sufficient to repass the frozen ledger contract. A result document that supplies only realized nominal or a new-issue yield may support a diagnostic subset but does not by itself satisfy Gate 1 or candidate eligibility.",
+    "repeated_prospect_search_is_progress": false,
+    "infer_realized_principal_from_outstanding_stock_changes": false,
+    "infer_old_effective_rate_from_coupon_or_price_alone": false,
+    "infer_new_effective_rate_from_coupon_alone": false,
+    "use_secondary_locator_values_as_canonical": false
+  },
+  "decision": "NO_REOPEN_EXCHANGE_TOPOLOGY_ONLY_REALIZED_MATCHED_LEDGER_FIELDS_UNRESOLVED"
+}

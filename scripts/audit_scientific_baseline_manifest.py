@@ -167,6 +167,11 @@ def main() -> None:
         "Scientific baseline and model contract disagree on latest BLS 2025-Q2 post-terminal review",
     )
     check(
+        manifest["authority"]["government_repricing_exchange_topology_post_terminal_assessment"]
+        == model["calibration_validation"]["government_repricing_latest_exchange_topology_review"],
+        "Scientific baseline and model contract disagree on latest government repricing exchange-topology review",
+    )
+    check(
         reset["scientific_baseline_manifest"]
         == "model/registries/scientific_baseline_manifest.json",
         "Reset integrity contract does not register the scientific baseline manifest",
