@@ -109,6 +109,59 @@ def audit_bnr_bls_2025q2_post_terminal_indexed_endpoint_review() -> list[str]:
         if rule[key] is not False:
             errors.append(f"unsafe BLS reopen rule enabled: {key}")
 
+    workflow_boundary = a.get("workflow_execution_boundary", {})
+    expected_workflow_paths = {
+        "may2025_identity_probe_workflow": ".github/workflows/bnr-bls-may2025-xlsx-probe.yml",
+        "missing_round_recovery_workflow": ".github/workflows/bnr-bls-missing-round-workbook-recovery.yml",
+        "missing_round_recovery_contract": "model/calibration_validation/bnr_bls_missing_round_workbook_recovery_contract.json",
+    }
+    for key, expected in expected_workflow_paths.items():
+        if workflow_boundary.get(key) != expected:
+            errors.append(f"BLS terminal workflow path changed: {key}")
+    if workflow_boundary.get("may2025_identity_probe_current_role") != "HISTORICAL_MAY_2025_IDENTITY_REPROBE_ONLY":
+        errors.append("BLS May-2025 identity workflow role changed")
+    if workflow_boundary.get("missing_round_recovery_current_role") != "HISTORICAL_PREREGISTERED_CANDIDATE_REPLAY_ONLY_UNTIL_NEW_OFFICIAL_2025Q2_TRIGGER":
+        errors.append("BLS missing-round recovery workflow role changed")
+    if workflow_boundary.get("current_2025q2_candidate_count") != 0:
+        errors.append("BLS workflow boundary unexpectedly reports a 2025-Q2 candidate")
+    for key in (
+        "manual_rerun_without_trigger_counts_as_scientific_progress",
+        "manual_rerun_without_trigger_authorized_as_current_source_task",
+        "workflow_rerun_may_mutate_canonical_panel",
+    ):
+        if workflow_boundary.get(key) is not False:
+            errors.append(f"unsafe BLS terminal workflow rule enabled: {key}")
+
+    recovery = load(workflow_boundary["missing_round_recovery_contract"])
+    q2 = next((x for x in recovery["rounds"] if x["quarter"] == "2025-Q2"), None)
+    if q2 is None:
+        errors.append("BLS recovery contract lost 2025-Q2 round")
+    else:
+        if q2.get("url_candidates") != []:
+            errors.append("BLS 2025-Q2 candidate added without a new trigger review")
+        if q2.get("discovery_status") != "OFFICIAL_ANNEX_EXISTENCE_KNOWN_EXACT_WORKBOOK_URL_UNIDENTIFIED":
+            errors.append("BLS 2025-Q2 frozen discovery status changed")
+    if "Do not search for or probe a 2025-Q2 workbook candidate again unless new official BNR evidence" not in recovery.get("source_discovery_reopen_policy", ""):
+        errors.append("BLS recovery contract lost terminal reopen policy")
+
+    may_probe_text = (ROOT / workflow_boundary["may2025_identity_probe_workflow"]).read_text(encoding="utf-8")
+    recovery_text = (ROOT / workflow_boundary["missing_round_recovery_workflow"]).read_text(encoding="utf-8")
+    for token in (
+        "HISTORICAL MAY-2025 XLSX IDENTITY RE-PROBE ONLY",
+        "not a new BLS vintage",
+        "does not",
+        "2025-Q2",
+    ):
+        if token not in may_probe_text:
+            errors.append(f"BLS May-2025 workflow lost safeguard: {token}")
+    for token in (
+        "HISTORICAL PREREGISTERED-CANDIDATE REPLAY",
+        "unchanged rerun is not scientific progress",
+        "semantically bound 2025-Q2 target",
+    ):
+        if token not in recovery_text:
+            errors.append(f"BLS recovery workflow lost terminal safeguard: {token}")
+
     cv = model["calibration_validation"]
     if cv.get("bnr_bls_2025q2_source_discovery_terminal_assessment") != PREDECESSOR_PATH:
         errors.append("model contract does not preserve BLS terminal assessment")
