@@ -1,0 +1,83 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-22",
+  "phase": "Accounting Spine / F4 ECB RAS reserve-template non-reopen diagnostic",
+  "instrument": "F4",
+  "purpose": "Determine whether the ECB International Reserves (RAS) loan series for Romania's central bank supplies a definitionally comparable counterpart constraint capable of reopening the frozen F4 stock boundary.",
+  "current_F4_boundary": {
+    "governing_assessment": "model/accounting/f4_structural_zero_successor_materialization_assessment_2026_09_21.json",
+    "stock_rank": 31,
+    "stock_nullity": 4,
+    "stock_unique_cell_count": 25,
+    "unresolved_stock_boundary": "BNR-holder F4 asset stock is 6.1 million RON at 2025-Q4 but lacks exact allocation across H/C/F/G/X.",
+    "flow_rank": 26,
+    "flow_nullity": 9
+  },
+  "candidate_source": {
+    "institution": "European Central Bank",
+    "dataset": "International Reserves of the Eurosystem (RAS)",
+    "data_portal_category_url": "https://data.ecb.europa.eu/data/data-categories/balance-payments-and-other-external-statistics/international-reserves/other-foreign-currency-assets/loans-not-included-official-reserve-assets",
+    "Romania_series_key_RON": "RAS.M.N.RO.W0.S121.S1Q.LE.A.FA.RT.F4.T.RON.X1.N.N.ALL",
+    "Romania_series_key_EUR": "RAS.M.N.RO.W0.S121.S1Q.LE.A.FA.RT.F4.T.EUR.X1.N.N.ALL",
+    "observed_dimensions": {
+      "frequency": "M",
+      "reference_sector": "S121",
+      "counterpart_sector": "S1Q",
+      "stock_flow_indicator": "LE",
+      "accounting_entry": "A",
+      "functional_category": "RT",
+      "instrument": "F4",
+      "maturity": "T",
+      "currency_denominator": "X1",
+      "valuation": "N",
+      "interpretation": "Other foreign currency assets (not included in official reserve assets), loans, counterpart aggregate 'other sectors than MFIs'."
+    },
+    "reviewed_on": "2026-09-22"
+  },
+  "canonical_QSA_comparison": {
+    "official_series_key": "QSA.Q.N.RO.W0.S121.S1.N.A.LE.F4.T._Z.XDC._T.S.V.N._T",
+    "observed_dimensions": {
+      "frequency": "Q",
+      "reference_sector": "S121",
+      "counterpart_sector": "S1",
+      "consolidation": "N",
+      "stock_flow_indicator": "LE",
+      "accounting_entry": "A",
+      "instrument": "F4",
+      "maturity": "T",
+      "currency_denominator": "_T",
+      "valuation": "S",
+      "interpretation": "Quarterly sector accounts / ESA financial accounts, all currencies, standard valuation."
+    }
+  },
+  "boundary_comparison": {
+    "frequency_difference": "RAS monthly versus QSA quarterly; frequency alone does not create the required counterpart split.",
+    "statistical_domain_difference": "RAS is an international-reserves reserve-template series, not the QSA/ESA financial-accounts matrix governing canonical F4.",
+    "currency_scope_difference": "RAS X1 covers currencies other than national domestic currency; canonical QSA F4 uses all currencies (_T).",
+    "valuation_difference": "RAS uses nominal value (N); QSA uses standard SNA/ESA valuation (S).",
+    "counterpart_scope_difference": "RAS provides S1Q 'other sectors than MFIs', not exact H/C/F/G/X counterpart sectors.",
+    "transaction_history_difference": "The reviewed RAS candidate is a stock series and does not supply the missing bilateral 2025 QSA F4 transaction constraints.",
+    "exact_concept_bridge_validated": false
+  },
+  "adjudication": {
+    "current_reopen_trigger_satisfied": false,
+    "new_exact_stock_equations_authorized": false,
+    "BNR_asset_row_allocation_authorized": false,
+    "flow_reopen_authorized": false,
+    "reason": "The RAS series is a narrower foreign-currency reserve-template stock with different valuation and only an S1Q aggregate counterpart. It is not definitionally identical to the QSA/ESA all-currency F4 stock and cannot resolve the four remaining BNR-holder allocation degrees of freedom.",
+    "priority_BNR_CNF_2025_trigger_superseded": false
+  },
+  "scientific_effect": {
+    "F4_materialization_change": false,
+    "stock_rank_change": false,
+    "flow_rank_change": false,
+    "accounting_readiness_change": false,
+    "benchmark_change": false,
+    "reference_mode_change": false,
+    "calibration_change": false,
+    "feedback_activation_change": false,
+    "behavioural_closure_change": false,
+    "version_change": false
+  },
+  "decision": "NO_REOPEN_ECB_RAS_RESERVE_TEMPLATE_NOT_DEFINITIONALLY_COMPARABLE_OR_COUNTERPART_GRANULAR"
+}

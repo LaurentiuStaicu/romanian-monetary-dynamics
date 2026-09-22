@@ -40,7 +40,8 @@
         "zero aggregate BNR transactions used as bilateral flow zeros",
         "allocation of the 6.1 million RON BNR asset row by shares",
         "a fresh live QSA response that reproduces the same coefficient topology",
-        "subtracting ECB BSI MFIs-excluding-NCB loan series from Eurostat/financial-accounts MFI counterpart totals without a validated exact concept bridge"
+        "subtracting ECB BSI MFIs-excluding-NCB loan series from Eurostat/financial-accounts MFI counterpart totals without a validated exact concept bridge",
+        "ECB RAS reserve-template F4 stocks with S1Q counterpart aggregation, foreign-currency-only scope and nominal valuation"
       ],
       "bridge_diagnostic": "model/accounting/f4_eurostat_bsi_bridge_diagnostic_2026_09_21.json",
       "predecessor_rank_assessment": "model/accounting/f4_exact_complement_rank_assessment.json",
@@ -61,7 +62,10 @@
       "priority_stock_reopen_trigger_id": "BNR_CNF_2025_F4_CENTRAL_BANK_ASSET_COUNTERPART_STOCK_MATRIX",
       "priority_stock_reopen_trigger_state": "MONITOR_PUBLICATION_NO_REOPEN",
       "priority_stock_reopen_earliest_evidence_window": "after 2026-10-31",
-      "priority_stock_reopen_window_note": "Inferred from prior BNR CNF report data-availability cutoffs; not a guaranteed publication date."
+      "priority_stock_reopen_window_note": "Inferred from prior BNR CNF report data-availability cutoffs; not a guaranteed publication date.",
+      "reserve_template_nonreopen_diagnostic": "model/accounting/f4_ras_reserve_template_nonreopen_diagnostic_2026_09_22.json",
+      "reserve_template_route_state": "CLOSED_AS_NONCOMPARABLE_TO_CANONICAL_QSA_F4",
+      "reserve_template_route_reason": "RAS is a monthly international-reserves reserve-template stock series with foreign-currency-only scope, nominal valuation and S1Q counterpart aggregation; it is not an exact QSA/ESA all-currency counterpart bridge and does not resolve the BNR-holder allocation."
     },
     "F5": {
       "current_status": "FROZEN_AT_PUBLIC_DATA_BOUNDARY",
