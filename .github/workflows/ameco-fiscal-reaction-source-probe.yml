@@ -1,7 +1,11 @@
 name: AMECO Fiscal Reaction Source Structure Probe
 
-# Live provider refresh is manual-only. The exact Spring-2026 structure used
-# by the retained 2026-09-19 vintage is already preserved in the repository.
+# HISTORICAL SPRING-2026 RE-PROBE ONLY.
+# This manual workflow is bound to the frozen Spring-2026 legacy-ZIP probe
+# contract used by the retained 2026-09-19 vintage. It is not the execution
+# path for the future Autumn-2026 Redisstat source cycle. That future cycle
+# requires a separate preregistered contract/workflow after the release exists
+# and the provider Redisstat dataset identity has been verified.
 on:
   workflow_dispatch:
 
