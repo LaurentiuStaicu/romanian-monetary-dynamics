@@ -28,6 +28,7 @@ def audit_release_publication_authorization() -> list[str]:
     im = re.search(r'__version__\s*=\s*"([^"]+)"', init_text)
     citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    release_index = (ROOT / "releases" / "README.md").read_text(encoding="utf-8")
     changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
     status_text = (ROOT / "STATUS.md").read_text(encoding="utf-8")
 
@@ -44,6 +45,14 @@ def audit_release_publication_authorization() -> list[str]:
         errors.append("citation release date differs from release state")
     if f"Version: {expected}" not in readme:
         errors.append("README version badge alt text differs from release state")
+    if f"The current public release is **v{expected}**." not in release_index:
+        errors.append("release index introductory current-release sentence is stale")
+    if f"- Current public release: **v{expected}**" not in release_index:
+        errors.append("release index current-release state is stale")
+    if f"- Release date: **{auth['intended_release_date']}**" not in release_index:
+        errors.append("release index current-release date is stale")
+    if auth.get("exact_release_commit") not in release_index:
+        errors.append("release index current-release commit is stale")
     if f"## {expected} - {auth['intended_release_date']}" not in changelog:
         errors.append("CHANGELOG lacks release heading/date")
 
