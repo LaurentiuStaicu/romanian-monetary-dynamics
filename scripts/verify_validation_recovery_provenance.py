@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import csv
 import hashlib
+import io
 import json
 from pathlib import Path
 
@@ -20,6 +22,88 @@ def valid_sha256(value: object) -> bool:
     if not isinstance(value, str) or len(value) != 64:
         return False
     return all(character in "0123456789abcdef" for character in value)
+
+
+def git_blob_sha1(data: bytes) -> str:
+    header = f"blob {len(data)}\\0".encode("ascii")
+    return hashlib.sha1(header + data).hexdigest()
+
+
+def verify_repository_validation_inputs(entry: dict[str, object]) -> None:
+    spec = entry.get("repository_validation_inputs")
+    if not isinstance(spec, dict):
+        raise RuntimeError("Validation-recovery vintage lacks repository input identity specification")
+
+    root = ROOT / str(spec["root"])
+    if not root.is_dir():
+        raise RuntimeError(f"Validation-recovery repository input root missing: {root}")
+
+    files = spec.get("files", [])
+    if not isinstance(files, list) or not files:
+        raise RuntimeError("Validation-recovery repository input file list is empty")
+
+    registered = [str(item["path"]) for item in files]
+    if len(registered) != len(set(registered)):
+        raise RuntimeError("Validation-recovery repository input list contains duplicates")
+
+    actual = sorted(
+        str(path.relative_to(ROOT))
+        for path in root.iterdir()
+        if path.is_file()
+    )
+    if spec.get("exact_file_set_required") is True and sorted(registered) != actual:
+        missing = sorted(set(actual) - set(registered))
+        stale = sorted(set(registered) - set(actual))
+        raise RuntimeError(
+            f"Validation-recovery repository input coverage mismatch: missing={missing}, stale={stale}"
+        )
+
+    for item in files:
+        path = ROOT / str(item["path"])
+        if not path.is_file():
+            raise RuntimeError(f"Validation-recovery repository input missing: {path}")
+        data = path.read_bytes()
+        observed = git_blob_sha1(data)
+        expected = item.get("git_blob_sha1")
+        if observed != expected:
+            raise RuntimeError(
+                f"Validation-recovery repository input drift: {item['path']}: "
+                f"{observed} != {expected}"
+            )
+
+        if path.suffix.lower() == ".csv":
+            header = next(csv.reader(io.StringIO(data.decode("utf-8-sig"))))
+            required = item.get("required_columns", [])
+            missing_columns = sorted(set(required) - set(header))
+            if missing_columns:
+                raise RuntimeError(
+                    f"Validation-recovery input schema drift: {item['path']}: "
+                    f"missing={missing_columns}"
+                )
+        elif path.suffix.lower() == ".json":
+            payload = json.loads(data.decode("utf-8"))
+            required = item.get("required_top_level_keys", [])
+            missing_keys = sorted(set(required) - set(payload))
+            if missing_keys:
+                raise RuntimeError(
+                    f"Validation-recovery manifest schema drift: {item['path']}: "
+                    f"missing={missing_keys}"
+                )
+
+    manifest = str(entry["manifest"])
+    if manifest not in registered:
+        raise RuntimeError("Legacy validation-recovery manifest is not pinned as a repository input")
+
+    boundary = spec.get("scientific_boundary", {})
+    if boundary.get("raw_provider_vintage_complete") is not False:
+        raise RuntimeError("Repository input pinning may not claim complete raw-provider vintage")
+    if boundary.get("normalized_repository_input_identity_pinned") is not True:
+        raise RuntimeError("Repository normalized input identity is not declared pinned")
+    if boundary.get("normalized_input_identity_does_not_upgrade_raw_vintage_reproducibility") is not True:
+        raise RuntimeError("Repository input identity must not upgrade raw-vintage reproducibility")
+    for key in ("live_refetch_authorized", "respecification_authorized", "holdout_reopening_authorized"):
+        if boundary.get(key) is not False:
+            raise RuntimeError(f"Repository input identity gate may not authorize {key}")
 
 
 def legacy_attempts(entry: dict[str, object]) -> dict[str, dict[str, object]]:
@@ -129,6 +213,7 @@ def verify_archived_raw(entry: dict[str, object]) -> None:
 def main() -> None:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
     for entry in registry["vintages"]:
+        verify_repository_validation_inputs(entry)
         status = entry["status"]
         if status == "HASH_ONLY_LEGACY":
             verify_legacy_hash_only(entry)
