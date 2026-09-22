@@ -390,6 +390,20 @@ def main() -> None:
         "Scientific baseline does not register post-AMECO-access monitoring horizon",
     )
     check(
+        manifest["authority"]["trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary"]
+        == "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_counterpart_workflow_boundary.json",
+        "Scientific baseline does not retain post-counterpart-workflow monitoring horizon",
+    )
+    check(
+        manifest["authority"]["trigger_aware_monitoring_horizon_post_mof_recovery_execution_boundary"]
+        == "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json",
+        "Scientific baseline does not register post-MoF-recovery monitoring horizon",
+    )
+    check(
+        manifest["manifest_version"] == "1.12",
+        "Scientific baseline manifest version is not 1.12",
+    )
+    check(
         state["scientific_stage"]["latest_reopen_trigger_monitoring_superseded_for"]
         == model["scientific_stage"]["latest_reopen_trigger_monitoring_superseded_for"],
         "Scientific baseline and model contract disagree on superseded scope of latest general reopen-trigger monitoring",

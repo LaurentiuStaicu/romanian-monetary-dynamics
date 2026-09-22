@@ -8,6 +8,7 @@ HORIZON = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_ame
 PREDECESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_source_diagnostics.json"
 AMECO = "model/calibration_validation/ameco_source_access_migration_readiness_2026_09_22.json"
 SUCCESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_counterpart_workflow_boundary.json"
+LATEST = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
 
 
 def load(path: str) -> dict:
@@ -132,18 +133,23 @@ def audit_trigger_aware_monitoring_horizon_post_ameco_access_protocol() -> list[
     ms = model["scientific_stage"]
     bs = baseline["canonical_state"]["scientific_stage"]
     successor = load(SUCCESSOR)
+    latest = load(LATEST)
     if successor["supersedes"] != HORIZON:
-        errors.append("post-AMECO-access horizon is not preserved as successor predecessor")
-    if ms["trigger_aware_monitoring_horizon"] != SUCCESSOR:
-        errors.append("model contract current horizon does not point to counterpart-workflow successor")
-    if bs["trigger_aware_monitoring_horizon"] != SUCCESSOR:
-        errors.append("baseline current horizon does not point to counterpart-workflow successor")
+        errors.append("post-AMECO-access horizon is not preserved as counterpart-workflow predecessor")
+    if latest["supersedes"] != SUCCESSOR:
+        errors.append("counterpart-workflow horizon is not preserved as MoF-recovery predecessor")
+    if ms["trigger_aware_monitoring_horizon"] != LATEST:
+        errors.append("model contract current horizon does not point to MoF-recovery successor")
+    if bs["trigger_aware_monitoring_horizon"] != LATEST:
+        errors.append("baseline current horizon does not point to MoF-recovery successor")
     if baseline["authority"].get("trigger_aware_monitoring_horizon_post_ameco_access_protocol") != HORIZON:
         errors.append("baseline no longer preserves post-AMECO-access horizon as dated authority")
-    if ms.get("immediate_previous_trigger_aware_monitoring_horizon") != HORIZON:
-        errors.append("model contract does not preserve post-AMECO-access horizon as immediate predecessor")
-    if bs.get("immediate_previous_trigger_aware_monitoring_horizon") != HORIZON:
-        errors.append("baseline does not preserve post-AMECO-access horizon as immediate predecessor")
+    if baseline["authority"].get("trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary") != SUCCESSOR:
+        errors.append("baseline no longer preserves counterpart-workflow horizon as dated authority")
+    if ms.get("immediate_previous_trigger_aware_monitoring_horizon") != SUCCESSOR:
+        errors.append("model contract does not preserve counterpart-workflow horizon as immediate predecessor")
+    if bs.get("immediate_previous_trigger_aware_monitoring_horizon") != SUCCESSOR:
+        errors.append("baseline does not preserve counterpart-workflow horizon as immediate predecessor")
     if model["calibration_validation"].get("ameco_source_access_migration_readiness") != AMECO:
         errors.append("model contract lost AMECO access readiness")
     if baseline["authority"].get("ameco_source_access_migration_readiness") != AMECO:

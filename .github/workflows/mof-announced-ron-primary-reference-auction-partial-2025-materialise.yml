@@ -1,17 +1,33 @@
 name: Ministry Announced RON Reference Auction Partial-2025 Materialisation
 
-on:
-  push:
-    branches:
-      - recovery/mof-announced-ron-primary-reference-auction-missing-sources-2026-09-20
-    paths:
-      - .github/workflows/mof-announced-ron-primary-reference-auction-partial-2025-materialise.yml
-      - scripts/materialise_mof_announced_RON_primary_reference_auction_partial_2025.py
-      - tests/test_mof_announced_RON_primary_reference_auction_partial_2025.py
-      - data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/**
-      - data/processed/mof_announced_RON_primary_supply_Q1_2025_events.csv
-      - model/dynamics/mof_announced_RON_primary_supply_full_2025_definition_review_2026_09_20.json
+run-name: "MoF full-2025 recovery / ${{ inputs.trigger_condition }} / ${{ inputs.evidence_reference }}"
 
+# EVIDENCE-TRIGGERED MANUAL RECOVERY ONLY.
+# The canonical recovery assessment has active_polling=false and three unresolved
+# official acts. Do not dispatch against unchanged endpoints or as routine polling.
+# A run must declare which frozen reopen condition is satisfied by genuinely new
+# official evidence. Manual execution without such evidence is reproduction/probing,
+# not scientific progress.
+on:
+  workflow_dispatch:
+    inputs:
+      trigger_condition:
+        description: "Frozen reopen condition satisfied by genuinely new official evidence"
+        required: true
+        type: choice
+        options:
+          - stable_official_pdf_or_file_transport
+          - portal_transport_becomes_reproducible
+          - verifiable_official_raw_file_supplied
+      evidence_reference:
+        description: "Reference for the new official evidence (URL, PR, issue, commit, or retained artifact)"
+        required: true
+        type: string
+      evidence_verified:
+        description: "Confirm the referenced evidence is new and satisfies the selected reopen condition"
+        required: true
+        type: boolean
+        default: false
 concurrency:
   group: mof-announced-ron-primary-reference-auction-partial-2025-materialise
   cancel-in-progress: true
@@ -21,13 +37,14 @@ permissions:
 
 jobs:
   materialise:
-    if: ${{ github.actor != 'github-actions[bot]' }}
+    if: ${{ inputs.evidence_verified == true && github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out source-vintage branch
         uses: actions/checkout@v7
         with:
+          ref: recovery/mof-announced-ron-primary-reference-auction-missing-sources-2026-09-20
           fetch-depth: 0
 
       - name: Set up Python 3.12
