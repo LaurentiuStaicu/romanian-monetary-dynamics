@@ -1,0 +1,81 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-22",
+  "mechanism_id": "monetary_policy_lending_rate_pass_through",
+  "stage": "Prospective Monetary Source-Access Readiness",
+  "purpose": "Preregister the authoritative source-access path for the next prospective monetary driver check and its conditionally admissible MIR response without rewriting the frozen confirmation contract, treating media/social discovery links as canonical evidence, guessing a future BNR decision URL, or inspecting reserved response values.",
+  "frozen_confirmation_contract": "model/calibration_validation/prospective_monetary_confirmation_contract.json",
+  "current_confirmation_status": "model/calibration_validation/prospective_monetary_confirmation_status.json",
+  "governing_trigger_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_source_diagnostics.json",
+  "current_gate_state": {
+    "next_scheduled_policy_meeting": "2026-10-08",
+    "nonzero_policy_rate_events_in_reserved_window": 0,
+    "identifying_driver_variation_available": false,
+    "formal_confirmation_opened": false,
+    "reserved_response_values_inspected": false,
+    "status": "WAIT_FOR_NEW_POLICY_RATE_EVENT"
+  },
+  "historical_discovery_provenance": {
+    "august_2026_decision_report_url": "https://agerpres.ro/economic/2026/08/10/update-banca-centrala-a-mentinut-dobanda-cheie-la-6-50-pe-an--1583696",
+    "august_2026_decision_report_role": "HISTORICAL_SECONDARY_LOCATOR_ONLY_DO_NOT_REWRITE_FROZEN_CONTRACT",
+    "october_2026_social_calendar_url": "https://bsky.app/profile/bnr.ro/post/3msq2oyu2sv2b",
+    "october_2026_social_calendar_role": "HISTORICAL_OFFICIAL_SOCIAL_DISCOVERY_ONLY_DO_NOT_USE_AS_EVENT_RESULT_AUTHORITY"
+  },
+  "authoritative_driver_access": {
+    "official_calendar_page": "https://www.bnr.ro/2506-calendarul-sedintelor-consiliului-de-administratie-pe-probleme-de-politica-monetara",
+    "official_decision_release_index": "https://www.bnr.ro/2629-politica-monetara",
+    "exact_2026_10_08_decision_release_url_known": false,
+    "event_day_capture_rule": "After the scheduled 2026-10-08 meeting, identify the exact BNR monetary-policy decision communiqué from the official BNR decision-release surface. Record the exact official communiqué URL, decision date, policy rate before/after, direction and effective timing before classifying the driver event.",
+    "media_or_social_result_substitution_authorized": false,
+    "future_decision_url_guessing_authorized": false,
+    "market_expectation_substitution_authorized": false
+  },
+  "authoritative_response_access": {
+    "provider": "ECB Data Portal / ESCB",
+    "dataset": "MIR",
+    "exact_series_key": "MIR.M.RO.B.A2C.A.R.A.2250.RON.N",
+    "exact_series_url": "https://data.ecb.europa.eu/data/datasets/MIR/MIR.M.RO.B.A2C.A.R.A.2250.RON.N",
+    "semantic_identity": {
+      "frequency": "Monthly",
+      "reference_area": "Romania",
+      "reference_sector": "Deposit-taking corporations except the central bank (S.122)",
+      "balance_sheet_item": "Lending for house purchase excluding revolving loans and overdrafts, convenience and extended credit card debt",
+      "initial_rate_fixation": "Total",
+      "rate_type": "Annualised agreed rate (AAR) / Narrowly defined effective rate (NDER)",
+      "amount_category": "Total",
+      "counterpart_sector": "Households and non-profit institutions serving households (S.14 and S.15)",
+      "currency": "Romanian leu",
+      "business_coverage": "New business",
+      "unit": "Percent per annum"
+    },
+    "october_2026_reference_period_release_date": "2026-12-02",
+    "response_access_rule": "If and only if October 2026 contains a non-zero BNR policy-rate event, the October-reference MIR observation remains inaccessible until the official scheduled 2026-12-02 release. If the BNR decision is unchanged, no reserved MIR value is opened.",
+    "response_value_inspection_authorized_now": false,
+    "alternate_MIR_series_substitution_authorized": false,
+    "APRC_series_substitution_authorized": false,
+    "pure_new_loans_series_substitution_authorized": false
+  },
+  "event_day_protocol": {
+    "step_1": "Check the official BNR decision communiqué after the scheduled meeting.",
+    "step_2": "Classify policy-rate change as zero or non-zero using the official decision only.",
+    "step_3_if_zero": "Record unchanged driver status only; keep all reserved MIR response values closed and remain in baseline hold.",
+    "step_3_if_nonzero": "Record event date, sign and magnitude; open only the driver-side Stage 1 diagnostic state. Do not inspect response values before the official same-month MIR release.",
+    "step_4_after_response_release": "At/after the applicable ECB MIR release date, access only the exact frozen MIR series and the minimum event/prior-month observations authorized by the frozen contract.",
+    "no_refit_or_respecification": true,
+    "no_NFC_holdout_opening": true,
+    "no_behavioural_activation": true
+  },
+  "disposition": {
+    "source_access_ready": true,
+    "policy_event_trigger_satisfied": false,
+    "response_release_gate_open": false,
+    "source_materialisation_task_active": false,
+    "parameter_estimation_authorized": false,
+    "calibration_or_refit_authorized": false,
+    "holdout_opening_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "model_effect": false
+  },
+  "decision": "MONETARY_SOURCE_ACCESS_READY_WAIT_FOR_OFFICIAL_BNR_EVENT_NO_RESPONSE_PEEK"
+}
