@@ -157,6 +157,16 @@ def main() -> None:
         "Scientific baseline and model contract disagree on provenance integrity terminal assessment",
     )
     check(
+        manifest["authority"]["bnr_bls_2025q2_source_discovery_terminal_assessment"]
+        == model["calibration_validation"]["bnr_bls_2025q2_source_discovery_terminal_assessment"],
+        "Scientific baseline and model contract disagree on BLS 2025-Q2 terminal source-discovery assessment",
+    )
+    check(
+        manifest["authority"]["bnr_bls_2025q2_latest_post_terminal_review"]
+        == model["calibration_validation"]["bnr_bls_2025q2_latest_post_terminal_review"],
+        "Scientific baseline and model contract disagree on latest BLS 2025-Q2 post-terminal review",
+    )
+    check(
         reset["scientific_baseline_manifest"]
         == "model/registries/scientific_baseline_manifest.json",
         "Reset integrity contract does not register the scientific baseline manifest",
