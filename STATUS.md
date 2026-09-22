@@ -686,3 +686,11 @@ The release publication workflow now separates authorization inspection from pub
 The current v0.3.0 publication authorization remains consumed (`publication_authorized=false`, `PUBLISHED_AND_AUTHORIZATION_CONSUMED`), so ordinary post-v0.3.0 green CI runs perform only the read-only check and cannot enter the write-capable publisher job. Published v0.3.0 identity/tag/commit remain immutable.
 
 This changes repository execution privilege only. It does not authorize a version bump, release v0.4.0, model calibration, estimation, holdout opening, feedback activation or behavioural closure.
+
+### Repository-wide GitHub Actions write-permission boundary — 2026-09-22
+
+A complete Actions sweep has now been converted into an executable least-privilege gate. Scientific CI scans every workflow under `.github/workflows` and rejects `permissions: write-all`, any unexpected `*: write` scope, or any write-capable workflow outside an exact allowlist.
+
+The permitted write boundary is deliberately narrow: the three full-2025 MoF recovery workflows that may retain exact newly verified evidence/materialisation after a declared trigger, plus the release publisher's downstream `publish-release` job. The MoF paths must remain manual-only and evidence-declared; the publisher must remain read-only by default with write permission confined to the authorization-gated publication job.
+
+All other GitHub Actions workflows are expected to be read-only with respect to repository contents. This gate changes governance only; it does not alter scientific evidence, the Accounting Spine, reference modes, model equations, calibration/validation state, behavioural closure or public **v0.3.0**.
