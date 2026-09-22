@@ -48,11 +48,11 @@ def audit_f4_ras_reserve_template_nonreopen()->list[str]:
         if adj[key] is not False:
             errors.append(f"F4 RAS diagnostic may not authorize {key}")
 
-    if f4_state["result"]["stock"]["rank"]!=31:
+    if f4_state["result"]["stock_rank"]!=31:
         errors.append("current F4 stock rank changed")
-    if f4_state["result"]["stock"]["unique_cell_count"]!=25:
+    if f4_state["result"]["stock_unique_cell_count"]!=25:
         errors.append("current F4 stock uniqueness changed")
-    if f4_state["result"]["flow"]["rank"]!=26:
+    if f4_state["result"]["flow_rank"]!=26:
         errors.append("current F4 flow rank changed")
 
     f4=reopen["instruments"]["F4"]
