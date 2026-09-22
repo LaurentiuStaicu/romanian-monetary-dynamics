@@ -359,6 +359,11 @@ def main() -> None:
         == state["scientific_stage"]["trigger_aware_monitoring_horizon"],
         "Baseline generic monitoring-horizon authority is stale relative to canonical state",
     )
+    check(
+        manifest["authority"]["trigger_aware_monitoring_horizon_post_source_diagnostics"]
+        == "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_source_diagnostics.json",
+        "Scientific baseline does not register post-source-diagnostics monitoring horizon",
+    )
 
     # Accounting state is derived from the canonical accounting gate.
     expected = accounting["current_expected_state"]
