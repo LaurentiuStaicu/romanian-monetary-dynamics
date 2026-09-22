@@ -594,3 +594,13 @@ The canonical inventory is `data/provenance/source_vintage_inventory_registry.js
 
 This is a provenance-governance hardening only. It does not change any observation, model equation, mechanism classification, Accounting Spine state, release version, calibration authorization, feedback activation or behavioural closure.
 
+### Release index and local reproduction synchronization — 2026-09-22
+
+A documentation/reproducibility sweep found two narrow current-surface drifts after the v0.3.0 publication.
+
+First, `releases/README.md` had a stale introductory sentence naming **v0.2.0** as the current public release even though its detailed release-state block, package metadata, citation metadata, README badge, STATUS, release contract, tag and GitHub Release all correctly identified **v0.3.0**. The sentence is corrected to v0.3.0, and `audit_release_publication_authorization.py` now validates the release-index current version, date and exact release commit so this class of drift fails CI.
+
+Second, the main README local-reproduction command block predated the new repository-wide source-vintage inventory gate. It now includes `python scripts/audit_source_vintage_inventory.py`, and the inventory test asserts that this command remains present in both README and Scientific CI.
+
+These are documentation/governance consistency repairs only. The current public version remains **v0.3.0**, `version_bump_required_now` remains false, Accounting Spine recovery remains on evidence-triggered hold, calibration/refit remains closed, quantitative feedback activation remains zero and behavioural closure remains inactive.
+
