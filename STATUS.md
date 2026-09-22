@@ -648,3 +648,14 @@ Contract v1.1 now records the exact implementation commit `159dcfb06b36fa510ffc8
 
 The historical fact that the original contract did not itself authorize publication is preserved. This synchronization changes no visible landing-page design, scientific state, data, release version, calibration authorization, feedback activation or behavioural closure.
 
+
+
+### Historical source-vintage workflow privilege hardening — 2026-09-22
+
+A repository-wide Actions sweep distinguished completed historical source-vintage stages from genuinely open evidence-triggered recovery. Six completed acquisition/materialisation workflows still carried `contents: write` and automatic `push` triggers on historical source-vintage branches even though their canonical retained evidence and follow-on assessments were already complete: BNR government-issuance raw retention, ECB supply-load denominator candidates, the MoF Q1 announced-supply probe/materialisation pair, MoF realized-financing channels and the MoF supply-pressure probe.
+
+Those completed branch-push write paths are now retired from the current workflow surface and replaced by a single manual read-only verifier that runs the retained offline assessments and repository-wide source-vintage inventory. The historical scripts, contracts, manifests and source bytes are unchanged and remain available for reproducibility.
+
+The separate full-2025 MoF announced-reference-auction recovery path is **not** classified as complete: three required official acts remain unavailable and its canonical state is `EVIDENCE_TRIGGERED_HOLD` with active polling disabled. That path is therefore excluded from this retirement pass and is governed separately by its explicit new-evidence reopen conditions.
+
+This is repository-governance and least-privilege hardening only. It does not change an Accounting Spine value, reference mode, behavioural mechanism, calibration authorization, feedback activation, scientific trigger or the public **v0.3.0** release state.
