@@ -1,0 +1,68 @@
+name: Verify Retained BNR BLS May 2025 XLSX Vintage
+
+# The one-shot promotion completed on 2026-09-19 and the reviewed source
+# vintage is retained in-repository. The historical write-capable promotion
+# path is intentionally retired from the current workflow surface. This manual
+# workflow is read-only and verifies the retained files against the frozen
+# promotion review and repository-wide source-vintage inventory.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-retained-bnr-bls-may2025-xlsx-vintage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify frozen promotion review
+        run: python -m unittest tests.test_bnr_bls_may2025_xlsx_promotion_review -v
+
+      - name: Verify retained file set, hashes and workbook signatures
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path("data/source_vintages/bnr-bls-may2025-xlsx-vintage-2026-09-19")
+          review = json.loads(
+              Path("model/calibration_validation/bnr_bls_may2025_xlsx_promotion_review.json")
+              .read_text(encoding="utf-8")
+          )
+
+          actual = {
+              str(path.relative_to(root))
+              for path in root.rglob("*")
+              if path.is_file()
+          }
+          expected = {item["path"] for item in review["expected_files"]}
+          if actual != expected:
+              raise SystemExit(
+                  f"retained file set mismatch: missing={expected-actual}, extra={actual-expected}"
+              )
+
+          for item in review["expected_files"]:
+              path = root / item["path"]
+              data = path.read_bytes()
+              if len(data) != item["bytes"]:
+                  raise SystemExit(f"byte-count mismatch: {item['path']}")
+              if hashlib.sha256(data).hexdigest() != item["sha256"]:
+                  raise SystemExit(f"SHA-256 mismatch: {item['path']}")
+              if item["path"].endswith(".xlsx"):
+                  if not data.startswith(b"PK\x03\x04"):
+                      raise SystemExit(f"not XLSX/ZIP: {item['path']}")
+              elif item["path"].endswith(".json"):
+                  json.loads(data.decode("utf-8"))
+          PY
+
+      - name: Verify repository-wide source-vintage inventory
+        run: python scripts/audit_source_vintage_inventory.py

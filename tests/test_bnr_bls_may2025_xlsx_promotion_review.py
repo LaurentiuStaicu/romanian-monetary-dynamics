@@ -30,5 +30,25 @@ class BnrBlsMay2025XlsxPromotionReviewTests(unittest.TestCase):
         self.assertTrue(h["no_legacy_xls_conversion"])
         self.assertTrue(h["no_system_dynamics_activation"])
 
+    def test_completed_promotion_workflow_is_retired_read_only(self):
+        old = ROOT / ".github/workflows/promote-corporate-investment-vintage.yml"
+        current = ROOT / ".github/workflows/verify-bnr-bls-may2025-xlsx-vintage.yml"
+        self.assertFalse(old.exists())
+        self.assertTrue(current.is_file())
+        text = current.read_text(encoding="utf-8")
+        self.assertIn("workflow_dispatch:", text)
+        self.assertIn("contents: read", text)
+        self.assertNotIn("contents: write", text)
+        self.assertNotIn("pull_request:", text)
+        self.assertNotIn("git push", text)
+        self.assertIn(
+            "data/source_vintages/bnr-bls-may2025-xlsx-vintage-2026-09-19",
+            text,
+        )
+        self.assertIn(
+            "model/calibration_validation/bnr_bls_may2025_xlsx_promotion_review.json",
+            text,
+        )
+
 if __name__=="__main__":
     unittest.main()
