@@ -1,5 +1,5 @@
 {
-  "manifest_version": "1.6",
+  "manifest_version": "1.7",
   "baseline_id": "scientific-integrity-2026-09-19",
   "purpose": "Single canonical cross-registry snapshot of RMD scientific maturity. Values in this manifest must agree with the authoritative accounting, dynamics, reference-mode, empirical-mechanism and validation registries; the manifest is not an independent source of scientific truth.",
   "authority": {
@@ -135,7 +135,8 @@
     "f4_bnr_cnf_2025_stock_trigger_monitoring": "model/accounting/f4_bnr_cnf_2025_stock_trigger_monitoring_2026_09_21.json",
     "mof_realized_financing_channel_source_vintage_probe_contract": "model/dynamics/mof_realized_financing_channel_source_vintage_probe_contract_2026_09_21.json",
     "mof_realized_financing_channel_source_vintage_manifest": "data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21/source_vintage_manifest.json",
-    "f4_ras_reserve_template_nonreopen_diagnostic": "model/accounting/f4_ras_reserve_template_nonreopen_diagnostic_2026_09_22.json"
+    "f4_ras_reserve_template_nonreopen_diagnostic": "model/accounting/f4_ras_reserve_template_nonreopen_diagnostic_2026_09_22.json",
+    "trigger_aware_monitoring_horizon_post_f4_structural": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json"
   },
   "canonical_state": {
     "accounting": {
@@ -258,12 +259,16 @@
       "latest_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
       "latest_reopen_trigger_monitoring_status": "NO_DECLARED_REOPEN_TRIGGER_SATISFIED_POST_FISCAL_CLOSURE_BASELINE_HOLD_CONTINUES",
       "previous_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_19.json",
-      "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_reference_closure.json",
+      "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json",
       "next_dated_trigger_check": {
         "date": "2026-10-08",
         "id": "prospective_monetary_policy_event"
       },
-      "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21.json"
+      "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_reference_closure.json",
+      "next_accounting_evidence_window_check": {
+        "after": "2026-10-31",
+        "id": "f4_bnr_cnf_2025_stock_counterpart_matrix"
+      }
     },
     "release_versioning": {
       "current_public_release": "0.3.0",
