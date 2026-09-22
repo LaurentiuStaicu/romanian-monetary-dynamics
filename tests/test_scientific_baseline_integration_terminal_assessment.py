@@ -57,6 +57,12 @@ class ScientificBaselineIntegrationTerminalAssessmentTests(unittest.TestCase):
         for key, value in effects.items():
             self.assertFalse(value, key)
 
+    def test_status_labels_integration_state_as_historical_checkpoint(self) -> None:
+        status = (ROOT / "STATUS.md").read_text(encoding="utf-8")
+        self.assertIn("At that integration checkpoint", status)
+        self.assertIn("then-missing 10th reference mode", status)
+        self.assertIn("subsequently promoted aggregate observability to 10/10", status)
+
     def test_model_contract_is_terminal_for_repository_integration(self) -> None:
         g = self.m["repository_governance"]
         self.assertEqual(
