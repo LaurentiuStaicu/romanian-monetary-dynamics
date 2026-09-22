@@ -22,6 +22,9 @@ class ActionsWritePermissionBoundaryTests(unittest.TestCase):
         self.assertEqual(len(MOF_MANUAL_WRITE_WORKFLOWS), 3)
         self.assertEqual(len(ALLOWED_WRITE_WORKFLOWS), 4)
 
+    def test_all_workflows_declare_permissions_explicitly(self) -> None:
+        self.assertEqual(audit_actions_write_permission_boundary(), [])
+
 
 if __name__ == "__main__":
     unittest.main()
