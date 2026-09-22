@@ -1,0 +1,96 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-22",
+  "phase": "Repository Provenance Integrity Hardening — Terminal Assessment",
+  "purpose": "Freeze the current repository-wide provenance-integrity boundary after the post-v0.3.0 hardening series, so future work can distinguish a genuinely new provenance trigger from repeated re-auditing of already closed surfaces.",
+  "evidence_base_through_commit": "7e4f7e9b6554a676f03ac7d6ecf905126011d901",
+  "hardening_series": {
+    "pull_requests": [
+      174,
+      175,
+      176,
+      177,
+      178,
+      179
+    ],
+    "interpretation": "Successive repairs bound processed sidecars to exact artifacts, separated hash-backed and normative-semantic source evidence, reconciled a legacy monetary diagnostic, clarified processed-data current/legacy scope, enforced provenance-governance parity and synchronized versioning rationale."
+  },
+  "authorities": {
+    "source_vintage_inventory": "data/provenance/source_vintage_inventory_registry.json",
+    "processed_data_inventory": "data/provenance/processed_data_inventory_registry.json",
+    "validation_recovery_vintage_status": "data/provenance/validation_recovery_vintage_status.json",
+    "source_vintage_audit": "scripts/audit_source_vintage_inventory.py",
+    "processed_data_audit": "scripts/audit_processed_data_inventory.py",
+    "validation_recovery_provenance_verifier": "scripts/verify_validation_recovery_provenance.py",
+    "scientific_baseline": "model/registries/scientific_baseline_manifest.json",
+    "model_contract": "model/registries/model_contract.json"
+  },
+  "terminal_state": {
+    "status": "PROVENANCE_INTEGRITY_HARDENING_COMPLETE_CURRENT_SCOPE_NO_ACTIVE_REPAIR_TASK",
+    "source_vintage_directory_count": 32,
+    "source_vintage_anchor_class_counts": {
+      "LOCAL_MANIFEST": 23,
+      "NORMATIVE_SEMANTIC_MANIFEST": 1,
+      "LOCAL_AUDIT_ANCHOR": 6,
+      "LOCAL_REVIEW_ANCHOR": 1,
+      "EXTERNAL_REVIEW_COPY_ANCHOR": 1
+    },
+    "processed_csv_count": 13,
+    "processed_provenance_class_counts": {
+      "SIDECAR_JSON": 3,
+      "ASSESSMENT_EMBEDDED": 3,
+      "ASSESSMENT_PLUS_SOURCE_VINTAGE": 4,
+      "LEGACY_RECONCILED_BY_SUCCESSOR": 3
+    },
+    "validation_recovery": {
+      "status": "PARTIAL_RAW_RECOVERY",
+      "known_raw_sha256_count": 4,
+      "byte_identical_raw_payloads_retained": 3,
+      "raw_payloads_not_recovered": 1,
+      "complete_historical_raw_vintage_reproducible": false,
+      "pinned_repository_input_file_count": 5,
+      "normalized_repository_input_identity_pinned": true
+    },
+    "central_governance_parity": true,
+    "active_repair_task": null
+  },
+  "established_invariants": [
+    "Every top-level data/source_vintages directory is registered by an explicit provenance-anchor class.",
+    "Ordinary LOCAL_MANIFEST anchors contain at least one SHA-256 identity; normative semantic evidence is classified separately when source bytes are intentionally not redistributed.",
+    "Every CSV under data/processed is registered, repository-identity pinned and classified as current/partial/diagnostic or legacy-reconciled through its provenance class.",
+    "Every declared processed-data sidecar identifies the exact processed artifact it governs.",
+    "ASSESSMENT_EMBEDDED, ASSESSMENT_PLUS_SOURCE_VINTAGE and LEGACY_RECONCILED_BY_SUCCESSOR entries have at least one declared authority that explicitly references the processed artifact.",
+    "Validation Recovery uses an exact five-file repository input surface pinned independently of incomplete historical provider-envelope recovery.",
+    "The model contract and scientific baseline register the same source-vintage, processed-data and validation-recovery provenance authorities."
+  ],
+  "explicit_non_claims": [
+    "Inventory coverage does not prove external-source truth or eliminate provider revision risk.",
+    "A review-only or external review-copy anchor is not upgraded to byte-exact source-vintage reproducibility.",
+    "The ESA 2010 normative-semantic source is not claimed as a repository-retained PDF vintage.",
+    "Validation Recovery does not have a complete byte-identical historical raw-provider vintage because the historical BIS transport payload remains unrecovered.",
+    "Processed-data inventory membership does not imply canonical/current scientific status.",
+    "Provenance integrity does not validate behavioural mechanisms, causal interpretation, calibration, forecasts or policy simulation.",
+    "Provenance integrity does not complete the Accounting Spine or activate System Dynamics feedback loops."
+  ],
+  "reopen_conditions": [
+    "A new top-level data/source_vintages directory or a new provenance-anchor class is introduced.",
+    "A CSV is added to, removed from or byte-changed under data/processed.",
+    "A processed artifact changes provenance class, sidecar binding, authority chain or source-vintage anchor.",
+    "The Validation Recovery repository-input surface or raw-recovery classification changes.",
+    "A CI/audit failure demonstrates a broken hash, authority, schema or cross-registry provenance invariant.",
+    "A future release milestone deliberately changes the provenance-governance contract."
+  ],
+  "current_disposition": {
+    "next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+    "repeated_provenance_reaudit_without_trigger_is_progress": false,
+    "live_refetch_authorized": false,
+    "data_rewrite_authorized": false,
+    "historical_artifact_deletion_authorized": false,
+    "estimation_or_refit_authorized": false,
+    "holdout_opening_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "version_bump_required": false
+  },
+  "decision": "CLOSE_PROVENANCE_INTEGRITY_HARDENING_AT_CURRENT_SCOPE_REOPEN_ONLY_ON_DECLARED_TRIGGER"
+}
