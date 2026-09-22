@@ -1,5 +1,5 @@
 {
-  "manifest_version": "1.9",
+  "manifest_version": "1.10",
   "baseline_id": "scientific-integrity-2026-09-19",
   "purpose": "Single canonical cross-registry snapshot of RMD scientific maturity. Values in this manifest must agree with the authoritative accounting, dynamics, reference-mode, empirical-mechanism and validation registries; the manifest is not an independent source of scientific truth.",
   "authority": {
@@ -138,7 +138,8 @@
     "f4_ras_reserve_template_nonreopen_diagnostic": "model/accounting/f4_ras_reserve_template_nonreopen_diagnostic_2026_09_22.json",
     "trigger_aware_monitoring_horizon_post_f4_structural": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json",
     "source_vintage_inventory_registry": "data/provenance/source_vintage_inventory_registry.json",
-    "processed_data_inventory": "data/provenance/processed_data_inventory_registry.json"
+    "processed_data_inventory": "data/provenance/processed_data_inventory_registry.json",
+    "validation_recovery_vintage_status": "data/provenance/validation_recovery_vintage_status.json"
   },
   "canonical_state": {
     "accounting": {
