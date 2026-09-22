@@ -614,3 +614,11 @@ Scientific CI now verifies exact processed-directory coverage, pinned content id
 
 This gate is **governance only**. It does not upgrade source quality, reopen any empirical gate, authorize refetch, estimation, calibration, feedback activation, behavioural closure or a version change.
 
+### Validation-recovery repository input identity gate — 2026-09-22
+
+The existing validation-recovery provenance verifier now protects the exact repository input surface consumed by the monetary selection and holdout reproduction scripts. The five files under `data/raw/validation_recovery/` — the legacy fetch/normalization manifest and four normalized statistical CSVs — are explicitly registered with pinned Git blob identities and minimum schemas in `data/provenance/validation_recovery_vintage_status.json`.
+
+The gate requires the directory file set to remain exact, detects byte or schema drift, and keeps the legacy fetch manifest inside the same protected input surface. The vintage-status registry is also an explicit authority of the scientific baseline.
+
+This closes a narrower reproducibility gap but does **not** change the historical raw-source classification. The original BIS transport envelope remains unrecovered with its legacy SHA-256, so the complete historical provider raw vintage is still not claimed as exactly reproducible. Pinning the normalized repository inputs does not authorize live refetch, model respecification, holdout reopening, calibration, feedback activation, behavioural closure or a version change.
+
