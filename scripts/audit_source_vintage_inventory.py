@@ -79,10 +79,17 @@ def audit_source_vintage_inventory() -> list[str]:
             errors.append(f"{entry['directory']}: anchor is not valid JSON")
             continue
 
-        if anchor_type in {"LOCAL_MANIFEST", "LOCAL_AUDIT_ANCHOR", "LOCAL_REVIEW_ANCHOR"}:
+        if anchor_type in {"LOCAL_MANIFEST", "LOCAL_AUDIT_ANCHOR", "LOCAL_REVIEW_ANCHOR", "NORMATIVE_SEMANTIC_MANIFEST"}:
             if anchor.parent != directory:
                 errors.append(
                     f"{entry['directory']}: local provenance anchor is outside its directory"
+                )
+
+        if anchor_type == "LOCAL_MANIFEST":
+            strings = collect_strings(payload)
+            if not any(SHA256_RE.fullmatch(value) for value in strings):
+                errors.append(
+                    f"{entry['directory']}: local manifest contains no SHA-256 identity"
                 )
 
         if anchor_type == "LOCAL_AUDIT_ANCHOR":
@@ -91,6 +98,26 @@ def audit_source_vintage_inventory() -> list[str]:
                 errors.append(
                     f"{entry['directory']}: local audit anchor contains no SHA-256 identity"
                 )
+
+        if anchor_type == "NORMATIVE_SEMANTIC_MANIFEST":
+            if payload.get("source_class") != "OFFICIAL_NORMATIVE_STANDARD_SEMANTIC_EVIDENCE":
+                errors.append(f"{entry['directory']}: normative semantic source class changed")
+            if payload.get("raw_pdf_retained_in_repository") is not False:
+                errors.append(f"{entry['directory']}: normative semantic manifest must state raw PDF non-retention")
+            if not isinstance(payload.get("reason_raw_pdf_not_retained"), str) or not payload["reason_raw_pdf_not_retained"].strip():
+                errors.append(f"{entry['directory']}: normative semantic non-retention reason is missing")
+            if payload.get("numeric_data_used") is not False:
+                errors.append(f"{entry['directory']}: normative semantic manifest may not contain numeric-data provenance")
+            if payload.get("prior_oecd_obs_value_reviewed") is not False:
+                errors.append(f"{entry['directory']}: normative semantic evidence may not depend on prior OECD values")
+            if not isinstance(payload.get("official_url"), str) or not payload["official_url"].startswith("https://"):
+                errors.append(f"{entry['directory']}: normative semantic official URL is missing")
+            paragraphs = payload.get("exact_paragraphs")
+            if not isinstance(paragraphs, list) or not paragraphs or not all(isinstance(item, str) and item.strip() for item in paragraphs):
+                errors.append(f"{entry['directory']}: normative semantic exact paragraph references are missing")
+            semantic_assessment = payload.get("semantic_assessment")
+            if not isinstance(semantic_assessment, str) or not (ROOT / semantic_assessment).is_file():
+                errors.append(f"{entry['directory']}: normative semantic assessment anchor is missing")
 
         if anchor_type == "LOCAL_REVIEW_ANCHOR":
             if entry["directory"] != (

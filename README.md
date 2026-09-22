@@ -186,7 +186,7 @@ Core data-integrity rules include:
 
 Retained historical source material is under [data/source_vintages/](data/source_vintages/); processed scientific series are under [data/processed/](data/processed/); provenance contracts and retained evidence are linked from the model registries.
 
-Repository-wide vintage coverage is machine-checked through [data/provenance/source_vintage_inventory_registry.json](data/provenance/source_vintage_inventory_registry.json). Every top-level retained vintage must have a declared manifest, audit or explicitly classified review-copy provenance anchor; this coverage rule does **not** upgrade a review copy into exact source-vintage reproducibility.
+Repository-wide vintage coverage is machine-checked through [data/provenance/source_vintage_inventory_registry.json](data/provenance/source_vintage_inventory_registry.json). Every top-level source-evidence directory must have a declared hash-backed manifest, audit, explicitly classified normative-semantic manifest or review-copy provenance anchor; this coverage rule does **not** upgrade non-retained or review-only evidence into exact source-vintage reproducibility.
 
 Repository-wide processed-data coverage is machine-checked through [data/provenance/processed_data_inventory_registry.json](data/provenance/processed_data_inventory_registry.json). Canonical processed CSV bytes are pinned, required provenance/schema columns and authorities are checked, and any declared provenance sidecar must identify the exact processed artifact it governs.
 
