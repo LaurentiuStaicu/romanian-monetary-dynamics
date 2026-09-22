@@ -127,6 +127,26 @@ def main() -> None:
         "Scientific baseline and model contract disagree on source-vintage inventory",
     )
     check(
+        model["repository_governance"]["processed_data_inventory_registry"]
+        == "data/provenance/processed_data_inventory_registry.json",
+        "Model contract does not register processed-data inventory governance",
+    )
+    check(
+        manifest["authority"]["processed_data_inventory"]
+        == model["repository_governance"]["processed_data_inventory_registry"],
+        "Scientific baseline and model contract disagree on processed-data inventory",
+    )
+    check(
+        model["repository_governance"]["validation_recovery_vintage_status"]
+        == "data/provenance/validation_recovery_vintage_status.json",
+        "Model contract does not register validation-recovery provenance governance",
+    )
+    check(
+        manifest["authority"]["validation_recovery_vintage_status"]
+        == model["repository_governance"]["validation_recovery_vintage_status"],
+        "Scientific baseline and model contract disagree on validation-recovery provenance",
+    )
+    check(
         reset["scientific_baseline_manifest"]
         == "model/registries/scientific_baseline_manifest.json",
         "Reset integrity contract does not register the scientific baseline manifest",
