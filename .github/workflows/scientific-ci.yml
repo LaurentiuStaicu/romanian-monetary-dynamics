@@ -536,6 +536,9 @@ jobs:
       - name: Audit BNR BLS 2025-Q2 opaque indexed endpoint review
         run: python scripts/audit_bnr_bls_2025q2_post_terminal_indexed_endpoint_review.py
 
+      - name: Audit AMECO source-access migration readiness
+        run: python scripts/audit_ameco_source_access_migration_readiness.py
+
       - name: Verify retained source-vintage provenance state offline
         run: python scripts/verify_validation_recovery_provenance.py
 
