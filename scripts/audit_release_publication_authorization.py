@@ -31,6 +31,9 @@ def audit_release_publication_authorization() -> list[str]:
     release_index = (ROOT / "releases" / "README.md").read_text(encoding="utf-8")
     changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
     status_text = (ROOT / "STATUS.md").read_text(encoding="utf-8")
+    publisher = (
+        ROOT / ".github" / "workflows" / "publish-authorized-release.yml"
+    ).read_text(encoding="utf-8")
 
     expected = auth["release_version"]
     if auth["tag"] != f"v{expected}":
@@ -90,6 +93,33 @@ def audit_release_publication_authorization() -> list[str]:
         errors.append("historical integration authority must not become release authority")
     if governance.get("release_publication_authorization") != "model/registries/release_publication_authorization.json":
         errors.append("model governance lacks release-publication authorization pointer")
+
+    try:
+        publisher_header, publisher_jobs = publisher.split("jobs:", 1)
+        authorization_job, publish_job = publisher_jobs.split("  publish-release:", 1)
+    except ValueError:
+        errors.append("release publisher job topology is not parseable")
+    else:
+        if "contents: read" not in publisher_header:
+            errors.append("release publisher default token is not read-only")
+        if "contents: write" in publisher_header:
+            errors.append("release publisher grants write permission globally")
+        if "  check-authorization:" not in publisher_jobs:
+            errors.append("release publisher lacks separate authorization job")
+        if "contents: write" in authorization_job:
+            errors.append("release authorization check unexpectedly has write permission")
+        if "authorized: ${{ steps.auth.outputs.authorized }}" not in authorization_job:
+            errors.append("release authorization job does not expose authorization state")
+        if "needs: check-authorization" not in publish_job:
+            errors.append("release publication job does not depend on authorization check")
+        if "if: needs.check-authorization.outputs.authorized == 'true'" not in publish_job:
+            errors.append("release publication job is not gated by active authorization")
+        if "contents: write" not in publish_job:
+            errors.append("authorized release publication job lacks required contents write")
+        if "github.event.workflow_run.head_sha" not in authorization_job:
+            errors.append("authorization job does not inspect the exact green commit")
+        if "github.event.workflow_run.head_sha" not in publish_job:
+            errors.append("publication job does not publish the exact green commit")
 
     state = auth.get("publication_state")
     if auth.get("publication_authorized") is True:
