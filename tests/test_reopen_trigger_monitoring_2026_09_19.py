@@ -68,7 +68,7 @@ class ReopenTriggerMonitoring20260919Tests(unittest.TestCase):
         )
         self.assertEqual(
             stage["latest_reopen_trigger_monitoring_superseded_for"],
-            [],
+            ["sectoral_financial_positions"],
         )
         self.assertEqual(stage["next_operational_state"], "EVIDENCE_TRIGGERED_BASELINE_HOLD")
         self.assertFalse(stage["selective_reopen_active"])
