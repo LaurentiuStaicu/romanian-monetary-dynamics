@@ -139,7 +139,8 @@
     "trigger_aware_monitoring_horizon_post_f4_structural": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json",
     "source_vintage_inventory_registry": "data/provenance/source_vintage_inventory_registry.json",
     "processed_data_inventory": "data/provenance/processed_data_inventory_registry.json",
-    "validation_recovery_vintage_status": "data/provenance/validation_recovery_vintage_status.json"
+    "validation_recovery_vintage_status": "data/provenance/validation_recovery_vintage_status.json",
+    "provenance_integrity_terminal_assessment": "model/registries/provenance_integrity_terminal_assessment_2026_09_22.json"
   },
   "canonical_state": {
     "accounting": {

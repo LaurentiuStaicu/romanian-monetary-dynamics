@@ -151,6 +151,7 @@ python scripts/audit_system_dynamics_conformity.py
 python scripts/audit_scientific_baseline_manifest.py
 python scripts/audit_source_vintage_inventory.py
 python scripts/audit_processed_data_inventory.py
+python scripts/audit_provenance_integrity_terminal_assessment.py
 python scripts/verify_validation_recovery_provenance.py
 ~~~
 
@@ -189,6 +190,8 @@ Retained historical source material is under [data/source_vintages/](data/source
 Repository-wide vintage coverage is machine-checked through [data/provenance/source_vintage_inventory_registry.json](data/provenance/source_vintage_inventory_registry.json). Every top-level source-evidence directory must have a declared hash-backed manifest, audit, explicitly classified normative-semantic manifest or review-copy provenance anchor; this coverage rule does **not** upgrade non-retained or review-only evidence into exact source-vintage reproducibility.
 
 Repository-wide processed-data coverage is machine-checked through [data/provenance/processed_data_inventory_registry.json](data/provenance/processed_data_inventory_registry.json). Every processed CSV is pinned by repository identity and classified by provenance role; required provenance/schema columns and authorities are checked, and any declared provenance sidecar must identify the exact processed artifact it governs. Inventory coverage does not imply that every processed artifact is canonical or current.
+
+The current repository-wide provenance-hardening stage is closed at its present scope by [model/registries/provenance_integrity_terminal_assessment_2026_09_22.json](model/registries/provenance_integrity_terminal_assessment_2026_09_22.json). Reopening requires a declared trigger such as a new/changed processed artifact, source-vintage surface, validation-recovery input boundary or a demonstrated provenance invariant failure; repeated no-trigger re-auditing is not treated as scientific progress.
 
 ### Repository map
 
