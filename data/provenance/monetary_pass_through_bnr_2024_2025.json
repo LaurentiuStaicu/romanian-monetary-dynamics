@@ -53,5 +53,12 @@
     "No smoothing.",
     "No rescaling beyond retaining published percentage-point units.",
     "For one-step prediction, the previous observed lending rate is used exactly as available at each origin."
-  ]
+  ],
+  "repository_status": {
+    "assessed_on": "2026-09-22",
+    "classification": "RETAINED_LEGACY_PRE_RECOVERY_DIAGNOSTIC_NOT_CURRENT_VALIDATION_INPUT",
+    "assessment": "model/calibration_validation/monetary_pass_through_legacy_processed_dataset_assessment_2026_09_22.json",
+    "successor_validation_input_registry": "data/provenance/validation_recovery_vintage_status.json",
+    "rule": "Retain the original 13-month values, definitions and historical role split unchanged. Current Validation Recovery selection/holdout uses the separately pinned data/raw/validation_recovery input surface and may not treat this legacy processed artifact as its canonical input."
+  }
 }
