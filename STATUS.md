@@ -571,3 +571,11 @@ The RAS series therefore supplies neither the required counterpart granularity n
 
 The result is **NO_REOPEN**. F4 remains stock rank 31/nullity 4 with 25 exact cells and flow rank 26/nullity 9 with 15 exact cells. The existing BNR CNF 2025 counterpart-stock publication trigger remains the priority stock-specific reopen path, with no repeated polling before new publication evidence.
 
+### Post-F4 trigger-aware monitoring horizon — 2026-09-22
+
+The central trigger-aware monitoring horizon has been advanced without reopening any scientific gate. The previous post-reference-closure horizon is retained immutably as the predecessor; the current successor is `model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json`.
+
+The successor incorporates the current F4 stock-only priority trigger established after structural-zero materialization: an official **BNR National Financial Accounts 2025 S121×counterpart AF4/F4 asset-stock matrix** capable of allocating the retained 6.1 million RON BNR loan asset without residual shares, interpolation or missing-to-zero assumptions. The trigger remains **MONITOR_PUBLICATION_NO_REOPEN** and may not be polled repeatedly before the evidence window **after 2026-10-31**. That date is an evidence-window marker inferred from prior report cutoffs, not a promised BNR publication date.
+
+The next dated event check remains the **2026-10-08 BNR policy decision**. The F4 evidence window is a separate accounting-source check and does not authorize flow recovery, reference-mode reopening, calibration, feedback activation or behavioural closure. The ECB RAS reserve-template route remains closed as non-comparable to canonical QSA/ESA F4.
+
