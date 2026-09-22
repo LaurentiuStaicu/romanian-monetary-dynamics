@@ -1,5 +1,5 @@
 {
-  "registry_version": "0.2",
+  "registry_version": "0.3",
   "scope": "validation-recovery official-source data",
   "baseline_release": "v0.1.0",
   "vintages": [
@@ -34,7 +34,75 @@
         "interpretation": "The retained statistical rows used by the model reconcile exactly with the 2026-09-18 live official-source fetch. The BIS transport XML is not byte-identical to the historical raw response; current BIS XML contains response-level identifiers and preparation/extraction timestamps, so a raw-envelope mismatch alone is not treated as evidence of a changed normalized policy-rate series."
       },
       "reason": "v0.1.0 retained all four raw SHA-256 digests but not the raw payloads. Three ECB payloads were recovered on 2026-09-18 because their live responses were byte-identical to the legacy hashes. The BIS raw response did not match and is therefore not relabelled as the historical payload.",
-      "recovery_rule": "Do not claim complete exact raw-vintage reproducibility unless the missing BIS historical payload is independently recovered with its recorded SHA-256. The normalized statistical inputs are separately reconciled and must not be conflated with raw transport-envelope reproducibility."
+      "recovery_rule": "Do not claim complete exact raw-vintage reproducibility unless the missing BIS historical payload is independently recovered with its recorded SHA-256. The normalized statistical inputs are separately reconciled and must not be conflated with raw transport-envelope reproducibility.",
+      "repository_validation_inputs": {
+        "root": "data/raw/validation_recovery",
+        "exact_file_set_required": true,
+        "purpose": "Freeze the repository-normalized statistical inputs and legacy fetch manifest consumed by validation-recovery selection/holdout workflows independently of raw provider-envelope recoverability.",
+        "files": [
+          {
+            "path": "data/raw/validation_recovery/fetch_manifest.json",
+            "git_blob_sha1": "e232fd8819ed16e7547e825f006cec75f52afa3c",
+            "role": "LEGACY_FETCH_AND_NORMALIZATION_MANIFEST",
+            "required_top_level_keys": [
+              "fetched_at_utc",
+              "purpose",
+              "attempts",
+              "normalized_series",
+              "holdout_rule"
+            ]
+          },
+          {
+            "path": "data/raw/validation_recovery/household_housing_mir_monthly.csv",
+            "git_blob_sha1": "c424bf924b619da6c14919893eea86af8c940294",
+            "role": "CANONICAL_VALIDATION_INPUT_HOUSEHOLD_HOUSING_MIR",
+            "required_columns": [
+              "period",
+              "value_pct",
+              "series"
+            ]
+          },
+          {
+            "path": "data/raw/validation_recovery/nfc_total_mir_available_observations.csv",
+            "git_blob_sha1": "02219a0ff2f5395f6224d09b7bf8447a4080e814",
+            "role": "COVERAGE_DIAGNOSTIC_NFC_TOTAL_MIR",
+            "required_columns": [
+              "period",
+              "value_pct",
+              "series"
+            ]
+          },
+          {
+            "path": "data/raw/validation_recovery/nfc_upto1y_mir_monthly.csv",
+            "git_blob_sha1": "d941668bdb0870578d7048e6cb728418767a70cd",
+            "role": "CANONICAL_VALIDATION_INPUT_NFC_UPTO1Y_MIR",
+            "required_columns": [
+              "period",
+              "value_pct",
+              "series"
+            ]
+          },
+          {
+            "path": "data/raw/validation_recovery/policy_rate_bis_monthly.csv",
+            "git_blob_sha1": "171cd34b4c707dd91c67062f0d2543c218521d80",
+            "role": "CANONICAL_VALIDATION_INPUT_POLICY_RATE",
+            "required_columns": [
+              "period",
+              "value_pct",
+              "series"
+            ]
+          }
+        ],
+        "scientific_boundary": {
+          "raw_provider_vintage_complete": false,
+          "normalized_repository_input_identity_pinned": true,
+          "normalized_input_identity_does_not_upgrade_raw_vintage_reproducibility": true,
+          "input_change_requires_explicit_registry_update": true,
+          "live_refetch_authorized": false,
+          "respecification_authorized": false,
+          "holdout_reopening_authorized": false
+        }
+      }
     }
   ],
   "future_capture_policy": {
