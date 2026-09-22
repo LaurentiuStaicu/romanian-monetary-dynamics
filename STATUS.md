@@ -659,3 +659,14 @@ Those completed branch-push write paths are now retired from the current workflo
 The separate full-2025 MoF announced-reference-auction recovery path is **not** classified as complete: three required official acts remain unavailable and its canonical state is `EVIDENCE_TRIGGERED_HOLD` with active polling disabled. That path is therefore excluded from this retirement pass and is governed separately by its explicit new-evidence reopen conditions.
 
 This is repository-governance and least-privilege hardening only. It does not change an Accounting Spine value, reference mode, behavioural mechanism, calibration authorization, feedback activation, scientific trigger or the public **v0.3.0** release state.
+
+
+### Full-2025 MoF missing-source recovery execution boundary — 2026-09-22
+
+The full-2025 announced-RON reference-auction path remains scientifically **open only to new evidence**, not to repeated polling. The retained state is unchanged: 9/12 required official source documents are retained, three remain unresolved (OMF 1221/2025, OMF 1795/2025 and OMF 1998/2025), 10/12 exact final monthly values are available, and the full-year canonical reference mode is still blocked.
+
+Trigger-aware monitoring horizon **0.8** now makes the existing recovery assessment operationally enforceable. The four relevant workflows are manual-only; they no longer run on branch pushes. Every dispatch must declare one of the frozen reopen conditions, provide an evidence reference and explicitly confirm that the evidence is new. The checkout target is pinned to the relevant historical source-vintage or recovery branch rather than relying on the dispatch branch.
+
+The read-only missing-PDF probe keeps `contents: read`. The three workflows that may need to retain exact newly verified bytes or rematerialise an affected month keep `contents: write`, but only behind the manual evidence declaration. An unchanged provider response, routine rerun or repeated endpoint probe is not a trigger and does not count as scientific progress.
+
+Scientific baseline manifest **1.12** points to this successor while preserving the 0.7 counterpart-workflow horizon as its immediate predecessor. The public RMD release remains **v0.3.0**; no Accounting Spine value, model equation, reference-mode promotion, parameter estimation, feedback activation or behavioural closure changed.
