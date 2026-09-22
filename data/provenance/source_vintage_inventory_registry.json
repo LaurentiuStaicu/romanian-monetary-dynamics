@@ -9,6 +9,8 @@
     "every_registry_directory_must_exist": true,
     "every_anchor_must_exist": true,
     "local_manifest_anchor_must_be_inside_directory": true,
+    "local_manifest_must_contain_at_least_one_sha256": true,
+    "normative_semantic_manifest_requires_explicit_nonretention_and_no_numeric_data": true,
     "local_audit_anchor_must_be_inside_directory": true,
     "local_audit_anchor_must_contain_at_least_one_sha256": true,
     "external_review_copy_requires_explicit_reproducibility_classification": true,
@@ -20,6 +22,7 @@
   "allowed_anchor_types": [
     "LOCAL_MANIFEST",
     "LOCAL_AUDIT_ANCHOR",
+    "NORMATIVE_SEMANTIC_MANIFEST",
     "LOCAL_REVIEW_ANCHOR",
     "EXTERNAL_REVIEW_COPY_ANCHOR"
   ],
@@ -116,9 +119,9 @@
     },
     {
       "directory": "data/source_vintages/esa2010-financial-instrument-semantics-2026-09-21",
-      "anchor_type": "LOCAL_MANIFEST",
+      "anchor_type": "NORMATIVE_SEMANTIC_MANIFEST",
       "anchor": "data/source_vintages/esa2010-financial-instrument-semantics-2026-09-21/source_vintage_manifest.json",
-      "reason": "Primary local manifest retained with the source-vintage directory."
+      "reason": "Official ESA 2010 normative semantic evidence is retained by exact official URL, paragraph references and machine-checkable adjudication; the third-party PDF is intentionally not redistributed, no numeric observations are used, and this classification does not claim byte-exact source-vintage reproducibility."
     },
     {
       "directory": "data/source_vintages/fiscal-primary-balance-quarterly-vintage-2026-09-19",
