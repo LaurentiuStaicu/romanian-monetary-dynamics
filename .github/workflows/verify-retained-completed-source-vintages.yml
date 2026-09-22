@@ -1,0 +1,35 @@
+name: Verify Retained Completed Source-Vintage Stages
+
+# Historical source-vintage acquisition/materialisation stages listed below are
+# complete and retained in-repository. Their former branch-push workflows with
+# contents: write are retired from the current workflow surface. This manual
+# workflow is read-only and reproduces the canonical offline assessments.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-retained-completed-source-vintages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify retained source-vintage assessments offline
+        run: |
+          python scripts/audit_bnr_government_issuance_raw_source_retention.py
+          python scripts/audit_ecb_supply_load_denominator_probe_assessment.py
+          python scripts/audit_mof_supply_pressure_source_vintage_probe_assessment.py
+          python scripts/audit_mof_realized_financing_channel_source_vintage_assessment.py
+          python scripts/audit_mof_announced_RON_primary_supply_reference_mode_contract.py
+          python scripts/audit_mof_announced_RON_primary_supply_Q1_pilot.py
+
+      - name: Verify repository-wide retained source-vintage inventory
+        run: python scripts/audit_source_vintage_inventory.py
