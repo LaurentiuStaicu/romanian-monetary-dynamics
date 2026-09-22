@@ -16,6 +16,15 @@ class ScientificBaselineReviewReadyAssessmentTests(unittest.TestCase):
         self.a = load("model/registries/scientific_baseline_review_ready_assessment.json")
         self.m = load("model/registries/model_contract.json")
 
+    def test_status_labels_review_ready_state_as_historical_checkpoint(self) -> None:
+        status = (ROOT / "STATUS.md").read_text(encoding="utf-8")
+        self.assertIn("At that review-ready checkpoint", status)
+        self.assertIn("REVIEW_READY_MERGE_DECISION_PENDING", status)
+        self.assertNotIn(
+            "The current repository-governance state is **REVIEW_READY_MERGE_DECISION_PENDING**",
+            status,
+        )
+
     def test_transition_is_review_only(self) -> None:
         self.assertEqual(self.a["status"], "REVIEW_READY_MERGE_DECISION_PENDING")
         d = self.a["decision"]
