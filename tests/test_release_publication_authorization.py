@@ -34,6 +34,17 @@ class ReleasePublicationAuthorizationTests(unittest.TestCase):
         self.assertEqual(record["publication_workflow_run_id"],35641755584)
         self.assertEqual(record["publication_workflow_conclusion"],"success")
 
+    def test_status_current_public_release_matches_v030_publication(self):
+        status=(ROOT/"STATUS.md").read_text(encoding="utf-8")
+        self.assertIn(
+            "Romanian Monetary Dynamics (RMD) **v0.3.0** is the current public scientific-core release",
+            status,
+        )
+        self.assertIn(
+            "33c11b7e10e7e837097da5b34a9251c7bedb3f2c",
+            status.split("## Release status",1)[1].split("\n\n",2)[1],
+        )
+
     def test_release_has_no_scientific_activation_effect(self):
         auth=json.loads((ROOT/"model/registries/release_publication_authorization.json").read_text(encoding="utf-8"))
         self.assertTrue(all(v is False for v in auth["scientific_effect"].values()))

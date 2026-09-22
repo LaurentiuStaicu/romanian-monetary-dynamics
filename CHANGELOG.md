@@ -6,6 +6,7 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Repository governance
 
+- synchronized the current-release sentence in `STATUS.md` with the immutable v0.3.0 publication record after detecting a stale v0.2.0 header, and extended the release-publication audit so STATUS version/date/release-commit drift now fails CI; historical v0.2.0 references remain unchanged;
 - completed the MoF realized-financing provenance chain in the scientific baseline: the frozen source-vintage probe contract and retained 2025 source-vintage manifest are now explicit baseline authorities, and cross-registry CI verifies the exact `materialisation contract → probe contract → retained vintage → assessment` linkage; no scientific or version state changed;
 - clarified `STATUS.md` provenance after the F4 structural-zero successor materialization: the earlier 15-stock/15-flow Accounting Spine terminal section is now explicitly marked as a historical pre-successor checkpoint and points to the current post-F4 terminal authority, avoiding ambiguity with the current 25-stock/15-flow F4 partial core; no scientific state or version changed;
 - finalized the immutable v0.3.0 publication state: verified the GitHub Release/tag on exact green commit `33c11b7e10e7e837097da5b34a9251c7bedb3f2c`, recorded release ID 393215575 and publication workflow success, consumed the one-shot authorization, advanced the current public release to v0.3.0, and set v0.4.0 as the default next substantive milestone candidate without changing scientific model state;
