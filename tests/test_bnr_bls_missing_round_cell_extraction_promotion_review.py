@@ -15,7 +15,7 @@ WORKFLOW = (
     ROOT
     / ".github"
     / "workflows"
-    / "promote-bnr-bls-missing-round-cell-extraction-vintage.yml"
+    / "verify-bnr-bls-missing-round-vintages.yml"
 )
 
 
@@ -53,15 +53,23 @@ class BNRBLSMissingRoundCellExtractionPromotionTests(unittest.TestCase):
             },
         )
 
-    def test_workflow_is_idempotent_and_cannot_touch_panel(self) -> None:
-        self.assertIn("types: [synchronize]", self.workflow)
-        self.assertIn("actions/artifacts/10587291974/zip", self.workflow)
+    def test_completed_workflow_surface_is_read_only_verification(self) -> None:
+        self.assertFalse(
+            (
+                ROOT
+                / ".github/workflows/promote-bnr-bls-missing-round-cell-extraction-vintage.yml"
+            ).exists()
+        )
+        self.assertIn("workflow_dispatch:", self.workflow)
+        self.assertIn("contents: read", self.workflow)
+        self.assertNotIn("contents: write", self.workflow)
+        self.assertNotIn("pull_request:", self.workflow)
+        self.assertNotIn("git push", self.workflow)
         self.assertNotIn("www.bnr.ro", self.workflow)
         self.assertNotIn("data/processed/bnr_bls_realised_rounds.csv", self.workflow)
-        self.assertIn('if [ -e "$dest" ]; then', self.workflow)
-        self.assertIn("cmp ", self.workflow)
+        self.assertIn(self.review["destination"], self.workflow)
         self.assertIn(
-            "Exact extraction source vintage already retained",
+            "model/calibration_validation/bnr_bls_missing_round_cell_extraction_promotion_review.json",
             self.workflow,
         )
 
