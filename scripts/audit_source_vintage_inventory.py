@@ -79,7 +79,7 @@ def audit_source_vintage_inventory() -> list[str]:
             errors.append(f"{entry['directory']}: anchor is not valid JSON")
             continue
 
-        if anchor_type in {"LOCAL_MANIFEST", "LOCAL_AUDIT_ANCHOR"}:
+        if anchor_type in {"LOCAL_MANIFEST", "LOCAL_AUDIT_ANCHOR", "LOCAL_REVIEW_ANCHOR"}:
             if anchor.parent != directory:
                 errors.append(
                     f"{entry['directory']}: local provenance anchor is outside its directory"
@@ -91,6 +91,20 @@ def audit_source_vintage_inventory() -> list[str]:
                 errors.append(
                     f"{entry['directory']}: local audit anchor contains no SHA-256 identity"
                 )
+
+        if anchor_type == "LOCAL_REVIEW_ANCHOR":
+            if entry["directory"] != (
+                "data/source_vintages/"
+                "corporate-investment-financing-rate-screening-vintage-2026-09-19"
+            ):
+                errors.append(
+                    f"{entry['directory']}: unexpected unhashed local review exception"
+                )
+            if payload.get("estimation_authorized") is not False:
+                errors.append("financing-rate review anchor may not authorize estimation")
+            hard_rules = payload.get("hard_rules", {})
+            if hard_rules.get("live_provider_work_manual_only") is not True:
+                errors.append("financing-rate review anchor must retain manual-only live-provider rule")
 
         if anchor_type == "EXTERNAL_REVIEW_COPY_ANCHOR":
             if entry["directory"] != (
