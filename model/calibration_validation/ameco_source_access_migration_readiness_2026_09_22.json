@@ -122,6 +122,14 @@
       "a new preregistered source-cycle contract is committed",
       "the new workflow/script is bound only to that new contract and cannot overwrite retained historical evidence"
     ],
-    "rationale": "The retained probe/materialisation workflows are executable reproductions of a frozen Spring-2026 legacy-ZIP contract. Treating a later rerun as a new vintage would mislabel old-source retrieval as Autumn-2026 evidence. The future Redisstat executor is intentionally deferred until the release and provider dataset identity exist."
+    "rationale": "The retained Spring-2026 probe/materialisation pair and the fixed historical CAPB archive workflows are executable reproductions of frozen legacy source contracts. Treating any later rerun as a new vintage would mislabel historical-source retrieval as Autumn-2026 evidence. The future Redisstat executor is intentionally deferred until the release and provider dataset identity exist.",
+    "historical_archive_reprobe_workflow": ".github/workflows/fiscal-reaction-capb-pre2022-source-probe.yml",
+    "historical_archive_reprobe_contract": "model/calibration_validation/fiscal_reaction_capb_pre2022_source_probe_contract.json",
+    "historical_multivintage_rematerialisation_workflow": ".github/workflows/fiscal-reaction-capb-realtime-vintage-materialisation.yml",
+    "historical_multivintage_rematerialisation_contract": "model/calibration_validation/fiscal_reaction_capb_realtime_vintage_contract.json",
+    "additional_historical_archive_workflow_role": "HISTORICAL_FIXED_VINTAGE_ARCHIVE_REPROBE_AND_REMATERIALISATION_ONLY",
+    "historical_archive_workflows_may_execute_future_autumn_2026_cycle": false,
+    "historical_archive_workflow_rerun_counts_as_new_vintage": false,
+    "historical_archive_workflows_may_extend_release_list_without_new_contract": false
   }
 }
