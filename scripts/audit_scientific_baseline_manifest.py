@@ -36,7 +36,22 @@ LIVE_MANUAL_WORKFLOWS = [
     ".github/workflows/sectoral-financial-positions-s1n-boundary-diagnostic.yml",
     ".github/workflows/sectoral-financial-positions-oecd-counterpart-probe.yml",
     ".github/workflows/sectoral-financial-positions-eurostat-counterpart-probe.yml",
+    ".github/workflows/bnr-household-dsti-workbook-probe.yml",
+    ".github/workflows/fx-inflation-monthly-materialisation.yml",
 ]
+
+MANUAL_REFRESH_SEMANTIC_GUARDS = {
+    ".github/workflows/bnr-household-dsti-workbook-probe.yml": (
+        "unchanged rerun is not a new vintage",
+        "does not reopen the",
+        "declared population-alignment/target reopen conditions",
+    ),
+    ".github/workflows/fx-inflation-monthly-materialisation.yml": (
+        "candidate new-vintage evidence only if",
+        "unchanged rerun is reproduction only",
+        "without its separately declared measurement or",
+    ),
+}
 
 
 def load(relative: str) -> dict:
@@ -1134,6 +1149,14 @@ def main() -> None:
         text = (ROOT / relative).read_text(encoding="utf-8")
         check("workflow_dispatch:" in text, f"Live refresh workflow lacks manual dispatch: {relative}")
         check("pull_request:" not in text, f"Live refresh workflow still runs on pull_request: {relative}")
+
+    for relative, tokens in MANUAL_REFRESH_SEMANTIC_GUARDS.items():
+        text = (ROOT / relative).read_text(encoding="utf-8")
+        for token in tokens:
+            check(
+                token in text,
+                f"Manual refresh workflow lost trigger-conditioned rerun semantics: {relative}: {token}",
+            )
 
     report = {
         "baseline_id": manifest["baseline_id"],
