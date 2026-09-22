@@ -166,6 +166,43 @@ def audit_ameco_source_access_migration_readiness() -> list[str]:
             errors.append(f"unsafe AMECO workflow-boundary rule enabled: {key}")
     if workflow_boundary.get("future_autumn_execution_path_status") != "NOT_YET_CREATED_BY_DESIGN":
         errors.append("AMECO future execution-path status changed")
+    if workflow_boundary.get("additional_historical_archive_workflow_role") != "HISTORICAL_FIXED_VINTAGE_ARCHIVE_REPROBE_AND_REMATERIALISATION_ONLY":
+        errors.append("AMECO historical archive workflow role changed")
+    for key in (
+        "historical_archive_workflows_may_execute_future_autumn_2026_cycle",
+        "historical_archive_workflow_rerun_counts_as_new_vintage",
+        "historical_archive_workflows_may_extend_release_list_without_new_contract",
+    ):
+        if workflow_boundary.get(key) is not False:
+            errors.append(f"unsafe AMECO historical-archive workflow rule enabled: {key}")
+
+    historical_archive_paths = {
+        "historical_archive_reprobe_workflow": ".github/workflows/fiscal-reaction-capb-pre2022-source-probe.yml",
+        "historical_archive_reprobe_contract": "model/calibration_validation/fiscal_reaction_capb_pre2022_source_probe_contract.json",
+        "historical_multivintage_rematerialisation_workflow": ".github/workflows/fiscal-reaction-capb-realtime-vintage-materialisation.yml",
+        "historical_multivintage_rematerialisation_contract": "model/calibration_validation/fiscal_reaction_capb_realtime_vintage_contract.json",
+    }
+    for key, expected in historical_archive_paths.items():
+        if workflow_boundary.get(key) != expected:
+            errors.append(f"AMECO historical-archive path changed: {key}")
+
+    historical_probe = (ROOT / workflow_boundary.get("historical_archive_reprobe_workflow", "")).read_text(encoding="utf-8")
+    historical_materialise = (ROOT / workflow_boundary.get("historical_multivintage_rematerialisation_workflow", "")).read_text(encoding="utf-8")
+    for token in (
+        "HISTORICAL PRE-2022 ARCHIVE RE-PROBE ONLY",
+        "not a new AMECO",
+        "not a future Redisstat execution path",
+    ):
+        if token not in historical_probe:
+            errors.append(f"AMECO historical pre-2022 workflow lost safeguard: {token}")
+    for token in (
+        "HISTORICAL 2022-SPRING-2026 ARCHIVE RE-MATERIALISATION ONLY",
+        "not a new AMECO",
+        "future Autumn-2026 Redisstat source cycle",
+    ):
+        if token not in historical_materialise:
+            errors.append(f"AMECO historical multi-vintage workflow lost safeguard: {token}")
+
     prerequisites = workflow_boundary.get("future_execution_prerequisites", [])
     for token in (
         "Autumn 2026 full AMECO release exists",
