@@ -1,0 +1,106 @@
+name: Verify Retained Fiscal CAPB Raw Source Vintage
+
+# The one-shot no-refetch preservation stage completed on 2026-09-20.
+# The retained raw source is pinned to an immutable source-vintage branch and
+# commit. The former write-capable creator is retired from the current workflow
+# surface; this manual workflow is read-only and verifies the retained branch,
+# snapshot manifest and per-release repository hashes.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-retained-fiscal-capb-raw-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out canonical main
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify frozen preservation contract and assessment
+        run: python -m unittest tests.test_fiscal_capb_raw_source_preservation -v
+
+      - name: Verify pinned source-vintage branch and commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch="source-vintage/fiscal-capb-raw-2026-09-20"
+          expected="efb1f3ae5b025176645d45276b684efe65aa4174"
+          actual="$(git ls-remote --heads origin "refs/heads/$branch" | awk '{print $1}')"
+          test "$actual" = "$expected"
+          git fetch --no-tags origin "refs/heads/$branch:refs/remotes/origin/$branch"
+          test "$(git rev-parse "refs/remotes/origin/$branch")" = "$expected"
+
+      - name: Verify manifest blob and retained raw archives
+        shell: bash
+        env:
+          CAPB_COMMIT: efb1f3ae5b025176645d45276b684efe65aa4174
+          CAPB_MANIFEST: data/source_vintages/fiscal-reaction-structural-primary-realtime-raw-vintage-2026-09-20/snapshot_manifest.json
+          CAPB_MANIFEST_BLOB: 4fa2f672efe7d3381a5abd4eff15e5e37b0801fa
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse "$CAPB_COMMIT:$CAPB_MANIFEST")" = "$CAPB_MANIFEST_BLOB"
+          root="${RUNNER_TEMP}/capb-raw-vintage"
+          git worktree add --detach "$root" "$CAPB_COMMIT"
+          CAPB_ROOT="$root" python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ["CAPB_ROOT"])
+          manifest_path = root / (
+              "data/source_vintages/"
+              "fiscal-reaction-structural-primary-realtime-raw-vintage-2026-09-20/"
+              "snapshot_manifest.json"
+          )
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+
+          if manifest["release_count"] != 31:
+              raise SystemExit("CAPB raw release count changed")
+          if manifest["first_release_date"] != "2011-05-05":
+              raise SystemExit("CAPB raw first release date changed")
+          if manifest["last_release_date"] != "2026-06-03":
+              raise SystemExit("CAPB raw last release date changed")
+          if manifest["target_series"]["variable"] != "UBLGBPS":
+              raise SystemExit("CAPB raw target variable changed")
+          if manifest["later_live_refetch_required_for_reproduction"] is not False:
+              raise SystemExit("CAPB raw vintage unexpectedly requires live refetch")
+
+          for item in manifest["releases"]:
+              path = root / item["repository_path"]
+              data = path.read_bytes()
+              if len(data) != item["repository_bytes"]:
+                  raise SystemExit(f"byte-count mismatch: {item['release_id']}")
+              digest = hashlib.sha256(data).hexdigest()
+              if digest != item["repository_sha256"]:
+                  raise SystemExit(f"SHA-256 mismatch: {item['release_id']}")
+              if digest != item["archive_sha256"]:
+                  raise SystemExit(f"archive/repository hash mismatch: {item['release_id']}")
+          PY
+
+      - name: Verify canonical preservation assessment remains closed
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path(
+              "model/calibration_validation/"
+              "fiscal_capb_raw_source_preservation_assessment_2026_09_20.json"
+          )
+          a = json.loads(path.read_text(encoding="utf-8"))
+          assert a["status"] == "RAW_SOURCE_PRESERVATION_COMPLETE_NO_REFETCH_REPRODUCIBILITY_ESTABLISHED"
+          assert a["retained_source_vintage"]["branch"] == "source-vintage/fiscal-capb-raw-2026-09-20"
+          assert a["retained_source_vintage"]["commit_sha"] == "efb1f3ae5b025176645d45276b684efe65aa4174"
+          assert a["closure"]["selective_reopen_source_cycle_complete"] is True
+          assert a["closure"]["next_operational_state"] == "EVIDENCE_TRIGGERED_BASELINE_HOLD"
+          PY
