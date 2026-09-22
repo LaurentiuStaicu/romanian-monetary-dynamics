@@ -1,6 +1,6 @@
 # Release and versioning policy
 
-Romanian Monetary Dynamics (RMD) uses Semantic Versioning-compatible version identifiers for public scientific-core artifacts. The current public release is **v0.2.0**. The scientific maturity of the model is tracked separately from the software/artifact version: a new version does not by itself mean that behavioural mechanisms are validated, the model is calibrated, or behavioural closure is active.
+Romanian Monetary Dynamics (RMD) uses Semantic Versioning-compatible version identifiers for public scientific-core artifacts. The current public release is **v0.3.0**. The scientific maturity of the model is tracked separately from the software/artifact version: a new version does not by itself mean that behavioural mechanisms are validated, the model is calibrated, or behavioural closure is active.
 
 ## Current release state
 

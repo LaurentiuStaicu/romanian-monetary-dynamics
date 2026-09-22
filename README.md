@@ -149,6 +149,7 @@ python scripts/audit_accounting_spine_recovery_terminal.py
 python scripts/audit_dimensional_consistency.py
 python scripts/audit_system_dynamics_conformity.py
 python scripts/audit_scientific_baseline_manifest.py
+python scripts/audit_source_vintage_inventory.py
 python scripts/verify_validation_recovery_provenance.py
 ~~~
 
