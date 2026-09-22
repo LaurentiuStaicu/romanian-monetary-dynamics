@@ -355,7 +355,7 @@
     "post_terminal_semantic_terminal_assessment": "model/dynamics/sectoral_financial_positions_oecd_semantic_adjusted_terminal_assessment_2026_09_21.json",
     "post_terminal_precision_diagnostic": "model/dynamics/sectoral_financial_positions_oecd_precision_diagnostic_2026_09_21.json",
     "post_terminal_precision_diagnostic_status": "EXECUTED_NEGATIVE_NO_REOPEN",
-    "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_reference_closure.json",
+    "previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21.json",
     "trigger_aware_monitoring_horizon_status": "REFERENCE_MODES_10_OF_10_NO_GATE_OPEN_NEXT_DATED_CHECK_2026_10_08_F4_STOCK_EVIDENCE_WINDOW_AFTER_2026_10_31",
     "post_terminal_decimal_arithmetic_correction": "model/dynamics/sectoral_financial_positions_oecd_decimal_arithmetic_correction_assessment_2026_09_21.json",
     "post_terminal_decimal_arithmetic_correction_status": "EXECUTED_CORRECTION_ONLY_BASELINE_HOLD_UNCHANGED",
@@ -371,7 +371,8 @@
       "after": "2026-10-31",
       "id": "f4_bnr_cnf_2025_stock_counterpart_matrix",
       "rule": "Do not poll before the evidence window. If no official 2025 BNR CNF S121×counterpart AF4 stock matrix is identified, record nonconfirmation only and keep F4 closed."
-    }
+    },
+    "immediate_previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_reference_closure.json"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",
