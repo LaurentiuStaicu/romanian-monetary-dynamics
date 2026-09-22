@@ -579,3 +579,18 @@ The successor incorporates the current F4 stock-only priority trigger establishe
 
 The next dated event check remains the **2026-10-08 BNR policy decision**. The F4 evidence window is a separate accounting-source check and does not authorize flow recovery, reference-mode reopening, calibration, feedback activation or behavioural closure. The ECB RAS reserve-template route remains closed as non-comparable to canonical QSA/ESA F4.
 
+### Repository-wide source-vintage inventory coverage — 2026-09-22
+
+A repository-level provenance sweep audited every top-level directory under `data/source_vintages/`. The repository currently contains **32 retained vintage directories**. They are now classified explicitly by provenance anchor rather than assuming that every historical directory must share one manifest schema:
+
+- **24** use a local manifest;
+- **6** use a local audit that retains SHA-256 source/output identities;
+- **1** corporate-investment financing-rate directory is a local review anchor that retains exact series identity and continuity diagnostics but no local raw-byte hash manifest;
+- **1** fiscal structural-primary CAPB directory is intentionally a normalized repository review copy governed by an external timing assessment that records workflow-artifact identity and explicitly forbids an exact-vintage reproducibility claim from that directory.
+
+The CAPB review-copy exception is not a provenance gap: its governing assessment classifies it as `ARTIFACT_HASH_IDENTITY_PLUS_NORMALIZED_REPOSITORY_REVIEW_COPIES`, and the later raw-source-preservation cycle independently established no-refetch exact source retention for the reviewed AMECO evidence.
+
+The canonical inventory is `data/provenance/source_vintage_inventory_registry.json`. `model_contract.json` and scientific baseline manifest **1.8** now register it, and Scientific CI executes `scripts/audit_source_vintage_inventory.py`. Any future top-level source-vintage directory that is not explicitly registered, or any stale inventory entry whose directory/anchor disappears, now fails the scientific baseline.
+
+This is a provenance-governance hardening only. It does not change any observation, model equation, mechanism classification, Accounting Spine state, release version, calibration authorization, feedback activation or behavioural closure.
+

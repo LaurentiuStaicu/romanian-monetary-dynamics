@@ -1,0 +1,220 @@
+{
+  "registry_version": "0.1",
+  "frozen_on": "2026-09-22",
+  "purpose": "Repository-wide coverage registry for every top-level retained source-vintage directory. It does not replace instrument- or mechanism-specific provenance audits; it prevents a retained source-vintage directory from becoming an unregistered provenance island.",
+  "source_root": "data/source_vintages",
+  "directory_count": 32,
+  "rules": {
+    "every_top_level_source_vintage_directory_must_be_registered": true,
+    "every_registry_directory_must_exist": true,
+    "every_anchor_must_exist": true,
+    "local_manifest_anchor_must_be_inside_directory": true,
+    "local_audit_anchor_must_be_inside_directory": true,
+    "local_audit_anchor_must_contain_at_least_one_sha256": true,
+    "external_review_copy_requires_explicit_reproducibility_classification": true,
+    "registry_does_not_upgrade_reproducibility_classification": true,
+    "historical_files_are_not_rewritten_to_manifests": true,
+    "live_refetch_is_not_authorized_by_inventory_coverage": true,
+    "local_review_anchor_does_not_imply_exact_reproducibility": true
+  },
+  "allowed_anchor_types": [
+    "LOCAL_MANIFEST",
+    "LOCAL_AUDIT_ANCHOR",
+    "LOCAL_REVIEW_ANCHOR",
+    "EXTERNAL_REVIEW_COPY_ANCHOR"
+  ],
+  "entries": [
+    {
+      "directory": "data/source_vintages/accounting-f2m-2025-vintage-2026-09-18",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/accounting-f2m-2025-vintage-2026-09-18/source_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/accounting-f3-2025-vintage-2026-09-18",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/accounting-f3-2025-vintage-2026-09-18/snapshot_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18/source_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/bank-credit-prudential-coverage-vintage-2026-09-19",
+      "anchor_type": "LOCAL_AUDIT_ANCHOR",
+      "anchor": "data/source_vintages/bank-credit-prudential-coverage-vintage-2026-09-19/bank_credit_prudential_coverage_audit.json",
+      "reason": "Local audit records exact provider request URLs, retained raw paths, SHA-256 digests and byte counts for the retained prudential controls."
+    },
+    {
+      "directory": "data/source_vintages/bnr-bls-may2025-xlsx-vintage-2026-09-19",
+      "anchor_type": "LOCAL_AUDIT_ANCHOR",
+      "anchor": "data/source_vintages/bnr-bls-may2025-xlsx-vintage-2026-09-19/bnr_bls_may2025_xlsx_probe.json",
+      "reason": "Local probe records source URLs, workbook byte counts, SHA-256 digests and retained workbook paths."
+    },
+    {
+      "directory": "data/source_vintages/bnr-bls-missing-round-cell-extraction-vintage-2026-09-19",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/bnr-bls-missing-round-cell-extraction-vintage-2026-09-19/source_vintage_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/bnr-bls-missing-round-recovery-vintage-2026-09-19",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/bnr-bls-missing-round-recovery-vintage-2026-09-19/source_vintage_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/bnr-government-issuance-2025-vintage-2026-09-20/source_vintage_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/bnr-household-dsti-workbook-probe-vintage-2026-09-19",
+      "anchor_type": "LOCAL_AUDIT_ANCHOR",
+      "anchor": "data/source_vintages/bnr-household-dsti-workbook-probe-vintage-2026-09-19/bnr_household_dsti_workbook_probe.json",
+      "reason": "Local probe records source URLs, workbook byte counts, SHA-256 digests and retained workbook paths."
+    },
+    {
+      "directory": "data/source_vintages/bnr-legacy-xls-cell-extraction-vintage-2026-09-19",
+      "anchor_type": "LOCAL_AUDIT_ANCHOR",
+      "anchor": "data/source_vintages/bnr-legacy-xls-cell-extraction-vintage-2026-09-19/bnr_legacy_xls_cell_extraction_audit.json",
+      "reason": "Local extraction audit binds source workbook hashes to deterministic extracted-cell output hashes."
+    },
+    {
+      "directory": "data/source_vintages/corporate-investment-financing-rate-screening-vintage-2026-09-19",
+      "anchor_type": "LOCAL_REVIEW_ANCHOR",
+      "anchor": "data/source_vintages/corporate-investment-financing-rate-screening-vintage-2026-09-19/corporate_investment_financing_rate_source_screening.json",
+      "reason": "Local screening review records exact provider series identities, semantic scope and continuity metrics for the retained CSV review copies, but does not carry a local raw-byte SHA-256 manifest. Inventory registration does not upgrade this directory to exact source-vintage reproducibility."
+    },
+    {
+      "directory": "data/source_vintages/corporate-investment-measurement-panel-vintage-2026-09-19",
+      "anchor_type": "LOCAL_AUDIT_ANCHOR",
+      "anchor": "data/source_vintages/corporate-investment-measurement-panel-vintage-2026-09-19/corporate_investment_measurement_panel_audit.json",
+      "reason": "Local offline-panel audit records all input hashes, derived-series rules and the complete-panel SHA-256."
+    },
+    {
+      "directory": "data/source_vintages/corporate-investment-source-family-vintage-2026-09-19",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/corporate-investment-source-family-vintage-2026-09-19/snapshot_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/corporate-investment-supplemental-source-vintage-2026-09-19",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/corporate-investment-supplemental-source-vintage-2026-09-19/snapshot_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/ecb-supply-load-denominator-candidates-2026-09-20",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/ecb-supply-load-denominator-candidates-2026-09-20/ecb_denominator_probe_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/esa2010-financial-instrument-semantics-2026-09-21",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/esa2010-financial-instrument-semantics-2026-09-21/source_vintage_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/fiscal-primary-balance-quarterly-vintage-2026-09-19",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/fiscal-primary-balance-quarterly-vintage-2026-09-19/snapshot_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/fiscal-reaction-ameco-actual-vintage-2026-09-19",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/fiscal-reaction-ameco-actual-vintage-2026-09-19/snapshot_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/fiscal-reaction-capb-realtime-artifact-review-2026-09-20",
+      "anchor_type": "EXTERNAL_REVIEW_COPY_ANCHOR",
+      "anchor": "model/calibration_validation/fiscal_capb_timing_adjudication_2026_09_20.json",
+      "reason": "This directory is intentionally a normalized repository review copy rather than an exact raw vintage. The governing timing assessment records workflow/artifact identity, hashes, reproducibility classification and explicitly forbids an exact-vintage claim from this directory."
+    },
+    {
+      "directory": "data/source_vintages/fx-inflation-monthly-levels-vintage-2026-09-19",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/fx-inflation-monthly-levels-vintage-2026-09-19/snapshot_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/mof-announced-ron-primary-reference-auction-full-2025-vintage-2026-09-20/source_vintage_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/mof-announced-ron-primary-supply-pilot-2026-09-20",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/mof-announced-ron-primary-supply-pilot-2026-09-20/source_vintage_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/mof-realized-financing-channels-2025-vintage-2026-09-21/source_vintage_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/mof-supply-pressure-probe-vintage-2026-09-20",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/mof-supply-pressure-probe-vintage-2026-09-20/source_vintage_probe_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/oecd-decimal-arithmetic-correction-2026-09-21",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/oecd-decimal-arithmetic-correction-2026-09-21/source_vintage_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/oecd-nonconsolidated-sectoral-financial-positions-row-gate-2026-09-21",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/oecd-nonconsolidated-sectoral-financial-positions-row-gate-2026-09-21/source_vintage_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/oecd-semantic-adjusted-sectoral-financial-positions-2026-09-21",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/oecd-semantic-adjusted-sectoral-financial-positions-2026-09-21/source_vintage_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/sectoral-financial-positions-eurostat-counterpart-discovery-vintage-2026-09-19",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/sectoral-financial-positions-eurostat-counterpart-discovery-vintage-2026-09-19/manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/sectoral-financial-positions-oecd-counterpart-discovery-vintage-2026-09-19",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/sectoral-financial-positions-oecd-counterpart-discovery-vintage-2026-09-19/manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/sectoral-financial-positions-s1n-boundary-vintage-2026-09-19",
+      "anchor_type": "LOCAL_AUDIT_ANCHOR",
+      "anchor": "data/source_vintages/sectoral-financial-positions-s1n-boundary-vintage-2026-09-19/sectoral_financial_positions_s1n_boundary_diagnostic.json",
+      "reason": "Local diagnostic records every requested series URL, retained raw path, SHA-256 digest, byte count and HTTP result."
+    },
+    {
+      "directory": "data/source_vintages/sovereign-yield-quarterly-vintage-2026-09-19",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/sovereign-yield-quarterly-vintage-2026-09-19/snapshot_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    },
+    {
+      "directory": "data/source_vintages/validation-recovery-2026-09-17",
+      "anchor_type": "LOCAL_MANIFEST",
+      "anchor": "data/source_vintages/validation-recovery-2026-09-17/recovery_manifest.json",
+      "reason": "Primary local manifest retained with the source-vintage directory."
+    }
+  ]
+}

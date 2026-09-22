@@ -117,6 +117,16 @@ def main() -> None:
         "Model contract does not register the scientific baseline manifest",
     )
     check(
+        model["repository_governance"]["source_vintage_inventory_registry"]
+        == "data/provenance/source_vintage_inventory_registry.json",
+        "Model contract does not register source-vintage inventory governance",
+    )
+    check(
+        manifest["authority"]["source_vintage_inventory_registry"]
+        == model["repository_governance"]["source_vintage_inventory_registry"],
+        "Scientific baseline and model contract disagree on source-vintage inventory",
+    )
+    check(
         reset["scientific_baseline_manifest"]
         == "model/registries/scientific_baseline_manifest.json",
         "Reset integrity contract does not register the scientific baseline manifest",
