@@ -6,6 +6,12 @@ Romanian Monetary Dynamics (RMD) **v0.3.0** is the current public scientific-cor
 
 The **Validation Recovery / Empirical Basis Expansion** stage has completed its currently admissible scientific work and is now in **EVIDENCE_TRIGGERED_BASELINE_HOLD**. This is stage completion at the current evidence boundary, not model completion: RMD remains empirically incomplete, behavioural closure remains inactive, no new calibration/refit is authorized, and release/merge/version decisions remain separate human decisions. The terminal stage assessment is `model/registries/validation_recovery_stage_terminal_assessment.json`.
 
+### Repository provenance-integrity terminal closure — 2026-09-22
+
+The post-v0.3.0 repository-wide provenance hardening cycle is now closed at its current scope under `model/registries/provenance_integrity_terminal_assessment_2026_09_22.json`. All 32 top-level source-evidence directories and all 13 CSVs under `data/processed` are inventory-governed; Validation Recovery remains explicitly `PARTIAL_RAW_RECOVERY` while its exact five-file repository input surface is separately pinned. The model contract and scientific baseline register the same source-vintage, processed-data and validation-recovery provenance authorities, and there is no active provenance repair task.
+
+This terminal provenance state is a repository-integrity boundary, not a scientific promotion. It does not complete the Accounting Spine, validate a behavioural mechanism, authorize calibration/refit, open a holdout, activate a System Dynamics feedback loop or require a version bump. Provenance work reopens only on one of the assessment's declared evidence/change/failure triggers. Otherwise continuation is governed by `model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json`; repeated no-trigger provenance auditing is not treated as scientific progress. The public README intentionally remains user-oriented and does not duplicate this internal handoff detail.
+
 ### Post-terminal reference-mode observational closure — 2026-09-21
 
 A later, independently sourced quality-rule pass has now promoted the final aggregate reference mode. The ECB's official national quarterly-financial-accounts quality framework defines horizontal consistency instrument by instrument and states that national-data discrepancies below EUR 10 million are acceptable. That rule satisfies the previously declared requirement for an independent domain-specific quantitative precision/balancing standard; it was not selected from the observed RMD residuals.
