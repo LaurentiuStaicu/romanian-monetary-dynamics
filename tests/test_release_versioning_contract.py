@@ -61,6 +61,9 @@ class ReleaseVersioningContractTests(unittest.TestCase):
             "BNR BLS 2025-Q2",
             "Ministry of Finance exchange-operation topology",
             "NO_REOPEN",
+            "ECFIN Redisstat",
+            "UBLGBPS",
+            "unresolved Redisstat dataset/series identity",
         ):
             self.assertIn(token,rationale)
         self.assertTrue(basis["unreleased_changes_present"])
