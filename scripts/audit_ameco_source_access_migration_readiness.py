@@ -62,7 +62,7 @@ def audit_ameco_source_access_migration_readiness() -> list[str]:
             errors.append("historical Spring 2026 AMECO URL changed")
         if spring["source_url"] != "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco17.zip":
             errors.append("historical Spring 2026 AMECO URL no longer matches frozen contract")
-    if contract["extraction_rules"]["no_source_url_guessing"] is not True:
+    if contract["hard_rules"]["no_source_url_guessing"] is not True:
         errors.append("historical CAPB contract no longer prohibits source URL guessing")
     for key in (
         "historical_release_urls_may_be_rewritten",
