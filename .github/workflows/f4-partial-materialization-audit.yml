@@ -32,8 +32,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  actions: read
+  contents: read
 
 jobs:
   verify-f4-partial:
@@ -50,30 +49,9 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Retain exact Phase B artifact and generate partial F4 if absent
-        if: github.event_name == 'pull_request'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          ARTIFACT_ID: "10558980689"
-          EXPECTED_SHA256: "a01922ed3662725dd5c73c95cd248bb97c8fc8a06404c9507e7cac4fc8e260aa"
-        run: |
-          set -euo pipefail
-          VINTAGE="data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18"
-          B64="$VINTAGE/workflow_artifact_10558980689.zip.b64"
-          mkdir -p "$VINTAGE"
-          if [ ! -f "$B64" ]; then
-            curl --fail --location               --header "Accept: application/vnd.github+json"               --header "Authorization: Bearer $GH_TOKEN"               --header "X-GitHub-Api-Version: 2022-11-28"               "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/$ARTIFACT_ID/zip"               --output /tmp/f4-phase-b.zip
-            echo "$EXPECTED_SHA256  /tmp/f4-phase-b.zip" | sha256sum --check
-            base64 -w 76 /tmp/f4-phase-b.zip > "$B64"
-          fi
-          python scripts/generate_f4_partial_from_snapshot.py
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$B64" model/accounting/f4_partial_2025.json model/accounting/f4_partial_materialization_manifest.json
-          if ! git diff --cached --quiet; then
-            git commit -m "accounting: retain and materialize unconditional partial F4 core"
-            git push origin "HEAD:${{ github.head_ref }}"
-          fi
+      # The exact Phase-B source vintage was retained on 2026-09-18 and is
+      # verified offline below. This workflow is now reproduction/verification
+      # only; it must not refetch or mutate the historical source vintage.
 
       - name: Verify immutable source vintage offline
         run: python scripts/verify_f4_partial_source_vintage.py
