@@ -8,6 +8,48 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
+SCRIPT_REF = re.compile(r"scripts/([A-Za-z0-9_.-]+\.py)")
+RUN_KEY = re.compile(r"^\s*(?:-\s*)?run:\s*(.*)$")
+BLOCK_SCALARS = {"|", ">", "|-", ">-", "|+", ">+"}
+
+
+def workflow_run_commands(text: str) -> list[str]:
+    """Return only shell/Python command text from workflow run steps."""
+    lines = text.splitlines()
+    commands: list[str] = []
+    index = 0
+
+    while index < len(lines):
+        raw_line = lines[index]
+        match = RUN_KEY.match(raw_line)
+        if match is None:
+            index += 1
+            continue
+
+        value = match.group(1).strip()
+        indent = len(raw_line) - len(raw_line.lstrip())
+        if value not in BLOCK_SCALARS:
+            commands.append(value)
+            index += 1
+            continue
+
+        block: list[str] = []
+        index += 1
+        while index < len(lines):
+            candidate = lines[index]
+            if not candidate.strip():
+                block.append("")
+                index += 1
+                continue
+            candidate_indent = len(candidate) - len(candidate.lstrip())
+            if candidate_indent <= indent:
+                break
+            block.append(candidate.strip())
+            index += 1
+        commands.append("\n".join(block))
+
+    return commands
+
 
 class LiveSourceRefreshWorkflowTests(unittest.TestCase):
     def test_live_provider_refreshes_are_manual_only(self) -> None:
@@ -103,7 +145,6 @@ class LiveSourceRefreshWorkflowTests(unittest.TestCase):
 
     def test_pull_request_workflows_do_not_invoke_direct_provider_network_scripts(self) -> None:
         workflow_dir = ROOT / ".github" / "workflows"
-        script_ref = re.compile(r"scripts/([A-Za-z0-9_.-]+\\.py)")
         network_markers = (
             "import urllib.request",
             "from urllib.request import",
@@ -121,14 +162,16 @@ class LiveSourceRefreshWorkflowTests(unittest.TestCase):
             text = workflow_path.read_text(encoding="utf-8")
             if "pull_request:" not in text:
                 continue
-            for raw_line in text.splitlines():
+
+            executable = "\n".join(workflow_run_commands(text))
+            for raw_line in executable.splitlines():
                 line = raw_line.strip()
-                if re.search(r"(^|[;&|]\\s*)(curl|wget)\\s+", line):
+                if re.search(r"(^|[;&|]\s*)(curl|wget)\s+", line):
                     violations.append(
                         f"{workflow_path.name}: inline network command: {line}"
                     )
 
-            for script_name in sorted(set(script_ref.findall(text))):
+            for script_name in sorted(set(SCRIPT_REF.findall(executable))):
                 script_path = ROOT / "scripts" / script_name
                 if not script_path.exists():
                     continue
@@ -144,6 +187,35 @@ class LiveSourceRefreshWorkflowTests(unittest.TestCase):
             [],
             "pull-request workflows must not perform direct provider access; "
             "live refresh belongs behind manual/evidence-triggered execution",
+        )
+
+    def test_provider_gate_parses_executable_run_references_only(self) -> None:
+        synthetic = """on:
+  pull_request:
+    paths:
+      - "scripts/network_filter_only.py"
+jobs:
+  verify:
+    steps:
+      - run: python scripts/offline_one.py
+      - run: |
+          mkdir -p generated
+          python scripts/offline_two.py
+"""
+        executable = "\n".join(workflow_run_commands(synthetic))
+        self.assertEqual(
+            sorted(set(SCRIPT_REF.findall(executable))),
+            ["offline_one.py", "offline_two.py"],
+        )
+        self.assertNotIn("network_filter_only.py", executable)
+
+        f3_workflow = (
+            ROOT / ".github" / "workflows" / "f3-materialization-audit.yml"
+        ).read_text(encoding="utf-8")
+        f3_executable = "\n".join(workflow_run_commands(f3_workflow))
+        self.assertNotIn(
+            "audit_qsa_accounting_coverage.py",
+            SCRIPT_REF.findall(f3_executable),
         )
 
     def test_sectoral_position_has_no_parallel_phase_aliases(self) -> None:
