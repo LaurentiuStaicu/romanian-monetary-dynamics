@@ -122,16 +122,24 @@
     "partial_recovery_does_not_imply_complete_missing_round_recovery": true,
     "no_exact_url_quarter_has_zero_negative_effect": true
   },
-  "manual_rerun_bridge": {
+  "source_discovery_terminal_assessment": "model/calibration_validation/bnr_bls_2025q2_source_discovery_terminal_assessment.json",
+  "source_discovery_stage_status": "STAGE_CLOSED_FROZEN_SINGLE_GAP_2025_Q2_UNDER_CURRENT_PUBLIC_DISCOVERY_SURFACE_NO_MODEL_EFFECT",
+  "source_discovery_reopen_policy": "Do not search for or probe a 2025-Q2 workbook candidate again unless new official BNR evidence supplies an exact endpoint or an exact official machine-readable time-series/catalog target. The existing recovery procedure remains the acquisition gate after such a trigger; url_candidates for 2025-Q2 remains empty until then.",
+  "manual_dispatch_bridge": {
+    "workflow": ".github/workflows/bnr-bls-missing-round-workbook-recovery.yml",
+    "workflow_exists_on_default_branch": true,
+    "trigger": "workflow_dispatch",
+    "job": "recover-missing-bnr-bls-workbooks",
+    "automatic_pull_request_or_push_execution": false,
+    "current_role": "HISTORICAL_PREREGISTERED_CANDIDATE_REPLAY_UNTIL_NEW_OFFICIAL_2025Q2_EXACT_SOURCE_TRIGGER",
+    "scientific_role": "Manual source acquisition only after the frozen reopen condition is satisfied and the exact 2025-Q2 target is preregistered; unchanged replay has no model effect."
+  },
+  "historical_manual_rerun_bridge": {
+    "status": "RETIRED_2026-09-23",
     "workflow": ".github/workflows/scientific-ci.yml",
     "job": "manual-bnr-bls-missing-round-recovery",
     "required_head_ref": "audit/scientific-integrity-2026-09-18",
-    "activation_condition": "(github.event_name == 'workflow_dispatch' && github.ref_name == 'audit/scientific-integrity-2026-09-18') || (github.event_name == 'pull_request' && github.head_ref == 'audit/scientific-integrity-2026-09-18' && github.run_attempt > 1)",
-    "initial_pull_request_attempt": "SKIPPED",
-    "automatic_live_source_acquisition": false,
-    "scientific_role": "Manual source acquisition only; this does not open calibration, extract workbook values, append the canonical panel or change mechanism status."
-  },
-  "source_discovery_terminal_assessment": "model/calibration_validation/bnr_bls_2025q2_source_discovery_terminal_assessment.json",
-  "source_discovery_stage_status": "STAGE_CLOSED_FROZEN_SINGLE_GAP_2025_Q2_UNDER_CURRENT_PUBLIC_DISCOVERY_SURFACE_NO_MODEL_EFFECT",
-  "source_discovery_reopen_policy": "Do not search for or probe a 2025-Q2 workbook candidate again unless new official BNR evidence supplies an exact endpoint or an exact official machine-readable time-series/catalog target. The existing recovery procedure remains the acquisition gate after such a trigger; url_candidates for 2025-Q2 remains empty until then."
+    "prior_activation_condition": "(github.event_name == 'workflow_dispatch' && github.ref_name == 'audit/scientific-integrity-2026-09-18') || (github.event_name == 'pull_request' && github.head_ref == 'audit/scientific-integrity-2026-09-18' && github.run_attempt > 1)",
+    "retirement_reason": "The historical audit PR is closed and the dedicated BNR BLS recovery workflow now exists on the default branch; Scientific CI is reserved for offline verification."
+  }
 }
