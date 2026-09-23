@@ -1,11 +1,9 @@
 name: F2 Source Structure Audit
 
+# Live ECB QSA source-structure refresh is manual-only.
+# The original Phase A0 evidence is retained; unchanged provider reruns are
+# reproduction only and do not satisfy the closed F2 reopen gate.
 on:
-  pull_request:
-    paths:
-      - "model/accounting/f2_source_structure_contract.json"
-      - "scripts/probe_qsa_f2_structure.py"
-      - ".github/workflows/f2-source-structure-audit.yml"
   workflow_dispatch:
 
 permissions:
@@ -30,7 +28,7 @@ jobs:
       - name: Probe official ECB QSA F2 publication structure
         env:
           F2_PROBE_OUT: f2_probe_artifacts
-        run: python scripts/probe_qsa_f2_structure.py
+        run: python scripts/probe_qsa_f2_structure.py --allow-live-refetch
 
       - name: Upload raw source responses and structure report
         uses: actions/upload-artifact@v4

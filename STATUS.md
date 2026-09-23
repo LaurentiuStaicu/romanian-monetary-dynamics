@@ -717,3 +717,11 @@ Those five CLIs now refuse live network acquisition by default and require the e
 
 All previously retained source bytes and manifests remain immutable. The full-2025 MoF three-document recovery path is excluded because it remains separately evidence-triggered and governed by its dedicated manual workflows. Public release state remains **v0.3.0**, with no version bump required by this governance hardening.
 
+### F2 source-structure live-refresh execution boundary — 2026-09-23
+
+The original F2 Phase-A0 source-structure workflow still performed a live ECB QSA probe automatically on pull-request changes to its contract, script or workflow. That execution mode no longer matched the canonical Accounting Spine terminal state: the retained source-structure assessment already established the F2M publication orientation and the unresolved bilateral F21/total-F2 bridge, while the terminal F2 disposition has `current_reopen_gate_open = false` and the stage rule explicitly forbids repeated live probing without a trigger.
+
+The F2 source-structure workflow is therefore manual-only. Its direct CLI also refuses live ECB QSA access by default and requires `--allow-live-refetch`; the manual workflow supplies that acknowledgement explicitly. Regression coverage requires both properties. The flag is an execution acknowledgement only and cannot itself reopen F2, promote a benchmark cell or reinterpret unchanged provider output as new evidence.
+
+The historical Phase-A0 assessment (500 requests, 122 available series, F2M issuer-liability orientation retained) is unchanged. F2 remains `INCOMPLETE`, F2M remains the usable materialized component, the F21/total-F2 bridge remains blocked pending genuinely new country-specific supplementary evidence or an exact bridge, and no Accounting Spine, calibration, feedback, behavioural-closure or public **v0.3.0** state changes.
+

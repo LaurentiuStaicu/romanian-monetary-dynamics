@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import io
@@ -178,6 +179,24 @@ def add_family(
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--allow-live-refetch",
+        action="store_true",
+        help=(
+            "Explicitly authorize the manual live ECB QSA source-structure "
+            "refresh. Unchanged reruns are reproduction only and do not reopen "
+            "the terminal F2 accounting gate."
+        ),
+    )
+    args = parser.parse_args()
+    if not args.allow_live_refetch:
+        parser.error(
+            "live ECB QSA refetch is disabled by default; use "
+            "--allow-live-refetch only after an explicit evidence/change "
+            "trigger and review"
+        )
+
     specs: dict[str, dict[str, str]] = {}
 
     # Published W0 controls for representative RMD sectors and financial aggregates.

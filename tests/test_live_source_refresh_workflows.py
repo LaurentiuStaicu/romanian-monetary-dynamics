@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -9,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class LiveSourceRefreshWorkflowTests(unittest.TestCase):
     def test_live_provider_refreshes_are_manual_only(self) -> None:
         manual_only = [
+            ".github/workflows/f2-source-structure-audit.yml",
             ".github/workflows/private-credit-reference-audit.yml",
             ".github/workflows/government-interest-burden-reference-audit.yml",
             ".github/workflows/government-debt-stock-reference-audit.yml",
@@ -39,6 +42,26 @@ class LiveSourceRefreshWorkflowTests(unittest.TestCase):
                 relative,
             )
 
+
+
+    def test_f2_source_structure_probe_requires_explicit_live_refetch(self) -> None:
+        workflow_path = ROOT / ".github/workflows/f2-source-structure-audit.yml"
+        workflow = workflow_path.read_text(encoding="utf-8")
+        self.assertIn(
+            "python scripts/probe_qsa_f2_structure.py --allow-live-refetch",
+            workflow,
+        )
+
+        process = subprocess.run(
+            [sys.executable, str(ROOT / "scripts/probe_qsa_f2_structure.py")],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(process.returncode, 2)
+        self.assertIn("--allow-live-refetch", process.stderr)
+        self.assertIn("disabled by default", process.stderr)
 
     def test_sectoral_position_has_no_parallel_phase_aliases(self) -> None:
         forbidden_paths = [
