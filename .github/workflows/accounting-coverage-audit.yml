@@ -1,12 +1,9 @@
 name: Accounting Coverage Audit
 
+# Live provider refresh is manual-only under the terminal Accounting Spine hold.
+# Unchanged reruns are reproduction only and do not satisfy a reopen trigger.
+
 on:
-  pull_request:
-    paths:
-      - "model/accounting/empirical_recovery_contract.json"
-      - "scripts/audit_qsa_accounting_coverage.py"
-      - "tests/test_accounting_recovery_contract.py"
-      - ".github/workflows/accounting-coverage-audit.yml"
   workflow_dispatch:
 
 permissions:
