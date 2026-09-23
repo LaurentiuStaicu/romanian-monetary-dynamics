@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 import subprocess
 import sys
 import unittest
@@ -98,6 +99,59 @@ class LiveSourceRefreshWorkflowTests(unittest.TestCase):
             self.assertEqual(process.returncode, 2, relative)
             self.assertIn("--allow-live-refetch", process.stderr, relative)
             self.assertIn("disabled by default", process.stderr, relative)
+
+
+    def test_pull_request_workflows_do_not_invoke_direct_provider_network_scripts(self) -> None:
+        workflow_dir = ROOT / ".github" / "workflows"
+        script_ref = re.compile(r"scripts/([A-Za-z0-9_.-]+\\.py)")
+        network_markers = (
+            "import urllib.request",
+            "from urllib.request import",
+            "urllib.request.urlopen",
+            " urlopen(",
+            "import requests",
+            "requests.get(",
+            "requests.post(",
+            "import httpx",
+            "httpx.get(",
+            "httpx.post(",
+        )
+        # Scientific CI contains separately conditioned manual jobs in the same
+        # workflow file; those paths are governed by dedicated assertions above.
+        exempt_workflows = {"scientific-ci.yml"}
+
+        violations: list[str] = []
+        for workflow_path in sorted(workflow_dir.glob("*.y*ml")):
+            text = workflow_path.read_text(encoding="utf-8")
+            if "pull_request:" not in text:
+                continue
+            if workflow_path.name in exempt_workflows:
+                continue
+
+            for raw_line in text.splitlines():
+                line = raw_line.strip()
+                if re.search(r"(^|[;&|]\\s*)(curl|wget)\\s+", line):
+                    violations.append(
+                        f"{workflow_path.name}: inline network command: {line}"
+                    )
+
+            for script_name in sorted(set(script_ref.findall(text))):
+                script_path = ROOT / "scripts" / script_name
+                if not script_path.exists():
+                    continue
+                source = script_path.read_text(encoding="utf-8")
+                if any(marker in source for marker in network_markers):
+                    violations.append(
+                        f"{workflow_path.name}: direct provider-capable script "
+                        f"scripts/{script_name}"
+                    )
+
+        self.assertEqual(
+            violations,
+            [],
+            "pull-request workflows must not perform direct provider access; "
+            "live refresh belongs behind manual/evidence-triggered execution",
+        )
 
     def test_sectoral_position_has_no_parallel_phase_aliases(self) -> None:
         forbidden_paths = [
