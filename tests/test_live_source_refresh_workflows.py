@@ -116,18 +116,11 @@ class LiveSourceRefreshWorkflowTests(unittest.TestCase):
             "httpx.get(",
             "httpx.post(",
         )
-        # Scientific CI contains separately conditioned manual jobs in the same
-        # workflow file; those paths are governed by dedicated assertions above.
-        exempt_workflows = {"scientific-ci.yml"}
-
         violations: list[str] = []
         for workflow_path in sorted(workflow_dir.glob("*.y*ml")):
             text = workflow_path.read_text(encoding="utf-8")
             if "pull_request:" not in text:
                 continue
-            if workflow_path.name in exempt_workflows:
-                continue
-
             for raw_line in text.splitlines():
                 line = raw_line.strip()
                 if re.search(r"(^|[;&|]\\s*)(curl|wget)\\s+", line):

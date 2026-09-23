@@ -1,0 +1,125 @@
+name: Sectoral Financial Positions Historical Live-Gate Replay
+
+# MANUAL HISTORICAL REPLAY ONLY.
+# These four source-dependent gates belong to completed 2026-09-21 reference-mode
+# investigations. Running them against unchanged provider state is reproducibility,
+# not new scientific progress, and cannot reopen or promote any RMD gate.
+# A new scientific cycle still requires its separately declared evidence trigger
+# and preregistration before any result can affect canonical state.
+on:
+  workflow_dispatch:
+    inputs:
+      replay:
+        description: Historical live gate to replay
+        required: true
+        type: choice
+        options:
+          - oecd-nonconsolidated-topology
+          - oecd-exact-reconciliation
+          - oecd-semantic-adjusted
+          - ecb-qfa-10m-horizontal-consistency
+      acknowledge_no_scientific_reopen:
+        description: I understand this replay does not reopen or promote scientific state
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  oecd-nonconsolidated-topology:
+    if: ${{ inputs.replay == 'oecd-nonconsolidated-topology' && inputs.acknowledge_no_scientific_reopen }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Verify frozen topology contract
+        run: python -m unittest tests.test_oecd_sectoral_financial_positions_nonconsolidated_probe -v
+      - name: Replay OECD non-consolidated topology probe
+        env:
+          OECD_NONCONSOLIDATED_TOPOLOGY_OUT: oecd_nonconsolidated_topology_artifacts
+        run: python scripts/audit_oecd_sectoral_financial_positions_nonconsolidated_probe.py
+      - name: Upload replay evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-oecd-nonconsolidated-topology-${{ github.sha }}
+          path: oecd_nonconsolidated_topology_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+
+  oecd-exact-reconciliation:
+    if: ${{ inputs.replay == 'oecd-exact-reconciliation' && inputs.acknowledge_no_scientific_reopen }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Verify frozen exact-reconciliation contract
+        run: python -m unittest tests.test_oecd_sectoral_financial_positions_exact_reconciliation -v
+      - name: Replay exact OECD reconciliation gate
+        env:
+          OECD_EXACT_REFERENCE_OUT: oecd_exact_reference_artifacts
+        run: python scripts/audit_oecd_sectoral_financial_positions_exact_reconciliation.py
+      - name: Upload replay evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-oecd-exact-reconciliation-${{ github.sha }}
+          path: oecd_exact_reference_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+
+  oecd-semantic-adjusted:
+    if: ${{ inputs.replay == 'oecd-semantic-adjusted' && inputs.acknowledge_no_scientific_reopen }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Verify frozen semantic-adjusted contract
+        run: |
+          python scripts/audit_esa2010_s1m_f2_liability_semantic_gate.py
+          python -m unittest tests.test_oecd_sectoral_financial_positions_semantic_adjusted_gate -v
+      - name: Replay semantic-adjusted OECD reconciliation gate
+        env:
+          OECD_SEMANTIC_REFERENCE_OUT: oecd_semantic_reference_artifacts
+        run: python scripts/audit_oecd_sectoral_financial_positions_semantic_adjusted_gate.py
+      - name: Upload replay evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-oecd-semantic-adjusted-${{ github.sha }}
+          path: oecd_semantic_reference_artifacts/
+          if-no-files-found: error
+          retention-days: 90
+
+  ecb-qfa-10m-horizontal-consistency:
+    if: ${{ inputs.replay == 'ecb-qfa-10m-horizontal-consistency' && inputs.acknowledge_no_scientific_reopen }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Verify frozen ECB threshold contract
+        run: |
+          python scripts/audit_ecb_qfa_10m_horizontal_gate_preregistration.py
+          python -m unittest tests.test_ecb_qfa_10m_horizontal_consistency_gate -v
+      - name: Replay per-instrument ECB-QFA-threshold gate
+        env:
+          ECB_QFA_10M_GATE_OUT: ecb_qfa_10m_gate_artifacts
+        run: python scripts/audit_ecb_qfa_10m_horizontal_consistency_gate.py
+      - name: Upload replay evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-ecb-qfa-10m-horizontal-gate-${{ github.sha }}
+          path: ecb_qfa_10m_gate_artifacts/
+          if-no-files-found: error
+          retention-days: 90

@@ -5,74 +5,94 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-WORKFLOW = ROOT / ".github" / "workflows" / "scientific-ci.yml"
-AUDIT_BRANCH = "audit/scientific-integrity-2026-09-18"
+SCIENTIFIC_CI = ROOT / ".github" / "workflows" / "scientific-ci.yml"
+
+DEDICATED = (
+    (
+        "model/dynamics/sectoral_financial_positions_eurostat_counterpart_probe_contract.json",
+        ".github/workflows/sectoral-financial-positions-eurostat-counterpart-probe.yml",
+        "probe-eurostat-counterpart-data",
+    ),
+    (
+        "model/dynamics/sectoral_financial_positions_oecd_counterpart_probe_contract.json",
+        ".github/workflows/sectoral-financial-positions-oecd-counterpart-probe.yml",
+        "probe-oecd-counterpart-data",
+    ),
+)
 
 
 class ManualLiveSourceDispatchBridgeTests(unittest.TestCase):
-    def test_scientific_ci_remains_dispatchable_and_hosts_manual_live_jobs(self) -> None:
-        text = WORKFLOW.read_text(encoding="utf-8")
+    def test_scientific_ci_is_dispatchable_but_hosts_no_live_provider_jobs(self) -> None:
+        text = SCIENTIFIC_CI.read_text(encoding="utf-8")
         self.assertIn("workflow_dispatch:", text)
-        self.assertIn("manual-eurostat-counterpart-probe:", text)
-        self.assertIn("manual-oecd-counterpart-probe:", text)
-        dispatch_guard = (
-            "github.event_name == 'workflow_dispatch' && "
-            f"github.ref_name == '{AUDIT_BRANCH}'"
-        )
-        rerun_guard = (
-            "github.event_name == 'pull_request' && "
-            f"github.head_ref == '{AUDIT_BRANCH}' && "
-            "github.run_attempt > 1"
-        )
-        self.assertGreaterEqual(text.count(dispatch_guard), 2)
-        self.assertGreaterEqual(text.count(rerun_guard), 2)
-        self.assertIn(
-            "scripts/audit_eurostat_sectoral_financial_positions_counterpart_probe.py",
-            text,
-        )
-        self.assertIn(
-            "scripts/audit_oecd_sectoral_financial_positions_counterpart_probe.py",
-            text,
-        )
+        self.assertIn("verify-baseline:", text)
+        for forbidden in (
+            "manual-eurostat-counterpart-probe:",
+            "manual-oecd-counterpart-probe:",
+            "manual-bnr-bls-missing-round-recovery:",
+            "manual-oecd-nonconsolidated-topology-probe:",
+            "manual-oecd-exact-reference-reconciliation:",
+            "manual-oecd-semantic-adjusted-reference-reconciliation:",
+            "manual-ecb-qfa-10m-horizontal-consistency-gate:",
+            "audit/scientific-integrity-2026-09-18",
+            "source-topology/oecd-nonconsolidated-sectoral-financial-positions-2026-09-21",
+            "model/esa2010-s1m-f2-liability-semantic-gate-2026-09-21",
+            "model/ecb-qfa-10m-horizontal-consistency-gate-2026-09-21",
+        ):
+            self.assertNotIn(forbidden, text)
 
-    def test_probe_contracts_point_to_same_manual_dispatch_bridge(self) -> None:
-        for relative, expected_job in [
-            (
-                "model/dynamics/"
-                "sectoral_financial_positions_eurostat_counterpart_probe_contract.json",
-                "manual-eurostat-counterpart-probe",
-            ),
-            (
-                "model/dynamics/"
-                "sectoral_financial_positions_oecd_counterpart_probe_contract.json",
-                "manual-oecd-counterpart-probe",
-            ),
-        ]:
+    def test_counterpart_contracts_use_dedicated_manual_workflows(self) -> None:
+        for relative, expected_workflow, expected_job in DEDICATED:
             contract = json.loads((ROOT / relative).read_text(encoding="utf-8"))
             policy = contract["execution_policy"]
             bridge = policy["manual_dispatch_bridge"]
+
+            self.assertEqual(policy["trigger"], "workflow_dispatch")
+            self.assertTrue(policy["live_source_refresh_manual_only"])
+            self.assertTrue(policy["workflow_present_on_default_branch_now"])
             self.assertEqual(
                 policy["current_execution_state"],
-                "READY_FOR_MANUAL_RERUN_OR_WORKFLOW_DISPATCH",
+                "DEDICATED_WORKFLOW_DISPATCH_AVAILABLE_TRIGGER_CONDITIONED_HISTORICAL_REPLAY",
             )
+            self.assertEqual(bridge["workflow"], expected_workflow)
+            self.assertEqual(bridge["trigger"], "workflow_dispatch")
+            self.assertEqual(bridge["job"], expected_job)
+            self.assertTrue(bridge["workflow_exists_on_default_branch"])
+            self.assertFalse(bridge["automatic_pull_request_or_push_execution"])
+
+            workflow = (ROOT / expected_workflow).read_text(encoding="utf-8")
+            self.assertIn("workflow_dispatch:", workflow)
+            self.assertNotIn("pull_request:", workflow)
+
+            historical = policy["historical_manual_rerun_bridge"]
+            self.assertEqual(historical["status"], "RETIRED_2026-09-23")
             self.assertEqual(
-                bridge["workflow"],
+                historical["workflow"],
                 ".github/workflows/scientific-ci.yml",
             )
-            self.assertTrue(bridge["workflow_exists_on_default_branch"])
-            self.assertEqual(bridge["dispatch_ref"], AUDIT_BRANCH)
-            self.assertEqual(bridge["branch_job"], expected_job)
-            self.assertFalse(
-                bridge["automatic_pull_request_or_push_execution"]
+            self.assertEqual(
+                historical["required_head_ref"],
+                "audit/scientific-integrity-2026-09-18",
             )
-            self.assertIn("workflow_dispatch", bridge["activation_condition"])
-            self.assertIn(AUDIT_BRANCH, bridge["activation_condition"])
-            rerun = policy["manual_rerun_bridge"]
-            self.assertEqual(rerun["eligible_event"], "pull_request")
-            self.assertEqual(rerun["required_head_ref"], AUDIT_BRANCH)
-            self.assertEqual(rerun["initial_attempt_behavior"], "SKIP_LIVE_JOB")
-            self.assertIn("github.run_attempt > 1", rerun["activation_condition"])
-            self.assertFalse(rerun["automatic_live_acquisition"])
+
+
+    def test_completed_live_gates_have_one_acknowledged_manual_replay_workflow(self) -> None:
+        relative = (
+            ".github/workflows/"
+            "sectoral-financial-positions-historical-live-gate-replay.yml"
+        )
+        text = (ROOT / relative).read_text(encoding="utf-8")
+        self.assertIn("workflow_dispatch:", text)
+        self.assertNotIn("pull_request:", text)
+        self.assertIn("permissions:\n  contents: read", text)
+        self.assertIn("acknowledge_no_scientific_reopen:", text)
+        for script in (
+            "audit_oecd_sectoral_financial_positions_nonconsolidated_probe.py",
+            "audit_oecd_sectoral_financial_positions_exact_reconciliation.py",
+            "audit_oecd_sectoral_financial_positions_semantic_adjusted_gate.py",
+            "audit_ecb_qfa_10m_horizontal_consistency_gate.py",
+        ):
+            self.assertIn(f"scripts/{script}", text)
 
 
 if __name__ == "__main__":

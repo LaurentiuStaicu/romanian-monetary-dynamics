@@ -62,20 +62,29 @@ class SectoralFinancialPositionsEurostatCounterpartProbeContractTests(unittest.T
         self.assertTrue(policy["no_trigger_broadening_to_bypass_precondition"])
         self.assertEqual(
             policy["current_execution_state"],
-            "READY_FOR_MANUAL_RERUN_OR_WORKFLOW_DISPATCH",
+            "DEDICATED_WORKFLOW_DISPATCH_AVAILABLE_TRIGGER_CONDITIONED_HISTORICAL_REPLAY",
         )
         self.assertEqual(
             policy["scientific_effect_while_pending"],
             "NONE_UNTIL_A_RETAINED_MANUAL_RUN_RESULT_IS_REVIEWED",
         )
         bridge = policy["manual_dispatch_bridge"]
+        self.assertTrue(policy["workflow_present_on_default_branch_now"])
         self.assertEqual(
             bridge["workflow"],
-            ".github/workflows/scientific-ci.yml",
+            ".github/workflows/sectoral-financial-positions-eurostat-counterpart-probe.yml",
         )
+        self.assertEqual(bridge["trigger"], "workflow_dispatch")
+        self.assertEqual(bridge["job"], "probe-eurostat-counterpart-data")
         self.assertTrue(bridge["workflow_exists_on_default_branch"])
         self.assertFalse(
             bridge["automatic_pull_request_or_push_execution"]
+        )
+        historical = policy["historical_manual_rerun_bridge"]
+        self.assertEqual(historical["status"], "RETIRED_2026-09-23")
+        self.assertEqual(
+            historical["workflow"],
+            ".github/workflows/scientific-ci.yml",
         )
 
     def test_provider_access_failures_are_not_negative_evidence_by_contract(self) -> None:

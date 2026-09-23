@@ -150,18 +150,32 @@ class BNRBLSMissingRoundWorkbookRecoveryContractTests(unittest.TestCase):
             ]
         )
 
-    def test_manual_rerun_bridge_is_branch_locked_and_nonautomatic(self) -> None:
-        bridge = self.contract["manual_rerun_bridge"]
+    def test_manual_dispatch_uses_dedicated_workflow_and_old_bridge_is_retired(self) -> None:
+        bridge = self.contract["manual_dispatch_bridge"]
         self.assertEqual(
-            bridge["job"],
-            "manual-bnr-bls-missing-round-recovery",
+            bridge["workflow"],
+            ".github/workflows/bnr-bls-missing-round-workbook-recovery.yml",
+        )
+        self.assertEqual(bridge["trigger"], "workflow_dispatch")
+        self.assertEqual(bridge["job"], "recover-missing-bnr-bls-workbooks")
+        self.assertTrue(bridge["workflow_exists_on_default_branch"])
+        self.assertFalse(bridge["automatic_pull_request_or_push_execution"])
+        self.assertIn("2025Q2", bridge["current_role"])
+
+        workflow = (ROOT / bridge["workflow"]).read_text(encoding="utf-8")
+        self.assertIn("workflow_dispatch:", workflow)
+        self.assertNotIn("pull_request:", workflow)
+
+        historical = self.contract["historical_manual_rerun_bridge"]
+        self.assertEqual(historical["status"], "RETIRED_2026-09-23")
+        self.assertEqual(
+            historical["workflow"],
+            ".github/workflows/scientific-ci.yml",
         )
         self.assertEqual(
-            bridge["required_head_ref"],
+            historical["required_head_ref"],
             "audit/scientific-integrity-2026-09-18",
         )
-        self.assertIn("github.run_attempt > 1", bridge["activation_condition"])
-        self.assertFalse(bridge["automatic_live_source_acquisition"])
 
     def test_live_execution_is_manual_only(self) -> None:
         self.assertEqual(
