@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -15,6 +17,14 @@ RETIRED = (
     ".github/workflows/mof-supply-pressure-source-vintage-probe.yml",
 )
 VERIFIER = ROOT / ".github/workflows/verify-retained-completed-source-vintages.yml"
+
+RETIRED_LIVE_REFETCH_SCRIPTS = (
+    "scripts/acquire_bnr_government_issuance_raw_source.py",
+    "scripts/probe_ecb_supply_load_denominator_candidates.py",
+    "scripts/probe_mof_announced_RON_primary_supply_source_vintage.py",
+    "scripts/probe_mof_realized_financing_channel_source_vintage.py",
+    "scripts/probe_mof_supply_pressure_source_vintage.py",
+)
 
 
 def load(path: str) -> dict:
@@ -34,6 +44,20 @@ class RetiredCompletedSourceVintageWriteWorkflowsTests(unittest.TestCase):
         self.assertNotIn("contents: write", text)
         self.assertNotIn("push:", text)
         self.assertNotIn("git push", text)
+
+
+    def test_retired_live_refetch_utilities_require_explicit_authorization(self) -> None:
+        for relative in RETIRED_LIVE_REFETCH_SCRIPTS:
+            process = subprocess.run(
+                [sys.executable, str(ROOT / relative)],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertEqual(process.returncode, 2, relative)
+            self.assertIn("--allow-live-refetch", process.stderr, relative)
+            self.assertIn("disabled by default", process.stderr, relative)
 
     def test_governing_assessments_show_completed_retention_stages(self) -> None:
         bnr = load(

@@ -409,7 +409,22 @@ def main() -> None:
         "--output",
         default="mof_realized_financing_channel_source_probe_artifacts",
     )
+    parser.add_argument(
+        "--allow-live-refetch",
+        action="store_true",
+        help=(
+            "Explicitly authorize a live provider refetch for this retired "
+            "historical acquisition path. Unchanged reruns are reproduction "
+            "only and do not reopen any scientific gate."
+        ),
+    )
     args = parser.parse_args()
+    if not args.allow_live_refetch:
+        parser.error(
+            "live refetch is disabled by default for this retired historical "
+            "path; rerun with --allow-live-refetch only after an explicit "
+            "evidence/change trigger and review"
+        )
     run_probe(Path(args.output))
 
 
