@@ -761,4 +761,6 @@ The retained Eurostat counterpart, OECD counterpart and BNR BLS missing-round di
 
 An exhaustive check of all 98 `scripts/*.py` references in the remaining `verify-baseline` job against the same provider-network markers enforced by the live-source regression gate found no network-capable script. Scientific CI is consequently fully covered by the generic pull-request live-provider invariant and remains an offline verification path on ordinary `pull_request` and `push` execution.
 
+Four source-dependent historical gate executables that had previously been hosted only by those branch-bound Scientific CI jobs remain useful as exact replay tools and shared helper code. They are now referenced by one read-only `workflow_dispatch`-only historical replay workflow with a required `acknowledge_no_scientific_reopen` input and one-of-four path selection. This preserves audit-script execution coverage without restoring any automatic provider access. A replay against unchanged provider state remains reproducibility only and cannot reopen or promote canonical scientific state.
+
 This is repository-governance hardening only. It changes no retained source bytes, evidence classification, Accounting Spine value, reference mode, model equation, parameter, calibration/validation authorization, feedback activation, behavioural closure or public **v0.3.0** release state.
