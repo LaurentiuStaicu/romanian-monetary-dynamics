@@ -1,16 +1,22 @@
-name: Corporate Investment Structural Selection Execution
+name: Corporate Investment Selection Gate Integrity
 
 on:
   pull_request:
     paths:
       - "model/calibration_validation/corporate_investment_selection_execution_gate.json"
+      - "model/calibration_validation/corporate_investment_structural_selection_result.json"
+      - "model/calibration_validation/corporate_investment_structural_selection_promotion_review.json"
+      - "scripts/run_corporate_investment_structural_selection.py"
+      - "tests/test_corporate_investment_selection_runner.py"
+      - "tests/test_corporate_investment_structural_selection_promotion_review.py"
       - ".github/workflows/corporate-investment-selection-execution.yml"
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  execute-bounded-selection:
+  verify-consumed-selection-gate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -18,51 +24,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Verify execution gate remains selection-only
+      - name: Verify consumed gate and frozen failed result
         env:
           PYTHONPATH: src
         run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          gate=json.loads(Path(
-              "model/calibration_validation/"
-              "corporate_investment_selection_execution_gate.json"
-          ).read_text(encoding="utf-8"))
-          assert gate["selection_execution_authorized"] is True
-          assert gate["selection_execution_consumed"] is False
-          assert gate["authorized_scope"] == "STRUCTURAL_SELECTION_2022Q1_TO_2023Q4_ONLY"
-          assert gate["final_evaluation_authorized"] is False
-          assert gate["holdout_access_prohibited"] is True
-          print("Bounded corporate-investment selection gate verified.")
-          PY
+          python -m unittest tests.test_corporate_investment_selection_runner -v
+          python -m unittest tests.test_corporate_investment_structural_selection_promotion_review -v
 
-      - name: Execute frozen structural-selection window only
+      - name: Verify default runner performs no estimation
         env:
           PYTHONPATH: src
-        run: |
-          mkdir -p corporate_investment_selection_artifact
-          python scripts/run_corporate_investment_structural_selection.py \
-            --execute-selection \
-            --output corporate_investment_selection_artifact/corporate_investment_structural_selection_result.json
-
-      - name: Verify output did not open final evaluation
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          p=Path("corporate_investment_selection_artifact/corporate_investment_structural_selection_result.json")
-          result=json.loads(p.read_text(encoding="utf-8"))
-          assert result["final_evaluation_opened"] is False
-          assert result["selection_window"] == "2022-Q1..2023-Q4"
-          assert result["final_evaluation_window"] == "2024-Q1..2026-Q1"
-          assert result["system_dynamics_activation"] is False
-          print(result["selection_verdict"])
-          PY
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: corporate-investment-structural-selection-${{ github.sha }}
-          path: corporate_investment_selection_artifact/
-          if-no-files-found: error
-          retention-days: 90
+        run: python scripts/run_corporate_investment_structural_selection.py

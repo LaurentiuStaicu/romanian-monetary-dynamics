@@ -12,6 +12,9 @@ class LiveSourceRefreshWorkflowTests(unittest.TestCase):
     def test_live_provider_refreshes_are_manual_only(self) -> None:
         manual_only = [
             ".github/workflows/f2-source-structure-audit.yml",
+            ".github/workflows/corporate-investment-financing-rate-screening.yml",
+            ".github/workflows/corporate-investment-source-materialisation.yml",
+            ".github/workflows/corporate-investment-supplemental-materialisation.yml",
             ".github/workflows/accounting-coverage-audit.yml",
             ".github/workflows/bps-f2-sector-structure-audit.yml",
             ".github/workflows/eurostat-f2-sector-detail-audit.yml",
@@ -76,6 +79,25 @@ class LiveSourceRefreshWorkflowTests(unittest.TestCase):
         self.assertEqual(process.returncode, 2)
         self.assertIn("--allow-live-refetch", process.stderr)
         self.assertIn("disabled by default", process.stderr)
+
+
+    def test_frozen_corporate_source_clis_require_explicit_live_refetch(self) -> None:
+        scripts = (
+            "scripts/audit_corporate_investment_financing_rate_source_screening.py",
+            "scripts/audit_corporate_investment_source_materialisation.py",
+            "scripts/audit_corporate_investment_supplemental_materialisation.py",
+        )
+        for relative in scripts:
+            process = subprocess.run(
+                [sys.executable, str(ROOT / relative)],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertEqual(process.returncode, 2, relative)
+            self.assertIn("--allow-live-refetch", process.stderr, relative)
+            self.assertIn("disabled by default", process.stderr, relative)
 
     def test_sectoral_position_has_no_parallel_phase_aliases(self) -> None:
         forbidden_paths = [

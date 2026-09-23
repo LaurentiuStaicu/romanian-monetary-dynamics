@@ -733,3 +733,13 @@ All fourteen workflows are now `workflow_dispatch` only. The existing central li
 
 No retained provider response, source-vintage artifact, rank result, F2M/F3/F4 materialization, F5-F8 terminal assessment, reopen condition or benchmark cell is changed. Manual execution remains available for a legitimately reviewed evidence/change trigger; an unchanged rerun remains reproduction only. Accounting Spine completion, calibration/refit, parameter estimation, feedback activation, behavioural closure and a public version change remain unauthorized.
 
+### Corporate-investment consumed-selection and source-refresh boundary — 2026-09-23
+
+A cross-check between the corporate-investment execution gate and its already-promoted structural-selection result found a stale pre-execution state. The canonical result and promotion review have recorded `FAIL_BEFORE_HOLDOUT` since 2026-09-19, with no form selected for final evaluation and the 2024-Q1..2026-Q1 holdout unopened, but `corporate_investment_selection_execution_gate.json` still reported `selection_execution_authorized = true` and `selection_execution_consumed = false`. Because the runner treats exactly that pair as a valid one-shot authorization, the stale gate could permit a redundant structural-selection execution.
+
+The gate is reconciled to the historical outcome: authorization is now false, consumption is true, and the frozen result is registered as the consuming artifact. The previous selection-execution workflow no longer performs estimation; it is retained as an offline integrity check for the consumed gate, frozen failed result and no-estimation default runner. Regression coverage requires the runner to report the gate as unauthorized.
+
+The three live corporate-investment source paths (financing-rate continuity screening, core source-family materialisation and supplemental source materialisation) are also manual-only. Their direct CLIs require explicit `--allow-live-refetch` acknowledgement before provider access. This does not constitute a reopen trigger: the mechanism registry already requires genuinely new measurement or identification evidence and a separately preregistered cycle before any future reopening.
+
+The tested corporate-investment forms remain `FAIL_BEFORE_HOLDOUT`; `corporate_investment_response` remains a non-central `CANDIDATE` with no admitted implementation or parameters. The final evaluation remains unopened. No calibration cycle, System Dynamics feedback, behavioural closure, Accounting Spine state or public **v0.3.0** release state changes.
+

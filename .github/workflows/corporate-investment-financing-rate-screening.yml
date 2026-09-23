@@ -1,15 +1,16 @@
 name: Corporate Investment Financing Rate Source Screening
 
+# Live provider refresh is manual-only after the frozen FAIL_BEFORE_HOLDOUT result.
+# Unchanged reruns are reproduction only; reopening requires a separately preregistered cycle.
+
 on:
-  pull_request:
-    types: [labeled]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
   screen-financing-rate-source-continuity:
-    if: ${{ github.event.label.name == 'run-corporate-investment-materialisation' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -21,7 +22,7 @@ jobs:
       - name: Run source-continuity screening only
         env:
           CORPORATE_INVESTMENT_RATE_SCREENING_OUT: corporate_investment_rate_screening_artifacts
-        run: python scripts/audit_corporate_investment_financing_rate_source_screening.py
+        run: python scripts/audit_corporate_investment_financing_rate_source_screening.py --allow-live-refetch
       - uses: actions/upload-artifact@v4
         with:
           name: corporate-investment-financing-rate-screening-${{ github.sha }}
