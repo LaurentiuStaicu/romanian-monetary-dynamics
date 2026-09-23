@@ -1,13 +1,9 @@
 name: F21 F2 External Bridge Audit
 
+# Live provider refresh is manual-only under the terminal Accounting Spine hold.
+# Unchanged reruns are reproduction only and do not satisfy a reopen trigger.
+
 on:
-  pull_request:
-    paths:
-      - "model/accounting/f21_f2_external_bridge_contract.json"
-      - "model/accounting/f2m_component_2025.json"
-      - "scripts/audit_qsa_f21_f2_external_bridge.py"
-      - "tests/test_f21_f2_external_bridge_contract.py"
-      - ".github/workflows/f21-f2-external-bridge-audit.yml"
   workflow_dispatch:
 
 permissions:
