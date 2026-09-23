@@ -772,3 +772,11 @@ A post-#221 verification found that the generic pull-request live-provider regre
 The gate now extracts only executable `run:` command content, including multiline run blocks, uses the correct `.py` reference pattern, and applies the existing provider-network markers only to scripts actually invoked by pull-request workflows. Regression coverage proves that path-filter-only references are excluded while single-line and multiline executable script references are detected. This aligns the repository gate with GitHub Actions semantics, where commands are executed through `jobs.<job_id>.steps[*].run`, while path filters only decide whether a workflow is triggered.
 
 This repair changes repository governance only. It does not alter retained source evidence, F3 materialisation, Accounting Spine values, reference modes, parameters, calibration or validation authorization, feedback activation, behavioural closure, or public **v0.3.0**.
+
+### Privileged pull-request trigger boundary — 2026-09-23
+
+A complete scan of all 73 current GitHub Actions workflows found no use of `pull_request_target`. RMD does not currently require privileged pull-request execution: ordinary code-review checks use `pull_request`, live provider access is manual/evidence-triggered, Scientific CI is offline, and repository write capability is already confined to the exact least-privilege allowlist.
+
+The central Actions governance audit now rejects `pull_request_target` repository-wide. This makes the existing absence an executable invariant rather than an accidental property. If a future workflow genuinely requires the privileged base-repository context, the invariant must be changed deliberately together with a documented security/governance redesign; it cannot appear silently in an ordinary workflow change.
+
+This is repository execution-governance hardening only. It changes no source evidence, Accounting Spine state, reference mode, parameter, calibration/validation authorization, feedback activation, behavioural closure or public **v0.3.0**.

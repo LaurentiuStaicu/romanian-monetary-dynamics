@@ -35,6 +35,20 @@ def write_occurrences(text: str) -> list[tuple[int, str, int]]:
     return out
 
 
+def workflow_uses_pull_request_target(text: str) -> bool:
+    """Detect the privileged pull_request_target trigger in workflow event syntax."""
+    header = text.split("\njobs:", 1)[0]
+    for raw_line in header.splitlines():
+        line = raw_line.split("#", 1)[0].strip()
+        if re.match(r"^pull_request_target\s*:", line):
+            return True
+        if re.match(r"^on\s*:", line) and re.search(
+            r"\bpull_request_target\b", line
+        ):
+            return True
+    return False
+
+
 def audit_actions_write_permission_boundary() -> list[str]:
     errors: list[str] = []
     discovered: dict[str, list[tuple[int, str, int]]] = {}
@@ -51,6 +65,12 @@ def audit_actions_write_permission_boundary() -> list[str]:
 
         if any(WRITE_ALL_RE.match(line) for line in lines):
             errors.append(f"{relative}: permissions: write-all is forbidden")
+
+        if workflow_uses_pull_request_target(text):
+            errors.append(
+                f"{relative}: pull_request_target is forbidden by repository policy; "
+                "use pull_request or require an explicit governance redesign"
+            )
 
         occurrences = write_occurrences(text)
         if occurrences:
