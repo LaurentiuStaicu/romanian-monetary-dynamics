@@ -7,6 +7,7 @@ from scripts.audit_actions_write_permission_boundary import (
     MOF_MANUAL_WRITE_WORKFLOWS,
     PUBLISHER,
     audit_actions_write_permission_boundary,
+    workflow_uses_pull_request_target,
 )
 
 
@@ -25,6 +26,24 @@ class ActionsWritePermissionBoundaryTests(unittest.TestCase):
     def test_all_workflows_declare_permissions_explicitly(self) -> None:
         self.assertEqual(audit_actions_write_permission_boundary(), [])
 
+
+    def test_pull_request_target_detection_is_explicit_and_comment_safe(self) -> None:
+        self.assertTrue(
+            workflow_uses_pull_request_target(
+                "on:\n  pull_request_target:\npermissions:\n  contents: read\njobs:\n"
+            )
+        )
+        self.assertTrue(
+            workflow_uses_pull_request_target(
+                "on: [push, pull_request_target]\npermissions:\n  contents: read\njobs:\n"
+            )
+        )
+        self.assertFalse(
+            workflow_uses_pull_request_target(
+                "on:\n  pull_request:\n# pull_request_target is intentionally forbidden\n"
+                "permissions:\n  contents: read\njobs:\n"
+            )
+        )
 
 if __name__ == "__main__":
     unittest.main()
