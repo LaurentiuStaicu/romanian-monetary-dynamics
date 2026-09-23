@@ -22,6 +22,14 @@ class CorporateInvestmentSelectionRunnerTests(unittest.TestCase):
                 "STRUCTURAL_SELECTION_2022Q1_TO_2023Q4_ONLY",
             )
             self.assertFalse(gate["final_evaluation_authorized"])
+            self.assertFalse(gate["selection_execution_authorized"])
+            self.assertTrue(gate["selection_execution_consumed"])
+            self.assertEqual(
+                gate["consumed_by_result"],
+                "model/calibration_validation/"
+                "corporate_investment_structural_selection_result.json",
+            )
+            self.assertFalse(runner.execution_is_authorized(contract))
             self.assertEqual(
                 gate["source_csv_sha256"],
                 contract["prerequisite_measurement_panel"]["csv_sha256"],
