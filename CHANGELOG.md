@@ -6,6 +6,8 @@ All notable public scientific-core releases of Romanian Monetary Dynamics (RMD) 
 
 ### Repository governance
 
+- repaired the generic pull-request live-provider regression gate so it now matches real `scripts/*.py` command references and inspects only executable `run:` content rather than path filters or comments; this closes the script-reference parsing defect in the first generic gate while preserving legitimate offline PR workflows such as F3 materialisation, whose historical live audit script appears only in trigger paths and is not executed; scientific/public state remains unchanged;
+
 - removed seven historical branch-bound live-source jobs from `scientific-ci.yml` after their PR cycles closed; the generic pull-request provider-access regression gate now covers Scientific CI without a whole-file exemption, the retained Eurostat/OECD counterpart and BNR BLS recovery paths remain available through dedicated manual trigger-conditioned workflows, and four completed source-dependent reference-mode gates retain execution coverage only through a read-only, explicitly acknowledged historical `workflow_dispatch` replay path; the public/scientific state remains unchanged;
 
 - generalized the live-source trigger hardening into a repository-wide regression invariant: apart from `scientific-ci.yml`'s separately conditioned/manual subjobs, any workflow with a `pull_request` trigger now fails tests if it directly invokes a Python script containing provider-network primitives or an inline `curl`/`wget` command; this prevents future code-review events from silently reintroducing live scientific-source polling while preserving offline reproduction workflows and explicitly manual/evidence-triggered source paths;
