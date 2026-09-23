@@ -1,12 +1,9 @@
 name: F5 Equity and Fund Coverage Audit
 
+# Live provider refresh is manual-only under the terminal Accounting Spine hold.
+# Unchanged reruns are reproduction only and do not satisfy a reopen trigger.
+
 on:
-  pull_request:
-    paths:
-      - "model/accounting/f5_equity_fund_coverage_contract.json"
-      - "scripts/audit_qsa_f5_equity_fund_coverage.py"
-      - "tests/test_f5_equity_fund_coverage_contract.py"
-      - ".github/workflows/f5-equity-fund-coverage-audit.yml"
   workflow_dispatch:
 
 permissions:
