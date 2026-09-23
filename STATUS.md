@@ -743,3 +743,11 @@ The three live corporate-investment source paths (financing-rate continuity scre
 
 The tested corporate-investment forms remain `FAIL_BEFORE_HOLDOUT`; `corporate_investment_response` remains a non-central `CANDIDATE` with no admitted implementation or parameters. The final evaluation remains unopened. No calibration cycle, System Dynamics feedback, behavioural closure, Accounting Spine state or public **v0.3.0** release state changes.
 
+### Generic pull-request live-provider regression gate — 2026-09-23
+
+The preceding F2, Accounting Spine and corporate-investment trigger sweeps exposed a common repository-governance class: a workflow intended for code review can accidentally become a live scientific-source probe simply because it invokes a network-capable Python utility. The repository now tests this property generically rather than relying only on a growing list of known workflow names.
+
+For every ordinary workflow carrying a `pull_request` trigger, the live-source governance test inspects referenced `scripts/*.py` files for direct provider-network primitives and rejects inline `curl`/`wget` access. `scientific-ci.yml` is excluded from this syntactic scan because it contains separately conditioned manual jobs in the same file and is governed by its existing dedicated live-source assertions. Manual-only and explicitly evidence-triggered source workflows remain permitted.
+
+This is an execution-governance invariant, not a new scientific gate. It does not change source evidence, retained vintages, model-selection results, Accounting Spine status, parameters, feedbacks, behavioural closure or public **v0.3.0**.
+
