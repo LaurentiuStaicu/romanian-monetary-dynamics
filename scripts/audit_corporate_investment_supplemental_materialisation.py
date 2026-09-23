@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import io
@@ -134,6 +135,21 @@ def parse_ecb_csv(
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--allow-live-refetch",
+        action="store_true",
+        help=(
+            "Explicitly authorize a manual provider refresh after review of a "
+            "genuinely new measurement or identification trigger."
+        ),
+    )
+    args = parser.parse_args()
+    if not args.allow_live_refetch:
+        parser.error(
+            "live corporate-investment source refresh is disabled by default; "
+            "use --allow-live-refetch only in a separately reviewed reopen cycle"
+        )
     OUT.mkdir(parents=True, exist_ok=True)
     contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
     script_path = Path(__file__).resolve()
