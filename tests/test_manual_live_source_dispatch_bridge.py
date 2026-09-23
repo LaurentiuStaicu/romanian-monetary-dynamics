@@ -76,5 +76,24 @@ class ManualLiveSourceDispatchBridgeTests(unittest.TestCase):
             )
 
 
+    def test_completed_live_gates_have_one_acknowledged_manual_replay_workflow(self) -> None:
+        relative = (
+            ".github/workflows/"
+            "sectoral-financial-positions-historical-live-gate-replay.yml"
+        )
+        text = (ROOT / relative).read_text(encoding="utf-8")
+        self.assertIn("workflow_dispatch:", text)
+        self.assertNotIn("pull_request:", text)
+        self.assertIn("permissions:\n  contents: read", text)
+        self.assertIn("acknowledge_no_scientific_reopen:", text)
+        for script in (
+            "audit_oecd_sectoral_financial_positions_nonconsolidated_probe.py",
+            "audit_oecd_sectoral_financial_positions_exact_reconciliation.py",
+            "audit_oecd_sectoral_financial_positions_semantic_adjusted_gate.py",
+            "audit_ecb_qfa_10m_horizontal_consistency_gate.py",
+        ):
+            self.assertIn(f"scripts/{script}", text)
+
+
 if __name__ == "__main__":
     unittest.main()
