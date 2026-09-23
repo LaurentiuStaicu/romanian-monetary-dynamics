@@ -709,3 +709,11 @@ A repository-wide audit-script execution inventory found one unreferenced execut
 
 The legacy executable probe is therefore retired from the current repository surface. A new repository-wide execution-coverage gate requires every `scripts/audit_*.py` file to be referenced by at least one workflow and every workflow audit reference to resolve to an existing script; source-specific regression coverage also requires the current HICP workflow to invoke only `audit_fx_hicp_current_source_structure.py`. Historical evidence remains recoverable from Git history; no retained source bytes, normalized observations, transformation, parameter, mechanism classification, calibration/validation state, feedback activation, behavioural closure or public **v0.3.0** state changes.
 
+### Retired historical live-refetch CLI boundary — 2026-09-23
+
+The completed source-vintage workflow retirement pass removed the write-capable Actions paths for BNR government-issuance raw acquisition, ECB supply-load denominator probing, the MoF Q1 announced-supply source probe, MoF realized-financing source probing and the MoF supply-pressure source probe. Their Python utilities remain valuable as historical provenance and for pure parsing/validation tests, but their command-line entry points could still perform a provider refetch when invoked directly.
+
+Those five CLIs now refuse live network acquisition by default and require the explicit `--allow-live-refetch` acknowledgement before entering the acquisition/probe function. Regression coverage invokes every retired CLI without the flag and requires it to fail at argument validation, before provider access. This does not create a new reopen condition: an unchanged rerun remains reproduction only, and the flag does not by itself authorize canonical source replacement, estimation, calibration, feedback activation or behavioural closure.
+
+All previously retained source bytes and manifests remain immutable. The full-2025 MoF three-document recovery path is excluded because it remains separately evidence-triggered and governed by its dedicated manual workflows. Public release state remains **v0.3.0**, with no version bump required by this governance hardening.
+
