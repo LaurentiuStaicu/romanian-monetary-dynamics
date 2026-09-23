@@ -64,6 +64,9 @@ class ReleaseVersioningContractTests(unittest.TestCase):
             "ECFIN Redisstat",
             "UBLGBPS",
             "unresolved Redisstat dataset/series identity",
+            "repository execution-governance hardening",
+            "Scientific CI is fully offline",
+            "pull-request live-provider detection",
         ):
             self.assertIn(token,rationale)
         self.assertTrue(basis["unreleased_changes_present"])
