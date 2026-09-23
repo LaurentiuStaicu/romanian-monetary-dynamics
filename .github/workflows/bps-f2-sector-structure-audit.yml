@@ -1,12 +1,9 @@
 name: BPS F2 Sector Structure Audit
 
+# Live provider refresh is manual-only under the terminal Accounting Spine hold.
+# Unchanged reruns are reproduction only and do not satisfy a reopen trigger.
+
 on:
-  pull_request:
-    paths:
-      - "model/accounting/bps_f2_sector_structure_contract.json"
-      - "scripts/audit_bps_f2_sector_structure.py"
-      - "tests/test_bps_f2_sector_structure_contract.py"
-      - ".github/workflows/bps-f2-sector-structure-audit.yml"
   workflow_dispatch:
 
 permissions:

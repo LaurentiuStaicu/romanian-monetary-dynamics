@@ -1,12 +1,9 @@
 name: F5 Bilateral Component and Issuer Audit
 
+# Live provider refresh is manual-only under the terminal Accounting Spine hold.
+# Unchanged reruns are reproduction only and do not satisfy a reopen trigger.
+
 on:
-  pull_request:
-    paths:
-      - "model/accounting/f5_bilateral_component_issuer_contract.json"
-      - "scripts/audit_qsa_f5_bilateral_components.py"
-      - "tests/test_f5_bilateral_component_issuer_contract.py"
-      - ".github/workflows/f5-bilateral-component-issuer-audit.yml"
   workflow_dispatch:
 
 permissions:

@@ -725,3 +725,11 @@ The F2 source-structure workflow is therefore manual-only. Its direct CLI also r
 
 The historical Phase-A0 assessment (500 requests, 122 available series, F2M issuer-liability orientation retained) is unchanged. F2 remains `INCOMPLETE`, F2M remains the usable materialized component, the F21/total-F2 bridge remains blocked pending genuinely new country-specific supplementary evidence or an exact bridge, and no Accounting Spine, calibration, feedback, behavioural-closure or public **v0.3.0** state changes.
 
+### Terminal Accounting Spine live-provider workflow boundary — 2026-09-23
+
+A repository-wide trigger/code-path sweep found fourteen additional Accounting Empirical Recovery workflows that still invoked live ECB or Eurostat source/coverage probes on pull-request edits. These paths span the historical broad QSA coverage probe and retained F2/F21/F2M, F4, F5, F6 and F8 source-boundary diagnostics. Their scientific results remain useful, but automatic provider access on a code-review event is inconsistent with the terminal Accounting Spine state.
+
+All fourteen workflows are now `workflow_dispatch` only. The existing central live-source governance test registers them explicitly and rejects any restored `pull_request` trigger. This aligns execution with `accounting_spine_recovery_terminal_assessment_2026_09_21.json`, where no selective reopen is active, no unconditional recovery task remains, and `no_repeated_live_probe_without_trigger` is a hard stage-completion rule.
+
+No retained provider response, source-vintage artifact, rank result, F2M/F3/F4 materialization, F5-F8 terminal assessment, reopen condition or benchmark cell is changed. Manual execution remains available for a legitimately reviewed evidence/change trigger; an unchanged rerun remains reproduction only. Accounting Spine completion, calibration/refit, parameter estimation, feedback activation, behavioural closure and a public version change remain unauthorized.
+
