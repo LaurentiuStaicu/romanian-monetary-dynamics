@@ -751,3 +751,14 @@ For every ordinary workflow carrying a `pull_request` trigger, the live-source g
 
 This is an execution-governance invariant, not a new scientific gate. It does not change source evidence, retained vintages, model-selection results, Accounting Spine status, parameters, feedbacks, behavioural closure or public **v0.3.0**.
 
+
+
+### Scientific CI live-provider exemption closure — 2026-09-23
+
+The repository-wide pull-request live-provider gate no longer exempts `scientific-ci.yml`. Seven branch-bound live-source jobs had remained embedded in Scientific CI from completed historical investigations: the scientific-integrity discovery branch associated with closed PR #47, the OECD non-consolidated topology cycle merged through PR #132, the ESA2010 semantic-adjusted cycle merged through PR #133 and the ECB QFA €10m horizontal-consistency cycle merged through PR #142. None of those PR cycles is currently open.
+
+The retained Eurostat counterpart, OECD counterpart and BNR BLS missing-round discovery capabilities already have dedicated `workflow_dispatch` workflows with explicit trigger-conditioned historical-replay semantics. The later OECD/ESA/QFA execution outcomes are terminal retained evidence and remain reproducible offline from the repository. The seven historical live-source jobs are therefore removed from Scientific CI rather than kept as a permanent whole-file exception.
+
+An exhaustive check of all 98 `scripts/*.py` references in the remaining `verify-baseline` job against the same provider-network markers enforced by the live-source regression gate found no network-capable script. Scientific CI is consequently fully covered by the generic pull-request live-provider invariant and remains an offline verification path on ordinary `pull_request` and `push` execution.
+
+This is repository-governance hardening only. It changes no retained source bytes, evidence classification, Accounting Spine value, reference mode, model equation, parameter, calibration/validation authorization, feedback activation, behavioural closure or public **v0.3.0** release state.
