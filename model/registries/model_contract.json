@@ -344,7 +344,7 @@
     "fiscal_capb_retained_raw_source_branch": "source-vintage/fiscal-capb-raw-2026-09-20",
     "fiscal_capb_retained_raw_source_commit": "efb1f3ae5b025176645d45276b684efe65aa4174",
     "previous_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_19.json",
-    "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json",
+    "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_qsa_release_context_clarification.json",
     "next_dated_trigger_check": {
       "date": "2026-10-08",
       "id": "prospective_monetary_policy_event",
@@ -382,7 +382,7 @@
       "id": "f4_bnr_cnf_2025_stock_counterpart_matrix",
       "rule": "Do not poll before the evidence window. If no official 2025 BNR CNF S121×counterpart AF4 stock matrix is identified, record nonconfirmation only and keep F4 closed."
     },
-    "immediate_previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
+    "immediate_previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json"
   },
   "repository_governance": {
     "merge_readiness_assessment": "model/registries/scientific_baseline_merge_readiness_assessment.json",

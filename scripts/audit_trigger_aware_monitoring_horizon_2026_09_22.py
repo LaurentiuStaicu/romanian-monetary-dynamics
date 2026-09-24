@@ -10,8 +10,9 @@ PREDECESSOR="model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_r
 SUCCESSOR="model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_source_diagnostics.json"
 AMECO_SUCCESSOR="model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_ameco_access_protocol.json"
 CURRENT="model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_counterpart_workflow_boundary.json"
-PREVIOUS_LATEST="model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
-LATEST="model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json"
+MOF_LATEST="model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
+PREVIOUS_LATEST="model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json"
+LATEST="model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_qsa_release_context_clarification.json"
 
 def load(path:str)->dict:
     return json.loads((ROOT/path).read_text(encoding="utf-8"))
@@ -101,6 +102,7 @@ def audit_trigger_aware_monitoring_horizon_2026_09_22()->list[str]:
     successor=load(SUCCESSOR)
     ameco_successor=load(AMECO_SUCCESSOR)
     current=load(CURRENT)
+    mof_latest=load(MOF_LATEST)
     previous_latest=load(PREVIOUS_LATEST)
     latest=load(LATEST)
     if successor["supersedes"]!=HORIZON:
@@ -109,8 +111,10 @@ def audit_trigger_aware_monitoring_horizon_2026_09_22()->list[str]:
         errors.append("post-source-diagnostics horizon is not preserved as post-AMECO predecessor")
     if current["supersedes"]!=AMECO_SUCCESSOR:
         errors.append("post-AMECO horizon is not preserved as counterpart-workflow predecessor")
-    if previous_latest["supersedes"]!=CURRENT:
+    if mof_latest["supersedes"]!=CURRENT:
         errors.append("counterpart-workflow horizon is not preserved as MoF-recovery predecessor")
+    if previous_latest["supersedes"]!=MOF_LATEST:
+        errors.append("MoF-recovery horizon is not preserved as AMECO-month predecessor")
     if latest["supersedes"]!=PREVIOUS_LATEST:
         errors.append("MoF-recovery horizon is not preserved as AMECO-month predecessor")
     if ms["trigger_aware_monitoring_horizon"]!=LATEST:
