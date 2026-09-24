@@ -122,14 +122,14 @@ def audit_trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary() 
     state = baseline["canonical_state"]["scientific_stage"]
     if state["trigger_aware_monitoring_horizon"] != LATEST:
         errors.append("baseline canonical state does not point to MoF-recovery successor")
-    if state["immediate_previous_trigger_aware_monitoring_horizon"] != SUCCESSOR:
-        errors.append("baseline does not preserve counterpart-workflow horizon as immediate predecessor")
+    if state["immediate_previous_trigger_aware_monitoring_horizon"] != PREVIOUS_LATEST:
+        errors.append("baseline does not preserve AMECO-month horizon as immediate predecessor")
     if baseline["authority"].get("trigger_aware_monitoring_horizon") != LATEST:
         errors.append("baseline generic monitoring authority is stale")
     if baseline["authority"].get("trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary") != HORIZON:
         errors.append("baseline no longer retains counterpart-workflow horizon as dated authority")
     if baseline.get("manifest_version") != "1.14":
-        errors.append("scientific baseline manifest version did not advance to 1.12")
+        errors.append("scientific baseline manifest version did not advance to 1.14")
 
     return errors
 
