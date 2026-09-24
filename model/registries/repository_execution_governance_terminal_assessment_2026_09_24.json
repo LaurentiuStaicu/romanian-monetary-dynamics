@@ -1,0 +1,92 @@
+{
+  "assessment_version": "0.1",
+  "assessed_on": "2026-09-24",
+  "phase": "Repository Execution Governance Hardening — Terminal Assessment",
+  "purpose": "Freeze the current GitHub Actions execution-governance boundary after the post-v0.3.0 hardening series, so future work can distinguish a genuine execution-policy change from repeated re-auditing of an already closed workflow surface. This assessment is repository governance only and has no authority to change scientific model state.",
+  "evidence_base_through_commit": "c5b890483db8398807264b39341c80bfd61dfdc2",
+  "hardening_series": {
+    "pull_requests": [
+      213,
+      214,
+      215,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      223,
+      224
+    ],
+    "interpretation": "The series established an exact write-permission boundary, explicit workflow permissions, audit-script execution coverage, guarded historical live-acquisition CLIs, manual/evidence-triggered live-provider paths, fully offline Scientific CI, executable-command-aware pull-request provider-access regression protection, synchronized Unreleased versioning rationale, and a repository-wide prohibition on pull_request_target."
+  },
+  "authorities": {
+    "actions_permission_audit": "scripts/audit_actions_write_permission_boundary.py",
+    "actions_permission_tests": "tests/test_actions_write_permission_boundary.py",
+    "audit_execution_coverage": "scripts/audit_audit_execution_coverage.py",
+    "live_source_workflow_tests": "tests/test_live_source_refresh_workflows.py",
+    "scientific_ci": ".github/workflows/scientific-ci.yml",
+    "release_versioning_contract": "model/registries/release_versioning_contract.json"
+  },
+  "external_policy_basis": {
+    "github_actions_secure_use": "https://docs.github.com/en/actions/reference/security/secure-use",
+    "github_workflow_permissions": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions",
+    "github_pull_request_target_security": "https://docs.github.com/en/actions/reference/security/securely-using-pull_request_target"
+  },
+  "terminal_state": {
+    "status": "REPOSITORY_EXECUTION_GOVERNANCE_HARDENING_COMPLETE_CURRENT_SCOPE_NO_ACTIVE_REPAIR_TASK",
+    "workflow_count_at_closure": 73,
+    "explicit_top_level_permissions_required": true,
+    "write_capable_workflow_count_at_closure": 4,
+    "write_capability_policy": "EXACT_ALLOWLIST_LEAST_PRIVILEGE",
+    "permitted_write_scope": "contents: write only",
+    "pull_request_target_workflow_count_at_closure": 0,
+    "pull_request_target_forbidden_repository_wide": true,
+    "scientific_ci_offline_on_pull_request_and_push": true,
+    "pull_request_direct_provider_access_forbidden": true,
+    "historical_live_provider_replay_manual_or_evidence_triggered": true,
+    "audit_scripts_require_workflow_execution_path": true,
+    "active_execution_governance_repair_task": null
+  },
+  "established_invariants": [
+    "Every GitHub Actions workflow declares top-level permissions explicitly.",
+    "Write permission is confined to the exact allowlist enforced by the central Actions governance audit.",
+    "Only contents: write is permitted within the write-capable allowlist.",
+    "The privileged pull_request_target event is forbidden repository-wide unless the governance contract is deliberately redesigned.",
+    "Ordinary pull_request workflows may not directly execute provider-network-capable scripts or inline curl/wget provider access.",
+    "Scientific CI is an offline verification path on ordinary pull_request and push execution.",
+    "Every scripts/audit_*.py executable has a workflow execution path and workflow audit references resolve to existing scripts.",
+    "Completed or frozen live-source acquisition paths are manual, evidence-triggered, or require explicit live-refetch acknowledgement as applicable."
+  ],
+  "explicit_non_claims": [
+    "Execution-governance closure does not prove external-source truth or provider availability.",
+    "Execution-governance closure does not complete the Accounting Spine.",
+    "Execution-governance closure does not validate behavioural mechanisms or causal interpretation.",
+    "Execution-governance closure does not authorize calibration, refit, holdout opening, feedback activation or behavioural closure.",
+    "Execution-governance closure does not require or authorize a public version bump."
+  ],
+  "reopen_conditions": [
+    "A GitHub Actions workflow is added, removed, or materially changes trigger or permission topology.",
+    "A workflow gains or changes write capability or a new write permission scope is required.",
+    "A future design requires pull_request_target or another privileged pull-request execution context.",
+    "Scientific CI gains a live-provider execution path or ordinary pull-request execution gains direct provider access.",
+    "An audit script loses its workflow execution path or a workflow gains a dangling audit-script reference.",
+    "A retained live-source path changes from manual/evidence-triggered semantics or removes an explicit live-refetch safeguard.",
+    "Scientific CI or an execution-governance regression test demonstrates a broken invariant.",
+    "A future release or repository architecture milestone deliberately changes the execution-governance contract."
+  ],
+  "current_disposition": {
+    "next_operational_state": "EVIDENCE_TRIGGERED_BASELINE_HOLD",
+    "repeated_execution_governance_reaudit_without_trigger_is_progress": false,
+    "new_execution_governance_rule_required_now": false,
+    "active_execution_governance_repair_task": null,
+    "live_refetch_authorized_by_this_assessment": false,
+    "estimation_or_refit_authorized": false,
+    "holdout_opening_authorized": false,
+    "feedback_activation_authorized": false,
+    "behavioural_closure_authorized": false,
+    "version_bump_required": false
+  },
+  "decision": "CLOSE_REPOSITORY_EXECUTION_GOVERNANCE_HARDENING_AT_CURRENT_SCOPE_REOPEN_ONLY_ON_DECLARED_TRIGGER"
+}
