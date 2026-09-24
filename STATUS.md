@@ -780,3 +780,11 @@ A complete scan of all 73 current GitHub Actions workflows found no use of `pull
 The central Actions governance audit now rejects `pull_request_target` repository-wide. This makes the existing absence an executable invariant rather than an accidental property. If a future workflow genuinely requires the privileged base-repository context, the invariant must be changed deliberately together with a documented security/governance redesign; it cannot appear silently in an ordinary workflow change.
 
 This is repository execution-governance hardening only. It changes no source evidence, Accounting Spine state, reference mode, parameter, calibration/validation authorization, feedback activation, behavioural closure or public **v0.3.0**.
+
+### Repository execution-governance terminal closure — 2026-09-24
+
+The post-v0.3.0 execution-governance hardening series is now formally closed at its current scope under `model/registries/repository_execution_governance_terminal_assessment_2026_09_24.json`. The assessment freezes the reviewed boundary through PR #224 / commit `c5b890483db8398807264b39341c80bfd61dfdc2`: 73 GitHub Actions workflows, explicit top-level permissions on every workflow, an exact four-workflow `contents: write` allowlist, zero `pull_request_target` workflows, offline Scientific CI on ordinary pull-request/push execution, generic direct-provider protection for pull-request commands, and workflow execution coverage for all `scripts/audit_*.py` executables.
+
+The model contract and scientific baseline register the same terminal authority, and focused regression coverage compares the live workflow surface against the closure snapshot. The terminal assessment also defines explicit reopen conditions for workflow topology, permission, trigger, provider-access, execution-coverage or release-architecture changes. Repeated re-auditing without one of those changes is not treated as progress.
+
+This is a repository-governance terminal boundary, not a scientific promotion. RMD remains in `EVIDENCE_TRIGGERED_BASELINE_HOLD`; Accounting Spine completion, calibration/refit, holdout opening, feedback activation and behavioural closure remain unauthorized, and public/repository version **0.3.0** remains unchanged.
