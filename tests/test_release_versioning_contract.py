@@ -67,6 +67,14 @@ class ReleaseVersioningContractTests(unittest.TestCase):
             "repository execution-governance hardening",
             "Scientific CI is fully offline",
             "pull-request live-provider detection",
+            "first legitimate Autumn 2026 release-presence window to November",
+            "2 October households/NFC",
+            "28 October broader institutional-sector",
+            "changed-topology-or-new-source reopen rule",
+            "pull_request_target is forbidden",
+            "terminally assessed with explicit reopen conditions",
+            "pinned to full reviewed release SHAs",
+            "weekly Dependabot maintenance",
         ):
             self.assertIn(token,rationale)
         self.assertTrue(basis["unreleased_changes_present"])
