@@ -21,6 +21,21 @@ def audit_trigger_aware_monitoring_horizon_post_qsa_release_context_clarificatio
     p = load(PREDECESSOR)
     model = load("model/registries/model_contract.json")
     baseline = load("model/registries/scientific_baseline_manifest.json")
+    status_text = (ROOT / "STATUS.md").read_text(encoding="utf-8")
+
+    stale_provenance_handoff = (
+        "Otherwise continuation is governed by "
+        "`model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_ameco_access_protocol.json`"
+    )
+    if stale_provenance_handoff in status_text:
+        errors.append("STATUS presents the historical provenance horizon as the current governing horizon")
+    current_handoff_pointer = (
+        "current continuation follows the canonical "
+        "`scientific_stage.trigger_aware_monitoring_horizon` pointer in "
+        "`model/registries/model_contract.json`"
+    )
+    if current_handoff_pointer not in status_text:
+        errors.append("STATUS provenance handoff does not defer current continuation to the canonical model-contract pointer")
 
     if h["registry_version"] != "0.10":
         errors.append("QSA-context successor version changed")
