@@ -400,8 +400,13 @@ def main() -> None:
         "Scientific baseline does not register post-MoF-recovery monitoring horizon",
     )
     check(
-        manifest["manifest_version"] == "1.12",
-        "Scientific baseline manifest version is not 1.12",
+        manifest["authority"]["trigger_aware_monitoring_horizon_post_ameco_autumn_month_confirmation"]
+        == "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json",
+        "Scientific baseline does not register post-AMECO autumn-month monitoring horizon",
+    )
+    check(
+        manifest["manifest_version"] == "1.13",
+        "Scientific baseline manifest version is not 1.13",
     )
     check(
         state["scientific_stage"]["latest_reopen_trigger_monitoring_superseded_for"]
