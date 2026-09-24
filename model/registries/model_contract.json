@@ -418,6 +418,7 @@
     "source_vintage_inventory_registry": "data/provenance/source_vintage_inventory_registry.json",
     "processed_data_inventory_registry": "data/provenance/processed_data_inventory_registry.json",
     "validation_recovery_vintage_status": "data/provenance/validation_recovery_vintage_status.json",
-    "provenance_integrity_terminal_assessment": "model/registries/provenance_integrity_terminal_assessment_2026_09_22.json"
+    "provenance_integrity_terminal_assessment": "model/registries/provenance_integrity_terminal_assessment_2026_09_22.json",
+    "execution_governance_terminal_assessment": "model/registries/repository_execution_governance_terminal_assessment_2026_09_24.json"
   }
 }
