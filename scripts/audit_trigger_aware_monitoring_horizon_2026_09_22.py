@@ -109,8 +109,10 @@ def audit_trigger_aware_monitoring_horizon_2026_09_22()->list[str]:
         errors.append("post-source-diagnostics horizon is not preserved as post-AMECO predecessor")
     if current["supersedes"]!=AMECO_SUCCESSOR:
         errors.append("post-AMECO horizon is not preserved as counterpart-workflow predecessor")
-    if latest["supersedes"]!=CURRENT:
+    if previous_latest["supersedes"]!=CURRENT:
         errors.append("counterpart-workflow horizon is not preserved as MoF-recovery predecessor")
+    if latest["supersedes"]!=PREVIOUS_LATEST:
+        errors.append("MoF-recovery horizon is not preserved as AMECO-month predecessor")
     if ms["trigger_aware_monitoring_horizon"]!=LATEST:
         errors.append("model contract current monitoring horizon does not point to MoF-recovery successor")
     if bs["trigger_aware_monitoring_horizon"]!=LATEST:
