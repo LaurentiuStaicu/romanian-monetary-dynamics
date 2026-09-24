@@ -138,8 +138,10 @@ def audit_trigger_aware_monitoring_horizon_post_ameco_access_protocol() -> list[
     latest = load(LATEST)
     if successor["supersedes"] != HORIZON:
         errors.append("post-AMECO-access horizon is not preserved as counterpart-workflow predecessor")
-    if latest["supersedes"] != SUCCESSOR:
+    if previous_latest["supersedes"] != SUCCESSOR:
         errors.append("counterpart-workflow horizon is not preserved as MoF-recovery predecessor")
+    if latest["supersedes"] != PREVIOUS_LATEST:
+        errors.append("MoF-recovery horizon is not preserved as AMECO-month predecessor")
     if ms["trigger_aware_monitoring_horizon"] != LATEST:
         errors.append("model contract current horizon does not point to MoF-recovery successor")
     if bs["trigger_aware_monitoring_horizon"] != LATEST:
