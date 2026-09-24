@@ -88,6 +88,17 @@ def audit_trigger_aware_monitoring_horizon_post_qsa_release_context_clarificatio
     if baseline.get("manifest_version") != "1.14":
         errors.append("scientific baseline manifest version did not advance to 1.14")
 
+    expected_status = (
+        "REFERENCE_MODES_10_OF_10_NO_GATE_OPEN_COUNTERPART_PROBES_TRIGGER_CONDITIONED_"
+        "MOF_FULL_2025_RECOVERY_MANUAL_ONLY_ACTIVE_POLLING_FALSE_AMECO_ACCESS_PROTOCOL_"
+        "BOUND_DATASET_IDENTITY_UNRESOLVED_AMECO_AUTUMN_2026_WINDOW_2026_11_NO_EXACT_DAY_"
+        "QSA_Q2_2026_CONTEXT_2026_10_02_HOUSEHOLDS_NFC_2026_10_28_FULL_INSTITUTIONAL_SECTOR_"
+        "ROUTINE_RELEASES_NO_REOPEN_NEXT_DATED_CHECK_2026_10_08_"
+        "F4_STOCK_EVIDENCE_WINDOW_AFTER_2026_10_31"
+    )
+    if ms.get("trigger_aware_monitoring_horizon_status") != expected_status:
+        errors.append("model contract monitoring status summary is stale relative to v0.10")
+
     d = h["current_disposition"]
     for key in (
         "any_monitoring_gate_open_now",
