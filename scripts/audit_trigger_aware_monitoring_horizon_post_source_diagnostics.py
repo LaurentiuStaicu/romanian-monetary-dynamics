@@ -8,8 +8,9 @@ HORIZON = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_sou
 PREDECESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_f4_structural.json"
 SUCCESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_ameco_access_protocol.json"
 CURRENT = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_counterpart_workflow_boundary.json"
-PREVIOUS_LATEST = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
-LATEST = "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json"
+MOF_LATEST = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
+PREVIOUS_LATEST = "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json"
+LATEST = "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_qsa_release_context_clarification.json"
 BLS_REVIEW = "model/calibration_validation/bnr_bls_2025q2_post_terminal_indexed_endpoint_review_2026_09_22.json"
 GOV_REPRICING_REVIEW = "model/calibration_validation/government_repricing_exchange_topology_post_terminal_assessment_2026_09_22.json"
 
@@ -140,14 +141,17 @@ def audit_trigger_aware_monitoring_horizon_post_source_diagnostics() -> list[str
     bs = baseline["canonical_state"]["scientific_stage"]
     successor = load(SUCCESSOR)
     current = load(CURRENT)
+    mof_latest = load(MOF_LATEST)
     previous_latest = load(PREVIOUS_LATEST)
     latest = load(LATEST)
     if successor["supersedes"] != HORIZON:
         errors.append("post-source-diagnostics horizon is not preserved as post-AMECO predecessor")
     if current["supersedes"] != SUCCESSOR:
         errors.append("post-AMECO horizon is not preserved as counterpart-workflow predecessor")
-    if previous_latest["supersedes"] != CURRENT:
+    if mof_latest["supersedes"] != CURRENT:
         errors.append("counterpart-workflow horizon is not preserved as MoF-recovery predecessor")
+    if previous_latest["supersedes"] != MOF_LATEST:
+        errors.append("MoF-recovery horizon is not preserved as AMECO-month predecessor")
     if latest["supersedes"] != PREVIOUS_LATEST:
         errors.append("MoF-recovery horizon is not preserved as AMECO-month predecessor")
     if ms["trigger_aware_monitoring_horizon"] != LATEST:

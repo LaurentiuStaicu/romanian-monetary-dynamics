@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HORIZON = "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json"
 PREDECESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
+SUCCESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_qsa_release_context_clarification.json"
 EXPECTED_PRESS = "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1120/IP_26_1120_EN.pdf"
 EXPECTED_AMECO = "https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database_en"
 
@@ -79,21 +80,21 @@ def audit_trigger_aware_monitoring_horizon_post_ameco_autumn_month_confirmation(
 
     ms = model["scientific_stage"]
     bs = baseline["canonical_state"]["scientific_stage"]
-    if ms["trigger_aware_monitoring_horizon"] != HORIZON:
+    if ms["trigger_aware_monitoring_horizon"] != SUCCESSOR:
         errors.append("model contract does not point to AMECO-month successor")
-    if ms["immediate_previous_trigger_aware_monitoring_horizon"] != PREDECESSOR:
+    if ms["immediate_previous_trigger_aware_monitoring_horizon"] != HORIZON:
         errors.append("model contract immediate predecessor changed")
-    if bs["trigger_aware_monitoring_horizon"] != HORIZON:
+    if bs["trigger_aware_monitoring_horizon"] != SUCCESSOR:
         errors.append("baseline does not point to AMECO-month successor")
-    if bs["immediate_previous_trigger_aware_monitoring_horizon"] != PREDECESSOR:
+    if bs["immediate_previous_trigger_aware_monitoring_horizon"] != HORIZON:
         errors.append("baseline immediate predecessor changed")
-    if baseline["authority"].get("trigger_aware_monitoring_horizon") != HORIZON:
+    if baseline["authority"].get("trigger_aware_monitoring_horizon") != SUCCESSOR:
         errors.append("baseline generic monitoring authority is stale")
     if baseline["authority"].get(
         "trigger_aware_monitoring_horizon_post_ameco_autumn_month_confirmation"
     ) != HORIZON:
         errors.append("baseline AMECO-month authority missing")
-    if baseline.get("manifest_version") != "1.13":
+    if baseline.get("manifest_version") != "1.14":
         errors.append("scientific baseline manifest version did not advance to 1.13")
 
     release = baseline["canonical_state"]["release_versioning"]

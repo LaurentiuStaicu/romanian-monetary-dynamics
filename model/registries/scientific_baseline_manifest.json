@@ -1,5 +1,5 @@
 {
-  "manifest_version": "1.13",
+  "manifest_version": "1.14",
   "baseline_id": "scientific-integrity-2026-09-19",
   "purpose": "Single canonical cross-registry snapshot of RMD scientific maturity. Values in this manifest must agree with the authoritative accounting, dynamics, reference-mode, empirical-mechanism and validation registries; the manifest is not an independent source of scientific truth.",
   "authority": {
@@ -26,7 +26,7 @@
     "sectoral_financial_positions_bnr_quarterly_s13_source_screening": "model/dynamics/sectoral_financial_positions_bnr_quarterly_s13_source_screening.json",
     "fiscal_capb_raw_source_preservation_assessment": "model/calibration_validation/fiscal_capb_raw_source_preservation_assessment_2026_09_20.json",
     "latest_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
-    "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json",
+    "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_qsa_release_context_clarification.json",
     "release_versioning_contract": "model/registries/release_versioning_contract.json",
     "f3_empirical_replay": "model/dynamics/f3_empirical_replay_2025.json",
     "f3_behavior_over_time_diagnostics": "model/dynamics/f3_behavior_over_time_diagnostics_2025.json",
@@ -151,7 +151,8 @@
     "trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_counterpart_workflow_boundary.json",
     "trigger_aware_monitoring_horizon_post_mof_recovery_execution_boundary": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json",
     "repository_execution_governance_terminal_assessment": "model/registries/repository_execution_governance_terminal_assessment_2026_09_24.json",
-    "trigger_aware_monitoring_horizon_post_ameco_autumn_month_confirmation": "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json"
+    "trigger_aware_monitoring_horizon_post_ameco_autumn_month_confirmation": "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json",
+    "trigger_aware_monitoring_horizon_post_qsa_release_context_clarification": "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_qsa_release_context_clarification.json"
   },
   "canonical_state": {
     "accounting": {
@@ -277,7 +278,7 @@
       "latest_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_20_post_fiscal_closure.json",
       "latest_reopen_trigger_monitoring_status": "NO_DECLARED_REOPEN_TRIGGER_SATISFIED_POST_FISCAL_CLOSURE_BASELINE_HOLD_CONTINUES",
       "previous_reopen_trigger_monitoring": "model/registries/reopen_trigger_monitoring_2026_09_19.json",
-      "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json",
+      "trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_qsa_release_context_clarification.json",
       "next_dated_trigger_check": {
         "date": "2026-10-08",
         "id": "prospective_monetary_policy_event"
@@ -287,7 +288,7 @@
         "after": "2026-10-31",
         "id": "f4_bnr_cnf_2025_stock_counterpart_matrix"
       },
-      "immediate_previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json",
+      "immediate_previous_trigger_aware_monitoring_horizon": "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json",
       "latest_reopen_trigger_monitoring_superseded_for": [
         "sectoral_financial_positions"
       ]
