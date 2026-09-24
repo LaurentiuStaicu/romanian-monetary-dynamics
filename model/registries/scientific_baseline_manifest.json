@@ -149,7 +149,8 @@
     "trigger_aware_monitoring_horizon_post_source_diagnostics": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_source_diagnostics.json",
     "trigger_aware_monitoring_horizon_post_ameco_access_protocol": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_ameco_access_protocol.json",
     "trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_counterpart_workflow_boundary.json",
-    "trigger_aware_monitoring_horizon_post_mof_recovery_execution_boundary": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
+    "trigger_aware_monitoring_horizon_post_mof_recovery_execution_boundary": "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json",
+    "repository_execution_governance_terminal_assessment": "model/registries/repository_execution_governance_terminal_assessment_2026_09_24.json"
   },
   "canonical_state": {
     "accounting": {
