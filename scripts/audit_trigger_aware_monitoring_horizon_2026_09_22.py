@@ -10,7 +10,8 @@ PREDECESSOR="model/registries/trigger_aware_monitoring_horizon_2026_09_21_post_r
 SUCCESSOR="model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_source_diagnostics.json"
 AMECO_SUCCESSOR="model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_ameco_access_protocol.json"
 CURRENT="model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_counterpart_workflow_boundary.json"
-LATEST="model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
+PREVIOUS_LATEST="model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
+LATEST="model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json"
 
 def load(path:str)->dict:
     return json.loads((ROOT/path).read_text(encoding="utf-8"))
@@ -100,6 +101,7 @@ def audit_trigger_aware_monitoring_horizon_2026_09_22()->list[str]:
     successor=load(SUCCESSOR)
     ameco_successor=load(AMECO_SUCCESSOR)
     current=load(CURRENT)
+    previous_latest=load(PREVIOUS_LATEST)
     latest=load(LATEST)
     if successor["supersedes"]!=HORIZON:
         errors.append("post-F4 horizon is not preserved as post-source-diagnostics predecessor")
@@ -125,9 +127,9 @@ def audit_trigger_aware_monitoring_horizon_2026_09_22()->list[str]:
         errors.append("baseline no longer preserves post-AMECO horizon as dated authority")
     if baseline["authority"].get("trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary")!=CURRENT:
         errors.append("baseline no longer preserves counterpart-workflow horizon as dated authority")
-    if ms.get("immediate_previous_trigger_aware_monitoring_horizon")!=CURRENT:
+    if ms.get("immediate_previous_trigger_aware_monitoring_horizon")!=PREVIOUS_LATEST:
         errors.append("model contract does not preserve counterpart-workflow horizon as immediate predecessor")
-    if bs.get("immediate_previous_trigger_aware_monitoring_horizon")!=CURRENT:
+    if bs.get("immediate_previous_trigger_aware_monitoring_horizon")!=PREVIOUS_LATEST:
         errors.append("baseline does not preserve counterpart-workflow horizon as immediate predecessor")
     expected_window={"after":"2026-10-31","id":"f4_bnr_cnf_2025_stock_counterpart_matrix"}
     if {k:ms["next_accounting_evidence_window_check"][k] for k in ("after","id")}!=expected_window:
