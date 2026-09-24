@@ -16,8 +16,8 @@ jobs:
   probe-oecd-counterpart-data:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
       - name: Verify frozen OECD discovery contract and probe logic
@@ -31,7 +31,7 @@ jobs:
         run: python scripts/audit_oecd_sectoral_financial_positions_counterpart_probe.py
       - name: Upload source-access evidence only
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: sectoral-financial-positions-oecd-counterpart-probe-${{ github.sha }}
           path: sectoral_financial_positions_oecd_counterpart_probe_artifacts/

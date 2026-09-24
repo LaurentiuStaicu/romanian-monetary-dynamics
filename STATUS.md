@@ -788,3 +788,11 @@ The post-v0.3.0 execution-governance hardening series is now formally closed at 
 The model contract and scientific baseline register the same terminal authority, and focused regression coverage compares the live workflow surface against the closure snapshot. The terminal assessment also defines explicit reopen conditions for workflow topology, permission, trigger, provider-access, execution-coverage or release-architecture changes. Repeated re-auditing without one of those changes is not treated as progress.
 
 This is a repository-governance terminal boundary, not a scientific promotion. RMD remains in `EVIDENCE_TRIGGERED_BASELINE_HOLD`; Accounting Spine completion, calibration/refit, holdout opening, feedback activation and behavioural closure remain unauthorized, and public/repository version **0.3.0** remains unchanged.
+
+### GitHub Actions dependency supply-chain hardening — 2026-09-24
+
+A repository-wide dependency inventory found that all 73 workflows use only three GitHub-owned external actions: `actions/checkout`, `actions/setup-python` and `actions/upload-artifact`. The first two were already on their current major v7 lines, while 63 workflows still referenced `actions/upload-artifact@v4`. All workflow jobs run on GitHub-hosted `ubuntu-latest`; there are no self-hosted runners in the current workflow surface.
+
+The external action references are now pinned to the full commit SHAs of the reviewed current releases, with same-line semantic-version comments retained for Dependabot: checkout v7.0.1, setup-python v7.0.0 and upload-artifact v7.0.1. The upload-artifact migration preserves the existing standard inputs used by RMD (`name`, `path`, `if-no-files-found`, `retention-days` and, where present, `compression-level`). A weekly `.github/dependabot.yml` entry for the `github-actions` ecosystem keeps these pinned references maintainable.
+
+Focused regression coverage now rejects unapproved external workflow actions, non-full-SHA external references, or pinned references that lose their same-line semantic-version documentation. This is supply-chain/reproducibility maintenance only: it changes no workflow trigger or permission topology, live-provider boundary, retained evidence, Accounting Spine state, reference mode, calibration/validation authorization, feedback activation, behavioural closure or public **v0.3.0**.
