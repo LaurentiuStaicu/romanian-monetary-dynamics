@@ -32,8 +32,8 @@ jobs:
     if: ${{ inputs.replay == 'oecd-nonconsolidated-topology' && inputs.acknowledge_no_scientific_reopen }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
       - name: Verify frozen topology contract
@@ -44,7 +44,7 @@ jobs:
         run: python scripts/audit_oecd_sectoral_financial_positions_nonconsolidated_probe.py
       - name: Upload replay evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: historical-oecd-nonconsolidated-topology-${{ github.sha }}
           path: oecd_nonconsolidated_topology_artifacts/
@@ -55,8 +55,8 @@ jobs:
     if: ${{ inputs.replay == 'oecd-exact-reconciliation' && inputs.acknowledge_no_scientific_reopen }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
       - name: Verify frozen exact-reconciliation contract
@@ -67,7 +67,7 @@ jobs:
         run: python scripts/audit_oecd_sectoral_financial_positions_exact_reconciliation.py
       - name: Upload replay evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: historical-oecd-exact-reconciliation-${{ github.sha }}
           path: oecd_exact_reference_artifacts/
@@ -78,8 +78,8 @@ jobs:
     if: ${{ inputs.replay == 'oecd-semantic-adjusted' && inputs.acknowledge_no_scientific_reopen }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
       - name: Verify frozen semantic-adjusted contract
@@ -92,7 +92,7 @@ jobs:
         run: python scripts/audit_oecd_sectoral_financial_positions_semantic_adjusted_gate.py
       - name: Upload replay evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: historical-oecd-semantic-adjusted-${{ github.sha }}
           path: oecd_semantic_reference_artifacts/
@@ -103,8 +103,8 @@ jobs:
     if: ${{ inputs.replay == 'ecb-qfa-10m-horizontal-consistency' && inputs.acknowledge_no_scientific_reopen }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
       - name: Verify frozen ECB threshold contract
@@ -117,7 +117,7 @@ jobs:
         run: python scripts/audit_ecb_qfa_10m_horizontal_consistency_gate.py
       - name: Upload replay evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: historical-ecb-qfa-10m-horizontal-gate-${{ github.sha }}
           path: ecb_qfa_10m_gate_artifacts/
