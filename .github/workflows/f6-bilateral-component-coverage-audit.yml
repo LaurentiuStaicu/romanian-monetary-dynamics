@@ -22,7 +22,7 @@ jobs:
         env:
           F6_COMPONENT_OUT: f6_component_artifacts
         run: python scripts/audit_qsa_f6_bilateral_components.py
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         name: Upload F6 component evidence
         with:
           name: f6-bilateral-components-${{ github.sha }}

@@ -140,7 +140,7 @@ jobs:
           git push origin HEAD:"$BRANCH"
 
       - name: Upload exact discovery artifact
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: mof-announced-ron-reference-auction-full-2025-${{ github.sha }}
           path: mof_announced_reference_auction_full_2025_source_artifacts/

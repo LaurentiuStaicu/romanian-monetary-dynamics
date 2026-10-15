@@ -44,7 +44,7 @@ jobs:
         run: python scripts/audit_oecd_sectoral_financial_positions_nonconsolidated_probe.py
       - name: Upload replay evidence
         if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: historical-oecd-nonconsolidated-topology-${{ github.sha }}
           path: oecd_nonconsolidated_topology_artifacts/
@@ -67,7 +67,7 @@ jobs:
         run: python scripts/audit_oecd_sectoral_financial_positions_exact_reconciliation.py
       - name: Upload replay evidence
         if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: historical-oecd-exact-reconciliation-${{ github.sha }}
           path: oecd_exact_reference_artifacts/
@@ -92,7 +92,7 @@ jobs:
         run: python scripts/audit_oecd_sectoral_financial_positions_semantic_adjusted_gate.py
       - name: Upload replay evidence
         if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: historical-oecd-semantic-adjusted-${{ github.sha }}
           path: oecd_semantic_reference_artifacts/
@@ -117,7 +117,7 @@ jobs:
         run: python scripts/audit_ecb_qfa_10m_horizontal_consistency_gate.py
       - name: Upload replay evidence
         if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: historical-ecb-qfa-10m-horizontal-gate-${{ github.sha }}
           path: ecb_qfa_10m_gate_artifacts/
