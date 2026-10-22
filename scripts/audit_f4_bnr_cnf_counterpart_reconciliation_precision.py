@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from decimal import Decimal, InvalidOperation
 from fractions import Fraction
 from pathlib import Path
@@ -16,6 +17,17 @@ MONITORING = "model/accounting/f4_bnr_cnf_2025_stock_trigger_monitoring_2026_09_
 SCREENING = "model/dynamics/sectoral_financial_positions_bnr_cnf_source_screening.json"
 REOPEN_REGISTRY = "model/accounting/reopen_conditions_registry.json"
 MANIFEST = "model/registries/scientific_baseline_manifest.json"
+
+
+def _locator_points_to_frozen_artifact(locator: Any) -> bool:
+    if not isinstance(locator, str) or not locator.strip():
+        return False
+    normalized = locator.strip().replace("\\\\", "/")
+    return re.search(
+        r"(?<![A-Za-z0-9_.-])model/accounting/f4_partial_2025\\.json(?![A-Za-z0-9_.-])",
+        normalized,
+    ) is not None
+
 
 ALLOWED_PRECISION_BASES = {
     "OFFICIAL_METADATA",
@@ -267,6 +279,7 @@ def assess_counterpart_term_coverage(
     disposition = semantic_assessment.get("self_counterpart_disposition")
     if not isinstance(disposition, str) or disposition not in SELF_COUNTERPART_TREATMENTS:
         return {"status": fail, "reason": "S121 self-counterpart disposition is missing or unrecognized"}
+    excluded_self_source_locator: str | None = None
 
     expected_mapping: dict[str, tuple[str, str]] = {}
     expected_pairs: list[tuple[str, str]] = []
@@ -312,6 +325,7 @@ def assess_counterpart_term_coverage(
         validated_self = _validated_record(record, index=-1, needs_coefficient=False)
         if validated_self is None:
             return {"status": fail, "reason": "excluded S121 source record lacks valid value/precision provenance"}
+        excluded_self_source_locator = record["source_locator"].strip()
         boundary_locator = semantic_assessment.get("self_counterpart_boundary_evidence_locator")
         if not isinstance(boundary_locator, str) or not boundary_locator.strip():
             return {"status": fail, "reason": "excluded S121 treatment lacks official boundary evidence"}
@@ -332,9 +346,17 @@ def assess_counterpart_term_coverage(
         }
 
     actual_keys: list[str] = []
+    value_locators: set[str] = set()
     for index, term in enumerate(terms):
         if not isinstance(term, dict):
             return {"status": fail, "reason": f"numeric term {index} is not a structured source cell"}
+        source_locator = term.get("source_locator")
+        if not isinstance(source_locator, str) or not source_locator.strip():
+            return {"status": fail, "reason": f"numeric term {index} lacks a cell-specific source locator"}
+        normalized_source_locator = source_locator.strip()
+        if normalized_source_locator in value_locators:
+            return {"status": fail, "reason": "distinct counterpart cells reuse a source locator"}
+        value_locators.add(normalized_source_locator)
         key = term.get("term_key")
         group = term.get("counterpart_group")
         sector_code = term.get("source_sector_code")
@@ -352,6 +374,10 @@ def assess_counterpart_term_coverage(
         if coefficient != 1:
             return {"status": fail, "reason": f"counterpart-stock term {key} must have coefficient exactly +1"}
 
+    if excluded_self_source_locator is not None:
+        if excluded_self_source_locator in value_locators:
+            return {"status": fail, "reason": "excluded S121 value locator is reused by a mapped counterpart cell"}
+        value_locators.add(excluded_self_source_locator)
     if len(set(actual_keys)) != len(actual_keys):
         return {"status": fail, "reason": "duplicate numeric term_key detected"}
     if set(actual_keys) != set(expected):
@@ -366,12 +392,16 @@ def assess_counterpart_term_coverage(
     if (
         expected_target_artifact != FROZEN_F4_TARGET_ARTIFACT
         or actual_target_artifact != FROZEN_F4_TARGET_ARTIFACT
-        or not isinstance(target_locator, str)
-        or FROZEN_F4_TARGET_ARTIFACT not in target_locator
+        or not _locator_points_to_frozen_artifact(target_locator)
     ):
         return {
             "status": fail,
-            "reason": "target record is not tied to the frozen retained F4 artifact",
+            "reason": "target record is not tied to the exact frozen retained F4 artifact path",
+        }
+    if target_locator.strip() in value_locators:
+        return {
+            "status": fail,
+            "reason": "frozen target control reuses a source-cell value locator",
         }
 
     expected_target_key = semantic_assessment.get("expected_target_key")
@@ -485,7 +515,7 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     if "numeric primitive only" not in semantic_contract.get("numeric_helper_boundary", ""):
         errors.append("contract does not distinguish numeric reconciliation from semantic adjudication")
     coverage_text = semantic_contract.get("numeric_term_coverage", "")
-    for coverage_rule in ("expected_term_keys", "term_key", "no omitted", "expected_target_key", "target_key"):
+    for coverage_rule in ("expected_term_keys", "term_key", "no omitted", "expected_target_key", "target_key", "uniquely identifies that reported source cell", "distinct after trimming whitespace", "path-boundary artifact"):
         if coverage_rule not in coverage_text:
             errors.append(f"contract does not preregister exact source-term coverage rule: {coverage_rule}")
     if "coefficient exactly +1" not in semantic_contract.get("coefficient_rule", ""):
@@ -741,6 +771,32 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     )
     if wrong_mapping.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("unapproved counterpart-sector mapping must block reconciliation")
+    duplicate_value_locator_terms = [dict(term) for term in coverage_fixture_terms]
+    duplicate_value_locator_terms[1]["source_locator"] = duplicate_value_locator_terms[0]["source_locator"]
+    duplicate_value_locator = assess_f4_counterpart_reconciliation(
+        duplicate_value_locator_terms, coverage_fixture_target, semantic_fixture,
+    )
+    if duplicate_value_locator.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
+        errors.append("distinct counterpart cells must not reuse a value locator")
+
+    target_locator_reused_by_cell = [dict(term) for term in coverage_fixture_terms]
+    target_locator_reused_by_cell[0]["source_locator"] = coverage_fixture_target["source_locator"]
+    reused_target_locator = assess_f4_counterpart_reconciliation(
+        target_locator_reused_by_cell, coverage_fixture_target, semantic_fixture,
+    )
+    if reused_target_locator.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
+        errors.append("the retained target locator must be distinct from counterpart cell locators")
+
+    wrong_target_locator = {
+        **coverage_fixture_target,
+        "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: model/accounting/f4_partial_2025.json.bak target control",
+    }
+    malformed_target_locator = assess_f4_counterpart_reconciliation(
+        coverage_fixture_terms, wrong_target_locator, semantic_fixture,
+    )
+    if malformed_target_locator.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
+        errors.append("target locator must identify the exact frozen artifact path, not a similarly named backup")
+
     missing_self_record = {**semantic_fixture}
     missing_self_record.pop("self_counterpart_record")
     missing_self = assess_f4_counterpart_reconciliation(
