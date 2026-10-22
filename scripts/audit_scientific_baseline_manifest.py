@@ -409,10 +409,38 @@ def main() -> None:
         == "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_qsa_release_context_clarification.json",
         "Scientific baseline does not register post-QSA-release-context monitoring horizon",
     )
-    check(
-        manifest["manifest_version"] == "1.14",
-        "Scientific baseline manifest version is not 1.14",
+    current_monitoring_horizon = model["scientific_stage"]["trigger_aware_monitoring_horizon"]
+    historical_monitoring_horizon = (
+        "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_qsa_release_context_clarification.json"
     )
+    bnr_event_monitoring_horizon = (
+        "model/registries/trigger_aware_monitoring_horizon_2026_10_22_post_bnr_event_check.json"
+    )
+    check(
+        current_monitoring_horizon in (
+            historical_monitoring_horizon,
+            bnr_event_monitoring_horizon,
+        ),
+        "Model contract current monitoring horizon is outside the reviewed successor chain",
+    )
+    expected_manifest_version = (
+        "1.14" if current_monitoring_horizon == historical_monitoring_horizon else "1.15"
+    )
+    check(
+        manifest["manifest_version"] == expected_manifest_version,
+        "Scientific baseline manifest version is inconsistent with current monitoring horizon",
+    )
+    if current_monitoring_horizon == bnr_event_monitoring_horizon:
+        check(
+            manifest["authority"].get("trigger_aware_monitoring_horizon_post_bnr_event_check")
+            == bnr_event_monitoring_horizon,
+            "Scientific baseline does not register the current BNR event-check monitoring horizon",
+        )
+    else:
+        check(
+            "trigger_aware_monitoring_horizon_post_bnr_event_check" not in manifest["authority"],
+            "Historical v1.14 baseline unexpectedly registers a future BNR event-check horizon",
+        )
     check(
         state["scientific_stage"]["latest_reopen_trigger_monitoring_superseded_for"]
         == model["scientific_stage"]["latest_reopen_trigger_monitoring_superseded_for"],
