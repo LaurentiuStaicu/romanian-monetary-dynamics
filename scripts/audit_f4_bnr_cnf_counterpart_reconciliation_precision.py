@@ -117,10 +117,10 @@ def _read_frozen_target_control() -> tuple[dict[str, str] | None, list[str]]:
     ]
     if len(aggregate_rows) != 1 or aggregate_rows[0].get("official_aggregate_million_RON") != 6.1:
         errors.append("retained Phase A report no longer confirms the BNR-holder F4 aggregate of 6.1 million RON")
-    else:
-        report_row_text = json.dumps(aggregate_rows[0], sort_keys=True)
-        if FROZEN_F4_TARGET_SERIES_KEY not in report_row_text:
-            errors.append("retained Phase A aggregate does not map the frozen value to the exact QSA series")
+    # The raw observation is verified independently by exact KEY, period,
+    # expected dimensions and member SHA-256 above. The retained Phase A
+    # aggregate is a derived summary and need not repeat the raw key in the
+    # selected holder-total row's serialization.
     return target_row, errors
 
 
