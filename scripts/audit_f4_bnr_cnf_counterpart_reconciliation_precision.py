@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import base64
+import csv
 import hashlib
 import io
 import json
@@ -866,6 +867,23 @@ def _diagnose_retained_qsa_control_archive() -> None:
                 key_paths.append({"path": path, "text": node[:600]})
         find_key(report_obj)
         raw_hits = []
+        exact_target_rows = []
+        raw_target_member = "f4_phase_a_artifacts/raw/cd74f1884fd6c092.raw"
+        raw_text = archive.read(raw_target_member).decode("utf-8-sig", errors="replace")
+        parsed_rows = list(csv.reader(io.StringIO(raw_text)))
+        if parsed_rows:
+            headers = parsed_rows[0]
+            for row in parsed_rows[1:]:
+                if row and row[0] == target_key:
+                    record = dict(zip(headers, row))
+                    if record.get("TIME_PERIOD") == "2025-Q4":
+                        exact_target_rows.append({
+                            "member": raw_target_member,
+                            "series_key": row[0],
+                            "header_fields": headers,
+                            "record": record,
+                        })
+        print("RETAINED_QSA_DIAGNOSTIC_EXACT_TARGET_ROWS", json.dumps(exact_target_rows))
         for member in archive.namelist():
             if not member.lower().endswith(".raw"):
                 continue
