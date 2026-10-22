@@ -828,79 +828,70 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
 
 
 def _diagnose_retained_qsa_control_archive() -> None:
-    """Temporary CI-only inspection of already-retained ECB QSA source vintage."""
+    """Temporary CI-only inspection of the already-retained ECB QSA vintage."""
     manifest_path = Path("data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18/source_manifest.json")
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     archive_path = manifest_path.parent / manifest["archive"]
     archive_bytes = base64.b64decode(archive_path.read_text(encoding="ascii"))
     digest = hashlib.sha256(archive_bytes).hexdigest()
-    print("RETAINED_QSA_DIAGNOSTIC_MANIFEST", json.dumps({
-        "archive": str(archive_path),
-        "sha256_match": digest == manifest["decoded_archive_sha256"],
-        "sha256": digest,
-        "expected_sha256": manifest["decoded_archive_sha256"],
-        "member_count": len(zipfile.ZipFile(io.BytesIO(archive_bytes)).namelist()),
-    }))
-    member_hits = []
-    control_terms = set()
+    target_key = "Q.N.RO.W0.S121.S1.N.A.LE.F4.T._Z.XDC._T.S.V.N._T"
     with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
         report_name = manifest["archive_contains"]["phase_A_report"]
-        report_text = archive.read(report_name).decode("utf-8", errors="replace")
-        report_obj = json.loads(report_text)
-        def find_terms(node: Any, path: str = "") -> list[dict[str, str]]:
-            found: list[dict[str, str]] = []
+        report_obj = json.loads(archive.read(report_name).decode("utf-8"))
+        matched_rows = [
+            {
+                "index": index,
+                "measure": row.get("measure"),
+                "kind": row.get("kind"),
+                "sector": row.get("sector"),
+                "official_aggregate_million_RON": row.get("official_aggregate_million_RON"),
+                "aggregate_maturity": row.get("aggregate_maturity"),
+            }
+            for index, row in enumerate(report_obj.get("aggregate_reconciliation", []))
+            if row.get("measure") == "stock"
+            and row.get("kind") == "holder_total"
+            and row.get("sector") == "BNR"
+        ]
+        key_paths = []
+        def find_key(node: Any, path: str = "") -> None:
             if isinstance(node, dict):
-                for key, value in node.items():
-                    child = f"{path}.{key}" if path else str(key)
-                    found.extend(find_terms(value, child))
+                if node.get("key") == target_key:
+                    key_paths.append({"path": path, "node": node})
+                for k, value in node.items():
+                    find_key(value, f"{path}.{k}" if path else str(k))
             elif isinstance(node, list):
-                for index, value in enumerate(node):
-                    found.extend(find_terms(value, f"{path}[{index}]"))
-            elif isinstance(node, str) and re.search(r"S121|F4|6[.,]1|counterpart|aggregate", node, re.I):
-                found.append({"path": path, "value": node[:220]})
-            elif isinstance(node, (float, int)) and abs(float(node) - 6.1) < 0.0000001:
-                found.append({"path": path, "value": str(node)})
-            return found
-        def target_series_nodes(node: Any, path: str = "") -> list[dict[str, Any]]:
-            found: list[dict[str, Any]] = []
-            if isinstance(node, dict):
-                key = node.get("key")
-                if isinstance(key, str) and "S121" in key and ".N.A.LE.F4.T." in key:
-                    found.append({"path": path, "node": node})
-                for child_key, value in node.items():
-                    child = f"{path}.{child_key}" if path else str(child_key)
-                    found.extend(target_series_nodes(value, child))
-            elif isinstance(node, list):
-                for index, value in enumerate(node):
-                    found.extend(target_series_nodes(value, f"{path}[{index}]"))
-            return found
-        target_nodes = target_series_nodes(report_obj.get("cells", []))
-        print("RETAINED_QSA_DIAGNOSTIC_REPORT_SCHEMA", json.dumps({
-            "report": report_name,
-            "bytes": len(report_text),
-            "top_level_keys": list(report_obj) if isinstance(report_obj, dict) else type(report_obj).__name__,
-            "aggregate_reconciliation": report_obj.get("aggregate_reconciliation"),
-            "series_status_counts": report_obj.get("series_status_counts"),
-            "cell_status_counts": report_obj.get("cell_status_counts"),
-            "target_series_nodes": target_nodes[:80],
-        }))
+                for i, value in enumerate(node):
+                    find_key(value, f"{path}[{i}]")
+            elif isinstance(node, str) and target_key in node:
+                key_paths.append({"path": path, "text": node[:600]})
+        find_key(report_obj)
+        raw_hits = []
         for member in archive.namelist():
-            if not member.lower().endswith(".json"):
+            if not member.lower().endswith(".raw"):
                 continue
-            raw = archive.read(member)
-            text = raw.decode("utf-8", errors="replace")
-            if "S121" not in text or "F4" not in text:
-                continue
-            keys = sorted(set(re.findall(r"QSA\\.Q\\.N\\.RO\\.[A-Z0-9._]*F4[A-Z0-9._]*", text)))
-            if keys:
-                member_hits.append({"member": member, "series_keys": keys[:40], "key_count": len(keys)})
-                for key in keys:
-                    if "S121" in key:
-                        control_terms.add(key)
-            if "6.1" in text or "6.100" in text:
-                member_hits.append({"member": member, "numeric_6_1": True, "series_keys": keys[:40]})
-    print("RETAINED_QSA_DIAGNOSTIC_MEMBERS", json.dumps(member_hits[:120]))
-    print("RETAINED_QSA_DIAGNOSTIC_S121_F4_KEYS", json.dumps(sorted(control_terms)))
+            data = archive.read(member)
+            decoded = data.decode("utf-8", errors="replace")
+            if target_key in decoded:
+                pos = decoded.index(target_key)
+                raw_hits.append({
+                    "member": member,
+                    "bytes": len(data),
+                    "sha256": hashlib.sha256(data).hexdigest(),
+                    "snippet": decoded[max(0, pos - 500):pos + len(target_key) + 800],
+                })
+        print("RETAINED_QSA_DIAGNOSTIC_MANIFEST", json.dumps({
+            "archive": str(archive_path),
+            "sha256_match": digest == manifest["decoded_archive_sha256"],
+            "sha256": digest,
+            "expected_sha256": manifest["decoded_archive_sha256"],
+            "member_count": len(archive.namelist()),
+            "report": report_name,
+            "report_sha256": hashlib.sha256(archive.read(report_name)).hexdigest(),
+        }))
+        print("RETAINED_QSA_DIAGNOSTIC_TARGET_AGGREGATE", json.dumps(matched_rows))
+        print("RETAINED_QSA_DIAGNOSTIC_TARGET_KEY_PATHS", json.dumps(key_paths[:30]))
+        print("RETAINED_QSA_DIAGNOSTIC_RAW_MATCHES", json.dumps(raw_hits[:20]))
+
 
 
 def main() -> None:
