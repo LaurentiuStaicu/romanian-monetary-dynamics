@@ -65,7 +65,9 @@
       "priority_stock_reopen_window_note": "Inferred from prior BNR CNF report data-availability cutoffs; not a guaranteed publication date.",
       "reserve_template_nonreopen_diagnostic": "model/accounting/f4_ras_reserve_template_nonreopen_diagnostic_2026_09_22.json",
       "reserve_template_route_state": "CLOSED_AS_NONCOMPARABLE_TO_CANONICAL_QSA_F4",
-      "reserve_template_route_reason": "RAS is a monthly international-reserves reserve-template stock series with foreign-currency-only scope, nominal valuation and S1Q counterpart aggregation; it is not an exact QSA/ESA all-currency counterpart bridge and does not resolve the BNR-holder allocation."
+      "reserve_template_route_reason": "RAS is a monthly international-reserves reserve-template stock series with foreign-currency-only scope, nominal valuation and S1Q counterpart aggregation; it is not an exact QSA/ESA all-currency counterpart bridge and does not resolve the BNR-holder allocation.",
+      "priority_stock_reconciliation_precision_contract": "model/accounting/f4_bnr_cnf_counterpart_reconciliation_precision_contract_2026_10_22.json",
+      "priority_stock_reconciliation_precision_contract_state": "PREREGISTERED_SOURCE_PRECISION_REQUIRED_FAIL_CLOSED"
     },
     "F5": {
       "current_status": "FROZEN_AT_PUBLIC_DATA_BOUNDARY",
