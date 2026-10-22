@@ -277,7 +277,7 @@ class F4BNRCNFDocumentedPrecisionTests(unittest.TestCase):
                 term("6.0", "0.1", key="cell-1"),
                 term("0.0", "0.1", key="cell-2"),
             ],
-            target("6.1", target_key="different-control") if False else {**target("6.1"), "target_key": "different-control"},
+            {**target("6.1"), "target_key": "different-control"},
             semantic_assessment(expected_term_keys=["cell-1", "cell-2"]),
         )
         self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
