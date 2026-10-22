@@ -105,7 +105,7 @@ def semantic_assessment(**overrides: object) -> dict[str, object]:
             for key, group, sector_code, _ in COUNTERPART_CELL_SPECS
         ],
         "expected_target_key": "retained_f4_control_2025_Q4",
-        "expected_target_artifact": "model/accounting/f4_partial_2025.json",
+        "expected_target_artifact": FROZEN_F4_TARGET_ARTIFACT,
         "self_counterpart_disposition": "OBSERVED_BUT_EXCLUDED_FROM_TARGET_WITH_OFFICIAL_BOUNDARY_SUPPORT",
         "self_counterpart_record": {
             "term_key": "self-counterpart-S121",
@@ -427,7 +427,7 @@ class F4BNRCNFDocumentedPrecisionTests(unittest.TestCase):
         wrong_target = {
             **target("7.1"),
             "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: " + FROZEN_F4_TARGET_ARTIFACT + ".bak::KEY=" + FROZEN_F4_TARGET_SERIES_KEY + "::TIME_PERIOD=" + FROZEN_F4_TARGET_PERIOD + "::OBS_VALUE",
-            "target_artifact": "model/accounting/f4_partial_2025.json",
+            "target_artifact": FROZEN_F4_TARGET_ARTIFACT,
         }
         result = assess_f4_counterpart_reconciliation(
             counterpart_terms(), wrong_target, semantic_assessment()
