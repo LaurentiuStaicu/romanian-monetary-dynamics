@@ -67,9 +67,10 @@ def target(
         "source_resolution": resolution,
         "rounding_mode": rounding_mode,
         "precision_basis": basis,
-        "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: target value",
+        "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: model/accounting/f4_partial_2025.json target value",
         "precision_evidence_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: target precision evidence",
         "target_key": "retained_f4_control_2025_Q4",
+        "target_artifact": "model/accounting/f4_partial_2025.json",
     }
 
 
@@ -100,6 +101,7 @@ def semantic_assessment(**overrides: object) -> dict[str, object]:
             for key, group, sector_code, _ in COUNTERPART_CELL_SPECS
         ],
         "expected_target_key": "retained_f4_control_2025_Q4",
+        "expected_target_artifact": "model/accounting/f4_partial_2025.json",
         "self_counterpart_disposition": "OBSERVED_BUT_EXCLUDED_FROM_TARGET_WITH_OFFICIAL_BOUNDARY_SUPPORT",
         "self_counterpart_record": {
             "term_key": "self-counterpart-S121",
@@ -356,6 +358,38 @@ class F4BNRCNFDocumentedPrecisionTests(unittest.TestCase):
         assessment.pop("self_counterpart_record", None)
         assessment.pop("self_counterpart_boundary_evidence_locator", None)
         result = assess_f4_counterpart_reconciliation(counterpart_terms(), target("7.1"), assessment)
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+
+    def test_precision_evidence_locator_must_differ_from_value_locator(self) -> None:
+        item = term("6.0", "0.1")
+        item["precision_evidence_locator"] = item["source_locator"]
+        result = assess_documented_precision_reconciliation([item], target("6.0"))
+        self.assertEqual(result["status"], "UNCONFIRMED_PRECISION_KEEP_F4_CLOSED")
+
+    def test_target_must_name_frozen_f4_artifact(self) -> None:
+        wrong_target = {**target("7.1"), "target_artifact": "model/accounting/other_file.json"}
+        result = assess_f4_counterpart_reconciliation(counterpart_terms(), wrong_target, semantic_assessment())
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+    def test_not_published_s121_path_can_pass_only_with_official_source_locator(self) -> None:
+        assessment = semantic_assessment(
+            self_counterpart_disposition="NOT_PUBLISHED_IN_SOURCE",
+            self_counterpart_evidence_locator="TEST_FIXTURE_NOT_SOURCE_DATA: official counterpart matrix header",
+        )
+        assessment.pop("self_counterpart_record", None)
+        assessment.pop("self_counterpart_boundary_evidence_locator", None)
+        result = assess_f4_counterpart_reconciliation(counterpart_terms(), target("7.1"), assessment)
+        self.assertEqual(
+            result["status"],
+            "PRECISION_AND_RECONCILIATION_PASS_ELIGIBLE_FOR_BASE_F4_TRIGGER_ADJUDICATION",
+        )
+
+    def test_malformed_unhashable_s121_disposition_fails_closed(self) -> None:
+        result = assess_f4_counterpart_reconciliation(
+            counterpart_terms(), target("7.1"),
+            semantic_assessment(self_counterpart_disposition=["UNKNOWN"]),
+        )
         self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
 
 
