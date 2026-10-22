@@ -9,6 +9,7 @@ PREDECESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post
 SUCCESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
 PREVIOUS_LATEST = "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json"
 LATEST = "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_qsa_release_context_clarification.json"
+BNR_EVENT_SUCCESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_10_22_post_bnr_event_check.json"
 
 def load(path: str) -> dict:
     return json.loads((ROOT / path).read_text(encoding="utf-8"))
@@ -115,21 +116,24 @@ def audit_trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary() 
         errors.append("MoF-recovery horizon is not preserved as AMECO-month predecessor")
     if latest["supersedes"] != PREVIOUS_LATEST:
         errors.append("latest AMECO-month monitoring predecessor changed")
-    if model["scientific_stage"]["trigger_aware_monitoring_horizon"] != LATEST:
-        errors.append("model contract current horizon does not point to MoF-recovery successor")
-    if model["scientific_stage"]["immediate_previous_trigger_aware_monitoring_horizon"] != PREVIOUS_LATEST:
-        errors.append("model contract does not preserve counterpart-workflow horizon as immediate predecessor")
+    current_horizon = model["scientific_stage"]["trigger_aware_monitoring_horizon"]
+    if current_horizon not in (LATEST, BNR_EVENT_SUCCESSOR):
+        errors.append("model contract current horizon is outside the reviewed successor chain")
+    expected_immediate = PREVIOUS_LATEST if current_horizon == LATEST else LATEST
+    if model["scientific_stage"]["immediate_previous_trigger_aware_monitoring_horizon"] != expected_immediate:
+        errors.append("model contract immediate monitoring predecessor is stale")
     state = baseline["canonical_state"]["scientific_stage"]
-    if state["trigger_aware_monitoring_horizon"] != LATEST:
-        errors.append("baseline canonical state does not point to MoF-recovery successor")
-    if state["immediate_previous_trigger_aware_monitoring_horizon"] != PREVIOUS_LATEST:
-        errors.append("baseline does not preserve AMECO-month horizon as immediate predecessor")
-    if baseline["authority"].get("trigger_aware_monitoring_horizon") != LATEST:
+    if state["trigger_aware_monitoring_horizon"] != current_horizon:
+        errors.append("baseline canonical current horizon differs from model contract")
+    if state["immediate_previous_trigger_aware_monitoring_horizon"] != expected_immediate:
+        errors.append("baseline immediate monitoring predecessor is stale")
+    if baseline["authority"].get("trigger_aware_monitoring_horizon") != current_horizon:
         errors.append("baseline generic monitoring authority is stale")
     if baseline["authority"].get("trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary") != HORIZON:
         errors.append("baseline no longer retains counterpart-workflow horizon as dated authority")
-    if baseline.get("manifest_version") != "1.14":
-        errors.append("scientific baseline manifest version did not advance to 1.14")
+    expected_manifest_version = "1.14" if current_horizon == LATEST else "1.15"
+    if baseline.get("manifest_version") != expected_manifest_version:
+        errors.append("scientific baseline manifest version is inconsistent with current monitoring successor")
 
     return errors
 
