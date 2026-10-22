@@ -4,6 +4,7 @@ import unittest
 
 from scripts.audit_f4_bnr_cnf_counterpart_reconciliation_precision import (
     FROZEN_F4_TARGET_ARTIFACT,
+    FROZEN_F4_TARGET_DECIMALS_LOCATOR,
     FROZEN_F4_TARGET_SERIES_KEY,
     FROZEN_F4_TARGET_SOURCE_LOCATOR,
     FROZEN_F4_TARGET_PERIOD,
@@ -11,6 +12,7 @@ from scripts.audit_f4_bnr_cnf_counterpart_reconciliation_precision import (
     assess_documented_precision_reconciliation,
     assess_f4_counterpart_reconciliation,
     audit_f4_bnr_cnf_counterpart_reconciliation_precision,
+    _production_target_value_matches,
 )
 
 
@@ -431,6 +433,21 @@ class F4BNRCNFDocumentedPrecisionTests(unittest.TestCase):
         }
         result = assess_f4_counterpart_reconciliation(
             counterpart_terms(), wrong_target, semantic_assessment()
+        )
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+    def test_production_target_value_must_match_retained_qsa_observation(self) -> None:
+        exact_target = target("6.1")
+        exact_target["source_locator"] = FROZEN_F4_TARGET_SOURCE_LOCATOR
+        self.assertTrue(_production_target_value_matches(exact_target))
+        wrong_target = {**exact_target, "source_value": "6.2"}
+        self.assertFalse(_production_target_value_matches(wrong_target))
+
+    def test_decimals_attribute_alone_does_not_establish_target_rounding(self) -> None:
+        target_record = target("7.1")
+        target_record["precision_evidence_locator"] = FROZEN_F4_TARGET_DECIMALS_LOCATOR
+        result = assess_f4_counterpart_reconciliation(
+            counterpart_terms(), target_record, semantic_assessment()
         )
         self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
 
