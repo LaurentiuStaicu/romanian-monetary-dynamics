@@ -319,5 +319,13 @@
       "response_values_inspected": false,
       "disposition": "RECORD_EVENT_ONLY_RETURN_TO_BASELINE_HOLD"
     }
-  ]
+  ],
+  "next_event_schedule_confirmation": {
+    "confirmed_on": "2026-10-08",
+    "source_class": "Official BNR Board announcement",
+    "official_source": "https://bsky.app/profile/bnr.ro/post/3mxegdnzxz52f",
+    "next_event_date": "2026-11-12",
+    "statement": "The next monetary-policy meeting of the NBR Board will be held on 12 November 2026.",
+    "source_identity": "BNR official account @bnr.ro"
+  }
 }
