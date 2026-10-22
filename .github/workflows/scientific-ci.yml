@@ -152,6 +152,8 @@ jobs:
 
       - name: Audit post-QSA release-context trigger-aware monitoring horizon
         run: python scripts/audit_trigger_aware_monitoring_horizon_post_qsa_release_context_clarification.py
+      - name: Audit BNR event-check monitoring successor
+        run: python scripts/audit_trigger_aware_monitoring_horizon_post_bnr_event_check.py
 
       - name: Audit F3 empirical dynamic replay
         run: python scripts/audit_f3_empirical_replay.py

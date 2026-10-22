@@ -13,6 +13,7 @@ CURRENT="model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_count
 MOF_LATEST="model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
 PREVIOUS_LATEST="model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json"
 LATEST="model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_qsa_release_context_clarification.json"
+BNR_EVENT_SUCCESSOR="model/registries/trigger_aware_monitoring_horizon_2026_10_22_post_bnr_event_check.json"
 
 def load(path:str)->dict:
     return json.loads((ROOT/path).read_text(encoding="utf-8"))
@@ -117,10 +118,11 @@ def audit_trigger_aware_monitoring_horizon_2026_09_22()->list[str]:
         errors.append("MoF-recovery horizon is not preserved as AMECO-month predecessor")
     if latest["supersedes"]!=PREVIOUS_LATEST:
         errors.append("MoF-recovery horizon is not preserved as AMECO-month predecessor")
-    if ms["trigger_aware_monitoring_horizon"]!=LATEST:
-        errors.append("model contract current monitoring horizon does not point to MoF-recovery successor")
-    if bs["trigger_aware_monitoring_horizon"]!=LATEST:
-        errors.append("baseline current monitoring horizon does not point to MoF-recovery successor")
+    current_horizon=ms["trigger_aware_monitoring_horizon"]
+    if current_horizon not in (LATEST,BNR_EVENT_SUCCESSOR):
+        errors.append("model contract current monitoring horizon is outside the reviewed successor chain")
+    if bs["trigger_aware_monitoring_horizon"]!=current_horizon:
+        errors.append("baseline current monitoring horizon differs from model contract")
     if baseline["authority"].get("trigger_aware_monitoring_horizon_post_f4_structural")!=HORIZON:
         errors.append("baseline no longer preserves post-F4 horizon as dated authority")
     if baseline["authority"].get("trigger_aware_monitoring_horizon_post_source_diagnostics")!=SUCCESSOR:
@@ -133,10 +135,11 @@ def audit_trigger_aware_monitoring_horizon_2026_09_22()->list[str]:
         errors.append("baseline no longer preserves post-AMECO horizon as dated authority")
     if baseline["authority"].get("trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary")!=CURRENT:
         errors.append("baseline no longer preserves counterpart-workflow horizon as dated authority")
-    if ms.get("immediate_previous_trigger_aware_monitoring_horizon")!=PREVIOUS_LATEST:
-        errors.append("model contract does not preserve counterpart-workflow horizon as immediate predecessor")
-    if bs.get("immediate_previous_trigger_aware_monitoring_horizon")!=PREVIOUS_LATEST:
-        errors.append("baseline does not preserve counterpart-workflow horizon as immediate predecessor")
+    expected_immediate=PREVIOUS_LATEST if current_horizon==LATEST else LATEST
+    if ms.get("immediate_previous_trigger_aware_monitoring_horizon")!=expected_immediate:
+        errors.append("model contract immediate monitoring predecessor is stale")
+    if bs.get("immediate_previous_trigger_aware_monitoring_horizon")!=expected_immediate:
+        errors.append("baseline immediate monitoring predecessor is stale")
     expected_window={"after":"2026-10-31","id":"f4_bnr_cnf_2025_stock_counterpart_matrix"}
     if {k:ms["next_accounting_evidence_window_check"][k] for k in ("after","id")}!=expected_window:
         errors.append("model contract next accounting evidence window changed")

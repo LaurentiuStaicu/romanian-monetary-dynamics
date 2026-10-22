@@ -24,6 +24,9 @@ class TriggerAwareMonitoringHorizonTests(unittest.TestCase):
         self.p = load(
             "model/calibration_validation/prospective_monetary_confirmation_status.json"
         )
+        self.h_current = load(
+            "model/registries/trigger_aware_monitoring_horizon_2026_10_22_post_bnr_event_check.json"
+        )
 
     def test_horizon_preserves_baseline_hold(self) -> None:
         state = self.h["current_disposition"]
@@ -100,9 +103,19 @@ class TriggerAwareMonitoringHorizonTests(unittest.TestCase):
             ],
             immediate,
         )
+        next_check = self.h_current["current_disposition"]["next_dated_check"]
         self.assertEqual(
             self.m["scientific_stage"]["next_dated_trigger_check"]["date"],
-            "2026-10-08",
+            next_check["date"],
+        )
+        self.assertEqual(next_check["date"], "2026-11-12")
+        schedule = self.h_current["next_event_schedule_confirmation"]
+        self.assertEqual(schedule["next_event_date"], next_check["date"])
+        self.assertEqual(schedule["confirmed_on"], "2026-10-08")
+        self.assertEqual(schedule["source_identity"], "BNR official account @bnr.ro")
+        self.assertEqual(
+            self.m["scientific_stage"]["next_dated_trigger_check"]["id"],
+            next_check["id"],
         )
 
 
