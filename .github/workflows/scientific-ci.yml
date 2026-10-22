@@ -69,6 +69,9 @@ jobs:
       - name: Audit F4 BNR CNF 2025 stock trigger monitoring
         run: python scripts/audit_f4_bnr_cnf_2025_stock_trigger_monitoring.py
 
+      - name: Audit F4 BNR CNF documented-precision reconciliation preregistration
+        run: python scripts/audit_f4_bnr_cnf_counterpart_reconciliation_precision.py
+
       - name: Audit terminal Accounting Spine recovery state
         run: python scripts/audit_accounting_spine_recovery_terminal.py
 
