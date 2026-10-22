@@ -60,10 +60,8 @@ def _read_frozen_target_control() -> tuple[dict[str, str] | None, list[str]]:
             errors.append("retained F4 source manifest names a different archive")
         if manifest.get("decoded_archive_sha256") != F4_SOURCE_ARCHIVE_SHA256:
             errors.append("retained F4 source manifest SHA-256 changed")
-        archive_bytes = base64.b64decode(
-            (ROOT / F4_SOURCE_ARCHIVE_PATH).read_text(encoding="ascii"),
-            validate=True,
-        )
+        encoded_archive = "".join((ROOT / F4_SOURCE_ARCHIVE_PATH).read_text(encoding="ascii").split())
+        archive_bytes = base64.b64decode(encoded_archive, validate=True)
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         return None, [f"retained F4 source manifest/archive cannot be read: {exc}"]
     if hashlib.sha256(archive_bytes).hexdigest() != F4_SOURCE_ARCHIVE_SHA256:
@@ -682,6 +680,7 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     expected_control = {
         "artifact": FROZEN_F4_TARGET_ARTIFACT,
         "archive_sha256": F4_SOURCE_ARCHIVE_SHA256,
+        "archive_member": FROZEN_F4_TARGET_MEMBER,
         "archive_member_sha256": FROZEN_F4_TARGET_MEMBER_SHA256,
         "aggregate_report_member": F4_SOURCE_REPORT_MEMBER,
         "aggregate_report_sha256": F4_SOURCE_REPORT_SHA256,
