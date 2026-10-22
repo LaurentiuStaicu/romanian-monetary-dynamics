@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HORIZON = "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_qsa_release_context_clarification.json"
 PREDECESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json"
+NEXT_HORIZON = "model/registries/trigger_aware_monitoring_horizon_2026_10_22_post_bnr_event_check.json"
 CALENDAR = "https://www.ecb.europa.eu/press/calendars/statscal/eaa/html/stprfi.en.html"
 DATASET_INFO = "https://data.ecb.europa.eu/data/datasets/QSA/data-information"
 
@@ -86,24 +87,27 @@ def audit_trigger_aware_monitoring_horizon_post_qsa_release_context_clarificatio
 
     ms = model["scientific_stage"]
     bs = baseline["canonical_state"]["scientific_stage"]
-    if ms["trigger_aware_monitoring_horizon"] != HORIZON:
-        errors.append("model contract does not point to QSA-context successor")
-    if ms["immediate_previous_trigger_aware_monitoring_horizon"] != PREDECESSOR:
-        errors.append("model contract immediate predecessor changed")
-    if bs["trigger_aware_monitoring_horizon"] != HORIZON:
-        errors.append("baseline does not point to QSA-context successor")
-    if bs["immediate_previous_trigger_aware_monitoring_horizon"] != PREDECESSOR:
-        errors.append("baseline immediate predecessor changed")
-    if baseline["authority"].get("trigger_aware_monitoring_horizon") != HORIZON:
+    current_horizon = ms.get("trigger_aware_monitoring_horizon")
+    if current_horizon not in (HORIZON, NEXT_HORIZON):
+        errors.append("current monitoring pointer is neither historical v0.10 nor its declared BNR-event successor")
+    expected_current_predecessor = PREDECESSOR if current_horizon == HORIZON else HORIZON
+    if ms.get("immediate_previous_trigger_aware_monitoring_horizon") != expected_current_predecessor:
+        errors.append("model contract immediate monitoring predecessor is stale")
+    if bs.get("trigger_aware_monitoring_horizon") != current_horizon:
+        errors.append("baseline current monitoring pointer is stale relative to model contract")
+    if bs.get("immediate_previous_trigger_aware_monitoring_horizon") != expected_current_predecessor:
+        errors.append("baseline immediate monitoring predecessor is stale")
+    if baseline["authority"].get("trigger_aware_monitoring_horizon") != current_horizon:
         errors.append("baseline generic monitoring authority is stale")
     if baseline["authority"].get(
         "trigger_aware_monitoring_horizon_post_qsa_release_context_clarification"
     ) != HORIZON:
-        errors.append("baseline QSA-context authority missing")
-    if baseline.get("manifest_version") != "1.14":
-        errors.append("scientific baseline manifest version did not advance to 1.14")
+        errors.append("baseline historical v0.10 authority missing or changed")
+    expected_manifest_version = "1.14" if current_horizon == HORIZON else "1.15"
+    if baseline.get("manifest_version") != expected_manifest_version:
+        errors.append("scientific baseline manifest version is inconsistent with the current monitoring successor")
 
-    expected_status = (
+    historical_status = (
         "REFERENCE_MODES_10_OF_10_NO_GATE_OPEN_COUNTERPART_PROBES_TRIGGER_CONDITIONED_"
         "MOF_FULL_2025_RECOVERY_MANUAL_ONLY_ACTIVE_POLLING_FALSE_AMECO_ACCESS_PROTOCOL_"
         "BOUND_DATASET_IDENTITY_UNRESOLVED_AMECO_AUTUMN_2026_WINDOW_2026_11_NO_EXACT_DAY_"
@@ -111,8 +115,13 @@ def audit_trigger_aware_monitoring_horizon_post_qsa_release_context_clarificatio
         "ROUTINE_RELEASES_NO_REOPEN_NEXT_DATED_CHECK_2026_10_08_"
         "F4_STOCK_EVIDENCE_WINDOW_AFTER_2026_10_31"
     )
-    if ms.get("trigger_aware_monitoring_horizon_status") != expected_status:
-        errors.append("model contract monitoring status summary is stale relative to v0.10")
+    if current_horizon == HORIZON:
+        if ms.get("trigger_aware_monitoring_horizon_status") != historical_status:
+            errors.append("model contract historical v0.10 status summary is stale")
+    else:
+        status = ms.get("trigger_aware_monitoring_horizon_status", "")
+        if "NEXT_DATED_CHECK_2026_11_12" not in status or "NEXT_DATED_CHECK_2026_10_08" in status:
+            errors.append("current successor status is inconsistent with the historical v0.10 handoff")
 
     d = h["current_disposition"]
     for key in (
