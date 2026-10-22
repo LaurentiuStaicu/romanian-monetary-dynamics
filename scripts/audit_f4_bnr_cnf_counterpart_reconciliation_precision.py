@@ -867,22 +867,25 @@ def _diagnose_retained_qsa_control_archive() -> None:
                 key_paths.append({"path": path, "text": node[:600]})
         find_key(report_obj)
         raw_hits = []
-        exact_target_rows = []
         raw_target_member = "f4_phase_a_artifacts/raw/cd74f1884fd6c092.raw"
         raw_text = archive.read(raw_target_member).decode("utf-8-sig", errors="replace")
         parsed_rows = list(csv.reader(io.StringIO(raw_text)))
-        if parsed_rows:
-            headers = parsed_rows[0]
-            for row in parsed_rows[1:]:
-                if row and row[0] == target_key:
-                    record = dict(zip(headers, row))
-                    if record.get("TIME_PERIOD") == "2025-Q4":
-                        exact_target_rows.append({
-                            "member": raw_target_member,
-                            "series_key": row[0],
-                            "header_fields": headers,
-                            "record": record,
-                        })
+        headers = parsed_rows[0] if parsed_rows else []
+        matching_rows = [row for row in parsed_rows[1:] if row and row[0] == target_key]
+        exact_target_rows = []
+        for row in matching_rows:
+            record = dict(zip(headers, row))
+            exact_target_rows.append({
+                "member": raw_target_member,
+                "row_length": len(row),
+                "header_length": len(headers),
+                "record": record,
+                "row_values_at_time_obs_decimals": {
+                    str(index): {"header": headers[index] if index < len(headers) else None, "value": row[index]}
+                    for index in range(max(0, len(row) - 15), len(row))
+                },
+            })
+        print("RETAINED_QSA_DIAGNOSTIC_CSV_HEADER", json.dumps(headers))
         print("RETAINED_QSA_DIAGNOSTIC_EXACT_TARGET_ROWS", json.dumps(exact_target_rows))
         for member in archive.namelist():
             if not member.lower().endswith(".raw"):
