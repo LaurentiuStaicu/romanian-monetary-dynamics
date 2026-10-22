@@ -66,6 +66,16 @@ def audit_trigger_aware_monitoring_horizon_post_bnr_event_check() -> list[str]:
         errors.append("completed 2026-10-08 BNR event record changed or missing")
     if EXPECTED_EVENT_CHECK["official_source"] != BNR_SOURCE:
         errors.append("BNR event source authority changed")
+    expected_schedule_confirmation = {
+        "confirmed_on": "2026-10-08",
+        "source_class": "Official BNR Board announcement",
+        "official_source": "https://bsky.app/profile/bnr.ro/post/3mxegdnzxz52f",
+        "next_event_date": "2026-11-12",
+        "statement": "The next monetary-policy meeting of the NBR Board will be held on 12 November 2026.",
+        "source_identity": "BNR official account @bnr.ro",
+    }
+    if h.get("next_event_schedule_confirmation") != expected_schedule_confirmation:
+        errors.append("next BNR event date lacks the frozen official schedule confirmation")
     if h["monitoring_rules"] != p["monitoring_rules"]:
         errors.append("monitoring rules changed")
     if h["governing_state"] != p["governing_state"]:
