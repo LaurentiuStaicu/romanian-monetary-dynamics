@@ -1,7 +1,11 @@
 from __future__ import annotations
 
+import base64
+import hashlib
+import io
 import json
 import re
+import zipfile
 from decimal import Decimal, InvalidOperation
 from fractions import Fraction
 from pathlib import Path
@@ -823,6 +827,42 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     return errors
 
 
+def _diagnose_retained_qsa_control_archive() -> None:
+    """Temporary CI-only inspection of already-retained ECB QSA source vintage."""
+    manifest_path = Path("data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18/source_manifest.json")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    archive_path = manifest_path.parent / manifest["archive"]
+    archive_bytes = base64.b64decode(archive_path.read_text(encoding="ascii"))
+    digest = hashlib.sha256(archive_bytes).hexdigest()
+    print("RETAINED_QSA_DIAGNOSTIC_MANIFEST", json.dumps({
+        "archive": str(archive_path),
+        "sha256_match": digest == manifest["decoded_archive_sha256"],
+        "sha256": digest,
+        "expected_sha256": manifest["decoded_archive_sha256"],
+        "member_count": len(zipfile.ZipFile(io.BytesIO(archive_bytes)).namelist()),
+    }))
+    member_hits = []
+    control_terms = set()
+    with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
+        for member in archive.namelist():
+            if not member.lower().endswith(".json"):
+                continue
+            raw = archive.read(member)
+            text = raw.decode("utf-8", errors="replace")
+            if "S121" not in text or "F4" not in text:
+                continue
+            keys = sorted(set(re.findall(r"QSA\\.Q\\.N\\.RO\\.[A-Z0-9._]*F4[A-Z0-9._]*", text)))
+            if keys:
+                member_hits.append({"member": member, "series_keys": keys[:40], "key_count": len(keys)})
+                for key in keys:
+                    if "S121" in key:
+                        control_terms.add(key)
+            if "6.1" in text or "6.100" in text:
+                member_hits.append({"member": member, "numeric_6_1": True, "series_keys": keys[:40]})
+    print("RETAINED_QSA_DIAGNOSTIC_MEMBERS", json.dumps(member_hits[:120]))
+    print("RETAINED_QSA_DIAGNOSTIC_S121_F4_KEYS", json.dumps(sorted(control_terms)))
+
+
 def main() -> None:
     errors = audit_f4_bnr_cnf_counterpart_reconciliation_precision()
     if errors:
@@ -831,6 +871,7 @@ def main() -> None:
             + "\n- ".join(errors)
         )
     contract = load(CONTRACT)
+    _diagnose_retained_qsa_control_archive()
     print(
         json.dumps(
             {
