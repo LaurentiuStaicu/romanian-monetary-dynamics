@@ -3,6 +3,10 @@ from __future__ import annotations
 import unittest
 
 from scripts.audit_f4_bnr_cnf_counterpart_reconciliation_precision import (
+    FROZEN_F4_TARGET_ARTIFACT,
+    FROZEN_F4_TARGET_SERIES_KEY,
+    FROZEN_F4_TARGET_SOURCE_LOCATOR,
+    FROZEN_F4_TARGET_PERIOD,
     SEMANTIC_REQUIRED_CHECKS,
     assess_documented_precision_reconciliation,
     assess_f4_counterpart_reconciliation,
@@ -67,10 +71,10 @@ def target(
         "source_resolution": resolution,
         "rounding_mode": rounding_mode,
         "precision_basis": basis,
-        "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: model/accounting/f4_partial_2025.json target value",
+        "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: " + FROZEN_F4_TARGET_SOURCE_LOCATOR,
         "precision_evidence_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: target precision evidence",
         "target_key": "retained_f4_control_2025_Q4",
-        "target_artifact": "model/accounting/f4_partial_2025.json",
+        "target_artifact": FROZEN_F4_TARGET_ARTIFACT,
     }
 
 
@@ -422,7 +426,7 @@ class F4BNRCNFDocumentedPrecisionTests(unittest.TestCase):
     def test_target_locator_requires_exact_path_boundary(self) -> None:
         wrong_target = {
             **target("7.1"),
-            "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: model/accounting/f4_partial_2025.json.bak target",
+            "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: " + FROZEN_F4_TARGET_ARTIFACT + ".bak::KEY=" + FROZEN_F4_TARGET_SERIES_KEY + "::TIME_PERIOD=" + FROZEN_F4_TARGET_PERIOD + "::OBS_VALUE",
             "target_artifact": "model/accounting/f4_partial_2025.json",
         }
         result = assess_f4_counterpart_reconciliation(
