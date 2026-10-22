@@ -871,7 +871,10 @@ def _diagnose_retained_qsa_control_archive() -> None:
         raw_text = archive.read(raw_target_member).decode("utf-8-sig", errors="replace")
         parsed_rows = list(csv.reader(io.StringIO(raw_text)))
         headers = parsed_rows[0] if parsed_rows else []
-        matching_rows = [row for row in parsed_rows[1:] if row and row[0] == target_key]
+        matching_rows = [
+            row for row in parsed_rows[1:]
+            if any(isinstance(value, str) and value.strip() == target_key for value in row)
+        ]
         exact_target_rows = []
         for row in matching_rows:
             record = dict(zip(headers, row))
@@ -879,6 +882,7 @@ def _diagnose_retained_qsa_control_archive() -> None:
                 "member": raw_target_member,
                 "row_length": len(row),
                 "header_length": len(headers),
+                "series_key_column_indices": [i for i, value in enumerate(row) if value.strip() == target_key],
                 "record": record,
                 "row_values_at_time_obs_decimals": {
                     str(index): {"header": headers[index] if index < len(headers) else None, "value": row[index]}
