@@ -884,7 +884,7 @@ def _diagnose_retained_qsa_control_archive() -> None:
                 "row": row,
                 "record": dict(zip(header, row)),
             })
-        print("RETAINED_QSA_DIAGNOSTIC_CSV_HEADER", json.dumps(headers))
+        print("RETAINED_QSA_DIAGNOSTIC_CSV_HEADER", json.dumps(header))
         print("RETAINED_QSA_DIAGNOSTIC_EXACT_TARGET_ROWS", json.dumps(exact_target_rows))
         for member in archive.namelist():
             if not member.lower().endswith(".raw"):
