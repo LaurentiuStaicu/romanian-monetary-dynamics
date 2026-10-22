@@ -13,7 +13,25 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-FROZEN_F4_TARGET_ARTIFACT = "model/accounting/f4_partial_2025.json"
+F4_SOURCE_MANIFEST_PATH = "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18/source_manifest.json"
+F4_SOURCE_ARCHIVE_PATH = "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18/workflow_artifact_10558980689.zip.b64"
+F4_SOURCE_ARCHIVE_SHA256 = "a01922ed3662725dd5c73c95cd248bb97c8fc8a06404c9507e7cac4fc8e260aa"
+F4_SOURCE_REPORT_MEMBER = "f4_phase_a_artifacts/f4_loans_coverage_audit.json"
+F4_SOURCE_REPORT_SHA256 = "0eec19061320039161a92ddde7ae3af9b89280d187d7fcdba5b590ce906cb0e5"
+FROZEN_F4_TARGET_MEMBER = "f4_phase_a_artifacts/raw/cd74f1884fd6c092.raw"
+FROZEN_F4_TARGET_MEMBER_SHA256 = "2733df8109321019c5eff3430b96078ce50c9a388df4dcadf72302bf78f84efa"
+FROZEN_F4_TARGET_SERIES_KEY = "QSA.Q.N.RO.W0.S121.S1.N.A.LE.F4.T._Z.XDC._T.S.V.N._T"
+FROZEN_F4_TARGET_PERIOD = "2025-Q4"
+FROZEN_F4_TARGET_VALUE = "6.1"
+FROZEN_F4_TARGET_ARTIFACT = f"{F4_SOURCE_ARCHIVE_PATH}#{FROZEN_F4_TARGET_MEMBER}"
+FROZEN_F4_TARGET_SOURCE_LOCATOR = (
+    f"{FROZEN_F4_TARGET_ARTIFACT}::KEY={FROZEN_F4_TARGET_SERIES_KEY}"
+    f"::TIME_PERIOD={FROZEN_F4_TARGET_PERIOD}::OBS_VALUE"
+)
+FROZEN_F4_TARGET_DECIMALS_LOCATOR = (
+    f"{FROZEN_F4_TARGET_ARTIFACT}::KEY={FROZEN_F4_TARGET_SERIES_KEY}::DECIMALS"
+)
+TEST_FIXTURE_PREFIX = "TEST_FIXTURE_NOT_SOURCE_DATA:"
 CONTRACT = (
     "model/accounting/"
     "f4_bnr_cnf_counterpart_reconciliation_precision_contract_2026_10_22.json"
@@ -27,11 +45,117 @@ MANIFEST = "model/registries/scientific_baseline_manifest.json"
 def _locator_points_to_frozen_artifact(locator: Any) -> bool:
     if not isinstance(locator, str) or not locator.strip():
         return False
-    normalized = locator.strip().replace("\\", "/")
-    return re.search(
-        r"(?<![A-Za-z0-9_.-])model/accounting/f4_partial_2025\.json(?![A-Za-z0-9_.-])",
-        normalized,
-    ) is not None
+    normalized = locator.strip().replace("\\\\", "/")
+    fixture_prefix = TEST_FIXTURE_PREFIX + " "
+    if normalized.startswith(fixture_prefix):
+        normalized = normalized[len(fixture_prefix):].strip()
+    return normalized == FROZEN_F4_TARGET_SOURCE_LOCATOR
+
+
+def _read_frozen_target_control() -> tuple[dict[str, str] | None, list[str]]:
+    errors: list[str] = []
+    try:
+        manifest = json.loads((ROOT / F4_SOURCE_MANIFEST_PATH).read_text(encoding="utf-8"))
+        if manifest.get("archive") != Path(F4_SOURCE_ARCHIVE_PATH).name:
+            errors.append("retained F4 source manifest names a different archive")
+        if manifest.get("decoded_archive_sha256") != F4_SOURCE_ARCHIVE_SHA256:
+            errors.append("retained F4 source manifest SHA-256 changed")
+        archive_bytes = base64.b64decode(
+            (ROOT / F4_SOURCE_ARCHIVE_PATH).read_text(encoding="ascii"),
+            validate=True,
+        )
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return None, [f"retained F4 source manifest/archive cannot be read: {exc}"]
+    if hashlib.sha256(archive_bytes).hexdigest() != F4_SOURCE_ARCHIVE_SHA256:
+        return None, ["retained F4 source archive failed its frozen SHA-256"]
+    try:
+        with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
+            names = archive.namelist()
+            if FROZEN_F4_TARGET_MEMBER not in names or F4_SOURCE_REPORT_MEMBER not in names:
+                return None, ["frozen F4 source/member report is missing from retained archive"]
+            raw_bytes = archive.read(FROZEN_F4_TARGET_MEMBER)
+            report_bytes = archive.read(F4_SOURCE_REPORT_MEMBER)
+    except (KeyError, OSError, zipfile.BadZipFile) as exc:
+        return None, [f"retained F4 source archive member cannot be read: {exc}"]
+    if hashlib.sha256(raw_bytes).hexdigest() != FROZEN_F4_TARGET_MEMBER_SHA256:
+        errors.append("frozen F4 target raw member SHA-256 changed")
+    if hashlib.sha256(report_bytes).hexdigest() != F4_SOURCE_REPORT_SHA256:
+        errors.append("retained F4 aggregate report SHA-256 changed")
+    try:
+        physical_lines = raw_bytes.decode("utf-8-sig").splitlines()
+        if not physical_lines:
+            return None, errors + ["retained F4 target CSV is empty"]
+        headers = next(csv.reader([physical_lines[0]]))
+        rows = [
+            dict(zip(headers, next(csv.reader([line]))))
+            for line in physical_lines[1:]
+            if line.strip()
+        ]
+        target_rows = [
+            row for row in rows
+            if row.get("KEY") == FROZEN_F4_TARGET_SERIES_KEY
+            and row.get("TIME_PERIOD") == FROZEN_F4_TARGET_PERIOD
+        ]
+        report = json.loads(report_bytes.decode("utf-8"))
+    except (UnicodeDecodeError, csv.Error, json.JSONDecodeError) as exc:
+        return None, errors + [f"retained F4 target evidence is malformed: {exc}"]
+    if len(target_rows) != 1:
+        return None, errors + [f"expected exactly one retained QSA target observation, found {len(target_rows)}"]
+    target_row = target_rows[0]
+    expected_dimensions = {
+        "FREQ": "Q", "REF_AREA": "RO", "COUNTERPART_AREA": "W0",
+        "REF_SECTOR": "S121", "COUNTERPART_SECTOR": "S1",
+        "CONSOLIDATION": "N", "ACCOUNTING_ENTRY": "A", "INSTR_ASSET": "F4",
+        "MATURITY": "T", "UNIT_MEASURE": "XDC", "UNIT_MULT": "6", "DECIMALS": "2",
+    }
+    for key, expected_value in expected_dimensions.items():
+        if target_row.get(key) != expected_value:
+            errors.append(f"retained QSA target field {key} changed from {expected_value!r}")
+    if target_row.get("OBS_VALUE") != FROZEN_F4_TARGET_VALUE:
+        errors.append("retained QSA target OBS_VALUE differs from frozen 6.1 control")
+    aggregate_rows = [
+        row for row in report.get("aggregate_reconciliation", [])
+        if row.get("measure") == "stock" and row.get("kind") == "holder_total" and row.get("sector") == "BNR"
+    ]
+    if len(aggregate_rows) != 1 or aggregate_rows[0].get("official_aggregate_million_RON") != 6.1:
+        errors.append("retained Phase A report no longer confirms the BNR-holder F4 aggregate of 6.1 million RON")
+    else:
+        maturity = aggregate_rows[0].get("aggregate_maturity", {})
+        terms = maturity.get("terms", {}).get("T", {}).get("terms", [])
+        if not any(
+            term.get("key") == FROZEN_F4_TARGET_SERIES_KEY
+            and term.get("usable") is True
+            and term.get("values") == [6.1]
+            for term in terms
+        ):
+            errors.append("retained Phase A aggregate does not map the frozen value to the exact QSA series")
+    return target_row, errors
+
+
+def _production_target_value_matches(target: dict[str, Any]) -> bool:
+    locator = target.get("source_locator")
+    if isinstance(locator, str) and locator.strip().startswith(TEST_FIXTURE_PREFIX):
+        return _locator_points_to_frozen_artifact(locator)
+    if not _locator_points_to_frozen_artifact(locator):
+        return False
+    source_row, errors = _read_frozen_target_control()
+    if errors or source_row is None:
+        return False
+    try:
+        value_matches = _decimal(target.get("source_value")) == _decimal(source_row.get("OBS_VALUE"))
+        factor_matches = _decimal(target.get("unit_conversion_factor_to_million_RON")) == Decimal("1")
+    except (ValueError, InvalidOperation):
+        return False
+    return value_matches and factor_matches and target.get("source_unit") == "million RON"
+
+
+def audit_frozen_target_control_source() -> list[str]:
+    row, errors = _read_frozen_target_control()
+    if errors:
+        return [f"frozen F4 target source: {error}" for error in errors]
+    if row is None:
+        return ["frozen F4 target source: exact retained target observation was not found"]
+    return []
 
 
 ALLOWED_PRECISION_BASES = {
@@ -411,6 +535,17 @@ def assess_counterpart_term_coverage(
             "status": fail,
             "reason": "frozen target control reuses a source-cell value locator",
         }
+    if not _production_target_value_matches(target):
+        return {
+            "status": fail,
+            "reason": "target value/unit does not match the exact retained ECB QSA observation",
+        }
+    precision_locator = target.get("precision_evidence_locator")
+    if precision_locator == FROZEN_F4_TARGET_DECIMALS_LOCATOR:
+        return {
+            "status": fail,
+            "reason": "the DECIMALS attribute alone does not establish the required rounding mode",
+        }
 
     expected_target_key = semantic_assessment.get("expected_target_key")
     actual_target_key = target.get("target_key")
@@ -454,6 +589,7 @@ def assess_f4_counterpart_reconciliation(
 
 def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     errors: list[str] = []
+    errors.extend(audit_frozen_target_control_source())
     contract = load(CONTRACT)
     monitoring = load(MONITORING)
     screening = load(SCREENING)
@@ -469,8 +605,12 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         errors.append("precision contract identity changed")
     if contract.get("governing_sources", {}).get("f4_stock_trigger_monitoring") != MONITORING:
         errors.append("precision contract is detached from the canonical F4 stock trigger")
-    if contract.get("governing_sources", {}).get("retained_f4_artifact") != "model/accounting/f4_partial_2025.json":
-        errors.append("retained F4 artifact pointer changed")
+    if contract.get("governing_sources", {}).get("retained_f4_artifact") != FROZEN_F4_TARGET_ARTIFACT:
+        errors.append("retained F4 target artifact pointer changed")
+    if contract.get("governing_sources", {}).get("retained_f4_partial_matrix") != "model/accounting/f4_partial_2025.json":
+        errors.append("retained partial F4 matrix pointer changed")
+    if contract.get("governing_sources", {}).get("retained_f4_source_vintage_manifest") != F4_SOURCE_MANIFEST_PATH:
+        errors.append("retained F4 source-vintage manifest pointer changed")
     if contract.get("scope", {}).get("reference_period") != "2025-year-end":
         errors.append("precision contract target period changed")
     if contract.get("scope", {}).get("reporting_sector") != "S121":
@@ -504,6 +644,9 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         errors.append("contract does not distinguish documented nearest-rounding from exact values")
     if "cannot be paired with OFFICIAL_SOURCE_EXACTNESS_STATEMENT" not in required_precision_text:
         errors.append("contract permits contradictory exactness basis with positive resolution")
+    target_precision_note = contract.get("precision_evidence_policy", {}).get("target_control_precision_note", "")
+    if "DECIMALS=2 alone does not establish a rounding mode" not in target_precision_note:
+        errors.append("contract must keep target-control rounding mode unconfirmed absent official evidence")
     if "no usable documented precision/rounding rule" not in contract.get("precision_evidence_policy", {}).get("no_official_precision_disposition", ""):
         errors.append("contract does not fail closed when source precision is unknown")
     if contract.get("reconciliation_method", {}).get("arithmetic") != "Exact decimal/rational arithmetic only; no binary floating-point comparison and no discretionary epsilon.":
@@ -535,6 +678,28 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         errors.append("contract frozen source-cell mapping differs from the implemented H/C/F/G/X mapping")
     if semantic_contract.get("frozen_target_artifact") != FROZEN_F4_TARGET_ARTIFACT:
         errors.append("contract frozen target artifact differs from the implemented F4 control")
+    frozen_control = contract.get("frozen_target_control", {})
+    expected_control = {
+        "artifact": FROZEN_F4_TARGET_ARTIFACT,
+        "archive_sha256": F4_SOURCE_ARCHIVE_SHA256,
+        "archive_member_sha256": FROZEN_F4_TARGET_MEMBER_SHA256,
+        "aggregate_report_member": F4_SOURCE_REPORT_MEMBER,
+        "aggregate_report_sha256": F4_SOURCE_REPORT_SHA256,
+        "series_key": FROZEN_F4_TARGET_SERIES_KEY,
+        "reference_period": FROZEN_F4_TARGET_PERIOD,
+        "observation_field": "OBS_VALUE",
+        "value_million_RON": FROZEN_F4_TARGET_VALUE,
+        "decimals_attribute": "2",
+        "unit_multiplier": "6",
+        "rounding_mode_confirmed": False,
+    }
+    if frozen_control != expected_control:
+        errors.append("contract frozen F4 target-control identity/provenance differs from the retained source")
+    current_disposition = contract.get("current_disposition", {})
+    if current_disposition.get("target_value_source_verified") is not True:
+        errors.append("retained F4 target value must be source-verified")
+    if current_disposition.get("target_precision_rounding_rule_confirmed") is not False:
+        errors.append("target rounding rule must remain unconfirmed in the current evidence state")
     if "must be distinct" not in contract.get("precision_evidence_policy", {}).get("required_for_every_numeric_input", ""):
         errors.append("contract does not require a distinct precision-evidence locator")
     if "self_counterpart_disposition" not in semantic_contract.get("numeric_term_coverage", ""):
@@ -699,7 +864,7 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     coverage_fixture_target = {
         **fixture_target,
         "source_value": "7.1",
-        "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: model/accounting/f4_partial_2025.json target control",
+        "source_locator": TEST_FIXTURE_PREFIX + " " + FROZEN_F4_TARGET_SOURCE_LOCATOR,
         "target_key": "retained_f4_control_2025_Q4",
         "target_artifact": FROZEN_F4_TARGET_ARTIFACT,
     }
@@ -809,7 +974,7 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
 
     wrong_target_locator = {
         **coverage_fixture_target,
-        "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: model/accounting/f4_partial_2025.json.bak target control",
+        "source_locator": TEST_FIXTURE_PREFIX + " " + FROZEN_F4_TARGET_ARTIFACT + ".bak::KEY=" + FROZEN_F4_TARGET_SERIES_KEY + "::TIME_PERIOD=" + FROZEN_F4_TARGET_PERIOD + "::OBS_VALUE",
     }
     malformed_target_locator = assess_f4_counterpart_reconciliation(
         coverage_fixture_terms, wrong_target_locator, semantic_fixture,
@@ -828,91 +993,6 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     return errors
 
 
-def _diagnose_retained_qsa_control_archive() -> None:
-    """Temporary CI-only inspection of the already-retained ECB QSA vintage."""
-    manifest_path = Path("data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18/source_manifest.json")
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    archive_path = manifest_path.parent / manifest["archive"]
-    archive_bytes = base64.b64decode(archive_path.read_text(encoding="ascii"))
-    digest = hashlib.sha256(archive_bytes).hexdigest()
-    target_key = "Q.N.RO.W0.S121.S1.N.A.LE.F4.T._Z.XDC._T.S.V.N._T"
-    with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
-        report_name = manifest["archive_contains"]["phase_A_report"]
-        report_obj = json.loads(archive.read(report_name).decode("utf-8"))
-        matched_rows = [
-            {
-                "index": index,
-                "measure": row.get("measure"),
-                "kind": row.get("kind"),
-                "sector": row.get("sector"),
-                "official_aggregate_million_RON": row.get("official_aggregate_million_RON"),
-                "aggregate_maturity": row.get("aggregate_maturity"),
-            }
-            for index, row in enumerate(report_obj.get("aggregate_reconciliation", []))
-            if row.get("measure") == "stock"
-            and row.get("kind") == "holder_total"
-            and row.get("sector") == "BNR"
-        ]
-        key_paths = []
-        def find_key(node: Any, path: str = "") -> None:
-            if isinstance(node, dict):
-                if node.get("key") == target_key:
-                    key_paths.append({"path": path, "node": node})
-                for k, value in node.items():
-                    find_key(value, f"{path}.{k}" if path else str(k))
-            elif isinstance(node, list):
-                for i, value in enumerate(node):
-                    find_key(value, f"{path}[{i}]")
-            elif isinstance(node, str) and target_key in node:
-                key_paths.append({"path": path, "text": node[:600]})
-        find_key(report_obj)
-        raw_hits = []
-        raw_target_member = "f4_phase_a_artifacts/raw/cd74f1884fd6c092.raw"
-        raw_text = archive.read(raw_target_member).decode("utf-8-sig", errors="replace")
-        physical_lines = raw_text.splitlines()
-        header = next(csv.reader([physical_lines[0]])) if physical_lines else []
-        target_lines = [
-            line for line in physical_lines
-            if target_key in line and "2025-Q4" in line
-        ]
-        exact_target_rows = []
-        for line in target_lines:
-            row = next(csv.reader([line]))
-            exact_target_rows.append({
-                "member": raw_target_member,
-                "header": header,
-                "row": row,
-                "record": dict(zip(header, row)),
-            })
-        print("RETAINED_QSA_DIAGNOSTIC_CSV_HEADER", json.dumps(header))
-        print("RETAINED_QSA_DIAGNOSTIC_EXACT_TARGET_ROWS", json.dumps(exact_target_rows))
-        for member in archive.namelist():
-            if not member.lower().endswith(".raw"):
-                continue
-            data = archive.read(member)
-            decoded = data.decode("utf-8", errors="replace")
-            if target_key in decoded:
-                pos = decoded.index(target_key)
-                raw_hits.append({
-                    "member": member,
-                    "bytes": len(data),
-                    "sha256": hashlib.sha256(data).hexdigest(),
-                    "snippet": decoded[max(0, pos - 500):pos + len(target_key) + 800],
-                })
-        print("RETAINED_QSA_DIAGNOSTIC_MANIFEST", json.dumps({
-            "archive": str(archive_path),
-            "sha256_match": digest == manifest["decoded_archive_sha256"],
-            "sha256": digest,
-            "expected_sha256": manifest["decoded_archive_sha256"],
-            "member_count": len(archive.namelist()),
-            "report": report_name,
-            "report_sha256": hashlib.sha256(archive.read(report_name)).hexdigest(),
-        }))
-        print("RETAINED_QSA_DIAGNOSTIC_TARGET_AGGREGATE", json.dumps(matched_rows))
-        print("RETAINED_QSA_DIAGNOSTIC_TARGET_KEY_PATHS", json.dumps(key_paths[:30]))
-        print("RETAINED_QSA_DIAGNOSTIC_RAW_MATCHES", json.dumps(raw_hits[:20]))
-
-
 
 def main() -> None:
     errors = audit_f4_bnr_cnf_counterpart_reconciliation_precision()
@@ -922,7 +1002,6 @@ def main() -> None:
             + "\n- ".join(errors)
         )
     contract = load(CONTRACT)
-    _diagnose_retained_qsa_control_archive()
     print(
         json.dumps(
             {
