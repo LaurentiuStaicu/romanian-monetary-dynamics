@@ -174,6 +174,19 @@ def assess_documented_precision_reconciliation(
     }
 
 
+FROZEN_COUNTERPART_SOURCE_MAPPING = {
+    "H": ("S14+S15",),
+    "C": ("S11",),
+    "F": ("S122+S123", "S124+S125+S126+S127", "S128+S129"),
+    "G": ("S13",),
+    "X": ("S2",),
+}
+SELF_COUNTERPART_TREATMENTS = {
+    "NOT_PUBLISHED_IN_SOURCE",
+    "OBSERVED_BUT_EXCLUDED_FROM_TARGET_WITH_OFFICIAL_BOUNDARY_SUPPORT",
+    "OBSERVED_AND_INCLUDED_AS_EXPLICIT_TERM",
+}
+
 SEMANTIC_REQUIRED_CHECKS = (
     "evidence_window_satisfied",
     "official_source_identity_verified",
@@ -229,65 +242,118 @@ def assess_counterpart_term_coverage(
     target: Any,
     semantic_assessment: Any,
 ) -> dict[str, str]:
-    """Require one-to-one coverage of declared source cells and the frozen target control."""
+    """Require exact source-cell coverage, frozen sector mapping, S121 treatment and target identity."""
+    fail = "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED"
     if not isinstance(terms, list) or not terms or not isinstance(target, dict):
-        return {
-            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
-            "reason": "numeric term list or retained target control is malformed",
-        }
+        return {"status": fail, "reason": "numeric term list or retained target control is malformed"}
     if not isinstance(semantic_assessment, dict):
-        return {
-            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
-            "reason": "semantic assessment is not structured",
-        }
+        return {"status": fail, "reason": "semantic assessment is not structured"}
 
     expected = semantic_assessment.get("expected_term_keys")
+    expected_cells = semantic_assessment.get("expected_source_cells")
     if (
         not isinstance(expected, list)
         or not expected
         or any(not isinstance(key, str) or not key.strip() for key in expected)
         or len(set(expected)) != len(expected)
     ):
+        return {"status": fail, "reason": "expected source-term keys are missing, malformed, or duplicated"}
+    if not isinstance(expected_cells, list) or not expected_cells:
+        return {"status": fail, "reason": "expected source-cell mapping is missing"}
+
+    disposition = semantic_assessment.get("self_counterpart_disposition")
+    if disposition not in SELF_COUNTERPART_TREATMENTS:
+        return {"status": fail, "reason": "S121 self-counterpart disposition is missing or unrecognized"}
+
+    expected_mapping: dict[str, tuple[str, str]] = {}
+    expected_pairs: list[tuple[str, str]] = []
+    for index, cell in enumerate(expected_cells):
+        if not isinstance(cell, dict):
+            return {"status": fail, "reason": f"expected source-cell record {index} is not an object"}
+        key, group, sector_code = cell.get("term_key"), cell.get("counterpart_group"), cell.get("source_sector_code")
+        if not all(isinstance(v, str) and v.strip() for v in (key, group, sector_code)):
+            return {"status": fail, "reason": f"expected source-cell record {index} has incomplete identity"}
+        if key in expected_mapping:
+            return {"status": fail, "reason": "expected source-cell keys are duplicated"}
+        expected_mapping[key] = (group, sector_code)
+        expected_pairs.append((group, sector_code))
+    if set(expected_mapping) != set(expected):
+        return {"status": fail, "reason": "expected term keys do not exactly match expected source-cell records"}
+
+    required_pairs = [
+        (group, code)
+        for group, codes in FROZEN_COUNTERPART_SOURCE_MAPPING.items()
+        for code in codes
+    ]
+    optional_self_pair = ("BNR", "S121")
+    if disposition == "OBSERVED_AND_INCLUDED_AS_EXPLICIT_TERM":
+        allowed_pairs = required_pairs + [optional_self_pair]
+        self_key = semantic_assessment.get("self_counterpart_term_key")
+        if not isinstance(self_key, str) or not self_key.strip():
+            return {"status": fail, "reason": "included S121 cell has no explicit term key"}
+        if expected_mapping.get(self_key) != optional_self_pair:
+            return {"status": fail, "reason": "included S121 term key does not map to the explicit BNR/S121 cell"}
+        if "self_counterpart_record" in semantic_assessment:
+            return {"status": fail, "reason": "included S121 cell must be carried once as a numeric term, not duplicated"}
+        boundary_locator = semantic_assessment.get("self_counterpart_boundary_evidence_locator")
+        if not isinstance(boundary_locator, str) or not boundary_locator.strip():
+            return {"status": fail, "reason": "included S121 treatment lacks boundary evidence"}
+    elif disposition == "OBSERVED_BUT_EXCLUDED_FROM_TARGET_WITH_OFFICIAL_BOUNDARY_SUPPORT":
+        allowed_pairs = required_pairs
+        record = semantic_assessment.get("self_counterpart_record")
+        if not isinstance(record, dict) or record.get("source_sector_code") != "S121":
+            return {"status": fail, "reason": "excluded S121 cell is not preserved as a separate source record"}
+        self_key = record.get("term_key")
+        if not isinstance(self_key, str) or not self_key.strip() or self_key in expected_mapping:
+            return {"status": fail, "reason": "excluded S121 cell key is missing or wrongly included in numeric terms"}
+        validated_self = _validated_record(record, index=-1, needs_coefficient=False)
+        if validated_self is None:
+            return {"status": fail, "reason": "excluded S121 source record lacks valid value/precision provenance"}
+        boundary_locator = semantic_assessment.get("self_counterpart_boundary_evidence_locator")
+        if not isinstance(boundary_locator, str) or not boundary_locator.strip():
+            return {"status": fail, "reason": "excluded S121 treatment lacks official boundary evidence"}
+    else:
+        allowed_pairs = required_pairs
+        evidence_locator = semantic_assessment.get("self_counterpart_evidence_locator")
+        if not isinstance(evidence_locator, str) or not evidence_locator.strip():
+            return {"status": fail, "reason": "absence of S121 counterpart column lacks an official source locator"}
+        if "self_counterpart_record" in semantic_assessment or "self_counterpart_term_key" in semantic_assessment:
+            return {"status": fail, "reason": "S121 cell is claimed absent but a separate record/key was supplied"}
+
+    if len(expected_pairs) != len(set(expected_pairs)):
+        return {"status": fail, "reason": "expected counterpart group/source-code pair is duplicated"}
+    if set(expected_pairs) != set(allowed_pairs) or len(expected_pairs) != len(allowed_pairs):
         return {
-            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
-            "reason": "expected source-term keys are missing, malformed, or duplicated",
+            "status": fail,
+            "reason": "expected source cells do not exactly cover the frozen H/C/F/G/X mapping and declared S121 treatment",
         }
 
     actual_keys: list[str] = []
     for index, term in enumerate(terms):
         if not isinstance(term, dict):
-            return {
-                "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
-                "reason": f"numeric term {index} is not a structured source cell",
-            }
+            return {"status": fail, "reason": f"numeric term {index} is not a structured source cell"}
         key = term.get("term_key")
+        group = term.get("counterpart_group")
+        sector_code = term.get("source_sector_code")
         if not isinstance(key, str) or not key.strip():
-            return {
-                "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
-                "reason": f"numeric term {index} lacks a stable term_key",
-            }
+            return {"status": fail, "reason": f"numeric term {index} lacks a stable term_key"}
+        if not isinstance(group, str) or not isinstance(sector_code, str):
+            return {"status": fail, "reason": f"numeric term {key} lacks counterpart-group/source-sector identity"}
+        if expected_mapping.get(key) != (group, sector_code):
+            return {"status": fail, "reason": f"numeric term {key} does not match the frozen declared source-cell mapping"}
         actual_keys.append(key)
         try:
             coefficient = Fraction(_decimal(term.get("coefficient")))
         except (ValueError, InvalidOperation):
-            return {
-                "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
-                "reason": f"numeric term {key} lacks an exact valid coefficient",
-            }
+            return {"status": fail, "reason": f"numeric term {key} lacks an exact valid coefficient"}
         if coefficient != 1:
-            return {
-                "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
-                "reason": f"counterpart-stock term {key} must have coefficient exactly +1",
-            }
+            return {"status": fail, "reason": f"counterpart-stock term {key} must have coefficient exactly +1"}
 
     if len(set(actual_keys)) != len(actual_keys):
-        return {
-            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
-            "reason": "duplicate numeric term_key detected",
-        }
+        return {"status": fail, "reason": "duplicate numeric term_key detected"}
     if set(actual_keys) != set(expected):
         return {
-            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+            "status": fail,
             "reason": "actual source-term keys do not exactly match the declared counterpart-cell coverage",
         }
 
@@ -301,12 +367,12 @@ def assess_counterpart_term_coverage(
         or actual_target_key != expected_target_key
     ):
         return {
-            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+            "status": fail,
             "reason": "target record does not identify the frozen 2025-Q4 F4 control declared by semantic adjudication",
         }
     return {
         "status": "COUNTERPART_TERM_COVERAGE_PASS",
-        "reason": "actual term keys exactly match the declared source cells and frozen target key",
+        "reason": "actual terms exactly match the frozen source mapping, S121 disposition, and retained target key",
     }
 
 
@@ -407,6 +473,11 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
             errors.append(f"contract does not preregister exact source-term coverage rule: {coverage_rule}")
     if "coefficient exactly +1" not in semantic_contract.get("coefficient_rule", ""):
         errors.append("contract does not freeze the counterpart-stock summation coefficients")
+    frozen_mapping = semantic_contract.get("frozen_source_cell_mapping", {})
+    if frozen_mapping != {key: list(value) for key, value in FROZEN_COUNTERPART_SOURCE_MAPPING.items()}:
+        errors.append("contract frozen source-cell mapping differs from the implemented H/C/F/G/X mapping")
+    if "self_counterpart_disposition" not in semantic_contract.get("numeric_term_coverage", ""):
+        errors.append("contract does not require explicit S121 counterpart disposition")
     if contract.get("decision_logic", {}).get("semantic_adjudication_missing_or_failed") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("semantic nonconfirmation disposition is not declared in decision logic")
 
@@ -528,18 +599,59 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     if invalid_unit_conversion.get("status") != "UNCONFIRMED_PRECISION_KEEP_F4_CLOSED":
         errors.append("invalid unit conversion should remain unconfirmed")
 
+    fixture_cell_specs = [
+        ("fixture-H", "H", "S14+S15", "2.0"),
+        ("fixture-C", "C", "S11", "1.0"),
+        ("fixture-F1", "F", "S122+S123", "0.5"),
+        ("fixture-F2", "F", "S124+S125+S126+S127", "1.0"),
+        ("fixture-F3", "F", "S128+S129", "0.2"),
+        ("fixture-G", "G", "S13", "2.0"),
+        ("fixture-X", "X", "S2", "0.3"),
+    ]
     coverage_fixture_terms = [
-        {**fixture_terms[0], "term_key": "fixture-cell-1"},
-        {**fixture_terms[1], "term_key": "fixture-cell-2"},
+        {
+            "source_value": value,
+            "source_unit": "million RON",
+            "unit_conversion_factor_to_million_RON": "1",
+            "source_resolution": "0.1",
+            "rounding_mode": "NEAREST",
+            "coefficient": "1",
+            "precision_basis": "OFFICIAL_METADATA",
+            "source_locator": f"TEST_FIXTURE_NOT_SOURCE_DATA: source cell {key}",
+            "precision_evidence_locator": f"TEST_FIXTURE_NOT_SOURCE_DATA: precision {key}",
+            "term_key": key,
+            "counterpart_group": group,
+            "source_sector_code": sector_code,
+        }
+        for key, group, sector_code, value in fixture_cell_specs
     ]
     coverage_fixture_target = {
         **fixture_target,
+        "source_value": "7.1",
         "target_key": "retained_f4_control_2025_Q4",
     }
     semantic_fixture = {
         **{key: True for key in SEMANTIC_REQUIRED_CHECKS},
-        "expected_term_keys": ["fixture-cell-1", "fixture-cell-2"],
+        "expected_term_keys": [key for key, _, _, _ in fixture_cell_specs],
+        "expected_source_cells": [
+            {"term_key": key, "counterpart_group": group, "source_sector_code": sector_code}
+            for key, group, sector_code, _ in fixture_cell_specs
+        ],
         "expected_target_key": "retained_f4_control_2025_Q4",
+        "self_counterpart_disposition": "OBSERVED_BUT_EXCLUDED_FROM_TARGET_WITH_OFFICIAL_BOUNDARY_SUPPORT",
+        "self_counterpart_record": {
+            "term_key": "fixture-self-S121",
+            "source_sector_code": "S121",
+            "source_value": "0.2",
+            "source_unit": "million RON",
+            "unit_conversion_factor_to_million_RON": "1",
+            "source_resolution": "0.1",
+            "rounding_mode": "NEAREST",
+            "precision_basis": "OFFICIAL_METADATA",
+            "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: separate S121 source cell",
+            "precision_evidence_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: S121 precision",
+        },
+        "self_counterpart_boundary_evidence_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: S121 retained-target boundary",
     }
     semantic_fixture["evidence_locators"] = {
         key: f"TEST_FIXTURE_NOT_SOURCE_DATA: semantic evidence for {key}"
@@ -573,14 +685,14 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         errors.append("missing semantic evidence locator must block F4 eligibility")
 
     omitted_term = assess_f4_counterpart_reconciliation(
-        coverage_fixture_terms[:1], coverage_fixture_target, semantic_fixture
+        coverage_fixture_terms[:-1], coverage_fixture_target, semantic_fixture
     )
     if omitted_term.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("omitted counterpart source cell must block F4 eligibility")
+    duplicate_terms = [dict(term) for term in coverage_fixture_terms]
+    duplicate_terms[1]["term_key"] = duplicate_terms[0]["term_key"]
     duplicate_term = assess_f4_counterpart_reconciliation(
-        [coverage_fixture_terms[0], coverage_fixture_terms[0]],
-        coverage_fixture_target,
-        semantic_fixture,
+        duplicate_terms, coverage_fixture_target, semantic_fixture,
     )
     if duplicate_term.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("duplicate counterpart source cell must block F4 eligibility")
@@ -591,13 +703,27 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     )
     if wrong_target.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("wrong target-control identity must block F4 eligibility")
+    altered_terms = [dict(term) for term in coverage_fixture_terms]
+    altered_terms[0]["coefficient"] = "0"
     altered_coefficient = assess_f4_counterpart_reconciliation(
-        [{**coverage_fixture_terms[0], "coefficient": "0"}, coverage_fixture_terms[1]],
-        coverage_fixture_target,
-        semantic_fixture,
+        altered_terms, coverage_fixture_target, semantic_fixture,
     )
     if altered_coefficient.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("non-unit coefficient must block counterpart-stock reconciliation")
+    wrong_mapping_terms = [dict(term) for term in coverage_fixture_terms]
+    wrong_mapping_terms[0]["source_sector_code"] = "S121"
+    wrong_mapping = assess_f4_counterpart_reconciliation(
+        wrong_mapping_terms, coverage_fixture_target, semantic_fixture,
+    )
+    if wrong_mapping.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
+        errors.append("unapproved counterpart-sector mapping must block reconciliation")
+    missing_self_record = {**semantic_fixture}
+    missing_self_record.pop("self_counterpart_record")
+    missing_self = assess_f4_counterpart_reconciliation(
+        coverage_fixture_terms, coverage_fixture_target, missing_self_record,
+    )
+    if missing_self.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
+        errors.append("observed-but-excluded S121 source cell must be retained and bounded separately")
 
     return errors
 
