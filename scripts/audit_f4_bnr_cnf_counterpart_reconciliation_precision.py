@@ -107,7 +107,10 @@ def _validated_record(
     if source_resolution < 0 or conversion_factor <= 0:
         return None
     rounding_mode = record.get("rounding_mode")
-    if source_resolution > 0 and rounding_mode != "NEAREST":
+    if source_resolution > 0 and (
+        rounding_mode != "NEAREST"
+        or record.get("precision_basis") == "OFFICIAL_SOURCE_EXACTNESS_STATEMENT"
+    ):
         return None
     if source_resolution == 0 and (
         record.get("precision_basis") != "OFFICIAL_SOURCE_EXACTNESS_STATEMENT"
@@ -494,6 +497,8 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         errors.append("contract does not require exact application of unit conversion factors")
     if "rounding_mode = NEAREST" not in required_precision_text or "rounding_mode = EXACT" not in required_precision_text:
         errors.append("contract does not distinguish documented nearest-rounding from exact values")
+    if "cannot be paired with OFFICIAL_SOURCE_EXACTNESS_STATEMENT" not in required_precision_text:
+        errors.append("contract permits contradictory exactness basis with positive resolution")
     if "no usable documented precision/rounding rule" not in contract.get("precision_evidence_policy", {}).get("no_official_precision_disposition", ""):
         errors.append("contract does not fail closed when source precision is unknown")
     if contract.get("reconciliation_method", {}).get("arithmetic") != "Exact decimal/rational arithmetic only; no binary floating-point comparison and no discretionary epsilon.":
@@ -639,6 +644,16 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     unknown = assess_documented_precision_reconciliation(unknown_terms, fixture_target)
     if unknown.get("status") != "UNCONFIRMED_PRECISION_KEEP_F4_CLOSED":
         errors.append("unknown source precision fixture should remain unconfirmed")
+
+    contradictory_exactness = [{
+        **fixture_terms[0],
+        "precision_basis": "OFFICIAL_SOURCE_EXACTNESS_STATEMENT",
+        "source_resolution": "0.1",
+        "rounding_mode": "NEAREST",
+    }]
+    contradictory = assess_documented_precision_reconciliation(contradictory_exactness, fixture_target)
+    if contradictory.get("status") != "UNCONFIRMED_PRECISION_KEEP_F4_CLOSED":
+        errors.append("positive resolution cannot be paired with an exactness-statement precision basis")
 
     unknown_locator = [{**fixture_terms[0], "precision_evidence_locator": ""}]
     missing_evidence = assess_documented_precision_reconciliation(unknown_locator, fixture_target)
