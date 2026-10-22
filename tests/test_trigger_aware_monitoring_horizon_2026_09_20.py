@@ -109,6 +109,10 @@ class TriggerAwareMonitoringHorizonTests(unittest.TestCase):
             next_check["date"],
         )
         self.assertEqual(next_check["date"], "2026-11-12")
+        schedule = self.h_current["next_event_schedule_confirmation"]
+        self.assertEqual(schedule["next_event_date"], next_check["date"])
+        self.assertEqual(schedule["confirmed_on"], "2026-10-08")
+        self.assertEqual(schedule["source_identity"], "BNR official account @bnr.ro")
         self.assertEqual(
             self.m["scientific_stage"]["next_dated_trigger_check"]["id"],
             next_check["id"],
