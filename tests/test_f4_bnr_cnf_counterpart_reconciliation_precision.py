@@ -36,7 +36,7 @@ def term(
         "source_resolution": resolution,
         "rounding_mode": rounding_mode,
         "precision_basis": basis,
-        "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: value",
+        "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: value " + str(key or f"{source_unit}:{value}:{factor}:{coefficient}:{counterpart_group}:{source_sector_code}"),
         "precision_evidence_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: precision evidence",
         "coefficient": coefficient,
         "term_key": key or f"term:{source_unit}:{value}:{factor}:{coefficient}",
@@ -389,6 +389,37 @@ class F4BNRCNFDocumentedPrecisionTests(unittest.TestCase):
         result = assess_f4_counterpart_reconciliation(
             counterpart_terms(), target("7.1"),
             semantic_assessment(self_counterpart_disposition=["UNKNOWN"]),
+        )
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+    def test_distinct_counterpart_cells_cannot_reuse_value_locator(self) -> None:
+        terms = counterpart_terms()
+        terms[1]["source_locator"] = terms[0]["source_locator"]
+        result = assess_f4_counterpart_reconciliation(terms, target("7.1"), semantic_assessment())
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+    def test_target_locator_cannot_be_reused_for_counterpart_cell(self) -> None:
+        terms = counterpart_terms()
+        frozen_target = target("7.1")
+        terms[0]["source_locator"] = frozen_target["source_locator"]
+        result = assess_f4_counterpart_reconciliation(terms, frozen_target, semantic_assessment())
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+    def test_excluded_s121_locator_must_be_distinct_from_counterpart_cells(self) -> None:
+        assessment = semantic_assessment()
+        terms = counterpart_terms()
+        assessment["self_counterpart_record"]["source_locator"] = terms[0]["source_locator"]
+        result = assess_f4_counterpart_reconciliation(terms, target("7.1"), assessment)
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+    def test_target_locator_requires_exact_path_boundary(self) -> None:
+        wrong_target = {
+            **target("7.1"),
+            "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: model/accounting/f4_partial_2025.json.bak target",
+            "target_artifact": "model/accounting/f4_partial_2025.json",
+        }
+        result = assess_f4_counterpart_reconciliation(
+            counterpart_terms(), wrong_target, semantic_assessment()
         )
         self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
 
