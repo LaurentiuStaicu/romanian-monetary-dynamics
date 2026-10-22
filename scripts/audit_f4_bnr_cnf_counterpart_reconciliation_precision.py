@@ -22,9 +22,9 @@ MANIFEST = "model/registries/scientific_baseline_manifest.json"
 def _locator_points_to_frozen_artifact(locator: Any) -> bool:
     if not isinstance(locator, str) or not locator.strip():
         return False
-    normalized = locator.strip().replace("\\\\", "/")
+    normalized = locator.strip().replace("\\", "/")
     return re.search(
-        r"(?<![A-Za-z0-9_.-])model/accounting/f4_partial_2025\\.json(?![A-Za-z0-9_.-])",
+        r"(?<![A-Za-z0-9_.-])model/accounting/f4_partial_2025\.json(?![A-Za-z0-9_.-])",
         normalized,
     ) is not None
 
