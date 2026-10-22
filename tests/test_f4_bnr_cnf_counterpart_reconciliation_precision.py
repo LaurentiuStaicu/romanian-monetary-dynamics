@@ -19,6 +19,7 @@ def term(
     factor: str = "1",
     source_unit: str = "million RON",
     rounding_mode: str | None = None,
+    key: str | None = None,
 ) -> dict[str, str]:
     if rounding_mode is None:
         rounding_mode = (
@@ -36,6 +37,7 @@ def term(
         "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: value",
         "precision_evidence_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: precision evidence",
         "coefficient": coefficient,
+        "term_key": key or f"term:{source_unit}:{value}:{factor}:{coefficient}",
     }
 
 
@@ -63,11 +65,19 @@ def target(
         "precision_basis": basis,
         "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: target value",
         "precision_evidence_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: target precision evidence",
+        "target_key": "retained_f4_control_2025_Q4",
     }
 
 
 def semantic_assessment(**overrides: object) -> dict[str, object]:
-    assessment: dict[str, object] = {key: True for key in SEMANTIC_REQUIRED_CHECKS}
+    assessment: dict[str, object] = {
+        **{key: True for key in SEMANTIC_REQUIRED_CHECKS},
+        "expected_term_keys": [
+            "term:million RON:6.0:1:1",
+            "term:million RON:0.0:1:1",
+        ],
+        "expected_target_key": "retained_f4_control_2025_Q4",
+    }
     assessment["evidence_locators"] = {
         key: f"TEST_FIXTURE_NOT_SOURCE_DATA: semantic evidence for {key}"
         for key in SEMANTIC_REQUIRED_CHECKS
@@ -229,6 +239,60 @@ class F4BNRCNFDocumentedPrecisionTests(unittest.TestCase):
             "PRECISION_AND_RECONCILIATION_PASS_ELIGIBLE_FOR_BASE_F4_TRIGGER_ADJUDICATION",
         )
         self.assertFalse(result["status"] == "F4_STOCK_GATE_OPEN")
+
+
+    def test_omitted_counterpart_term_blocks_numerical_pass(self) -> None:
+        terms = [term("6.0", "0.1", key="cell-1")]
+        assessment = semantic_assessment(expected_term_keys=["cell-1", "cell-2"])
+        result = assess_f4_counterpart_reconciliation(
+            terms, target("6.1"), assessment
+        )
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+    def test_duplicate_counterpart_term_key_blocks_numerical_pass(self) -> None:
+        terms = [
+            term("6.0", "0.1", key="cell-1"),
+            term("0.0", "0.1", key="cell-1"),
+        ]
+        assessment = semantic_assessment(expected_term_keys=["cell-1", "cell-2"])
+        result = assess_f4_counterpart_reconciliation(
+            terms, target("6.1"), assessment
+        )
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+    def test_unexpected_counterpart_term_blocks_numerical_pass(self) -> None:
+        terms = [
+            term("6.0", "0.1", key="cell-1"),
+            term("0.0", "0.1", key="unexpected-cell"),
+        ]
+        assessment = semantic_assessment(expected_term_keys=["cell-1", "cell-2"])
+        result = assess_f4_counterpart_reconciliation(
+            terms, target("6.1"), assessment
+        )
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+    def test_target_key_must_match_frozen_retained_control(self) -> None:
+        result = assess_f4_counterpart_reconciliation(
+            [
+                term("6.0", "0.1", key="cell-1"),
+                term("0.0", "0.1", key="cell-2"),
+            ],
+            target("6.1", target_key="different-control") if False else {**target("6.1"), "target_key": "different-control"},
+            semantic_assessment(expected_term_keys=["cell-1", "cell-2"]),
+        )
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+    def test_non_unit_coefficient_cannot_mask_counterpart_coverage(self) -> None:
+        result = assess_f4_counterpart_reconciliation(
+            [
+                term("6.0", "0.1", key="cell-1"),
+                term("0.0", "0.1", coefficient="0", key="cell-2"),
+            ],
+            target("6.1"),
+            semantic_assessment(expected_term_keys=["cell-1", "cell-2"]),
+        )
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
 
 
 if __name__ == "__main__":
