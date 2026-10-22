@@ -11,6 +11,7 @@ SUCCESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_c
 MOF_LATEST = "model/registries/trigger_aware_monitoring_horizon_2026_09_22_post_mof_recovery_execution_boundary.json"
 PREVIOUS_LATEST = "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_ameco_autumn_month_confirmation.json"
 LATEST = "model/registries/trigger_aware_monitoring_horizon_2026_09_24_post_qsa_release_context_clarification.json"
+BNR_EVENT_SUCCESSOR = "model/registries/trigger_aware_monitoring_horizon_2026_10_22_post_bnr_event_check.json"
 
 
 def load(path: str) -> dict:
@@ -146,18 +147,20 @@ def audit_trigger_aware_monitoring_horizon_post_ameco_access_protocol() -> list[
         errors.append("MoF-recovery horizon is not preserved as AMECO-month predecessor")
     if latest["supersedes"] != PREVIOUS_LATEST:
         errors.append("MoF-recovery horizon is not preserved as AMECO-month predecessor")
-    if ms["trigger_aware_monitoring_horizon"] != LATEST:
-        errors.append("model contract current horizon does not point to MoF-recovery successor")
-    if bs["trigger_aware_monitoring_horizon"] != LATEST:
-        errors.append("baseline current horizon does not point to MoF-recovery successor")
+    current_horizon = ms["trigger_aware_monitoring_horizon"]
+    if current_horizon not in (LATEST, BNR_EVENT_SUCCESSOR):
+        errors.append("model contract current horizon is outside the reviewed successor chain")
+    if bs["trigger_aware_monitoring_horizon"] != current_horizon:
+        errors.append("baseline current horizon differs from model contract")
     if baseline["authority"].get("trigger_aware_monitoring_horizon_post_ameco_access_protocol") != HORIZON:
         errors.append("baseline no longer preserves post-AMECO-access horizon as dated authority")
     if baseline["authority"].get("trigger_aware_monitoring_horizon_post_counterpart_workflow_boundary") != SUCCESSOR:
         errors.append("baseline no longer preserves counterpart-workflow horizon as dated authority")
-    if ms.get("immediate_previous_trigger_aware_monitoring_horizon") != PREVIOUS_LATEST:
-        errors.append("model contract does not preserve counterpart-workflow horizon as immediate predecessor")
-    if bs.get("immediate_previous_trigger_aware_monitoring_horizon") != PREVIOUS_LATEST:
-        errors.append("baseline does not preserve counterpart-workflow horizon as immediate predecessor")
+    expected_immediate = PREVIOUS_LATEST if current_horizon == LATEST else LATEST
+    if ms.get("immediate_previous_trigger_aware_monitoring_horizon") != expected_immediate:
+        errors.append("model contract immediate monitoring predecessor is stale")
+    if bs.get("immediate_previous_trigger_aware_monitoring_horizon") != expected_immediate:
+        errors.append("baseline immediate monitoring predecessor is stale")
     if model["calibration_validation"].get("ameco_source_access_migration_readiness") != AMECO:
         errors.append("model contract lost AMECO access readiness")
     if baseline["authority"].get("ameco_source_access_migration_readiness") != AMECO:
