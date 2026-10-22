@@ -844,6 +844,30 @@ def _diagnose_retained_qsa_control_archive() -> None:
     member_hits = []
     control_terms = set()
     with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
+        report_name = manifest["archive_contains"]["phase_A_report"]
+        report_text = archive.read(report_name).decode("utf-8", errors="replace")
+        report_obj = json.loads(report_text)
+        def find_terms(node: Any, path: str = "") -> list[dict[str, str]]:
+            found: list[dict[str, str]] = []
+            if isinstance(node, dict):
+                for key, value in node.items():
+                    child = f"{path}.{key}" if path else str(key)
+                    found.extend(find_terms(value, child))
+            elif isinstance(node, list):
+                for index, value in enumerate(node):
+                    found.extend(find_terms(value, f"{path}[{index}]"))
+            elif isinstance(node, str) and re.search(r"S121|F4|6[.,]1|counterpart|aggregate", node, re.I):
+                found.append({"path": path, "value": node[:220]})
+            elif isinstance(node, (float, int)) and abs(float(node) - 6.1) < 0.0000001:
+                found.append({"path": path, "value": str(node)})
+            return found
+        print("RETAINED_QSA_DIAGNOSTIC_REPORT_SCHEMA", json.dumps({
+            "report": report_name,
+            "bytes": len(report_text),
+            "top_level_keys": list(report_obj) if isinstance(report_obj, dict) else type(report_obj).__name__,
+            "terms": find_terms(report_obj)[:160],
+        }))
+        print("RETAINED_QSA_DIAGNOSTIC_MEMBER_NAMES", json.dumps(archive.namelist()))
         for member in archive.namelist():
             if not member.lower().endswith(".json"):
                 continue
