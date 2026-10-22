@@ -861,13 +861,29 @@ def _diagnose_retained_qsa_control_archive() -> None:
             elif isinstance(node, (float, int)) and abs(float(node) - 6.1) < 0.0000001:
                 found.append({"path": path, "value": str(node)})
             return found
+        def target_series_nodes(node: Any, path: str = "") -> list[dict[str, Any]]:
+            found: list[dict[str, Any]] = []
+            if isinstance(node, dict):
+                key = node.get("key")
+                if isinstance(key, str) and "S121" in key and ".N.A.LE.F4.T." in key:
+                    found.append({"path": path, "node": node})
+                for child_key, value in node.items():
+                    child = f"{path}.{child_key}" if path else str(child_key)
+                    found.extend(target_series_nodes(value, child))
+            elif isinstance(node, list):
+                for index, value in enumerate(node):
+                    found.extend(target_series_nodes(value, f"{path}[{index}]"))
+            return found
+        target_nodes = target_series_nodes(report_obj.get("cells", []))
         print("RETAINED_QSA_DIAGNOSTIC_REPORT_SCHEMA", json.dumps({
             "report": report_name,
             "bytes": len(report_text),
             "top_level_keys": list(report_obj) if isinstance(report_obj, dict) else type(report_obj).__name__,
-            "terms": find_terms(report_obj)[:160],
+            "aggregate_reconciliation": report_obj.get("aggregate_reconciliation"),
+            "series_status_counts": report_obj.get("series_status_counts"),
+            "cell_status_counts": report_obj.get("cell_status_counts"),
+            "target_series_nodes": target_nodes[:80],
         }))
-        print("RETAINED_QSA_DIAGNOSTIC_MEMBER_NAMES", json.dumps(archive.namelist()))
         for member in archive.namelist():
             if not member.lower().endswith(".json"):
                 continue
