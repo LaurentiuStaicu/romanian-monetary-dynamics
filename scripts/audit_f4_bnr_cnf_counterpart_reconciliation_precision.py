@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
+FROZEN_F4_TARGET_ARTIFACT = "model/accounting/f4_partial_2025.json"
 CONTRACT = (
     "model/accounting/"
     "f4_bnr_cnf_counterpart_reconciliation_precision_contract_2026_10_22.json"
@@ -78,6 +79,8 @@ def _validated_record(
     for key in ("source_locator", "precision_evidence_locator", "source_unit"):
         if not isinstance(record.get(key), str) or not record[key].strip():
             return None
+    if record["source_locator"].strip() == record["precision_evidence_locator"].strip():
+        return None
     if "source_value" not in record or "source_resolution" not in record:
         return None
     if "unit_conversion_factor_to_million_RON" not in record:
@@ -262,7 +265,7 @@ def assess_counterpart_term_coverage(
         return {"status": fail, "reason": "expected source-cell mapping is missing"}
 
     disposition = semantic_assessment.get("self_counterpart_disposition")
-    if disposition not in SELF_COUNTERPART_TREATMENTS:
+    if not isinstance(disposition, str) or disposition not in SELF_COUNTERPART_TREATMENTS:
         return {"status": fail, "reason": "S121 self-counterpart disposition is missing or unrecognized"}
 
     expected_mapping: dict[str, tuple[str, str]] = {}
@@ -355,6 +358,20 @@ def assess_counterpart_term_coverage(
         return {
             "status": fail,
             "reason": "actual source-term keys do not exactly match the declared counterpart-cell coverage",
+        }
+
+    expected_target_artifact = semantic_assessment.get("expected_target_artifact")
+    actual_target_artifact = target.get("target_artifact")
+    target_locator = target.get("source_locator")
+    if (
+        expected_target_artifact != FROZEN_F4_TARGET_ARTIFACT
+        or actual_target_artifact != FROZEN_F4_TARGET_ARTIFACT
+        or not isinstance(target_locator, str)
+        or FROZEN_F4_TARGET_ARTIFACT not in target_locator
+    ):
+        return {
+            "status": fail,
+            "reason": "target record is not tied to the frozen retained F4 artifact",
         }
 
     expected_target_key = semantic_assessment.get("expected_target_key")
@@ -476,6 +493,10 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     frozen_mapping = semantic_contract.get("frozen_source_cell_mapping", {})
     if frozen_mapping != {key: list(value) for key, value in FROZEN_COUNTERPART_SOURCE_MAPPING.items()}:
         errors.append("contract frozen source-cell mapping differs from the implemented H/C/F/G/X mapping")
+    if semantic_contract.get("frozen_target_artifact") != FROZEN_F4_TARGET_ARTIFACT:
+        errors.append("contract frozen target artifact differs from the implemented F4 control")
+    if "must be distinct" not in contract.get("precision_evidence_policy", {}).get("required_for_every_numeric_input", ""):
+        errors.append("contract does not require a distinct precision-evidence locator")
     if "self_counterpart_disposition" not in semantic_contract.get("numeric_term_coverage", ""):
         errors.append("contract does not require explicit S121 counterpart disposition")
     if contract.get("decision_logic", {}).get("semantic_adjudication_missing_or_failed") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
@@ -628,7 +649,9 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     coverage_fixture_target = {
         **fixture_target,
         "source_value": "7.1",
+        "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: model/accounting/f4_partial_2025.json target control",
         "target_key": "retained_f4_control_2025_Q4",
+        "target_artifact": FROZEN_F4_TARGET_ARTIFACT,
     }
     semantic_fixture = {
         **{key: True for key in SEMANTIC_REQUIRED_CHECKS},
@@ -638,6 +661,7 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
             for key, group, sector_code, _ in fixture_cell_specs
         ],
         "expected_target_key": "retained_f4_control_2025_Q4",
+        "expected_target_artifact": FROZEN_F4_TARGET_ARTIFACT,
         "self_counterpart_disposition": "OBSERVED_BUT_EXCLUDED_FROM_TARGET_WITH_OFFICIAL_BOUNDARY_SUPPORT",
         "self_counterpart_record": {
             "term_key": "fixture-self-S121",
