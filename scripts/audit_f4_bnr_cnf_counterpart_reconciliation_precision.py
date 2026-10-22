@@ -869,7 +869,11 @@ def _diagnose_retained_qsa_control_archive() -> None:
         raw_hits = []
         raw_target_member = "f4_phase_a_artifacts/raw/cd74f1884fd6c092.raw"
         raw_text = archive.read(raw_target_member).decode("utf-8-sig", errors="replace")
-        parsed_rows = list(csv.reader(io.StringIO(raw_text)))
+        parsed_rows = [
+            next(csv.reader([line]))
+            for line in raw_text.splitlines()
+            if line.strip()
+        ]
         headers = parsed_rows[0] if parsed_rows else []
         matching_rows = [
             row for row in parsed_rows[1:]
