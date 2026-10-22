@@ -214,6 +214,13 @@ class F4BNRCNFDocumentedPrecisionTests(unittest.TestCase):
         )
         self.assertEqual(result["status"], "UNCONFIRMED_PRECISION_KEEP_F4_CLOSED")
 
+    def test_positive_resolution_cannot_claim_exact_value_basis(self) -> None:
+        result = assess_documented_precision_reconciliation(
+            [term("6", "0.1", basis="OFFICIAL_SOURCE_EXACTNESS_STATEMENT", rounding_mode="NEAREST")],
+            target("6", "0.1"),
+        )
+        self.assertEqual(result["status"], "UNCONFIRMED_PRECISION_KEEP_F4_CLOSED")
+
     def test_missing_precision_evidence_locator_never_passes(self) -> None:
         item = term("6", "0.1")
         item.pop("precision_evidence_locator")
