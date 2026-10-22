@@ -7,6 +7,7 @@
     "reset_integrity_contract": "model/registries/reset_integrity_contract.json",
     "accounting_readiness_gate": "model/accounting/accounting_readiness_gate.json",
     "accounting_reopen_conditions": "model/accounting/reopen_conditions_registry.json",
+    "f4_bnr_cnf_counterpart_reconciliation_precision_contract": "model/accounting/f4_bnr_cnf_counterpart_reconciliation_precision_contract_2026_10_22.json",
     "system_dynamics_conformity_gate": "model/dynamics/system_dynamics_conformity_gate.json",
     "reference_modes": "model/dynamics/reference_modes.json",
     "empirical_contract": "model/empirical_dynamics/contract.json",
