@@ -156,7 +156,7 @@ def audit_trigger_aware_monitoring_horizon_post_bnr_event_check() -> list[str]:
 def main() -> None:
     errors = audit_trigger_aware_monitoring_horizon_post_bnr_event_check()
     if errors:
-        raise RuntimeError("Post-BNR event monitoring audit failed:\\n- " + "\\n- ".join(errors))
+        raise RuntimeError("Post-BNR event monitoring audit failed:\n- " + "\n- ".join(errors))
     h = load(HORIZON)
     print(json.dumps({
         "status": "PASS",
