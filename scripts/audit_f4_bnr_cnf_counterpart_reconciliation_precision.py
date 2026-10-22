@@ -45,7 +45,7 @@ MANIFEST = "model/registries/scientific_baseline_manifest.json"
 def _locator_points_to_frozen_artifact(locator: Any) -> bool:
     if not isinstance(locator, str) or not locator.strip():
         return False
-    normalized = locator.strip().replace("\\\\", "/")
+    normalized = locator.strip().replace("\\", "/")
     fixture_prefix = TEST_FIXTURE_PREFIX + " "
     if normalized.startswith(fixture_prefix):
         normalized = normalized[len(fixture_prefix):].strip()
@@ -597,8 +597,8 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     manifest = load(MANIFEST)
     f4 = reopen["instruments"]["F4"]
 
-    if contract.get("contract_version") != "0.1":
-        errors.append("precision preregistration contract version changed")
+    if contract.get("contract_version") != "0.2":
+        errors.append("precision preregistration target-source contract version changed")
     if contract.get("frozen_on") != "2026-10-22":
         errors.append("precision preregistration freeze date changed")
     if contract.get("id") != "F4_BNR_CNF_2025_COUNTERPART_RECONCILIATION_DOCUMENTED_PRECISION":
