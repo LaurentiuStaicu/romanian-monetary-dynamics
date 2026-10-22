@@ -20,6 +20,8 @@ def term(
     source_unit: str = "million RON",
     rounding_mode: str | None = None,
     key: str | None = None,
+    counterpart_group: str = "H",
+    source_sector_code: str = "S14+S15",
 ) -> dict[str, str]:
     if rounding_mode is None:
         rounding_mode = (
@@ -38,6 +40,8 @@ def term(
         "precision_evidence_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: precision evidence",
         "coefficient": coefficient,
         "term_key": key or f"term:{source_unit}:{value}:{factor}:{coefficient}",
+        "counterpart_group": counterpart_group,
+        "source_sector_code": source_sector_code,
     }
 
 
@@ -69,14 +73,47 @@ def target(
     }
 
 
+COUNTERPART_CELL_SPECS = [
+    ("cell-H", "H", "S14+S15", "2.0"),
+    ("cell-C", "C", "S11", "1.0"),
+    ("cell-F1", "F", "S122+S123", "0.5"),
+    ("cell-F2", "F", "S124+S125+S126+S127", "1.0"),
+    ("cell-F3", "F", "S128+S129", "0.2"),
+    ("cell-G", "G", "S13", "2.0"),
+    ("cell-X", "X", "S2", "0.3"),
+]
+
+
+def counterpart_terms() -> list[dict[str, str]]:
+    return [
+        term(value, "0.1", key=key, counterpart_group=group, source_sector_code=sector_code)
+        for key, group, sector_code, value in COUNTERPART_CELL_SPECS
+    ]
+
+
 def semantic_assessment(**overrides: object) -> dict[str, object]:
     assessment: dict[str, object] = {
         **{key: True for key in SEMANTIC_REQUIRED_CHECKS},
-        "expected_term_keys": [
-            "term:million RON:6.0:1:1",
-            "term:million RON:0.0:1:1",
+        "expected_term_keys": [key for key, _, _, _ in COUNTERPART_CELL_SPECS],
+        "expected_source_cells": [
+            {"term_key": key, "counterpart_group": group, "source_sector_code": sector_code}
+            for key, group, sector_code, _ in COUNTERPART_CELL_SPECS
         ],
         "expected_target_key": "retained_f4_control_2025_Q4",
+        "self_counterpart_disposition": "OBSERVED_BUT_EXCLUDED_FROM_TARGET_WITH_OFFICIAL_BOUNDARY_SUPPORT",
+        "self_counterpart_record": {
+            "term_key": "self-counterpart-S121",
+            "source_sector_code": "S121",
+            "source_value": "0.2",
+            "source_unit": "million RON",
+            "unit_conversion_factor_to_million_RON": "1",
+            "source_resolution": "0.1",
+            "rounding_mode": "NEAREST",
+            "precision_basis": "OFFICIAL_METADATA",
+            "source_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: separate S121 source cell",
+            "precision_evidence_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: S121 precision",
+        },
+        "self_counterpart_boundary_evidence_locator": "TEST_FIXTURE_NOT_SOURCE_DATA: S121 target boundary",
     }
     assessment["evidence_locators"] = {
         key: f"TEST_FIXTURE_NOT_SOURCE_DATA: semantic evidence for {key}"
@@ -209,8 +246,7 @@ class F4BNRCNFDocumentedPrecisionTests(unittest.TestCase):
 
     def test_combined_reconciliation_requires_semantic_gate(self) -> None:
         result = assess_f4_counterpart_reconciliation(
-            [term("6.0", "0.1"), term("0.0", "0.1")],
-            target("6.1"),
+            counterpart_terms(), target("7.1"),
             semantic_assessment(self_counterpart_boundary_resolved=False),
         )
         self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
@@ -222,17 +258,14 @@ class F4BNRCNFDocumentedPrecisionTests(unittest.TestCase):
         }
         evidence.pop("sector_mapping_h_c_f_g_x_verified")
         result = assess_f4_counterpart_reconciliation(
-            [term("6.0", "0.1"), term("0.0", "0.1")],
-            target("6.1"),
+            counterpart_terms(), target("7.1"),
             semantic_assessment(evidence_locators=evidence),
         )
         self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
 
     def test_complete_semantic_and_precision_checks_only_yield_trigger_adjudication_eligibility(self) -> None:
         result = assess_f4_counterpart_reconciliation(
-            [term("6.0", "0.1"), term("0.0", "0.1")],
-            target("6.1"),
-            semantic_assessment(),
+            counterpart_terms(), target("7.1"), semantic_assessment()
         )
         self.assertEqual(
             result["status"],
@@ -240,59 +273,90 @@ class F4BNRCNFDocumentedPrecisionTests(unittest.TestCase):
         )
         self.assertFalse(result["status"] == "F4_STOCK_GATE_OPEN")
 
-
     def test_omitted_counterpart_term_blocks_numerical_pass(self) -> None:
-        terms = [term("6.0", "0.1", key="cell-1")]
-        assessment = semantic_assessment(expected_term_keys=["cell-1", "cell-2"])
         result = assess_f4_counterpart_reconciliation(
-            terms, target("6.1"), assessment
+            counterpart_terms()[:-1], target("7.1"), semantic_assessment()
         )
         self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
 
     def test_duplicate_counterpart_term_key_blocks_numerical_pass(self) -> None:
-        terms = [
-            term("6.0", "0.1", key="cell-1"),
-            term("0.0", "0.1", key="cell-1"),
-        ]
-        assessment = semantic_assessment(expected_term_keys=["cell-1", "cell-2"])
-        result = assess_f4_counterpart_reconciliation(
-            terms, target("6.1"), assessment
-        )
+        terms = counterpart_terms()
+        terms[1]["term_key"] = terms[0]["term_key"]
+        result = assess_f4_counterpart_reconciliation(terms, target("7.1"), semantic_assessment())
         self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
 
     def test_unexpected_counterpart_term_blocks_numerical_pass(self) -> None:
-        terms = [
-            term("6.0", "0.1", key="cell-1"),
-            term("0.0", "0.1", key="unexpected-cell"),
-        ]
-        assessment = semantic_assessment(expected_term_keys=["cell-1", "cell-2"])
-        result = assess_f4_counterpart_reconciliation(
-            terms, target("6.1"), assessment
-        )
+        terms = counterpart_terms()
+        terms[-1]["term_key"] = "unexpected-cell"
+        result = assess_f4_counterpart_reconciliation(terms, target("7.1"), semantic_assessment())
         self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
 
     def test_target_key_must_match_frozen_retained_control(self) -> None:
         result = assess_f4_counterpart_reconciliation(
-            [
-                term("6.0", "0.1", key="cell-1"),
-                term("0.0", "0.1", key="cell-2"),
-            ],
-            {**target("6.1"), "target_key": "different-control"},
-            semantic_assessment(expected_term_keys=["cell-1", "cell-2"]),
+            counterpart_terms(), {**target("7.1"), "target_key": "different-control"},
+            semantic_assessment(),
         )
         self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
 
     def test_non_unit_coefficient_cannot_mask_counterpart_coverage(self) -> None:
+        terms = counterpart_terms()
+        terms[1]["coefficient"] = "0"
+        result = assess_f4_counterpart_reconciliation(terms, target("7.1"), semantic_assessment())
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+    def test_frozen_source_sector_mapping_cannot_be_relabelled(self) -> None:
+        terms = counterpart_terms()
+        terms[0]["source_sector_code"] = "S121"
+        result = assess_f4_counterpart_reconciliation(terms, target("7.1"), semantic_assessment())
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+    def test_unresolved_s121_treatment_blocks_numeric_pass(self) -> None:
         result = assess_f4_counterpart_reconciliation(
-            [
-                term("6.0", "0.1", key="cell-1"),
-                term("0.0", "0.1", coefficient="0", key="cell-2"),
-            ],
-            target("6.1"),
-            semantic_assessment(expected_term_keys=["cell-1", "cell-2"]),
+            counterpart_terms(), target("7.1"),
+            semantic_assessment(self_counterpart_disposition="UNKNOWN"),
         )
         self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
 
+    def test_excluded_s121_cell_must_be_preserved_and_boundary_documented(self) -> None:
+        assessment = semantic_assessment()
+        assessment.pop("self_counterpart_record")
+        result = assess_f4_counterpart_reconciliation(counterpart_terms(), target("7.1"), assessment)
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+
+    def test_included_s121_cell_requires_one_explicit_numeric_term(self) -> None:
+        terms = counterpart_terms()
+        terms.append(term(
+            "0.2", "0.1", key="cell-S121",
+            counterpart_group="BNR", source_sector_code="S121",
+        ))
+        assessment = semantic_assessment(
+            self_counterpart_disposition="OBSERVED_AND_INCLUDED_AS_EXPLICIT_TERM",
+            self_counterpart_term_key="cell-S121",
+            expected_term_keys=[key for key, _, _, _ in COUNTERPART_CELL_SPECS] + ["cell-S121"],
+            expected_source_cells=[
+                *[
+                    {"term_key": key, "counterpart_group": group, "source_sector_code": sector_code}
+                    for key, group, sector_code, _ in COUNTERPART_CELL_SPECS
+                ],
+                {"term_key": "cell-S121", "counterpart_group": "BNR", "source_sector_code": "S121"},
+            ],
+        )
+        assessment.pop("self_counterpart_record", None)
+        result = assess_f4_counterpart_reconciliation(terms, target("7.3"), assessment)
+        self.assertEqual(
+            result["status"],
+            "PRECISION_AND_RECONCILIATION_PASS_ELIGIBLE_FOR_BASE_F4_TRIGGER_ADJUDICATION",
+        )
+
+    def test_not_published_s121_requires_official_matrix_locator(self) -> None:
+        assessment = semantic_assessment(
+            self_counterpart_disposition="NOT_PUBLISHED_IN_SOURCE",
+            self_counterpart_evidence_locator="",
+        )
+        assessment.pop("self_counterpart_record", None)
+        assessment.pop("self_counterpart_boundary_evidence_locator", None)
+        result = assess_f4_counterpart_reconciliation(counterpart_terms(), target("7.1"), assessment)
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
 
 
 if __name__ == "__main__":
