@@ -6,6 +6,12 @@ Romanian Monetary Dynamics (RMD) **v0.3.0** is the current public scientific-cor
 
 The **Validation Recovery / Empirical Basis Expansion** stage has completed its currently admissible scientific work and is now in **EVIDENCE_TRIGGERED_BASELINE_HOLD**. This is stage completion at the current evidence boundary, not model completion: RMD remains empirically incomplete, behavioural closure remains inactive, no new calibration/refit is authorized, and release/merge/version decisions remain separate human decisions. The terminal stage assessment is `model/registries/validation_recovery_stage_terminal_assessment.json`.
 
+### Current trigger-aware monitoring handoff — 2026-10-22
+
+The BNR decision of 2026-10-08 kept the policy rate unchanged at 6.50% per annum. The reserved monetary-event trigger therefore **did not fire**: this is a completed event check only, not evidence for a behavioural update. No MIR response values were inspected, the frozen candidate and beta remain unchanged, and no calibration/refit, holdout access, feedback activation or behavioural closure is authorized.
+
+The next dated check is **2026-11-12**, limited to the BNR policy decision. If the policy rate is unchanged, return to baseline hold without inspecting MIR response values. If a non-zero November policy-rate event occurs, the November-reference MIR response remains closed until the official ECB release on **2027-01-06**. The separate F4 CNF stock evidence window remains time-gated until **after 2026-10-31**; it does not authorize flow recovery or any dynamic-model activation. This monitoring handoff changes neither the Accounting Spine status nor the immutable public/repository version **0.3.0**.
+
 ### Repository provenance-integrity terminal closure — 2026-09-22
 
 The post-v0.3.0 repository-wide provenance hardening cycle is now closed at its current scope under `model/registries/provenance_integrity_terminal_assessment_2026_09_22.json`. All 32 top-level source-evidence directories and all 13 CSVs under `data/processed` are inventory-governed; Validation Recovery remains explicitly `PARTIAL_RAW_RECOVERY` while its exact five-file repository input surface is separately pinned. The model contract and scientific baseline register the same source-vintage, processed-data and validation-recovery provenance authorities, and there is no active provenance repair task.
