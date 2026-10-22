@@ -224,17 +224,109 @@ def assess_semantic_adjudication(assessment: Any) -> dict[str, str]:
     }
 
 
+def assess_counterpart_term_coverage(
+    terms: Any,
+    target: Any,
+    semantic_assessment: Any,
+) -> dict[str, str]:
+    """Require one-to-one coverage of declared source cells and the frozen target control."""
+    if not isinstance(terms, list) or not terms or not isinstance(target, dict):
+        return {
+            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+            "reason": "numeric term list or retained target control is malformed",
+        }
+    if not isinstance(semantic_assessment, dict):
+        return {
+            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+            "reason": "semantic assessment is not structured",
+        }
+
+    expected = semantic_assessment.get("expected_term_keys")
+    if (
+        not isinstance(expected, list)
+        or not expected
+        or any(not isinstance(key, str) or not key.strip() for key in expected)
+        or len(set(expected)) != len(expected)
+    ):
+        return {
+            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+            "reason": "expected source-term keys are missing, malformed, or duplicated",
+        }
+
+    actual_keys: list[str] = []
+    for index, term in enumerate(terms):
+        if not isinstance(term, dict):
+            return {
+                "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+                "reason": f"numeric term {index} is not a structured source cell",
+            }
+        key = term.get("term_key")
+        if not isinstance(key, str) or not key.strip():
+            return {
+                "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+                "reason": f"numeric term {index} lacks a stable term_key",
+            }
+        actual_keys.append(key)
+        try:
+            coefficient = Fraction(_decimal(term.get("coefficient")))
+        except (ValueError, InvalidOperation):
+            return {
+                "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+                "reason": f"numeric term {key} lacks an exact valid coefficient",
+            }
+        if coefficient != 1:
+            return {
+                "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+                "reason": f"counterpart-stock term {key} must have coefficient exactly +1",
+            }
+
+    if len(set(actual_keys)) != len(actual_keys):
+        return {
+            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+            "reason": "duplicate numeric term_key detected",
+        }
+    if set(actual_keys) != set(expected):
+        return {
+            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+            "reason": "actual source-term keys do not exactly match the declared counterpart-cell coverage",
+        }
+
+    expected_target_key = semantic_assessment.get("expected_target_key")
+    actual_target_key = target.get("target_key")
+    if (
+        not isinstance(expected_target_key, str)
+        or not expected_target_key.strip()
+        or not isinstance(actual_target_key, str)
+        or not actual_target_key.strip()
+        or actual_target_key != expected_target_key
+    ):
+        return {
+            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+            "reason": "target record does not identify the frozen 2025-Q4 F4 control declared by semantic adjudication",
+        }
+    return {
+        "status": "COUNTERPART_TERM_COVERAGE_PASS",
+        "reason": "actual term keys exactly match the declared source cells and frozen target key",
+    }
+
+
 def assess_f4_counterpart_reconciliation(
     terms: list[dict[str, Any]],
     target: dict[str, Any],
     semantic_assessment: Any,
 ) -> dict[str, str]:
-    """Require semantic adjudication before using a numeric result for the F4 trigger."""
+    """Require semantic checks and exact term coverage before numeric F4 reconciliation."""
     semantic_result = assess_semantic_adjudication(semantic_assessment)
     if semantic_result.get("status") != "SEMANTIC_ADJUDICATION_PASS_FOR_NUMERIC_RECONCILIATION":
         return {
             "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
             "reason": semantic_result.get("reason", "semantic adjudication did not pass"),
+        }
+    coverage_result = assess_counterpart_term_coverage(terms, target, semantic_assessment)
+    if coverage_result.get("status") != "COUNTERPART_TERM_COVERAGE_PASS":
+        return {
+            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+            "reason": coverage_result.get("reason", "counterpart source-cell coverage did not pass"),
         }
     return assess_documented_precision_reconciliation(terms, target)
 
@@ -309,6 +401,12 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         errors.append("semantic nonconfirmation must keep F4 closed")
     if "numeric primitive only" not in semantic_contract.get("numeric_helper_boundary", ""):
         errors.append("contract does not distinguish numeric reconciliation from semantic adjudication")
+    coverage_text = semantic_contract.get("numeric_term_coverage", "")
+    for coverage_rule in ("expected_term_keys", "term_key", "no omitted", "expected_target_key", "target_key"):
+        if coverage_rule not in coverage_text:
+            errors.append(f"contract does not preregister exact source-term coverage rule: {coverage_rule}")
+    if "coefficient exactly +1" not in semantic_contract.get("coefficient_rule", ""):
+        errors.append("contract does not freeze the counterpart-stock summation coefficients")
     if contract.get("decision_logic", {}).get("semantic_adjudication_missing_or_failed") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("semantic nonconfirmation disposition is not declared in decision logic")
 
@@ -430,15 +528,25 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     if invalid_unit_conversion.get("status") != "UNCONFIRMED_PRECISION_KEEP_F4_CLOSED":
         errors.append("invalid unit conversion should remain unconfirmed")
 
+    coverage_fixture_terms = [
+        {**fixture_terms[0], "term_key": "fixture-cell-1"},
+        {**fixture_terms[1], "term_key": "fixture-cell-2"},
+    ]
+    coverage_fixture_target = {
+        **fixture_target,
+        "target_key": "retained_f4_control_2025_Q4",
+    }
     semantic_fixture = {
-        key: True for key in SEMANTIC_REQUIRED_CHECKS
+        **{key: True for key in SEMANTIC_REQUIRED_CHECKS},
+        "expected_term_keys": ["fixture-cell-1", "fixture-cell-2"],
+        "expected_target_key": "retained_f4_control_2025_Q4",
     }
     semantic_fixture["evidence_locators"] = {
         key: f"TEST_FIXTURE_NOT_SOURCE_DATA: semantic evidence for {key}"
         for key in SEMANTIC_REQUIRED_CHECKS
     }
     combined_good = assess_f4_counterpart_reconciliation(
-        fixture_terms, fixture_target, semantic_fixture
+        coverage_fixture_terms, coverage_fixture_target, semantic_fixture
     )
     if combined_good.get("status") != "PRECISION_AND_RECONCILIATION_PASS_ELIGIBLE_FOR_BASE_F4_TRIGGER_ADJUDICATION":
         errors.append("complete semantic and numeric fixtures should yield eligibility only for trigger adjudication")
@@ -447,7 +555,7 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         "self_counterpart_boundary_resolved": False,
     }
     combined_blocked = assess_f4_counterpart_reconciliation(
-        fixture_terms, fixture_target, semantic_missing
+        coverage_fixture_terms, coverage_fixture_target, semantic_missing
     )
     if combined_blocked.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("unresolved S121 self-counterpart semantics must block a numeric pass")
@@ -459,10 +567,37 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         },
     }
     combined_missing_locator = assess_f4_counterpart_reconciliation(
-        fixture_terms, fixture_target, locator_missing
+        coverage_fixture_terms, coverage_fixture_target, locator_missing
     )
     if combined_missing_locator.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("missing semantic evidence locator must block F4 eligibility")
+
+    omitted_term = assess_f4_counterpart_reconciliation(
+        coverage_fixture_terms[:1], coverage_fixture_target, semantic_fixture
+    )
+    if omitted_term.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
+        errors.append("omitted counterpart source cell must block F4 eligibility")
+    duplicate_term = assess_f4_counterpart_reconciliation(
+        [coverage_fixture_terms[0], coverage_fixture_terms[0]],
+        coverage_fixture_target,
+        semantic_fixture,
+    )
+    if duplicate_term.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
+        errors.append("duplicate counterpart source cell must block F4 eligibility")
+    wrong_target = assess_f4_counterpart_reconciliation(
+        coverage_fixture_terms,
+        {**coverage_fixture_target, "target_key": "unfrozen-new-target"},
+        semantic_fixture,
+    )
+    if wrong_target.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
+        errors.append("wrong target-control identity must block F4 eligibility")
+    altered_coefficient = assess_f4_counterpart_reconciliation(
+        [{**coverage_fixture_terms[0], "coefficient": "0"}, coverage_fixture_terms[1]],
+        coverage_fixture_target,
+        semantic_fixture,
+    )
+    if altered_coefficient.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
+        errors.append("non-unit coefficient must block counterpart-stock reconciliation")
 
     return errors
 
