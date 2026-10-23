@@ -704,6 +704,13 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
     for coverage_rule in ("expected_term_keys", "term_key", "no omitted", "expected_target_key", "target_key", "uniquely identifies that reported source cell", "distinct after trimming whitespace", "path-boundary artifact"):
         if coverage_rule not in coverage_text:
             errors.append(f"contract does not preregister exact source-term coverage rule: {coverage_rule}")
+    stale_target_claim = "target locator must match the exact path-boundary artifact model/accounting/f4_partial_2025.json"
+    if stale_target_claim in coverage_text:
+        errors.append("contract still incorrectly identifies the partial bilateral matrix as the retained aggregate target")
+    if FROZEN_F4_TARGET_ARTIFACT not in coverage_text:
+        errors.append("contract does not name the exact retained QSA archive/member as the target source")
+    if "model/accounting/f4_partial_2025.json remains the partial bilateral matrix and is not the source record" not in coverage_text:
+        errors.append("contract does not distinguish the partial bilateral matrix from the 6.1 million RON aggregate control")
     if "coefficient exactly +1" not in semantic_contract.get("coefficient_rule", ""):
         errors.append("contract does not freeze the counterpart-stock summation coefficients")
     frozen_mapping = semantic_contract.get("frozen_source_cell_mapping", {})
