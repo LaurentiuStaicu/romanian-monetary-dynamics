@@ -533,7 +533,7 @@ def assess_counterpart_term_coverage(
             "reason": "target value/unit does not match the exact retained ECB QSA observation",
         }
     precision_locator = target.get("precision_evidence_locator")
-    if precision_locator == FROZEN_F4_TARGET_DECIMALS_LOCATOR:
+    if isinstance(precision_locator, str) and FROZEN_F4_TARGET_DECIMALS_LOCATOR in precision_locator:
         return {
             "status": fail,
             "reason": "the DECIMALS attribute alone does not establish the required rounding mode",
