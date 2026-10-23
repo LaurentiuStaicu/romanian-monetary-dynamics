@@ -10,10 +10,17 @@ from scripts.audit_f4_bnr_cnf_counterpart_reconciliation_precision import (
     FROZEN_F4_TARGET_PERIOD,
     SEMANTIC_REQUIRED_CHECKS,
     assess_documented_precision_reconciliation,
-    assess_f4_counterpart_reconciliation,
+    assess_f4_counterpart_reconciliation as _assess_f4_counterpart_reconciliation,
     audit_f4_bnr_cnf_counterpart_reconciliation_precision,
     _production_target_value_matches,
 )
+
+
+def assess_f4_counterpart_reconciliation(terms, target_record, semantic_assessment):
+    """Test-only wrapper: make synthetic-data opt-in explicit for unit fixtures."""
+    return _assess_f4_counterpart_reconciliation(
+        terms, target_record, semantic_assessment, allow_test_fixtures=True
+    )
 
 
 def term(
@@ -442,6 +449,16 @@ class F4BNRCNFDocumentedPrecisionTests(unittest.TestCase):
         self.assertTrue(_production_target_value_matches(exact_target))
         wrong_target = {**exact_target, "source_value": "6.2"}
         self.assertFalse(_production_target_value_matches(wrong_target))
+
+    def test_default_target_validation_rejects_synthetic_fixture_locator(self) -> None:
+        self.assertFalse(_production_target_value_matches(target("6.1")))
+
+    def test_default_combined_gate_rejects_synthetic_fixture_evidence(self) -> None:
+        result = _assess_f4_counterpart_reconciliation(
+            counterpart_terms(), target("7.1"), semantic_assessment()
+        )
+        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+        self.assertIn("synthetic test-fixture locators", result["reason"])
 
     def test_decimals_attribute_alone_does_not_establish_target_rounding(self) -> None:
         unsupported_locators = (
