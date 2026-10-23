@@ -1,0 +1,160 @@
+{
+  "contract_version": "0.2",
+  "frozen_on": "2026-10-22",
+  "id": "F4_BNR_CNF_2025_COUNTERPART_RECONCILIATION_DOCUMENTED_PRECISION",
+  "phase": "Accounting Spine / F4 annual-2025 counterpart stock evidence gate",
+  "purpose": "Pre-register a fail-closed, source-specific reconciliation rule for a future official BNR CNF 2025 S121 AF4 counterpart-stock matrix. This contract does not claim that the 2025 matrix has been published, does not open the F4 gate, and does not authorize a new source probe before the existing evidence window.",
+  "governing_sources": {
+    "f4_stock_trigger_monitoring": "model/accounting/f4_bnr_cnf_2025_stock_trigger_monitoring_2026_09_21.json",
+    "f4_reopen_registry": "model/accounting/reopen_conditions_registry.json",
+    "retained_f4_artifact": "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18/workflow_artifact_10558980689.zip.b64#f4_phase_a_artifacts/raw/cd74f1884fd6c092.raw",
+    "retained_rank_assessment": "model/accounting/f4_exact_complement_rank_assessment.json",
+    "historical_bnr_cnf_screening": "model/dynamics/sectoral_financial_positions_bnr_cnf_source_screening.json",
+    "historical_source_precision_note": "The reviewed 2024 annual CNF PDF labels the counterpart tables as stocks in million lei and displays integer-valued cells; the retained screening does not identify an explicit rounding rule or source precision metadata. This historical presentation is not evidence of the precision rule applicable to a future 2025 publication.",
+    "retained_f4_partial_matrix": "model/accounting/f4_partial_2025.json",
+    "retained_f4_source_vintage_manifest": "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18/source_manifest.json",
+    "retained_f4_control_report": "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18/workflow_artifact_10558980689.zip.b64#f4_phase_a_artifacts/f4_loans_coverage_audit.json"
+  },
+  "scope": {
+    "reference_period": "2025-year-end",
+    "reporting_sector": "S121",
+    "instrument": "AF4/F4",
+    "accounting_entry": "assets",
+    "comparison_boundary": "The five RMD counterpart groups H, C, F, G and X within the retained 2025-Q4 F4 stock boundary.",
+    "sector_mapping": {
+      "H": "S14+S15",
+      "C": "S11",
+      "F": "exact additive sum of S122+S123, S124+S125+S126+S127, and S128+S129",
+      "G": "S13",
+      "X": "S2"
+    },
+    "self_counterpart_rule": "If the publication presents an S121 counterpart column, preserve it as a separately labelled source cell. Do not silently include it in or exclude it from the five-cell 6.1 million RON RMD boundary; resolve any effect against the retained boundary before a trigger can pass."
+  },
+  "preconditions": [
+    "The existing publication-window restriction has been satisfied: no source probe occurs before the window opens after 2026-10-31, and no repeated polling occurs without genuinely new official-publication evidence.",
+    "A genuinely official BNR National Financial Accounts 2025 publication or official machine-readable equivalent exposes non-consolidated year-end S121 AF4/F4 asset stocks by counterpart.",
+    "All included cells map to the frozen RMD sectors and all unit conversions to million RON are exact and documented.",
+    "The target 2025-Q4 F4 control is read from the retained source vintage and its frozen provenance; the control is not replaced by a newly polled or revised value.",
+    "The counterpart matrix and the retained control refer to matching instrument, asset/liability, maturity, consolidation, valuation and reference-period concepts. Any unresolved semantic difference blocks the trigger."
+  ],
+  "precision_evidence_policy": {
+    "accepted_basis": [
+      "OFFICIAL_METADATA",
+      "EXPLICIT_OFFICIAL_ROUNDING_STATEMENT",
+      "OFFICIAL_SOURCE_EXACTNESS_STATEMENT"
+    ],
+    "required_for_every_numeric_input": "Record the exact source_value and source_unit, a documented positive exact conversion_factor_to_million_RON, source_resolution in source-unit terms, rounding_mode, precision_basis, a source_locator for the reported value, and a distinct precision_evidence_locator identifying official evidence for both the precision and rounding mode. The implementation must calculate normalized values and resolutions from the recorded exact conversion factor. A positive source_resolution is admissible only when official evidence supports rounding_mode = NEAREST at that resolution, and it cannot be paired with OFFICIAL_SOURCE_EXACTNESS_STATEMENT. A zero source_resolution is admissible only when OFFICIAL_SOURCE_EXACTNESS_STATEMENT is supported at the precision evidence locator and rounding_mode = EXACT. The precision_evidence_locator must be distinct from the source_locator and identify the independent official precision/rounding evidence; reusing the same locator for both is invalid. For the retained QSA target, any precision-evidence locator containing the known QSA DECIMALS attribute locator is insufficient, including variants with extra prefix or suffix text; the DECIMALS value alone does not establish a rounding mode.",
+    "forbidden_inference": "Never infer precision, accuracy or a reconciliation tolerance solely from the number of decimal places, integer formatting, lexical CSV/JSON representation, observed residuals, or a desired pass result.",
+    "unknown_precision_disposition": "UNCONFIRMED_PRECISION_KEEP_F4_CLOSED",
+    "no_official_precision_disposition": "If the official 2025 publication offers only values with no usable documented precision/rounding rule, record nonconfirmation only. Do not substitute the historical 2024 presentation format, the Phase A 0.1 million RON T=S+L control, an ECB tolerance from a different gate, or an analyst-selected fixed allowance.",
+    "target_control_precision_note": "The retained ECB QSA observation carries DECIMALS=2 and UNIT_MULT=6. ECB SDMX documentation defines DECIMALS as the number of decimal places/digits used for observation values; the retained source therefore confirms the metadata field but does not by itself establish the rounding mode applied to OBS_VALUE. DECIMALS=2 alone does not establish a rounding mode and cannot authorize rounding_mode=NEAREST. Target-control precision remains unconfirmed until distinct official evidence supports both the resolution and rounding mode.",
+    "target_control_precision_definition_sources": [
+      "https://www.ecb.europa.eu/stats/ecb_statistics/sdmx/html/tutorial.en.html",
+      "https://sdmx.org/wp-content/uploads/SDMX_Glossary_Version_2_1_December_2020.htm"
+    ]
+  },
+  "semantic_adjudication": {
+    "required_checks": [
+      "evidence_window_satisfied",
+      "official_source_identity_verified",
+      "reference_period_2025_year_end_verified",
+      "reporting_sector_s121_verified",
+      "instrument_af4_f4_verified",
+      "asset_entry_verified",
+      "nonconsolidated_scope_verified",
+      "consolidation_valuation_maturity_dimensions_match",
+      "sector_mapping_h_c_f_g_x_verified",
+      "f_subsector_sum_exact_and_complete",
+      "self_counterpart_boundary_resolved",
+      "counterpart_matrix_coverage_complete",
+      "retained_target_control_vintage_frozen",
+      "target_control_concepts_match"
+    ],
+    "required_evidence_structure": "Every required check must be exactly true only after independent source review. semantic_assessment.evidence_locators must contain a non-empty, inspectable source or contract locator for every required check; free-text assertion without a supporting locator is insufficient. Record the semantic assessment before comparing source values, and never infer a semantic check from the observed residual.",
+    "numeric_helper_boundary": "assess_documented_precision_reconciliation is a numeric primitive only. Its output must not be interpreted as satisfying official-source identity, publication-window, reporting-sector, instrument, accounting-entry, consolidation, valuation, maturity, counterpart coverage, sector mapping, S121 self-counterpart treatment, or frozen-target requirements. Actual source adjudication must use assess_f4_counterpart_reconciliation, which fails closed unless every semantic check and its locator is present. The combined gate also rejects every locator marked `TEST_FIXTURE_NOT_SOURCE_DATA:` by default. Synthetic fixture evidence is accepted only through an explicit test-only opt-in used by the offline regression suite; that opt-in is not a valid source-evidence path for future F4 adjudication.",
+    "failure_disposition": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+    "success_effect": "A complete semantic assessment permits only the documented-precision numerical result to be considered eligible for base-trigger adjudication. It does not open F4, materialize cells, or reopen flows or reference modes.",
+    "numeric_term_coverage": "Before numerical reconciliation, semantic_assessment.expected_term_keys must be a non-empty list of unique stable identifiers for every published source cell that contributes to the frozen H/C/F/G/X sum, including every distinct F subsector input. Each numeric term must carry exactly one matching non-empty term_key and a source_locator that uniquely identifies that reported source cell; locators for all contributing numeric cells, any separately preserved but excluded S121 cell, and the frozen target control must be distinct after trimming whitespace. The actual and expected term-key sets must be identical: no omitted, duplicate or unregistered extra term. The assessment must also contain expected_target_key, and the target record must carry the identical non-empty target_key identifying the retained 2025-Q4 F4 control. A source-coverage boolean without exact key-set agreement is insufficient. Each expected_source_cells entry must match a stable term_key to its counterpart_group and source_sector_code, and the set of group/code pairs must exactly equal the frozen source mapping H=S14+S15, C=S11, F={S122+S123, S124+S125+S126+S127, S128+S129}, G=S13, X=S2. The only optional additional pair is BNR/S121, controlled by an explicit self_counterpart_disposition. If S121 is present but excluded from the target, preserve its value, unit, resolution, precision basis, source locator and precision-evidence locator in self_counterpart_record, and require official boundary evidence. If included, require exactly one BNR/S121 term with self_counterpart_term_key and explicit boundary evidence. If not published, require an official source locator for the relevant table header; never treat absence as zero. semantic_assessment.expected_target_artifact and target.target_artifact must both equal the exact retained ECB QSA source artifact data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18/workflow_artifact_10558980689.zip.b64#f4_phase_a_artifacts/raw/cd74f1884fd6c092.raw. target.source_locator must identify the exact KEY=QSA.Q.N.RO.W0.S121.S1.N.A.LE.F4.T._Z.XDC._T.S.V.N._T, TIME_PERIOD=2025-Q4 and OBS_VALUE fields from that archived raw member, and the submitted target value and conversion factor must match the retained observation. model/accounting/f4_partial_2025.json remains the partial bilateral matrix and is not the source record for the 6.1 million RON aggregate control. The target locator must match the exact path-boundary artifact identity of the frozen archive/member and observation locator rather than merely containing a similar path substring. The retained QSA row has DECIMALS=2, but that attribute alone does not establish a rounding mode; target precision therefore remains unconfirmed. This is additional to matching the frozen target key.",
+    "coefficient_rule": "For this counterpart-stock sum, every contributing numeric term must have coefficient exactly +1. Zero, fractional, negative, or other coefficients cannot be used to mask an omitted cell, double-count a cell, or alter the frozen counterpart sum. If the scope later requires another identity, preregister that identity separately before evaluating observed values.",
+    "frozen_source_cell_mapping": {
+      "H": [
+        "S14+S15"
+      ],
+      "C": [
+        "S11"
+      ],
+      "F": [
+        "S122+S123",
+        "S124+S125+S126+S127",
+        "S128+S129"
+      ],
+      "G": [
+        "S13"
+      ],
+      "X": [
+        "S2"
+      ]
+    },
+    "self_counterpart_dispositions": {
+      "NOT_PUBLISHED_IN_SOURCE": "Requires an official source locator showing the relevant counterpart dimension and no S121 column. No numeric S121 term is allowed; absence is not zero.",
+      "OBSERVED_BUT_EXCLUDED_FROM_TARGET_WITH_OFFICIAL_BOUNDARY_SUPPORT": "Requires the separately preserved and precision-documented S121 source record plus official evidence that this cell is outside the frozen comparison target.",
+      "OBSERVED_AND_INCLUDED_AS_EXPLICIT_TERM": "Requires exactly one BNR/S121 numeric term and official evidence showing how it belongs in the retained control boundary."
+    },
+    "frozen_target_artifact": "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18/workflow_artifact_10558980689.zip.b64#f4_phase_a_artifacts/raw/cd74f1884fd6c092.raw"
+  },
+  "reconciliation_method": {
+    "arithmetic": "Exact decimal/rational arithmetic only; no binary floating-point comparison and no discretionary epsilon.",
+    "terms": "For every published counterpart cell contributing to H, C, F, G or X, retain source_value, source_unit, exact positive conversion_factor_to_million_RON, source_resolution, rounding_mode, precision_basis, source_locator and precision_evidence_locator. Normalize to million RON using exact rational arithmetic. For composite F, include a separate record and resolution contribution for every published financial-subsector column included in the exact additive sum.",
+    "target": "Retain source_value, source_unit, exact positive conversion_factor_to_million_RON, source_resolution, rounding_mode, precision_basis, source_locator and precision_evidence_locator for the frozen 2025-Q4 F4 control. Normalize its value and resolution to million RON using exact rational arithmetic; do not replace it with a newly polled or revised value.",
+    "rounding_envelope": "E = sum_i(abs(a_i) * q_i / 2) + q_y / 2, where q_i and q_y are calculated exactly from each recorded source_resolution multiplied by its documented conversion_factor_to_million_RON. Positive resolutions require official evidence that the associated rounding_mode is NEAREST. A zero source resolution requires OFFICIAL_SOURCE_EXACTNESS_STATEMENT and rounding_mode EXACT.",
+    "residual": "R = sum_i(a_i * x_i) - y, where x_i and y are normalized to million RON by the recorded conversion factors. Calculate values, resolution envelopes and residuals with exact rational arithmetic.",
+    "pass_condition": "The precision portion passes only when every required precision record is valid and abs(R) <= E. No additional tolerance may be added after values are observed.",
+    "explicit_official_accounting_tolerance": "No separate fixed tolerance can replace or supplement the rounding-envelope test under this contract. If an official source establishes a distinct rule for this exact cross-source control, it must be adjudicated and preregistered in a new immutable contract before target values are compared; absent such revision, apply the rounding-envelope rule only.",
+    "interpretation_of_zero": "A published numeric zero remains a reported observation with its documented precision interval; it is not promoted to an exact structural zero unless a separate existing RMD structural-zero contract authorizes that exact conclusion. Missing values remain missing."
+  },
+  "decision_logic": {
+    "all_source_semantics_and_precision_known_and_reconciliation_passes": "PRECISION_AND_RECONCILIATION_PASS_ELIGIBLE_FOR_BASE_F4_TRIGGER_ADJUDICATION",
+    "any_precision_unknown_or_missing": "UNCONFIRMED_PRECISION_KEEP_F4_CLOSED",
+    "reconciliation_outside_frozen_envelope": "RECONCILIATION_FAIL_KEEP_F4_CLOSED",
+    "any_sector_mapping_or_concept_boundary_ambiguity": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+    "semantic_adjudication_missing_or_failed": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED"
+  },
+  "authorized_effect_if_this_contract_and_all_base_trigger_conditions_pass": "Supports adjudication of REOPEN_F4_STOCK_ONLY_EXACT_COUNTERPART_MATERIALIZATION_GATE under the existing frozen F4 trigger. It does not materialize data automatically.",
+  "prohibited_effects": {
+    "flow_reopen": false,
+    "aggregate_reference_mode_reopen": false,
+    "automatic_F4_completion": false,
+    "calibration_or_refit": false,
+    "holdout_access": false,
+    "feedback_activation": false,
+    "behavioural_closure": false,
+    "benchmark_change": false,
+    "public_version_change": false
+  },
+  "current_disposition": {
+    "contract_status": "PREREGISTERED_FAIL_CLOSED",
+    "2025_source_identified": false,
+    "precision_gate_executed": false,
+    "reconciliation_executed": false,
+    "F4_stock_gate_open": false,
+    "next_evidence_window": "after 2026-10-31",
+    "date_semantics": "Inherited from the existing F4 monitoring assessment; it is not a promised BNR publication date.",
+    "target_value_source_verified": true,
+    "target_precision_rounding_rule_confirmed": false
+  },
+  "frozen_target_control": {
+    "artifact": "data/source_vintages/accounting-f4-partial-2025-vintage-2026-09-18/workflow_artifact_10558980689.zip.b64#f4_phase_a_artifacts/raw/cd74f1884fd6c092.raw",
+    "archive_sha256": "a01922ed3662725dd5c73c95cd248bb97c8fc8a06404c9507e7cac4fc8e260aa",
+    "archive_member": "f4_phase_a_artifacts/raw/cd74f1884fd6c092.raw",
+    "archive_member_sha256": "2733df8109321019c5eff3430b96078ce50c9a388df4dcadf72302bf78f84efa",
+    "aggregate_report_member": "f4_phase_a_artifacts/f4_loans_coverage_audit.json",
+    "aggregate_report_sha256": "0eec19061320039161a92ddde7ae3af9b89280d187d7fcdba5b590ce906cb0e5",
+    "series_key": "QSA.Q.N.RO.W0.S121.S1.N.A.LE.F4.T._Z.XDC._T.S.V.N._T",
+    "reference_period": "2025-Q4",
+    "observation_field": "OBS_VALUE",
+    "value_million_RON": "6.1",
+    "decimals_attribute": "2",
+    "unit_multiplier": "6",
+    "rounding_mode_confirmed": false
+  }
+}
