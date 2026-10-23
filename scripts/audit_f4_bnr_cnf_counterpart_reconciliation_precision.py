@@ -32,6 +32,17 @@ FROZEN_F4_TARGET_DECIMALS_LOCATOR = (
     f"{FROZEN_F4_TARGET_ARTIFACT}::KEY={FROZEN_F4_TARGET_SERIES_KEY}::DECIMALS"
 )
 TEST_FIXTURE_PREFIX = "TEST_FIXTURE_NOT_SOURCE_DATA:"
+
+
+def _contains_test_fixture_marker(value: Any) -> bool:
+    """Return true when any supplied evidence string explicitly identifies itself as synthetic."""
+    if isinstance(value, str):
+        return TEST_FIXTURE_PREFIX in value
+    if isinstance(value, dict):
+        return any(_contains_test_fixture_marker(key) or _contains_test_fixture_marker(item) for key, item in value.items())
+    if isinstance(value, (list, tuple, set)):
+        return any(_contains_test_fixture_marker(item) for item in value)
+    return False
 CONTRACT = (
     "model/accounting/"
     "f4_bnr_cnf_counterpart_reconciliation_precision_contract_2026_10_22.json"
@@ -124,10 +135,12 @@ def _read_frozen_target_control() -> tuple[dict[str, str] | None, list[str]]:
     return target_row, errors
 
 
-def _production_target_value_matches(target: dict[str, Any]) -> bool:
+def _production_target_value_matches(
+    target: dict[str, Any], *, allow_test_fixtures: bool = False
+) -> bool:
     locator = target.get("source_locator")
-    if isinstance(locator, str) and locator.strip().startswith(TEST_FIXTURE_PREFIX):
-        return _locator_points_to_frozen_artifact(locator)
+    if isinstance(locator, str) and TEST_FIXTURE_PREFIX in locator:
+        return allow_test_fixtures and _locator_points_to_frozen_artifact(locator)
     if not _locator_points_to_frozen_artifact(locator):
         return False
     source_row, errors = _read_frozen_target_control()
@@ -380,6 +393,8 @@ def assess_counterpart_term_coverage(
     terms: Any,
     target: Any,
     semantic_assessment: Any,
+    *,
+    allow_test_fixtures: bool = False,
 ) -> dict[str, str]:
     """Require exact source-cell coverage, frozen sector mapping, S121 treatment and target identity."""
     fail = "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED"
@@ -387,6 +402,8 @@ def assess_counterpart_term_coverage(
         return {"status": fail, "reason": "numeric term list or retained target control is malformed"}
     if not isinstance(semantic_assessment, dict):
         return {"status": fail, "reason": "semantic assessment is not structured"}
+    if not allow_test_fixtures and _contains_test_fixture_marker([terms, target, semantic_assessment]):
+        return {"status": fail, "reason": "synthetic test-fixture locators cannot authorize production F4 eligibility"}
 
     expected = semantic_assessment.get("expected_term_keys")
     expected_cells = semantic_assessment.get("expected_source_cells")
@@ -527,7 +544,7 @@ def assess_counterpart_term_coverage(
             "status": fail,
             "reason": "frozen target control reuses a source-cell value locator",
         }
-    if not _production_target_value_matches(target):
+    if not _production_target_value_matches(target, allow_test_fixtures=allow_test_fixtures):
         return {
             "status": fail,
             "reason": "target value/unit does not match the exact retained ECB QSA observation",
@@ -562,21 +579,43 @@ def assess_f4_counterpart_reconciliation(
     terms: list[dict[str, Any]],
     target: dict[str, Any],
     semantic_assessment: Any,
+    *,
+    allow_test_fixtures: bool = False,
 ) -> dict[str, str]:
-    """Require semantic checks and exact term coverage before numeric F4 reconciliation."""
+    """Require semantic checks and exact term coverage before numeric F4 reconciliation.
+
+    Test fixtures are rejected by default. Offline tests must opt in explicitly, so
+    the literal TEST_FIXTURE_NOT_SOURCE_DATA marker cannot bypass source checks.
+    """
+    if not allow_test_fixtures and _contains_test_fixture_marker([terms, target, semantic_assessment]):
+        return {
+            "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
+            "reason": "synthetic test-fixture locators cannot authorize production F4 eligibility",
+        }
     semantic_result = assess_semantic_adjudication(semantic_assessment)
     if semantic_result.get("status") != "SEMANTIC_ADJUDICATION_PASS_FOR_NUMERIC_RECONCILIATION":
         return {
             "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
             "reason": semantic_result.get("reason", "semantic adjudication did not pass"),
         }
-    coverage_result = assess_counterpart_term_coverage(terms, target, semantic_assessment)
+    coverage_result = assess_counterpart_term_coverage(
+        terms, target, semantic_assessment, allow_test_fixtures=allow_test_fixtures
+    )
     if coverage_result.get("status") != "COUNTERPART_TERM_COVERAGE_PASS":
         return {
             "status": "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED",
             "reason": coverage_result.get("reason", "counterpart source-cell coverage did not pass"),
         }
     return assess_documented_precision_reconciliation(terms, target)
+
+
+def _assess_fixture_reconciliation(
+    terms: list[dict[str, Any]], target: dict[str, Any], assessment: Any
+) -> dict[str, str]:
+    """Explicit opt-in for this module's synthetic audit fixtures only."""
+    return assess_f4_counterpart_reconciliation(
+        terms, target, assessment, allow_test_fixtures=True
+    )
 
 
 def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
@@ -892,7 +931,13 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         key: f"TEST_FIXTURE_NOT_SOURCE_DATA: semantic evidence for {key}"
         for key in SEMANTIC_REQUIRED_CHECKS
     }
-    combined_good = assess_f4_counterpart_reconciliation(
+    default_fixture = assess_f4_counterpart_reconciliation(
+        coverage_fixture_terms, coverage_fixture_target, semantic_fixture
+    )
+    if default_fixture.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
+        errors.append("synthetic TEST_FIXTURE_NOT_SOURCE_DATA locators must not pass the default gate")
+
+    combined_good = _assess_fixture_reconciliation(
         coverage_fixture_terms, coverage_fixture_target, semantic_fixture
     )
     if combined_good.get("status") != "PRECISION_AND_RECONCILIATION_PASS_ELIGIBLE_FOR_BASE_F4_TRIGGER_ADJUDICATION":
@@ -901,7 +946,7 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         **semantic_fixture,
         "self_counterpart_boundary_resolved": False,
     }
-    combined_blocked = assess_f4_counterpart_reconciliation(
+    combined_blocked = _assess_fixture_reconciliation(
         coverage_fixture_terms, coverage_fixture_target, semantic_missing
     )
     if combined_blocked.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
@@ -913,25 +958,25 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
             "sector_mapping_h_c_f_g_x_verified": "",
         },
     }
-    combined_missing_locator = assess_f4_counterpart_reconciliation(
+    combined_missing_locator = _assess_fixture_reconciliation(
         coverage_fixture_terms, coverage_fixture_target, locator_missing
     )
     if combined_missing_locator.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("missing semantic evidence locator must block F4 eligibility")
 
-    omitted_term = assess_f4_counterpart_reconciliation(
+    omitted_term = _assess_fixture_reconciliation(
         coverage_fixture_terms[:-1], coverage_fixture_target, semantic_fixture
     )
     if omitted_term.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("omitted counterpart source cell must block F4 eligibility")
     duplicate_terms = [dict(term) for term in coverage_fixture_terms]
     duplicate_terms[1]["term_key"] = duplicate_terms[0]["term_key"]
-    duplicate_term = assess_f4_counterpart_reconciliation(
+    duplicate_term = _assess_fixture_reconciliation(
         duplicate_terms, coverage_fixture_target, semantic_fixture,
     )
     if duplicate_term.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("duplicate counterpart source cell must block F4 eligibility")
-    wrong_target = assess_f4_counterpart_reconciliation(
+    wrong_target = _assess_fixture_reconciliation(
         coverage_fixture_terms,
         {**coverage_fixture_target, "target_key": "unfrozen-new-target"},
         semantic_fixture,
@@ -940,21 +985,21 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         errors.append("wrong target-control identity must block F4 eligibility")
     altered_terms = [dict(term) for term in coverage_fixture_terms]
     altered_terms[0]["coefficient"] = "0"
-    altered_coefficient = assess_f4_counterpart_reconciliation(
+    altered_coefficient = _assess_fixture_reconciliation(
         altered_terms, coverage_fixture_target, semantic_fixture,
     )
     if altered_coefficient.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("non-unit coefficient must block counterpart-stock reconciliation")
     wrong_mapping_terms = [dict(term) for term in coverage_fixture_terms]
     wrong_mapping_terms[0]["source_sector_code"] = "S121"
-    wrong_mapping = assess_f4_counterpart_reconciliation(
+    wrong_mapping = _assess_fixture_reconciliation(
         wrong_mapping_terms, coverage_fixture_target, semantic_fixture,
     )
     if wrong_mapping.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
         errors.append("unapproved counterpart-sector mapping must block reconciliation")
     duplicate_value_locator_terms = [dict(term) for term in coverage_fixture_terms]
     duplicate_value_locator_terms[1]["source_locator"] = duplicate_value_locator_terms[0]["source_locator"]
-    duplicate_value_locator = assess_f4_counterpart_reconciliation(
+    duplicate_value_locator = _assess_fixture_reconciliation(
         duplicate_value_locator_terms, coverage_fixture_target, semantic_fixture,
     )
     if duplicate_value_locator.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
@@ -962,7 +1007,7 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
 
     target_locator_reused_by_cell = [dict(term) for term in coverage_fixture_terms]
     target_locator_reused_by_cell[0]["source_locator"] = coverage_fixture_target["source_locator"]
-    reused_target_locator = assess_f4_counterpart_reconciliation(
+    reused_target_locator = _assess_fixture_reconciliation(
         target_locator_reused_by_cell, coverage_fixture_target, semantic_fixture,
     )
     if reused_target_locator.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
@@ -972,7 +1017,7 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         **coverage_fixture_target,
         "source_locator": TEST_FIXTURE_PREFIX + " " + FROZEN_F4_TARGET_ARTIFACT + ".bak::KEY=" + FROZEN_F4_TARGET_SERIES_KEY + "::TIME_PERIOD=" + FROZEN_F4_TARGET_PERIOD + "::OBS_VALUE",
     }
-    malformed_target_locator = assess_f4_counterpart_reconciliation(
+    malformed_target_locator = _assess_fixture_reconciliation(
         coverage_fixture_terms, wrong_target_locator, semantic_fixture,
     )
     if malformed_target_locator.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
@@ -980,7 +1025,7 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
 
     missing_self_record = {**semantic_fixture}
     missing_self_record.pop("self_counterpart_record")
-    missing_self = assess_f4_counterpart_reconciliation(
+    missing_self = _assess_fixture_reconciliation(
         coverage_fixture_terms, coverage_fixture_target, missing_self_record,
     )
     if missing_self.get("status") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
