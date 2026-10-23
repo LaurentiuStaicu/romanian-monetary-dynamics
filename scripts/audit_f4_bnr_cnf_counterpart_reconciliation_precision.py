@@ -698,6 +698,8 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         errors.append("semantic nonconfirmation must keep F4 closed")
     if "numeric primitive only" not in semantic_contract.get("numeric_helper_boundary", ""):
         errors.append("contract does not distinguish numeric reconciliation from semantic adjudication")
+    if "TEST_FIXTURE_NOT_SOURCE_DATA" not in semantic_contract.get("numeric_helper_boundary", "") or "explicit test-only opt-in" not in semantic_contract.get("numeric_helper_boundary", ""):
+        errors.append("contract does not prohibit synthetic fixture evidence from the default F4 gate")
     coverage_text = semantic_contract.get("numeric_term_coverage", "")
     for coverage_rule in ("expected_term_keys", "term_key", "no omitted", "expected_target_key", "target_key", "uniquely identifies that reported source cell", "distinct after trimming whitespace", "path-boundary artifact"):
         if coverage_rule not in coverage_text:
