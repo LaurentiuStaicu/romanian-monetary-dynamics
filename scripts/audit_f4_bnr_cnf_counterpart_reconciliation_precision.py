@@ -693,8 +693,11 @@ def audit_f4_bnr_cnf_counterpart_reconciliation_precision() -> list[str]:
         errors.append("retained F4 target value must be source-verified")
     if current_disposition.get("target_precision_rounding_rule_confirmed") is not False:
         errors.append("target rounding rule must remain unconfirmed in the current evidence state")
-    if "must be distinct" not in contract.get("precision_evidence_policy", {}).get("required_for_every_numeric_input", ""):
+    precision_policy_text = contract.get("precision_evidence_policy", {}).get("required_for_every_numeric_input", "")
+    if "must be distinct" not in precision_policy_text:
         errors.append("contract does not require a distinct precision-evidence locator")
+    if "including variants with extra prefix or suffix text" not in precision_policy_text:
+        errors.append("contract does not reject decorated locators that still point only to the QSA DECIMALS attribute")
     if "self_counterpart_disposition" not in semantic_contract.get("numeric_term_coverage", ""):
         errors.append("contract does not require explicit S121 counterpart disposition")
     if contract.get("decision_logic", {}).get("semantic_adjudication_missing_or_failed") != "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED":
