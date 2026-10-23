@@ -444,12 +444,18 @@ class F4BNRCNFDocumentedPrecisionTests(unittest.TestCase):
         self.assertFalse(_production_target_value_matches(wrong_target))
 
     def test_decimals_attribute_alone_does_not_establish_target_rounding(self) -> None:
-        target_record = target("7.1")
-        target_record["precision_evidence_locator"] = FROZEN_F4_TARGET_DECIMALS_LOCATOR
-        result = assess_f4_counterpart_reconciliation(
-            counterpart_terms(), target_record, semantic_assessment()
+        unsupported_locators = (
+            FROZEN_F4_TARGET_DECIMALS_LOCATOR,
+            "TEST_FIXTURE_NOT_SOURCE_DATA: " + FROZEN_F4_TARGET_DECIMALS_LOCATOR + "::OBS_STATUS=A",
         )
-        self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
+        for locator in unsupported_locators:
+            with self.subTest(locator=locator):
+                target_record = target("7.1")
+                target_record["precision_evidence_locator"] = locator
+                result = assess_f4_counterpart_reconciliation(
+                    counterpart_terms(), target_record, semantic_assessment()
+                )
+                self.assertEqual(result["status"], "SEMANTIC_NONCONFIRMATION_KEEP_F4_CLOSED")
 
 
 if __name__ == "__main__":
